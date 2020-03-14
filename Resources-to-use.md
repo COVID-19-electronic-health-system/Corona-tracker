@@ -19,7 +19,7 @@ Here's a list of resources to help us build this:
 
 # Front End
 ### React.js
-- Documentation: [Docs}(https://reactjs.org/docs/getting-started.html)
+- Documentation: [Docs](https://reactjs.org/docs/getting-started.html)
 
 
 
