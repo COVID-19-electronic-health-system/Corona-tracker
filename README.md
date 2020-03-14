@@ -4,7 +4,7 @@ A registry to help doctors track the symptoms of large amounts of patients real 
 ## DRAFT
 After chatting with the ER doctor and Systems Architect on March 13th 2020, we scoped down some issues of critical importance. to this.
 
-And EHR is too ambitious in scope. However [@InterstellarX took down some great notes](https://docs.google.com/document/d/15DekMbBnLjWSk_hAQclLzTFBCYygyeMGkGknJrBHnnM/edit?usp=sharing) that @Carter and @Anthony A. will add to.
+And EHR is too ambitious in scope. However [@BrianHHough took down some great notes](https://docs.google.com/document/d/15DekMbBnLjWSk_hAQclLzTFBCYygyeMGkGknJrBHnnM/edit?usp=sharing) that @SomeMoosery and @tesla809 will add to.
 
 There are various ideas that people can choose from there.
 
