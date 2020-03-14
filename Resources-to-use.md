@@ -2,36 +2,36 @@
 Here's a list of resources to help us build this.
 
 # Front End
-### React.js
+**React.js**  \
 Front end UI library
 - [Docs](https://reactjs.org/docs/getting-started.html)
 
-### React-DOM
+**React-DOM**  \
 Front end UI library for DOM
 - [Docs](https://reactjs.org/docs/getting-started.html)
 
-### Redux
+**Redux**. \
 State management for app
 - [Docs](https://redux.js.org/)
 
-### React-Redux
+**React-Redux**  \
 Connects React and Redux
 - [Docs](https://redux.js.org/)
 
-### Redux-Thunk
+**Redux-Thunk**  \
 Used to manipulate state before calling dispatch() to Redux's state
 - [Docs](https://github.com/reduxjs/redux-thunk)
 
-### React-Router-Dom
+**React-Router-Dom**  \
 DOM bindings for React Router. Used to change views on client side.
 - [Docs](https://www.npmjs.com/package/react-router-dom)
 
-### Styled-Components 
+**Styled-Components**  \ 
 Use the best bits of ES6 and CSS to style your apps without stress 💅.
 Useful to containerize our apps style along with our components 
 - [Docs](https://styled-components.com/)
 
-### Axios
+**Axios**  \
 Promise based HTTP client for the browser and node.js
 - [Docs](https://github.com/axios/axios)
 
