@@ -25,6 +25,4 @@ We have to address privacy issues. Perhaps use blockstack?
 
 
 ## Stack
-React, Redux (?), MongoDB, CSS-in-JS
-
-**More to come**
+See [Resources-to-use.md](./Resources-to-use.md)
