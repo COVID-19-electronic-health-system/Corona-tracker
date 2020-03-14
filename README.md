@@ -6,6 +6,25 @@ After chatting with the ER doctor and Systems Architect on March 13th 2020, we s
 
 And EHR is too ambitious in scope. However [@BrianHHough took down some great notes](https://docs.google.com/document/d/15DekMbBnLjWSk_hAQclLzTFBCYygyeMGkGknJrBHnnM/edit?usp=sharing) that @SomeMoosery and @tesla809 will add to.
 
+## TL;DR FAQ
+A high level basic case for the project. 
+
+Who is the app for?  
+
+What will it do?  
+
+Who are the all the stake holders/actors?   
+
+What are their views (doctor view vs patient view)?  
+
+What are the actionable items that can be done by the app user?   
+
+What is the benefit? 
+
+Who does the app add value for?  
+
+What is the value?   
+
 ## Idea
 The idea **for our IPR** is to help doctors monitor large numbers of patients' symptoms over time (daily or less). Doctors can text the patients if the patients are still ok, or call the patient if they start to get worse. Or, as time goes on, the doctor can refer them to telemedicine service like Jamaica Hospital or other. This will ultimately manifest itself as, mainly, a dashboard and a survey that people update daily with information.
 
