@@ -8,8 +8,9 @@ Here's a list of resources to help us build this:
 - Free plan of 5 GB per month
 
 
-### [Blockstack](https://docs.blockstack.org/): blockchain based object storage
-- pushes data to the user's client
-- allows for data interoperablity between services. So one service can use the data of another with permissions. No silos
-- Has encrypted centralized server to allow for querying of information. MongoDB based.
+### [Blockstack](https://docs.blockstack.org/): blockchain based storage that is pushed to client side.
+- Pushes data to the user's client
+- Allows for data interoperablity between services. So one service can use the data of another with permissions. No silos
+- Has encrypted centralized server to allow for querying of information. MongoDB based, called [Radiks](https://github.com/blockstack/radiks)
+- Uses existing service providers if you wish to store on cloud, like Google, AWS, Dropbox. Encrypts data and has common API to allow movement between service providers without having to reconfigure codebase.
 
