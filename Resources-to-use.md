@@ -2,6 +2,10 @@
 Here's a list of resources to help us build this.
 
 # Front End
+Package manager (Client Side): Yarn
+Faster and better package manager compared to NPM
+- [Docs](https://yarnpkg.com/)
+
 **React.js**  \
 Front end UI library
 - [Docs](https://reactjs.org/docs/getting-started.html)
