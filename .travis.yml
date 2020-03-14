@@ -1,0 +1,14 @@
+language: node_js
+
+node_js:
+  "stable"
+
+before_script:
+  sudo apt update && sudo apt install yarn
+
+install:
+  cd client
+  yarn install
+
+script:
+  yarn build
