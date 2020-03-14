@@ -31,7 +31,7 @@ DOM bindings for React Router. Used to change views on client side.
 - [Docs](https://www.npmjs.com/package/react-router-dom)
 
 **Styled-Components**  \
-Use the best bits of ES6 and CSS to style your apps without stress 💅.
+Use the best bits of ES6 and CSS to style your apps without stress 💅.  \
 Useful to containerize our apps style along with our components 
 - [Docs](https://styled-components.com/)
 
