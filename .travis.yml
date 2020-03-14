@@ -1,12 +1,11 @@
 language: node_js
-
+os: osx
 node_js:
   "stable"
-
-before_script:
-  sudo apt-get update
-  npm i -g npm
-  npm install --global yarn
+  
+before_install:
+  brew install yarn
+  
 install:
   cd client
   yarn install
