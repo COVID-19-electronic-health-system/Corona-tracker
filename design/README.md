@@ -19,3 +19,8 @@
 
 **TEMPERATURE GRADIENT**
 - Blue #3100fe --> Red #f33443
+
+**APP BACKGROUND BLUE GRADIENT**
+- Light blue: #d7e1fa
+- Dark blue: #bbcef9
+
