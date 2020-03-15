@@ -3,6 +3,10 @@ os: osx
 node_js:
   "stable"
   
+cache:
+  directories:
+   node_modules
+
 before_install:
   brew install yarn
   
@@ -12,4 +16,4 @@ install:
 
 script:
   yarn test
-  yarn build
+  yarn run build
