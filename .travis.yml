@@ -10,10 +10,10 @@ cache:
 before_install:
   brew install yarn
   
-install:
+before_script:
   cd client
   yarn install
-
+  
 script:
   yarn test
   yarn run build
