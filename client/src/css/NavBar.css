@@ -1,7 +1,8 @@
 nav {
-  background-color: salmon;
+  background-color: #f64141;
   width: 100vw;
   height: 10vh;
+  padding: 2vh 0;
   display: flex;
   justify-content: center;
 }
@@ -9,6 +10,8 @@ nav {
 .NavBar-btn {
   height: 10vh;
   width: 10vh;
+  padding: 2vh 0 0;
+  text-decoration: none;
 }
 
 .NavBar-link {
@@ -17,10 +20,28 @@ nav {
 }
 
 .NavBar-icon {
-  height: 60px;
-  width: 60px;
+  background-size: contain;
+  height: 40px;
+  width: 40px;
+  margin: 0 auto;
 }
 
 #NavBar-log-icon {
-  background-image: url('../img/icons8-health-book-64.png');
+  background-image: url('../img/Menu_HealthLog_Unselected.png');
+}
+
+#NavBar-news-icon {
+  background-image: url('../img/Menu_News_Unselected.png');
+}
+
+#NavBar-chat-icon {
+  background-image: url('../img/Menu_Doctor_Unselected.png');
+}
+
+#NavBar-map-icon {
+  background-image: url('../img/Menu_Map_Unselected.png');
+}
+
+#NavBar-settings-icon {
+  background-image: url('../img/Menu_Settings_Unselected.png');
 }
