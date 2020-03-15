@@ -24,3 +24,8 @@
 - Light blue: #d7e1fa
 - Dark blue: #bbcef9
 
+
+# Links to everything:
+- [Wireframes](https://github.com/COVID-19-electronic-health-system/Corona-tracker/tree/master/design/wireframes)
+- [Items for use: PNGs & JPGs](https://github.com/COVID-19-electronic-health-system/Corona-tracker/tree/master/client/src/img)
+- [Brand Guide](https://github.com/COVID-19-electronic-health-system/Corona-tracker/tree/master/design)
