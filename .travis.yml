@@ -2,13 +2,22 @@ language: node_js
 
 node_js:
   "stable"
+  
+cache:
+  directories:
+   node_modules
 
-before_script:
-  sudo apt update && sudo apt install yarn
-
-install:
+before_install:
+  npm -g install yarn
+  npm install -g jest-dom
+  npm install -g react-scripts
   cd client
-  yarn install
+  yarn
+  
+before_script:
+  cd client
+  yarn
 
 script:
-  yarn build
+  yarn test
+  yarn run build
