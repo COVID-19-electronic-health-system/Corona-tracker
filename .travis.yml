@@ -9,6 +9,7 @@ cache:
 
 before_install:
   npm -g install yarn
+  npm install -g react-scripts
 
 before_script:
   cd client
