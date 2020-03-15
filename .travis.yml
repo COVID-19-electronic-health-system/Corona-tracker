@@ -9,9 +9,10 @@ cache:
 
 before_install:
   brew install yarn
+  yarn global add react-script
+  cd client
   
 before_script:
-  cd client
   yarn install
   
 script:
