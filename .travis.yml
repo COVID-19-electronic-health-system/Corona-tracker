@@ -1,5 +1,5 @@
 language: node_js
-os: osx
+
 node_js:
   "stable"
   
@@ -8,13 +8,13 @@ cache:
    node_modules
 
 before_install:
-  brew install yarn
-  yarn global add react-script
+  npm -g install yarn
+  yarn
   cd client
   
 before_script:
-  yarn install
-  
+  yarn
+
 script:
   yarn test
   yarn run build
