@@ -7,8 +7,9 @@ nav {
 }
 
 .NavBar-btn {
-  height: 10vh;
-  width: 10vh;
+  height: 9vh;
+  width: fit-content;
+  text-decoration: none;
 }
 
 .NavBar-link {
@@ -17,10 +18,29 @@ nav {
 }
 
 .NavBar-icon {
-  height: 60px;
-  width: 60px;
+  height: 50px;
+  width: 50px;
+  margin: 0 auto;
+  background-size: cover;
+  background-position: center;
 }
 
 #NavBar-log-icon {
   background-image: url('../img/icons8-health-book-64.png');
+}
+
+#NavBar-news-icon {
+  background-image: url('../img/icons8-news-64.png')
+}
+
+#NavBar-chat-icon {
+  background-image: url('../img/icons8-video-call-64.png')
+}
+
+#NavBar-map-icon {
+  background-image: url('../img/icons8-map-marker-64.png')
+}
+
+#NavBar-settings-icon {
+  background-image: url('../img/icons8-gear-64.png')
 }

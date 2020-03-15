@@ -7,26 +7,26 @@ class NavBar extends Component {
     return (
       <div>
         <nav>
-          <div className="NavBar-btn">
+          <a href="" className="NavBar-btn">
             <div className="NavBar-icon" id="NavBar-log-icon"></div>
             <p className="NavBar-link">Log</p>
-          </div>
-          <div className="NavBar-btn">
+          </a>
+          <a href="" className="NavBar-btn">
             <div className="NavBar-icon" id="NavBar-news-icon"></div>
             <p className="NavBar-link">News</p>
-          </div>
-          <div className="NavBar-btn">
+          </a>
+          <a href="" className="NavBar-btn">
             <div className="NavBar-icon" id="NavBar-chat-icon"></div>
             <p className="NavBar-link">Chat</p>
-          </div>
-          <div className="NavBar-btn">
+          </a>
+          <a href="" className="NavBar-btn">
             <div className="NavBar-icon" id="NavBar-map-icon"></div>
             <p className="NavBar-link">Map</p>
-          </div>
-          <div className="NavBar-btn">
+          </a>
+          <a href="" className="NavBar-btn">
             <div className="NavBar-icon" id="NavBar-settings-icon"></div>
             <p className="NavBar-link">Settings</p>
-          </div>
+          </a>
         </nav>
       </div>
     );
