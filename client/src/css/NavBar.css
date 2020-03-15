@@ -1,0 +1,26 @@
+nav {
+  background-color: salmon;
+  width: 100vw;
+  height: 10vh;
+  display: flex;
+  justify-content: center;
+}
+
+.NavBar-btn {
+  height: 10vh;
+  width: 10vh;
+}
+
+.NavBar-link {
+  color: #fff;
+  text-transform: uppercase;
+}
+
+.NavBar-icon {
+  height: 60px;
+  width: 60px;
+}
+
+#NavBar-log-icon {
+  background-image: url('../img/icons8-health-book-64.png');
+}
