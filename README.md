@@ -4,7 +4,7 @@
 A tool to both help doctors track triage an exponentially-growing number of patients in real-time, and lead individuals to essentials they may need.
 
 ## Join our Discord Server
-https://discord.gg/fDwjuE
+https://discord.gg/pPERUuv
 
 ## Abstract
 After chatting with the ER doctor and Systems Architect on March 13th 2020, we scoped down some issues of critical importance to this. There are several key facets of concern, namely <b>medical concerns</b> (i.e. people aren't realizing the severety of this; it's getting real very fast; and doctors/medical professionals are ill-equipped to test for this), as well as <b>global concerns</b> (i.e. the economy is sinking; resources are needed like isolation rooms and gear; there is a need for more ventilators and need more space; schools are closing; etc.). After hearing all of this, we learned that there's a limited amount of time to act and we need to take decisive action to do our part and help the health professionals on the ground working on a solution and/or keeping people as healthy as possible.
