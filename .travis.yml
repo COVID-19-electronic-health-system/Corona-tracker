@@ -9,10 +9,9 @@ cache:
 
 before_install:
   npm -g install yarn
-  yarn
-  cd client
-  
+
 before_script:
+  cd client
   yarn
 
 script:
