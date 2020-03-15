@@ -1,4 +1,6 @@
 # Corona-tracker
+[![Build Status](https://travis-ci.org/COVID-19-electronic-health-system/Corona-tracker.svg?branch=master)](https://travis-ci.org/COVID-19-electronic-health-system/Corona-tracker)
+
 A tool to both help doctors track triage an exponentially-growing number of patients in real-time, and lead individuals to essentials they may need.
 
 ## Join our Discord Server
