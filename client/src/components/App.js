@@ -36,8 +36,8 @@ export default class App extends Component {
         {!userSession.isUserSignedIn() ?
           <Login handleSignIn={this.handleSignIn} />
           : <div>
-            <NavBar />
             <Button onClick={this.handleSignOut}>Sign Out</Button>
+            <NavBar />
           </div>
         }
       </div>

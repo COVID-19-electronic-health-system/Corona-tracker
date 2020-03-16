@@ -1,21 +1,19 @@
 .nav {
-  background-color: #f64141;
   width: 100vw;
   height: 10vh;
-  padding: 2vh 0;
+  /* padding: 2vh 0; */
   display: flex;
   justify-content: center;
 }
 
-.NavBar-btn {
+.NavBar-item {
   height: 10vh;
-  width: 10vh;
-  padding: 2vh 0 0;
+  width: 10vw;
+  padding: 1vh 0;
   text-decoration: none;
 }
 
 .NavBar-link {
-  color: #fff;
   text-transform: uppercase;
 }
 
@@ -44,4 +42,57 @@
 
 #NavBar-settings-icon {
   background-image: url('../img/Menu_Settings_Unselected.png');
+}
+
+/* Media Queries */
+/* Mobile M */
+@media only screen and (max-width: 375px) {
+  .nav {
+    height: 13vh;
+    justify-content: space-around;
+    padding: .5rem 0;
+  }
+
+  .NavBar-item {
+    height: fit-content;
+    width: fit-content;
+    padding: 0;
+  }
+
+  .NavBar-icon {
+    height: 20px;
+    width: 20px;
+    padding: 0;
+  }
+
+  .NavBar-link {
+    font-size: 10px;
+    padding: .5em 0;
+  }
+
+}
+
+/* Mobile L */
+@media only screen and (max-width: 414px) {
+  .nav {
+    height: 12vh;
+    max-width: 414px;
+    justify-content: space-around;
+  }
+
+  .NavBar-item {
+    height: fit-content;
+    width: fit-content;
+    padding: .2em 0 0;
+  }
+
+  .NavBar-icon {
+    height: 30px;
+    width: 30px;
+  }
+
+  .NavBar-link {
+    font-size: 10px;
+    padding: .5em 0;
+  }
 }

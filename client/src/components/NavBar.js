@@ -1,43 +1,44 @@
 import React, { Component } from 'react';
 import { Nav }  from 'react-bootstrap';
-import "../css/NavBar.css"
+import "../css/themePalette.css";
+import "../css/NavBar.css";
 
 class NavBar extends Component {
   render() {
     return (
-      <Nav>
-        <Nav.Item>
+      <Nav className="theme-Palette-red-bg">
+        <Nav.Item className="NavBar-item">
           <Nav.Link>
             <div className="NavBar-icon" id="NavBar-log-icon"></div>
-            <p className="NavBar-link">Log</p>
+            <p className="NavBar-link theme-Palette-white-text">Log</p>
           </Nav.Link>
         </Nav.Item>
 
-        <Nav.Item>
+        <Nav.Item className="NavBar-item">
           <Nav.Link>
             <div className="NavBar-icon" id="NavBar-news-icon"></div>
-            <p className="NavBar-link">News</p>
+            <p className="NavBar-link theme-Palette-white-text">News</p>
           </Nav.Link>
         </Nav.Item>
 
-        <Nav.Item>
+        <Nav.Item className="NavBar-item">
           <Nav.Link>
             <div className="NavBar-icon" id="NavBar-chat-icon"></div>
-            <p className="NavBar-link">Chat</p>
+            <p className="NavBar-link theme-Palette-white-text">Chat</p>
           </Nav.Link>
         </Nav.Item>
 
-        <Nav.Item>
+        <Nav.Item className="NavBar-item">
           <Nav.Link>
             <div className="NavBar-icon" id="NavBar-map-icon"></div>
-            <p className="NavBar-link">Map</p>
+            <p className="NavBar-link theme-Palette-white-text">Map</p>
           </Nav.Link>
         </Nav.Item>
 
-        <Nav.Item>
+        <Nav.Item className="NavBar-item">
           <Nav.Link>
             <div className="NavBar-icon" id="NavBar-settings-icon"></div>
-            <p className="NavBar-link">Settings</p>
+            <p className="NavBar-link theme-Palette-white-text">Settings</p>
           </Nav.Link>
         </Nav.Item>
       </Nav>
