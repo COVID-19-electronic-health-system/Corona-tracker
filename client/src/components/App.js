@@ -4,6 +4,7 @@ import Login from './Login';
 import '../css/App.css';
 import { appConfig } from '../utils/constants'
 import { UserSession } from 'blockstack';
+import Button from 'react-bootstrap/Button';
 
 const userSession = new UserSession({ appConfig: appConfig })
 
@@ -35,7 +36,7 @@ export default class App extends Component {
           <Login handleSignIn={this.handleSignIn} />
           : <div>
             <NavBar />
-            <button onClick={this.handleSignOut}>Sign Out</button>
+            <Button onClick={this.handleSignOut}>Sign Out</Button>
           </div>
         }
       </div>
