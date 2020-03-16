@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import NavBar from './NavBar';
 import Login from './Login';
+import 'bootstrap/dist/css/bootstrap.min.css';
 import '../css/App.css';
 import { appConfig } from '../utils/constants'
 import { UserSession } from 'blockstack';
