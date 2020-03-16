@@ -6,26 +6,50 @@ import '../css/App.css';
 import { appConfig } from '../utils/constants'
 import { UserSession } from 'blockstack';
 import Button from 'react-bootstrap/Button';
+import { configure, User, getConfig } from 'radiks';
 
-const userSession = new UserSession({ appConfig: appConfig })
+const userSession = new UserSession({
+  appConfig: appConfig
+})
+
+configure({
+  apiServer: 'http://localhost:1260', // TODO this will change to wherever our MongoDB cluster will be hosted in prod
+  userSession
+})
 
 export default class App extends Component {
 
-  componentDidMount() {
+  constructor(props) {
+    super(props)
+    this.userSession = new UserSession({ appConfig })
+  }
+
+  componentDidMount = async() => {
+    configure({
+      apiServer: 'http://localhost:1260',
+      userSession: this.userSession,
+    });
+    const { userSession } = getConfig();
     if (userSession.isSignInPending()) {
-      userSession.handlePendingSignIn().then((userData) => {
-        window.history.replaceState({}, document.title, "/")
-        this.setState({ userData: userData })
-      });
+      await userSession.handlePendingSignIn();
+      await User.createWithCurrentUser();
+      window.location = '/';
     }
   }
 
-  handleSignIn(e) {
+  handleSignIn = async(e) => {
+    const { userSession } = getConfig()
     e.preventDefault()
+    if (userSession.isSignInPending()) {
+      await userSession.handlePendingSignIn();
+      await User.createWithCurrentUser();
+      window.location = '/';
+    }
     userSession.redirectToSignIn()
   }
 
-  handleSignOut(e) {
+  handleSignOut = (e) => {
+    const { userSession } = getConfig();
     e.preventDefault();
     userSession.signUserOut(window.location.origin);
   }
@@ -35,9 +59,13 @@ export default class App extends Component {
       <div className="App">
         {!userSession.isUserSignedIn() ?
           <Login handleSignIn={this.handleSignIn} />
-          : <div>
-            <Button onClick={this.handleSignOut}>Sign Out</Button>
+          :
+          <div>
             <NavBar />
+            <Button onClick={this.handleSignOut}>Sign Out</Button>
+            <div>
+              <p>Welcome, { userSession.loadUserData().profile.name}</p>
+            </div>
           </div>
         }
       </div>
