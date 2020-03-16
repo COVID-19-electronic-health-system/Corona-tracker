@@ -71,20 +71,22 @@ We have decided to use regular CSS files to keep things simple for now. This all
 
 Once MVP is done the team can discuss if we want to transition it to styled-components or something like CSS modules.
 
-Folder paths
-CSS is located in /client/src/css
-Components are located in /client/src/components
+**Folder paths**
+CSS is located in /client/src/css. 
+Components are located in /client/src/components. 
 
-Style guide for CSS files:
+**Style guide for CSS files:**
+Use /client/src/css/themePalette.css and its classes to style the components.
+Then add your custom css file after that. Remember that css cascades and overrides. So, add the themePalette.css, first then the component's css file.
 
 **Naming convention:**
-Component -> Sample.js
-CSS file -> Sample.css
-Reducer -> sampleReducer.js
+Component -> Sample.js. 
+CSS file -> Sample.css. 
+Reducer -> sampleReducer.js. 
 
-To avoid naming collisions:
-prefix class names with the name of component and link with kebab case.
-Class name -> .Sample-header { ... }
+**To avoid naming collisions:**  
+prefix class names with the name of component and link with kebab case.  
+Class name -> .Sample-header { ... }. 
 
 **How to handle state:**
 Let's use Redux.
