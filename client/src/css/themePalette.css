@@ -1,48 +1,41 @@
-/* Core colors */
-.theme-Palette-red {
-    color: #f64141;
+/* Background colors */
+.theme-Palette-red-bg {
     background-color: #f64141;
 }
-
-.theme-Palette-dark-grey {
-    color: #2c2c2c;
+.theme-Palette-dark-grey-bg {
     background-color: #2c2c2c;
 }
 
-.theme-Palette-light-grey {
-    color: #aaaaaa;
+.theme-Palette-light-grey-bg {
     background-color: #aaaaaa;
 }
 
-.theme-Palette-off-white {
+/* Text colors */
+.theme-Palette-off-white-text {
     color: #ebebeb;
-    background-color: #ebebeb;
 }
 
-.theme-Palette-white {
-    color: #ffffff;
-    background: #ffffff;
+.theme-Palette-white-text {
+    color: #ffffff;    
 }
 
 /* Sliding scale */
-.theme-Palette-selected-red {
-    color: #f64141;
+.theme-Palette-selected-red-slider {
     background-color: #f64141;
 }
 
-.theme-Palette-unselected-grey {
-    color: #b8b8b8;
+.theme-Palette-unselected-grey-slider {
     background-color: #b8b8b8;
 }
 
-.theme-Palette-grey-slide-bar {
+.theme-Palette-grey-slide-bar-slider {
     background-color: #666666;
 }
 
-.theme-Palette-box-outline {
+.theme-Palette-box-outline-slider {
     border-color: #dfdfdf;
 }
 
-.theme-Palette-temp-gradient {
+.theme-Palette-temp-gradient-slider {
     background-image: linear-gradient(90deg, #3100fe 0%, #f33443 100%);
 }
