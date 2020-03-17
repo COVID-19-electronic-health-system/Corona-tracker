@@ -2,12 +2,10 @@
 
 # Italian
 
-## 
-
 # French
+
+# More languages to be added by other contributors
 
 # Spanish
 
 # Mandarin
-
-# More languages to be added by other contributors
