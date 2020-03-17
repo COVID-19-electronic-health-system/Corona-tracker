@@ -121,7 +121,7 @@ See [translations.md](translations.md)
 
 And YOU!  
 How would you like to help?  
-see [CONTRIBUTING.md](./CONTRIBUTING.md)
+see [CONTRIBUTING.md](./CONTRIBUTING.md) PENDING
 
 ## Questions?
 Submit an [issue](https://github.com/COVID-19-electronic-health-system/Corona-tracker/issues). Issues are welcomed! We are new developer friendly and happy to help in anyway! 
