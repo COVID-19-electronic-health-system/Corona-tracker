@@ -11,6 +11,29 @@ After chatting with the ER doctor and Systems Architect on March 13th 2020, we s
 
 And EHR is too ambitious in scope. However [@BrianHHough took down some great notes](https://docs.google.com/document/d/15DekMbBnLjWSk_hAQclLzTFBCYygyeMGkGknJrBHnnM/edit?usp=sharing) that @SomeMoosery and @tesla809 will add to.
 
+## Install, Build and Run Locally (For OSX, Windows Documentation Coming Soon)
+
+### Prerequisites
+To run locally, you'll need to have MongoDB installed locally. Follow [this](https://docs.mongodb.com/manual/tutorial/install-mongodb-on-os-x/) guide if you don't have it already
+- Once you have MongoDB installed, start MongoDB, create a new database and create a user with admin privileges:
+    - `brew services start mongodb` - start MongoDB
+    - `ps aux | grep -v grep | grep mongod` - ensure MongoDB is running
+    - `mongo` - open up MongoDB console
+    - `use coronatracker` - switch to a new local database, coronatracker
+    - `db.createUser({user: "admin", pwd:"foobar1",roles: ["readWrite","dbAdmin"]});` - create a new admin user for this database
+
+You'll also need `radiks-server`, which you can install simply with `npm install -g radiks-server`
+- Create a `MONGODB_URI` environment variable on the same machine you're running `radiks-server`
+    - `export MONGODB_URI="mongodb://admin:foobar1@localhost:27017/test1"` - `admin`, `foobar1`, `test1` are the username/pass/db from the admin user you created when setting up MongoDB
+
+### Installation and run steps
+1. Clone this repo `git clone https://github.com/COVID-19-electronic-health-system/Corona-tracker`
+2. `cd Corona-tracker/client`
+3. `npm i`
+4. Ensure MongoDB is running (see Prerequisites)
+5. `radiks-server` - start the local radiks server
+6. `npm run start` - run the application locally
+
 ## TL;DR FAQ
 A high level basic case for the project. 
 
