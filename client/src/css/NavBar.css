@@ -12,13 +12,15 @@
 }
 
 .NavBar-item {
-  height: 10vh;
-  width: 10vw;
-  padding: 1vh 0;
+  display: block;
+  float: left;
+  width: 20%;
   text-decoration: none;
 }
 
 .NavBar-link {
+  display: block;
+  text-align: center;
   text-transform: uppercase;
 }
 
