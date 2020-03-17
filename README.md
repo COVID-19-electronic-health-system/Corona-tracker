@@ -89,40 +89,43 @@ In a few words or less, this will **_"alleviate stressors caused by COVID-19 and
 **"Backend"/DB:** Blockstack Platform (Radiks, Gaia)
 
 ## Questions Related to Stack?
-Reach-out
-@SomeMoosery is implementing backend with blockstack, front end, systems architecture.
-See:  
-[/design/backend](https://github.com/COVID-19-electronic-health-system/Corona-tracker/tree/master/design), [/design/models](https://github.com/COVID-19-electronic-health-system/Corona-tracker/tree/master/design/database_models), [/client](https://github.com/COVID-19-electronic-health-system/Corona-tracker/tree/master/client)  
+**Reach-out:**  
+**@SomeMoosery** is implementing backend with blockstack, front end, systems architecture.    
+See [/design/backend](https://github.com/COVID-19-electronic-health-system/Corona-tracker/tree/master/design), [/design/models](https://github.com/COVID-19-electronic-health-system/Corona-tracker/tree/master/design/database_models), and  [/client](https://github.com/COVID-19-electronic-health-system/Corona-tracker/tree/master/client)  
 (@Carter on discord)
 
-@Brian H. Hough is implementing design, social media marketing, front end code.
-see [/design](https://github.com/COVID-19-electronic-health-system/Corona-tracker/tree/master/design) and [/design](https://github.com/COVID-19-electronic-health-system/Corona-tracker/tree/master/design/wireframes)
+**@Brian H. Hough** is implementing design, social media marketing, front end code.      
+See [/design](https://github.com/COVID-19-electronic-health-system/Corona-tracker/tree/master/design) and [/design](https://github.com/COVID-19-electronic-health-system/Corona-tracker/tree/master/design/wireframes)
 (@intersteller on discord)
 
-@tesla809 is implementing front end code, documentation and  booking meetings with experts.
-Open to peer program any issue or bugs!
+**@tesla809** is implementing front end code, documentation and  booking meetings with experts.    
+Open to peer program any issue or bugs!  
 See [/client](https://github.com/COVID-19-electronic-health-system/Corona-tracker/tree/master/client)  
 (@Anthony A. on discord)
 
-@akilhylton is implementing front end code, documentation, has machine learning experienc.
-Open to peer program any issue or bugs!
+**@akilhylton** is implementing front end code, documentation, has machine learning experience.  
+Open to peer program any issue or bugs!  
 See [/client](https://github.com/COVID-19-electronic-health-system/Corona-tracker/tree/master/client)  
 (@Anthony A. on discord)
 
-@ngiangre is advising on analytics, data science
-see [analytics thread](https://github.com/COVID-19-electronic-health-system/Corona-tracker/issues/51)
+**@ngiangre** is advising on analytics, data science  
+See [analytics thread](https://github.com/COVID-19-electronic-health-system/Corona-tracker/issues/51)  
 (@NickG on discord)
 
-@salvolpe is helping with translations, analytics
-(@laseplov on discord)
+**@salvolpe** is helping with translations, analytics  
+(@laseplov on discord)  
 See [translations.md](translations.md)
 
-@lukelin1991 Managing discord, discord roles, front-end, translations.
+**@lukelin1991** Managing discord, discord roles, front-end, translations.
 (@kirbypooh on discord)
 
 And YOU!  
 How would you like to help?  
 see [CONTRIBUTING.md](./CONTRIBUTING.md)
+
+## Questions?
+Submit an [issue](https://github.com/COVID-19-electronic-health-system/Corona-tracker/issues). Issues are welcomed! We are new developer friendly and happy to help in anyway! 
+Message @Anthony A. on the [discord](https://discord.gg/pPERUuv) if you have any questions!
 
 ### Design considerations
 **CSS Design considerations**
@@ -130,9 +133,9 @@ We have decided to use regular CSS files to keep things simple for now. This all
 
 Once MVP is done the team can discuss if we want to transition it to styled-components or something like CSS modules.
 
-Folder paths
-CSS is located in /client/src/css
-Components are located in /client/src/components
+Folder paths  
+CSS is located in /client/src/css  
+Components are located in /client/src/components  
 
 Style guide for CSS files:
 
@@ -142,13 +145,14 @@ CSS file -> Sample.css
 Reducer -> sampleReducer.js  
 
 To avoid naming collisions:
-prefix class names with the name of component and link with kebab case.
+prefix class names with the name of component and link with kebab case.  
 Class name -> .Sample-header { ... }
 
 **How to handle state:**
-Let's use Redux.
-Create action and reducer with an appropriate name.
-Add them to the /actions and /reducers folder.
+Let's use Redux.  
+Create action and reducer with an appropriate name.  
+Add them to the /actions and /reducers folder.  
+**We need help to implement this.**
 
 **Testing**
 No need to worry about testing for now.
