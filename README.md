@@ -84,9 +84,45 @@ After that, we hope to add additional features, such as a Waze-like crowdsourced
 In a few words or less, this will **_"alleviate stressors caused by COVID-19 and reduce doctor overhead."_**
 
 ## Stack
-**Frontend:** React, React Bootstrap
+**Frontend:** React, React-Bootstrap
 
 **"Backend"/DB:** Blockstack Platform (Radiks, Gaia)
+
+## Questions Related to Stack?
+Reach-out
+@SomeMoosery is implementing backend with blockstack, front end, systems architecture.
+See:  
+[/design/backend](https://github.com/COVID-19-electronic-health-system/Corona-tracker/tree/master/design), [/design/models](https://github.com/COVID-19-electronic-health-system/Corona-tracker/tree/master/design/database_models), [/client](https://github.com/COVID-19-electronic-health-system/Corona-tracker/tree/master/client)  
+(@Carter on discord)
+
+@Brian H. Hough is implementing design, social media marketing, front end code.
+see [/design](https://github.com/COVID-19-electronic-health-system/Corona-tracker/tree/master/design) and [/design](https://github.com/COVID-19-electronic-health-system/Corona-tracker/tree/master/design/wireframes)
+(@intersteller on discord)
+
+@tesla809 is implementing front end code, documentation and  booking meetings with experts.
+Open to peer program any issue or bugs!
+See [/client](https://github.com/COVID-19-electronic-health-system/Corona-tracker/tree/master/client)  
+(@Anthony A. on discord)
+
+@akilhylton is implementing front end code, documentation, has machine learning experienc.
+Open to peer program any issue or bugs!
+See [/client](https://github.com/COVID-19-electronic-health-system/Corona-tracker/tree/master/client)  
+(@Anthony A. on discord)
+
+@ngiangre is advising on analytics, data science
+see [analytics thread](https://github.com/COVID-19-electronic-health-system/Corona-tracker/issues/51)
+(@NickG on discord)
+
+@salvolpe is helping with translations, analytics
+(@laseplov on discord)
+See [translations.md](translations.md)
+
+@lukelin1991 Managing discord, discord roles, front-end, translations.
+(@kirbypooh on discord)
+
+And YOU!  
+How would you like to help?  
+see [CONTRIBUTING.md](./CONTRIBUTING.md)
 
 ### Design considerations
 **CSS Design considerations**
@@ -101,9 +137,9 @@ Components are located in /client/src/components
 Style guide for CSS files:
 
 **Naming convention:**
-Component -> Sample.js
-CSS file -> Sample.css
-Reducer -> sampleReducer.js
+Component -> Sample.js  
+CSS file -> Sample.css  
+Reducer -> sampleReducer.js  
 
 To avoid naming collisions:
 prefix class names with the name of component and link with kebab case.
