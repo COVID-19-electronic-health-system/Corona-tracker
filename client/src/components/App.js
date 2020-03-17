@@ -1,8 +1,5 @@
 import React, { Component } from 'react';
 import NavBar from './NavBar';
-import ChartJs from './ChartJs';
-import ReactCharts from './ReactCharts';
-
 import Login from './Login';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import '../css/App.css';
@@ -38,10 +35,13 @@ export default class App extends Component {
       <div className="App">
         {!userSession.isUserSignedIn() ?
           <Login handleSignIn={this.handleSignIn} />
-          : <div>
-            <Button onClick={this.handleSignOut}>Sign Out</Button>
-            <NavBar />
+          :  <div>
+          <NavBar />
+          <Button onClick={this.handleSignOut}>Sign Out</Button>
+          <div>
+            <p>Welcome, { userSession.loadUserData().profile.name}</p>
           </div>
+        </div>
         }
       </div>
     );
