@@ -1,9 +1,14 @@
 .nav {
   width: 100vw;
-  height: 10vh;
-  /* padding: 2vh 0; */
+  height: 15vh;
+  min-height: 90px;
+  padding: 1vh 0;
   display: flex;
   justify-content: center;
+  overflow: hidden;
+  width: 100%;
+  bottom: 0;
+  position: fixed;
 }
 
 .NavBar-item {
