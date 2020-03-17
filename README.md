@@ -11,24 +11,70 @@ After chatting with the ER doctor and Systems Architect on March 13th 2020, we s
 
 And EHR is too ambitious in scope. However [@BrianHHough took down some great notes](https://docs.google.com/document/d/15DekMbBnLjWSk_hAQclLzTFBCYygyeMGkGknJrBHnnM/edit?usp=sharing) that @SomeMoosery and @tesla809 will add to.
 
+## Install, Build and Run Locally (For OSX, Windows Documentation Coming Soon)
+
+### Prerequisites
+To run locally, you'll need to have MongoDB installed locally. Follow [this](https://docs.mongodb.com/manual/tutorial/install-mongodb-on-os-x/) guide if you don't have it already
+- Once you have MongoDB installed, start MongoDB, create a new database and create a user with admin privileges:
+    - `brew services start mongodb` - start MongoDB
+    - `ps aux | grep -v grep | grep mongod` - ensure MongoDB is running
+    - `mongo` - open up MongoDB console
+    - `use coronatracker` - switch to a new local database, coronatracker
+    - `db.createUser({user: "admin", pwd:"foobar1",roles: ["readWrite","dbAdmin"]});` - create a new admin user for this database
+
+You'll also need `radiks-server`, which you can install simply with `npm install -g radiks-server`
+- Create a `MONGODB_URI` environment variable on the same machine you're running `radiks-server`
+    - `export MONGODB_URI="mongodb://admin:foobar1@localhost:27017/test1"` - `admin`, `foobar1`, `test1` are the username/pass/db from the admin user you created when setting up MongoDB
+
+### Installation and run steps
+1. Clone this repo `git clone https://github.com/COVID-19-electronic-health-system/Corona-tracker`
+2. `cd Corona-tracker/client`
+3. `npm i`
+4. Ensure MongoDB is running (see Prerequisites)
+5. `radiks-server` - start the local radiks server
+6. `npm run start` - run the application locally
+
 ## TL;DR FAQ
 A high level basic case for the project. 
 
-Who is the app for?  
+**Who is the app for?**
 
-What will it do?  
+This app is for the largest percentage of individuals going through this crisis: those who are still feeling generally well, but are concerned they may be carrying COVID-19 or are showing early symptoms.
 
-Who are the all the stake holders/actors?   
+**What will it do?**
 
-What are their views (doctor view vs patient view)?  
+This app aims to track the symptoms of individuals who fear they may have early symptoms of COVID-19, alerting doctors only if they are likely to have been infected with the virus based on the trajectory of their health. Once a user is flagged as high-risk, they are directed to either a face-to-face medical professional, or redirected to a telehealth service.
 
-What are the actionable items that can be done by the app user?   
+**Who are the all the stake holders/actors?**
 
-What is the benefit? 
+- Individuals feeling generally unwell: This will be the majority user base of this application. These are the people whose health we are monitoring.
+- Doctors: in a time where doctors nationwide are being stretched thin and generally healthy individuals are clogging up visitations, an effective way to triage patients is crucial. This will allow doctors to treat those only in true need as quickly as possible.
 
-Who does the app add value for?  
+**What are their views (doctor view vs patient view)?**
 
-What is the value?   
+- The patient will be asked to fill out a survey in order to monitor their health. They will then be able to view an overall summary of their health status, and a detailed, checkup-by-checkup view.
+    - [FUTURE STATE]: the patient will also have access to COVID-19-related news, the ability to directly reach out to telehealth services, and a crowdsourced map of stores that have certain supplies. 
+- The doctor will see an aggregated list of patients, sorted by severity of cases. 
+
+**What are the actionable items that can be done by the app user?**
+
+- [PATIENT]: Fill out the health-monitoring survey
+- [PATIENT]: View their overall health, and a more fine-grained checkup-by-checkup view
+- [DOCTOR]: View an aggregated of patients' health sorted by severity
+- [DOCTOR]: Reach out to patients, either encouraging them to come in for a test if the case is bad enough, or ease their nerves by ensuring them they're still fine.
+- [FUTURE STATE]: Read COVID-19-related news
+- [FUTURE STATE]: Directly interact with telehealth services
+- [FUTURE STATE]: View a map of necessary goods in your area
+- [FUTURE STATE]: Input where necessary goods are in your area
+
+**What is the benefit?**
+
+Doctors will no longer be bogged down with patients who are showing few-to-none health issues (oftentimes unrelated to symptoms of COVID-19), potentially leaving those who are at risk or even already infected with the virus sitting in the waiting room infecting others. This allows doctors to better triage patients and provide care to those who truly need it most.
+
+**Who does the app add value for?**
+
+- Doctors: for all the reasons stated above. They are better able to triage patients, provide better care, and not become bogged down by entirely healthy-but-rightfully-paranoid individuals
+- Patients: by keeing a log of your health, this allows the patient to either keep their mind at ease that they're still okay, _or_ unfortunately alert them that they are in need of medical attention.
 
 ## Idea
 The idea **for our IPR** is to help doctors monitor large numbers of patients' symptoms over time (daily or less). Doctors can text the patients if the patients are still ok, or call the patient if they start to get worse. Or, as time goes on, the doctor can refer them to telemedicine service like Jamaica Hospital or other. This will ultimately manifest itself as, mainly, a dashboard and a survey that people update daily with information.
@@ -38,7 +84,7 @@ After that, we hope to add additional features, such as a Waze-like crowdsourced
 In a few words or less, this will **_"alleviate stressors caused by COVID-19 and reduce doctor overhead."_**
 
 ## Stack
-**Frontend:** React
+**Frontend:** React, React Bootstrap
 
 **"Backend"/DB:** Blockstack Platform (Radiks, Gaia)
 
