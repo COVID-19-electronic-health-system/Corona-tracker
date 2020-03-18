@@ -12,11 +12,6 @@ const userSession = new UserSession({
   appConfig: appConfig
 })
 
-configure({
-  apiServer: 'http://localhost:1260', // TODO this will change to wherever our MongoDB cluster will be hosted in prod
-  userSession
-})
-
 export default class App extends Component {
 
   constructor(props) {
@@ -24,9 +19,9 @@ export default class App extends Component {
     this.userSession = new UserSession({ appConfig })
   }
 
-  componentDidMount = async() => {
+  async componentDidMount() {
     configure({
-      apiServer: 'http://localhost:1260',
+      apiServer: 'http://localhost:1260', // TODO this will change to wherever our radiks server will be hosted in prod
       userSession: this.userSession,
     });
     const { userSession } = getConfig();
@@ -37,7 +32,7 @@ export default class App extends Component {
     }
   }
 
-  handleSignIn = async(e) => {
+  async handleSignIn(e) {
     const { userSession } = getConfig()
     e.preventDefault()
     if (userSession.isSignInPending()) {
@@ -48,7 +43,7 @@ export default class App extends Component {
     userSession.redirectToSignIn()
   }
 
-  handleSignOut = (e) => {
+  handleSignOut(e) {
     const { userSession } = getConfig();
     e.preventDefault();
     userSession.signUserOut(window.location.origin);
@@ -64,7 +59,7 @@ export default class App extends Component {
             <NavBar />
             <Button onClick={this.handleSignOut}>Sign Out</Button>
             <div>
-              <p>Welcome, { userSession.loadUserData().profile.name}</p>
+              <p>Welcome, {userSession.loadUserData().profile.name}</p>
             </div>
           </div>
         }
