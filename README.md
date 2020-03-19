@@ -13,6 +13,8 @@ And EHR is too ambitious in scope. However [@BrianHHough took down some great no
 
 ## Install, Build and Run Locally (For OSX, Windows Documentation Coming Soon)
 
+### Run Locally
+
 ### Prerequisites
 To run locally, you'll need to have MongoDB installed locally. Follow [this](https://docs.mongodb.com/manual/tutorial/install-mongodb-on-os-x/) guide if you don't have it already
 - Once you have MongoDB installed, start MongoDB, create a new database and create a user with admin privileges:
@@ -33,6 +35,17 @@ You'll also need `radiks-server`, which you can install simply with `npm install
 4. Ensure MongoDB is running (see Prerequisites)
 5. `radiks-server` - start the local radiks server
 6. `npm run start` - run the application locally
+
+### Run in (UNSTABLE) QA Environment
+
+### Installation and run steps
+1. Clone this repo `git clone https://github.com/COVID-19-electronic-health-system/Corona-tracker`
+2. `cd Corona-tracker/client`
+3. `npm i`
+5. Create a new file, `.env`
+6. Message @somemoosery for access to the URL to hit QA endpoint
+6. In `.env`, write and save `REACT_APP_QA_URL: <THE-URL-@SOMEMOOSERY-SENDS-YOU>`
+7. `npm run start` - run the application locally
 
 ## TL;DR FAQ
 A high level basic case for the project. 
