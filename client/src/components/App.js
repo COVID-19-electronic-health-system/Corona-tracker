@@ -22,6 +22,9 @@ export default class App extends Component {
 
   async componentDidMount() {
     if (!process.env.REACT_APP_QA_URL) {
+      alert(
+        "Developer Error: Please provide a url for radis as REACT_APP_QA_URL"
+      );
       return;
     }
     configure({
