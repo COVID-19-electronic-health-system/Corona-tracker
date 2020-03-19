@@ -1,14 +1,13 @@
-import React, { Component } from "react";
-import NavBar from "./NavBar";
-import Temperature from "./Temperature";
-import Login from "./Login";
-import "bootstrap/dist/css/bootstrap.min.css";
-import "../css/App.css";
-import { appConfig } from "../utils/constants";
-import { UserSession } from "blockstack";
-import Button from "react-bootstrap/Button";
-import { configure, User, getConfig } from "radiks";
-import Patient from "../models/patient";
+import React, { Component } from 'react';
+import Login from './Login';
+import 'bootstrap/dist/css/bootstrap.min.css';
+import '../css/App.css';
+import { appConfig } from '../utils/constants'
+import { UserSession } from 'blockstack';
+
+import { configure, User, getConfig } from 'radiks';
+import Patient from '../models/patient'
+import DiagnosticContainer from './DiagnosticContainer';
 
 const userSession = new UserSession({
   appConfig: appConfig
@@ -81,17 +80,11 @@ export default class App extends Component {
   render() {
     return (
       <div className="App">
-        {!userSession.isUserSignedIn() ? (
-          <Login handleSignIn={this.handleSignIn} />
-        ) : (
-          <div>
-            <NavBar />
-            <Button onClick={this.handleSignOut}>Sign Out</Button>
-            <div>
-              <p>Welcome, {userSession.loadUserData().profile.name}</p>
-            </div>
-          </div>
-        )}
+        {!userSession.isUserSignedIn() ?
+          <div><Login handleSignIn={this.handleSignIn} /></div>
+          :
+          <div><DiagnosticContainer userSession={userSession} handleSignOut={this.handleSignOut} /></div>
+        }
       </div>
     );
   }

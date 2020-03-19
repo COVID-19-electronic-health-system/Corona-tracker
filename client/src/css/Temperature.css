@@ -4,6 +4,7 @@
   font-size: 1em;
   border: none !important;
   border-radius: 0 !important;
+  background-color: transparent;
 }
 
 .card-body {
