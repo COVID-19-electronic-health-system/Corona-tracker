@@ -2,6 +2,7 @@
   "name": "corona-tracker",
   "version": "0.1.0",
   "private": true,
+  "prettier": "@blockstack/prettier-config",
   "dependencies": {
     "@fortawesome/free-brands-svg-icons": "^5.12.1",
     "@testing-library/jest-dom": "^5.1.1",
@@ -23,6 +24,9 @@
     "redux": "^4.0.5",
     "redux-thunk": "^2.3.0",
     "chart.js": "^2.9.3"
+  },
+  "devDependencies": {
+    "@blockstack/prettier-config": "0.0.5"
   },
   "scripts": {
     "start": "react-app-rewired start",
