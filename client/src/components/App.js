@@ -57,7 +57,6 @@ export default class App extends Component {
           <Login handleSignIn={this.handleSignIn} />
           :
           <div>
-            <Temperature />
             <NavBar />
             <Button onClick={this.handleSignOut}>Sign Out</Button>
             <div>
