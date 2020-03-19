@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import NavBar from './NavBar';
+import Temperature from './Temperature'
 import Login from './Login';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import '../css/App.css';

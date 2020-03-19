@@ -3,7 +3,7 @@
 ## CORONATRACKER UI - #1.png
 **CoronaTracker SaaS (Sintomi come Servizio) monitor, tracker di salute mobile e mappa della risorsa**
 
-## CORONATRACKER UI - Health Log - My Log.png 
+## CORONATRACKER UI - Health Log - My Log.png
 ### Note: most Eurocentric calendars begin the week on Monday
 
 Buongiorno, **Jonathan!**
@@ -51,3 +51,15 @@ Martedì
 # Russian
 
 # Hindi
+
+# German
+## CORONATRACKER UI - Health Log - My Log.png
+<!-- Tag: Day // Morgen: Morning // Abend: Evening  -->
+Guten Tag/Morgen/Abend [Name].
+Heute ist Dienstag, der 14. April 2020.
+
+
+# Serbo-Croatian
+<!-- Dan: Day // Jutro: Morning // Veče: Evening -->
+Dobro Dan/Jutro/Veče [Name].
+Danas je utorak, 14. Aprila 2020.
