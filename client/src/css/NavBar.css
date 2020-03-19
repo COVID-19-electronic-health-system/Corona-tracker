@@ -1,4 +1,4 @@
-.nav {
+.nav-bar {
   width: 100vw;
   height: 16vh;
   min-height: 90px;
@@ -54,7 +54,7 @@
 /* Media Queries */
 /* Mobile M */
 @media only screen and (max-width: 375px) {
-  .nav {
+  .nav-bar {
     height: 13vh;
     justify-content: space-around;
     padding: .5rem 0;

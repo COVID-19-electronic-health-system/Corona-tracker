@@ -7,6 +7,8 @@ import { appConfig } from '../utils/constants'
 import { UserSession } from 'blockstack';
 import Button from 'react-bootstrap/Button';
 import { configure, User, getConfig } from 'radiks';
+import LogTable from './Table'
+
 
 const userSession = new UserSession({
   appConfig: appConfig
@@ -52,17 +54,20 @@ export default class App extends Component {
   render() {
     return (
       <div className="App">
-        {!userSession.isUserSignedIn() ?
+        {!userSession.isUserSignedIn() ? (
           <Login handleSignIn={this.handleSignIn} />
-          :
+        ) : (
           <div>
-            <NavBar />
             <Button onClick={this.handleSignOut}>Sign Out</Button>
             <div>
               <p>Welcome, {userSession.loadUserData().profile.name}</p>
             </div>
           </div>
-        }
+        )}
+        <div>
+          <LogTable />
+        </div>
+        <NavBar />
       </div>
     );
   }

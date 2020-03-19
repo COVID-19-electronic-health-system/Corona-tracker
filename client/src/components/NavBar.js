@@ -6,7 +6,7 @@ import "../css/NavBar.css";
 class NavBar extends Component {
   render() {
     return (
-      <Nav className="theme-Palette-red-bg">
+      <Nav className="theme-Palette-red-bg nav-bar">
         <Nav.Item className="NavBar-item">
           <Nav.Link>
             <div className="NavBar-icon" id="NavBar-log-icon"></div>
