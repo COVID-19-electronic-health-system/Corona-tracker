@@ -6,46 +6,14 @@ A tool to both help doctors track triage an exponentially-growing number of pati
 ## Join our Discord Server
 https://discord.gg/pPERUuv
 
+## VIEW [CONTRIBUTING](./CONTRIBUTING.MD) TO ONBOARD, RUN APPLICATION LOCALLY OR IN QA
+
 ## Abstract
 After chatting with the ER doctor and Systems Architect on March 13th 2020, we scoped down some issues of critical importance to this. There are several key facets of concern, namely <b>medical concerns</b> (i.e. people aren't realizing the severety of this; it's getting real very fast; and doctors/medical professionals are ill-equipped to test for this), as well as <b>global concerns</b> (i.e. the economy is sinking; resources are needed like isolation rooms and gear; there is a need for more ventilators and need more space; schools are closing; etc.). After hearing all of this, we learned that there's a limited amount of time to act and we need to take decisive action to do our part and help the health professionals on the ground working on a solution and/or keeping people as healthy as possible.
 
 And EHR is too ambitious in scope. However [@BrianHHough took down some great notes](https://docs.google.com/document/d/15DekMbBnLjWSk_hAQclLzTFBCYygyeMGkGknJrBHnnM/edit?usp=sharing) that @SomeMoosery and @tesla809 will add to.
 
 ## Install, Build and Run Locally (For OSX, Windows Documentation Coming Soon)
-
-### Run Locally
-
-### Prerequisites
-To run locally, you'll need to have MongoDB installed locally. Follow [this](https://docs.mongodb.com/manual/tutorial/install-mongodb-on-os-x/) guide if you don't have it already
-- Once you have MongoDB installed, start MongoDB, create a new database and create a user with admin privileges:
-    - `brew services start mongodb` - start MongoDB
-    - `ps aux | grep -v grep | grep mongod` - ensure MongoDB is running
-    - `mongo` - open up MongoDB console
-    - `use coronatracker` - switch to a new local database, coronatracker
-    - `db.createUser({user: "admin", pwd:"foobar1",roles: ["readWrite","dbAdmin"]});` - create a new admin user for this database
-
-You'll also need `radiks-server`, which you can install simply with `npm install -g radiks-server`
-- Create a `MONGODB_URI` environment variable on the same machine you're running `radiks-server`
-    - `export MONGODB_URI="mongodb://admin:foobar1@localhost:27017/test1"` - `admin`, `foobar1`, `test1` are the username/pass/db from the admin user you created when setting up MongoDB
-
-### Installation and run steps
-1. Clone this repo `git clone https://github.com/COVID-19-electronic-health-system/Corona-tracker`
-2. `cd Corona-tracker/client`
-3. `npm i`
-4. Ensure MongoDB is running (see Prerequisites)
-5. `radiks-server` - start the local radiks server
-6. `npm run start` - run the application locally
-
-### Run in (UNSTABLE) QA Environment
-
-### Installation and run steps
-1. Clone this repo `git clone https://github.com/COVID-19-electronic-health-system/Corona-tracker`
-2. `cd Corona-tracker/client`
-3. `npm i`
-5. Create a new file, `.env`
-6. Message @somemoosery for access to the URL to hit QA endpoint
-6. In `.env`, write and save `REACT_APP_QA_URL: <THE-URL-@SOMEMOOSERY-SENDS-YOU>`
-7. `npm run start` - run the application locally
 
 ## TL;DR FAQ
 A high level basic case for the project. 
@@ -105,7 +73,7 @@ In a few words or less, this will **_"alleviate stressors caused by COVID-19 and
 **Reach-out:**  
 **@SomeMoosery** is implementing backend with blockstack, front end, systems architecture.    
 See [/design/backend](https://github.com/COVID-19-electronic-health-system/Corona-tracker/tree/master/design), [/design/models](https://github.com/COVID-19-electronic-health-system/Corona-tracker/tree/master/design/database_models), and  [/client](https://github.com/COVID-19-electronic-health-system/Corona-tracker/tree/master/client)  
-(@Carter on discord)
+(@Carter Klein on discord)
 
 **@Brian H. Hough** is implementing design, social media marketing, front end code.      
 See [/design](https://github.com/COVID-19-electronic-health-system/Corona-tracker/tree/master/design) and [/design](https://github.com/COVID-19-electronic-health-system/Corona-tracker/tree/master/design/wireframes)
