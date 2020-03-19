@@ -4,6 +4,7 @@
   "private": true,
   "prettier": "@blockstack/prettier-config",
   "dependencies": {
+    "@blockstack/connect": "^2.3.1",
     "@fortawesome/free-brands-svg-icons": "^5.12.1",
     "@material-ui/core": "^4.9.7",
     "@testing-library/jest-dom": "^5.1.1",
