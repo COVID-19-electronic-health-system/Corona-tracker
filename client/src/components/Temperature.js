@@ -4,7 +4,10 @@ import '../css/themePalette.css';
 import '../css/Temperature.css';
 
 export default ({ allRecords }) => {
-  const averageTemperature = allRecords.reduce((record, sum) => record.temperature + sum, 0) / allRecords.length;
+  const averageTemperature =
+    allRecords.reduce((sum, record) => {
+      return record.temperature + sum;
+    }, 0) / allRecords.length;
 
   return (
     <Card>
