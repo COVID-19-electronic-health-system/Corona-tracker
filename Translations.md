@@ -111,7 +111,34 @@ By pressing the button below, I am confirming that my answers above are an accur
 
 [button] SAVE MY RESPONSES
 
+Health Log|News|Talk to a Doc|Map|Settings
+
 ## CORONATRACKER UI-List_Doctor-InfoCard.png
+
+**This doctor is available to help!**
+
+### Dr. Jessica Gosz-Kaplan - Available
+
+NYC | Clinical + Pediatrics
+
+Currently seeing 200+ patients
+
+### ADDRESS
+
+35 Main St., New York, NY 10003
+
+### NOTES
+
+_3/15/20 - Burning up with a fever and a bad cough_
+_3/16/20 - Burning up with a fever and a bad cough_
+_3/17/20 - Burning up with a fever and a bad cough_
+_3/18/20 - Burning up with a fever and a bad cough_
+
+### CONTACT
+
+Email | Message | Phone
+
+Health Log|News|Talk to a Doc|Map|Settings
 
 ______________________________________
 
@@ -195,6 +222,10 @@ ______________________________________
 ______________________________________
 
 # Dutch
+
+______________________________________
+
+# German
 
 ______________________________________
 
