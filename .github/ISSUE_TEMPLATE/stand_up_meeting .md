@@ -1,5 +1,5 @@
 ---
-name: stand_up_meeting
+name: stand up meeting
 about: Stand up meeting topics
 
 ---
