@@ -1,3 +1,5 @@
+# English
+
 # Italian
 
 ## CORONATRACKER UI - #1.png
@@ -38,7 +40,7 @@ Martedì
 
 # Spanish
 
-# Chinese
+# Chinese Mandarin
 
 # Farsi (Persian)
 
