@@ -7,7 +7,6 @@ import { appConfig } from '../utils/constants'
 import { UserSession } from 'blockstack';
 import Button from 'react-bootstrap/Button';
 import { configure, User, getConfig } from 'radiks';
-import LogTable from './Table'
 
 
 const userSession = new UserSession({
@@ -67,7 +66,6 @@ export default class App extends Component {
           )}
 
         <div>
-          <LogTable/>
         </div>
       </div>
     );
