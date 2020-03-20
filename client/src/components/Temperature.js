@@ -3,8 +3,8 @@ import { Card } from 'react-bootstrap';
 import '../css/themePalette.css';
 import '../css/Temperature.css';
 
-export default Temperature = ({ allRecords }) => {
-  const averageTemperature = allRecords.reduce(record => record.temperature + sum, 0) / allRecords.length;
+export default ({ allRecords }) => {
+  const averageTemperature = allRecords.reduce((record, sum) => record.temperature + sum, 0) / allRecords.length;
 
   return (
     <Card>
@@ -15,5 +15,3 @@ export default Temperature = ({ allRecords }) => {
     </Card>
   );
 };
-
-export default Temperature;
