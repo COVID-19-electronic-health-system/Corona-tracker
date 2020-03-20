@@ -1,23 +1,17 @@
-import React, { Component } from 'react';
-import { Card }  from 'react-bootstrap';
-import "../css/themePalette.css";
-import "../css/Temperature.css";
+import React from 'react';
+import { Card } from 'react-bootstrap';
+import '../css/themePalette.css';
+import '../css/Temperature.css';
 
-class Temperature extends Component {
-  render () {
-    return (
-      <Card>
-        <Card.Body>
-            <Card.Title id="Temperature-temp">
-              98.8F
-            </Card.Title>
-            <Card.Subtitle id="Temperature-avgTempText">
-              Average Temp
-            </Card.Subtitle>
-        </Card.Body>
-      </Card>
-    )
-  }
-}
+export default ({ allRecords }) => {
+  const averageTemperature = allRecords.reduce((record, sum) => record.temperature + sum, 0) / allRecords.length;
 
-export default Temperature;
+  return (
+    <Card>
+      <Card.Body>
+        <Card.Title id="Temperature-temp">{averageTemperature}F</Card.Title>
+        <Card.Subtitle id="Temperature-avgTempText">Average Temp</Card.Subtitle>
+      </Card.Body>
+    </Card>
+  );
+};
