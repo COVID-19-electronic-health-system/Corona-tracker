@@ -1,39 +1,75 @@
-.table{
-    display: flex;
-    flex-direction: column;
-    align-items: center;
+
+.table-logo {
+  width: 100px;
+  height: 100px;
+}
+.table-text-logo {
+  width: 350px;
+  height: 10vh;
+}
+.hr{width: 100px;
+    border: 1px black solid;
 
 }
-.table-logo{
-    width: 75px;
-    height: 100px;
-    
+@media only screen and (max-width: 414px){
+    .hr{
+        width: 70px;
+    }
 }
-.table-text{
-    width: 300px;
-    height: 50px;
+.tabs {
+  width: 347px;
+  height: 35px;
+  margin-left: 38%;
+  border: 0px !important;
+  background-color: #f64141;
+  border: 1px red solid !important;
+  border-radius: 5px;
 }
-.table-thead{
-    color: #f64141;
-    width: 100vw;
+@media only screen and (max-width: 414px){
+    .tabs{
+        margin-left: 20px !important;
+    }
+}
+@media only screen and (max-width: 786px){
+    .tabs{
+        margin-left:28%;
+    }
 }
 
-.tabs{
-
-    border: 1px solid #f64141;
-    border-radius: 5px;
-    margin: 2px;
-}
 /* Inactive tab */
-.tabs  a {
-    background-color: #f64141;
-    color: white;
+.tabs a {
+  width: 172px;
+  height: 32px;
+  color: #ebebeb;
+  padding-top: 5px;
+  background-color: #f64141;
+  border: 0px !important;
 }
-.tabs  a:hover {
-    background-color: pink;
+
+/* Active tab  */
+.tabs a.active {
+  margin-bottom: 1px !important;
+  background-color: #cedbfa !important;
+  color: #f64141 !important;
 }
-/* Active tab */
- .tabs a.active {
-     background-color: #CEDBFA !important;
-    color: #f64141 !important;
+/* hover tab */
+.tabs a:hover {
+  color: #f64141 !important;
+  background-color: pink !important;
+}
+.table {
+  width: 90vw;
+  margin-left: 5vw;
+}
+.table-head th {
+  border-bottom: 3px solid #b8b8b8 !important;
+  border-top: 0px;
+  color: #f64141;
+}
+/* over ride the border styling of bootstrap */
+.table-body {
+  border: 0px !important;
+}
+.table-body td {
+  border: 0px !important;
 }

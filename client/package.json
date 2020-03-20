@@ -10,6 +10,7 @@
     "axios": "^0.19.2",
     "blockstack": "^19.3.0",
     "bootstrap": "^4.4.1",
+    "chart.js": "^2.9.3",
     "radiks": "^0.2.2-beta.1",
     "react": "^16.13.0",
     "react-app-rewired": "^2.1.5",
@@ -21,13 +22,12 @@
     "react-router-dom": "^5.1.2",
     "react-scripts": "3.4.0",
     "redux": "^4.0.5",
-    "redux-thunk": "^2.3.0",
-    "chart.js": "^2.9.3"
+    "redux-thunk": "^2.3.0"
   },
   "scripts": {
     "start": "react-app-rewired start",
     "build": "react-app-rewired build",
-    "test": "react-app-rewired test --env=jsdom",
+    "test1": "react-app-rewired test --env=jsdom",
     "eject": "react-app-rewired eject"
   },
   "eslintConfig": {

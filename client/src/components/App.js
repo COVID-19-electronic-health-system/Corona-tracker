@@ -54,20 +54,21 @@ export default class App extends Component {
   render() {
     return (
       <div className="App">
-        {!userSession.isUserSignedIn() ? (
-          <Login handleSignIn={this.handleSignIn} />
+      {!userSession.isUserSignedIn() ? (
+        <Login handleSignIn={this.handleSignIn} />
         ) : (
           <div>
-            <Button onClick={this.handleSignOut}>Sign Out</Button>
-            <div>
-              <p>Welcome, {userSession.loadUserData().profile.name}</p>
-            </div>
+          <Button onClick={this.handleSignOut}>Sign Out</Button>
+          <div>
+          <p>Welcome, {userSession.loadUserData().profile.name}</p>
           </div>
-        )}
+          <NavBar />  
+          </div>
+          )}
+
         <div>
-          <LogTable />
+          <LogTable/>
         </div>
-        <NavBar />
       </div>
     );
   }
