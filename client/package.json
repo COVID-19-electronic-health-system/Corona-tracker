@@ -23,7 +23,8 @@
     "react-router-dom": "^5.1.2",
     "react-scripts": "3.4.0",
     "redux": "^4.0.5",
-    "redux-thunk": "^2.3.0"
+    "redux-thunk": "^2.3.0",
+    "chart.js": "^2.9.3"
   },
   "devDependencies": {
     "@blockstack/prettier-config": "0.0.5"
