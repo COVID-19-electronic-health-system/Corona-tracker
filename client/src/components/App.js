@@ -9,7 +9,7 @@ import Patient from '../models/patient';
 import { Connect } from '@blockstack/connect';
 import DiagnosticContainer from './DiagnosticContainer';
 
-const RADIKS_URL = process.env.REACT_APP_QA_URL || 'http://127.0.0.1:5000'; // TODO this will change to wherever our radiks server will be hosted in prod
+const RADIKS_URL = process.env.REACT_APP_QA_URL || 'http://127.0.0.1:1260'; // TODO this will change to wherever our radiks server will be hosted in prod
 
 const makeUserSession = () => {
   return new UserSession({ appConfig });
