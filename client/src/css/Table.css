@@ -1,0 +1,75 @@
+
+.table-logo {
+  width: 100px;
+  height: 100px;
+}
+.table-text-logo {
+  width: 350px;
+  height: 10vh;
+}
+.hr{width: 100px;
+    border: 1px black solid;
+
+}
+@media only screen and (max-width: 414px){
+    .hr{
+        width: 70px;
+    }
+}
+.tabs {
+  width: 347px;
+  height: 35px;
+  margin-left: 38%;
+  border: 0px !important;
+  background-color: #f64141;
+  border: 1px red solid !important;
+  border-radius: 5px;
+}
+@media only screen and (max-width: 414px){
+    .tabs{
+        margin-left: 20px !important;
+    }
+}
+@media only screen and (max-width: 786px){
+    .tabs{
+        margin-left:28%;
+    }
+}
+
+/* Inactive tab */
+.tabs a {
+  width: 172px;
+  height: 32px;
+  color: #ebebeb;
+  padding-top: 5px;
+  background-color: #f64141;
+  border: 0px !important;
+}
+
+/* Active tab  */
+.tabs a.active {
+  margin-bottom: 1px !important;
+  background-color: #cedbfa !important;
+  color: #f64141 !important;
+}
+/* hover tab */
+.tabs a:hover {
+  color: #f64141 !important;
+  background-color: pink !important;
+}
+.table {
+  width: 90vw;
+  margin-left: 5vw;
+}
+.table-head th {
+  border-bottom: 3px solid #b8b8b8 !important;
+  border-top: 0px;
+  color: #f64141;
+}
+/* over ride the border styling of bootstrap */
+.table-body {
+  border: 0px !important;
+}
+.table-body td {
+  border: 0px !important;
+}
