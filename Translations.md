@@ -79,7 +79,7 @@ Health Log|News|Talk to a Doc|Map|Settings
 
 **Let's answer a few questions!**
 
-Be sure to answer truthfully and hoestly so that your health record will be accurate and helpful for you & medical professionals.
+Be sure to answer truthfully and honestly so that your health record will be accurate and helpful for you & medical professionals.
 
 **Q1: How do you feel today?**
 
@@ -92,10 +92,10 @@ If you felt "good" yesterday and feel "good" today, choose "The Same."
 **Q3: Which symptoms are you feeling or experiencing?**
 
 Shortness of Breath – Minimial | Moderate | Severe
-Fever – Enter your temperature here: 0.0ºF
+Fever – Enter your temperature here: _0.0ºF_
 Cough – Minimial | Moderate | Severe
 Dizziness – Minimial | Moderate | Severe
-Headache – How long has it lasted for?: Mins, Hrs
+Headache – How long has it lasted for?: _Mins, Hrs_
 Sore Throat – Minimial | Moderate | Severe
 Congestion – Minimial | Moderate | Severe
 
@@ -110,33 +110,6 @@ _Start typing here to add any notes or clarifications..._
 By pressing the button below, I am confirming that my answers above are an accurate portrayal of my symptoms and overall health to the best of my ability.
 
 [button] SAVE MY RESPONSES
-
-Health Log|News|Talk to a Doc|Map|Settings
-
-## CORONATRACKER UI-List_Doctor-InfoCard.png
-
-**This doctor is available to help!**
-
-### Dr. Jessica Gosz-Kaplan - Available
-
-NYC | Clinical + Pediatrics
-
-Currently seeing 200+ patients
-
-### ADDRESS
-
-35 Main St., New York, NY 10003
-
-### NOTES
-
-_3/15/20 - Burning up with a fever and a bad cough_
-_3/16/20 - Burning up with a fever and a bad cough_
-_3/17/20 - Burning up with a fever and a bad cough_
-_3/18/20 - Burning up with a fever and a bad cough_
-
-### CONTACT
-
-Email | Message | Phone
 
 Health Log|News|Talk to a Doc|Map|Settings
 
@@ -175,7 +148,7 @@ Temperatura media: 37.1 ºC
 
 Temperatura|Sintomi
 
-Registro di salute|Notizie|Parlare a Medico|Mappa|Impostazioni
+Registro|Notizie|Medico|Mappa|Impostazioni
 
 ## CORONATRACKER UI - Health Log - Show Me More.png
 
@@ -202,9 +175,58 @@ ACCEDI
 
 Aggiornato: 14 aprile 2020, 02:20:18
 
-Registro di salute|Notizie|Parlare a Medico|Mappa|Impostazioni
+Registro|Notizie|Medico|Mappa|Impostazioni
 
+## CORONATRACKER UI - News.png
 
+Ecco! Le notizie!
+**Martedì 14 aprile 2020**
+
+**The Center for Disease Control**
+@CDC
+
+**The World Health Organization**
+@WHO
+
+Registro|Notizie|Medico|Mappa|Impostazioni
+
+## CORONATRACKER UI - Symptom Screen.png
+
+**Rispondiamo a alcune domande!**
+
+Rispondi con onestà cosicché il tuo registro di salute serà accurato e potrebbe utile per te e i professionisti del settore medico.
+
+**D1: Come ti senti oggi?**
+
+Pensi alla tua salute mentale in scala 1:10, in cui 1 è la peggiore e 10 è la migliore.
+
+**D2: Come ti senti, rispetto a ieri?**
+
+Si hai dettto "bene" ieri e ti senti "bene" oggi, seleziona "Lo stesso."
+
+**D3: Which symptoms are you feeling or experiencing?**
+
+Respiro corto – Lieve | Moderato | Grave
+Febbre – Scrivi la tua temperatura: _0.0ºC_
+Tosse – Lieve | Moderato | Grave
+Capogiro – Lieve | Moderato | Grave
+Mal di testa – Per quanto tempo dura?: _Min, Ore_
+Mal di gola – Lieve | Moderato | Grave
+Congestione– Lieve | Moderato | Grave
+
+**D4: Come sono i tuoi sintomi?**
+
+Pensi ai tuoi sintomi in scala 1:10, in cui 1 è la peggiore e 10 è la migliore.
+
+**D5: Vuoi dire qualcos'altro?**
+
+_Scrivi qui per aggiungere alcune note o per chiarire qualcosa..._
+
+Premendo il tasto di seguito, confermo che tutte le mie risposte sopra rappresentano i miei sintomi e la mia salute generale in maniera fidele.
+
+[button] SALVA LE RISPOSTE
+
+Registro|Notizie|Medico|Mappa|Impostazioni
 
 ______________________________________
 
