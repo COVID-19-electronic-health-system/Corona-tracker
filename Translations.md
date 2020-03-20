@@ -54,6 +54,8 @@ Martedì
 
 # Hindi
 
+# Urdu
+
 # German
 ## CORONATRACKER UI - Health Log - My Log.png
 <!-- Tag: Day // Morgen: Morning // Abend: Evening  -->
