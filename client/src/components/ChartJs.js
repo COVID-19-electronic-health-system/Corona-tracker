@@ -61,12 +61,12 @@ const chartConfig = {
   }, [chartContainer]);
     
   return (
-    <div style={{
+    <div className="chart-container" style={{
             width: '600px',
             height: '300px'
         }}>
     
-      <canvas ref={chartContainer} />
+      <canvas id='chart' ref={chartContainer} />
     </div>
   );
 };
