@@ -65,9 +65,16 @@ After that, we hope to add additional features, such as a Waze-like crowdsourced
 In a few words or less, this will **_"alleviate stressors caused by COVID-19 and reduce doctor overhead."_**
 
 ## Stack
-**Frontend:** React, React-Bootstrap
+**Frontend:**   
+React  
+Material-UI- for all new components  
+React-Bootstrap - deprecated, used in old components which need to be converted to Material-UI.  
 
-**"Backend"/DB:** Blockstack Platform (Radiks, Gaia)
+**"Backend"/DB:**  
+Blockstack Platform (Radiks, Gaia)
+
+**Testing:**  
+Jest 
 
 ## Questions Related to Stack?
 **Reach-out:**  
@@ -122,7 +129,7 @@ Style guide for CSS files:
 
 **Naming convention:**
 Component -> Sample.js  
-CSS file -> Sample.css  
+CSS file -> Sample.css 
 Reducer -> sampleReducer.js  
 
 To avoid naming collisions:
