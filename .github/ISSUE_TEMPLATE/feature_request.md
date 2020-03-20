@@ -6,7 +6,7 @@ about: Suggest an idea for this project
 
 <!--
 
-Have you read CoronaTracker's Code of Conduct? By filing an Issue, you are expected to comply with it, including treating everyone with respect
+Have you read CoronaTracker's Code of Conduct? By filing an Issue, you are expected to comply with it, including treating everyone with respect -->
 
 ## Summary
 
