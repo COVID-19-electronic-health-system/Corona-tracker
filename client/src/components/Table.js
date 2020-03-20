@@ -8,7 +8,6 @@ import { ReactComponent as Logo } from "../img/Logo_CORONATRACKER_Logo.svg";
 import { ReactComponent as TextLogo } from "../img/Logo_CORONATRACKER_Text_Logo.svg";
 
 
-
 // The Table
 class LogTable extends React.Component {
   constructor() {
