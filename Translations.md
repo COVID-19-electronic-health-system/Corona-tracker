@@ -202,7 +202,7 @@ Pensi alla tua salute mentale in scala 1:10, in cui 1 è la peggiore e 10 è la 
 
 **D2: Come ti senti, rispetto a ieri?**
 
-Si hai dettto "bene" ieri e ti senti "bene" oggi, seleziona "Lo stesso."
+Si hai detto "bene" ieri e ti senti "bene" oggi, seleziona "Lo stesso."
 
 **D3: Which symptoms are you feeling or experiencing?**
 
