@@ -72,7 +72,7 @@ In a few words or less, this will **_"alleviate stressors caused by COVID-19 and
 ## Questions Related to Stack?
 **Reach-out:**  
 **@SomeMoosery** is implementing backend with blockstack, front end, systems architecture.    
-See [/design/backend](https://github.com/COVID-19-electronic-health-system/Corona-tracker/tree/master/design), [/design/models](https://github.com/COVID-19-electronic-health-system/Corona-tracker/tree/master/design/database_models), and  [/client](https://github.com/COVID-19-electronic-health-system/Corona-tracker/tree/master/client)  
+See [/design/backend](https://github.com/COVID-19-electronic-health-system/Corona-tracker/tree/master/design/backend) for database and architecture, and [/client](https://github.com/COVID-19-electronic-health-system/Corona-tracker/tree/master/client) for frontend  
 (@Carter Klein on discord)
 
 **@Brian H. Hough** is implementing design, social media marketing, front end code.      
