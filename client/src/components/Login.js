@@ -27,7 +27,7 @@ function Login() {
                 `}
       </style>
       <Button variant="login" onClick={doOpenAuth}>
-        Sign in with Blockstack
+        Get started
       </Button>
     </div>
   );
