@@ -6,7 +6,7 @@ import { Provider, useSelector } from 'react-redux'
 import configureMockStore from 'redux-mock-store'
 import thunk from 'redux-thunk';
 
-import ChartJs from '../components/ChartJs';
+import Chart from '../components/Chart';
 
 const mockStore = configureMockStore([thunk]);
 
@@ -21,7 +21,7 @@ describe('ChartJs', () => {
     window.HTMLCanvasElement.prototype.getContext = () => {}
     const wrapper = mount(
       <Provider store={store}>
-        <ChartJs />
+        <Chart />
       </Provider>
     )
     expect(wrapper.find('Chart')).toMatchSnapshot()

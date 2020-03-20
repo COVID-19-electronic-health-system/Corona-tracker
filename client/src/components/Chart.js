@@ -1,9 +1,9 @@
 import React, { useEffect, useRef } from 'react';
-import { useSelector } from 'react-redux'
-import Chart from 'chart.js';
+import { useSelector } from 'react-redux';
+import * as chartJs from 'chart.js';
 
-const ChartJs = () => {
 
+const Chart = () => {
 // Extratring dummy data from the store 
 const dataSample = useSelector(state => state.dataSample);
 
@@ -57,7 +57,7 @@ const chartConfig = {
 // <canvas /> element where chart will be attached.
 // With second argument we pass chartConfig object which contain all paramets of the chart
   useEffect(() => {
-    new Chart(chartContainer.current, chartConfig);
+    new chartJs.Chart(chartContainer.current, chartConfig);
   }, [chartContainer]);
     
   return (
@@ -71,4 +71,4 @@ const chartConfig = {
   );
 };
 
-export default ChartJs;
+export default Chart;
