@@ -5,7 +5,6 @@ import '../css/App.css';
 import { appConfig } from '../utils/constants';
 import { UserSession } from 'blockstack';
 import { configure, User, getConfig } from 'radiks';
-import Patient from '../models/patient';
 import { Connect } from '@blockstack/connect';
 import DiagnosticContainer from './DiagnosticContainer';
 
@@ -53,26 +52,6 @@ class App extends Component {
         await User.createWithCurrentUser();
 
         this.setState({ url: window.location.origin });
-
-        // Creates a new Patient model associated with the user
-        const patient = new Patient({
-          doctor: 'Test Doctor',
-          location: ['123', '456'],
-        });
-
-        // Saves that patient in the user's associated Gaia storage, encrypted, and replicated in MongoDB
-        await patient.save();
-
-        // Radiks queries the encrypted MongoDB entry, decrypts the data
-        const allPatients = await Patient.fetchOwnList();
-
-        // Print the resulting
-        console.log('ALL PATIENTS:', allPatients);
-        // Delete the entry, to keep things clean for the purpose of example
-        var p;
-        for (p of allPatients) {
-          p.destroy();
-        }
       },
       appDetails: {
         name: 'Corona Tracker',
