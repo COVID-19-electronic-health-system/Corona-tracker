@@ -17,10 +17,29 @@ To run locally, you'll need to have MongoDB installed locally. Follow [this](htt
     - `mongo` - open up MongoDB console
     - `use coronatracker` - switch to a new local database, coronatracker
     - `db.createUser({user: "admin", pwd:"foobar1",roles: ["readWrite","dbAdmin"]});` - create a new admin user for this database
-
 You'll also need `radiks-server`, which you can install simply with `npm install -g radiks-server`
 - Create a `MONGODB_URI` environment variable on the same machine you're running `radiks-server`
     - `export MONGODB_URI="mongodb://admin:foobar1@localhost:27017/test1"` - `admin`, `foobar1`, `test1` are the username/pass/db from the admin user you created when setting up MongoDB
+
+__For Windows:__
+
+__Setup:__
+
+You can set the `mongo` and `mongod` commands with `alias` in __Git Bash__:
+```
+alias mongod="/c/Program\ files/MongoDB/Server/4.2/bin/mongod.exe"
+alias mongo="/c/Program\ Files/MongoDB/Server/4.2/bin/mongo.exe"
+```
+You can also just run:
+
+`C:\Program Files\MongoDB\Server\4.2\bin\mongod.exe` for `mongod` and `C:\Program Files\MongoDB\Server\4.2\bin\mongo.exe` for `mongo`
+
+The paths may change based on what MongoDB version you have and where you save your MongoDB installation, but just make sure you run the `.exe` files for the commands.
+
+__Then:__
+1. Run `mongod` to start the server (you may need to run `Git Bash` as administrator).
+2. Open up a separate terminal and `mongo` to start up the Mongo console (it will be open you see `MongoDB server version: ...`).
+From here, you can just follow the same instructions for Linux, and `exit` out of MongoDB console for the normal installation instructions.
 
 #### Installation and run steps
 1. Clone this repo `git clone https://github.com/COVID-19-electronic-health-system/Corona-tracker`
