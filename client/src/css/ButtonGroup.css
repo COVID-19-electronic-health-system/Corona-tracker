@@ -1,0 +1,39 @@
+.btn-group {
+    border: 1px #ebebeb;
+    padding: 10px 24px; 
+    height: 60px;
+}
+
+.minimal-button {
+    background-color: #f64141;
+    color:#ffffff;
+    width: 120px;
+    border-top-left-radius: 5px;
+    border-bottom-left-radius: 5px;
+}
+
+.minimal-button:hover {
+    background-color: #aaaaaa;
+}
+
+.severe-button {
+    background-color: #f64141;
+    color:#ffffff;
+    width: 120px;
+    border-top-right-radius: 5px;
+    border-bottom-right-radius: 5px;
+}
+
+.severe-button:hover {
+    background-color: #aaaaaa;
+} 
+
+.moderate-button {
+    background-color: #ffffff;
+    color: #f64141;
+    width: 120px;
+}
+
+.moderate-button:hover {
+    background-color: #aaaaaa;
+}

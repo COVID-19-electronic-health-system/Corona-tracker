@@ -9,6 +9,8 @@ import { configure, User, getConfig } from 'radiks';
 import Patient from '../models/patient'
 import DiagnosticContainer from './DiagnosticContainer';
 
+
+
 const userSession = new UserSession({
   appConfig: appConfig
 });

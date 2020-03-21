@@ -7,7 +7,8 @@ import { ReactComponent as TextLogo } from '../img/Logo_CORONATRACKER_Text_Logo.
 import NavBar from './NavBar';
 import Button from 'react-bootstrap/Button';
 import { Container, Row, Col } from 'react-bootstrap';
-import Temperature from './Temperature';
+// import Temperature from './Temperature';
+import ButtonGroup from './ButtonGroup'
 
 const dateOptions = {
     weekday: 'short',
@@ -47,8 +48,9 @@ function DiagnosticContainer(props) {
                     </Col>
                 </Row>
             </Container>
-            <Temperature />
+            {/* <Temperature /> */}
             <Button onClick={handleSignOut}>Sign Out</Button>
+            <ButtonGroup />
         </div>
     );
 }

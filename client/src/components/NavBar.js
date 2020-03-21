@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Nav }  from 'react-bootstrap';
+import { Nav } from 'react-bootstrap';
 import "../css/themePalette.css";
 import "../css/NavBar.css";
 
