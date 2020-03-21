@@ -23,9 +23,11 @@ function DiagnosticContainer(props) {
   return (
     <div className="DiagnosticContainer">
       <NavBar />
-      
       <Container className='temp-singout'>
       <Temperature allRecords={[{ temperature: 100.4 }, { temperature: 98 }]} />
+      <Button onClick={handleSignOut} style={{width: '100px'}}>Sign Out</Button>
+      </Container>
+      
       <Container>
       <Logo className="DiagnosticLogo" />
       <TextLogo className="DiagnosticTextLogo" />
@@ -36,8 +38,6 @@ function DiagnosticContainer(props) {
       Today is <b>{today.toLocaleDateString(undefined, dateOptions)}</b>{" "}
       </h5>
       <hr className="hr" />
-      </Container>
-      <Button onClick={handleSignOut} style={{width: '100px'}}>Sign Out</Button>
       </Container>
       <LogTable/>
     </div>

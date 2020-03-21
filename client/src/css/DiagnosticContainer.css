@@ -29,7 +29,6 @@
         text-align: center;
         height: 100vh;
     }
-    
 
     .LogoRow {
         width: 80vw;
@@ -67,7 +66,5 @@
 }
 .temp-singout{
     display: flex;
-align-items: center;
-align-content: stretch;
-
+justify-content: space-between;
 }
