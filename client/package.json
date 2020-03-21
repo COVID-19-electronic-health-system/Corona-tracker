@@ -41,7 +41,7 @@
     "enzyme-adapter-react-16": "1.14.0",
 
     "@blockstack/prettier-config": "0.0.5"
-  }
+  },
   "scripts": {
     "start": "react-app-rewired start",
     "build": "react-app-rewired build",
@@ -62,5 +62,5 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
-  },
+  }
 }
