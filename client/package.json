@@ -33,6 +33,15 @@
     "redux-thunk": "^2.3.0",
     "chart.js": "^2.9.3"
   },
+  "devDependencies": {
+    "@babel/core": "^7.8.7",
+    "babel-jest": "^24.9.0",
+    "canvas": "^2.6.1",
+    "enzyme": "3.10.0",
+    "enzyme-adapter-react-16": "1.14.0",
+
+    "@blockstack/prettier-config": "0.0.5"
+  }
   "scripts": {
     "start": "react-app-rewired start",
     "build": "react-app-rewired build",
@@ -54,13 +63,4 @@
       "last 1 safari version"
     ]
   },
-  "devDependencies": {
-    "@babel/core": "^7.8.7",
-    "babel-jest": "^24.9.0",
-    "canvas": "^2.6.1",
-    "enzyme": "3.10.0",
-    "enzyme-adapter-react-16": "1.14.0",
-
-    "@blockstack/prettier-config": "0.0.5"
-  }
 }
