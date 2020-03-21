@@ -1,11 +1,8 @@
 import React from "react";
 import "../css/Table.css";
 import "../css/themePalette.css";
-import { Table, Tabs, Tab } from "react-bootstrap";
+import { Table } from "react-bootstrap";
 
-
-import { ReactComponent as Logo } from "../img/Logo_CORONATRACKER_Logo.svg";
-import { ReactComponent as TextLogo } from "../img/Logo_CORONATRACKER_Text_Logo.svg";
 
 
 // The Table
