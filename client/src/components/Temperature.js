@@ -11,8 +11,8 @@ export default ({ allRecords }) => {
 
   return (
     <Card>
-      <Card.Body>
-        <Card.Title id="Temperature-temp">{averageTemperature}F</Card.Title>
+      <Card.Body style={{width: '130px'}}>
+        <Card.Title id="Temperature-temp">{averageTemperature}&#8457;</Card.Title>
         <Card.Subtitle id="Temperature-avgTempText">Average Temp</Card.Subtitle>
       </Card.Body>
     </Card>

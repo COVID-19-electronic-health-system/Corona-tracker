@@ -7,15 +7,7 @@ import { Table, Tabs, Tab } from "react-bootstrap";
 import { ReactComponent as Logo } from "../img/Logo_CORONATRACKER_Logo.svg";
 import { ReactComponent as TextLogo } from "../img/Logo_CORONATRACKER_Text_Logo.svg";
 
-// Show the current date, this might should be put in App.js or as a permint layout
-const options = {
-  weekday: "long",
-  year: "numeric",
-  month: "long",
-  day: "numeric"
-};
-const today = new Date(),
-  date = today.toLocaleDateString(undefined, options);
+
 
 // The Table
 class LogTable extends React.Component {
@@ -79,21 +71,8 @@ class LogTable extends React.Component {
   render() {
       return (
         <div>
-          {/* this is added to make it like the wirefram pic, could be added to periment layout*/}
-          <Logo className="table-logo" />
-          <TextLogo className="table-text-logo" />
-          <h4>
-            Hello, <b>Anthony!</b>
-          </h4>
-          <h5>
-            Today is <b>{date}</b>{" "}
-          </h5>
-          <hr className="hr" />
-
           {/* the start of the table */}
           <div className="">
-            <Tabs className="tabs">
-              <Tab title="My Health Log" eventKey="My Health Log" className="">
                 <Table responsive className="table">
                   <thead className="table-head">
                   <tr>
@@ -124,9 +103,6 @@ class LogTable extends React.Component {
                     )
                   )}
                 </Table>
-              </Tab>
-              <Tab title="Show Me More" eventKey="Show Me More"></Tab>
-            </Tabs>
           </div>
         </div>
       );

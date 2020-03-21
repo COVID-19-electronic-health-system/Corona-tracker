@@ -8,9 +8,10 @@ import NavBar from './NavBar';
 import Button from 'react-bootstrap/Button';
 import { Container, Row, Col } from 'react-bootstrap';
 import Temperature from './Temperature';
+import LogTable from './Table'
 
 const dateOptions = {
-  weekday: 'short',
+  weekday: 'long',
   year: 'numeric',
   month: 'long',
   day: 'numeric',
@@ -22,35 +23,23 @@ function DiagnosticContainer(props) {
   return (
     <div className="DiagnosticContainer">
       <NavBar />
-      <Container>
-        <Row className="LogoRow">
-          <Col xs={2} md={2} lg={2} xl={2}>
-            <Logo className="DiagnosticLogo" />
-          </Col>
-          <Col xs={10} md={2} lg={2} xl={2}>
-            <TextLogo className="DiagnosticTextLogo" />
-          </Col>
-        </Row>
-        <Row>
-          <Col>
-            <p className="DiagnosticText">
-              Welcome, <b>{userSession.loadUserData().profile.name}</b>!
-            </p>
-          </Col>
-        </Row>
-        <Row>
-          <Col>
-            <p className="DiagnosticSubText">Today's date is {today.toLocaleDateString('en-US', dateOptions)}</p>
-          </Col>
-        </Row>
-        <Row>
-          <Col>
-            <hr style={{ borderBottom: 'solid 0.5vh black', width: '20vw' }} />
-          </Col>
-        </Row>
-      </Container>
+      
+      <Container className='temp-singout'>
       <Temperature allRecords={[{ temperature: 100.4 }, { temperature: 98 }]} />
-      <Button onClick={handleSignOut}>Sign Out</Button>
+      <Container>
+      <Logo className="DiagnosticLogo" />
+      <TextLogo className="DiagnosticTextLogo" />
+      <h4>
+      Welcome!, <b>{userSession.loadUserData().profile.name}</b>
+      </h4>
+      <h5>
+      Today is <b>{today.toLocaleDateString(undefined, dateOptions)}</b>{" "}
+      </h5>
+      <hr className="hr" />
+      </Container>
+      <Button onClick={handleSignOut} style={{width: '100px'}}>Sign Out</Button>
+      </Container>
+      <LogTable/>
     </div>
   );
 }
