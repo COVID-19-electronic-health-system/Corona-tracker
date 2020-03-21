@@ -39,7 +39,6 @@ function DiagnosticContainer(props) {
       </h5>
       <hr className="hr" />
       </Container>
-      <LogTable/>
     </div>
   );
 }
