@@ -9,15 +9,6 @@
         height: 15vh;
     }
     
-    .DiagnosticLogo {
-        width: 20vw;
-        height: 20vh;
-    }
-    
-    .DiagnosticTextLogo {
-        width:75vw;
-        height:20vh;
-    }
     
     .DiagnosticText {
         margin: auto;
@@ -44,16 +35,6 @@
         height: 20vh;
     }
     
-    .DiagnosticLogo {
-        width: 12vw;
-        height: 20vh;
-    }
-    
-    .DiagnosticTextLogo {
-        width:70vw;
-        height:20vh;
-    }
-    
     .DiagnosticText {
         margin: auto;
         width:80vw;
@@ -66,4 +47,24 @@
         width: 80vw;
         font-size: 2.5vh;
     }
+}
+
+
+    .DiagnosticLogo {
+  width: 100px;
+  height: 100px;
+    }
+    
+    .DiagnosticTextLogo {
+  width: 350px;
+  height: 10vh;
+    }
+
+.hr{width: 100px;
+    border: 1px black solid;
+
+}
+.temp-singout{
+    display: flex;
+justify-content: space-between;
 }
