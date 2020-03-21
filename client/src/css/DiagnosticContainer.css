@@ -1,0 +1,69 @@
+@media (max-width:680px) {
+    .DiagnosticContainer {
+        padding-top: 3vh;
+        text-align: center;
+        height: 100vh;
+    }
+
+    .LogoRow {
+        height: 15vh;
+    }
+    
+    .DiagnosticLogo {
+        width: 20vw;
+        height: 20vh;
+    }
+    
+    .DiagnosticTextLogo {
+        width:75vw;
+        height:20vh;
+    }
+    
+    .DiagnosticText {
+        margin: auto;
+        width:80vw;
+        margin-bottom: 1vh;
+        font-size: 3vh;
+    }
+
+    .DiagnosticSubText {
+        margin: auto;
+        width: 90vw;
+        font-size: 2.5vh;
+    }
+}
+
+@media (min-width: 680px) {
+    .DiagnosticContainer {
+        text-align: center;
+        height: 100vh;
+    }
+
+    .LogoRow {
+        width: 80vw;
+        height: 20vh;
+    }
+    
+    .DiagnosticLogo {
+        width: 12vw;
+        height: 20vh;
+    }
+    
+    .DiagnosticTextLogo {
+        width:70vw;
+        height:20vh;
+    }
+    
+    .DiagnosticText {
+        margin: auto;
+        width:80vw;
+        margin-bottom: 2vh;
+        font-size: 3vh;
+    }
+
+    .DiagnosticSubText {
+        margin: auto;
+        width: 80vw;
+        font-size: 2.5vh;
+    }
+}

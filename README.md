@@ -6,10 +6,14 @@ A tool to both help doctors track triage an exponentially-growing number of pati
 ## Join our Discord Server
 https://discord.gg/pPERUuv
 
+## VIEW [CONTRIBUTING](./CONTRIBUTING.MD) TO ONBOARD, RUN APPLICATION LOCALLY OR IN QA
+
 ## Abstract
 After chatting with the ER doctor and Systems Architect on March 13th 2020, we scoped down some issues of critical importance to this. There are several key facets of concern, namely <b>medical concerns</b> (i.e. people aren't realizing the severety of this; it's getting real very fast; and doctors/medical professionals are ill-equipped to test for this), as well as <b>global concerns</b> (i.e. the economy is sinking; resources are needed like isolation rooms and gear; there is a need for more ventilators and need more space; schools are closing; etc.). After hearing all of this, we learned that there's a limited amount of time to act and we need to take decisive action to do our part and help the health professionals on the ground working on a solution and/or keeping people as healthy as possible.
 
 And EHR is too ambitious in scope. However [@BrianHHough took down some great notes](https://docs.google.com/document/d/15DekMbBnLjWSk_hAQclLzTFBCYygyeMGkGknJrBHnnM/edit?usp=sharing) that @SomeMoosery and @tesla809 will add to.
+
+## Install, Build and Run Locally (For OSX, Windows Documentation Coming Soon)
 
 ## TL;DR FAQ
 A high level basic case for the project. 
@@ -61,9 +65,55 @@ After that, we hope to add additional features, such as a Waze-like crowdsourced
 In a few words or less, this will **_"alleviate stressors caused by COVID-19 and reduce doctor overhead."_**
 
 ## Stack
-**Frontend:** React, React Bootstrap
+**Frontend:**   
+React  
+Material-UI- for all new components  
+React-Bootstrap - deprecated, used in old components which need to be converted to Material-UI.  
 
-**"Backend"/DB:** Blockstack Platform (Radiks, Gaia)
+**"Backend"/DB:**  
+Blockstack Platform (Radiks, Gaia)
+
+**Testing:**  
+Jest 
+
+## Questions Related to Stack?
+**Reach-out:**  
+**@SomeMoosery** is implementing backend with blockstack, front end, systems architecture.    
+See [/design/backend](https://github.com/COVID-19-electronic-health-system/Corona-tracker/tree/master/design), [/design/models](https://github.com/COVID-19-electronic-health-system/Corona-tracker/tree/master/design/database_models), and  [/client](https://github.com/COVID-19-electronic-health-system/Corona-tracker/tree/master/client)  
+(@Carter Klein on discord)
+
+**@Brian H. Hough** is implementing design, social media marketing, front end code.      
+See [/design](https://github.com/COVID-19-electronic-health-system/Corona-tracker/tree/master/design) and [/design](https://github.com/COVID-19-electronic-health-system/Corona-tracker/tree/master/design/wireframes)
+(@intersteller on discord)
+
+**@tesla809** is implementing front end code, documentation and  booking meetings with experts.    
+Open to peer program any issue or bugs!  
+See [/client](https://github.com/COVID-19-electronic-health-system/Corona-tracker/tree/master/client)  
+(@Anthony A. on discord)
+
+**@akilhylton** is implementing front end code, documentation, has machine learning experience.  
+Open to peer program any issue or bugs!  
+See [/client](https://github.com/COVID-19-electronic-health-system/Corona-tracker/tree/master/client)  
+(@Anthony A. on discord)
+
+**@ngiangre** is advising on analytics, data science  
+See [analytics thread](https://github.com/COVID-19-electronic-health-system/Corona-tracker/issues/51)  
+(@NickG on discord)
+
+**@salvolpe** is helping with translations, analytics  
+(@laseplov on discord)  
+See [translations.md](translations.md)
+
+**@lukelin1991** Managing discord, discord roles, front-end, translations.
+(@kirbypooh on discord)
+
+And YOU!  
+How would you like to help?  
+see [CONTRIBUTING.md](./CONTRIBUTING.md) PENDING
+
+## Questions?
+Submit an [issue](https://github.com/COVID-19-electronic-health-system/Corona-tracker/issues). Issues are welcomed! We are new developer friendly and happy to help in anyway! 
+Message @Anthony A. on the [discord](https://discord.gg/pPERUuv) if you have any questions!
 
 ### Design considerations
 **CSS Design considerations**
@@ -71,25 +121,26 @@ We have decided to use regular CSS files to keep things simple for now. This all
 
 Once MVP is done the team can discuss if we want to transition it to styled-components or something like CSS modules.
 
-Folder paths
-CSS is located in /client/src/css
-Components are located in /client/src/components
+Folder paths  
+CSS is located in /client/src/css  
+Components are located in /client/src/components  
 
 Style guide for CSS files:
 
 **Naming convention:**
-Component -> Sample.js
-CSS file -> Sample.css
-Reducer -> sampleReducer.js
+Component -> Sample.js  
+CSS file -> Sample.css 
+Reducer -> sampleReducer.js  
 
 To avoid naming collisions:
-prefix class names with the name of component and link with kebab case.
+prefix class names with the name of component and link with kebab case.  
 Class name -> .Sample-header { ... }
 
 **How to handle state:**
-Let's use Redux.
-Create action and reducer with an appropriate name.
-Add them to the /actions and /reducers folder.
+Let's use Redux.  
+Create action and reducer with an appropriate name.  
+Add them to the /actions and /reducers folder.  
+**We need help to implement this.**
 
 **Testing**
 No need to worry about testing for now.

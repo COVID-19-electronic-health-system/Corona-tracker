@@ -1,46 +1,100 @@
 import React, { Component } from 'react';
-import NavBar from './NavBar';
 import Login from './Login';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import '../css/App.css';
-import { appConfig } from '../utils/constants'
+import { appConfig } from '../utils/constants';
 import { UserSession } from 'blockstack';
-import Button from 'react-bootstrap/Button';
+import { configure, User, getConfig } from 'radiks';
+import Patient from '../models/patient';
+import { Connect } from '@blockstack/connect';
+import DiagnosticContainer from './DiagnosticContainer';
 
-const userSession = new UserSession({ appConfig: appConfig })
+const RADIKS_URL = process.env.REACT_APP_QA_URL || 'http://127.0.0.1:1260'; // TODO this will change to wherever our radiks server will be hosted in prod
 
-export default class App extends Component {
+const makeUserSession = () => {
+  return new UserSession({ appConfig });
+};
 
-  componentDidMount() {
-    if (userSession.isSignInPending()) {
-      userSession.handlePendingSignIn().then((userData) => {
-        window.history.replaceState({}, document.title, "/")
-        this.setState({ userData: userData })
-      });
-    }
+class App extends Component {
+  constructor(props) {
+    super(props);
+    this.userSession = new UserSession({ appConfig });
   }
 
-  handleSignIn(e) {
-    e.preventDefault()
-    userSession.redirectToSignIn()
+  state = { url: '', userSession: undefined };
+
+  async componentDidMount() {
+    const userSession = makeUserSession();
+    configure({
+      apiServer: RADIKS_URL,
+      userSession,
+    });
+
+    this.setState({ url: window.location.origin, userSession });
   }
 
   handleSignOut(e) {
+    const { userSession } = getConfig();
     e.preventDefault();
     userSession.signUserOut(window.location.origin);
   }
 
   render() {
-    return (
-      <div className="App">
-        {!userSession.isUserSignedIn() ?
-          <Login handleSignIn={this.handleSignIn} />
-          : <div>
-            <Button onClick={this.handleSignOut}>Sign Out</Button>
-            <NavBar />
-          </div>
+    const { userSession } = getConfig();
+
+    const { url } = this.state;
+    const authOptions = {
+      redirectTo: '/',
+      finished: async ({ userSession }) => {
+        configure({
+          apiServer: RADIKS_URL,
+          userSession,
+        });
+        await User.createWithCurrentUser();
+
+        this.setState({ url: window.location.origin });
+
+        // Creates a new Patient model associated with the user
+        const patient = new Patient({
+          doctor: 'Test Doctor',
+          location: ['123', '456'],
+        });
+
+        // Saves that patient in the user's associated Gaia storage, encrypted, and replicated in MongoDB
+        await patient.save();
+
+        // Radiks queries the encrypted MongoDB entry, decrypts the data
+        const allPatients = await Patient.fetchOwnList();
+
+        // Print the resulting
+        console.log('ALL PATIENTS:', allPatients);
+        // Delete the entry, to keep things clean for the purpose of example
+        var p;
+        for (p of allPatients) {
+          p.destroy();
         }
-      </div>
+      },
+      appDetails: {
+        name: 'Corona Tracker',
+        icon: `${url}/icon.png`,
+      },
+      userSession,
+    };
+
+    return (
+      <Connect authOptions={authOptions}>
+        <div className="App">
+          {!userSession || !userSession.isUserSignedIn() ? (
+            <Login />
+          ) : (
+            <div>
+              <DiagnosticContainer userSession={userSession} handleSignOut={this.handleSignOut} />
+            </div>
+          )}
+        </div>
+      </Connect>
     );
   }
 }
+
+export default App;
