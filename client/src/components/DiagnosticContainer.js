@@ -8,7 +8,7 @@ import NavBar from './NavBar';
 import Button from 'react-bootstrap/Button';
 import { Container, Row, Col } from 'react-bootstrap';
 // import Temperature from './Temperature';
-import ButtonGroup from './ButtonGroup'
+
 
 const dateOptions = {
     weekday: 'short',
@@ -50,7 +50,6 @@ function DiagnosticContainer(props) {
             </Container>
             {/* <Temperature /> */}
             <Button onClick={handleSignOut}>Sign Out</Button>
-            <ButtonGroup />
         </div>
     );
 }
