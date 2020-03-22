@@ -85,7 +85,7 @@ Jest
 ## Questions Related to Stack?
 
 **Reach-out:**  
-**@Carter Klein** is implementing backend with blockstack, front end, systems architecture.  
+**@SomeMoosery** is implementing backend with blockstack, front end, systems architecture.  
 See [/design/backend](https://github.com/COVID-19-electronic-health-system/Corona-tracker/tree/master/design), [/design/models](https://github.com/COVID-19-electronic-health-system/Corona-tracker/tree/master/design/database_models), and [/client](https://github.com/COVID-19-electronic-health-system/Corona-tracker/tree/master/client)  
 (@Carter Klein on discord)
 
