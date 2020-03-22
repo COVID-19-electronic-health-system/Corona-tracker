@@ -8,6 +8,8 @@ import NavBar from './NavBar';
 import Button from 'react-bootstrap/Button';
 import { Container } from 'react-bootstrap';
 import Temperature from './Temperature';
+import { loadObservations } from '../redux/actions/observations';
+import { useDispatch } from 'react-redux';
 
 const dateOptions = {
   weekday: 'long',
@@ -19,6 +21,8 @@ const dateOptions = {
 function DiagnosticContainer(props) {
   const { handleSignOut, userSession } = props;
   var today = new Date();
+  const dispatch = useDispatch();
+  dispatch(loadObservations());
   return (
     <div className="DiagnosticContainer">
       <NavBar />

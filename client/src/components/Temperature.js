@@ -6,7 +6,6 @@ import { useSelector } from 'react-redux';
 
 export default () => {
   const dataSample = useSelector(state => state.dataSample);
-
   const averageTemperature =
     dataSample.reduce((sum, record) => {
       return record.attrs.physical.temperature + sum;

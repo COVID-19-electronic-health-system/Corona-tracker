@@ -1,4 +1,4 @@
-import { CHECKUPS_LOADED } from '../actions/actions';
+import { OBSERVATIONS_LOADED } from '../actions/actions';
 import Observation from '../../models/observation';
 
 // initial state of the Redux store
@@ -17,13 +17,10 @@ const initialState = {
 // Updating store based on type of the action
 const rootReducer = (oldState = initialState, action) => {
   switch (action.type) {
-    case CHECKUPS_LOADED:
+    case OBSERVATIONS_LOADED:
       return {
         ...oldState,
-        dataSample: {
-          labels: action.checkups.map(checkup => checkup.attrs.date.toLocaleDateString('en-US')),
-          values: action.checkups.map(checkup => checkup.attrs.temperature),
-        },
+        dataSample: action.observations,
       };
     default:
       return oldState;
