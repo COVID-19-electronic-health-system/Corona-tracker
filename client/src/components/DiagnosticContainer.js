@@ -10,11 +10,13 @@ import { makeStyles } from "@material-ui/core/styles";
 import { Container } from "@material-ui/core";
 
 
-const useStyles = makeStyles(theme =>({
+const useStyles = makeStyles(theme => ({
+  //the styles goes here as an object
     logo: {
         width: '100px',
         
-        height: '100px',
+    height: '100px',
+        //this is for small devices, theme media query there are (sm, md and lg)
         [theme.breakpoints.down("xs")]: {
             width: '80px'
         }
@@ -27,7 +29,7 @@ const useStyles = makeStyles(theme =>({
     }
     }
 }))
-
+//the date
 const dateOptions = {
   weekday: 'long',
   year: 'numeric',
@@ -36,7 +38,6 @@ const dateOptions = {
 };
 
 function DiagnosticContainer(props) {
-
     const classes = useStyles();
   const { handleSignOut, userSession } = props;
   const today = new Date();
