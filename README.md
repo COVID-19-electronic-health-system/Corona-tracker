@@ -18,54 +18,50 @@ After discussions with doctors, start ups, technologists, an academic researcher
 
 (The initial plan was developing a EHR, but this is too ambitious in scope and unecessary. However [@BrianHHough took down some great notes](https://docs.google.com/document/d/15DekMbBnLjWSk_hAQclLzTFBCYygyeMGkGknJrBHnnM/edit?usp=sharing) that @SomeMoosery and @tesla809 will add to.)
 
-## Install, Build and Run Locally (For OSX, Windows Documentation Coming Soon)
+## COMING SOON Install, Build and Run Locally (For OSX, Windows)
 
-### TL;DR FAQ
+## TL;DR FAQ
 
-A high level basic case for the project.
-
-**Who is the app for?**
+### Who is the app for?
 
 This app is for the global population going through this crisis: those who are feeling generally well, but are concerned they may be carrying COVID-19 or are showing early symptoms.
 
-**What will it do?**
+### How is this app different from the others?
 
-This app aims to educate on the virus and COVID-19 and allow users to track their well being and health.
+The differentiating characteristics of our web application include: 1) integrating education, measurement of education with key performance indicators, and insights via data analytics, 2) decentralization and privatization which allows for data ownership by users, 3) data interoperability which allows for modular and extensible features and a B2C approach to medical care, and 4) support of multiple languages to target developing regions with high levels of urbanization, poor medical infrastructure, yet high mobile phone connectivity.
 
-**Who are the stake holders?**
+### What insights have ben considered?
+
+Over the past week, the team has been in consultation with individuals and stakeholders in the academic, medical, business, and technology sectors. The provided insights into our application development include: 1) understanding viral infection, disease pathogenesis, and public health guidelines followed by medical staff at a top tier NYC hospital, 2) providing education to the general public and patients is crucial to avoid unnecessary ER visits and engage patients in their health, 3) properly scoping our product to be an enterprise ready application by including key features based on expert feedback, 4) developing useful survey content for users and stakeholders that can address public health and clinical research needs, and 5) building a decentralized platform to increase data ownership and privacy.
+
+### Who are the stake holders?
 
 - All individuals. This affects all society
 - Public health authorities. They need to inform, educate, and support citizens.
 - Researchers. There are enormous implications for an individual's wellbeing and health. Understanding how 1) individuals are self-caring on a day-by-day basis and 2) if education is postively impacting metrics in user's health/wellbeing chart.
 
-**What are the actionable items that can be done by the app for users?**
+## What is the benefit?
 
-- Education on the virus and the disease.
-- Information regarding population characteristics of users and relative measures to understand others are experiencing the same.
-- Health chart for providiing a sort of diary for logging their journey.
+This application will address a global public health need by promoting accurate information to the general population and thereby help healthcare workers on the front lines to provide the necessary care to those in need.
 
-**What is the benefit to the user?**
+## Technology Stack
 
-- Understanding the crisis and hopefully reducing uneeded anxiety
-- Awareness that others are in the same boat.
-
-## Stack
-
-**Frontend:**  
+**Frontend**:  
 React
 Redux
 Material-UI- for all new components
 
-**"Backend"/DB:**  
+
+**"Backend"/DB**:
 Blockstack Platform (Radiks, Gaia)
 
-**Testing:**  
+**Testing**:
 Jest
 
 **Deprecated Technologies**
 React-Bootstrap (used in old components which need to be converted to Material-UI.)
 
-## Questions Related to Stack?
+## Questions Related to Application development?
 
 **Reach-out:**  
 **@SomeMoosery** is implementing backend with blockstack, front end, systems architecture.  
@@ -86,7 +82,7 @@ Open to peer program any issue or bugs!
 See [/client](https://github.com/COVID-19-electronic-health-system/Corona-tracker/tree/master/client)  
 (@Akil Hylton on discord)
 
-**@ngiangre** is advising on data model, analytics, data science  
+**@ngiangre** is advising on the data model, analytics, data science  
 See [analytics thread](https://github.com/COVID-19-electronic-health-system/Corona-tracker/issues/51)  
 (@NickG on discord)
 
