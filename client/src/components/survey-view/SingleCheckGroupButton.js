@@ -29,6 +29,7 @@ function TemperatureAutocomplete(props) {
 }
 
 function MinutesAutocomplete(props) {
+  // slicing minutes part of time and setting to empty string if value is null
   const value = props.minutesValue ? props.minutesValue.match(/:.*/)[0].replace(/:/, '') : '';
   return (
     <Autocomplete
@@ -47,6 +48,7 @@ function MinutesAutocomplete(props) {
   )
 }
 function HoursAutocomplete(props) {
+  // slicing hours part of time and setting to empty string if value is null
   const value = props.hoursValue ? props.hoursValue.match(/\d*(?=:)/)[0] : '';
   return (<Autocomplete
     size='small'

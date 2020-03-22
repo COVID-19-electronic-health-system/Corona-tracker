@@ -8,7 +8,8 @@ import NavBar from './NavBar';
 import Button from 'react-bootstrap/Button';
 import { Container } from 'react-bootstrap';
 import Temperature from './Temperature';
-import AppCheckGroupedButtons from './survey-view/CheckGroupedButtons'
+import { loadObservations } from '../redux/actions/observations';
+import { useDispatch } from 'react-redux';
 
 const dateOptions = {
   weekday: 'long',
@@ -20,12 +21,16 @@ const dateOptions = {
 function DiagnosticContainer(props) {
   const { handleSignOut, userSession } = props;
   var today = new Date();
+  const dispatch = useDispatch();
+  dispatch(loadObservations());
   return (
     <div className="DiagnosticContainer">
       <NavBar />
-      <Container className='temp-singout'>
-        <Temperature allRecords={[{ temperature: 100.4 }, { temperature: 98 }]} />
-        <Button onClick={handleSignOut} style={{ width: '100px' }}>Sign Out</Button>
+      <Container className="temp-singout">
+        <Temperature />
+        <Button onClick={handleSignOut} style={{ width: '100px' }}>
+          Sign Out
+        </Button>
       </Container>
 
       <Container>
@@ -35,11 +40,10 @@ function DiagnosticContainer(props) {
           Welcome!, <b>{userSession.loadUserData().profile.name}</b>
         </h4>
         <h5>
-          Today is <b>{today.toLocaleDateString(undefined, dateOptions)}</b>{" "}
+          Today is <b>{today.toLocaleDateString(undefined, dateOptions)}</b>{' '}
         </h5>
         <hr className="hr" />
       </Container>
-      <AppCheckGroupedButtons />
     </div>
   );
 }
