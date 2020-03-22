@@ -55,7 +55,8 @@ Unsure of how to stay updated? Paste this in your terminal:
 
 And now when you `git remote -v`, you should see this if everything set correctly.
 
-```> origin https://github.com/YOUR_USERNAME/YOUR_FORK.git (fetch)
+```
+> origin https://github.com/YOUR_USERNAME/YOUR_FORK.git (fetch)
 > origin https://github.com/YOUR_USERNAME/YOUR_FORK.git (push)
 > upstream https://github.com/ORIGINAL_OWNER/ORIGINAL_REPOSITORY.git (fetch)
 > upstream https://github.com/ORIGINAL_OWNER/ORIGINAL_REPOSITORY.git (push)
