@@ -27,7 +27,7 @@ You'll also need `radiks-server`, which you can install simply with `npm install
 
 #### Installation and run steps
 
-1. Clone this repo `git clone https://github.com/COVID-19-electronic-health-system/Corona-tracker`
+1. Fork this repo `https://github.com/COVID-19-electronic-health-system/Corona-tracker`
 2. `cd Corona-tracker/client`
 3. `npm i`
 4. Ensure MongoDB is running (see Prerequisites)
@@ -38,13 +38,32 @@ You'll also need `radiks-server`, which you can install simply with `npm install
 
 #### Installation and run steps
 
-1. Clone this repo `git clone https://github.com/COVID-19-electronic-health-system/Corona-tracker`
+1. Fork this repo `https://github.com/COVID-19-electronic-health-system/Corona-tracker`
 2. `cd Corona-tracker/client`
 3. `npm i`
 4. Create a new file, `.env` within the root of the project folder
 5. On the Discord server, navigate to the #welcome channel, and click the pin icon on the top right of the window. Copy the `REACT_APP_QA_URL` code from the pinned message from our CTO Carter Klein.
 6. In `.env`, write and save `REACT_APP_QA_URL: <THE-URL-@SOMEMOOSERY-SENDS-YOU>`
 7. `npm run start` - run the application locally
+
+#### BEFORE YOU MAKE CHANGES TO YOUR FORKED CODE VIA BRANCH OR MASTER
+
+Make sure stay updated with the master branch of the main repo, as multiple people are contributing code and to avoid merge conflicts for the admins.
+Unsure of how to stay updated? Paste this in your terminal:
+
+`git remote add upstream https://github.com/COVID-19-electronic-health-system/Corona-tracker`
+
+And now when you `git remote -v`, you should see this if everything set correctly.
+
+`> origin https://github.com/YOUR_USERNAME/YOUR_FORK.git (fetch)`
+`> origin https://github.com/YOUR_USERNAME/YOUR_FORK.git (push)`
+`> upstream https://github.com/ORIGINAL_OWNER/ORIGINAL_REPOSITORY.git (fetch)`
+`> upstream https://github.com/ORIGINAL_OWNER/ORIGINAL_REPOSITORY.git (push)`
+
+Anytime you want to make alterations to your forked code, now just make sure to:
+`git fetch upstream`
+`git merge upstream/master`
+And your current branch is up to date with the master branch of the main repo! Use this link from Github if you need more guidance [Setting up an upstream repo](https://help.github.com/en/github/collaborating-with-issues-and-pull-requests/configuring-a-remote-for-a-fork)
 
 ## Pull request process
 

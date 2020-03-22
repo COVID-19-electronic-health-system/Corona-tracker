@@ -2,7 +2,7 @@
 
 [![Build Status](https://travis-ci.org/COVID-19-electronic-health-system/Corona-tracker.svg?branch=master)](https://travis-ci.org/COVID-19-electronic-health-system/Corona-tracker)
 
-A tool to help doctors triage exponentially-growing numbers of ill patients in real-time, educate the public on facts vs myths, and guide individuals to locate in-demand supplies they may need.
+A progressive web application designed to help doctors triage exponentially-growing numbers of ill patients in real-time, educate the public on facts vs myths, and guide individuals to locate in-demand supplies they may need.
 
 ## Join our Discord Server
 
@@ -14,7 +14,7 @@ https://discord.gg/pPERUuv
 
 The COVID-19 outbreak is a threat to the global population with formidable challenges to the health system. Social distancing measures and telemedicine have been established to mitigate clinic burden and reduce additional spread. The behavior of the general public plays an important part in effectively fighting the outbreak and in improving the situation for persons that need medical care. There is a pressing need to provide accurate information and appropriate suggestions to the general population in order to avoid causing overburden of hospitals across the globe.
 
-After discussions with doctors, start ups, technologists, an academic researchers, we narrowed down some issues of critical importance that the application will address. There are several key facets of concern, namely <b>medical considerations</b> (i.e. people aren't realizing the severity of this; it's getting real very fast; and doctors/medical professionals are ill-equipped to test for this), as well as <b>global concerns</b> (i.e. the economy is sinking; resources are directly needed for equipment like isolation rooms and protective gear; there is a need for more ventilators and space; schools are closing; etc.). Furthermore, the effects of social distancing and isolation and the impact of lost jobs and finances is already having a negative impact on the physical, mental, emotional, and sprittual well-being of our society. After learning all of this, we realized that there's a limited amount of time to act, and decisive action must be taken in order to do our part and help our neighbors and healthcare professionals on the ground working towards a solution, keeping people as healthy as possible, and strengthening the well being of our society.
+After discussions with doctors, start ups, technologists, an academic researchers, we narrowed down some issues of critical importance that the application will address. There are several key facets of concern, namely <b>medical considerations</b> (i.e. people aren't realizing the severity of this; it's getting real very fast; and doctors/medical professionals are ill-equipped to test for this), as well as <b>global concerns</b> (i.e. the economy is sinking; resources are directly needed for equipment like isolation rooms and protective gear; there is a need for more ventilators and space; schools are closing; etc.). Furthermore, the effects of social distancing and isolation and the impact of lost jobs and finances is already having a negative impact on the physical, mental, emotional, and spiritual well-being of our society. After learning all of this, we realized that there's a limited amount of time to act, and decisive action must be taken in order to do our part and help our neighbors and healthcare professionals on the ground working towards a solution, keeping people as healthy as possible, and strengthening the well being of our society.
 
 (The initial plan was developing a EHR, but this is too ambitious in scope and unecessary. However [@BrianHHough took down some great notes](https://docs.google.com/document/d/15DekMbBnLjWSk_hAQclLzTFBCYygyeMGkGknJrBHnnM/edit?usp=sharing) that @SomeMoosery and @tesla809 will add to.)
 
@@ -26,7 +26,7 @@ A high level basic case for the project.
 
 **Who is the app for?**
 
-This app is for the global population going through this crisis: those who are feeling generally well, possibly not too well physically or mentally, and are concerned they may be carrying COVID-19 or are showing early symptoms.
+This app is for the global population going through this crisis: those who are feeling generally well, but are concerned they may be carrying COVID-19 or are showing early symptoms.
 
 **What will it do?**
 
@@ -36,31 +36,34 @@ This app aims to educate on the virus and COVID-19 and allow users to track thei
 
 - All individuals. This affects all society
 - Public health authorities. They need to inform, educate, and support citizens.
-- Researchers. There is enormous implications for individual's wellbeing and health and so we must try to understand how 1) individuals are traversing their journey and 2) if education is significantly improving characteristics in user's health/wellbeing chart.
+- Researchers. There are enormous implications for an individual's wellbeing and health. Understanding how 1) individuals are self-caring on a day-by-day basis and 2) if education is postively impacting metrics in user's health/wellbeing chart.
 
 **What are the actionable items that can be done by the app for users?**
 
-- education on the virus and the disease.
-- information of population characteristtics of users and relative measures to understtand others are going through what they aree.
-- health chart for providiing a sort of diary for logging their journey.
+- Education on the virus and the disease.
+- Information regarding population characteristics of users and relative measures to understand others are experiencing the same.
+- Health chart for providiing a sort of diary for logging their journey.
 
 **What is the benefit to the user?**
 
-- understanding this crisis and hopefully reducing uneeeded anxiety
-- awareness that others are in the same boat.
+- Understanding the crisis and hopefully reducing uneeded anxiety
+- Awareness that others are in the same boat.
 
 ## Stack
 
 **Frontend:**  
-React  
-Material-UI- for all new components  
-React-Bootstrap - deprecated, used in old components which need to be converted to Material-UI.
+React
+Redux
+Material-UI- for all new components
 
 **"Backend"/DB:**  
 Blockstack Platform (Radiks, Gaia)
 
 **Testing:**  
 Jest
+
+**Deprecated Technologies**
+React-Bootstrap (used in old components which need to be converted to Material-UI.)
 
 ## Questions Related to Stack?
 
