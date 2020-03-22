@@ -35,10 +35,7 @@
   },
 
   "devDependencies": {
-<<<<<<< HEAD
-=======
     "@blockstack/prettier-config": "0.0.5",
->>>>>>> upstream/master
     "@babel/core": "^7.8.7",
     "babel-jest": "^24.9.0",
     "canvas": "^2.6.1",
