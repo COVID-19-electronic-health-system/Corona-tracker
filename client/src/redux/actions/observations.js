@@ -1,21 +1,21 @@
-import Checkup from '../../models/checkup';
+import Observation from '../../models/observation';
 import { SAVING, IDLE, LOADING, CHECKUPS_LOADED } from './actions';
 
-export function saveCheckup(checkup) {
+export function saveObservation(observation) {
   return async dispatch => {
     dispatch({ type: SAVING });
-    await checkup.save();
+    await observation.save();
     dispatch({ type: IDLE });
   };
 }
 
-export function loadCheckups() {
+export function loadObservations() {
   return async dispatch => {
     dispatch({ type: LOADING });
-    const checkups = await Checkup.fetchOwnList();
+    const observations = await Observation.fetchOwnList();
     dispatch({
       type: CHECKUPS_LOADED,
-      checkups,
+      observations,
     });
     dispatch({ type: IDLE });
   };

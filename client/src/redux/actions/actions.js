@@ -1,12 +1,12 @@
-import { loadCheckups, saveCheckup } from './checkups';
+import { loadObservations, saveObservation } from './observations';
 export const SAVING = 'SAVING';
 export const IDLE = 'IDLE';
 export const LOADING = 'LOADING';
 export const CHECKUPS_LOADED = 'CHECKUP_LOADED';
 
 const actions = {
-  loadCheckups,
-  saveCheckup,
+  loadObservations,
+  saveObservation,
 };
 
 export default actions;
