@@ -1,4 +1,4 @@
-# Corona-Tracker
+![Corona Tracker Logo](./client/src/img/Logo_CORONATRACKER_Text_Logo.png)
 
 [![Build Status](https://travis-ci.org/COVID-19-electronic-health-system/Corona-tracker.svg?branch=master)](https://travis-ci.org/COVID-19-electronic-health-system/Corona-tracker)
 
@@ -8,7 +8,7 @@ A tool to both help doctors reducing the number of unecessary hospital visits, e
 
 https://discord.gg/pPERUuv
 
-## VIEW [CONTRIBUTING](./CONTRIBUTING.MD) TO ONBOARD, RUN APPLICATION LOCALLY OR IN QA
+## VIEW [CONTRIBUTING](./CONTRIBUTING.md) TO ONBOARD, RUN APPLICATION LOCALLY OR IN QA
 
 ## We are in crisis and we need to act
 
@@ -48,49 +48,52 @@ This application will address a global public health need by promoting accurate 
 
 ## Technology Stack
 
-### Frontend: 
+### Frontend:
+
 React  
 Material-UI- for all new components  
 React-Bootstrap - deprecated, used in old components which need to be converted to Material-UI.
 
 ### "Backend"/DB:
+
 Blockstack Platform (Radiks, Gaia)
 
 ### Testing:
+
 Jest
 
 ## Questions Related to application development?
 
-### Reach-out to: 
+### Reach-out to:
 
-#### @Carter Klein is implementing backend with blockstack, front end, systems architecture.  
+#### @Carter Klein is implementing backend with blockstack, front end, systems architecture.
 
 See [/design/backend](https://github.com/COVID-19-electronic-health-system/Corona-tracker/tree/master/design), [/design/models](https://github.com/COVID-19-electronic-health-system/Corona-tracker/tree/master/design/database_models), and [/client](https://github.com/COVID-19-electronic-health-system/Corona-tracker/tree/master/client)  
 (@Carter Klein on discord)
 
-#### @Brian H. Hough: is implementing design, social media marketing, front end code.  
+#### @Brian H. Hough: is implementing design, social media marketing, front end code.
 
 See [/design](https://github.com/COVID-19-electronic-health-system/Corona-tracker/tree/master/design) and [/design](https://github.com/COVID-19-electronic-health-system/Corona-tracker/tree/master/design/wireframes)
 (@InterstellarX on discord)
 
-#### @tesla809: is implementing front end code, documentation and booking meetings with experts.  
+#### @tesla809: is implementing front end code, documentation and booking meetings with experts.
 
 Open to peer program any issue or bugs!  
 See [/client](https://github.com/COVID-19-electronic-health-system/Corona-tracker/tree/master/client)  
 (@Anthony A. on discord)
 
-#### @akilhylton: is implementing front end code, documentation, has machine learning experience.  
+#### @akilhylton: is implementing front end code, documentation, has machine learning experience.
 
 Open to peer program any issue or bugs!  
 See [/client](https://github.com/COVID-19-electronic-health-system/Corona-tracker/tree/master/client)  
 (@Akil Hylton on discord)
 
-#### @ngiangre: is advising on the data model, analytics, data science  
+#### @ngiangre: is advising on the data model, analytics, data science
 
 See [analytics thread](https://github.com/COVID-19-electronic-health-system/Corona-tracker/issues/51)  
 (@NickG on discord)
 
-#### @salvolpe: is helping with translations, analytics  
+#### @salvolpe: is helping with translations, analytics
 
 (@laseplov on discord)  
 See [translations.md](translations.md)
@@ -147,3 +150,59 @@ If you choose to add tests, please place in client/src/tests.
 
 In these strange and often trying times, individual privacy is of utmost concern. In order to bootstrap this tool and get it off the ground and into the hands of those in need as quickly as possible, a serverless approach works great. Blockstack is decentralized - individuals still own their information. Everything is kept on the client until given permission. Therefore, we felt it best suited the overall needs.
 
+#### Research and notes from the 3/13 call:
+
+##### To decrease the peak of the curve
+
+- **Everyone** needs to stay home (kids to elderly)
+  - This is a new disease
+  - Anyone can be a carrier of this
+  - We all are at risk as a population
+  - If you leave the house, you're immediately at risk
+  - Is our community/society going to be ok? - Life is different as of today → this message not being taken seriously
+- Already 25 strains?
+  - A couple of these believed causing pneumonia, upper respiratory infection and death
+  - Other strains, less virulent
+  - But we don’t have testing for this right now. Now is too late.
+  - We don't know why the mortality rate is higher amongst older individuals
+- CDC is not doing enough -- the people who would have been in charge were let go
+- Not enough gear, ventilators, etc
+  - At this point, you won't be tested unless you're about to die (or you're famous)
+- We don’t have a treatment, we don’t have a cure, this is going to spread **exponentially**.
+- NEED the experts involved
+  - In this social media-driven time, everyone is an "expert" &#8594; we need to distinguish these "experts from real EXPERTS!
+  - People that aren't true experts are willing to help, and that's great. But, we need to channel this drive to help into more useful applications than spreading panci and false information.
+- Media outlets are going to be inherently behind the boots-on-the-ground professionals seeing COVID-19's effects and spread
+  - There will be things going on that the media will not know about, or won't report on
+  - Another reason to not trust social media "experts" with regards to this disease, but trust true professional experts
+
+##### Feature suggestions:
+
+- What we need is more information about where resources should be prioritized
+  - NY already doing this - monitoring what is being bought at drug stores (if surge, more people buying cough/cold medicine...when there’s increase in medical visits)
+  - We don’t have real information about this and don’t have infrastructure to figure it out
+  - **Could implement a Waze-type crowdsourcing model where individuals report "there's Tylenol here" or "there's soap there", allowing this information to be open, real-time, and available**
+- We need to start thinking about the future of this:
+  - Telemedicine: great access to care, f
+  - Teleschooling
+- Resources inventory (this ties into bullet point 2)
+- **Social/Medical Symptom-Rating & Doctor Triage** &#8594; **This seems to be the most prominent idea**
+  - Rate your symptoms 1-10
+  - Is this like yesterday: better, worse or the same - Are you short of breath? - Are you coughing? - Fever? - Are you dizzy? - Headache? How long has headache persisted for? (
+  - Work with medical professionals, real experts, in order to come up with a set of criteria/questions to ask
+  - Do you have food at home?
+  - Way to stay warm/cold in the winter/sumer
+  - Soap, food, water, groceries do you need help going to the bathroom (elderly people falling down)
+  - **relay this back to a physician so they can see indicators/thresholds so can see how people are doing** - People that aren’t doing well...do a telemedicine visit, call them, reach out - Allows doctors to triage who is is most in need of attention, in order to not clog up the pipeline
+
+##### What’s out there:
+
+- CDC has a coronavirus app
+- Telemedicine platforms already have these features too
+  - Only 40% of people who needed critical care for coronavirus had a fever
+
+##### Technology they’re using now:
+
+- N95 masks - being stolen
+- Telemedicine: going up 10x up
+- Must be hippa compliant
