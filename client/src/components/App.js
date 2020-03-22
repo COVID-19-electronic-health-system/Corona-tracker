@@ -89,7 +89,7 @@ class App extends Component {
           ) : (
             <div>
               <DiagnosticContainer userSession={userSession} handleSignOut={this.handleSignOut} />
-            </div>
+            </div>        
           )}
         </div>
       </Connect>

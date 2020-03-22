@@ -8,6 +8,7 @@ import NavBar from './NavBar';
 import Button from 'react-bootstrap/Button';
 import { Container } from 'react-bootstrap';
 import Temperature from './Temperature';
+import SymptomsTracker from './SymptomsTracker';
 
 const dateOptions = {
   weekday: 'long',
@@ -37,6 +38,9 @@ function DiagnosticContainer(props) {
       Today is <b>{today.toLocaleDateString(undefined, dateOptions)}</b>{" "}
       </h5>
       <hr className="hr" />
+      </Container>
+      <Container>
+        <SymptomsTracker/>
       </Container>
     </div>
   );
