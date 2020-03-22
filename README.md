@@ -1,4 +1,4 @@
-# Corona-Tracker
+![Corona Tracker Logo](./client/src/img/Logo_CORONATRACKER_Text_Logo.png)
 
 [![Build Status](https://travis-ci.org/COVID-19-electronic-health-system/Corona-tracker.svg?branch=master)](https://travis-ci.org/COVID-19-electronic-health-system/Corona-tracker)
 
@@ -8,7 +8,7 @@ A tool to both help doctors reducing the number of unecessary hospital visits, e
 
 https://discord.gg/pPERUuv
 
-## VIEW [CONTRIBUTING](./CONTRIBUTING.MD) TO ONBOARD, RUN APPLICATION LOCALLY OR IN QA
+## VIEW [CONTRIBUTING](./CONTRIBUTING.md) TO ONBOARD, RUN APPLICATION LOCALLY OR IN QA
 
 ## We are in crisis and we need to act
 
@@ -48,49 +48,52 @@ This application will address a global public health need by promoting accurate 
 
 ## Technology Stack
 
-### Frontend: 
+### Frontend:
+
 React  
 Material-UI- for all new components  
 React-Bootstrap - deprecated, used in old components which need to be converted to Material-UI.
 
 ### "Backend"/DB:
+
 Blockstack Platform (Radiks, Gaia)
 
 ### Testing:
+
 Jest
 
 ## Questions Related to application development?
 
-### Reach-out to: 
+### Reach-out to:
 
-#### @Carter Klein is implementing backend with blockstack, front end, systems architecture.  
+#### @Carter Klein is implementing backend with blockstack, front end, systems architecture.
 
 See [/design/backend](https://github.com/COVID-19-electronic-health-system/Corona-tracker/tree/master/design), [/design/models](https://github.com/COVID-19-electronic-health-system/Corona-tracker/tree/master/design/database_models), and [/client](https://github.com/COVID-19-electronic-health-system/Corona-tracker/tree/master/client)  
 (@Carter Klein on discord)
 
-#### @Brian H. Hough: is implementing design, social media marketing, front end code.  
+#### @Brian H. Hough: is implementing design, social media marketing, front end code.
 
 See [/design](https://github.com/COVID-19-electronic-health-system/Corona-tracker/tree/master/design) and [/design](https://github.com/COVID-19-electronic-health-system/Corona-tracker/tree/master/design/wireframes)
 (@InterstellarX on discord)
 
-#### @tesla809: is implementing front end code, documentation and booking meetings with experts.  
+#### @tesla809: is implementing front end code, documentation and booking meetings with experts.
 
 Open to peer program any issue or bugs!  
 See [/client](https://github.com/COVID-19-electronic-health-system/Corona-tracker/tree/master/client)  
 (@Anthony A. on discord)
 
-#### @akilhylton: is implementing front end code, documentation, has machine learning experience.  
+#### @akilhylton: is implementing front end code, documentation, has machine learning experience.
 
 Open to peer program any issue or bugs!  
 See [/client](https://github.com/COVID-19-electronic-health-system/Corona-tracker/tree/master/client)  
 (@Akil Hylton on discord)
 
-#### @ngiangre: is advising on the data model, analytics, data science  
+#### @ngiangre: is advising on the data model, analytics, data science
 
 See [analytics thread](https://github.com/COVID-19-electronic-health-system/Corona-tracker/issues/51)  
 (@NickG on discord)
 
-#### @salvolpe: is helping with translations, analytics  
+#### @salvolpe: is helping with translations, analytics
 
 (@laseplov on discord)  
 See [translations.md](translations.md)
@@ -146,7 +149,6 @@ If you choose to add tests, please place in client/src/tests.
 #### A Note on Blockstack, Privacy
 
 In these strange and often trying times, individual privacy is of utmost concern. In order to bootstrap this tool and get it off the ground and into the hands of those in need as quickly as possible, a serverless approach works great. Blockstack is decentralized - individuals still own their information. Everything is kept on the client until given permission. Therefore, we felt it best suited the overall needs.
-
 
 #### Research and notes from the 3/13 call:
 
