@@ -66,7 +66,7 @@ function HoursAutocomplete(props) {
 }
 
 //props: symptomName, symptomChecked, handleCheckboxChange, symptomValue
-export default function AppSingleCheckGroupButton(props) {
+export default function SingleCheckboxButton(props) {
 
   // creating appropriate label name
   let label = props.symptomName;

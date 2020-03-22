@@ -1,7 +1,7 @@
 import React from 'react';
-import AppSingleCheckGroupButton from './SingleCheckGroupButton';
+import SingleCheckboxButton from './SingleCheckboxButton';
 
-class AppCheckGroupedButtons extends React.Component {
+class CheckboxButton extends React.Component {
   constructor() {
     super()
     this.state = {
@@ -99,7 +99,7 @@ class AppCheckGroupedButtons extends React.Component {
         </h4>
         {
           Object.entries(this.state).map(([symptomName, value], key) => (
-            <AppSingleCheckGroupButton key={key} symptomName={symptomName} symptomChecked={value.checked} symptomValue={value.value} handleCheckboxChange={this.handleCheckboxChange}
+            <SingleCheckboxButton key={key} symptomName={symptomName} symptomChecked={value.checked} symptomValue={value.value} handleCheckboxChange={this.handleCheckboxChange}
               handleButtonGroupChange={this.handleButtonGroupChange} handleFever={this.handleFever} handleHours={this.handleHours}
               handleMinutes={this.handleMinutes} />
           ))
@@ -109,4 +109,4 @@ class AppCheckGroupedButtons extends React.Component {
   }
 }
 
-export default AppCheckGroupedButtons;
+export default CheckboxButton;
