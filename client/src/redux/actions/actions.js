@@ -1,25 +1,12 @@
-// This ins an sample action function for sending request to the backend or API and updating the Redux store.
-// Uncomment, pass actual url to the fetch function and dispath this action if you would like to use it
+import { loadCheckups, saveCheckup } from './checkups';
+export const SAVING = 'SAVING';
+export const IDLE = 'IDLE';
+export const LOADING = 'LOADING';
+export const CHECKUPS_LOADED = 'CHECKUP_LOADED';
 
-// // Example of the function which sends request to the backend and save respons to the Redux store
-// export function loadData () {
-//     return (dispatch) => fetch('url') // First argument of the fetch function should be url where to we sending request
-//       .then(r => r.json())
-//       .then(resp => {
-//         // send response data to the reducer
-//         dispatch({
-//         type: "LOAD_DATA",
-//         // add data from resp
-//       })
-//       })
-//   }
+const actions = {
+  loadCheckups,
+  saveCheckup,
+};
 
-//   // Save all functions into the object in order to export more then one action
-//   const actions = {
-//     loadData
-//   }
-  
-//   export default actions
-
-
-
+export default actions;
