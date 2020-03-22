@@ -1,4 +1,4 @@
-# Corona-Tracker
+![Corona Tracker Logo](./client/src/img/Logo_CORONATRACKER_Text_Logo.png)
 
 [![Build Status](https://travis-ci.org/COVID-19-electronic-health-system/Corona-tracker.svg?branch=master)](https://travis-ci.org/COVID-19-electronic-health-system/Corona-tracker)
 
@@ -8,13 +8,13 @@ A tool to both help doctors reducing the number of unecessary hospital visits, e
 
 https://discord.gg/pPERUuv
 
-## VIEW [CONTRIBUTING](./CONTRIBUTING.MD) TO ONBOARD, RUN APPLICATION LOCALLY OR IN QA
+## VIEW [CONTRIBUTING](./CONTRIBUTING.md) TO ONBOARD, RUN APPLICATION LOCALLY OR IN QA
 
 ## We are in crisis and we need to act
 
 The COVID-19 outbreak is a threat to the global population with formidable challenges to the health system. Social distancing measures and telemedicine have been established to mitigate clinic burden and reduce additional spread. The behavior of the general public plays an important part in effectively fighting the outbreak and in improving the situation for persons that need medical care. There is a pressing need to provide accurate information and appropriate suggestions to the general population in order to avoid causing overburden of hospitals across the globe.
 
-After discussions with doctors, start ups, technologists, an academic researchers, we narrowed down some issues of critical importance that the application will address. There are several key facets of concern, namely <b>medical considerations</b> (i.e. people aren't realizing the severity of this; it's getting real very fast; and doctors/medical professionals are ill-equipped to test for this), as well as <b>global concerns</b> (i.e. the economy is sinking; resources are directly needed for equipment like isolation rooms and protective gear; there is a need for more ventilators and space; schools are closing; etc.). Furthermore, the effects of social distancing and isolation and the impact of lost jobs and finances is already having a negative impact on the physical, mental, emotional, and sprittual well-being of our society. After learning all of this, we realized that there's a limited amount of time to act, and decisive action must be taken in order to do our part and help our neighbors and healthcare professionals on the ground working towards a solution, keeping people as healthy as possible, and strengthening the well being of our society.
+After discussions with doctors, start ups, technologists, an academic researchers, we narrowed down some issues of critical importance that the application will address. Specifically, we list major concerns from a call with Ameer (Systems Architect) and Dr. Kristen Kent. There are several key facets of concern, namely <b>medical considerations</b> (i.e. people aren't realizing the severity of this; it's getting real very fast; and doctors/medical professionals are ill-equipped to test for this), as well as <b>global concerns</b> (i.e. the economy is sinking; resources are directly needed for equipment like isolation rooms and protective gear; there is a need for more ventilators and space; schools are closing; etc.). Furthermore, the effects of social distancing and isolation and the impact of lost jobs and finances is already having a negative impact on the physical, mental, emotional, and sprittual well-being of our society. After learning all of this, we realized that there's a limited amount of time to act, and decisive action must be taken in order to do our part and help our neighbors and healthcare professionals on the ground working towards a solution, keeping people as healthy as possible, and strengthening the well being of our society.
 
 (The initial plan was developing a EHR, but this is too ambitious in scope and unecessary. However [@BrianHHough took down some great notes](https://docs.google.com/document/d/15DekMbBnLjWSk_hAQclLzTFBCYygyeMGkGknJrBHnnM/edit?usp=sharing) that @SomeMoosery and @tesla809 will add to.)
 
@@ -52,14 +52,17 @@ This application will address a global public health need by promoting accurate 
 ## Technology Stack
 
 ### Frontend:
+
 React
 Material-UI- for all new components
 React-Bootstrap - deprecated, used in old components which need to be converted to Material-UI.
 
 ### "Backend"/DB:
+
 Blockstack Platform (Radiks, Gaia)
 
 ### Testing:
+
 Jest
 
 ## Questions Related to application development?
@@ -149,7 +152,6 @@ If you choose to add tests, please place in client/src/tests.
 #### A Note on Blockstack, Privacy
 
 In these strange and often trying times, individual privacy is of utmost concern. In order to bootstrap this tool and get it off the ground and into the hands of those in need as quickly as possible, a serverless approach works great. Blockstack is decentralized - individuals still own their information. Everything is kept on the client until given permission. Therefore, we felt it best suited the overall needs.
-
 
 #### Research and notes from the 3/13 call:
 
