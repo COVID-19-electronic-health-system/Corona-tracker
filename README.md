@@ -14,7 +14,7 @@ https://discord.gg/pPERUuv
 
 The COVID-19 outbreak is a threat to the global population with formidable challenges to the health system. Social distancing measures and telemedicine have been established to mitigate clinic burden and reduce additional spread. The behavior of the general public plays an important part in effectively fighting the outbreak and in improving the situation for persons that need medical care. There is a pressing need to provide accurate information and appropriate suggestions to the general population in order to avoid causing overburden of hospitals across the globe.
 
-After discussions with doctors, start ups, technologists, an academic researchers, we narrowed down some issues of critical importance that the application will address. There are several key facets of concern, namely <b>medical considerations</b> (i.e. people aren't realizing the severity of this; it's getting real very fast; and doctors/medical professionals are ill-equipped to test for this), as well as <b>global concerns</b> (i.e. the economy is sinking; resources are directly needed for equipment like isolation rooms and protective gear; there is a need for more ventilators and space; schools are closing; etc.). Furthermore, the effects of social distancing and isolation and the impact of lost jobs and finances is already having a negative impact on the physical, mental, emotional, and sprittual well-being of our society. After learning all of this, we realized that there's a limited amount of time to act, and decisive action must be taken in order to do our part and help our neighbors and healthcare professionals on the ground working towards a solution, keeping people as healthy as possible, and strengthening the well being of our society.
+After discussions with doctors, start ups, technologists, an academic researchers, we narrowed down some issues of critical importance that the application will address. Specifically, we list major concerns from a call with Ameer (Systems Architect) and Dr. Kristen Kent. There are several key facets of concern, namely <b>medical considerations</b> (i.e. people aren't realizing the severity of this; it's getting real very fast; and doctors/medical professionals are ill-equipped to test for this), as well as <b>global concerns</b> (i.e. the economy is sinking; resources are directly needed for equipment like isolation rooms and protective gear; there is a need for more ventilators and space; schools are closing; etc.). Furthermore, the effects of social distancing and isolation and the impact of lost jobs and finances is already having a negative impact on the physical, mental, emotional, and sprittual well-being of our society. After learning all of this, we realized that there's a limited amount of time to act, and decisive action must be taken in order to do our part and help our neighbors and healthcare professionals on the ground working towards a solution, keeping people as healthy as possible, and strengthening the well being of our society.
 
 (The initial plan was developing a EHR, but this is too ambitious in scope and unecessary. However [@BrianHHough took down some great notes](https://docs.google.com/document/d/15DekMbBnLjWSk_hAQclLzTFBCYygyeMGkGknJrBHnnM/edit?usp=sharing) that @SomeMoosery and @tesla809 will add to.)
 
@@ -147,60 +147,3 @@ If you choose to add tests, please place in client/src/tests.
 
 In these strange and often trying times, individual privacy is of utmost concern. In order to bootstrap this tool and get it off the ground and into the hands of those in need as quickly as possible, a serverless approach works great. Blockstack is decentralized - individuals still own their information. Everything is kept on the client until given permission. Therefore, we felt it best suited the overall needs.
 
-
-#### Research and notes from the 3/13 call:
-
-##### To decrease the peak of the curve
-
-- **Everyone** needs to stay home (kids to elderly)
-  - This is a new disease
-  - Anyone can be a carrier of this
-  - We all are at risk as a population
-  - If you leave the house, you're immediately at risk
-  - Is our community/society going to be ok? - Life is different as of today → this message not being taken seriously
-- Already 25 strains?
-  - A couple of these believed causing pneumonia, upper respiratory infection and death
-  - Other strains, less virulent
-  - But we don’t have testing for this right now. Now is too late.
-  - We don't know why the mortality rate is higher amongst older individuals
-- CDC is not doing enough -- the people who would have been in charge were let go
-- Not enough gear, ventilators, etc
-  - At this point, you won't be tested unless you're about to die (or you're famous)
-- We don’t have a treatment, we don’t have a cure, this is going to spread **exponentially**.
-- NEED the experts involved
-  - In this social media-driven time, everyone is an "expert" &#8594; we need to distinguish these "experts from real EXPERTS!
-  - People that aren't true experts are willing to help, and that's great. But, we need to channel this drive to help into more useful applications than spreading panci and false information.
-- Media outlets are going to be inherently behind the boots-on-the-ground professionals seeing COVID-19's effects and spread
-  - There will be things going on that the media will not know about, or won't report on
-  - Another reason to not trust social media "experts" with regards to this disease, but trust true professional experts
-
-##### Feature suggestions:
-
-- What we need is more information about where resources should be prioritized
-  - NY already doing this - monitoring what is being bought at drug stores (if surge, more people buying cough/cold medicine...when there’s increase in medical visits)
-  - We don’t have real information about this and don’t have infrastructure to figure it out
-  - **Could implement a Waze-type crowdsourcing model where individuals report "there's Tylenol here" or "there's soap there", allowing this information to be open, real-time, and available**
-- We need to start thinking about the future of this:
-  - Telemedicine: great access to care, f
-  - Teleschooling
-- Resources inventory (this ties into bullet point 2)
-- **Social/Medical Symptom-Rating & Doctor Triage** &#8594; **This seems to be the most prominent idea**
-  - Rate your symptoms 1-10
-  - Is this like yesterday: better, worse or the same - Are you short of breath? - Are you coughing? - Fever? - Are you dizzy? - Headache? How long has headache persisted for? (
-  - Work with medical professionals, real experts, in order to come up with a set of criteria/questions to ask
-  - Do you have food at home?
-  - Way to stay warm/cold in the winter/sumer
-  - Soap, food, water, groceries do you need help going to the bathroom (elderly people falling down)
-  - **relay this back to a physician so they can see indicators/thresholds so can see how people are doing** - People that aren’t doing well...do a telemedicine visit, call them, reach out - Allows doctors to triage who is is most in need of attention, in order to not clog up the pipeline
-
-##### What’s out there:
-
-- CDC has a coronavirus app
-- Telemedicine platforms already have these features too
-  - Only 40% of people who needed critical care for coronavirus had a fever
-
-##### Technology they’re using now:
-
-- N95 masks - being stolen
-- Telemedicine: going up 10x up
-- Must be hippa compliant
