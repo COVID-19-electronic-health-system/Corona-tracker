@@ -1,4 +1,4 @@
-![CoronaTracker Cross Logo](./client/src/img/Logo_CORONATRACKER_Logo.png) ![CoronaTracker Text Logo](./client/src/img/Logo_CORONATRACKER_Text_Logo.png)
+![CoronaTracker Text Logo](./client/src/img/Logo_CORONATRACKER_Text_Logo.png)
 
 [![Build Status](https://travis-ci.org/COVID-19-electronic-health-system/Corona-tracker.svg?branch=master)](https://travis-ci.org/COVID-19-electronic-health-system/Corona-tracker)
 
