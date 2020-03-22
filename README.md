@@ -1,4 +1,4 @@
-![CoronaTracker Logo](./src/img/Logo_CORONATRACKER_Text_Logo.png)
+![CoronaTracker Logo](./client/src/img/Logo_CORONATRACKER_Text_Logo.png)
 
 # Corona-Tracker
 
