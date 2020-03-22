@@ -8,6 +8,8 @@ import { configure, User, getConfig } from 'radiks';
 import { Connect } from '@blockstack/connect';
 import DiagnosticContainer from './DiagnosticContainer';
 import { BrowserRouter, Route, Switch } from 'react-router-dom'
+import { connect } from 'react-redux';
+import setLoginLoading from '../redux/actions/actions'
 
 
 
@@ -23,7 +25,10 @@ class App extends Component {
     this.userSession = new UserSession({ appConfig });
   }
 
-  state = { url: '', userSession: undefined };
+  state = {
+    url: '',
+    userSession: undefined,
+  };
 
   async componentDidMount() {
     const userSession = makeUserSession();
@@ -93,4 +98,18 @@ class App extends Component {
   }
 }
 
-export default App;
+
+const mapStateToProps = ({ loginLoading }) => ({
+  loginLoading,
+})
+
+const mapDispatchToProps = dispatch => ({
+  setLoading(isLoading) {
+    return () => {
+      dispatch(setLoginLoading(isLoading))
+    }
+  }
+})
+
+export default connect(mapStateToProps, mapDispatchToProps)(App);
+
