@@ -35,12 +35,21 @@ function ButtonGroup() {
     const classes = useStyles();
 
 
+    const [alignment, setAlignment] = React.useState("left");
+
+    const handleAlignment = (event, newAlignment) => {
+        setAlignment(newAlignment);
+        console.log(newAlignment);
+    }
+
     return (
         <div className={classes.btnGroup}>
-            <ToggleButtonGroup>
-                <ToggleButton className={classes.minimalButton}>Minimal</ToggleButton>
-                <ToggleButton className={classes.moderateButton}>Moderate</ToggleButton>
-                <ToggleButton className={classes.severeButton}>Severe</ToggleButton>
+            <ToggleButtonGroup value={alignment}
+                exclusive
+                onChange={handleAlignment}>
+                <ToggleButton className={classes.minimalButton} value="left">Minimal</ToggleButton>
+                <ToggleButton className={classes.moderateButton} value="center">Moderate</ToggleButton>
+                <ToggleButton className={classes.severeButton} value="right">Severe</ToggleButton>
             </ToggleButtonGroup>
         </div>
     )
