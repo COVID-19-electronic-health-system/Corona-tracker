@@ -8,7 +8,7 @@ A tool to both help doctors triage exponentially-growing numbers of ill patients
 
 https://discord.gg/pPERUuv
 
-## VIEW [CONTRIBUTING](./CONTRIBUTING.MD) TO ONBOARD, RUN APPLICATION LOCALLY OR IN QA
+## VIEW [CONTRIBUTING](./CONTRIBUTING.md) TO ONBOARD, RUN APPLICATION LOCALLY OR IN QA
 
 ## Abstract
 
