@@ -22,7 +22,7 @@ After discussions with doctors, start ups, technologists, an academic researcher
 
 ## TL;DR FAQ
 
-### Who is the app for?
+### Who is this app for?
 
 This app is for the global population going through this crisis: those who are feeling generally well, but are concerned they may be carrying COVID-19 or are showing early symptoms.
 
@@ -30,17 +30,17 @@ This app is for the global population going through this crisis: those who are f
 
 The differentiating characteristics of our web application include: 1) integrating education, measurement of education with key performance indicators, and insights via data analytics, 2) decentralization and privatization which allows for data ownership by users, 3) data interoperability which allows for modular and extensible features and a B2C approach to medical care, and 4) support of multiple languages to target developing regions with high levels of urbanization, poor medical infrastructure, yet high mobile phone connectivity.
 
-### What insights have ben considered?
+### What insights have been considered?
 
 Over the past week, the team has been in consultation with individuals and stakeholders in the academic, medical, business, and technology sectors. The provided insights into our application development include: 1) understanding viral infection, disease pathogenesis, and public health guidelines followed by medical staff at a top tier NYC hospital, 2) providing education to the general public and patients is crucial to avoid unnecessary ER visits and engage patients in their health, 3) properly scoping our product to be an enterprise ready application by including key features based on expert feedback, 4) developing useful survey content for users and stakeholders that can address public health and clinical research needs, and 5) building a decentralized platform to increase data ownership and privacy.
 
-### Who are the stake holders?
+### Who are the stakeholders?
 
 - All individuals. This affects all society
 - Public health authorities. They need to inform, educate, and support citizens.
 - Researchers. There are enormous implications for an individual's wellbeing and health. Understanding how 1) individuals are self-caring on a day-by-day basis and 2) if education is postively impacting metrics in user's health/wellbeing chart.
 
-## What is the benefit?
+### What is the benefit this app is providing?
 
 This application will address a global public health need by promoting accurate information to the general population and thereby help healthcare workers on the front lines to provide the necessary care to those in need.
 
@@ -58,6 +58,7 @@ Blockstack Platform (Radiks, Gaia)
 **Testing**:
 Jest
 
+
 **Deprecated Technologies**
 React-Bootstrap (used in old components which need to be converted to Material-UI.)
 
@@ -65,32 +66,45 @@ React-Bootstrap (used in old components which need to be converted to Material-U
 
 **Reach-out:**  
 **@SomeMoosery** is implementing backend with blockstack, front end, systems architecture.  
+
+## Questions Related to application development?
+
+### Reach-out to: 
+
+#### @Carter Klein is implementing backend with blockstack, front end, systems architecture.  
+
 See [/design/backend](https://github.com/COVID-19-electronic-health-system/Corona-tracker/tree/master/design), [/design/models](https://github.com/COVID-19-electronic-health-system/Corona-tracker/tree/master/design/database_models), and [/client](https://github.com/COVID-19-electronic-health-system/Corona-tracker/tree/master/client)  
 (@Carter Klein on discord)
 
-**@Brian H. Hough** is implementing design, social media marketing, front end code.  
+#### @Brian H. Hough: is implementing design, social media marketing, front end code.  
+
 See [/design](https://github.com/COVID-19-electronic-health-system/Corona-tracker/tree/master/design) and [/design](https://github.com/COVID-19-electronic-health-system/Corona-tracker/tree/master/design/wireframes)
 (@InterstellarX on discord)
 
-**@tesla809** is implementing front end code, documentation and booking meetings with experts.  
+#### @tesla809: is implementing front end code, documentation and booking meetings with experts.  
+
 Open to peer program any issue or bugs!  
 See [/client](https://github.com/COVID-19-electronic-health-system/Corona-tracker/tree/master/client)  
 (@Anthony A. on discord)
 
-**@akilhylton** is implementing front end code, documentation, has machine learning experience.  
+#### @akilhylton: is implementing front end code, documentation, has machine learning experience.  
+
 Open to peer program any issue or bugs!  
 See [/client](https://github.com/COVID-19-electronic-health-system/Corona-tracker/tree/master/client)  
 (@Akil Hylton on discord)
 
-**@ngiangre** is advising on the data model, analytics, data science  
+#### @ngiangre: is advising on the data model, analytics, data science  
+
 See [analytics thread](https://github.com/COVID-19-electronic-health-system/Corona-tracker/issues/51)  
 (@NickG on discord)
 
-**@salvolpe** is helping with translations, analytics  
+#### @salvolpe: is helping with translations, analytics  
+
 (@laseplov on discord)  
 See [translations.md](translations.md)
 
-**@lukelin1991** Managing discord, discord roles, front-end, translations.
+#### @lukelin1991: Managing discord, discord roles, front-end, translations.
+
 (@kirbypooh on discord)
 
 And YOU!  
@@ -102,9 +116,12 @@ see [CONTRIBUTING.md](./CONTRIBUTING.md) PENDING
 Submit an [issue](https://github.com/COVID-19-electronic-health-system/Corona-tracker/issues). Issues are welcomed! We are new developer friendly and happy to help in anyway!
 Message @Anthony A. on the [discord](https://discord.gg/pPERUuv) if you have any questions!
 
+## Appendix
+
 ### Design considerations
 
-**CSS Design considerations**
+#### CSS Design considerations
+
 We have decided to use regular CSS files to keep things simple for now. This allows for more contributors and less time to upskill to contribute.
 
 Once MVP is done the team can discuss if we want to transition it to styled-components or something like CSS modules.
@@ -134,21 +151,13 @@ Add them to the /actions and /reducers folder.
 No need to worry about testing for now.
 If you choose to add tests, please place in client/src/tests.
 
-### A Note on Blockstack, Privacy
+#### A Note on Blockstack, Privacy
 
-In these strange and often trying times, individual privacy is of utmost concern. In order to bootstrap this tool and get it off the ground and into the hands of those in need as quickly as possible, a serverless approach works great. While providers like AWS and Azure are great for this, trust in these services to handle large amounts of very personal information will decrease. Blockstack is decentralized - individuals still own their information. Therefore, we felt it best suited the overall needs.
-
-## Key Feature of the App for an IPR: Health Log
-
-- Rate your symptoms: Put in certain info &#8594; visualization of info and who to reach out to
-  - Dashboard for doctor w/ color gradient ordered by people getting worse (could use OSS, Creative Tim for this)
-    - Reds are getting worse
-    - Greens getting better
-- Doctors are able to download a list of patients and their symptoms from the dashbaord
+In these strange and often trying times, individual privacy is of utmost concern. In order to bootstrap this tool and get it off the ground and into the hands of those in need as quickly as possible, a serverless approach works great. Blockstack is decentralized - individuals still own their information. Everything is kept on the client until given permission. Therefore, we felt it best suited the overall needs.
 
 # Research and notes from the 3/13 call:
 
-## To decrease the peak of the curve
+##### To decrease the peak of the curve
 
 - **Everyone** needs to stay home (kids to elderly)
   - This is a new disease
@@ -172,7 +181,7 @@ In these strange and often trying times, individual privacy is of utmost concern
   - There will be things going on that the media will not know about, or won't report on
   - Another reason to not trust social media "experts" with regards to this disease, but trust true professional experts
 
-## Feature suggestions:
+##### Feature suggestions:
 
 - What we need is more information about where resources should be prioritized
   - NY already doing this - monitoring what is being bought at drug stores (if surge, more people buying cough/cold medicine...when there’s increase in medical visits)
@@ -191,13 +200,13 @@ In these strange and often trying times, individual privacy is of utmost concern
   - Soap, food, water, groceries do you need help going to the bathroom (elderly people falling down)
   - **relay this back to a physician so they can see indicators/thresholds so can see how people are doing** - People that aren’t doing well...do a telemedicine visit, call them, reach out - Allows doctors to triage who is is most in need of attention, in order to not clog up the pipeline
 
-## What’s out there:
+##### What’s out there:
 
 - CDC has a coronavirus app
 - Telemedicine platforms already have these features too
   - Only 40% of people who needed critical care for coronavirus had a fever
 
-## Technology they’re using now:
+##### Technology they’re using now:
 
 - N95 masks - being stolen
 - Telemedicine: going up 10x up
