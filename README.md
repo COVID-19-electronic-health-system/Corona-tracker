@@ -1,8 +1,10 @@
+![CoronaTracker Logo](./src/img/Logo_CORONATRACKER_Text_Logo.png)
+
 # Corona-Tracker
 
 [![Build Status](https://travis-ci.org/COVID-19-electronic-health-system/Corona-tracker.svg?branch=master)](https://travis-ci.org/COVID-19-electronic-health-system/Corona-tracker)
 
-A tool to both help doctors triage exponentially-growing numbers of ill patients in real-time, educate the public on facts vs myths, and guide individuals to locate in-demand supplies they may need.
+A tool to help doctors triage exponentially-growing numbers of ill patients in real-time, educate the public on facts vs myths, and guide individuals to locate in-demand supplies they may need.
 
 ## Join our Discord Server
 
