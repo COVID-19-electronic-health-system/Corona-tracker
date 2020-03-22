@@ -51,12 +51,12 @@
 
 
     .DiagnosticLogo {
-  width: 100px;
-  height: 100px;
+  width: 80px;
+  height: 80px;
     }
     
     .DiagnosticTextLogo {
-  width: 350px;
+  width: 250px;
   height: 10vh;
     }
 
@@ -66,5 +66,6 @@
 }
 .temp-singout{
     display: flex;
-justify-content: space-between;
+    justify-content: flex-end;
+
 }

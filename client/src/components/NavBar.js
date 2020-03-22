@@ -1,51 +1,105 @@
-import React, { Component } from 'react';
-import { Nav }  from 'react-bootstrap';
+import React from 'react';
 import "../css/themePalette.css";
 import "../css/NavBar.css";
+import { withStyles } from "@material-ui/core/styles";
 
-class NavBar extends Component {
-  render() {
-    return (
-      <div className='nav-container'>
-       <Nav className="theme-Palette-red-bg navBar">
-        <Nav.Item className="NavBar-item">
-          <Nav.Link>
-            <div className="NavBar-icon" id="NavBar-log-icon"></div>
-            <p className="NavBar-link theme-Palette-white-text">Log</p>
-          </Nav.Link>
-        </Nav.Item>
+import { BottomNavigation, BottomNavigationAction } from "@material-ui/core/";
 
-        <Nav.Item className="NavBar-item">
-          <Nav.Link>
-            <div className="NavBar-icon" id="NavBar-news-icon"></div>
-            <p className="NavBar-link theme-Palette-white-text">News</p>
-          </Nav.Link>
-        </Nav.Item>
+import FeaturedPlayListOutlinedIcon from "@material-ui/icons/FeaturedPlayListOutlined";
+import StarBorderIcon from '@material-ui/icons/StarBorder';
+import LocationOnOutlinedIcon from "@material-ui/icons/LocationOnOutlined";
+import SettingsOutlinedIcon from "@material-ui/icons/SettingsOutlined";
+import VideocamOutlinedIcon from '@material-ui/icons/VideocamOutlined';
 
-        <Nav.Item className="NavBar-item">
-          <Nav.Link>
-            <div className="NavBar-icon" id="NavBar-chat-icon"></div>
-            <p className="NavBar-link theme-Palette-white-text">Chat</p>
-          </Nav.Link>
-        </Nav.Item>
 
-        <Nav.Item className="NavBar-item">
-          <Nav.Link>
-            <div className="NavBar-icon" id="NavBar-map-icon"></div>
-            <p className="NavBar-link theme-Palette-white-text">Map</p>
-          </Nav.Link>
-        </Nav.Item>
+const styles = {
+  root: {
+    width: "100%",
+        backgroundColor: "#f64141",
+    height: '10vh',
+        position: 'fixed',
+    bottom: 0,
+  },
+  actionItem: {
+    "&$selected": {
+      color: "white"
+    }
+  },
+    selected: {
+  },
+  buttons: {
+    fontSize: '40px'
+    }
+};
 
-        <Nav.Item className="NavBar-item">
-          <Nav.Link>
-            <div className="NavBar-icon" id="NavBar-settings-icon"></div>
-            <p className="NavBar-link theme-Palette-white-text">Settings</p>
-          </Nav.Link>
-        </Nav.Item>
-      </Nav>
-      </div>
-    );
-  }
+class NavBar extends React.Component {
+    state = {
+        value: "log"
+    };
+
+    handleChange = (event, value) => {
+        this.setState({ value });
+    };
+    render() {
+        const { classes } = this.props;
+        const { value } = this.state;
+
+        return (
+          <BottomNavigation
+            value={value}
+            onChange={this.handleChange}
+            className={classes.root}
+            showLabels
+          >
+            <BottomNavigationAction
+              label="Log"
+              value="log"
+              classes={{
+                root: classes.actionItem,
+                selected: classes.selected,
+                indicator: classes.indicator
+              }}
+              icon={<FeaturedPlayListOutlinedIcon className={classes.buttons}/>}
+            />
+            <BottomNavigationAction
+              label="Education"
+              value="Education"
+              classes={{
+                root: classes.actionItem,
+                selected: classes.selected
+              }}
+              icon={<StarBorderIcon className={classes.buttons} />}
+            />
+            <BottomNavigationAction
+              label="Chat"
+              value="chat"
+              classes={{
+                root: classes.actionItem,
+                selected: classes.selected
+              }}
+              icon={<VideocamOutlinedIcon className={classes.buttons} />}
+            />
+            <BottomNavigationAction
+              label="Map"
+              value="map"
+              classes={{
+                root: classes.actionItem,
+                selected: classes.selected
+              }}
+              icon={<LocationOnOutlinedIcon className={classes.buttons} />}
+            />
+            <BottomNavigationAction
+              label="Settings"
+              value="settings"
+              classes={{
+                root: classes.actionItem,
+                selected: classes.selected
+              }}
+              icon={<SettingsOutlinedIcon className={classes.buttons} />}
+            />
+          </BottomNavigation>
+        );
+    }
 }
 
-export default NavBar;
+export default withStyles(styles)(NavBar);

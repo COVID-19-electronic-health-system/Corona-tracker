@@ -15,7 +15,7 @@ class AppCalendar extends Component {
       <div>
         <Calendar
           onChange={this.onChange}
-          value={this.state.date}
+        value={this.state.date}
         />
       </div>
     );
