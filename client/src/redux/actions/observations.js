@@ -15,7 +15,6 @@ export function loadObservations() {
     const currentObservations = getState().observations;
     const observations = await Observation.fetchOwnList();
     const newObservations = observations.filter(o => currentObservations.indexOf(o) < 0);
-    console.log({ currentObservations, newObservations });
     dispatch({
       type: OBSERVATIONS_LOADED,
       observations: [...currentObservations, ...newObservations],

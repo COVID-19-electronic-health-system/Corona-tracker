@@ -5,8 +5,7 @@ import '../css/Temperature.css';
 import { useSelector } from 'react-redux';
 
 export default () => {
-  const observations = useSelector(state => state.observations);
-  console.log(observations);
+  const observations = useSelector(state => state.observations)
   const averageTemperature =
     observations.reduce((sum, record) => {
       return record.attrs.physical.temperature + sum;
