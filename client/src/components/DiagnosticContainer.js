@@ -19,7 +19,7 @@ const dateOptions = {
   day: 'numeric',
 };
 
-function DiagnosticContainer(props) {
+const DiagnosticContainer = (props) => {
   const { handleSignOut, userSession } = props;
   var today = new Date();
   const dispatch = useDispatch();
