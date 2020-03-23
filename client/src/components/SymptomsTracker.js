@@ -56,8 +56,6 @@ const useStyles = makeStyles({
   ];
   
   
-
-
 const SymptomsTracker = () => {
 
     const classes = useStyles();
@@ -68,7 +66,7 @@ const SymptomsTracker = () => {
     const [cough, setCough] = useState('')
     const [fever, setFever] = useState(0)
     const [dizinnes, setDizinnes] = useState('')
-    const [soarThroat, setSoarThroat] = useState('')
+    const [soreThroat, setSoreThroat] = useState('')
     const [congestion, setCongestion] = useState('')
     const [additionalInfo, setAdditionalInfo] = useState('')
 
@@ -97,8 +95,8 @@ const SymptomsTracker = () => {
       setDizinnes(e)
     }
 
-    const handlerSoarThroat = (e) => {
-      setSoarThroat(e)
+    const handlerSoreThroat = (e) => {
+      setSoreThroat(e)
     }
 
     const handlerCongestion = (e) => {
@@ -110,7 +108,7 @@ const SymptomsTracker = () => {
     }
 
     const submitAction = () => {
-      const submission ={
+      const submission = {
         todayFeeling: todayFeeling, 
         todaySymptoms: todaySymptoms,
         comparedFeeling: comparedFeeling,
@@ -121,7 +119,6 @@ const SymptomsTracker = () => {
         congestion: congestion,
         additionalInfo: additionalInfo
       }
-      console.log(submission)
     }
 
     return (
@@ -193,7 +190,7 @@ const SymptomsTracker = () => {
           labelPlacement="end"
           className={classes.controlLabels}
         />
-         <Button onClick={e => handlerDizinnes(e.target.innerText)}>Minimal</Button>
+        <Button onClick={e => handlerDizinnes(e.target.innerText)}>Minimal</Button>
         <Button onClick={e => handlerDizinnes(e.target.innerText)}>Moderate</Button>
         <Button onClick={e => handlerDizinnes(e.target.innerText)}>Severe</Button>
       </ButtonGroup >
@@ -204,9 +201,9 @@ const SymptomsTracker = () => {
           label="Soar throat"
           labelPlacement="end"
         />
-        <Button onClick={e => handlerSoarThroat(e.target.innerText)}>Minimal</Button>
-        <Button onClick={e => handlerSoarThroat(e.target.innerText)}>Moderate</Button>
-        <Button onClick={e => handlerSoarThroat(e.target.innerText)}>Severe</Button>
+        <Button onClick={e => handlerSoreThroat(e.target.innerText)}>Minimal</Button>
+        <Button onClick={e => handlerSoreThroat(e.target.innerText)}>Moderate</Button>
+        <Button onClick={e => handlerSoreThroat(e.target.innerText)}>Severe</Button>
       </ButtonGroup >
       <ButtonGroup color="secondary" aria-label="outlined primary button group">
       <FormControlLabel
