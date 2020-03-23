@@ -92,7 +92,7 @@ function CheckboxButton() {
   return (
     <div className="checked-grouped-buttons">
       <h4>
-        <b>Which symptoms are you feeling or experiencing</b>
+        <b>Which symptoms are you feeling or experiencing?</b>
       </h4>
       {Object.entries(state).map(([symptomName, value], key) => (
         <SingleCheckboxButton
