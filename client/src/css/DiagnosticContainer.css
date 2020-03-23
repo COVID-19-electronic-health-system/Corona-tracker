@@ -2,14 +2,15 @@
     .DiagnosticContainer {
         padding-top: 3vh;
         text-align: center;
-        height: 100vh;
+        overflow: scroll;
+        padding-bottom: 30vh;
     }
 
     .LogoRow {
         height: 15vh;
     }
-    
-    
+
+
     .DiagnosticText {
         margin: auto;
         width:80vw;
@@ -34,7 +35,7 @@
         width: 80vw;
         height: 20vh;
     }
-    
+
     .DiagnosticText {
         margin: auto;
         width:80vw;
@@ -54,7 +55,7 @@
   width: 100px;
   height: 100px;
     }
-    
+
     .DiagnosticTextLogo {
   width: 350px;
   height: 10vh;
