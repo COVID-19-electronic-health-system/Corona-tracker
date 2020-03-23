@@ -35,7 +35,7 @@ const handleHours = (event, value) => ({
 const handleMinutes = (event, value) => ({
   type: HANDLE_MINUTES,
   event, value
-});
+})
 
 // STATE
 const initialState = {

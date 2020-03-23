@@ -97,7 +97,7 @@ const SymptomsTracker = () => {
 
   const handlerDizinnes = (e) => {
     setDizinnes(e)
-  };
+  }
 
   const handlerSoreThroat = (e) => {
     setSoreThroat(e)
@@ -173,7 +173,7 @@ const SymptomsTracker = () => {
 
     </div>
 
-  );
-};
+  )
+}
 
-export default SymptomsTracker;
+export default SymptomsTracker
