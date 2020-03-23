@@ -20,7 +20,12 @@ To run locally, you'll need to have MongoDB installed locally. Follow [this](htt
   - `use coronatracker` - switch to a new local database, coronatracker
   - `db.createUser({user: "admin", pwd:"foobar1",roles: ["readWrite","dbAdmin"]});` - create a new admin user for this database
 
-You'll also need `radiks-server`, which you can install simply with `npm install -g radiks-server`
+You'll also need `radiks-server`, which you can install simply with  
+**npm**
+`npm install -g radiks-server`
+**yarn**
+`yarn global add radiks-server`
+
 
 - Create a `MONGODB_URI` environment variable on the same machine you're running `radiks-server`
   - `export MONGODB_URI="mongodb://admin:foobar1@localhost:27017/test1"` - `admin`, `foobar1`, `test1` are the username/pass/db from the admin user you created when setting up MongoDB
