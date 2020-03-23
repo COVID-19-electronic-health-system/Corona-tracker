@@ -1,20 +1,10 @@
 import React, { useState } from 'react'
-import { useSprings, animated, interpolate } from 'react-spring'
+import { useSprings } from 'react-spring'
 import { useDrag } from 'react-use-gesture'
 import Card from './Card'
 import '../css/FlashCards.css'
 
-const cards = [
-  'https://upload.wikimedia.org/wikipedia/en/f/f5/RWS_Tarot_08_Strength.jpg',
-  'https://upload.wikimedia.org/wikipedia/en/5/53/RWS_Tarot_16_Tower.jpg',
-  'https://upload.wikimedia.org/wikipedia/en/9/9b/RWS_Tarot_07_Chariot.jpg',
-  'https://upload.wikimedia.org/wikipedia/en/d/db/RWS_Tarot_06_Lovers.jpg',
-  'https://upload.wikimedia.org/wikipedia/en/thumb/8/88/RWS_Tarot_02_High_Priestess.jpg/690px-RWS_Tarot_02_High_Priestess.jpg',
-  'https://upload.wikimedia.org/wikipedia/en/d/de/RWS_Tarot_01_Magician.jpg'
-]
-
-const fakeCardData = [
-  {title:'Did you know?', body:"In Covid-19,'CO' stands for 'corona', 'VI' for 'virus', and 'D' for disease. Formerly, this disease was referred to as 2019 novel coronavirus or 2019-nCov. There are many types of human coronaviruses including some that commonly cause mild upper-respiratory tract illness"},
+const cardData = [
   {
     title:'Did you know?',
     body:'This virus was first detected in Wuhan City, Hubei Province, China. The first infections were linked to a live animal market, but the virus is now spreading from person-to-person.',
@@ -39,6 +29,10 @@ const fakeCardData = [
     title:'1',
     body:'3',
     img:'https://upload.wikimedia.org/wikipedia/en/d/de/RWS_Tarot_01_Magician.jpg'
+  },
+  {
+    title:'Did you know?',
+    body:"In Covid-19,'CO' stands for 'corona', 'VI' for 'virus', and 'D' for disease. Formerly, this disease was referred to as 2019 novel coronavirus or 2019-nCov. There are many types of human coronaviruses including some that commonly cause mild upper-respiratory tract illness"
   }
 ]
 
@@ -55,7 +49,7 @@ const trans = (r, s) => `perspective(1500px) rotateX(30deg) rotateY(${r / 10}deg
 
 const FlashCards = () => {
   const [gone] = useState(() => new Set()) 
-  const [props, set] = useSprings(cards.length, i => ({ ...to(i), from: from(i) }))
+  const [props, set] = useSprings(cardData.length, i => ({ ...to(i), from: from(i) }))
   const bind = useDrag(
     ({
       args: [index],
@@ -78,7 +72,7 @@ const FlashCards = () => {
       const scale = down ? 1.1 : 1 // Active cards lift up a bit
       return { x, rot, scale, delay: undefined, config: { friction: 50, tension: down ? 800 : isGone ? 200 : 500 } }
     })
-    if (!down && gone.size === cards.length) setTimeout(() => gone.clear() || set(i => to(i)), 600)
+    if (!down && gone.size === cardData.length) setTimeout(() => gone.clear() || set(i => to(i)), 600)
   })
   // Now we're just mapping the animated values to our view, that's it. Btw, this component only renders once. :-)
   return props.map(({ x, y, rot, scale }, i) => (
@@ -89,7 +83,7 @@ const FlashCards = () => {
       rot={rot}
       scale={scale}
       trans={trans}
-      data={fakeCardData[i]}
+      data={cardData[i]}
       bind={bind}
     />
   ))
