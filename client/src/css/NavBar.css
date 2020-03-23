@@ -5,10 +5,10 @@
   padding: 1vh 0;
   display: flex;
   justify-content: center;
-  overflow: hidden;
   width: 100%;
   bottom: 0;
   position: fixed;
+  z-index: 2;
 }
 
 .NavBar-item {
