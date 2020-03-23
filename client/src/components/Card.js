@@ -2,10 +2,38 @@ import React from "react";
 import { animated, interpolate } from "react-spring";
 import Button from '@material-ui/core/Button';
 
+const Facts = ({data}) => {
+  const { title, body, img, footer, link } = data
+    return (
+       <div className="card" style={{textAlign:'left'}}>
+          <h1 style={{color:'red', fontStyle:'cursive'}}>{title}</h1>
+          <h3 style={{fontSize:'1rem'}}>{body}</h3>
+            <footer style={{textAlign:'left'}}>{footer}
+              {link && <Button size="small" href={link} >Learn More</Button>}
+            </footer>
+       </div>
+     );
+};
+
+const Quiz = ({data}) => {
+  const { question,footer, link } = data
+    return (
+       <div className="card" style={{textAlign:'left'}}>
+          <h1 style={{ fontStyle:'cursive', fontSize:'1rem'}}>{question}</h1>
+            <h3 className="item2" style={{fontSize:'1rem'}}>False or True</h3>
+            <footer style={{textAlign:'left'}}>{footer}
+              {link && <Button size="small" href={link} >Learn More</Button>}
+            </footer>
+       </div>
+     );
+};
+
+
 const Card = (props) => {
   
-    const { i, x, y, rot, scale, trans, bind, data } = props;
-    const { title, body, img, footer, link } = data;
+    const { i, x, y, rot, scale, trans, bind, data, mode } = props;
+    // const { title, question, body, img, footer, link } = data;
+    console.log({mode})
     // TODO ADD STYLING
     return (
       <animated.div
@@ -23,13 +51,8 @@ const Card = (props) => {
             transform: interpolate([rot, scale], trans)
           }}
         >
-          <div className="card" style={{textAlign:'left'}}>
-            <h1 style={{color:'red', fontStyle:'cursive'}}>{title}</h1>
-            <h3 style={{fontSize:'1rem'}}>{body}</h3>
-              <footer style={{textAlign:'left'}}>{footer}
-                {link && <Button size="small" href={link} >Learn More</Button>}
-              </footer>
-          </div>
+         {mode==='facts' && <Facts data={data}/>}
+         {mode==='quiz' && <Quiz data={data}/>}
         </animated.div>
       </animated.div>
     );
