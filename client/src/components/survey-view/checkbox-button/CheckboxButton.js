@@ -12,32 +12,29 @@ const HANDLE_MINUTES = 'HANDLE_MINUTES';
 // checks if symptom is checked
 const handleCheckboxChange = event => ({
   type: HANDLE_CHECKBOX_CHANGE,
-  event,
+  event
 });
 
 // changes symptoms value
 const handleButtonGroupChange = event => ({
   type: HANDLE_BUTTON_GROUP_CHANGE,
-  event,
+  event
 });
 
 const handleFever = (event, value) => ({
   type: HANDLE_FEVER,
-  event,
-  value,
+  event, value
 });
 
 //Splited in two functions to handle time value
 const handleHours = (event, value) => ({
   type: HANDLE_HOURS,
-  event,
-  value,
+  event, value
 });
 
 const handleMinutes = (event, value) => ({
   type: HANDLE_MINUTES,
-  event,
-  value,
+  event, value
 });
 
 // STATE
@@ -47,13 +44,14 @@ const initialState = {
   dizziness: { checked: false, value: 'Moderate' },
   headache: { checked: false, value: '' },
   soreThroat: { checked: false, value: 'Moderate' },
-  congestion: { checked: false, value: 'Moderate' },
+  congestion: { checked: false, value: 'Moderate' }
 };
 
 // REDUCER
 function reducer(state, action) {
   let symptomName, symptomChecked, symptomValue, value;
   switch (action.type) {
+
     case HANDLE_CHECKBOX_CHANGE:
       action.event.preventDefault();
       symptomName = action.event.target.name;
@@ -90,16 +88,12 @@ function reducer(state, action) {
 function CheckboxButton() {
   const [state, dispatch] = useReducer(reducer, initialState);
   return (
-    <div className="checked-grouped-buttons">
+    <div className='checked-grouped-buttons'>
       <h4>
         <b>Which symptoms are you feeling or experiencing?</b>
       </h4>
       {Object.entries(state).map(([symptomName, value], key) => (
-        <SingleCheckboxButton
-          key={key}
-          symptomName={symptomName}
-          symptomChecked={value.checked}
-          symptomValue={value.value}
+        <SingleCheckboxButton key={key} symptomName={symptomName} symptomChecked={value.checked} symptomValue={value.value}
           handleCheckboxChange={event => dispatch(handleCheckboxChange(event))}
           handleButtonGroupChange={event => dispatch(handleButtonGroupChange(event))}
           handleFever={(event, value) => dispatch(handleFever(event, value))}
@@ -108,7 +102,7 @@ function CheckboxButton() {
         />
       ))}
     </div>
-  );
+  )
 }
 
 export default CheckboxButton;

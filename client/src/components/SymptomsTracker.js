@@ -11,7 +11,7 @@ const useStyles = makeStyles({
   },
   controlLabels: {
     marginLeft: -20,
-  },
+  }
 });
 
 // marks for slider
@@ -58,7 +58,9 @@ const marks = [
   },
 ];
 
+
 const SymptomsTracker = () => {
+
   const classes = useStyles();
 
   // emulate dynamic state in a fuctional component
@@ -73,41 +75,41 @@ const SymptomsTracker = () => {
   const [additionalInfo, setAdditionalInfo] = useState('');
 
   // every headnler function responsible for collecting data for particular question
-  const handlerTodayFeeling = e => {
-    setTodayFeeling(e);
+  const handlerTodayFeeling = (e) => {
+    setTodayFeeling(e)
+  }
+
+  const handlerTodaySymptoms = (e) => {
+    setTodaySymptoms(e)
+  }
+
+  const handlerCough = (e) => {
+    setCough(e)
+  }
+
+  const handlerComparedFeeling = (e) => {
+    setcomparedFeeling(e)
+  }
+
+  const handlerFever = (e) => {
+    setFever(e)
+  }
+
+  const handlerDizinnes = (e) => {
+    setDizinnes(e)
   };
 
-  const handlerTodaySymptoms = e => {
-    setTodaySymptoms(e);
-  };
+  const handlerSoreThroat = (e) => {
+    setSoreThroat(e)
+  }
 
-  const handlerCough = e => {
-    setCough(e);
-  };
+  const handlerCongestion = (e) => {
+    setCongestion(e)
+  }
 
-  const handlerComparedFeeling = e => {
-    setcomparedFeeling(e);
-  };
-
-  const handlerFever = e => {
-    setFever(e);
-  };
-
-  const handlerDizinnes = e => {
-    setDizinnes(e);
-  };
-
-  const handlerSoreThroat = e => {
-    setSoreThroat(e);
-  };
-
-  const handlerCongestion = e => {
-    setCongestion(e);
-  };
-
-  const handlerAdditionalInfo = e => {
-    setAdditionalInfo(e);
-  };
+  const handlerAdditionalInfo = (e) => {
+    setAdditionalInfo(e)
+  }
 
   // aggregate collected data
   const submitAction = () => {
@@ -120,15 +122,13 @@ const SymptomsTracker = () => {
       dizinnes: dizinnes,
       soreThroat: soreThroat,
       congestion: congestion,
-      additionalInfo: additionalInfo,
-    };
-  };
+      additionalInfo: additionalInfo
+    }
+  }
 
   return (
     <div className={classes.root}>
-      <Typography id="discrete-slider" gutterBottom>
-        How do you feel today?
-      </Typography>
+      <Typography id="discrete-slider" gutterBottom>How do you feel today?</Typography>
       <Slider
         onChange={(e, val) => handlerTodayFeeling(val)}
         color="secondary"
@@ -170,7 +170,9 @@ const SymptomsTracker = () => {
       <Button onClick={submitAction} variant="outlined" color="secondary">
         SAVE MY RESPONSES
       </Button>
+
     </div>
+
   );
 };
 
