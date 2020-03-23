@@ -200,9 +200,9 @@ const SymptomsTracker = () => {
       </ButtonGroup >
       <ButtonGroup color="secondary" aria-label="outlined primary button group">
         <FormControlLabel
-          value="Soar throat"
+          value="Sore throat"
           control={<Checkbox color="secondary" />}
-          label="Soar throat"
+          label="Sore throat"
           labelPlacement="end"
         />
         <Button onClick={e => handlerSoreThroat(e.target.innerText)}>Minimal</Button>
