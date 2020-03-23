@@ -8,7 +8,6 @@ import NavBar from './NavBar';
 import Button from 'react-bootstrap/Button';
 import { Container, Row, Col } from 'react-bootstrap';
 import Temperature from './Temperature';
-import FlashCards from './FlashCards'
 
 const dateOptions = {
   weekday: 'short',
