@@ -12,7 +12,6 @@ import SymptomsTracker from './SymptomsTracker';
 import { loadObservations } from '../redux/actions/observations';
 import { useDispatch } from 'react-redux';
 
-
 const dateOptions = {
   weekday: 'long',
   year: 'numeric',
