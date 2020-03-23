@@ -8,6 +8,7 @@ import NavBar from './NavBar';
 import Button from 'react-bootstrap/Button';
 import { Container, Row, Col } from 'react-bootstrap';
 import Temperature from './Temperature';
+import FlashCards from './FlashCards'
 
 const dateOptions = {
   weekday: 'short',
@@ -49,8 +50,11 @@ function DiagnosticContainer(props) {
           </Col>
         </Row>
       </Container>
-      <Temperature allRecords={[{ temperature: 100.4 }, { temperature: 98 }]} />
-      <Button onClick={handleSignOut}>Sign Out</Button>
+      {/* <Temperature allRecords={[{ temperature: 100.4 }, { temperature: 98 }]} /> */}
+      <div className="FlashCards">
+        <FlashCards />
+      </div>
+      {/* <Button onClick={handleSignOut}>Sign Out</Button> */}
     </div>
   );
 }
