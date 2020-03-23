@@ -20,8 +20,6 @@ function TemperatureAutocomplete(props) {
           {option}°F
         </React.Fragment>
       )}
-      // getOptionLabel={option => option.title}
-      // style={{ width: 120 }}
       onChange={props.symptomChecked ? props.handleFever : () => { }}
       value={props.feverValue}
       renderInput={params => <TextField {...params} variant="outlined" />}
@@ -29,7 +27,7 @@ function TemperatureAutocomplete(props) {
   )
 }
 
-// headache
+// headah
 // handle minutes part for headache
 function MinutesAutocomplete(props) {
   // slicing minutes part of time and setting to empty string if value is null
@@ -39,11 +37,6 @@ function MinutesAutocomplete(props) {
       size='small'
       id="combo-box-demo"
       options={minutes}
-      // getOptionLabel={option => option}
-      // renderOption={option => (
-      //   <React.Fragment>{option}</React.Fragment>
-      // )}
-      // style={{ width: 120 }}
       onChange={props.symptomChecked ? props.handleMinutes : () => { }}
       value={value}
       renderInput={params => <TextField {...params} variant="outlined" />}
@@ -59,11 +52,6 @@ function HoursAutocomplete(props) {
     size='small'
     id="combo-box-demo"
     options={hours}
-    // getOptionLabel={option => option}
-    // renderOption={option => (
-    //   <React.Fragment>{option}</React.Fragment>
-    // )}
-    // style={{ width: 120 }}
     onChange={props.symptomChecked ? props.handleHours : () => { }}
     value={value}
     renderInput={params => <TextField {...params} variant="outlined" />}

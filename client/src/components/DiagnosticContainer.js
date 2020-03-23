@@ -12,6 +12,7 @@ import { loadObservations } from '../redux/actions/observations';
 import { useDispatch } from 'react-redux';
 import CheckboxButton from './survey-view/checkbox-button/CheckboxButton'
 
+
 const dateOptions = {
   weekday: 'long',
   year: 'numeric',
@@ -19,7 +20,7 @@ const dateOptions = {
   day: 'numeric',
 };
 
-function DiagnosticContainer(props) {
+const DiagnosticContainer = (props) => {
   const { handleSignOut, userSession } = props;
   var today = new Date();
   const dispatch = useDispatch();

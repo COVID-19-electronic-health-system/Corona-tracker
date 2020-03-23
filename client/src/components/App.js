@@ -1,3 +1,4 @@
+
 import React, { Component } from 'react';
 import Login from './Login';
 import 'bootstrap/dist/css/bootstrap.min.css';
@@ -7,6 +8,11 @@ import { UserSession } from 'blockstack';
 import { configure, User, getConfig } from 'radiks';
 import { Connect } from '@blockstack/connect';
 import DiagnosticContainer from './DiagnosticContainer';
+import { BrowserRouter, Route, Switch } from 'react-router-dom'
+import { connect } from 'react-redux';
+import setLoginLoading from '../redux/actions/actions'
+
+
 
 const RADIKS_URL = process.env.REACT_APP_QA_URL || 'http://127.0.0.1:1260'; // TODO this will change to wherever our radiks server will be hosted in prod
 
@@ -20,7 +26,10 @@ class App extends Component {
     this.userSession = new UserSession({ appConfig });
   }
 
-  state = { url: '', userSession: undefined };
+  state = {
+    url: '',
+    userSession: undefined,
+  };
 
   async componentDidMount() {
     const userSession = makeUserSession();
@@ -61,19 +70,47 @@ class App extends Component {
     };
 
     return (
-      <Connect authOptions={authOptions}>
-        <div className="App">
-          {!userSession || !userSession.isUserSignedIn() ? (
-            <Login />
-          ) : (
-            <div>
-              <DiagnosticContainer userSession={userSession} handleSignOut={this.handleSignOut} />
-            </div>
-          )}
-        </div>
-      </Connect>
+      <BrowserRouter>
+        <Connect authOptions={authOptions}>
+          <div className="App">
+            <Switch>
+              <Route exact path='/'>
+                {!userSession || !userSession.isUserSignedIn() ? (
+                  <Login />
+                ) : (
+                    <div>
+                      <DiagnosticContainer userSession={userSession} handleSignOut={this.handleSignOut} />
+                    </div>
+                  )}
+              </Route>
+              {/* ADD/EDIT ROUTES WITH THEIR COMPONENTS HERE: */}
+              <Route path='/signup' />
+              <Route path='/symptomsurvey' />
+              <Route path='/log' />
+              <Route path='/healthlog' />
+              <Route path='/education' />
+              <Route path='/map' />
+              <Route path='/settings' />
+            </Switch>
+          </div>
+        </Connect>
+      </BrowserRouter>
     );
   }
 }
 
-export default App;
+
+const mapStateToProps = ({ loginLoading }) => ({
+  loginLoading,
+})
+
+const mapDispatchToProps = dispatch => ({
+  setLoading(isLoading) {
+    return () => {
+      dispatch(setLoginLoading(isLoading))
+    }
+  }
+})
+
+export default connect(mapStateToProps, mapDispatchToProps)(App);
+

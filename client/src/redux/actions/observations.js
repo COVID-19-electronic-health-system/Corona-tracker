@@ -12,7 +12,7 @@ export function saveObservation(observation) {
 export function loadObservations() {
   return async (dispatch, getState) => {
     dispatch({ type: LOADING });
-    const { dataSample: currentObservations } = getState();
+    const { observations: currentObservations } = getState();
     const observations = await Observation.fetchOwnList();
     const newObservations = observations.filter(o => currentObservations.indexOf(o) < 0);
     dispatch({

@@ -5,11 +5,11 @@ import '../css/Temperature.css';
 import { useSelector } from 'react-redux';
 
 export default () => {
-  const dataSample = useSelector(state => state.dataSample);
+  const observations = useSelector(state => state.observations)
   const averageTemperature =
-    dataSample.reduce((sum, record) => {
+    observations.reduce((sum, record) => {
       return record.attrs.physical.temperature + sum;
-    }, 0) / dataSample.length;
+    }, 0) / observations.length;
 
   return (
     <Card>

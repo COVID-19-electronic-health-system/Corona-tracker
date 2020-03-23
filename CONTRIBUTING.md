@@ -20,7 +20,12 @@ To run locally, you'll need to have MongoDB installed locally. Follow [this](htt
   - `use coronatracker` - switch to a new local database, coronatracker
   - `db.createUser({user: "admin", pwd:"foobar1",roles: ["readWrite","dbAdmin"]});` - create a new admin user for this database
 
-You'll also need `radiks-server`, which you can install simply with `npm install -g radiks-server`
+You'll also need `radiks-server`, which you can install simply with  
+**npm**
+`npm install -g radiks-server`
+**yarn**
+`yarn global add radiks-server`
+
 
 - Create a `MONGODB_URI` environment variable on the same machine you're running `radiks-server`
   - `export MONGODB_URI="mongodb://admin:foobar1@localhost:27017/test1"` - `admin`, `foobar1`, `test1` are the username/pass/db from the admin user you created when setting up MongoDB
@@ -41,9 +46,9 @@ You'll also need `radiks-server`, which you can install simply with `npm install
 1. Fork this repo `https://github.com/COVID-19-electronic-health-system/Corona-tracker`
 2. `cd Corona-tracker/client`
 3. `npm i`
-4. Create a new file, `.env`
+4. Create a new file, `.env.development`
 5. On the Discord server, navigate to the #welcome channel, and click the pin icon on the top right of the window. Copy the `REACT_APP_QA_URL` code from the pinned message from Carter Klein.
-6. In `.env`, write and save `REACT_APP_QA_URL: <THE-URL-CODE>`
+6. In `.env.development`, write and save `REACT_APP_QA_URL: <THE-URL-CODE>`
 7. `npm run start` - run the application locally
 
 #### BEFORE YOU MAKE CHANGES TO YOUR FORKED CODE VIA BRANCH OR MASTER
