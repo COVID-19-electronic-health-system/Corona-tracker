@@ -11,6 +11,7 @@ import DiagnosticContainer from './DiagnosticContainer';
 import { BrowserRouter, Route, Switch } from 'react-router-dom'
 import { connect } from 'react-redux';
 import setLoginLoading from '../redux/actions/actions'
+import FactQuizContainer from './FactQuizContainer';
 
 
 
@@ -88,7 +89,7 @@ class App extends Component {
               <Route path='/symptomsurvey' />
               <Route path='/log' />
               <Route path='/healthlog' />
-              <Route path='/education' />
+              <Route path='/education' render={()=><FactQuizContainer handleSignOut={this.handleSignOut}/>}/>
               <Route path='/map' />
               <Route path='/settings' />
             </Switch>
