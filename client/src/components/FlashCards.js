@@ -81,18 +81,23 @@ const FlashCards = () => {
     if (!down && gone.size === cardData.length) setTimeout(() => gone.clear() || set(i => to(i)), 600)
   })
   // Now we're just mapping the animated values to our view, that's it. Btw, this component only renders once. :-)
-  return props.map(({ x, y, rot, scale }, i) => (
-    <Card
-      i={i}
-      x={x}
-      y={y}
-      rot={rot}
-      scale={scale}
-      trans={trans}
-      data={cardData[i]}
-      bind={bind}
-    />
-  ))
+  return (
+    <div className="FlashCards">
+      {props.map(({ x, y, rot, scale }, i) => (
+      <Card
+        key={i+'card'}
+        i={i}
+        x={x}
+        y={y}
+        rot={rot}
+        scale={scale}
+        trans={trans}
+        data={cardData[i]}
+        bind={bind}
+      />
+    ))}
+  </div>
+  )
 }
 
 export default FlashCards
