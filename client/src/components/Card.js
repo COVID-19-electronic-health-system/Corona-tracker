@@ -5,7 +5,7 @@ import Button from '@material-ui/core/Button';
 class Card extends React.Component {
   render() {
     const { i, x, y, rot, scale, trans, bind, data } = this.props;
-    const { title, body, img } = data;
+    const { title, body, img, footer, link } = data;
     // TODO ADD STYLING
     return (
       <animated.div
@@ -26,8 +26,8 @@ class Card extends React.Component {
           <div className="card" style={{textAlign:'left'}}>
             <h1 style={{color:'red', fontStyle:'cursive'}}>{title}</h1>
             <h3 style={{fontSize:'1rem'}}>{body}</h3>
-              <footer style={{textAlign:'left'}}>Fun Fact#{i} 
-                <Button size="small">Learn More</Button>
+              <footer style={{textAlign:'left'}}>{footer}
+                {link && <Button size="small" href={link} >Learn More</Button>}
               </footer>
           </div>
         </animated.div>
