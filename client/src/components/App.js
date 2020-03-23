@@ -5,9 +5,13 @@ import '../css/App.css';
 import { appConfig } from '../utils/constants';
 import { UserSession } from 'blockstack';
 import { configure, User, getConfig } from 'radiks';
-import Patient from '../models/patient';
 import { Connect } from '@blockstack/connect';
 import DiagnosticContainer from './DiagnosticContainer';
+import { BrowserRouter, Route, Switch } from 'react-router-dom'
+import { connect } from 'react-redux';
+import setLoginLoading from '../redux/actions/actions'
+
+
 
 const RADIKS_URL = process.env.REACT_APP_QA_URL || 'http://127.0.0.1:1260'; // TODO this will change to wherever our radiks server will be hosted in prod
 
@@ -21,7 +25,10 @@ class App extends Component {
     this.userSession = new UserSession({ appConfig });
   }
 
-  state = { url: '', userSession: undefined };
+  state = {
+    url: '',
+    userSession: undefined,
+  };
 
   async componentDidMount() {
     const userSession = makeUserSession();
@@ -53,26 +60,6 @@ class App extends Component {
         await User.createWithCurrentUser();
 
         this.setState({ url: window.location.origin });
-
-        // Creates a new Patient model associated with the user
-        const patient = new Patient({
-          doctor: 'Test Doctor',
-          location: ['123', '456'],
-        });
-
-        // Saves that patient in the user's associated Gaia storage, encrypted, and replicated in MongoDB
-        await patient.save();
-
-        // Radiks queries the encrypted MongoDB entry, decrypts the data
-        const allPatients = await Patient.fetchOwnList();
-
-        // Print the resulting
-        console.log('ALL PATIENTS:', allPatients);
-        // Delete the entry, to keep things clean for the purpose of example
-        var p;
-        for (p of allPatients) {
-          p.destroy();
-        }
       },
       appDetails: {
         name: 'Corona Tracker',
@@ -82,19 +69,47 @@ class App extends Component {
     };
 
     return (
-      <Connect authOptions={authOptions}>
-        <div className="App">
-          {!userSession || !userSession.isUserSignedIn() ? (
-            <Login />
-          ) : (
-            <div>
-              <DiagnosticContainer userSession={userSession} handleSignOut={this.handleSignOut} />
-            </div>
-          )}
-        </div>
-      </Connect>
+      <BrowserRouter>
+        <Connect authOptions={authOptions}>
+          <div className="App">
+            <Switch>
+              <Route exact path='/'>
+                {!userSession || !userSession.isUserSignedIn() ? (
+                  <Login />
+                ) : (
+                    <div>
+                      <DiagnosticContainer userSession={userSession} handleSignOut={this.handleSignOut} />
+                    </div>
+                  )}
+              </Route>
+              {/* ADD/EDIT ROUTES WITH THEIR COMPONENTS HERE: */}
+              <Route path='/signup' />
+              <Route path='/symptomsurvey' />
+              <Route path='/log' />
+              <Route path='/healthlog' />
+              <Route path='/education' />
+              <Route path='/map' />
+              <Route path='/settings' />
+            </Switch>
+          </div>
+        </Connect>
+      </BrowserRouter>
     );
   }
 }
 
-export default App;
+
+const mapStateToProps = ({ loginLoading }) => ({
+  loginLoading,
+})
+
+const mapDispatchToProps = dispatch => ({
+  setLoading(isLoading) {
+    return () => {
+      dispatch(setLoginLoading(isLoading))
+    }
+  }
+})
+
+export default connect(mapStateToProps, mapDispatchToProps)(App);
+

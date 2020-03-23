@@ -33,12 +33,11 @@
     "redux-mock-store": "1.5.3",
     "redux-thunk": "^2.3.0"
   },
-
+  "resolutions": {
+    "@babel/preset-env": "^7.8.7"
+  },
   "devDependencies": {
-<<<<<<< HEAD
-=======
     "@blockstack/prettier-config": "0.0.5",
->>>>>>> f615ee0527eb32877d55fee40b299d09af0f7e5d
     "@babel/core": "^7.8.7",
     "babel-jest": "^24.9.0",
     "canvas": "^2.6.1",
