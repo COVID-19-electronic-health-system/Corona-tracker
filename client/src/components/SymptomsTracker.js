@@ -14,7 +14,7 @@ const useStyles = makeStyles({
   });
 
   // marks for slider
-  const marks = [ 
+  const marks = [
     {
       value: 1,
       label: '1',
@@ -56,8 +56,8 @@ const useStyles = makeStyles({
       label: '10',
     },
   ];
-  
-  
+
+
 const SymptomsTracker = () => {
 
     const classes = useStyles();
@@ -75,11 +75,11 @@ const SymptomsTracker = () => {
 
     // every headnler function responsible for collecting data for particular question
     const handlerTodayFeeling = (e) => {
-      setTodayFeeling(e) 
+      setTodayFeeling(e)
     }
 
     const handlerTodaySymptoms = (e) => {
-      setTodaySymptoms(e) 
+      setTodaySymptoms(e)
     }
 
     const handlerCough = (e) => {
@@ -113,13 +113,13 @@ const SymptomsTracker = () => {
     // aggregate collected data
     const submitAction = () => {
       const submission = {
-        todayFeeling: todayFeeling, 
+        todayFeeling: todayFeeling,
         todaySymptoms: todaySymptoms,
         comparedFeeling: comparedFeeling,
         cough: cough,
         fever: fever,
         dizinnes: dizinnes,
-        soarThroat: soarThroat,
+        soreThroat: soreThroat,
         congestion: congestion,
         additionalInfo: additionalInfo
       }
@@ -163,7 +163,7 @@ const SymptomsTracker = () => {
       </ButtonGroup>
 
       <Typography>Which symptoms are you experiencing?</Typography>
-      
+
       <ButtonGroup color="secondary" aria-label="outlined primary button group">
         <FormControlLabel
           value="Cough"
