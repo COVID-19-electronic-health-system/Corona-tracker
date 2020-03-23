@@ -50,11 +50,8 @@ function DiagnosticContainer(props) {
           </Col>
         </Row>
       </Container>
-      {/* <Temperature allRecords={[{ temperature: 100.4 }, { temperature: 98 }]} /> */}
-      <div className="FlashCards">
-        <FlashCards mode="quizMode"/>
-      </div>
-      {/* <Button onClick={handleSignOut}>Sign Out</Button> */}
+      <Temperature allRecords={[{ temperature: 100.4 }, { temperature: 98 }]} />
+      <Button onClick={handleSignOut}>Sign Out</Button>
     </div>
   );
 }
