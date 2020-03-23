@@ -8,6 +8,7 @@ import { configure, User, getConfig } from 'radiks';
 import Patient from '../models/patient';
 import { Connect } from '@blockstack/connect';
 import DiagnosticContainer from './DiagnosticContainer';
+import SymptomsTracker from './SymptomsTracker';
 
 const RADIKS_URL = process.env.REACT_APP_QA_URL || 'http://127.0.0.1:1260'; // TODO this will change to wherever our radiks server will be hosted in prod
 
