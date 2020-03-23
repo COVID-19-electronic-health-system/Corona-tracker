@@ -90,9 +90,7 @@ class App extends Component {
               <Route path='/log' />
               <Route path='/healthlog' />
               {/* make sure it goes back to normal when done*/}
-              <Route path='/education'>
-                <Disclaimer />
-              </Route>
+              <Route path='/education' />
               <Route path='/map' />
               <Route path='/settings' />
             </Switch>
