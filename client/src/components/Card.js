@@ -48,18 +48,8 @@ const Card = (props) => {
             transform: interpolate([rot, scale], trans)
           }}
         >
-<<<<<<< HEAD
          {mode==='facts' && <Facts data={data}/>}
          {mode==='quiz' && <Quiz data={data}/>}
-=======
-          <div className="card" style={{textAlign:'left'}}>
-            <h1 style={{color:'red', fontStyle:'cursive'}}>{title}</h1>
-            <h3 style={{fontSize:'1rem'}}>{body}</h3>
-              <footer style={{textAlign:'left'}}>{footer}
-                {link && <Button size="small" href={link} >Learn More</Button>}
-              </footer>
-          </div>
->>>>>>> master
         </animated.div>
       </animated.div>
     );
