@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import '../css/App.css';
 import '../css/DiagnosticContainer.css';
 import '../css/themePalette.css';
@@ -7,7 +7,7 @@ import { ReactComponent as TextLogo } from '../img/Logo_CORONATRACKER_Text_Logo.
 import NavBar from './NavBar';
 import Button from 'react-bootstrap/Button';
 import { makeStyles } from '@material-ui/core/styles';
-import { Container } from '@material-ui/core';
+import { Container, Typography } from '@material-ui/core';
 import { loadObservations } from '../redux/actions/observations';
 import { useDispatch } from 'react-redux';
 
@@ -29,6 +29,10 @@ const useStyles = makeStyles(theme => ({
       width: '200px',
     },
   },
+  textQ: {
+    fontSize: '20px',
+    fontWeight: 'bold',
+  },
 }));
 //the date
 const dateOptions = {
@@ -39,6 +43,7 @@ const dateOptions = {
 };
 
 function DiagnosticContainer(props) {
+  const [healthLogged] = useState(false);
   const classes = useStyles();
   const { handleSignOut, userSession } = props;
   const today = new Date();
@@ -60,6 +65,9 @@ function DiagnosticContainer(props) {
         <h5>
           Today is <b>{today.toLocaleDateString(undefined, dateOptions)}</b>{' '}
         </h5>
+        <Typography className={classes.textQ}>
+          {!healthLogged ? 'Great Job Logging Your Health Today!' : "Let's Log Your Health Today!"}
+        </Typography>
       </Container>
       <NavBar />
     </div>
