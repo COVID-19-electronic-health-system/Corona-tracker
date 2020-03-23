@@ -6,7 +6,7 @@ class Card extends React.Component {
   render() {
     const { i, x, y, rot, scale, trans, bind, data } = this.props;
     const { title, body, img } = data;
-
+    // TODO ADD STYLING
     return (
       <animated.div
         key={i}
@@ -25,7 +25,7 @@ class Card extends React.Component {
         >
           <div className="card" style={{textAlign:'left'}}>
             <h1 style={{color:'red', fontStyle:'cursive'}}>{title}</h1>
-            <h3>{body}</h3>
+            <h3 style={{fontSize:'1rem'}}>{body}</h3>
               <footer style={{textAlign:'left'}}>Fun Fact#{i} 
                 <Button size="small">Learn More</Button>
               </footer>
