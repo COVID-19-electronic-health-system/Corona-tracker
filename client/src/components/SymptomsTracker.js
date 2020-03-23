@@ -1,8 +1,7 @@
 import React, { useState } from 'react';
 import { makeStyles } from '@material-ui/core/styles';
-import { Typography, Slider, ButtonGroup, Button, Checkbox, FormControlLabel, TextField } from '@material-ui/core';
+import { Typography, Slider, ButtonGroup, Button, TextField } from '@material-ui/core';
 import CheckboxButton from './survey-view/checkbox-button/CheckboxButton';
-import SingleCheckboxButton from './survey-view/checkbox-button/SingleCheckboxButton';
 
 // custome style for material ui elements
 const useStyles = makeStyles({
