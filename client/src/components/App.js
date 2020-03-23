@@ -7,6 +7,8 @@ import { UserSession } from 'blockstack';
 import { configure, User, getConfig } from 'radiks';
 import { Connect } from '@blockstack/connect';
 import DiagnosticContainer from './DiagnosticContainer';
+import { BrowserRouter, Route, Switch } from 'react-router-dom'
+
 
 
 const RADIKS_URL = process.env.REACT_APP_QA_URL || 'http://127.0.0.1:1260'; // TODO this will change to wherever our radiks server will be hosted in prod
@@ -62,17 +64,31 @@ class App extends Component {
     };
 
     return (
-      <Connect authOptions={authOptions}>
-        <div className="App">
-          {!userSession || !userSession.isUserSignedIn() ? (
-            <Login />
-          ) : (
-              <div>
-                <DiagnosticContainer userSession={userSession} handleSignOut={this.handleSignOut} />
-              </div>
-            )}
-        </div>
-      </Connect>
+      <BrowserRouter>
+        <Connect authOptions={authOptions}>
+          <div className="App">
+            <Switch>
+              <Route exact path='/'>
+                {!userSession || !userSession.isUserSignedIn() ? (
+                  <Login />
+                ) : (
+                    <div>
+                      <DiagnosticContainer userSession={userSession} handleSignOut={this.handleSignOut} />
+                    </div>
+                  )}
+              </Route>
+              {/* ADD/EDIT ROUTES WITH THEIR COMPONENTS HERE: */}
+              <Route path='/signup' />
+              <Route path='/symptomsurvey' />
+              <Route path='/log' />
+              <Route path='/healthlog' />
+              <Route path='/education' />
+              <Route path='/map' />
+              <Route path='/settings' />
+            </Switch>
+          </div>
+        </Connect>
+      </BrowserRouter>
     );
   }
 }
