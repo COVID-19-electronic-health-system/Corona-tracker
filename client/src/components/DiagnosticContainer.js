@@ -9,6 +9,7 @@ import Button from 'react-bootstrap/Button';
 import { Container, Row, Col } from 'react-bootstrap';
 import Temperature from './Temperature';
 import FlashCards from './FlashCards'
+import SimpleCard from './Card'
 
 const dateOptions = {
   weekday: 'short',
@@ -50,9 +51,10 @@ function DiagnosticContainer(props) {
           </Col>
         </Row>
       </Container>
+      {/* <SimpleCard /> */}
       {/* <Temperature allRecords={[{ temperature: 100.4 }, { temperature: 98 }]} /> */}
       <div className="FlashCards">
-        <FlashCards />
+        <FlashCards mode="quizMode"/>
       </div>
       {/* <Button onClick={handleSignOut}>Sign Out</Button> */}
     </div>

@@ -32,7 +32,7 @@ body {
   padding-bottom: 20rem;
 }
 
-.FlashCards div div {
+.Card {
   background-color: white;
   background-size: auto 85%;
   background-repeat: no-repeat;
@@ -46,6 +46,10 @@ body {
   box-shadow: 0 12.5px 100px -10px rgba(50, 50, 73, 0.4), 0 10px 10px -10px rgba(50, 50, 73, 0.3);
 }
 
+/* 
+  ##Device = Desktops
+  ##Screen = 1281px to higher resolution desktops
+*/
 @media (min-width: 1281px) {
   .FlashCards div {
     padding-bottom: 30rem;
@@ -53,5 +57,47 @@ body {
   .FlashCards div div{
     max-width: 400px;
     max-height: 500px;
+  }
+}
+
+/* 
+  ##Device = Laptops, Desktops
+  ##Screen = B/w 1025px to 1280px
+*/
+@media (min-width: 1025px) and (max-width: 1280px) {
+  .FlashCards div {
+    padding-bottom: 22rem;
+  }
+  .FlashCards div div{
+    max-width: 400px;
+    max-height: 375px;
+  }
+}
+
+/* 
+  ##Device = Tablets, Ipads (portrait)
+  ##Screen = B/w 768px to 1024px
+*/
+@media (min-width: 768px) and (max-width: 1024px) {
+  .FlashCards div {
+    padding-bottom: 30rem;
+  }
+  .FlashCards div div{
+    max-width: 350px;
+    max-height: 375px;
+  }
+}
+
+/* 
+  ##Device = Tablets, Ipads (landscape)
+  ##Screen = B/w 768px to 1024px
+*/
+@media (min-width: 768px) and (max-width: 1024px) and (orientation: landscape) {
+  .FlashCards div {
+    padding-bottom: 24rem;
+  }
+  .FlashCards div div{
+    max-width: 350px;
+    max-height: 375px;
   }
 }

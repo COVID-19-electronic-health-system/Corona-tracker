@@ -1,6 +1,7 @@
 import React, { useState } from 'react'
 import { useSprings, animated, interpolate } from 'react-spring'
 import { useDrag } from 'react-use-gesture'
+import SimpleCard from './Card'
 import '../css/FlashCards.css'
 
 const cards = [
@@ -10,6 +11,17 @@ const cards = [
   'https://upload.wikimedia.org/wikipedia/en/d/db/RWS_Tarot_06_Lovers.jpg',
   'https://upload.wikimedia.org/wikipedia/en/thumb/8/88/RWS_Tarot_02_High_Priestess.jpg/690px-RWS_Tarot_02_High_Priestess.jpg',
   'https://upload.wikimedia.org/wikipedia/en/d/de/RWS_Tarot_01_Magician.jpg'
+]
+
+const AnimatedCard = animated(SimpleCard)
+
+const fakeCardData = [
+  {title:'Did you know?', body:"In Covid-19,'CO' stands for 'corona', 'VI' for 'virus', and 'D' for disease. Formerly, this disease was referred to as 2019 novel coronavirus or 2019-nCov. There are many types of human coronaviruses including some that commonly cause mild upper-respiratory tract illness"},
+  {title:'1', body:'2'},
+  {title:'1', body:'6'},
+  {title:'1', body:'5'},
+  {title:'1', body:'4'},
+  {title:'1', body:'3'}
 ]
 
 // These two are just helpers, they curate spring data, values that are later being interpolated into css
@@ -40,7 +52,7 @@ const FlashCards = () => {
   return props.map(({ x, y, rot, scale }, i) => (
     <animated.div key={i} style={{ x, y }}>
       {/* This is the card itself, we're binding our gesture to it (and inject its index so we know which is which) */}
-      <animated.div {...bind(i)} style={{ transform: interpolate([rot, scale], trans), backgroundImage: `url(${cards[i]})` }} />
+      <AnimatedCard className="Card" fakecarddata={fakeCardData[i]} {...bind(i)} style={{ transform: interpolate([rot, scale], trans),  }} />
     </animated.div>
   ))
 }
