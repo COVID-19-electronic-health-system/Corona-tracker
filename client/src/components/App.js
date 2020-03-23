@@ -11,6 +11,7 @@ import DiagnosticContainer from './DiagnosticContainer';
 import { BrowserRouter, Route, Switch } from 'react-router-dom'
 import { connect } from 'react-redux';
 import setLoginLoading from '../redux/actions/actions'
+import Map from './Map'
 
 
 
@@ -89,7 +90,7 @@ class App extends Component {
               <Route path='/log' />
               <Route path='/healthlog' />
               <Route path='/education' />
-              <Route path='/map' />
+              <Route path='/map' component={Map} />
               <Route path='/settings' />
             </Switch>
           </div>
