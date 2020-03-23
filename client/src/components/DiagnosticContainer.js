@@ -8,10 +8,9 @@ import NavBar from './NavBar';
 import Button from 'react-bootstrap/Button';
 import { Container } from 'react-bootstrap';
 import Temperature from './Temperature';
+import SymptomsTracker from './SymptomsTracker';
 import { loadObservations } from '../redux/actions/observations';
 import { useDispatch } from 'react-redux';
-import CheckboxButton from './survey-view/checkbox-button/CheckboxButton'
-
 
 const dateOptions = {
   weekday: 'long',
@@ -46,7 +45,9 @@ const DiagnosticContainer = (props) => {
         </h5>
         <hr className="hr" />
       </Container>
-      <CheckboxButton />
+      <Container>
+        <SymptomsTracker />
+      </Container>
     </div>
   );
 }

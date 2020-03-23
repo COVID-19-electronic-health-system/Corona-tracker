@@ -8,6 +8,9 @@ A tool to help reduce the number of unecessary hospital visits, educate the publ
 
 https://discord.gg/pPERUuv
 
+## Website
+Visit [CoronaTracker.me](https://github.com/COVID-19-electronic-health-system/Corona-tracker)
+
 ## VIEW [CONTRIBUTING](./CONTRIBUTING.md) TO ONBOARD, RUN APPLICATION LOCALLY OR IN QA
 
 ## We are in crisis and we need to act
