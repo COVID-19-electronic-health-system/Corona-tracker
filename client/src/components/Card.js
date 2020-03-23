@@ -2,9 +2,9 @@ import React from "react";
 import { animated, interpolate } from "react-spring";
 import Button from '@material-ui/core/Button';
 
-class Card extends React.Component {
-  render() {
-    const { i, x, y, rot, scale, trans, bind, data } = this.props;
+const Card = (props) => {
+  
+    const { i, x, y, rot, scale, trans, bind, data } = props;
     const { title, body, img, footer, link } = data;
     // TODO ADD STYLING
     return (
@@ -33,7 +33,6 @@ class Card extends React.Component {
         </animated.div>
       </animated.div>
     );
-  }
 }
 
 
