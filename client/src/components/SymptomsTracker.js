@@ -119,7 +119,7 @@ const SymptomsTracker = () => {
         cough: cough,
         fever: fever,
         dizinnes: dizinnes,
-        soarThroat: soarThroat,
+        soreThroat: soreThroat,
         congestion: congestion,
         additionalInfo: additionalInfo
       }
