@@ -45,6 +45,9 @@ Over the past week, the team has been in consultation with individuals and stake
 - Public health authorities. They need to inform, educate, and support citizens.
 - Researchers. There is enormous implications for individual's wellbeing and health and so we must try to understand how 1) individuals are traversing their journey and 2) if education is significantly improving characteristics in user's health/wellbeing chart.
 
+## Idea
+
+The idea **for our IPR** is to help doctors monitor large numbers of patients' symptoms over time (daily or less). Doctors can text the patients if the patients are still ok, or call the patient if they start to get worse. Or, as time goes on, the doctor can refer them to telemedicine service like Jamaica Hospital or other. This will ultimately manifest itself as, mainly, a dashboard and a survey that people update daily with information.
 ### What is the benefit this app is providing?
 
 This application will address a global public health need by promoting accurate information to the general population and thereby help healthcare workers on the front lines to provide the necessary care to those in need.
@@ -57,8 +60,8 @@ This application will address a global public health need by promoting accurate 
 
 ### Frontend:
 
-React  
-Material-UI- for all new components  
+React
+Material-UI- for all new components
 React-Bootstrap - deprecated, used in old components which need to be converted to Material-UI.
 
 ### "Backend"/DB:
@@ -75,7 +78,7 @@ Jest
 
 #### @Carter Klein is implementing backend with blockstack, front end, systems architecture.
 
-See [/design/backend](https://github.com/COVID-19-electronic-health-system/Corona-tracker/tree/master/design), [/design/models](https://github.com/COVID-19-electronic-health-system/Corona-tracker/tree/master/design/database_models), and [/client](https://github.com/COVID-19-electronic-health-system/Corona-tracker/tree/master/client)  
+See [/design/backend](https://github.com/COVID-19-electronic-health-system/Corona-tracker/tree/master/design), [/design/models](https://github.com/COVID-19-electronic-health-system/Corona-tracker/tree/master/design/database_models), and [/client](https://github.com/COVID-19-electronic-health-system/Corona-tracker/tree/master/client)
 (@Carter Klein on discord)
 
 #### @Brian H. Hough: is implementing design, social media marketing, front end code.
@@ -85,32 +88,32 @@ See [/design](https://github.com/COVID-19-electronic-health-system/Corona-tracke
 
 #### @tesla809: is implementing front end code, documentation and booking meetings with experts.
 
-Open to peer program any issue or bugs!  
-See [/client](https://github.com/COVID-19-electronic-health-system/Corona-tracker/tree/master/client)  
+Open to peer program any issue or bugs!
+See [/client](https://github.com/COVID-19-electronic-health-system/Corona-tracker/tree/master/client)
 (@Anthony A. on discord)
 
 #### @akilhylton: is implementing front end code, documentation, has machine learning experience.
 
-Open to peer program any issue or bugs!  
-See [/client](https://github.com/COVID-19-electronic-health-system/Corona-tracker/tree/master/client)  
+Open to peer program any issue or bugs!
+See [/client](https://github.com/COVID-19-electronic-health-system/Corona-tracker/tree/master/client)
 (@Akil Hylton on discord)
 
 #### @ngiangre: is advising on the data model, analytics, data science
 
-See [analytics thread](https://github.com/COVID-19-electronic-health-system/Corona-tracker/issues/51)  
+See [analytics thread](https://github.com/COVID-19-electronic-health-system/Corona-tracker/issues/51)
 (@NickG on discord)
 
 #### @salvolpe: is helping with translations, analytics
 
-(@laseplov on discord)  
+(@laseplov on discord)
 See [translations.md](translations.md)
 
 #### @lukelin1991: Managing discord, discord roles, front-end, translations.
 
 (@kirbypooh on discord)
 
-And YOU!  
-How would you like to help?  
+And YOU!
+How would you like to help?
 see [CONTRIBUTING.md](./CONTRIBUTING.md) PENDING
 
 ## Questions?
@@ -128,25 +131,25 @@ We have decided to use regular CSS files to keep things simple for now. This all
 
 Once MVP is done the team can discuss if we want to transition it to styled-components or something like CSS modules.
 
-Folder paths  
-CSS is located in /client/src/css  
+Folder paths
+CSS is located in /client/src/css
 Components are located in /client/src/components
 
 Style guide for CSS files:
 
 **Naming convention:**
-Component -> Sample.js  
+Component -> Sample.js
 CSS file -> Sample.css
 Reducer -> sampleReducer.js
 
 To avoid naming collisions:
-prefix class names with the name of component and link with kebab case.  
+prefix class names with the name of component and link with kebab case.
 Class name -> .Sample-header { ... }
 
 **How to handle state:**
-Let's use Redux.  
-Create action and reducer with an appropriate name.  
-Add them to the /actions and /reducers folder.  
+Let's use Redux.
+Create action and reducer with an appropriate name.
+Add them to the /actions and /reducers folder.
 **We need help to implement this.**
 
 **Testing**

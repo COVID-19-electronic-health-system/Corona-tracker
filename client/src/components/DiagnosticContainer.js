@@ -46,7 +46,7 @@ const DiagnosticContainer = (props) => {
         <hr className="hr" />
       </Container>
       <Container>
-        <SymptomsTracker/>
+        <SymptomsTracker />
       </Container>
     </div>
   );
