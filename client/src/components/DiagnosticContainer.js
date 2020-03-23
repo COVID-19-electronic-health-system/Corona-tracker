@@ -10,6 +10,7 @@ import { Container } from 'react-bootstrap';
 import Temperature from './Temperature';
 import { loadObservations } from '../redux/actions/observations';
 import { useDispatch } from 'react-redux';
+import CheckboxButton from './survey-view/checkbox-button/CheckboxButton'
 
 const dateOptions = {
   weekday: 'long',
@@ -44,6 +45,7 @@ function DiagnosticContainer(props) {
         </h5>
         <hr className="hr" />
       </Container>
+      <CheckboxButton />
     </div>
   );
 }

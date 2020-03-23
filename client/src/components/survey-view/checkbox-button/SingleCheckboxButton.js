@@ -8,6 +8,7 @@ import Autocomplete from '@material-ui/lab/Autocomplete';
 import Checkbox from '@material-ui/core/Checkbox';
 import { temperature, minutes, hours } from './constants';
 
+// handles fever symptom
 function TemperatureAutocomplete(props) {
   return (
     <Autocomplete
@@ -28,6 +29,8 @@ function TemperatureAutocomplete(props) {
   )
 }
 
+// headache
+// handle minutes part for headache
 function MinutesAutocomplete(props) {
   // slicing minutes part of time and setting to empty string if value is null
   const value = props.minutesValue ? props.minutesValue.match(/:.*/)[0].replace(/:/, '') : '';
@@ -47,6 +50,8 @@ function MinutesAutocomplete(props) {
     />
   )
 }
+
+// handle hours part for headache
 function HoursAutocomplete(props) {
   // slicing hours part of time and setting to empty string if value is null
   const value = props.hoursValue ? props.hoursValue.match(/\d*(?=:)/)[0] : '';
@@ -65,7 +70,7 @@ function HoursAutocomplete(props) {
   />)
 }
 
-//props: symptomName, symptomChecked, handleCheckboxChange, symptomValue
+// main functional component
 export default function SingleCheckboxButton(props) {
 
   // creating appropriate label name
