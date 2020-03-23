@@ -10,6 +10,7 @@ import { makeStyles } from '@material-ui/core/styles';
 import { Container } from '@material-ui/core';
 import { loadObservations } from '../redux/actions/observations';
 import { useDispatch } from 'react-redux';
+import Disclaimer from './Disclaimer';
 
 const useStyles = makeStyles(theme => ({
   //the styles goes here as an object
@@ -64,6 +65,9 @@ function DiagnosticContainer(props) {
         <h4>
           <b>Let’s log your health for today: </b>
         </h4>
+      </Container>
+      <Container>
+        <Disclaimer />
       </Container>
       <NavBar />
     </div>
