@@ -67,11 +67,6 @@ const SymptomsTracker = () => {
   const [todayFeeling, setTodayFeeling] = useState(1);
   const [todaySymptoms, setTodaySymptoms] = useState(1);
   const [comparedFeeling, setcomparedFeeling] = useState(1);
-  const [cough, setCough] = useState('');
-  const [fever, setFever] = useState(0);
-  const [dizinnes, setDizinnes] = useState('');
-  const [soreThroat, setSoreThroat] = useState('');
-  const [congestion, setCongestion] = useState('');
   const [additionalInfo, setAdditionalInfo] = useState('');
 
   // every headnler function responsible for collecting data for particular question
@@ -97,11 +92,6 @@ const SymptomsTracker = () => {
       todayFeeling: todayFeeling,
       todaySymptoms: todaySymptoms,
       comparedFeeling: comparedFeeling,
-      cough: cough,
-      fever: fever,
-      dizinnes: dizinnes,
-      soreThroat: soreThroat,
-      congestion: congestion,
       additionalInfo: additionalInfo
     }
   }
