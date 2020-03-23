@@ -30,10 +30,7 @@ const Quiz = ({data}) => {
 
 
 const Card = (props) => {
-  
     const { i, x, y, rot, scale, trans, bind, data, mode } = props;
-    // const { title, question, body, img, footer, link } = data;
-    console.log({mode})
     // TODO ADD STYLING
     return (
       <animated.div
