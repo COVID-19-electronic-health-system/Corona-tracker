@@ -46,9 +46,9 @@ You'll also need `radiks-server`, which you can install simply with
 1. Fork this repo `https://github.com/COVID-19-electronic-health-system/Corona-tracker`
 2. `cd Corona-tracker/client`
 3. `npm i`
-4. Create a new file, `.env`
+4. Create a new file, `.env.development`
 5. On the Discord server, navigate to the #welcome channel, and click the pin icon on the top right of the window. Copy the `REACT_APP_QA_URL` code from the pinned message from Carter Klein.
-6. In `.env`, write and save `REACT_APP_QA_URL: <THE-URL-CODE>`
+6. In `.env.development`, write and save `REACT_APP_QA_URL: <THE-URL-CODE>`
 7. `npm run start` - run the application locally
 
 #### BEFORE YOU MAKE CHANGES TO YOUR FORKED CODE VIA BRANCH OR MASTER
