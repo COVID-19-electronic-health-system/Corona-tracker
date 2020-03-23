@@ -11,6 +11,8 @@ import { BrowserRouter, Route, Switch } from 'react-router-dom'
 import { connect } from 'react-redux';
 import setLoginLoading from '../redux/actions/actions'
 
+import Disclaimer from './Disclaimer';
+
 
 
 const RADIKS_URL = process.env.REACT_APP_QA_URL || 'http://127.0.0.1:1260'; // TODO this will change to wherever our radiks server will be hosted in prod
@@ -87,7 +89,10 @@ class App extends Component {
               <Route path='/symptomsurvey' />
               <Route path='/log' />
               <Route path='/healthlog' />
-              <Route path='/education' />
+              {/* make sure it goes back to normal when done*/}
+              <Route path='/education'>
+                <Disclaimer />
+              </Route>
               <Route path='/map' />
               <Route path='/settings' />
             </Switch>
@@ -112,4 +117,3 @@ const mapDispatchToProps = dispatch => ({
 })
 
 export default connect(mapStateToProps, mapDispatchToProps)(App);
-
