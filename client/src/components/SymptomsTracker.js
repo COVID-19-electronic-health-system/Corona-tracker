@@ -83,28 +83,8 @@ const SymptomsTracker = () => {
     setTodaySymptoms(e)
   }
 
-  const handlerCough = (e) => {
-    setCough(e)
-  }
-
   const handlerComparedFeeling = (e) => {
     setcomparedFeeling(e)
-  }
-
-  const handlerFever = (e) => {
-    setFever(e)
-  }
-
-  const handlerDizinnes = (e) => {
-    setDizinnes(e)
-  }
-
-  const handlerSoreThroat = (e) => {
-    setSoreThroat(e)
-  }
-
-  const handlerCongestion = (e) => {
-    setCongestion(e)
   }
 
   const handlerAdditionalInfo = (e) => {
