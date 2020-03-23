@@ -60,6 +60,10 @@ function DiagnosticContainer(props) {
         <h5>
           Today is <b>{today.toLocaleDateString(undefined, dateOptions)}</b>{' '}
         </h5>
+        <hr className="hr" />
+        <h4>
+          <b>Let’s log your health for today: </b>
+        </h4>
       </Container>
       <NavBar />
     </div>
