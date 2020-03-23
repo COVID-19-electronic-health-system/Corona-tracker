@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import { Typography, Slider, ButtonGroup, Button, Checkbox, FormControlLabel, TextField }  from '@material-ui/core';
 
+// custome style for material ui elements
 const useStyles = makeStyles({
     root: {
       width: 300,
@@ -12,6 +13,7 @@ const useStyles = makeStyles({
     }
   });
 
+  // marks for slider
   const marks = [ 
     {
       value: 1,
@@ -60,6 +62,7 @@ const SymptomsTracker = () => {
 
     const classes = useStyles();
 
+    // emulate dynamic state in a fuctional component
     const [todayFeeling, setTodayFeeling] = useState(1)
     const [todaySymptoms, setTodaySymptoms] = useState(1)
     const [comparedFeeling, setcomparedFeeling] = useState(1)
@@ -70,7 +73,7 @@ const SymptomsTracker = () => {
     const [congestion, setCongestion] = useState('')
     const [additionalInfo, setAdditionalInfo] = useState('')
 
-    
+    // every headnler function responsible for collecting data for particular question
     const handlerTodayFeeling = (e) => {
       setTodayFeeling(e) 
     }
@@ -107,6 +110,7 @@ const SymptomsTracker = () => {
       setAdditionalInfo(e)
     }
 
+    // aggregate collected data
     const submitAction = () => {
       const submission = {
         todayFeeling: todayFeeling, 
