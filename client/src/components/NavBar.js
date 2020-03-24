@@ -1,4 +1,5 @@
 import React from 'react';
+import { connect } from 'react-redux';
 import '../css/themePalette.css';
 import '../css/NavBar.css';
 import { withStyles } from '@material-ui/core/styles';
@@ -9,6 +10,8 @@ import FeaturedPlayListOutlinedIcon from '@material-ui/icons/FeaturedPlayListOut
 import StarBorderIcon from '@material-ui/icons/StarBorder';
 import LocationOnOutlinedIcon from '@material-ui/icons/LocationOnOutlined';
 import SettingsOutlinedIcon from '@material-ui/icons/SettingsOutlined';
+import { Link } from 'react-router-dom';
+import { setNavbarSection } from '../redux/actions/navigation';
 //import VideocamOutlinedIcon from '@material-ui/icons/VideocamOutlined';
 
 const styles = {
@@ -32,19 +35,21 @@ const styles = {
 };
 
 class NavBar extends React.Component {
-  state = {
-    value: 'log',
-  };
+  // state = {
+  //   value: 'log',
+  // };
 
-  handleChange = (event, value) => {
-    this.setState({ value });
-  };
+  // handleChange = (event, value) => {
+  //   console.log(value);
+  //   this.setState({ value });
+  // };
   render() {
     const { classes } = this.props;
-    const { value } = this.state;
+    const { value, handleChange } = this.props;
+
 
     return (
-      <BottomNavigation value={value} onChange={this.handleChange} className={classes.root} showLabels>
+      <BottomNavigation value={value} onChange={(e,v) =>handleChange(v)} className={classes.root} showLabels>
         <BottomNavigationAction
           label="Log"
           value="log"
@@ -55,6 +60,8 @@ class NavBar extends React.Component {
           icon={<FeaturedPlayListOutlinedIcon className={classes.buttons} />}
         />
         <BottomNavigationAction
+          component={Link}
+          to='/education'
           label="Education"
           value="education"
           classes={{
@@ -95,4 +102,13 @@ class NavBar extends React.Component {
   }
 }
 
-export default withStyles(styles)(NavBar);
+
+const mapStateToProps = state => ({
+  value: state.navigationReducer.currentSection
+})
+
+const mapDispatchToProps = dispatch => ({
+  handleChange: (value) => dispatch(setNavbarSection(value))
+})
+
+export default withStyles(styles)(connect(mapStateToProps,mapDispatchToProps)(NavBar));

@@ -1,5 +1,6 @@
 import observations from './observations';
 import loginLoading from './login';
+import navigationReducer from './navigation'
 import { combineReducers } from 'redux';
 
 // initial state of the Redux store
@@ -40,4 +41,5 @@ export default combineReducers({
   root,
   loginLoading,
   observations,
+  navigationReducer
 });
