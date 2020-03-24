@@ -66,9 +66,10 @@ function DiagnosticContainer(props) {
           <b>Let’s log your health for today: </b>
         </h4>
       </Container>
-      <Container>
+      {/*uncomment out below to show popup*/}
+      {/* <Container>
         <Disclaimer />
-      </Container>
+      </Container> */}
       <NavBar />
     </div>
   );
