@@ -9,6 +9,7 @@ import FeaturedPlayListOutlinedIcon from '@material-ui/icons/FeaturedPlayListOut
 import StarBorderIcon from '@material-ui/icons/StarBorder';
 import LocationOnOutlinedIcon from '@material-ui/icons/LocationOnOutlined';
 import SettingsOutlinedIcon from '@material-ui/icons/SettingsOutlined';
+import { Link } from 'react-router-dom';
 //import VideocamOutlinedIcon from '@material-ui/icons/VideocamOutlined';
 
 const styles = {
@@ -55,6 +56,8 @@ class NavBar extends React.Component {
           icon={<FeaturedPlayListOutlinedIcon className={classes.buttons} />}
         />
         <BottomNavigationAction
+          component={Link}
+          to='/education'
           label="Education"
           value="education"
           classes={{
