@@ -7,7 +7,7 @@ import { UserSession } from 'blockstack';
 import { configure, User, getConfig } from 'radiks';
 import { Connect } from '@blockstack/connect';
 import DiagnosticContainer from './DiagnosticContainer';
-import { BrowserRouter, Route, Switch } from 'react-router-dom';
+import { BrowserRouter, Route, Switch, Redirect } from 'react-router-dom';
 import { connect } from 'react-redux';
 import setLoginLoading from '../redux/actions/actions';
 import FactQuizContainer from './FactQuizContainer';
@@ -67,23 +67,25 @@ class App extends Component {
         <Connect authOptions={authOptions}>
           <div className="App">
             <Switch>
-              <Route exact path="/">
-                {!authed ? (
-                  <>{checkingAuth ? <div>LOADING..</div> : <Login />}</>
-                ) : (
-                  <div>
-                    <DiagnosticContainer userSession={userSession} handleSignOut={this.handleSignOut} />
-                  </div>
-                )}
-              </Route>
-              {/* ADD/EDIT ROUTES WITH THEIR COMPONENTS HERE: */}
-              <Route path="/signup" />
-              <Route path="/symptomsurvey" />
-              <Route path="/log" />
-              <Route path="/healthlog" />
-              <Route path="/education" render={() => <FactQuizContainer handleSignOut={this.handleSignOut} />} />
-              <Route path="/map" />
-              <Route path="/settings" />
+              {!authed ? (
+                <>{checkingAuth ? <div>LOADING..</div> :
+                  <Switch>
+                    <Route path="/log" component={Login} />
+                    <Route path="/signup" />
+                    <Route exact path="/" render={() => <Redirect to="/log" />} />
+                    <Redirect to="/log" />
+                  </Switch>}</>
+              ) :
+                <Switch>
+                  <Route path="/education" render={() => <FactQuizContainer handleSignOut={this.handleSignOut} />} />
+                  <Route path="/healthlog" render={() => <DiagnosticContainer userSession={userSession} handleSignOut={this.handleSignOut} />} />
+                  <Route path="/symptomsurvey" />
+                  <Route path="/map" />
+                  <Route path="/settings" />
+                  <Route exact path="/" render={() => <Redirect to="/healthlog" />} />
+                  <Redirect to="/healthlog" />
+                </Switch>
+              }
             </Switch>
           </div>
         </Connect>
