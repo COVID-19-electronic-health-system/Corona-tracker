@@ -11,6 +11,7 @@ import { BrowserRouter, Route, Switch } from 'react-router-dom';
 import { connect } from 'react-redux';
 import setLoginLoading from '../redux/actions/actions';
 import FactQuizContainer from './FactQuizContainer';
+import PrivateRoute from './PrivateRoute';
 
 const RADIKS_URL = process.env.REACT_APP_QA_URL || 'http://127.0.0.1:1260'; // TODO this will change to wherever our radiks server will be hosted in prod
 
@@ -61,29 +62,26 @@ class App extends Component {
     };
 
     const { authed, checkingAuth } = this.state;
-    console.log(this.state);
     return (
       <BrowserRouter>
         <Connect authOptions={authOptions}>
           <div className="App">
             <Switch>
-              <Route exact path="/">
-                {!authed ? (
-                  <>{checkingAuth ? <div>LOADING..</div> : <Login />}</>
-                ) : (
-                  <div>
-                    <DiagnosticContainer userSession={userSession} handleSignOut={this.handleSignOut} />
-                  </div>
-                )}
-              </Route>
+              <PrivateRoute
+                exact
+                path="/"
+                authed={authed}
+                component={() => <DiagnosticContainer userSession={userSession} handleSignOut={this.handleSignOut} />}
+              />
+
               {/* ADD/EDIT ROUTES WITH THEIR COMPONENTS HERE: */}
               <Route path="/signup" />
-              <Route path="/symptomsurvey" />
-              <Route path="/log" />
-              <Route path="/healthlog" />
+              <PrivateRoute path="/symptomsurvey" authed={authed} />
+              <PrivateRoute path="/log" authed={authed} />
+              <PrivateRoute path="/healthlog" authed={authed} />
               <Route path="/education" render={() => <FactQuizContainer handleSignOut={this.handleSignOut} />} />
               <Route path="/map" />
-              <Route path="/settings" />
+              <PrivateRoute path="/settings" authed={authed} />
             </Switch>
           </div>
         </Connect>
