@@ -47,16 +47,11 @@ class NavBar extends React.Component {
   state = {
     value: 'log',
   };
-
-  handleChange = (event, value) => {
-    this.setState({ value });
-  };
   render() {
     const { classes } = this.props;
-    const { value } = this.state;
 
     return (
-      <BottomNavigation value={value} onChange={this.handleChange} className={classes.root} showLabels>
+      <BottomNavigation className={classes.root} showLabels>
         <BottomNavigationAction
           label="Log"
           value="log"
