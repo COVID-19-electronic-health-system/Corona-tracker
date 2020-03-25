@@ -15,10 +15,9 @@ const FactQuizContainer = (props) => {
   const [factsOrQuiz, setFactsQuiz] = useState('facts')
   const setQuiz = () => setFactsQuiz("quiz")
   const setFacts = () => setFactsQuiz("facts")
-  
+
   return (
     <div className="DiagnosticContainer">
-      <NavBar />
       <Container className="temp-singout">
         <Temperature />
         <Button onClick={handleSignOut} style={{ width: '100px' }}>
@@ -41,6 +40,7 @@ const FactQuizContainer = (props) => {
       </Container>
       {factsOrQuiz==='facts'&&<FlashCards mode='facts' cardData={cardData}/>}
       {factsOrQuiz==='quiz'&&<FlashCards mode='quiz' cardData={quizData}/>}
+      <NavBar />
     </div>
   )
 }

@@ -49,8 +49,10 @@ class NavBar extends React.Component {
 
 
     return (
-      <BottomNavigation value={value} onChange={(e,v) =>handleChange(v)} className={classes.root} showLabels>
+      <BottomNavigation value={value} onChange={(e, v) => handleChange(v)} className={classes.root} showLabels>
         <BottomNavigationAction
+          component={Link}
+          to='/'
           label="Log"
           value="log"
           classes={{
@@ -111,4 +113,4 @@ const mapDispatchToProps = dispatch => ({
   handleChange: (value) => dispatch(setNavbarSection(value))
 })
 
-export default withStyles(styles)(connect(mapStateToProps,mapDispatchToProps)(NavBar));
+export default withStyles(styles)(connect(mapStateToProps, mapDispatchToProps)(NavBar));
