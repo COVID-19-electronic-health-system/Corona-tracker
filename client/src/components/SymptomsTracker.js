@@ -61,21 +61,6 @@ const marks = [
 
 const SymptomsTracker = () => {
 
-<<<<<<< HEAD
-    // aggregate collected data
-    const submitAction = () => {
-      const submission = {
-        todayFeeling: todayFeeling, 
-        todaySymptoms: todaySymptoms,
-        comparedFeeling: comparedFeeling,
-        cough: cough,
-        fever: fever,
-        dizinnes: dizinnes,
-        soreThroat: soreThroat,
-        congestion: congestion,
-        additionalInfo: additionalInfo
-      }
-=======
   const classes = useStyles();
 
   // emulate dynamic state in a fuctional component
@@ -108,7 +93,6 @@ const SymptomsTracker = () => {
       todaySymptoms: todaySymptoms,
       comparedFeeling: comparedFeeling,
       additionalInfo: additionalInfo
->>>>>>> d48068321ddfad6eb7d7e3b855df06a00c1d3b32
     }
   }
 
