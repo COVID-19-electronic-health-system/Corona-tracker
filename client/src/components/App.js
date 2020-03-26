@@ -75,12 +75,16 @@ class App extends Component {
               />
 
               {/* ADD/EDIT ROUTES WITH THEIR COMPONENTS HERE: */}
-              <Route path="/signup" />
+              <PrivateRoute path="/signup" authed={authed} />
               <PrivateRoute path="/symptomsurvey" authed={authed} />
               <PrivateRoute path="/log" authed={authed} />
               <PrivateRoute path="/healthlog" authed={authed} />
-              <Route path="/education" render={() => <FactQuizContainer handleSignOut={this.handleSignOut} />} />
-              <Route path="/map" />
+              <PrivateRoute
+                path="/education"
+                authed={authed}
+                render={() => <FactQuizContainer handleSignOut={this.handleSignOut} />}
+              />
+              <PrivateRoute path="/map" authed={authed} />
               <PrivateRoute path="/settings" authed={authed} />
             </Switch>
           </div>
@@ -102,4 +106,7 @@ const mapDispatchToProps = dispatch => ({
   },
 });
 
-export default connect(mapStateToProps, mapDispatchToProps)(App);
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(App);

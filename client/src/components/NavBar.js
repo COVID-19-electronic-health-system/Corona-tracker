@@ -53,6 +53,8 @@ class NavBar extends React.Component {
     return (
       <BottomNavigation className={classes.root} showLabels>
         <BottomNavigationAction
+          component={Link}
+          to='/'
           label="Log"
           value="log"
           classes={{

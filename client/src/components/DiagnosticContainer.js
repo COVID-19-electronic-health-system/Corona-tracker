@@ -11,7 +11,7 @@ import { Container } from '@material-ui/core';
 import { loadObservations } from '../redux/actions/observations';
 import { useDispatch } from 'react-redux';
 import Disclaimer from './Disclaimer';
-
+import HealthLogToggle from './HealthLogToggle';
 const useStyles = makeStyles(theme => ({
   //the styles goes here as an object
   logo: {
@@ -70,6 +70,7 @@ function DiagnosticContainer(props) {
       {/* <Container>
         <Disclaimer />
       </Container> */}
+      <HealthLogToggle />
       <NavBar />
     </div>
   );
