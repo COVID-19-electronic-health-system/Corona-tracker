@@ -69,9 +69,9 @@ function DiagnosticContainer(props) {
         </h4>
       </Container>
       {/*uncomment out below to show popup*/}
-      {/* <Container>
+      <Container>
         <Disclaimer />
-      </Container> */}
+      </Container>
       <Scroll>
         <HealthLogToggle />
       </Scroll>
