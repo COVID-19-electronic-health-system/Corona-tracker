@@ -82,7 +82,7 @@ class App extends Component {
               <PrivateRoute
                 path="/education"
                 authed={authed}
-                render={() => <FactQuizContainer handleSignOut={this.handleSignOut} />}
+                component={() => <FactQuizContainer handleSignOut={this.handleSignOut} />}
               />
               <PrivateRoute path="/map" authed={authed} />
               <PrivateRoute path="/settings" authed={authed} />
@@ -106,7 +106,4 @@ const mapDispatchToProps = dispatch => ({
   },
 });
 
-export default connect(
-  mapStateToProps,
-  mapDispatchToProps
-)(App);
+export default connect(mapStateToProps, mapDispatchToProps)(App);
