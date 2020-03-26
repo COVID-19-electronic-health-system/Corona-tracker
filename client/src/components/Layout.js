@@ -26,12 +26,13 @@ const theme = createMuiTheme({
 });
 const useStyles = makeStyles(theme => ({
   //the styles goes here as an object
-    root: {
-        textAlign: 'center',
-  backgroundImage: "linear-gradient(#d7e1fa, #bbcef9)",
-  height: "100vh"
-        
-    },
+  root: {
+    textAlign: 'center',
+    backgroundImage: "linear-gradient(#d7e1fa, #bbcef9)",
+    overflowY: 'scroll',
+    height: "85vh"
+
+  },
   logo: {
     width: '75px',
 
@@ -83,8 +84,8 @@ const Layout = (props) => {
             <NavBar />
           </div>
         ) : (
-          <Login />
-        )}
+            <Login />
+          )}
       </CssBaseline>
     </MuiThemeProvider>
   );
