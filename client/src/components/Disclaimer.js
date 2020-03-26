@@ -2,8 +2,10 @@ import React, { Component } from 'react';
 import { ReactComponent as Logo } from '../img/Logo_CORONATRACKER_Logo.svg';
 import { ReactComponent as TextLogo } from '../img/Logo_CORONATRACKER_Text_Logo.svg';
 import Button from 'react-bootstrap/Button';
+import { connect } from 'react-redux';
+import setDisclaimerAnswer from '../redux/actions/actions';
 
-function Disclaimer(props) {
+export const Disclaimer = props => {
   return (
     <div className="DisclaimerPopUp">
       <div className="DisclaimerPopUpInner">
@@ -19,14 +21,22 @@ function Disclaimer(props) {
           control of how you would like to contribute your data for public health and research.
         </p>
         <div>
-          <Button className="theme-Palette-white-text">
-            I agree
-          </Button>
+          <Button className="theme-Palette-white-text">I agree</Button>
           <Button className="theme-Palette-white-text theme-Palette-red-bg">I don't agree</Button>
         </div>
       </div>
     </div>
   );
-}
+};
 
-export default Disclaimer;
+const mapStateToProps = state => {
+  return { answer: state.answer };
+};
+
+const mapDispatchToProps = dispatch => {
+  return {
+    setAnswer: answer => dispatch(setDisclaimerAnswer(answer)),
+  };
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(Disclaimer);
