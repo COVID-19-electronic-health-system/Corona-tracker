@@ -1,5 +1,5 @@
 import React, { useEffect, useRef, useState } from 'react';
-import mapboxgl from "mapbox-gl";
+import mapboxgl from "mapbox-gl/dist/mapbox-gl";
 import { ReactComponent as Logo } from '../img/Logo_CORONATRACKER_Logo.svg';
 import { ReactComponent as TextLogo } from '../img/Logo_CORONATRACKER_Text_Logo.svg';
 import NavBar from './NavBar';
