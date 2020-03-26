@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import ButtonGroup from '@material-ui/core/ButtonGroup';
 import Button from '@material-ui/core/Button';
 import Container from '@material-ui/core/Container';
+import MyHealthLog from './MyHealthLog';
 
 export default function HealthLogToggle() {
   const [toggleValue, setToggleValue] = useState('myHealthLog');
@@ -15,7 +16,7 @@ export default function HealthLogToggle() {
           <Button onClick={setShowMeMore} variant={toggleValue === 'showMeMore' && "contained"}>Show me more</Button>
         </ButtonGroup>
       </Container>
-      {/* {toggleValue === 'myHealthLog' && < />} */}
+      {toggleValue === 'myHealthLog' && <MyHealthLog />}
       {/* {toggleValue==='showMeMore'&&</>} */}
     </div>
   )
