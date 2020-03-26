@@ -12,6 +12,8 @@ import { loadObservations } from '../redux/actions/observations';
 import { useDispatch } from 'react-redux';
 import Disclaimer from './Disclaimer';
 import HealthLogToggle from './HealthLogToggle';
+import Scroll from './Scroll'
+
 const useStyles = makeStyles(theme => ({
   //the styles goes here as an object
   logo: {
@@ -70,7 +72,9 @@ function DiagnosticContainer(props) {
       {/* <Container>
         <Disclaimer />
       </Container> */}
-      <HealthLogToggle />
+      <Scroll>
+        <HealthLogToggle />
+      </Scroll>
       <NavBar />
     </div>
   );
