@@ -1,7 +1,5 @@
 import React, { useEffect, useRef, useState } from 'react';
 import mapboxgl from "mapbox-gl/dist/mapbox-gl";
-import { ReactComponent as Logo } from '../img/Logo_CORONATRACKER_Logo.svg';
-import { ReactComponent as TextLogo } from '../img/Logo_CORONATRACKER_Text_Logo.svg';
 import NavBar from './NavBar';
 import '../css/Map.css'
 
@@ -44,8 +42,6 @@ function Map() {
 
     return (
         <div className="mapContainer">
-            <Logo className="DiagnosticLogo" />
-            <TextLogo className="DiagnosticTextLogo" />
             <h4>Check out the Map!</h4>
             <h4>...COMING SOON...</h4>
             <div ref={el => (mapContainer.current = el)} style={styles} />

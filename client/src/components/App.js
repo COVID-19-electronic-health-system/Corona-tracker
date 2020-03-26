@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import Login from './Login';
+import Layout from './Layout'
 import 'bootstrap/dist/css/bootstrap.min.css';
 import '../css/App.css';
 import { appConfig } from '../utils/constants';
@@ -8,7 +8,7 @@ import { configure, User, getConfig } from 'radiks';
 import { Connect } from '@blockstack/connect';
 import DiagnosticContainer from './DiagnosticContainer';
 import Map from './Map'
-import { BrowserRouter, Route, Switch } from 'react-router-dom';
+import { BrowserRouter, Switch } from 'react-router-dom';
 import { connect } from 'react-redux';
 import setLoginLoading from '../redux/actions/actions';
 import FactQuizContainer from './FactQuizContainer';
@@ -62,11 +62,11 @@ class App extends Component {
       userSession,
     };
 
-    const { authed, checkingAuth } = this.state;
+    const { authed } = this.state;
     return (
       <BrowserRouter>
         <Connect authOptions={authOptions}>
-          <div className="App">
+          <Layout authed={authed} userSession={userSession} handleSignOut={this.handleSignOut}>
             <Switch>
               <PrivateRoute
                 exact
@@ -88,7 +88,7 @@ class App extends Component {
               <PrivateRoute path="/map" authed={authed} component={() => <Map handleSignOut={this.handleSignOut} />} />
               <PrivateRoute path="/settings" authed={authed} />
             </Switch>
-          </div>
+          </Layout>
         </Connect>
       </BrowserRouter>
     );

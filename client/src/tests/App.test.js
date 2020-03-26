@@ -2,7 +2,8 @@ import React from 'react';
 import { render } from '@testing-library/react';
 import App from '../components/App';
 // import mapboxgl from "mapbox-gl/dist/mapbox-gl";
-require("mapbox-gl-js-mock");
+// require("mapbox-gl-js-mock");
+import 'jest';
 import Map from '../components/Map';
 
 
@@ -14,7 +15,7 @@ if (typeof window.URL.createObjectURL === 'undefined') {
 }
 
 jest.mock('mapbox-gl/dist/mapbox-gl', () => ({
-  App: () => ({})
+  Map: () => ({})
 }));
 
 
