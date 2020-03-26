@@ -1,17 +1,14 @@
 import React from 'react';
-import { connect } from 'react-redux';
 import '../css/themePalette.css';
 import '../css/NavBar.css';
 import { withStyles } from '@material-ui/core/styles';
-
+import { Link } from 'react-router-dom';
 import { BottomNavigation, BottomNavigationAction } from '@material-ui/core/';
 
 import FeaturedPlayListOutlinedIcon from '@material-ui/icons/FeaturedPlayListOutlined';
 import StarBorderIcon from '@material-ui/icons/StarBorder';
 import LocationOnOutlinedIcon from '@material-ui/icons/LocationOnOutlined';
 import SettingsOutlinedIcon from '@material-ui/icons/SettingsOutlined';
-import { Link } from 'react-router-dom';
-import { setNavbarSection } from '../redux/actions/navigation';
 //import VideocamOutlinedIcon from '@material-ui/icons/VideocamOutlined';
 
 const styles = {
@@ -24,32 +21,37 @@ const styles = {
   },
   actionItem: {
     color: 'white',
+    transition: 'all .3s ease-in-out',
+    '&:hover': {
+      textDecoration: 'none',
+      color: 'white',
+      transform: 'scale(1.1)',
+    },
     '&$selected': {
       color: 'white',
+      backgroundColor: 'red',
     },
   },
   selected: {},
   buttons: {
     fontSize: '40px',
+
+    transition: 'all .3s ease-in-out',
+    '&:hover': {
+      transform: 'scale(1.1)',
+    },
   },
 };
 
 class NavBar extends React.Component {
-  // state = {
-  //   value: 'log',
-  // };
-
-  // handleChange = (event, value) => {
-  //   console.log(value);
-  //   this.setState({ value });
-  // };
+  state = {
+    value: 'log',
+  };
   render() {
     const { classes } = this.props;
-    const { value, handleChange } = this.props;
-
 
     return (
-      <BottomNavigation value={value} onChange={(e, v) => handleChange(v)} className={classes.root} showLabels>
+      <BottomNavigation className={classes.root} showLabels>
         <BottomNavigationAction
           component={Link}
           to='/'
@@ -63,7 +65,7 @@ class NavBar extends React.Component {
         />
         <BottomNavigationAction
           component={Link}
-          to='/education'
+          to="/education"
           label="Education"
           value="education"
           classes={{
@@ -104,13 +106,4 @@ class NavBar extends React.Component {
   }
 }
 
-
-const mapStateToProps = state => ({
-  value: state.navigationReducer.currentSection
-})
-
-const mapDispatchToProps = dispatch => ({
-  handleChange: (value) => dispatch(setNavbarSection(value))
-})
-
-export default withStyles(styles)(connect(mapStateToProps, mapDispatchToProps)(NavBar));
+export default withStyles(styles)(NavBar);
