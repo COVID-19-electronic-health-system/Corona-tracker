@@ -10,13 +10,13 @@ export default function HealthLogToggle() {
   const setShowMeMore = () => setToggleValue('showMeMore');
   return (
     <div>
-    <Container >
-      <ButtonGroup size="medium" color="secondary" aria-label="outlined button group" style={{ padding: '10px' }}>
-        <Button onClick={setHealthLog} variant={toggleValue === 'myHealthLog' && "contained"}>My health log</Button>
-        <Button onClick={setShowMeMore} variant={toggleValue === 'showMeMore' && "contained"}>Show me more</Button>
-      </ButtonGroup>
+      <Container >
+        <ButtonGroup size="medium" color="secondary" aria-label="outlined button group" style={{ padding: '10px' }}>
+          <Button onClick={setHealthLog} variant={toggleValue === 'myHealthLog' && "contained"}>My health log</Button>
+          <Button onClick={setShowMeMore} variant={toggleValue === 'showMeMore' && "contained"}>Show me more</Button>
+        </ButtonGroup>
       </Container>
-      {/* {toggleValue === 'myHealthLog' && < />} */}
+      {toggleValue === 'myHealthLog' && <SymptomsTracker />}
       {/* {toggleValue==='showMeMore'&&</>} */}
     </div>
   )
