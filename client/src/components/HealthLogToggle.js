@@ -16,7 +16,7 @@ export default function HealthLogToggle() {
         <Button onClick={setShowMeMore} variant={toggleValue === 'showMeMore' && "contained"}>Show me more</Button>
       </ButtonGroup>
       </Container>
-      {toggleValue === 'myHealthLog' && <SymptomsTracker />}
+      {/* {toggleValue === 'myHealthLog' && < />} */}
       {/* {toggleValue==='showMeMore'&&</>} */}
     </div>
   )
