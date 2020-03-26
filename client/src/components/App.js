@@ -72,7 +72,7 @@ class App extends Component {
                 exact
                 path="/"
                 authed={authed}
-                component={() => <DiagnosticContainer userSession={userSession} handleSignOut={this.handleSignOut} />}
+                component={() => <DiagnosticContainer userSession={userSession}/>}
               />
 
               {/* ADD/EDIT ROUTES WITH THEIR COMPONENTS HERE: */}

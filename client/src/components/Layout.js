@@ -50,16 +50,9 @@ const useStyles = makeStyles(theme => ({
     },
   },
 }));
-const dateOptions = {
-  weekday: 'long',
-  year: 'numeric',
-  month: 'long',
-  day: 'numeric',
-};
 const Layout = (props) => {
   const classes = useStyles();
-  const { handleSignOut, userSession, authed } = props;
-  const today = new Date();
+  const { handleSignOut, authed } = props;
 
   return (
     <MuiThemeProvider theme={theme}>
@@ -72,13 +65,6 @@ const Layout = (props) => {
             <Button size="medium" color="secondary" variant="contained" onClick={handleSignOut}>
               Sign Out
             </Button>
-            <h4>
-              Hello, <b>{userSession.loadUserData().profile.name} </b>
-            </h4>
-            <h5>
-              Today is <b>{today.toLocaleDateString(undefined, dateOptions)}</b>{' '}
-            </h5>
-            <hr className="hr" />
             {props.children}
 
             <NavBar />
