@@ -6,12 +6,32 @@ import { ReactComponent as Logo } from '../img/Logo_CORONATRACKER_Logo.svg';
 import { ReactComponent as TextLogo } from '../img/Logo_CORONATRACKER_Text_Logo.svg';
 import NavBar from './NavBar';
 import Button from 'react-bootstrap/Button';
-import { Container } from 'react-bootstrap';
-import Temperature from './Temperature';
-import SymptomsTracker from './SymptomsTracker';
+import { makeStyles } from '@material-ui/core/styles';
+import { Container } from '@material-ui/core';
 import { loadObservations } from '../redux/actions/observations';
 import { useDispatch } from 'react-redux';
+import Disclaimer from './Disclaimer';
+import HealthLogToggle from './HealthLogToggle';
+const useStyles = makeStyles(theme => ({
+  //the styles goes here as an object
+  logo: {
+    width: '100px',
 
+    height: '100px',
+    //this is for small devices, theme media query there are (sm, md and lg)
+    [theme.breakpoints.down('xs')]: {
+      width: '80px',
+    },
+  },
+  textLogo: {
+    width: '350px',
+    height: '100px',
+    [theme.breakpoints.down('xs')]: {
+      width: '200px',
+    },
+  },
+}));
+//the date
 const dateOptions = {
   weekday: 'long',
   year: 'numeric',
@@ -19,35 +39,39 @@ const dateOptions = {
   day: 'numeric',
 };
 
-const DiagnosticContainer = (props) => {
+function DiagnosticContainer(props) {
+  const classes = useStyles();
   const { handleSignOut, userSession } = props;
-  var today = new Date();
+  const today = new Date();
+
   const dispatch = useDispatch();
   dispatch(loadObservations());
   return (
     <div className="DiagnosticContainer">
-      <NavBar />
       <Container className="temp-singout">
-        <Temperature />
-        <Button onClick={handleSignOut} style={{ width: '100px' }}>
-          Sign Out
-        </Button>
+        <Button onClick={handleSignOut}>Sign Out</Button>
       </Container>
 
       <Container>
-        <Logo className="DiagnosticLogo" />
-        <TextLogo className="DiagnosticTextLogo" />
+        <Logo className={classes.logo} />
+        <TextLogo className={classes.textLogo} />
         <h4>
-          Welcome!, <b>{userSession.loadUserData().profile.name}</b>
+          Hello, <b>{userSession.loadUserData().profile.name}</b>
         </h4>
         <h5>
           Today is <b>{today.toLocaleDateString(undefined, dateOptions)}</b>{' '}
         </h5>
         <hr className="hr" />
+        <h4>
+          <b>Let’s log your health for today: </b>
+        </h4>
       </Container>
-      <Container>
-        <SymptomsTracker/>
-      </Container>
+      {/*uncomment out below to show popup*/}
+      {/* <Container>
+        <Disclaimer />
+      </Container> */}
+      <HealthLogToggle />
+      <NavBar />
     </div>
   );
 }
