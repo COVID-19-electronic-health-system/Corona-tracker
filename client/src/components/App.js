@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import Login from './Login';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import '../css/App.css';
 import { appConfig } from '../utils/constants';
@@ -7,7 +6,7 @@ import { UserSession } from 'blockstack';
 import { configure, User, getConfig } from 'radiks';
 import { Connect } from '@blockstack/connect';
 import DiagnosticContainer from './DiagnosticContainer';
-import { BrowserRouter, Route, Switch } from 'react-router-dom';
+import { BrowserRouter, Switch } from 'react-router-dom';
 import { connect } from 'react-redux';
 import setLoginLoading from '../redux/actions/actions';
 import FactQuizContainer from './FactQuizContainer';
@@ -61,7 +60,7 @@ class App extends Component {
       userSession,
     };
 
-    const { authed, checkingAuth } = this.state;
+    const { authed } = this.state;
     return (
       <BrowserRouter>
         <Connect authOptions={authOptions}>

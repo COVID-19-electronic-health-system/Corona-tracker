@@ -13,7 +13,7 @@ function TemperatureAutocomplete(props) {
   return (
     <Autocomplete
       size='small'
-      id="combo-box-demo"
+      id="temperature"
       options={temperature}
       renderOption={option => (
         <React.Fragment>
@@ -35,7 +35,7 @@ function MinutesAutocomplete(props) {
   return (
     <Autocomplete
       size='small'
-      id="combo-box-demo"
+      id="minutes"
       options={minutes}
       onChange={props.symptomChecked ? props.handleMinutes : () => { }}
       value={value}
@@ -50,7 +50,7 @@ function HoursAutocomplete(props) {
   const value = props.hoursValue ? props.hoursValue.match(/\d*(?=:)/)[0] : '';
   return (<Autocomplete
     size='small'
-    id="combo-box-demo"
+    id="hours"
     options={hours}
     onChange={props.symptomChecked ? props.handleHours : () => { }}
     value={value}
