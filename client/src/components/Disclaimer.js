@@ -19,7 +19,9 @@ function Disclaimer(props) {
           control of how you would like to contribute your data for public health and research.
         </p>
         <div>
-          <Button className="theme-Palette-white-text">I agree</Button>
+          <Button className="theme-Palette-white-text" onClick={() => setModalHidden(false)}>
+            I agree
+          </Button>
           <Button className="theme-Palette-white-text theme-Palette-red-bg">I don't agree</Button>
         </div>
       </div>
