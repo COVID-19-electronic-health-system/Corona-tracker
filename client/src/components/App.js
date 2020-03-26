@@ -1,4 +1,3 @@
-
 import React, { Component } from 'react';
 import Login from './Login';
 import 'bootstrap/dist/css/bootstrap.min.css';
@@ -8,12 +7,12 @@ import { UserSession } from 'blockstack';
 import { configure, User, getConfig } from 'radiks';
 import { Connect } from '@blockstack/connect';
 import DiagnosticContainer from './DiagnosticContainer';
-import { BrowserRouter, Route, Switch } from 'react-router-dom'
-import { connect } from 'react-redux';
-import setLoginLoading from '../redux/actions/actions'
 import Map from './Map'
-
-
+import { BrowserRouter, Route, Switch } from 'react-router-dom';
+import { connect } from 'react-redux';
+import setLoginLoading from '../redux/actions/actions';
+import FactQuizContainer from './FactQuizContainer';
+import PrivateRoute from './PrivateRoute';
 
 const RADIKS_URL = process.env.REACT_APP_QA_URL || 'http://127.0.0.1:1260'; // TODO this will change to wherever our radiks server will be hosted in prod
 
@@ -22,15 +21,7 @@ const makeUserSession = () => {
 };
 
 class App extends Component {
-  constructor(props) {
-    super(props);
-    this.userSession = new UserSession({ appConfig });
-  }
-
-  state = {
-    url: '',
-    userSession: undefined,
-  };
+  state = { authed: false, checkingAuth: true };
 
   async componentDidMount() {
     const userSession = makeUserSession();
@@ -38,8 +29,12 @@ class App extends Component {
       apiServer: RADIKS_URL,
       userSession,
     });
-
-    this.setState({ url: window.location.origin, userSession });
+    this.setState({ authed: userSession.isUserSignedIn(), checkingAuth: userSession.isSignInPending() });
+    if (userSession.isSignInPending()) {
+      await userSession.handlePendingSignIn();
+      await User.createWithCurrentUser();
+      this.setState({ authed: userSession.isUserSignedIn(), checkingAuth: userSession.isSignInPending() });
+    }
   }
 
   handleSignOut(e) {
@@ -50,8 +45,6 @@ class App extends Component {
 
   render() {
     const { userSession } = getConfig();
-
-    const { url } = this.state;
     const authOptions = {
       redirectTo: '/',
       finished: async ({ userSession }) => {
@@ -60,38 +53,40 @@ class App extends Component {
           userSession,
         });
         await User.createWithCurrentUser();
-
-        this.setState({ url: window.location.origin });
+        this.setState({ authed: true, checkingAuth: false });
       },
       appDetails: {
         name: 'Corona Tracker',
-        icon: `${url}/icon.png`,
+        icon: `${window.location.origin}/icon.png`,
       },
       userSession,
     };
 
+    const { authed, checkingAuth } = this.state;
     return (
       <BrowserRouter>
         <Connect authOptions={authOptions}>
           <div className="App">
             <Switch>
-              <Route exact path='/'>
-                {!userSession || !userSession.isUserSignedIn() ? (
-                  <Login />
-                ) : (
-                    <div>
-                      <DiagnosticContainer userSession={userSession} handleSignOut={this.handleSignOut} />
-                    </div>
-                  )}
-              </Route>
+              <PrivateRoute
+                exact
+                path="/"
+                authed={authed}
+                component={() => <DiagnosticContainer userSession={userSession} handleSignOut={this.handleSignOut} />}
+              />
+
               {/* ADD/EDIT ROUTES WITH THEIR COMPONENTS HERE: */}
-              <Route path='/signup' />
-              <Route path='/symptomsurvey' />
-              <Route path='/log' />
-              <Route path='/healthlog' />
-              <Route path='/education' />
-              <Route path='/map' component={Map} />
-              <Route path='/settings' />
+              <PrivateRoute path="/signup" authed={authed} />
+              <PrivateRoute path="/symptomsurvey" authed={authed} />
+              <PrivateRoute path="/log" authed={authed} />
+              <PrivateRoute path="/healthlog" authed={authed} />
+              <PrivateRoute
+                path="/education"
+                authed={authed}
+                component={() => <FactQuizContainer handleSignOut={this.handleSignOut} />}
+              />
+              <PrivateRoute path="/map" authed={authed} component={() => <Map handleSignOut={this.handleSignOut} />} />
+              <PrivateRoute path="/settings" authed={authed} />
             </Switch>
           </div>
         </Connect>
@@ -100,17 +95,16 @@ class App extends Component {
   }
 }
 
-
 const mapStateToProps = ({ loginLoading }) => ({
   loginLoading,
-})
+});
 
 const mapDispatchToProps = dispatch => ({
   setLoading(isLoading) {
     return () => {
-      dispatch(setLoginLoading(isLoading))
-    }
-  }
-})
+      dispatch(setLoginLoading(isLoading));
+    };
+  },
+});
 
 export default connect(mapStateToProps, mapDispatchToProps)(App);

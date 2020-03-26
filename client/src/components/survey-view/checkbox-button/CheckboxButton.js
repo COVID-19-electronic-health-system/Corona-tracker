@@ -30,7 +30,7 @@ const handleFever = (event, value) => ({
 const handleHours = (event, value) => ({
   type: HANDLE_HOURS,
   event, value
-})
+});
 
 const handleMinutes = (event, value) => ({
   type: HANDLE_MINUTES,
@@ -72,20 +72,14 @@ function reducer(state, action) {
       action.event.preventDefault();
       value = action.value;
       value = value ? value : '0';
-      value =
-        state['headache'].value ?
-          state['headache'].value.replace(/\d*(?=:)/, value) :
-          value + ':00';
+      value = state['headache'].value ? state['headache'].value.replace(/\d*(?=:)/, value) : value + ':00';
       return { ...state, headache: { checked: true, value: value } };
 
     case HANDLE_MINUTES:
       action.event.preventDefault();
       value = action.value;
       value = value ? value : '00';
-      value =
-        state['headache'].value ?
-          state['headache'].value.replace(/:.*/, ':' + value) :
-          '0:' + value;
+      value = state['headache'].value ? state['headache'].value.replace(/:.*/, ':' + value) : '0:' + value;
       return { ...state, headache: { checked: true, value: value } };
     default:
       return state;
@@ -96,20 +90,17 @@ function CheckboxButton() {
   return (
     <div className='checked-grouped-buttons'>
       <h4>
-        <b>
-          Q4: Which symptoms are you feeling or experiencing
-        </b>
+        <b>Which symptoms are you feeling or experiencing?</b>
       </h4>
-      {
-        Object.entries(state).map(([symptomName, value], key) => (
-          <SingleCheckboxButton key={key} symptomName={symptomName} symptomChecked={value.checked} symptomValue={value.value}
-            handleCheckboxChange={(event) => dispatch(handleCheckboxChange(event))}
-            handleButtonGroupChange={(event) => dispatch(handleButtonGroupChange(event))}
-            handleFever={(event, value) => dispatch(handleFever(event, value))}
-            handleHours={(event, value) => dispatch(handleHours(event, value))}
-            handleMinutes={(event, value) => dispatch(handleMinutes(event, value))} />
-        ))
-      }
+      {Object.entries(state).map(([symptomName, value], key) => (
+        <SingleCheckboxButton key={key} symptomName={symptomName} symptomChecked={value.checked} symptomValue={value.value}
+          handleCheckboxChange={event => dispatch(handleCheckboxChange(event))}
+          handleButtonGroupChange={event => dispatch(handleButtonGroupChange(event))}
+          handleFever={(event, value) => dispatch(handleFever(event, value))}
+          handleHours={(event, value) => dispatch(handleHours(event, value))}
+          handleMinutes={(event, value) => dispatch(handleMinutes(event, value))}
+        />
+      ))}
     </div>
   )
 }

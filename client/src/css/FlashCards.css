@@ -16,10 +16,9 @@ body {
   position: fixed;
   overflow: hidden;
   width: 100%;
-  height: 100%;
+  height: 58%;
   cursor: url('https://uploads.codesandbox.io/uploads/user/b3e56831-8b98-4fee-b941-0e27f39883ab/Ad1_-cursor.png') 39 39, auto;
 } 
-
 
 .FlashCards div {
   position: absolute;
@@ -29,7 +28,11 @@ body {
   display: flex;
   align-items: center;
   justify-content: center;
-  padding-bottom: 20rem;
+  padding-bottom: 25rem;
+}
+
+.FlashCardTitle {
+  font-size: 1rem;
 }
 
 .FlashCards div div {
@@ -41,10 +44,10 @@ body {
   width: 45vh;
   max-width: 275px;
   height: 55vh;
-  max-height: 460px;
+  max-height:340px;
   will-change: transform;
-  border-radius: 10px;
-  box-shadow: 0 12.5px 100px -10px rgba(82, 82, 97, 0.4), 0 10px 10px -10px rgba(59, 59, 77, 0.3);
+  border-radius: 20px !important;
+  box-shadow: 0 10px 30px -10px rgba(82, 82, 97, 0.4), 0 20px 5px -10px rgba(59, 59, 77, 0.3);
 }
 
 /* 
@@ -53,7 +56,7 @@ body {
 */
 @media (min-width: 1281px) {
   .FlashCards div {
-    padding-bottom: 30rem;
+    padding-bottom: 20rem;
   }
   .FlashCards div div{
     max-width: 400px;
@@ -72,6 +75,9 @@ body {
   .FlashCards div div{
     max-width: 400px;
     max-height: 320px;
+  }
+  h3 .FlashCards {
+    font-size: 1.5rem;
   }
 }
 

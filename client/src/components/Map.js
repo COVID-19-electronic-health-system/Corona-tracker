@@ -1,51 +1,60 @@
-import React from 'react';
-import MapGL from 'react-map-gl'
+import React, { useEffect, useRef, useState } from 'react';
+import mapboxgl from "mapbox-gl";
+// import MapGL from 'react-map-gl'
 import { ReactComponent as Logo } from '../img/Logo_CORONATRACKER_Logo.svg';
 import { ReactComponent as TextLogo } from '../img/Logo_CORONATRACKER_Text_Logo.svg';
 import NavBar from './NavBar';
+import '../css/Map.css'
 
-const mapboxToken = process.env.MAPBOX_TOKEN
-
-console.log(mapboxToken)
+const mapboxToken = process.env.REACT_APP_MAPBOX_TOKEN
 
 
-class Map extends React.Component {
-    constructor(props) {
-        super(props);
-        this.state = {
-            viewport: {
-                latitude: 43.2994,
-                longitude: -73.935242,
-                zoom: 2,
-                bearing: 0,
-                pitch: 0
-            }
+const styles = {
+    width: "100vw",
+    height: "calc(100vh - 80px)",
+    position: "absolute"
+};
+
+
+function Map() {
+
+    const [map, setMap] = useState(null);
+    const mapContainer = useRef(null);
+
+
+    useEffect(() => {
+        mapboxgl.accessToken = mapboxToken;
+
+        const initializeMap = ({ setMap, mapContainer }) => {
+            const map = new mapboxgl.Map({
+                container: mapContainer.current,
+                style: "mapbox://styles/mapbox/dark-v9", // stylesheet location
+                center: [-73.935242, 43.2994],
+                zoom: 2
+            });
+
+            map.on("load", () => {
+                setMap(map);
+                map.resize();
+            });
         };
-    }
+
+        if (!map) initializeMap({ setMap, mapContainer });
+    }, [map]);
 
 
-    render() {
+    return (
+        <div className="mapContainer">
+            <Logo className="DiagnosticLogo" />
+            <TextLogo className="DiagnosticTextLogo" />
+            <h4>Check out the Map!</h4>
+            <h4>...COMING SOON...</h4>
+            <div ref={el => (mapContainer.current = el)} style={styles} />
+            <NavBar />
+        </div>
 
-        return (
-            <div>
-                <Logo className="DiagnosticLogo" />
-                <TextLogo className="DiagnosticTextLogo" />
-                <h4>Check out the Map!</h4>
-                <h4>...COMING SOON...</h4>
-                <MapGL
-                    {...this.state.viewport}
-                    width="100vw"
-                    height="100vh"
-                    mapStyle="mapbox://styles/mapbox/dark-v9"
-                    onViewportChange={viewport => this.setState({ viewport })}
-                    mapboxApiAccessToken={mapboxToken}
-                >
-                </MapGL>
-                <NavBar />
-            </div>
+    )
+};
 
-        );
-    }
-}
 
 export default Map

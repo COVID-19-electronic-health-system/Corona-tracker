@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { makeStyles } from '@material-ui/core/styles';
-import { Typography, Slider, ButtonGroup, Button, Checkbox, FormControlLabel, TextField } from '@material-ui/core';
+import { Typography, Slider, ButtonGroup, Button, TextField } from '@material-ui/core';
+import CheckboxButton from './survey-view/checkbox-button/CheckboxButton';
 
 // custome style for material ui elements
 const useStyles = makeStyles({
@@ -63,15 +64,10 @@ const SymptomsTracker = () => {
   const classes = useStyles();
 
   // emulate dynamic state in a fuctional component
-  const [todayFeeling, setTodayFeeling] = useState(1)
-  const [todaySymptoms, setTodaySymptoms] = useState(1)
-  const [comparedFeeling, setcomparedFeeling] = useState(1)
-  const [cough, setCough] = useState('')
-  const [fever, setFever] = useState(0)
-  const [dizinnes, setDizinnes] = useState('')
-  const [soreThroat, setSoreThroat] = useState('')
-  const [congestion, setCongestion] = useState('')
-  const [additionalInfo, setAdditionalInfo] = useState('')
+  const [todayFeeling, setTodayFeeling] = useState(1);
+  const [todaySymptoms, setTodaySymptoms] = useState(1);
+  const [comparedFeeling, setcomparedFeeling] = useState(1);
+  const [additionalInfo, setAdditionalInfo] = useState('');
 
   // every headnler function responsible for collecting data for particular question
   const handlerTodayFeeling = (e) => {
@@ -82,28 +78,8 @@ const SymptomsTracker = () => {
     setTodaySymptoms(e)
   }
 
-  const handlerCough = (e) => {
-    setCough(e)
-  }
-
   const handlerComparedFeeling = (e) => {
     setcomparedFeeling(e)
-  }
-
-  const handlerFever = (e) => {
-    setFever(e)
-  }
-
-  const handlerDizinnes = (e) => {
-    setDizinnes(e)
-  }
-
-  const handlerSoreThroat = (e) => {
-    setSoreThroat(e)
-  }
-
-  const handlerCongestion = (e) => {
-    setCongestion(e)
   }
 
   const handlerAdditionalInfo = (e) => {
@@ -116,20 +92,13 @@ const SymptomsTracker = () => {
       todayFeeling: todayFeeling,
       todaySymptoms: todaySymptoms,
       comparedFeeling: comparedFeeling,
-      cough: cough,
-      fever: fever,
-      dizinnes: dizinnes,
-      soreThroat: soreThroat,
-      congestion: congestion,
       additionalInfo: additionalInfo
     }
   }
 
   return (
     <div className={classes.root}>
-      <Typography id="discrete-slider" gutterBottom>
-        How do you feel today?
-      </Typography>
+      <Typography id="discrete-slider" gutterBottom>How do you feel today?</Typography>
       <Slider
         onChange={(e, val) => handlerTodayFeeling(val)}
         color="secondary"
@@ -142,7 +111,9 @@ const SymptomsTracker = () => {
         marks={marks}
       />
 
-      <Typography id="discrete-slider" gutterBottom>How are your symptoms?</Typography>
+      <Typography id="discrete-slider" gutterBottom>
+        How are your symptoms?
+      </Typography>
       <Slider
         onChange={(e, val) => handlerTodaySymptoms(val)}
         color="secondary"
@@ -162,64 +133,7 @@ const SymptomsTracker = () => {
         <Button onClick={e => handlerComparedFeeling(e.target.innerText)}>Better</Button>
       </ButtonGroup>
 
-      <Typography>Which symptoms are you experiencing?</Typography>
-
-      <ButtonGroup color="secondary" aria-label="outlined primary button group">
-        <FormControlLabel
-          value="Cough"
-          control={<Checkbox color="secondary" />}
-          label="Cough"
-          labelPlacement="end"
-          className={classes.controlLabels}
-        />
-        <Button onClick={e => handlerCough(e.target.innerText)}>Minimal</Button>
-        <Button onClick={e => handlerCough(e.target.innerText)}>Moderate</Button>
-        <Button onClick={e => handlerCough(e.target.innerText)}>Severe</Button>
-      </ButtonGroup >
-      <ButtonGroup color="secondary" aria-label="outlined primary button group">
-        <FormControlLabel
-          value="Cough"
-          control={<Checkbox color="secondary" />}
-          label="Fever"
-          labelPlacement="end"
-          className={classes.controlLabels}
-        />
-        <TextField onChange={e => handlerFever(e.target.value)} />
-      </ButtonGroup>
-      <ButtonGroup color="secondary" aria-label="outlined primary button group">
-        <FormControlLabel
-          value="Dizinnes"
-          control={<Checkbox color="secondary" />}
-          label="Dizinnes"
-          labelPlacement="end"
-          className={classes.controlLabels}
-        />
-        <Button onClick={e => handlerDizinnes(e.target.innerText)}>Minimal</Button>
-        <Button onClick={e => handlerDizinnes(e.target.innerText)}>Moderate</Button>
-        <Button onClick={e => handlerDizinnes(e.target.innerText)}>Severe</Button>
-      </ButtonGroup >
-      <ButtonGroup color="secondary" aria-label="outlined primary button group">
-        <FormControlLabel
-          value="Sore throat"
-          control={<Checkbox color="secondary" />}
-          label="Sore throat"
-          labelPlacement="end"
-        />
-        <Button onClick={e => handlerSoreThroat(e.target.innerText)}>Minimal</Button>
-        <Button onClick={e => handlerSoreThroat(e.target.innerText)}>Moderate</Button>
-        <Button onClick={e => handlerSoreThroat(e.target.innerText)}>Severe</Button>
-      </ButtonGroup >
-      <ButtonGroup color="secondary" aria-label="outlined primary button group">
-        <FormControlLabel
-          value="Congestion"
-          control={<Checkbox color="secondary" />}
-          label="Congestion"
-          labelPlacement="end"
-        />
-        <Button onClick={e => handlerCongestion(e.target.innerText)}>Minimal</Button>
-        <Button onClick={e => handlerCongestion(e.target.innerText)}>Moderate</Button>
-        <Button onClick={e => handlerCongestion(e.target.innerText)}>Severe</Button>
-      </ButtonGroup >
+      <CheckboxButton />
 
       <Typography>Anything you'd like to share?</Typography>
       <TextField onChange={e => handlerAdditionalInfo(e.target.value)} />
@@ -228,7 +142,8 @@ const SymptomsTracker = () => {
       </Button>
 
     </div>
-  );
+
+  )
 }
 
 export default SymptomsTracker
