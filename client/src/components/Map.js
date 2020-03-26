@@ -57,4 +57,4 @@ function Map() {
 };
 
 
-export default Map
+export default Map;
