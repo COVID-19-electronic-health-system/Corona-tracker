@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import Layout from './Layout'
 import 'bootstrap/dist/css/bootstrap.min.css';
 import '../css/App.css';
 import { appConfig } from '../utils/constants';
@@ -64,7 +65,7 @@ class App extends Component {
     return (
       <BrowserRouter>
         <Connect authOptions={authOptions}>
-          <div className="App">
+          <Layout authed={authed} userSession={userSession} handleSignOut={this.handleSignOut}>
             <Switch>
               <PrivateRoute
                 exact
@@ -86,7 +87,7 @@ class App extends Component {
               <PrivateRoute path="/map" authed={authed} />
               <PrivateRoute path="/settings" authed={authed} />
             </Switch>
-          </div>
+          </Layout>
         </Connect>
       </BrowserRouter>
     );
