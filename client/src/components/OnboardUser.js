@@ -103,7 +103,7 @@ const blankForm = {
   zip: '',
 };
 
-export default function OnboardUser({ postNewUser }) {
+export default function OnboardUser({ postNewUser, ...props }) {
   const [formState, setFormState] = useState(blankForm);
   const handleChange = e => {
     e.preventDefault();
@@ -127,7 +127,11 @@ export default function OnboardUser({ postNewUser }) {
           <b>PROFILE</b>
         </h4>
       </div>
-      <form onSubmit={() => postNewUser(formState).then(setFormState(blankForm))}>
+      <form
+        onSubmit={() => {
+          postNewUser(formState).then(() => props.history.push('/'));
+        }}
+      >
         <div className={classes.inputArea}>
           <h5 className={classes.inputFieldLabel}>
             <b>First Name:</b>
