@@ -7,11 +7,14 @@ import CheckboxButton from './survey-view/checkbox-button/CheckboxButton';
 const useStyles = makeStyles({
   root: {
     width: 300,
-    display: `inline-block`,
+    alignItems: 'center',
+    justifyContent: 'center',
+    marginLeft: 'auto',
+    marginRight: 'auto',
   },
   controlLabels: {
     marginLeft: -20,
-  }
+  },
 });
 
 // marks for slider
