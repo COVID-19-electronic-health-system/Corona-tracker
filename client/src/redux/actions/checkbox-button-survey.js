@@ -1,4 +1,4 @@
-import { HANDLE_CHECKBOX_CHANGE, HANDLE_BUTTON_GROUP_CHANGE, HANDLE_FEVER, HANDLE_HOURS, HANDLE_MINUTES, GET_CHECKBOX_BUTTON_STATE } from '../constants'
+import { HANDLE_CHECKBOX_CHANGE, HANDLE_BUTTON_GROUP_CHANGE, HANDLE_FEVER, HANDLE_HOURS, HANDLE_MINUTES } from '../constants'
 
 // ACTION CREATORS
 // checks if symptom is checked
@@ -29,6 +29,3 @@ export const handleMinutes = (event, value) => ({
   event, value
 })
 
-export const getCheckboxButtonState = () => ({
-  type: GET_CHECKBOX_BUTTON_STATE
-})

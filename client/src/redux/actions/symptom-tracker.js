@@ -1,4 +1,4 @@
-import { HANDLE_SLIDER, HANDLE_SYMPTOMS, HANDLE_ADDITIONAL_INFO, GET_SYMPTOM_TRACKER_STATE } from '../constants'
+import { HANDLE_SLIDER, HANDLE_SYMPTOMS, HANDLE_ADDITIONAL_INFO } from '../constants'
 
 //ACTION CREATORS
 export const handleSlider = (event, value) => ({
@@ -16,6 +16,3 @@ export const handlerAdditionalInfo = event => ({
   event
 })
 
-export const getSymptomTrackerState = () => ({
-  type: GET_SYMPTOM_TRACKER_STATE
-})

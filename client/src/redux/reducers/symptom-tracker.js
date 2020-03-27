@@ -1,4 +1,4 @@
-import { HANDLE_SLIDER, HANDLE_SYMPTOMS, HANDLE_ADDITIONAL_INFO, GET_SYMPTOM_TRACKER_STATE } from '../constants'
+import { HANDLE_SLIDER, HANDLE_SYMPTOMS, HANDLE_ADDITIONAL_INFO } from '../constants'
 
 // STATE
 const initialState = {
@@ -25,9 +25,6 @@ const symptomTrackerReducer = (state = initialState, action) => {
       let value = action.event.target.value;
       return { ...state, additionalInfo: value }
 
-    case GET_SYMPTOM_TRACKER_STATE:
-      console.log('symptom', state)
-      return state;
     default: return state;
   }
 }

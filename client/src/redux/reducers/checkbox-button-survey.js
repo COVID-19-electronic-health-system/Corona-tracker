@@ -1,4 +1,4 @@
-import { HANDLE_CHECKBOX_CHANGE, HANDLE_BUTTON_GROUP_CHANGE, HANDLE_FEVER, HANDLE_HOURS, HANDLE_MINUTES, GET_CHECKBOX_BUTTON_STATE } from '../constants'
+import { HANDLE_CHECKBOX_CHANGE, HANDLE_BUTTON_GROUP_CHANGE, HANDLE_FEVER, HANDLE_HOURS, HANDLE_MINUTES } from '../constants'
 
 // STATE
 const initialState = {
@@ -40,9 +40,6 @@ const checkboxButtonSurveyReducer = (state = initialState, action) => {
       value = state['headache'].value ? state['headache'].value.replace(/:.*/, ':' + value) : '0:' + value;
       return { ...state, headache: { checked: true, value: value } };
 
-    case GET_CHECKBOX_BUTTON_STATE:
-      console.log('checkbox', state)
-      return state;
     default:
       return state;
   }
