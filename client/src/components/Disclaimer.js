@@ -6,6 +6,9 @@ import { connect } from 'react-redux';
 import setDisclaimerAnswer from '../redux/actions/actions';
 
 export const Disclaimer = props => {
+  console.log('props', props);
+  console.log('setAnswer', typeof props.setAnswer);
+
   return (
     <div className="DisclaimerPopUp">
       <div className="DisclaimerPopUpInner">
@@ -21,8 +24,12 @@ export const Disclaimer = props => {
           control of how you would like to contribute your data for public health and research.
         </p>
         <div>
-          <Button className="theme-Palette-white-text">I agree</Button>
-          <Button className="theme-Palette-white-text theme-Palette-red-bg">I don't agree</Button>
+          <Button className="theme-Palette-white-text" onClick={props.setAnswer('agree')}>
+            I agree
+          </Button>
+          <Button className="theme-Palette-white-text theme-Palette-red-bg" onClick={props.setAnswer('disagree')}>
+            I don't agree
+          </Button>
         </div>
       </div>
     </div>
@@ -30,7 +37,7 @@ export const Disclaimer = props => {
 };
 
 const mapStateToProps = state => {
-  return { answer: state.answer };
+  return { answer: state.disclaimerReducer.answer };
 };
 
 const mapDispatchToProps = dispatch => {

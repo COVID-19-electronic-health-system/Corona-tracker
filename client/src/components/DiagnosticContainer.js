@@ -12,7 +12,7 @@ import { loadObservations } from '../redux/actions/observations';
 import { useDispatch } from 'react-redux';
 import Disclaimer from './Disclaimer';
 import HealthLogToggle from './HealthLogToggle';
-import Scroll from './Scroll'
+import Scroll from './Scroll';
 
 const useStyles = makeStyles(theme => ({
   //the styles goes here as an object
@@ -69,9 +69,9 @@ function DiagnosticContainer(props) {
         </h4>
       </Container>
       {/*uncomment out below to show popup*/}
-      {/* <Container>
+      <Container>
         <Disclaimer />
-      </Container> */}
+      </Container>
       <Scroll>
         <HealthLogToggle />
       </Scroll>
