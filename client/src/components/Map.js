@@ -1,5 +1,6 @@
 import React, { useEffect, useRef, useState } from 'react';
-import mapboxgl from "mapbox-gl/dist/mapbox-gl";
+// import mapboxgl from "mapbox-gl/dist/mapbox-gl";
+import * as mapboxgl from 'mapbox-gl';
 import NavBar from './NavBar';
 import '../css/Map.css'
 
