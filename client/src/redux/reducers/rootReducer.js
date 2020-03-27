@@ -1,8 +1,8 @@
 import observations from './observations';
 import loginLoading from './login';
 import navigationReducer from './navigation';
-import disclaimerReducer from './disclaimer';
 import { combineReducers } from 'redux';
+import disclaimerReducer from './disclaimer'
 
 // initial state of the Redux store
 const initialState = {

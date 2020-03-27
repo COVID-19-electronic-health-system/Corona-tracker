@@ -3,12 +3,10 @@ import { ReactComponent as Logo } from '../img/Logo_CORONATRACKER_Logo.svg';
 import { ReactComponent as TextLogo } from '../img/Logo_CORONATRACKER_Text_Logo.svg';
 import Button from 'react-bootstrap/Button';
 import { connect } from 'react-redux';
-import { setDisclaimerAnswer } from '../redux/actions/disclaimer';
+import actions from '../redux/actions/actions';
 
 export const Disclaimer = props => {
-  const onClick = answer => {
-    props.onAnswerClick(answer);
-  };
+  console.log(props);
 
   return (
     <div className="DisclaimerPopUp">
@@ -25,10 +23,10 @@ export const Disclaimer = props => {
           control of how you would like to contribute your data for public health and research.
         </p>
         <div>
-          <Button className="theme-Palette-white-text" onClick={onClick('agree')}>
+          <Button className="theme-Palette-white-text" onClick={() => props.setAnswer('agree')}>
             I agree
           </Button>
-          <Button className="theme-Palette-white-text theme-Palette-red-bg" onClick={onClick('disagree')}>
+          <Button className="theme-Palette-white-text theme-Palette-red-bg" onClick={() => props.setAnswer('disagree')}>
             I don't agree
           </Button>
         </div>
@@ -43,7 +41,7 @@ const mapStateToProps = state => {
 
 const mapDispatchToProps = dispatch => {
   return {
-    onAnswerClick: answer => dispatch(setDisclaimerAnswer(answer)),
+    setAnswer: answer => dispatch(actions.setDisclaimerAnswer(answer)),
   };
 };
 
