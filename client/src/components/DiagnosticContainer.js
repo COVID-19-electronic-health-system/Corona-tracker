@@ -28,12 +28,12 @@ function DiagnosticContainer(props) {
         Today is <b>{today.toLocaleDateString(undefined, dateOptions)}</b>{' '}
       </h5>
       <hr className="hr" />
-      <Container>
-        <Disclaimer />
-      </Container>
       <Scroll>
         <HealthLogToggle />
       </Scroll>
+      <Container>
+        <Disclaimer />
+      </Container>
       <Subscribe />
     </div>
   );
