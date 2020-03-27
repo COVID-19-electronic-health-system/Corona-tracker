@@ -1,92 +1,11 @@
-import React, { useReducer } from 'react';
+import React from 'react';
+import { useSelector, useDispatch } from 'react-redux'
 import SingleCheckboxButton from './SingleCheckboxButton';
+import { handleCheckboxChange, handleButtonGroupChange, handleFever, handleHours, handleMinutes } from '../../../redux/actions/survey'
 
-// ACTION TYPES
-const HANDLE_CHECKBOX_CHANGE = 'HANDLE_CHECKBOX_CHANGE';
-const HANDLE_BUTTON_GROUP_CHANGE = 'HANDLE_BUTTON_GROUP_CHANGE';
-const HANDLE_FEVER = 'HANDLE_FEVER';
-const HANDLE_HOURS = 'HANDLE_HOURS';
-const HANDLE_MINUTES = 'HANDLE_MINUTES';
-
-// ACTION CREATORS
-// checks if symptom is checked
-const handleCheckboxChange = event => ({
-  type: HANDLE_CHECKBOX_CHANGE,
-  event
-});
-
-// changes symptoms value
-const handleButtonGroupChange = event => ({
-  type: HANDLE_BUTTON_GROUP_CHANGE,
-  event
-});
-
-const handleFever = (event, value) => ({
-  type: HANDLE_FEVER,
-  event, value
-});
-
-//Splited in two functions to handle time value
-const handleHours = (event, value) => ({
-  type: HANDLE_HOURS,
-  event, value
-});
-
-const handleMinutes = (event, value) => ({
-  type: HANDLE_MINUTES,
-  event, value
-})
-
-// STATE
-const initialState = {
-  cough: { checked: false, value: 'Moderate' },
-  fever: { checked: false, value: '' },
-  dizziness: { checked: false, value: 'Moderate' },
-  headache: { checked: false, value: '' },
-  soreThroat: { checked: false, value: 'Moderate' },
-  congestion: { checked: false, value: 'Moderate' }
-};
-
-// REDUCER
-function reducer(state, action) {
-  let symptomName, symptomChecked, symptomValue, value;
-  switch (action.type) {
-
-    case HANDLE_CHECKBOX_CHANGE:
-      action.event.preventDefault();
-      symptomName = action.event.target.name;
-      symptomChecked = action.event.target.checked;
-      return { ...state, [symptomName]: { ...state[symptomName], checked: symptomChecked } };
-
-    case HANDLE_BUTTON_GROUP_CHANGE:
-      action.event.preventDefault();
-      symptomName = action.event.currentTarget.name;
-      symptomValue = action.event.currentTarget.value;
-      return { ...state, [symptomName]: { checked: true, value: symptomValue } };
-
-    case HANDLE_FEVER:
-      action.event.preventDefault();
-      return { ...state, fever: { checked: true, value: action.value } };
-
-    case HANDLE_HOURS:
-      action.event.preventDefault();
-      value = action.value;
-      value = value ? value : '0';
-      value = state['headache'].value ? state['headache'].value.replace(/\d*(?=:)/, value) : value + ':00';
-      return { ...state, headache: { checked: true, value: value } };
-
-    case HANDLE_MINUTES:
-      action.event.preventDefault();
-      value = action.value;
-      value = value ? value : '00';
-      value = state['headache'].value ? state['headache'].value.replace(/:.*/, ':' + value) : '0:' + value;
-      return { ...state, headache: { checked: true, value: value } };
-    default:
-      return state;
-  }
-}
 function CheckboxButton() {
-  const [state, dispatch] = useReducer(reducer, initialState);
+  const state = useSelector(state => state.survey);
+  const dispatch = useDispatch()
   return (
     <div className='checked-grouped-buttons'>
       <h4>

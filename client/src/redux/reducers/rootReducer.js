@@ -1,21 +1,23 @@
+import { combineReducers } from 'redux';
 import observations from './observations';
 import loginLoading from './login';
 import navigationReducer from './navigation'
-import { combineReducers } from 'redux';
 import disclaimerReducer from './disclaimer'
+import survey from './survey';
+
 
 // initial state of the Redux store
 const initialState = {
   userId: null,
   errors: [],
   dataSample: {
-  labels: [
-    "2020-02-28",
-    "2020-03-2",
-    "2020-03-4",
-    "2020-03-5",
-    "2020-03-9"
-  ],
+    labels: [
+      "2020-02-28",
+      "2020-03-2",
+      "2020-03-4",
+      "2020-03-5",
+      "2020-03-9"
+    ],
     values: [
       80,
       70,
@@ -43,5 +45,6 @@ export default combineReducers({
   loginLoading,
   observations,
   navigationReducer,
-  disclaimerReducer
+  disclaimerReducer,
+  survey
 });

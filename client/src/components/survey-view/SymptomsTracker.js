@@ -5,7 +5,7 @@ import Slider from '@material-ui/core/Slider';
 import ButtonGroup from '@material-ui/core/ButtonGroup';
 import Button from '@material-ui/core/Button';
 import TextField from '@material-ui/core/TextField';
-import CheckboxButton from './survey-view/checkbox-button/CheckboxButton';
+import CheckboxButton from './checkbox-button/CheckboxButton';
 
 // custome style for material ui elements
 const useStyles = makeStyles({

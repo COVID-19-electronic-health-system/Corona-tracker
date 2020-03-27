@@ -6,13 +6,13 @@ import { appConfig } from '../utils/constants';
 import { UserSession } from 'blockstack';
 import { configure, User, getConfig } from 'radiks';
 import { Connect } from '@blockstack/connect';
-import DiagnosticContainer from './DiagnosticContainer';
+import DiagnosticContainer from './health-log-tab/DiagnosticContainer';
 import { BrowserRouter, Switch } from 'react-router-dom';
 import { connect } from 'react-redux';
 import setLoginLoading from '../redux/actions/actions';
-import FactQuizContainer from './FactQuizContainer';
+import FactQuizContainer from './education-tab/FactQuizContainer';
 import PrivateRoute from './PrivateRoute';
-import SymptomsTracker from './SymptomsTracker';
+import SymptomsTracker from './survey-view/SymptomsTracker';
 
 const RADIKS_URL = process.env.REACT_APP_QA_URL || 'http://127.0.0.1:1260'; // TODO this will change to wherever our radiks server will be hosted in prod
 
@@ -72,7 +72,7 @@ class App extends Component {
                 exact
                 path="/"
                 authed={authed}
-                component={() => <DiagnosticContainer userSession={userSession}/>}
+                component={() => <DiagnosticContainer userSession={userSession} />}
               />
 
               {/* ADD/EDIT ROUTES WITH THEIR COMPONENTS HERE: */}
