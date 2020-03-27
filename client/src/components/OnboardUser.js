@@ -1,8 +1,5 @@
 import React, { useState } from 'react';
 import { makeStyles } from '@material-ui/core/styles';
-import NavBar from './NavBar';
-import { ReactComponent as Logo } from '../img/Logo_CORONATRACKER_Logo.svg';
-import { ReactComponent as TextLogo } from '../img/Logo_CORONATRACKER_Text_Logo.svg';
 import profileImg from '../img/profile.png';
 
 const useStyles = makeStyles(theme => ({
@@ -106,7 +103,7 @@ const blankForm = {
   zip: '',
 };
 
-export default ({ postNewUser }) => {
+export default function OnboardUser({ postNewUser }) {
   const [formState, setFormState] = useState(blankForm);
   const handleChange = e => {
     e.preventDefault();
@@ -230,4 +227,4 @@ export default ({ postNewUser }) => {
       </form>
     </div>
   );
-};
+}
