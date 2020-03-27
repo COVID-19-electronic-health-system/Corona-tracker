@@ -4,19 +4,11 @@ import { ReactComponent as TextLogo } from '../img/Logo_CORONATRACKER_Text_Logo.
 import Button from 'react-bootstrap/Button';
 import { connect } from 'react-redux';
 import actions from '../redux/actions/actions';
-import { getConfig } from 'radiks';
 
 export const Disclaimer = props => {
-  console.log(props);
-
-  const onClickDisagree = answer => {
-    props.setAnswer(answer);
-    //currently this will only update store with answer, still need to make it do whatever we decide should happen on disagree, such as log out
-  };
-
   return (
     <div>
-      {props.answer === null || props.answer === 'disagree' ? (
+      {!props.answer ? (
         <div className="DisclaimerPopUp">
           <div className="DisclaimerPopUpInner">
             <Logo className="LoginLogo" className="PopUpLogo" />
@@ -31,13 +23,10 @@ export const Disclaimer = props => {
               control of how you would like to contribute your data for public health and research.
             </p>
             <div>
-              <Button className="theme-Palette-white-text" onClick={() => props.setAnswer('agree')}>
+              <Button className="theme-Palette-white-text" onClick={() => props.setAnswer(true)}>
                 I agree
               </Button>
-              <Button
-                className="theme-Palette-white-text theme-Palette-red-bg"
-                onClick={() => onClickDisagree('disagree')}
-              >
+              <Button className="theme-Palette-white-text theme-Palette-red-bg" onClick={() => props.setAnswer(false)}>
                 I don't agree
               </Button>
             </div>
