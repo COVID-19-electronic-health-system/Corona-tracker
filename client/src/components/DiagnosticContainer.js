@@ -3,6 +3,8 @@ import { loadObservations } from '../redux/actions/observations';
 import { useDispatch } from 'react-redux';
 import HealthLogToggle from './HealthLogToggle';
 import Scroll from './Scroll';
+import Container from '@material-ui/core/Container';
+import Disclaimer from './Disclaimer';
 
 
 function DiagnosticContainer() {
@@ -11,7 +13,7 @@ function DiagnosticContainer() {
   dispatch(loadObservations());
   return (
     <div className="DiagnosticContainer">
-     
+
       {/*uncomment out below to show popup*/}
       <Container>
         <Disclaimer />
