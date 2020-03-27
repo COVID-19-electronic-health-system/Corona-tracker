@@ -3,7 +3,6 @@ import { ReactComponent as Logo } from '../img/Logo_CORONATRACKER_Logo.svg';
 import { ReactComponent as TextLogo } from '../img/Logo_CORONATRACKER_Text_Logo.svg';
 import { connect } from 'react-redux';
 import actions from '../redux/actions/actions';
-//material UI
 import Button from '@material-ui/core/Button';
 import Dialog from '@material-ui/core/Dialog';
 import DialogActions from '@material-ui/core/DialogActions';
@@ -18,20 +17,27 @@ export const Disclaimer = props => {
     <div>
       {!props.answer ? (
         <Dialog open={open} aria-describedby="alert-dialog-description">
-          <DialogTitle id="alert-dialog-title">CoronaTracker</DialogTitle>
+          <DialogTitle align="center" id="alert-dialog-title">
+            <Logo width="75px" height="60px" />
+            <TextLogo width="350px" height="55px" />
+          </DialogTitle>
           <DialogContent>
-            <DialogContentText id="alert-dialog-description">
-              The CoronaTracker is designed to help you navigate through the pandemic with accurate information,
-              charting your wellbeing, and tracking your health. The CoronaTracker is not intended to be used or viewed
-              as diagnosis or treatment of disease or other symptoms, including but not limited to COVID-19. This
-              application was made by the community for the community. This application is made for you! You are in
-              control of how you would like to contribute your data for public health and research.
+            <DialogContentText align="left" id="alert-dialog-description">
+              <p>
+                The CoronaTracker is designed to help you navigate through the pandemic with accurate information,
+                charting your wellbeing, and tracking your health. The CoronaTracker is not intended to be used or
+                viewed as diagnosis or treatment of disease or other symptoms, including but not limited to COVID-19.
+              </p>
+              <p>
+                This application was made by the community for the community. This application is made for you! You are
+                in control of how you would like to contribute your data for public health and research.
+              </p>
             </DialogContentText>
             <DialogActions>
-              <Button color="primary" autofocus onClick={() => props.setAnswer(true)}>
+              <Button variant="outlined" onClick={() => props.setAnswer(true)}>
                 I agree
               </Button>
-              <Button color="primary" onClick={() => props.setAnswer(false)}>
+              <Button variant="outlined" onClick={() => props.setAnswer(false)}>
                 I don't agree
               </Button>
             </DialogActions>
