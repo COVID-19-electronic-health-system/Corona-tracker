@@ -7,7 +7,7 @@ const Subscribe = (props) => {
       <div className={"SubscribeContainer"}>
         <Slide direction="right" in={true} mountOnEnter unmountOnExit>
           <FormControl>
-            <TextField id="filled-phone" label="Phone Number" value={''} onChange={() => {}} variant="filled" />
+            <TextField id="filled-phone" label="Enter Phone Number" value={''} onChange={() => {}} variant="filled" />
             <Button variant="contained" color="secondary">
               Subscribe for alerts
             </Button>
