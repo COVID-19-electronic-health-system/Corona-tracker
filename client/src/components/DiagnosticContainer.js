@@ -5,6 +5,7 @@ import HealthLogToggle from './HealthLogToggle';
 import Scroll from './Scroll';
 import Container from '@material-ui/core/Container';
 import Disclaimer from './Disclaimer';
+import Subscribe from './Subscribe';
 
 const dateOptions = {
   weekday: 'long',
@@ -33,6 +34,7 @@ function DiagnosticContainer(props) {
       <Scroll>
         <HealthLogToggle />
       </Scroll>
+      <Subscribe />
     </div>
   );
 }

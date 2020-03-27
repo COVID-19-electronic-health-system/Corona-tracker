@@ -51,30 +51,31 @@ class NavBar extends React.Component {
     const { classes } = this.props;
 
     return (
-      <BottomNavigation className={classes.root} showLabels>
-        <BottomNavigationAction
-          component={Link}
-          to='/'
-          label="Log"
-          value="log"
-          classes={{
-            root: classes.actionItem,
-            selected: classes.selected,
-          }}
-          icon={<FeaturedPlayListOutlinedIcon className={classes.buttons} />}
-        />
-        <BottomNavigationAction
-          component={Link}
-          to="/education"
-          label="Education"
-          value="education"
-          classes={{
-            root: classes.actionItem,
-            selected: classes.selected,
-          }}
-          icon={<StarBorderIcon className={classes.buttons} />}
-        />
-        {/*<BottomNavigationAction
+      <div>
+        <BottomNavigation className={classes.root} showLabels>
+          <BottomNavigationAction
+            component={Link}
+            to="/"
+            label="Log"
+            value="log"
+            classes={{
+              root: classes.actionItem,
+              selected: classes.selected,
+            }}
+            icon={<FeaturedPlayListOutlinedIcon className={classes.buttons} />}
+          />
+          <BottomNavigationAction
+            component={Link}
+            to="/education"
+            label="Education"
+            value="education"
+            classes={{
+              root: classes.actionItem,
+              selected: classes.selected,
+            }}
+            icon={<StarBorderIcon className={classes.buttons} />}
+          />
+          {/*<BottomNavigationAction
           label="Chat"
           value="chat"
           classes={{
@@ -83,25 +84,26 @@ class NavBar extends React.Component {
           }}
           icon={<VideocamOutlinedIcon className={classes.buttons} />}
         />*/}
-        <BottomNavigationAction
-          label="Map"
-          value="map"
-          classes={{
-            root: classes.actionItem,
-            selected: classes.selected,
-          }}
-          icon={<LocationOnOutlinedIcon className={classes.buttons} />}
-        />
-        <BottomNavigationAction
-          label="Settings"
-          value="settings"
-          classes={{
-            root: classes.actionItem,
-            selected: classes.selected,
-          }}
-          icon={<SettingsOutlinedIcon className={classes.buttons} />}
-        />
-      </BottomNavigation>
+          <BottomNavigationAction
+            label="Map"
+            value="map"
+            classes={{
+              root: classes.actionItem,
+              selected: classes.selected,
+            }}
+            icon={<LocationOnOutlinedIcon className={classes.buttons} />}
+          />
+          <BottomNavigationAction
+            label="Settings"
+            value="settings"
+            classes={{
+              root: classes.actionItem,
+              selected: classes.selected,
+            }}
+            icon={<SettingsOutlinedIcon className={classes.buttons} />}
+          />
+        </BottomNavigation>
+      </div>
     );
   }
 }
