@@ -1,0 +1,86 @@
+.DisclaimerPopUp {
+  z-index: 9999;
+}
+
+.DisclaimerPopUp .DisclaimerPopUpInner {
+  left: 10%;
+  right: 10%;
+}
+
+.DisclaimerPopUp .LoginLogo {
+  max-width: 20%;
+  max-height: 20%;
+}
+
+.DisclaimerPopUp .TextLogo {
+  max-width: 60%;
+  max-height: 30%;
+}
+
+.DisclaimerButtonGroup {
+  display: flex;
+  justify-content: space-evenly;
+}
+
+/* 
+  ##Device = Desktops
+  ##Screen = 1281px to higher resolution desktops
+*/
+@media (min-width: 1281px) {
+  .DisclaimerPopUp .DisclaimerPopUpInner {
+    left: 30%;
+    right: 30%;
+  }
+  .DisclaimerPopUp .LoginLogo {
+    max-width: 10%;
+    max-height: 20%;
+  }
+  
+}
+
+/* 
+  ##Device = Laptops, Desktops
+  ##Screen = B/w 1025px to 1280px
+*/
+@media (min-width: 1025px) and (max-width: 1280px) {
+  
+  .DisclaimerPopUp .LoginLogo {
+    width: 50px;
+    height: 50px;
+  }
+  
+  .DisclaimerPopUp .TextLogo {
+    max-width: 50%;
+    max-height: 30%;
+  }
+}
+
+/* 
+  ##Device = Tablets, Ipads (portrait)
+  ##Screen = B/w 768px to 1024px
+*/
+@media (min-width: 768px) and (max-width: 1024px) {
+  .DisclaimerPopUp .DisclaimerPopUpInner {
+    bottom: 40%;
+  }
+  
+  .DisclaimerPopUp .LoginLogo {
+    width: 50px;
+    height: 50px;
+  }
+  
+  .DisclaimerPopUp .TextLogo {
+    max-width: 50%;
+    max-height: 30%;
+  }
+}
+
+/* 
+  ##Device = Tablets, Ipads (landscape)
+  ##Screen = B/w 768px to 1024px
+*/
+@media (min-width: 768px) and (max-width: 1024px) and (orientation: landscape) {
+  .DisclaimerPopUp .DisclaimerPopUpInner {
+    bottom: 30%;
+  }
+}

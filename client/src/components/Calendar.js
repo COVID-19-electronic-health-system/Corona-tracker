@@ -1,25 +1,49 @@
-import React, { Component } from 'react';
-import Calendar from 'react-calendar';
-import 'react-calendar/dist/Calendar.css';
+import React, { createRef, useState } from 'react';
+import FullCalendar from "@fullcalendar/react";
+import dayGridPlugin from "@fullcalendar/daygrid";
+import timeGridPlugin from "@fullcalendar/timegrid";
+import interactionPlugin from "@fullcalendar/interaction";
+import "@fullcalendar/core/main.css";
+import "@fullcalendar/daygrid/main.css";
+import "@fullcalendar/timegrid/main.css";
+import "../css/Calendar.css";
 
-class AppCalendar extends Component { 
-  state = {
-    date: new Date(),
+
+const AppCalendar = () => { 
+
+  // state emulation, store all events user created
+  const [calendarEvents, setCalendarEvents] = useState([])
+
+  // create new event function
+  const handleCreateEventClick = (arg) => {
+    let arrayObject = {
+      title: 'new event',
+      start: arg.date,
+      allDay: arg.allDay
+    }
+    setCalendarEvents([...calendarEvents, arrayObject])
   }
 
-  onChange = date => this.setState({ date })
-
-
-  render() {
+  const calendarComponentRef = createRef()
+  
   return (
       <div>
-        <Calendar
-          onChange={this.onChange}
-          value={this.state.date}
-        />
+        <div className="app-calendar">
+          <FullCalendar
+            defaultView="dayGridMonth"
+            header={{
+              left: "prev,next today",
+              center: "title",
+              right: "dayGridMonth,timeGridWeek,timeGridDay,listWeek"
+            }}
+            plugins={[dayGridPlugin, timeGridPlugin, interactionPlugin]}
+            ref={calendarComponentRef}
+            events={calendarEvents}
+            dateClick={handleCreateEventClick}
+          />
+        </div>
       </div>
     );
-  }
 }
 
 export default AppCalendar;
