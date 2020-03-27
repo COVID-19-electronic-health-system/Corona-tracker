@@ -2,7 +2,7 @@ import React, { useState } from 'react'
 import { useSprings } from 'react-spring'
 import { useDrag } from 'react-use-gesture'
 import Card from './Card'
-import '../../css/FlashCards.css'
+import '../css/FlashCards.css'
 
 const to = i => ({
   x: 0,

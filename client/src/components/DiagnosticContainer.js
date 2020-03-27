@@ -1,8 +1,8 @@
 import React from 'react';
-import { loadObservations } from '../../redux/actions/observations';
+import { loadObservations } from '../redux/actions/observations';
 import { useDispatch } from 'react-redux';
 import HealthLogToggle from './HealthLogToggle';
-import Scroll from '../Scroll'
+import Scroll from './Scroll'
 
 const dateOptions = {
   weekday: 'long',

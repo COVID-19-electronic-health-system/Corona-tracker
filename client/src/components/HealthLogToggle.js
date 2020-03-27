@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import ButtonGroup from '@material-ui/core/ButtonGroup';
 import Button from '@material-ui/core/Button';
 import Container from '@material-ui/core/Container';
-import MyHealthLog from './my-health-log/MyHealthLog';
+import MyHealthLog from './MyHealthLog';
 
 export default function HealthLogToggle() {
   const [toggleValue, setToggleValue] = useState('myHealthLog');

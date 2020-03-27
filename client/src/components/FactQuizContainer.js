@@ -2,12 +2,12 @@ import React, { useState } from 'react'
 import { Container } from 'react-bootstrap'
 import { Button, ButtonGroup } from '@material-ui/core'
 import FlashCards from './FlashCards'
-import NavBar from '../NavBar'
-import Temperature from '../Temperature'
-import { ReactComponent as Logo } from '../../img/Logo_CORONATRACKER_Logo.svg';
-import { ReactComponent as TextLogo } from '../../img/Logo_CORONATRACKER_Text_Logo.svg';
-import { cardData, quizData } from '../../utils/fakeCardData'
-import '../../css/DiagnosticContainer.css';
+import NavBar from './NavBar'
+import Temperature from './Temperature'
+import { ReactComponent as Logo } from '../img/Logo_CORONATRACKER_Logo.svg';
+import { ReactComponent as TextLogo } from '../img/Logo_CORONATRACKER_Text_Logo.svg';
+import { cardData, quizData } from '../utils/fakeCardData'
+import '../css/DiagnosticContainer.css';
 
 
 const FactQuizContainer = (props) => {
