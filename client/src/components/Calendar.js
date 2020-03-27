@@ -9,6 +9,7 @@ import '@fullcalendar/daygrid/main.css';
 import '@fullcalendar/timegrid/main.css';
 import '../css/Calendar.css';
 
+
 const AppCalendar = () => {
   // state emulation, store all events user created
   const [calendarEvents, setCalendarEvents] = useState([])
@@ -24,6 +25,7 @@ const AppCalendar = () => {
   };
 
   const calendarComponentRef = createRef()
+
 
   return (
     <div>
