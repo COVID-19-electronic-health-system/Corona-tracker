@@ -20,7 +20,7 @@ export const Disclaimer = props => {
             <TextLogo width="350px" height="55px" />
           </DialogTitle>
           <DialogContent>
-            <DialogContentText align="left" id="alert-dialog-description">
+            <DialogContent align="left" id="alert-dialog-description">
               <p>
                 The CoronaTracker is designed to help you navigate through the pandemic with accurate information,
                 charting your wellbeing, and tracking your health. The CoronaTracker is not intended to be used or
@@ -30,7 +30,7 @@ export const Disclaimer = props => {
                 This application was made by the community for the community. This application is made for you! You are
                 in control of how you would like to contribute your data for public health and research.
               </p>
-            </DialogContentText>
+            </DialogContent>
             <DialogActions>
               <Button variant="outlined" onClick={() => props.setAnswer(true)}>
                 I agree
