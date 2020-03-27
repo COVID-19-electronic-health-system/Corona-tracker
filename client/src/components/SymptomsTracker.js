@@ -1,6 +1,10 @@
 import React, { useState } from 'react';
 import { makeStyles } from '@material-ui/core/styles';
-import { Typography, Slider, ButtonGroup, Button, TextField } from '@material-ui/core';
+import Typography from '@material-ui/core/Typography';
+import Slider from '@material-ui/core/Slider';
+import ButtonGroup from '@material-ui/core/ButtonGroup';
+import Button from '@material-ui/core/Button';
+import TextField from '@material-ui/core/TextField';
 import CheckboxButton from './survey-view/checkbox-button/CheckboxButton';
 
 // custome style for material ui elements
