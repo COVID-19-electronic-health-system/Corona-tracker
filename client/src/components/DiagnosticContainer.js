@@ -2,7 +2,7 @@ import React from 'react';
 import { loadObservations } from '../redux/actions/observations';
 import { useDispatch } from 'react-redux';
 import HealthLogToggle from './HealthLogToggle';
-import Scroll from './Scroll'
+import Scroll from './Scroll';
 
 
 function DiagnosticContainer() {
@@ -13,9 +13,9 @@ function DiagnosticContainer() {
     <div className="DiagnosticContainer">
      
       {/*uncomment out below to show popup*/}
-      {/* <Container>
+      <Container>
         <Disclaimer />
-      </Container> */}
+      </Container>
       <Scroll>
         <HealthLogToggle />
       </Scroll>

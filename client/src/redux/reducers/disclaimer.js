@@ -1,18 +1,19 @@
-import { SET_DISCLAIMER_MODAL } from '../actions/actions';
+import { DISCLAIMER_ANSWER } from './../actions/actions';
 
-const INITIAL_STATE = {
-    agreeToDisclaimer: false
-}
+const initialState = {
+    answer: null,
+};
 
-const disclaimerReducer = (state = INITIAL_STATE, action) => {
+const disclaimerReducer = (state = initialState, action) => {
     switch (action.type) {
-        case SET_DISCLAIMER_MODAL:
+        case DISCLAIMER_ANSWER:
             return {
-              agreeToDisclaimer:action.agreeToDisclaimer
-            }
+                ...state,
+                answer: action.answer,
+            };
         default:
             return state;
     }
-}
+};
 
 export default disclaimerReducer;
