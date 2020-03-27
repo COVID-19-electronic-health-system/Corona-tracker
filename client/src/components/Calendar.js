@@ -11,7 +11,7 @@ import '../css/Calendar.css';
 
 const AppCalendar = () => {
   // state emulation, store all events user created
-  const [calendarEvents, setCalendarEvents] = useState([]);
+  const [calendarEvents, setCalendarEvents] = useState([])
 
   const history = useHistory();
 
@@ -23,7 +23,7 @@ const AppCalendar = () => {
     }
   };
 
-  const calendarComponentRef = createRef();
+  const calendarComponentRef = createRef()
 
   return (
     <div>
@@ -39,12 +39,12 @@ const AppCalendar = () => {
           ref={calendarComponentRef}
           events={calendarEvents}
           dateClick={args => {
-            handleCreateEventClick(args);
+            handleCreateEventClick(args)
           }}
         />
       </div>
     </div>
   );
-};
+}
 
 export default AppCalendar;
