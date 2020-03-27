@@ -65,7 +65,7 @@ class App extends Component {
     const { authed } = this.state;
     return (
       <BrowserRouter>
-        <Connect authOptions={authOptions}>
+        <Connect authOptions={authOptions}>      
           <Layout authed={authed} userSession={userSession} handleSignOut={this.handleSignOut}>
             <Switch>
               <PrivateRoute
