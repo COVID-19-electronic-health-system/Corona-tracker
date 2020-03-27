@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import Layout from './Layout';
-import Subscribe from './Subscribe';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import '../css/App.css';
 import { appConfig } from '../utils/constants';
@@ -90,7 +89,6 @@ class App extends Component {
               <PrivateRoute path="/settings" authed={authed} />
             </Switch>
           </Layout>
-          <Subscribe />
         </Connect>
       </BrowserRouter>
     );
