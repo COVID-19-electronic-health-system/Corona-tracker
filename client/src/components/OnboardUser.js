@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { makeStyles } from '@material-ui/core/styles';\
+import { makeStyles } from '@material-ui/core/styles';
 import NavBar from './NavBar';
 import { ReactComponent as Logo } from '../img/Logo_CORONATRACKER_Logo.svg';
 import { ReactComponent as TextLogo } from '../img/Logo_CORONATRACKER_Text_Logo.svg';
@@ -11,10 +11,8 @@ const useStyles = makeStyles(theme => ({
     display: 'flex',
     flexDirection: 'column',
     alignItems: 'center',
-    height: '100%',
-  },
-  banner: {
-    display: 'inline-block',
+    justifyContent: 'space-evenly',
+    margin: '2em 0 2em 0',
   },
   button: {
     color: 'white',
@@ -32,20 +30,6 @@ const useStyles = makeStyles(theme => ({
     display: `inline-block`,
     marginBottom: '.5em',
     fontSize: '.5em',
-  },
-  logo: {
-    width: '100px',
-    height: '100px',
-    [theme.breakpoints.down('xs')]: {
-      width: '80px',
-    },
-  },
-  textLogo: {
-    width: '350px',
-    height: '100px',
-    [theme.breakpoints.down('xs')]: {
-      width: '200px',
-    },
   },
   profile: {
     width: '100px',
@@ -134,10 +118,6 @@ export default ({ postNewUser }) => {
   const classes = useStyles();
   return (
     <div className={classes.root}>
-      <div className={classes.banner}>
-        <Logo className={classes.logo} />
-        <TextLogo className={classes.textLogo} />
-      </div>
       <div className={classes.header}>
         <h4>
           <b>Welcome to CoronaTracker!</b>
@@ -241,14 +221,13 @@ export default ({ postNewUser }) => {
           className={classes.button}
           style={{
             width: '300px',
-            marginTop: '.5em',
             height: '3.5em',
+            marginTop: '2em',
           }}
         >
           SAVE MY RESPONSES
         </button>
       </form>
-      <NavBar />
     </div>
   );
 };
