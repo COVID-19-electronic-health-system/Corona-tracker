@@ -1,5 +1,6 @@
 import React from 'react';
 import { useSelector, useDispatch } from 'react-redux'
+import { Link } from 'react-router-dom'
 import { makeStyles } from '@material-ui/core/styles';
 import Typography from '@material-ui/core/Typography';
 import ButtonGroup from '@material-ui/core/ButtonGroup';
@@ -47,7 +48,7 @@ const SymptomsTracker = () => {
       <TextField
         onChange={event => dispatch(handlerAdditionalInfo(event))}
       />
-      <Button variant='contained' onClick={() => dispatch(submitSurvey())} color="secondary">
+      <Button variant='contained' component={Link} to='/' onClick={() => dispatch(submitSurvey())} color="secondary">
         SAVE MY RESPONSES
       </Button>
 

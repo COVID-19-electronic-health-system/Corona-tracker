@@ -1,7 +1,7 @@
 import { SUBMIT_SURVEY } from '../constants'
 
 const initialState = {
-  isSubmited: false,
+  isSubmited: null,
   data: {}
 }
 

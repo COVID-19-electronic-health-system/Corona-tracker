@@ -7,7 +7,7 @@ import { UserSession } from 'blockstack';
 import { configure, User, getConfig } from 'radiks';
 import { Connect } from '@blockstack/connect';
 import DiagnosticContainer from './health-log-tab/DiagnosticContainer';
-import { BrowserRouter, Switch } from 'react-router-dom';
+import { BrowserRouter, Switch, Redirect } from 'react-router-dom';
 import { connect } from 'react-redux';
 import setLoginLoading from '../redux/actions/actions';
 import FactQuizContainer from './education-tab/FactQuizContainer';
@@ -21,7 +21,11 @@ const makeUserSession = () => {
 };
 
 class App extends Component {
-  state = { authed: false, checkingAuth: true };
+  constructor(props) {
+    super(props)
+    this.state = { authed: false, checkingAuth: true }
+  }
+  // state = { authed: false, checkingAuth: true };
 
   async componentDidMount() {
     const userSession = makeUserSession();
@@ -63,6 +67,7 @@ class App extends Component {
     };
 
     const { authed } = this.state;
+    console.log(this.props.submitSurveyReducer)
     return (
       <BrowserRouter>
         <Connect authOptions={authOptions}>
@@ -72,7 +77,7 @@ class App extends Component {
                 exact
                 path="/"
                 authed={authed}
-                component={() => <DiagnosticContainer userSession={userSession} />}
+                component={() => { return this.props.submitSurveyReducer.isSubmited === null ? <Redirect to='/symptomsurvey' /> : <DiagnosticContainer userSession={userSession} /> }}
               />
 
               {/* ADD/EDIT ROUTES WITH THEIR COMPONENTS HERE: */}
@@ -95,8 +100,9 @@ class App extends Component {
   }
 }
 
-const mapStateToProps = ({ loginLoading }) => ({
+const mapStateToProps = ({ loginLoading, submitSurveyReducer }) => ({
   loginLoading,
+  submitSurveyReducer
 });
 
 const mapDispatchToProps = dispatch => ({
