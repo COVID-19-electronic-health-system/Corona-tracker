@@ -66,12 +66,11 @@ const Layout = (props) => {
               Sign Out
             </Button>
             {props.children}
-
             <NavBar />
           </div>
         ) : (
-            <Login />
-          )}
+          <Login />
+        )}
       </CssBaseline>
     </MuiThemeProvider>
   );
