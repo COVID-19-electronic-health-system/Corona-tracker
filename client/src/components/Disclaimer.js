@@ -1,13 +1,14 @@
-import React, { Component } from 'react';
+import React from 'react';
 import { ReactComponent as Logo } from '../img/Logo_CORONATRACKER_Logo.svg';
 import { ReactComponent as TextLogo } from '../img/Logo_CORONATRACKER_Text_Logo.svg';
 import Button from 'react-bootstrap/Button';
 import { connect } from 'react-redux';
-import setDisclaimerAnswer from '../redux/actions/actions';
+import { setDisclaimerAnswer } from '../redux/actions/disclaimer';
 
 export const Disclaimer = props => {
-  console.log('props', props);
-  console.log('setAnswer', typeof props.setAnswer);
+  const onClick = answer => {
+    props.onAnswerClick(answer);
+  };
 
   return (
     <div className="DisclaimerPopUp">
@@ -24,10 +25,10 @@ export const Disclaimer = props => {
           control of how you would like to contribute your data for public health and research.
         </p>
         <div>
-          <Button className="theme-Palette-white-text" onClick={props.setAnswer('agree')}>
+          <Button className="theme-Palette-white-text" onClick={onClick('agree')}>
             I agree
           </Button>
-          <Button className="theme-Palette-white-text theme-Palette-red-bg" onClick={props.setAnswer('disagree')}>
+          <Button className="theme-Palette-white-text theme-Palette-red-bg" onClick={onClick('disagree')}>
             I don't agree
           </Button>
         </div>
@@ -42,7 +43,7 @@ const mapStateToProps = state => {
 
 const mapDispatchToProps = dispatch => {
   return {
-    setAnswer: answer => dispatch(setDisclaimerAnswer(answer)),
+    onAnswerClick: answer => dispatch(setDisclaimerAnswer(answer)),
   };
 };
 
