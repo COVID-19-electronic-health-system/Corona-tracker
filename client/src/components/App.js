@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import Layout from './Layout'
+import Layout from './Layout';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import '../css/App.css';
 import { appConfig } from '../utils/constants';
@@ -72,7 +72,7 @@ class App extends Component {
                 exact
                 path="/"
                 authed={authed}
-                component={() => <DiagnosticContainer userSession={userSession}/>}
+                component={() => <DiagnosticContainer userSession={userSession} />}
               />
 
               {/* ADD/EDIT ROUTES WITH THEIR COMPONENTS HERE: */}

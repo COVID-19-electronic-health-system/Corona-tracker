@@ -5,7 +5,6 @@ import Button from '@material-ui/core/Button';
 import { ReactComponent as Logo } from '../img/Logo_CORONATRACKER_Logo.svg';
 import { ReactComponent as TextLogo } from '../img/Logo_CORONATRACKER_Text_Logo.svg';
 import NavBar from './NavBar';
-
 import Login from './Login';
 
 const theme = createMuiTheme({
@@ -66,12 +65,11 @@ const Layout = (props) => {
               Sign Out
             </Button>
             {props.children}
-
             <NavBar />
           </div>
         ) : (
-            <Login />
-          )}
+          <Login />
+        )}
       </CssBaseline>
     </MuiThemeProvider>
   );
