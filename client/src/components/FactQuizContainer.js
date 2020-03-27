@@ -2,8 +2,8 @@ import React, { useState } from 'react'
 import { Container } from 'react-bootstrap'
 import { Button, ButtonGroup } from '@material-ui/core'
 import FlashCards from './FlashCards'
-import { cardData, quizData } from '../../utils/fakeCardData'
-import '../../css/DiagnosticContainer.css';
+import { cardData, quizData } from '../utils/fakeCardData'
+import '../css/DiagnosticContainer.css';
 
 
 const FactQuizContainer = (props) => {

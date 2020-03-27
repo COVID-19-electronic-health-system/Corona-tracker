@@ -6,11 +6,11 @@ import { appConfig } from '../utils/constants';
 import { UserSession } from 'blockstack';
 import { configure, User, getConfig } from 'radiks';
 import { Connect } from '@blockstack/connect';
-import DiagnosticContainer from './health-log-tab/DiagnosticContainer';
+import DiagnosticContainer from './DiagnosticContainer';
 import { BrowserRouter, Switch, Redirect } from 'react-router-dom';
 import { connect } from 'react-redux';
 import setLoginLoading from '../redux/actions/actions';
-import FactQuizContainer from './education-tab/FactQuizContainer';
+import FactQuizContainer from './FactQuizContainer';
 import PrivateRoute from './PrivateRoute';
 import SymptomsTracker from './survey-view/SymptomsTracker';
 
@@ -67,7 +67,6 @@ class App extends Component {
     };
 
     const { authed } = this.state;
-    console.log(this.props.submitSurveyReducer)
     return (
       <BrowserRouter>
         <Connect authOptions={authOptions}>
