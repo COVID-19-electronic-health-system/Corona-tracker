@@ -11,12 +11,10 @@ import DialogContentText from '@material-ui/core/DialogContentText';
 import DialogTitle from '@material-ui/core/DialogTitle';
 
 export const Disclaimer = props => {
-  const [open] = React.useState(true);
-
   return (
     <div>
       {!props.answer ? (
-        <Dialog open={open} aria-describedby="alert-dialog-description">
+        <Dialog open={true} aria-describedby="alert-dialog-description">
           <DialogTitle align="center" id="alert-dialog-title">
             <Logo width="75px" height="60px" />
             <TextLogo width="350px" height="55px" />
