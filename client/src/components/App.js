@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import Login from './Login';
+import Layout from './Layout'
 import 'bootstrap/dist/css/bootstrap.min.css';
 import '../css/App.css';
 import { appConfig } from '../utils/constants';
@@ -7,11 +7,12 @@ import { UserSession } from 'blockstack';
 import { configure, User, getConfig } from 'radiks';
 import { Connect } from '@blockstack/connect';
 import DiagnosticContainer from './DiagnosticContainer';
-import { BrowserRouter, Route, Switch } from 'react-router-dom';
+import { BrowserRouter, Switch } from 'react-router-dom';
 import { connect } from 'react-redux';
 import setLoginLoading from '../redux/actions/actions';
 import FactQuizContainer from './FactQuizContainer';
 import PrivateRoute from './PrivateRoute';
+import SymptomsTracker from './SymptomsTracker';
 
 const RADIKS_URL = process.env.REACT_APP_QA_URL || 'http://127.0.0.1:1260'; // TODO this will change to wherever our radiks server will be hosted in prod
 
@@ -61,22 +62,22 @@ class App extends Component {
       userSession,
     };
 
-    const { authed, checkingAuth } = this.state;
+    const { authed } = this.state;
     return (
       <BrowserRouter>
         <Connect authOptions={authOptions}>
-          <div className="App">
+          <Layout authed={authed} userSession={userSession} handleSignOut={this.handleSignOut}>
             <Switch>
               <PrivateRoute
                 exact
                 path="/"
                 authed={authed}
-                component={() => <DiagnosticContainer userSession={userSession} handleSignOut={this.handleSignOut} />}
+                component={() => <DiagnosticContainer userSession={userSession}/>}
               />
 
               {/* ADD/EDIT ROUTES WITH THEIR COMPONENTS HERE: */}
               <PrivateRoute path="/signup" authed={authed} />
-              <PrivateRoute path="/symptomsurvey" authed={authed} />
+              <PrivateRoute path="/symptomsurvey" authed={authed} component={() => <SymptomsTracker />} />
               <PrivateRoute path="/log" authed={authed} />
               <PrivateRoute path="/healthlog" authed={authed} />
               <PrivateRoute
@@ -87,7 +88,7 @@ class App extends Component {
               <PrivateRoute path="/map" authed={authed} />
               <PrivateRoute path="/settings" authed={authed} />
             </Switch>
-          </div>
+          </Layout>
         </Connect>
       </BrowserRouter>
     );
