@@ -1,6 +1,8 @@
-import { SET_DISCLAIMER_MODAL } from './actions'
+import { DISCLAIMER_ANSWER } from './actions';
 
-export const setDisclaimer = (agreeToDisclaimer) => ({
-  type: SET_DISCLAIMER_MODAL,
-  agreeToDisclaimer
-})
+export function setDisclaimerAnswer(answer) {
+  return {
+    type: DISCLAIMER_ANSWER,
+    answer,
+  };
+}

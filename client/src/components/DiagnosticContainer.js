@@ -2,7 +2,10 @@ import React from 'react';
 import { loadObservations } from '../redux/actions/observations';
 import { useDispatch } from 'react-redux';
 import HealthLogToggle from './HealthLogToggle';
-import Scroll from './Scroll'
+import Scroll from './Scroll';
+import Container from '@material-ui/core/Container';
+import Disclaimer from './Disclaimer';
+import Subscribe from './Subscribe';
 
 const dateOptions = {
   weekday: 'long',
@@ -18,7 +21,6 @@ function DiagnosticContainer(props) {
   dispatch(loadObservations());
   return (
     <div className="DiagnosticContainer">
-
       <h4>
         Hello, <b>{userSession.loadUserData().profile.name} </b>
       </h4>
@@ -26,14 +28,13 @@ function DiagnosticContainer(props) {
         Today is <b>{today.toLocaleDateString(undefined, dateOptions)}</b>{' '}
       </h5>
       <hr className="hr" />
-
-      {/*uncomment out below to show popup*/}
-      {/* <Container>
-        <Disclaimer />
-      </Container> */}
       <Scroll>
         <HealthLogToggle />
       </Scroll>
+      <Container>
+        <Disclaimer />
+      </Container>
+      <Subscribe />
     </div>
   );
 }

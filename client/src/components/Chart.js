@@ -5,7 +5,7 @@ import * as chartJs from 'chart.js';
 
 const Chart = () => {
 // Extratring dummy data from the store 
-const dataSample = useSelector(state => state.dataSample);
+const dataSample = useSelector(state => state.root.dataSample);
 
 // Configuring chart parameters and pusing dummy data
 const chartConfig = {
