@@ -21,15 +21,15 @@ export const Disclaimer = props => {
           </DialogTitle>
           <DialogContent>
             <DialogContent align="left" id="alert-dialog-description">
-              <p>
+              <DialogContentText>
                 The CoronaTracker is designed to help you navigate through the pandemic with accurate information,
                 charting your wellbeing, and tracking your health. The CoronaTracker is not intended to be used or
                 viewed as diagnosis or treatment of disease or other symptoms, including but not limited to COVID-19.
-              </p>
-              <p>
+              </DialogContentText>
+              <DialogContentText>
                 This application was made by the community for the community. This application is made for you! You are
                 in control of how you would like to contribute your data for public health and research.
-              </p>
+              </DialogContentText>
             </DialogContent>
             <DialogActions>
               <Button variant="outlined" onClick={() => props.setAnswer(true)}>
