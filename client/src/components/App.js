@@ -13,6 +13,7 @@ import setLoginLoading from '../redux/actions/actions';
 import FactQuizContainer from './FactQuizContainer';
 import PrivateRoute from './PrivateRoute';
 import SymptomsTracker from './SymptomsTracker';
+import OnboardUser from './OnboardUser';
 
 const RADIKS_URL = process.env.REACT_APP_QA_URL || 'http://127.0.0.1:1260'; // TODO this will change to wherever our radiks server will be hosted in prod
 
@@ -87,6 +88,7 @@ class App extends Component {
               />
               <PrivateRoute path="/map" authed={authed} />
               <PrivateRoute path="/settings" authed={authed} />
+              <PrivateRoute path="/onboard" authed={authed} component={OnboardUser} />
             </Switch>
           </Layout>
         </Connect>
@@ -107,4 +109,7 @@ const mapDispatchToProps = dispatch => ({
   },
 });
 
-export default connect(mapStateToProps, mapDispatchToProps)(App);
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(App);
