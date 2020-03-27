@@ -6,7 +6,7 @@ import FormControl from '@material-ui/core/FormControl';
 import TextField from '@material-ui/core/TextField';
 import Autocomplete from '@material-ui/lab/Autocomplete';
 import Checkbox from '@material-ui/core/Checkbox';
-import { temperature, minutes, hours } from './constants';
+import { temperature, minutes, hours } from '../../../utils/survey-view-constants';
 
 // handles fever symptom
 function TemperatureAutocomplete(props) {

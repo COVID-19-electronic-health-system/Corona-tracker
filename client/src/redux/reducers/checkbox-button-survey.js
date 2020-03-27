@@ -1,8 +1,4 @@
-import { HANDLE_CHECKBOX_CHANGE } from '../constants'
-import { HANDLE_BUTTON_GROUP_CHANGE } from '../constants'
-import { HANDLE_FEVER } from '../constants'
-import { HANDLE_HOURS } from '../constants'
-import { HANDLE_MINUTES } from '../constants'
+import { HANDLE_CHECKBOX_CHANGE, HANDLE_BUTTON_GROUP_CHANGE, HANDLE_FEVER, HANDLE_HOURS, HANDLE_MINUTES, GET_CHECKBOX_BUTTON_STATE } from '../constants'
 
 // STATE
 const initialState = {
@@ -15,7 +11,7 @@ const initialState = {
 };
 
 // REDUCER
-const surveyReducer = (state = initialState, action) => {
+const checkboxButtonSurveyReducer = (state = initialState, action) => {
   let symptomName, symptomChecked, symptomValue, value;
   switch (action.type) {
 
@@ -43,9 +39,13 @@ const surveyReducer = (state = initialState, action) => {
       value = value ? value : '00';
       value = state['headache'].value ? state['headache'].value.replace(/:.*/, ':' + value) : '0:' + value;
       return { ...state, headache: { checked: true, value: value } };
+
+    case GET_CHECKBOX_BUTTON_STATE:
+      console.log('checkbox', state)
+      return state;
     default:
       return state;
   }
 }
 
-export default surveyReducer;
+export default checkboxButtonSurveyReducer;

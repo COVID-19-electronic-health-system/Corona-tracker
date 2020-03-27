@@ -1,10 +1,10 @@
 import React from 'react';
 import { useSelector, useDispatch } from 'react-redux'
 import SingleCheckboxButton from './SingleCheckboxButton';
-import { handleCheckboxChange, handleButtonGroupChange, handleFever, handleHours, handleMinutes } from '../../../redux/actions/survey'
+import { handleCheckboxChange, handleButtonGroupChange, handleFever, handleHours, handleMinutes } from '../../../redux/actions/checkbox-button-survey'
 
 function CheckboxButton() {
-  const state = useSelector(state => state.survey);
+  const state = useSelector(state => state.checkboxButtonSurveyReducer);
   const dispatch = useDispatch()
   return (
     <div className='checked-grouped-buttons'>

@@ -3,7 +3,9 @@ import observations from './observations';
 import loginLoading from './login';
 import navigationReducer from './navigation'
 import disclaimerReducer from './disclaimer'
-import survey from './survey';
+import checkboxButtonSurveyReducer from './checkbox-button-survey';
+import symptomTrackerReducer from './symptom-tracker';
+import submitSurveyReducer from './submit-survey';
 
 
 // initial state of the Redux store
@@ -46,5 +48,7 @@ export default combineReducers({
   observations,
   navigationReducer,
   disclaimerReducer,
-  survey
+  checkboxButtonSurveyReducer,
+  symptomTrackerReducer,
+  submitSurveyReducer
 });

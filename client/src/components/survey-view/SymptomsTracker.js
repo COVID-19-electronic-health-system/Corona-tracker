@@ -1,11 +1,14 @@
-import React, { useState } from 'react';
+import React from 'react';
+import { useSelector, useDispatch } from 'react-redux'
 import { makeStyles } from '@material-ui/core/styles';
 import Typography from '@material-ui/core/Typography';
-import Slider from '@material-ui/core/Slider';
 import ButtonGroup from '@material-ui/core/ButtonGroup';
 import Button from '@material-ui/core/Button';
 import TextField from '@material-ui/core/TextField';
 import CheckboxButton from './checkbox-button/CheckboxButton';
+import SliderInput from './SliderInput';
+import { handleSlider, handleSymptoms, handlerAdditionalInfo } from '../../redux/actions/symptom-tracker';
+import { submitSurvey } from '../../redux/actions/submit-survey'
 
 // custome style for material ui elements
 const useStyles = makeStyles({
@@ -18,130 +21,33 @@ const useStyles = makeStyles({
   }
 });
 
-// marks for slider
-const marks = [
-  {
-    value: 1,
-    label: '1',
-  },
-  {
-    value: 2,
-    label: '2',
-  },
-  {
-    value: 3,
-    label: '3',
-  },
-  {
-    value: 4,
-    label: '4',
-  },
-  {
-    value: 5,
-    label: '5',
-  },
-  {
-    value: 6,
-    label: '6',
-  },
-  {
-    value: 7,
-    label: '7',
-  },
-  {
-    value: 8,
-    label: '8',
-  },
-  {
-    value: 9,
-    label: '9',
-  },
-  {
-    value: 10,
-    label: '10',
-  },
-];
-
-
 const SymptomsTracker = () => {
-
   const classes = useStyles();
-
-  // emulate dynamic state in a fuctional component
-  const [todayFeeling, setTodayFeeling] = useState(1);
-  const [todaySymptoms, setTodaySymptoms] = useState(1);
-  const [comparedFeeling, setcomparedFeeling] = useState(1);
-  const [additionalInfo, setAdditionalInfo] = useState('');
-
-  // every headnler function responsible for collecting data for particular question
-  const handlerTodayFeeling = (e) => {
-    setTodayFeeling(e)
-  }
-
-  const handlerTodaySymptoms = (e) => {
-    setTodaySymptoms(e)
-  }
-
-  const handlerComparedFeeling = (e) => {
-    setcomparedFeeling(e)
-  }
-
-  const handlerAdditionalInfo = (e) => {
-    setAdditionalInfo(e)
-  }
-
-  // aggregate collected data
-  const submitAction = () => {
-    const submission = {
-      todayFeeling: todayFeeling,
-      todaySymptoms: todaySymptoms,
-      comparedFeeling: comparedFeeling,
-      additionalInfo: additionalInfo
-    }
-  }
+  const state = useSelector(state => state.symptomTrackerReducer);
+  const dispatch = useDispatch();
 
   return (
     <div className={classes.root}>
-      <Typography id="discrete-slider" gutterBottom>How do you feel today?</Typography>
-      <Slider
-        onChange={(e, val) => handlerTodayFeeling(val)}
-        color="secondary"
-        defaultValue={5}
-        aria-labelledby="discrete-slider"
-        valueLabelDisplay="auto"
-        step={1}
-        min={1}
-        max={10}
-        marks={marks}
-      />
-
-      <Typography id="discrete-slider" gutterBottom>
-        How are your symptoms?
-      </Typography>
-      <Slider
-        onChange={(e, val) => handlerTodaySymptoms(val)}
-        color="secondary"
-        defaultValue={5}
-        aria-labelledby="discrete-slider"
-        valueLabelDisplay="auto"
-        step={1}
-        min={1}
-        max={10}
-        marks={marks}
-      />
+      <SliderInput
+        handleSlider={(event, value) => dispatch(handleSlider(event, value))} question={'How do you feel today?'} name={'todayFeeling'} value={state.todayFeeling} />
 
       <Typography>How are your feeling compared yesterday?</Typography>
       <ButtonGroup color="secondary" aria-label="outlined primary button group">
-        <Button onClick={e => handlerComparedFeeling(e.target.innerText)}>Worse</Button>
-        <Button onClick={e => handlerComparedFeeling(e.target.innerText)}>The Same</Button>
-        <Button onClick={e => handlerComparedFeeling(e.target.innerText)}>Better</Button>
+        <Button variant='contained' onClick={event => dispatch(handleSymptoms(event))} color={state.comparedFeeling === 'Worse' ? 'secondary' : 'primary'} value='Worse'>Worse</Button>
+        <Button variant='contained' onClick={event => dispatch(handleSymptoms(event))} color={state.comparedFeeling === 'The Same' ? 'secondary' : 'primary'} value='The Same' >The Same</Button>
+        <Button variant='contained' onClick={event => dispatch(handleSymptoms(event))} color={state.comparedFeeling === 'Better' ? 'secondary' : 'primary'} value='Better' >Better</Button>
       </ButtonGroup>
+
+      <SliderInput
+        handleSlider={(event, value) => dispatch(handleSlider(event, value))} question={'How are your symptoms?'} name={'todaySymptoms'} value={state.todaySymptoms} />
 
       <CheckboxButton />
 
       <Typography>Anything you'd like to share?</Typography>
-      <TextField onChange={e => handlerAdditionalInfo(e.target.value)} />
-      <Button onClick={submitAction} variant="outlined" color="secondary">
+      <TextField
+        onChange={event => dispatch(handlerAdditionalInfo(event))}
+      />
+      <Button variant='contained' onClick={() => dispatch(submitSurvey())} color="secondary">
         SAVE MY RESPONSES
       </Button>
 
