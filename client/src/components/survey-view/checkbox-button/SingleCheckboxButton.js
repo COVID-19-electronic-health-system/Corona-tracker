@@ -7,6 +7,7 @@ import TextField from '@material-ui/core/TextField';
 import Autocomplete from '@material-ui/lab/Autocomplete';
 import Checkbox from '@material-ui/core/Checkbox';
 import { temperature, minutes, hours } from './constants';
+import { Grid } from '@material-ui/core';
 
 // handles fever symptom
 function TemperatureAutocomplete(props) {
@@ -70,64 +71,88 @@ export default function SingleCheckboxButton(props) {
     <div>
       <FormControl>
         <FormControlLabel
-          control={<Checkbox checked={props.symptomChecked} onChange={props.handleCheckboxChange} name={props.symptomName} />}
+          control={
+            <Checkbox checked={props.symptomChecked} onChange={props.handleCheckboxChange} name={props.symptomName} />
+          }
           label={label}
         />
       </FormControl>
 
-      {props.symptomName === 'fever' ?
-
-        <ButtonGroup color='secondary'>
-          <Button disabled variant='contained' color='primary'>What is your temperature:
+      {props.symptomName === 'fever' ? (
+        <ButtonGroup color="secondary">
+          <Button disabled variant="contained" color="primary">
+            What is your temperature:
           </Button>
 
-          <TemperatureAutocomplete handleFever={props.handleFever} feverValue={props.symptomValue} symptomChecked={props.symptomChecked} />
-          <Button disabled variant='contained' color='primary'>°F
+          <TemperatureAutocomplete
+            handleFever={props.handleFever}
+            feverValue={props.symptomValue}
+            symptomChecked={props.symptomChecked}
+          />
+          <Button disabled variant="contained" color="primary">
+            °F
           </Button>
         </ButtonGroup>
-        :
-        (props.symptomName === 'headache' ?
+      ) : props.symptomName === 'headache' ? (
+        <ButtonGroup color="secondary">
+        <Button disabled variant="contained" color="primary" id="Text" name="Text">
+        How long has it lasted for:
+        </Button>
+        <Grid container>
 
-          <ButtonGroup color='secondary'>
-            <Button disabled variant='contained' color='primary' id='Text' name='Text'>How long has it lasted for:</Button>
+            <HoursAutocomplete
+              handleHours={props.handleHours}
+              hoursValue={props.symptomValue}
+              symptomChecked={props.symptomChecked}
+            />
+            <Button disabled variant="contained" color="primary" id="Hrs" name="Hrs">
+              Hrs
+            </Button>
 
-            <HoursAutocomplete handleHours={props.handleHours} hoursValue={props.symptomValue} symptomChecked={props.symptomChecked} />
-            <Button disabled variant='contained' color='primary' id='Hrs' name='Hrs'>Hrs
-          </Button>
-
-            <MinutesAutocomplete handleMinutes={props.handleMinutes} minutesValue={props.symptomValue} symptomChecked={props.symptomChecked} />
-            <Button disabled variant='contained' color='primary' id='Mins' name='Mins'>Mins
-          </Button>
+            <MinutesAutocomplete
+              handleMinutes={props.handleMinutes}
+              minutesValue={props.symptomValue}
+              symptomChecked={props.symptomChecked}
+            />
+            <Button disabled variant="contained" color="primary" id="Mins" name="Mins">
+              Mins
+            </Button>
+            </Grid>
           </ButtonGroup>
-
-          :
-
-          <ButtonGroup color='secondary'
-            variant='outlined'
+      ) : (
+        <ButtonGroup color="secondary" variant="outlined">
+          <Button
+            variant="contained"
+            name={props.symptomName}
+            onClick={props.symptomChecked ? props.handleButtonGroupChange : () => {}}
+            color={props.symptomValue === 'Minimal' ? 'secondary' : 'primary'}
+            value="Minimal"
           >
-            <Button variant='contained'
-              name={props.symptomName}
-              onClick={props.symptomChecked ? props.handleButtonGroupChange : () => { }}
-              color={props.symptomValue === 'Minimal' ? 'secondary' : 'primary'} value='Minimal'
-            >Minimal</Button>
+            Minimal
+          </Button>
 
-            <Button variant='contained'
-              name={props.symptomName}
-              onClick={props.symptomChecked ? props.handleButtonGroupChange : () => { }}
-              color={props.symptomValue === 'Moderate' ? 'secondary' : 'primary'} value='Moderate'
-            >Moderate</Button>
+          <Button
+            variant="contained"
+            name={props.symptomName}
+            onClick={props.symptomChecked ? props.handleButtonGroupChange : () => {}}
+            color={props.symptomValue === 'Moderate' ? 'secondary' : 'primary'}
+            value="Moderate"
+          >
+            Moderate
+          </Button>
 
-            <Button variant='contained'
-              name={props.symptomName}
-              onClick={props.symptomChecked ? props.handleButtonGroupChange : () => { }}
-              color={props.symptomValue === 'Severe' ? 'secondary' : 'primary'} value='Severe'
-            >Severe</Button>
-          </ButtonGroup>
-        )
-      }
-
-
-    </div >
-  )
+          <Button
+            variant="contained"
+            name={props.symptomName}
+            onClick={props.symptomChecked ? props.handleButtonGroupChange : () => {}}
+            color={props.symptomValue === 'Severe' ? 'secondary' : 'primary'}
+            value="Severe"
+          >
+            Severe
+          </Button>
+        </ButtonGroup>
+      )}
+    </div>
+  );
 }
 
