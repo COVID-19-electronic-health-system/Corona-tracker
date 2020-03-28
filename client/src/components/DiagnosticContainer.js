@@ -6,6 +6,7 @@ import Scroll from './Scroll';
 import Container from '@material-ui/core/Container';
 import Disclaimer from './Disclaimer';
 import Subscribe from './Subscribe';
+import { useBlockstack } from 'react-blockstack';
 
 const dateOptions = {
   weekday: 'long',
@@ -14,8 +15,8 @@ const dateOptions = {
   day: 'numeric',
 };
 
-function DiagnosticContainer(props) {
-  const { userSession } = props;
+function DiagnosticContainer() {
+  const { userSession } = useBlockstack();
   const dispatch = useDispatch();
   const today = new Date();
   dispatch(loadObservations());

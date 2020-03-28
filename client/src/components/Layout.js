@@ -1,4 +1,4 @@
-import React from 'react'
+import React from 'react';
 import { MuiThemeProvider, createMuiTheme, CssBaseline } from '@material-ui/core';
 import { makeStyles } from '@material-ui/core/styles';
 import Button from '@material-ui/core/Button';
@@ -6,6 +6,7 @@ import { ReactComponent as Logo } from '../img/Logo_CORONATRACKER_Logo.svg';
 import { ReactComponent as TextLogo } from '../img/Logo_CORONATRACKER_Text_Logo.svg';
 import NavBar from './NavBar';
 import Login from './Login';
+import { useBlockstack } from 'react-blockstack';
 
 const theme = createMuiTheme({
   palette: {
@@ -27,10 +28,9 @@ const useStyles = makeStyles(theme => ({
   //the styles goes here as an object
   root: {
     textAlign: 'center',
-    backgroundImage: "linear-gradient(#d7e1fa, #bbcef9)",
+    backgroundImage: 'linear-gradient(#d7e1fa, #bbcef9)',
     overflowY: 'scroll',
-    height: "85vh"
-
+    height: '85vh',
   },
   logo: {
     width: '75px',
@@ -49,19 +49,19 @@ const useStyles = makeStyles(theme => ({
     },
   },
 }));
-const Layout = (props) => {
+const Layout = props => {
   const classes = useStyles();
-  const { handleSignOut, authed } = props;
+  const { authenticated, signOut } = useBlockstack();
 
   return (
     <MuiThemeProvider theme={theme}>
       <CssBaseline>
-        {authed ? (
+        {authenticated ? (
           <div className={classes.root}>
             <Logo className={classes.logo} />
             <TextLogo className={classes.textLogo} />
 
-            <Button size="medium" color="secondary" variant="contained" onClick={handleSignOut}>
+            <Button size="medium" color="secondary" variant="contained" onClick={signOut}>
               Sign Out
             </Button>
             {props.children}
@@ -75,4 +75,4 @@ const Layout = (props) => {
   );
 };
 
-export default Layout
+export default Layout;
