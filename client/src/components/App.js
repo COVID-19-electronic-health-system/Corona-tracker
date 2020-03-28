@@ -20,7 +20,7 @@ const RADIKS_URL = process.env.REACT_APP_QA_URL || 'http://127.0.0.1:1260'; // T
 ReactBlockstack({ appConfig });
 
 function App(props) {
-  const { userSession, signOut } = useBlockstack();
+  const { userSession, authenticated, signOut } = useBlockstack();
   const finished = useCallback(({ userSession }) => {
     if (RADIKS_URL) {
       configure({
@@ -44,9 +44,14 @@ function App(props) {
   return (
     <BrowserRouter>
       <Connect authOptions={authOptions}>
-        <Layout handleSignOut={signOut}>
+        <Layout authed={authenticated} userSession={userSession} handleSignOut={signOut}>
           <Switch>
-            <PrivateRoute exact path="/" component={() => <DiagnosticContainer userSession={userSession} />} />
+            <PrivateRoute
+              exact
+              path="/"
+              authed={authenticated}
+              component={() => <DiagnosticContainer userSession={userSession} />}
+            />
 
             {/* ADD/EDIT ROUTES WITH THEIR COMPONENTS HERE: */}
             <PrivateRoute path="/signup" />
