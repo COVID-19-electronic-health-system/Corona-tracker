@@ -85,6 +85,8 @@ class NavBar extends React.Component {
           icon={<VideocamOutlinedIcon className={classes.buttons} />}
         />*/}
           <BottomNavigationAction
+            component={Link}
+            to="/map"
             label="Map"
             value="map"
             classes={{
