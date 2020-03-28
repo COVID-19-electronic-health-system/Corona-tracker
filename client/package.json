@@ -25,6 +25,7 @@
     "enzyme-adapter-react-16": "1.14.0",
     "jest": "24.9.0",
     "jest-enzyme": "7.1.0",
+    "mapbox-gl": "^1.9.0",
     "radiks": "^0.2.2-beta.1",
     "react": "^16.13.0",
     "react-app-rewired": "^2.1.5",
