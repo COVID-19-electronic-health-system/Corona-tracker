@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useRef } from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import { Typography, Slider, ButtonGroup, Button, TextField } from '@material-ui/core';
 import CheckboxButton from './survey-view/checkbox-button/CheckboxButton';
@@ -64,6 +64,8 @@ const marks = [
 
 const SymptomsTracker = () => {
 
+  const childRef = useRef();
+
   const classes = useStyles();
 
   // emulate dynamic state in a fuctional component
@@ -90,13 +92,15 @@ const SymptomsTracker = () => {
   }
 
   // aggregate collected data
-  const submitAction = () => {
+  const submitSurvey = () => {
+    childRef.current.submitSurvey()
     const submission = {
       todayFeeling: todayFeeling,
       todaySymptoms: todaySymptoms,
       comparedFeeling: comparedFeeling,
       additionalInfo: additionalInfo
     }
+    // TODO save this state in Redux
   }
 
   return (
@@ -136,16 +140,14 @@ const SymptomsTracker = () => {
         <Button onClick={e => handlerComparedFeeling(e.target.innerText)}>Better</Button>
       </ButtonGroup>
 
-      <CheckboxButton />
+      <CheckboxButton ref={childRef}/>
 
       <Typography>Anything you'd like to share?</Typography>
       <TextField onChange={e => handlerAdditionalInfo(e.target.value)} />
-      <Button onClick={submitAction} variant="outlined" color="secondary">
+      <Button onClick={submitSurvey} variant="outlined" color="secondary">
         SAVE MY RESPONSES
       </Button>
-
     </div>
-
   )
 }
 
