@@ -10,15 +10,17 @@ import Chart from '../components/Chart';
 
 const mockStore = configureMockStore([thunk]);
 
-const mockChartJsState = {dataSample: {
-  labels: ["2020-02-28", "2020-03-2", "2020-03-4","2020-03-5","2020-03-9"],
-  values: [80, 70, 56, 90, 55]}
+const mockChartJsState = {
+  dataSample: {
+    labels: ["2020-02-28", "2020-03-2", "2020-03-4", "2020-03-5", "2020-03-9"],
+    values: [80, 70, 56, 90, 55]
+  }
 }
 
 describe('ChartJs', () => {
   it('should render a ChartJs component ', () => {
-    const store = mockStore({dataSample: mockChartJsState.dataSample});
-    window.HTMLCanvasElement.prototype.getContext = () => {}
+    const store = mockStore({ dataSample: mockChartJsState.dataSample });
+    window.HTMLCanvasElement.prototype.getContext = () => { }
     const wrapper = mount(
       <Provider store={store}>
         <Chart />
