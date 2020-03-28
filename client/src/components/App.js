@@ -55,7 +55,11 @@ function App (props) {
 
               {/* ADD/EDIT ROUTES WITH THEIR COMPONENTS HERE: */}
               <PrivateRoute path="/signup" authed={authenticated} />
-              <PrivateRoute path="/symptomsurvey" authed={authenticated} component={() => <SymptomsTracker />} />
+              <PrivateRoute 
+                path="/symptomsurvey" 
+                authed={authenticated} 
+                component={() => <SymptomsTracker />} 
+              />
               <PrivateRoute path="/log" authed={authenticated} />
               <PrivateRoute path="/healthlog" authed={authenticated} />
               <PrivateRoute
