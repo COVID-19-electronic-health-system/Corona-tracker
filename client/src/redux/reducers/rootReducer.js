@@ -3,7 +3,6 @@ import loginLoading from './login';
 import navigationReducer from './navigation';
 import { combineReducers } from 'redux';
 import disclaimerReducer from './disclaimer'
-import submitSurveyReducer from './submit-survey'
 
 // initial state of the Redux store
 const initialState = {
@@ -34,5 +33,4 @@ export default combineReducers({
   observations,
   navigationReducer,
   disclaimerReducer,
-  submitSurveyReducer
 });
