@@ -1,7 +1,10 @@
 import React, { useState } from 'react';
 import { makeStyles } from '@material-ui/core/styles';
+import { useDispatch } from 'react-redux';
+import { Link } from 'react-router-dom';
 import { Typography, Slider, ButtonGroup, Button, TextField } from '@material-ui/core';
 import CheckboxButton from './survey-view/checkbox-button/CheckboxButton';
+import { submit } from '../redux/actions/submit-survey'
 
 // custome style for material ui elements
 const useStyles = makeStyles({
@@ -65,6 +68,7 @@ const marks = [
 const SymptomsTracker = () => {
 
   const classes = useStyles();
+  const dispacth = useDispatch();
 
   // emulate dynamic state in a fuctional component
   const [todayFeeling, setTodayFeeling] = useState(1);
@@ -140,7 +144,7 @@ const SymptomsTracker = () => {
 
       <Typography>Anything you'd like to share?</Typography>
       <TextField onChange={e => handlerAdditionalInfo(e.target.value)} />
-      <Button onClick={submitAction} variant="outlined" color="secondary">
+      <Button component={Link} to='/' onClick={() => dispacth(submit())} variant="outlined" color="secondary">
         SAVE MY RESPONSES
       </Button>
 

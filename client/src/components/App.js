@@ -6,8 +6,8 @@ import { appConfig } from '../utils/constants';
 import { configure, User } from 'radiks';
 import { Connect } from '@blockstack/connect';
 import DiagnosticContainer from './DiagnosticContainer';
-import { BrowserRouter, Switch } from 'react-router-dom';
-import { connect } from 'react-redux';
+import { BrowserRouter, Switch, Redirect } from 'react-router-dom';
+import { connect, useSelector} from 'react-redux';
 import ReactBlockstack, { useBlockstack, didConnect } from 'react-blockstack';
 import setLoginLoading from '../redux/actions/actions';
 import FactQuizContainer from './FactQuizContainer';
@@ -19,8 +19,9 @@ const RADIKS_URL = process.env.REACT_APP_QA_URL || 'http://127.0.0.1:1260'; // T
 
 ReactBlockstack({ appConfig });
 
-function App (props) {
+function App(props) {
   const { userSession, authenticated, signOut } = useBlockstack();
+  const isSubmitted = useSelector(state => state.submitSurveyReducer.isSubmitted)
   const finished = useCallback(({ userSession }) => {
     if (RADIKS_URL) {
       configure({
@@ -42,35 +43,36 @@ function App (props) {
   };
 
   return (
-      <BrowserRouter>
-        <Connect authOptions={authOptions}>
-          <Layout authed={authenticated} userSession={userSession} handleSignOut={signOut}>
-            <Switch>
-              <PrivateRoute
-                exact
-                path="/"
-                authed={authenticated}
-                component={() => <DiagnosticContainer userSession={userSession} />}
-              />
+    <BrowserRouter>
+      <Connect authOptions={authOptions}>
+        <Layout authed={authenticated} userSession={userSession} handleSignOut={signOut}>
+          <Switch>
+            <PrivateRoute
+              exact
+              path="/"
+              authed={authenticated}
+              component={() => { return isSubmitted === null ? <Redirect to='/symptomsurvey' /> : <DiagnosticContainer userSession={userSession} /> }
+            }
+            />
 
-              {/* ADD/EDIT ROUTES WITH THEIR COMPONENTS HERE: */}
-              <PrivateRoute path="/signup" authed={authenticated} />
-              <PrivateRoute path="/symptomsurvey" authed={authenticated} component={() => <SymptomsTracker />} />
-              <PrivateRoute path="/log" authed={authenticated} />
-              <PrivateRoute path="/healthlog" authed={authenticated} />
-              <PrivateRoute
-                path="/education"
-                authed={authenticated}
-                component={() => <FactQuizContainer handleSignOut={signOut} />}
-              />
-              <PrivateRoute path="/map" authed={authenticated} />
-              <PrivateRoute path="/settings" authed={authenticated} />
-              <PrivateRoute path="/onboard" authed={authenticated} component={OnboardUser} />
-            </Switch>
-          </Layout>
-        </Connect>
-      </BrowserRouter>
-    );
+            {/* ADD/EDIT ROUTES WITH THEIR COMPONENTS HERE: */}
+            <PrivateRoute path="/signup" authed={authenticated} />
+            <PrivateRoute path="/symptomsurvey" authed={authenticated} component={() => <SymptomsTracker />} />
+            <PrivateRoute path="/log" authed={authenticated} />
+            <PrivateRoute path="/healthlog" authed={authenticated} />
+            <PrivateRoute
+              path="/education"
+              authed={authenticated}
+              component={() => <FactQuizContainer handleSignOut={signOut} />}
+            />
+            <PrivateRoute path="/map" authed={authenticated} />
+            <PrivateRoute path="/settings" authed={authenticated} />
+            <PrivateRoute path="/onboard" authed={authenticated} component={OnboardUser} />
+          </Switch>
+        </Layout>
+      </Connect>
+    </BrowserRouter>
+  );
 }
 
 const mapStateToProps = ({ loginLoading }) => ({
