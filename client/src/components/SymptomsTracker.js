@@ -110,6 +110,7 @@ const SymptomsTracker = () => {
   let numObservations = 0
 
   const fetchFiles = async () => {
+    console.log(files)
     for (let i = 0; i < files.length; i++) {
       if (files[i].includes("observation")) {
         const currObservation = parseInt(files[i].replace(/^\D+/g, ''))
@@ -142,7 +143,7 @@ const SymptomsTracker = () => {
 
     const observation = childRef.current.createObservation(submission)
     const encryptOptions = { encrypt: true };
-    userSession.putFile(`observation${numObservations+1}.json`, JSON.stringify(observation.attrs), encryptOptions).then((res) => {
+    userSession.putFile(`observation/0000000${numObservations+1}.json`, JSON.stringify(observation.attrs), encryptOptions).then((res) => {
       window.location.reload()
     }).catch(err => {
       console.log(err)
