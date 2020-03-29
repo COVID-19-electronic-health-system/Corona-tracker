@@ -1,5 +1,6 @@
 import React, { useReducer, forwardRef, useImperativeHandle } from 'react';
 import SingleCheckboxButton from './SingleCheckboxButton';
+import Observation from '../../../models/observation';
 
 // ACTION TYPES
 const HANDLE_CHECKBOX_CHANGE = 'HANDLE_CHECKBOX_CHANGE';
@@ -89,8 +90,32 @@ const CheckboxButton = forwardRef((props, ref) => {
   const [state, dispatch] = useReducer(reducer, initialState);
 
   useImperativeHandle(ref, () => ({
-    submitSurvey() {
-      // TODO save state in Redux
+    createObservation(submission) {
+      const observation = new Observation({
+        date: Date.now(),
+        physical: {
+          dailyfeeling: submission.todayFeeling,
+          dailySymptomsFeeling: submission.todaySymptoms,
+          dailyComparedToYesterday: submission.comparedFeeling,
+          hasCough: state.cough.checked,
+          coughSeverity: state.cough.value,
+          hasfever: state.fever.checked,
+          feverSeverity: state.fever.value,
+          hasDizziness: state.dizziness.checked,
+          dizzinessSeverity: state.dizziness.value,
+          hasHeadache: state.headache.checked,
+          headacheSeverity: state.headache.value,
+          hasSoreThroat: state.soreThroat.checked,
+          soreThroatSeverity: state.soreThroat.value,
+          hasCongestion: state.congestion.checked,
+          congestionSeverity: state.congestion.value,
+        },
+        nonPhysical: {
+          openComment: submission.additionalInfo
+        }
+      })
+
+      return observation
     }
   }));
 
