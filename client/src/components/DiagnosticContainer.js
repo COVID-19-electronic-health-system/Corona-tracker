@@ -7,6 +7,7 @@ import Container from '@material-ui/core/Container';
 import Disclaimer from './Disclaimer';
 import Subscribe from './Subscribe';
 import { useBlockstack } from 'react-blockstack';
+import { useTranslation } from 'react-i18next';
 
 const dateOptions = {
   weekday: 'long',
@@ -19,14 +20,15 @@ function DiagnosticContainer() {
   const { userSession } = useBlockstack();
   const dispatch = useDispatch();
   const today = new Date();
+  const { t } = useTranslation();
   dispatch(loadObservations());
   return (
     <div className="DiagnosticContainer">
       <h4>
-        Hello, <b>{userSession.loadUserData().profile.name} </b>
+    {t('hello')} <b>{userSession.loadUserData().profile.name} </b>
       </h4>
       <h5>
-        Today is <b>{today.toLocaleDateString(undefined, dateOptions)}</b>{' '}
+    {t('todayText')} <b>{today.toLocaleDateString(undefined, dateOptions)}</b>{' '}
       </h5>
       <hr className="hr" />
       <Scroll>
