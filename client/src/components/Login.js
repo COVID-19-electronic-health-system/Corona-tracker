@@ -2,16 +2,21 @@ import React from 'react';
 import '../css/Login.css';
 import '../css/App.css';
 import '../css/themePalette.css';
+import TranslationsMenu from './Translations.js'
 import { ReactComponent as Logo } from '../img/Logo_CORONATRACKER_Logo.svg';
 import { ReactComponent as TextLogo } from '../img/Logo_CORONATRACKER_Text_Logo.svg';
 import Button from 'react-bootstrap/Button';
 import { useConnect } from '@blockstack/connect';
 import { connect } from 'react-redux';
 import setLoginLoading from '../redux/actions/actions'
+import { useTranslation } from 'react-i18next';
 
 const Login = ({ loginLoading, setLoading }) => {
   const { doOpenAuth } = useConnect();
-
+  const { t, i18n } = useTranslation();
+  const changeLanguage = lng => {
+    i18n.changeLanguage(lng);
+  };
   const onClick = () => {
     setLoading(true)
     doOpenAuth()
@@ -30,12 +35,10 @@ const Login = ({ loginLoading, setLoading }) => {
         </div>
       ) : (
           <div>
+
             <Logo className="LoginLogo" />
             <TextLogo className="TextLogo" />
-            <p className="ShortDescriptionText">
-              Your health app to <b>monitor</b> flu-like symptoms, <b>connect</b> to telehealth doctors in your area and{' '}
-              <b>discover</b> resources close to you.
-      </p>
+            <p className="ShortDescriptionText">{t('login.text')} </p>
             <style type="text/css">
               {`
                 .btn-login {
@@ -45,9 +48,10 @@ const Login = ({ loginLoading, setLoading }) => {
                 `}
             </style>
             <Button variant="login" onClick={onClick}>
-              Get started
+        {t('login.buttonText')}
             </Button>
-          </div>
+          <TranslationsMenu/>
+        </div>
         )}
 
     </div>

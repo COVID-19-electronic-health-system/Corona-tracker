@@ -7,6 +7,7 @@ import { ReactComponent as TextLogo } from '../img/Logo_CORONATRACKER_Text_Logo.
 import NavBar from './NavBar';
 import Login from './Login';
 import { useBlockstack } from 'react-blockstack';
+import { useTranslation } from 'react-i18next';
 
 const theme = createMuiTheme({
   palette: {
@@ -52,6 +53,7 @@ const useStyles = makeStyles(theme => ({
 const Layout = props => {
   const classes = useStyles();
   const { authenticated, signOut } = useBlockstack();
+  const { t } = useTranslation();
 
   return (
     <MuiThemeProvider theme={theme}>
@@ -62,7 +64,7 @@ const Layout = props => {
             <TextLogo className={classes.textLogo} />
 
             <Button size="medium" color="secondary" variant="contained" onClick={signOut}>
-              Sign Out
+          {t('signoutButtonText')}
             </Button>
             {props.children}
             <NavBar />
