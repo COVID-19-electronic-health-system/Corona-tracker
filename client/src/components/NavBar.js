@@ -1,6 +1,4 @@
 import React from 'react';
-import '../css/themePalette.css';
-import '../css/NavBar.css';
 import { withStyles } from '@material-ui/core/styles';
 import { Link } from 'react-router-dom';
 import { BottomNavigation, BottomNavigationAction } from '@material-ui/core/';
