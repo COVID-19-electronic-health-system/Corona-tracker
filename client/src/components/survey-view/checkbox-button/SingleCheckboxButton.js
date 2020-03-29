@@ -7,6 +7,7 @@ import TextField from '@material-ui/core/TextField';
 import Autocomplete from '@material-ui/lab/Autocomplete';
 import Checkbox from '@material-ui/core/Checkbox';
 import { temperature, minutes, hours } from './constants';
+import { Grid } from '@material-ui/core';
 
 // handles fever symptom
 function TemperatureAutocomplete(props) {
@@ -94,9 +95,10 @@ export default function SingleCheckboxButton(props) {
         </ButtonGroup>
       ) : props.symptomName === 'headache' ? (
         <ButtonGroup color="secondary">
-        <Button disabled variant="contained" color="primary" id="Text" name="Text">
-        How long has it lasted for:
+          <Button disabled variant="contained" color="primary" id="Text" name="Text">
+            How long has it lasted for:
         </Button>
+          <Grid>
 
             <HoursAutocomplete
               handleHours={props.handleHours}
@@ -115,41 +117,41 @@ export default function SingleCheckboxButton(props) {
             <Button disabled variant="contained" color="primary" id="Mins" name="Mins">
               Mins
             </Button>
-
-          </ButtonGroup>
-      ) : (
-        <ButtonGroup color="secondary" variant="outlined">
-          <Button
-            variant="contained"
-            name={props.symptomName}
-            onClick={props.symptomChecked ? props.handleButtonGroupChange : () => {}}
-            color={props.symptomValue === 'Minimal' ? 'secondary' : 'primary'}
-            value="Minimal"
-          >
-            Minimal
-          </Button>
-
-          <Button
-            variant="contained"
-            name={props.symptomName}
-            onClick={props.symptomChecked ? props.handleButtonGroupChange : () => {}}
-            color={props.symptomValue === 'Moderate' ? 'secondary' : 'primary'}
-            value="Moderate"
-          >
-            Moderate
-          </Button>
-
-          <Button
-            variant="contained"
-            name={props.symptomName}
-            onClick={props.symptomChecked ? props.handleButtonGroupChange : () => {}}
-            color={props.symptomValue === 'Severe' ? 'secondary' : 'primary'}
-            value="Severe"
-          >
-            Severe
-          </Button>
+          </Grid>
         </ButtonGroup>
-      )}
+      ) : (
+            <ButtonGroup color="secondary" variant="outlined">
+              <Button
+                variant="contained"
+                name={props.symptomName}
+                onClick={props.symptomChecked ? props.handleButtonGroupChange : () => { }}
+                color={props.symptomValue === 'Minimal' ? 'secondary' : 'primary'}
+                value="Minimal"
+              >
+                Minimal
+          </Button>
+
+              <Button
+                variant="contained"
+                name={props.symptomName}
+                onClick={props.symptomChecked ? props.handleButtonGroupChange : () => { }}
+                color={props.symptomValue === 'Moderate' ? 'secondary' : 'primary'}
+                value="Moderate"
+              >
+                Moderate
+          </Button>
+
+              <Button
+                variant="contained"
+                name={props.symptomName}
+                onClick={props.symptomChecked ? props.handleButtonGroupChange : () => { }}
+                color={props.symptomValue === 'Severe' ? 'secondary' : 'primary'}
+                value="Severe"
+              >
+                Severe
+          </Button>
+            </ButtonGroup>
+          )}
     </div>
   );
 }

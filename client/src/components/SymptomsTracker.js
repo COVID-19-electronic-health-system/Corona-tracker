@@ -4,7 +4,7 @@ import { Typography, Slider, ButtonGroup, Button, TextField, Grid } from '@mater
 import CheckboxButton from './survey-view/checkbox-button/CheckboxButton';
 import { useBlockstack } from 'react-blockstack';
 
-// custome style for material ui elements
+// custom style for material ui elements
 const useStyles = makeStyles(theme => ({
   root: {
     alignItems: 'center',
