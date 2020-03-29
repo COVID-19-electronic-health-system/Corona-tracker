@@ -48,8 +48,10 @@ You'll also need `radiks-server`, which you can install simply with
 3. `npm i`
 4. Create a new file, `.env.development`
 5. On the Discord server, navigate to the #welcome channel, and click the pin icon on the top right of the window. Copy the `REACT_APP_QA_URL` code from the pinned message from Carter Klein.
-6. In `.env.development`, write and save `REACT_APP_QA_URL: <THE-URL-CODE>`
-7. `npm run start` - run the application locally
+6. In `.env.development`, write and save `REACT_APP_QA_URL= <THE-URL-CODE>`.
+7. On the Discord server, navigate to the #front-end channel, and click the pin icon on the top right of the window. Copy the `REACT_APP_MAPBOX_TOKEN` code from the pinned message from Ariana Hwang (@alt_ariana).
+8. In `.env.development`, write and save `REACT_APP_MAPBOX_TOKEN= <THE-API-KEY-CODE>`.
+9. `npm run start` - run the application locally
 
 #### BEFORE YOU MAKE CHANGES TO YOUR FORKED CODE VIA BRANCH OR MASTER
 
