@@ -4,6 +4,7 @@
   "private": true,
   "prettier": "@blockstack/prettier-config",
   "dependencies": {
+    "@babel/core": "^7.9.0",
     "@blockstack/connect": "^2.3.1",
     "@fortawesome/free-brands-svg-icons": "^5.12.1",
     "@fullcalendar/daygrid": "4.2.0",
@@ -22,8 +23,12 @@
     "chart.js": "^2.9.3",
     "enzyme": "3.10.0",
     "enzyme-adapter-react-16": "1.14.0",
+    "i18next": "^19.3.4",
+    "i18next-browser-languagedetector": "^4.0.2",
+    "i18next-xhr-backend": "^3.2.2",
     "jest": "24.9.0",
     "jest-enzyme": "7.1.0",
+    "mapbox-gl": "^1.9.0",
     "radiks": "^0.2.2-beta.1",
     "react": "^16.13.0",
     "react-app-rewired": "^2.1.5",
@@ -32,13 +37,15 @@
     "react-calendar": "^3.0.0",
     "react-charts": "^2.0.0-beta.6",
     "react-dom": "^16.13.0",
+    "react-i18next": "^11.3.4",
     "react-redux": "^7.2.0",
     "react-router-dom": "^5.1.2",
-    "react-scripts": "3.4.0",
+    "react-scripts": "3.4.1",
     "react-spring": "^9.0.0-canary.808.11.4be2ac3",
     "react-test-renderer": "16.9.0",
     "react-use-gesture": "^7.0.0-beta.1",
     "redux": "^4.0.5",
+    "redux-logger": "^3.0.6",
     "redux-mock-store": "1.5.3",
     "redux-thunk": "^2.3.0"
   },
@@ -47,13 +54,11 @@
   },
   "devDependencies": {
     "@blockstack/prettier-config": "0.0.5",
-    "@babel/core": "^7.8.7",
-    "@babel/plugin-proposal-class-properties": "7.4.0",
-    "parcel-bundler": "^1.6.1",
     "babel-jest": "^24.9.0",
     "canvas": "^2.6.1",
     "enzyme": "3.10.0",
-    "enzyme-adapter-react-16": "1.14.0"
+    "enzyme-adapter-react-16": "1.14.0",
+    "parcel-bundler": "^1.6.1"
   },
   "scripts": {
     "start": "react-app-rewired start",

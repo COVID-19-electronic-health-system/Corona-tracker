@@ -1,4 +1,4 @@
-import React, { useReducer } from 'react';
+import React, { useReducer, forwardRef, useImperativeHandle } from 'react';
 import SingleCheckboxButton from './SingleCheckboxButton';
 
 // ACTION TYPES
@@ -85,8 +85,15 @@ function reducer(state, action) {
       return state;
   }
 }
-function CheckboxButton() {
+const CheckboxButton = forwardRef((props, ref) => {
   const [state, dispatch] = useReducer(reducer, initialState);
+
+  useImperativeHandle(ref, () => ({
+    submitSurvey() {
+      // TODO save state in Redux
+    }
+  }));
+
   return (
     <div className='checked-grouped-buttons'>
       <h4>
@@ -103,6 +110,6 @@ function CheckboxButton() {
       ))}
     </div>
   )
-}
+})
 
 export default CheckboxButton;
