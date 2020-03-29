@@ -1,7 +1,8 @@
-import React, { useState, useRef } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import { Typography, Slider, ButtonGroup, Button, TextField, Grid } from '@material-ui/core';
 import CheckboxButton from './survey-view/checkbox-button/CheckboxButton';
+import { useBlockstack } from 'react-blockstack';
 
 // custome style for material ui elements
 const useStyles = makeStyles(theme => ({
@@ -78,9 +79,8 @@ const marks = [
 
 
 const SymptomsTracker = () => {
-
+  const { userSession } = useBlockstack();
   const childRef = useRef();
-
   const classes = useStyles();
 
   // emulate dynamic state in a fuctional component
@@ -106,16 +106,48 @@ const SymptomsTracker = () => {
     setAdditionalInfo(e)
   }
 
+  let files = []
+  let numObservations = 0
+
+  const fetchFiles = async () => {
+    for (let i = 0; i < files.length; i++) {
+      if (files[i].includes("observation")) {
+        const currObservation = parseInt(files[i].replace(/^\D+/g, ''))
+        numObservations = currObservation
+      }
+    }
+  }
+
+  useEffect(() => {
+    async function fetchData() {
+      await userSession.listFiles((file) => {
+        files.push(file);
+        return true;
+      });
+      return files;
+    }
+    fetchData().then(() => {
+      fetchFiles()
+    })
+  })
+
   // aggregate collected data
-  const submitSurvey = () => {
-    childRef.current.submitSurvey()
+  const submitSurvey = async () => {
     const submission = {
       todayFeeling: todayFeeling,
       todaySymptoms: todaySymptoms,
       comparedFeeling: comparedFeeling,
       additionalInfo: additionalInfo
     }
-    // TODO save this state in Redux
+
+    const observation = childRef.current.createObservation(submission)
+    const encryptOptions = { encrypt: true };
+    userSession.putFile(`observation${numObservations+1}.json`, JSON.stringify(observation.attrs), encryptOptions).then((res) => {
+      window.location.reload()
+    }).catch(err => {
+      console.log(err)
+    })
+
   }
 
   return (

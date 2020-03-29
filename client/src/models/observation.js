@@ -4,6 +4,7 @@ import { Model } from 'radiks';
 export default class Observation extends Model {
     static className = 'Observation';
     static schema = {
+        date: Date,
         coronavirus: {
             closeContactSuspected: Boolean,
             hasCoronaVirus: Boolean,
@@ -35,17 +36,27 @@ export default class Observation extends Model {
         },
         physical: {
             dailyFeeling: Number,
+            dailySymptomsFeeling: Number,
+            dailyComparedToYesterday: Number,
             temperature: Number,
             hasFever: Boolean,
+            feverSeverity: String,
             hasChills: Boolean,
             hasWeakness: Boolean,
             hasLimbPain: Boolean,
             hasCough: Boolean,
+            coughSeverity: String,
             hasSniffling: Boolean,
             hasDiarrhea: Boolean,
             hasSoreThroat: Boolean,
+            soreThroatSeverity: String,
             hasHeadache: Boolean,
-            hasShortnessOfBreath: Boolean
+            headacheSeverity: String,
+            hasShortnessOfBreath: Boolean,
+            hasDizziness: Boolean,
+            dizzinessSeverity: String,
+            hasCongestion: Boolean,
+            congestionSeverity: String
         },
         nonPhysical: {
             topConcerns: Array,
