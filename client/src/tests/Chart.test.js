@@ -17,8 +17,9 @@ const mockChartJsState = {dataSample: {
 
 describe('ChartJs', () => {
   it('should render a ChartJs component ', () => {
-    const store = mockStore({dataSample: mockChartJsState.dataSample});
+    const store = mockStore({root: {dataSample: mockChartJsState.dataSample}});
     window.HTMLCanvasElement.prototype.getContext = () => {}
+
     const wrapper = mount(
       <Provider store={store}>
         {/* <Chart /> */}
@@ -27,30 +28,3 @@ describe('ChartJs', () => {
     expect(wrapper.find('Chart')).toMatchSnapshot()
   })
 })
-
-
-
-
-// jest.mock("react-redux", () => ({
-//   useSelector: jest.fn()
-// }));
-
-// describe("ChartJs", () => {
-//   beforeEach(() => {
-//     useSelector.mockImplementation(callback => {
-//       return callback(mockAppState);
-//     });
-//   });
-//   afterEach(() => {
-//     useSelector.mockClear();
-//   });
-
-//   it("should render a comonent", () => {
-//     const { getByTestId } = render(<ChartJs />);
-//     expect(getByTestId('chart'))
-//   });
-// });
-
-// test('renders sub component ChartJs', () => {
-//   render(<ChartJs />);
-// });
