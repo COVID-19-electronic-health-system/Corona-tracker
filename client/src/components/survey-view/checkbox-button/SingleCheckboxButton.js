@@ -7,7 +7,6 @@ import TextField from '@material-ui/core/TextField';
 import Autocomplete from '@material-ui/lab/Autocomplete';
 import Checkbox from '@material-ui/core/Checkbox';
 import { temperature, minutes, hours } from './constants';
-import { Grid } from '@material-ui/core';
 
 // handles fever symptom
 function TemperatureAutocomplete(props) {
@@ -94,12 +93,13 @@ export default function SingleCheckboxButton(props) {
           </Button>
         </ButtonGroup>
       ) : props.symptomName === 'headache' ? (
-        <ButtonGroup color="secondary">
-          <Button disabled variant="contained" color="primary" id="Text" name="Text">
-            How long has it lasted for:
-        </Button>
-          <Grid>
 
+        <ButtonGroup color="secondary">
+
+        <Button disabled variant="contained" color="primary" id="Text" name="Text">
+        How long has it lasted for:
+        </Button>
+        <ButtonGroup orientation="vertical">
             <HoursAutocomplete
               handleHours={props.handleHours}
               hoursValue={props.symptomValue}
@@ -117,8 +117,9 @@ export default function SingleCheckboxButton(props) {
             <Button disabled variant="contained" color="primary" id="Mins" name="Mins">
               Mins
             </Button>
-          </Grid>
-        </ButtonGroup>
+            </ButtonGroup>
+          </ButtonGroup>
+
       ) : (
             <ButtonGroup color="secondary" variant="outlined">
               <Button
