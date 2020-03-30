@@ -11,12 +11,6 @@ import { temperature, minutes, hours } from './constants';
 import { Grid } from '@material-ui/core';
 
 const useStyles = makeStyles( {
-  checkbox: {
-  },
-  MuiFocused: {
-    backgroundImage: 'none',
-    backgroundColor: '#f64141'
-  },
   form: {
     backgroundColor: '#ebebeb',
     margin: '30px auto',
@@ -38,17 +32,13 @@ const useStyles = makeStyles( {
     overflow: 'hidden',
     borderTopLeftRadius: '10px',
     borderTopRightRadius: '10px',
-  },
-  labelOnClick: {
-    backgroundImage: 'none',
-    backgroundColor: '#f64141'
   }
 });
 
 // handles fever symptom
 function TemperatureAutocomplete(props) {
   return (
-    <TextField
+    <Autocomplete
       size='small'
       id="temperature"
       options={temperature}
