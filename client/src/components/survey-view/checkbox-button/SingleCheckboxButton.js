@@ -6,13 +6,49 @@ import FormControl from '@material-ui/core/FormControl';
 import TextField from '@material-ui/core/TextField';
 import Autocomplete from '@material-ui/lab/Autocomplete';
 import Checkbox from '@material-ui/core/Checkbox';
+import { makeStyles } from '@material-ui/core/styles';
 import { temperature, minutes, hours } from './constants';
 import { Grid } from '@material-ui/core';
+
+const useStyles = makeStyles( {
+  checkbox: {
+  },
+  MuiFocused: {
+    backgroundImage: 'none',
+    backgroundColor: '#f64141'
+  },
+  form: {
+    backgroundColor: '#ebebeb',
+    margin: '30px auto',
+    padding: '0 0 30px',
+    borderRadius: '10px',
+    boxShadow: '0px 10px 22px -8px rgba(0,0,0,0.45)',
+  },
+  formControl: {
+    width: '100%'
+  },
+  label: {
+    backgroundImage: 'linear-gradient(40deg, #4760ff 0%, #82a4f8 100%)',
+    color: '#ebebeb',
+    display: 'block',
+    height: '5vh',
+    lineHeight: '5vh',
+    margin: '0 auto 20px',
+    width: '100%',
+    overflow: 'hidden',
+    borderTopLeftRadius: '10px',
+    borderTopRightRadius: '10px',
+  },
+  labelOnClick: {
+    backgroundImage: 'none',
+    backgroundColor: '#f64141'
+  }
+});
 
 // handles fever symptom
 function TemperatureAutocomplete(props) {
   return (
-    <Autocomplete
+    <TextField
       size='small'
       id="temperature"
       options={temperature}
@@ -62,17 +98,25 @@ function HoursAutocomplete(props) {
 // main functional component
 export default function SingleCheckboxButton(props) {
 
+  const styles = useStyles();
+
   // creating appropriate label name
   let label = props.symptomName;
   label = label.replace(new RegExp('(?=[A-Z])', 'g'), ' ');
   label = label.replace(/^./, label[0].toUpperCase());
 
   return (
-    <div>
-      <FormControl>
+    <div className={styles.form}>
+      <FormControl className={styles.formControl}>
         <FormControlLabel
+          className={styles.label}
           control={
-            <Checkbox checked={props.symptomChecked} onChange={props.handleCheckboxChange} name={props.symptomName} />
+            <Checkbox
+              className = {styles.checkbox}
+              checked={props.symptomChecked}
+              onChange={props.handleCheckboxChange}
+              name={props.symptomName}
+            />
           }
           label={label}
         />
@@ -81,7 +125,7 @@ export default function SingleCheckboxButton(props) {
       {props.symptomName === 'fever' ? (
         <ButtonGroup color="secondary">
           <Button disabled variant="contained" color="primary">
-            What is your temperature:
+            Temperature:
           </Button>
 
           <TemperatureAutocomplete
@@ -96,7 +140,7 @@ export default function SingleCheckboxButton(props) {
       ) : props.symptomName === 'headache' ? (
         <ButtonGroup color="secondary">
           <Button disabled variant="contained" color="primary" id="Text" name="Text">
-            How long has it lasted for:
+            Duration:
         </Button>
           <Grid>
 
@@ -120,7 +164,7 @@ export default function SingleCheckboxButton(props) {
           </Grid>
         </ButtonGroup>
       ) : (
-            <ButtonGroup color="secondary" variant="outlined">
+            <ButtonGroup color="secondary" variant="outlined" className={styles.buttonTest}>
               <Button
                 variant="contained"
                 name={props.symptomName}
@@ -155,4 +199,3 @@ export default function SingleCheckboxButton(props) {
     </div>
   );
 }
-
