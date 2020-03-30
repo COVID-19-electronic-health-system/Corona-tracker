@@ -1,4 +1,5 @@
 import React, { useState, useEffect, useRef } from 'react';
+import { useHistory } from 'react-router-dom';
 import { makeStyles } from '@material-ui/core/styles';
 import { Typography, Slider, ButtonGroup, Button, TextField, Grid } from '@material-ui/core';
 import CheckboxButton from './survey-view/checkbox-button/CheckboxButton';
@@ -81,6 +82,7 @@ const SymptomsTracker = () => {
   const { userSession } = useBlockstack();
   const childRef = useRef();
   const classes = useStyles();
+  const history = useHistory();
 
   // emulate dynamic state in a fuctional component
   const [todayFeeling, setTodayFeeling] = useState(1);
@@ -151,6 +153,15 @@ const SymptomsTracker = () => {
         console.log(err);
       });
   };
+
+    userSession.putFile(`observation/0000000${numObservations+1}.json`, JSON.stringify(observation.attrs), encryptOptions).then((res) => {
+      history.push('/');
+    }).catch(err => {
+      console.log(err)
+    })
+
+  }
+
 
   return (
     <div className={classes.root}>

@@ -5,6 +5,9 @@
 **CORE COLORS**
 
 - Red: #f64141
+- Blue gradient (button): #4760ff (dark blue) --> #82a4f8 (light blue)
+- Blue gradient (calendar): #7a9cf9 (dark blue) --> #97b9f7 (light blue)
+- Main blue (bar calendar, buttons): #6795fc
 - Dark Grey: #2c2c2c
 - Light Grey: #aaaaaa
 - Off White: #ebebeb
