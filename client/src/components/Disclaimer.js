@@ -12,6 +12,8 @@ import DialogTitle from '@material-ui/core/DialogTitle';
 import { useBlockstack } from 'react-blockstack';
 
 export const Disclaimer = props => {
+  const { userSession } = useBlockstack();
+
   const disclaimerAnswer = {
     answerChoice: null,
   };
@@ -19,8 +21,12 @@ export const Disclaimer = props => {
   const storeAnswer = answer => {
     props.setAnswer(answer);
     disclaimerAnswer.answerChoice = answer;
-    userSession;
-    //send answer to gaia
+
+    try {
+      userSession.putFile(`disclaimer.json`, JSON.stringify(disclaimerAnswer));
+    } catch (error) {
+      console.error(error);
+    }
   };
 
   return (

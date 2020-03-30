@@ -77,7 +77,6 @@ const marks = [
   },
 ];
 
-
 const SymptomsTracker = () => {
   const { userSession } = useBlockstack();
   const childRef = useRef();
@@ -90,47 +89,47 @@ const SymptomsTracker = () => {
   const [additionalInfo, setAdditionalInfo] = useState('');
 
   // every headnler function responsible for collecting data for particular question
-  const handlerTodayFeeling = (e) => {
-    setTodayFeeling(e)
-  }
+  const handlerTodayFeeling = e => {
+    setTodayFeeling(e);
+  };
 
-  const handlerTodaySymptoms = (e) => {
-    setTodaySymptoms(e)
-  }
+  const handlerTodaySymptoms = e => {
+    setTodaySymptoms(e);
+  };
 
-  const handlerComparedFeeling = (e) => {
-    setcomparedFeeling(e)
-  }
+  const handlerComparedFeeling = e => {
+    setcomparedFeeling(e);
+  };
 
-  const handlerAdditionalInfo = (e) => {
-    setAdditionalInfo(e)
-  }
+  const handlerAdditionalInfo = e => {
+    setAdditionalInfo(e);
+  };
 
-  let files = []
-  let numObservations = 0
+  let files = [];
+  let numObservations = 0;
 
   const fetchFiles = async () => {
-    console.log(files)
+    console.log('files', files);
     for (let i = 0; i < files.length; i++) {
-      if (files[i].includes("observation")) {
-        const currObservation = parseInt(files[i].replace(/^\D+/g, ''))
-        numObservations = currObservation
+      if (files[i].includes('observation')) {
+        const currObservation = parseInt(files[i].replace(/^\D+/g, ''));
+        numObservations = currObservation;
       }
     }
-  }
+  };
 
   useEffect(() => {
     async function fetchData() {
-      await userSession.listFiles((file) => {
+      await userSession.listFiles(file => {
         files.push(file);
         return true;
       });
       return files;
     }
     fetchData().then(() => {
-      fetchFiles()
-    })
-  })
+      fetchFiles();
+    });
+  });
 
   // aggregate collected data
   const submitSurvey = async () => {
@@ -138,24 +137,28 @@ const SymptomsTracker = () => {
       todayFeeling: todayFeeling,
       todaySymptoms: todaySymptoms,
       comparedFeeling: comparedFeeling,
-      additionalInfo: additionalInfo
-    }
+      additionalInfo: additionalInfo,
+    };
 
-    const observation = childRef.current.createObservation(submission)
+    const observation = childRef.current.createObservation(submission);
     const encryptOptions = { encrypt: true };
-    userSession.putFile(`observation/0000000${numObservations+1}.json`, JSON.stringify(observation.attrs), encryptOptions).then((res) => {
-      window.location.reload()
-    }).catch(err => {
-      console.log(err)
-    })
-
-  }
+    userSession
+      .putFile(`observation/0000000${numObservations + 1}.json`, JSON.stringify(observation.attrs), encryptOptions)
+      .then(res => {
+        window.location.reload();
+      })
+      .catch(err => {
+        console.log(err);
+      });
+  };
 
   return (
     <div className={classes.root}>
       <Grid container justify={'center'} alignItems={'center'}>
         <Grid item xs={12} xl={4} className={classes.gridItem}>
-          <Typography id="discrete-slider" gutterBottom>How do you feel today?</Typography>
+          <Typography id="discrete-slider" gutterBottom>
+            How do you feel today?
+          </Typography>
           <Slider
             onChange={(e, val) => handlerTodayFeeling(val)}
             color="secondary"
@@ -192,7 +195,7 @@ const SymptomsTracker = () => {
         </Grid>
 
         <Grid item xs={12} xl={4} className={classes.gridItem}>
-          <CheckboxButton ref={childRef}/>
+          <CheckboxButton ref={childRef} />
         </Grid>
 
         <Grid item xs={12} xl={4} className={classes.gridItem}>
@@ -204,7 +207,7 @@ const SymptomsTracker = () => {
         </Grid>
       </Grid>
     </div>
-  )
-}
+  );
+};
 
-export default SymptomsTracker
+export default SymptomsTracker;
