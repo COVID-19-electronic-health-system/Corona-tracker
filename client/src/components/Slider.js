@@ -1,6 +1,13 @@
-import React, { Component } from 'react';
+import React from 'react';
 import Slider from '@material-ui/core/Slider';
-import '../css/Slider.css'
+
+import { makeStyles } from '@material-ui/core/styles';
+
+const useStyles = makeStyles({
+  sliderContainer: {
+    padding: '5vh 10vh 5vh 10vh',
+  },
+});
 
 const marks = [
   {
@@ -46,26 +53,26 @@ const marks = [
   {
     value: 10,
     label: '10',
-  }
+  },
 ];
 
-
-class AppSlider extends Component {
-  
-  render() {
-  return(
-    <div className="slider-container">
-      <Slider aria-labelledby="discrete-slider-custom"
-        defaultValue={0}
-        step={0.1}
-        min={0}
-        max={10}
-        valueLabelDisplay="auto"
-        marks={marks}/>
-    </div>
-  );
+const AppSlider =() => {
+ 
+    const classes = useStyles();
+    return (
+      <div className={classes.sliderContainer}>
+        <Slider
+          aria-labelledby="discrete-slider-custom"
+          defaultValue={0}
+          step={0.1}
+          min={0}
+          max={10}
+          valueLabelDisplay="auto"
+          marks={marks}
+        />
+      </div>
+    );
   }
-}
+
 
 export default AppSlider;
-

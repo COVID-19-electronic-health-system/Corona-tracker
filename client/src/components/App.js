@@ -1,7 +1,6 @@
 import React, { useCallback } from 'react';
 import Layout from './Layout';
 import 'bootstrap/dist/css/bootstrap.min.css';
-import '../css/App.css';
 import { appConfig } from '../utils/constants';
 import { configure, User } from 'radiks';
 import { Connect } from '@blockstack/connect';
