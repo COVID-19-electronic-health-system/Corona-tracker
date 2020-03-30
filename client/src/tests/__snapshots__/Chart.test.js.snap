@@ -3,3 +3,5 @@
 exports[`Chart should render a Chart component  1`] = `ReactWrapper {}`;
 
 exports[`Chart should render a Chart component  2`] = `ReactWrapper {}`;
+
+exports[`ChartJs should render a ChartJs component  1`] = `ReactWrapper {}`;
