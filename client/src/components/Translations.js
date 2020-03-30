@@ -34,9 +34,10 @@ export default function TranslationsMenu() {
       >
         <MenuItem onClick={() => changeLanguage('en')}>English</MenuItem>
         <MenuItem onClick={() => changeLanguage('es')}>Spanish</MenuItem>
-        <MenuItem onClick={() => changeLanguage('it')}>Italian</MenuItem> 
+        <MenuItem onClick={() => changeLanguage('it')}>Italian</MenuItem>
         <MenuItem onClick={() => changeLanguage('fr')}>French</MenuItem>
-    </Menu>
+        <MenuItem onClick={() => changeLanguage('rus')}>Russian</MenuItem>
+      </Menu>
     </div>
   );
 }
