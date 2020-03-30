@@ -1,8 +1,8 @@
 import React, { useState } from 'react'
-import { Container } from 'react-bootstrap'
-import { Button, ButtonGroup } from '@material-ui/core'
+import { Button, ButtonGroup, Grid, Typography } from '@material-ui/core';
 import FlashCards from './FlashCards'
 import { cardData, quizData } from '../utils/fakeCardData'
+
 
 
 const FactQuizContainer = (props) => {
@@ -11,21 +11,25 @@ const FactQuizContainer = (props) => {
   const setFacts = () => setFactsQuiz("facts")
 
   return (
-    <div>
-      <Container >
-        <ButtonGroup size="medium" color="secondary" aria-label="outlined button group" style={{padding:'10px'}}>
-          <Button onClick={setFacts} variant={factsOrQuiz==='facts'&&"contained"}>Facts</Button>
-          <Button onClick={setQuiz} variant={factsOrQuiz==='quiz'&&"contained"}>Quiz</Button>
+    <Grid>
+      <Grid>
+        <ButtonGroup size="medium" color="secondary" aria-label="outlined button group" style={{ padding: '10px' }}>
+          <Button onClick={setFacts} variant={factsOrQuiz === 'facts' && 'contained'}>
+            Facts
+          </Button>
+          <Button onClick={setQuiz} variant={factsOrQuiz === 'quiz' && 'contained'}>
+            Quiz
+          </Button>
         </ButtonGroup>
-        <h4 className='FlashCardTitle'>
-          {factsOrQuiz==='facts' && `Swipe to the right or click on the TODOARROW to learn more about COVID-19`}
-          {factsOrQuiz==='quiz' && `QUIZ TIME!`}
-        </h4>
-      </Container>
-      {factsOrQuiz==='facts'&&<FlashCards mode='facts' cardData={cardData}/>}
-      {factsOrQuiz==='quiz'&&<FlashCards mode='quiz' cardData={quizData}/>}
-    </div>
-  )
+        <Typography variant='subtitle1'>
+          {factsOrQuiz === 'facts' && `Swipe to the right or click on the TODOARROW to learn more about COVID-19`}
+          {factsOrQuiz === 'quiz' && `QUIZ TIME!`}
+        </Typography>
+      </Grid>
+        {factsOrQuiz === 'facts' && <FlashCards mode="facts" cardData={cardData} />}
+        {factsOrQuiz === 'quiz' && <FlashCards mode="quiz" cardData={quizData} />}
+    </Grid>
+  );
 }
 
 export default FactQuizContainer
