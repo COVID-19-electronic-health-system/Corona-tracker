@@ -18,7 +18,7 @@ export const Disclaimer = props => {
     answerChoice: null,
   };
 
-  const storeAnswer = answer => {
+  const storeAnswer = async answer => {
     props.setAnswer(answer);
     disclaimerAnswer.answerChoice = answer;
 
