@@ -12,8 +12,9 @@ import { appConfig } from '../utils/constants';
 import setLoginLoading from '../redux/actions/actions';
 import FactQuizContainer from './FactQuizContainer';
 import PrivateRoute from './PrivateRoute';
-import SymptomsTracker from './SymptomsTracker';
+// import SymptomsTracker from './SymptomsTracker';
 import OnboardUser from './OnboardUser';
+import Calendar from './Calendar'
 
 const RADIKS_URL = process.env.REACT_APP_QA_URL || 'http://127.0.0.1:1260'; // TODO this will change to wherever our radiks server will be hosted in prod
 
@@ -45,12 +46,13 @@ function App() {
     <BrowserRouter>
       <Connect authOptions={authOptions}>
         <Layout>
+          <Calendar />
           <Switch>
             <PrivateRoute exact path="/" component={() => <DiagnosticContainer />} />
 
             {/* ADD/EDIT ROUTES WITH THEIR COMPONENTS HERE: */}
             <PrivateRoute path="/signup" />
-            <PrivateRoute path="/symptomsurvey" component={() => <SymptomsTracker />} />
+            {/* <PrivateRoute path="/symptomsurvey" component={() => <SymptomsTracker />} /> */}
             <PrivateRoute path="/log" />
             <PrivateRoute path="/healthlog" />
             <PrivateRoute path="/education" component={() => <FactQuizContainer />} />

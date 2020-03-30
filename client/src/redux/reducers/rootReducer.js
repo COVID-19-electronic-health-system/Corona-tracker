@@ -2,7 +2,13 @@ import { combineReducers } from 'redux';
 import observations from './observations';
 import loginLoading from './login';
 import navigationReducer from './navigation';
+<<<<<<< HEAD
 import disclaimerReducer from './disclaimer';
+=======
+import { combineReducers } from 'redux';
+import disclaimerReducer from './disclaimer'
+import calendarReducer from './calendar'  
+>>>>>>> Created redux action for selecting date from the calendar
 
 // initial state of the Redux store
 const initialState = {
@@ -33,4 +39,5 @@ export default combineReducers({
   observations,
   navigationReducer,
   disclaimerReducer,
+  calendarReducer,
 });
