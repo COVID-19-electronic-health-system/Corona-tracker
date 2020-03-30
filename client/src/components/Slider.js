@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React from 'react';
 import Slider from '@material-ui/core/Slider';
 
 import { makeStyles } from '@material-ui/core/styles';
@@ -56,8 +56,8 @@ const marks = [
   },
 ];
 
-class AppSlider extends Component {
-  render() {
+const AppSlider =() => {
+ 
     const classes = useStyles();
     return (
       <div className={classes.sliderContainer}>
@@ -73,6 +73,6 @@ class AppSlider extends Component {
       </div>
     );
   }
-}
+
 
 export default AppSlider;
