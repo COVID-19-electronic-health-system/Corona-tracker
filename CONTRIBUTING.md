@@ -65,7 +65,7 @@ Quick summary:
 1. Check your repo's origin (where your forked code is located)
    `git remote -v`
 2. Add an upstream  
-   `git remote add upstream git@github.com:COVID-19-electronic-health-system/  Corona-tracker.git`  
+   `git remote add upstream git@github.com:COVID-19-electronic-health-system/Corona-tracker.git`  
 3. Check remote again  
    `git remote -v`  
 
