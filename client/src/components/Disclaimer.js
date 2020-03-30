@@ -9,6 +9,7 @@ import DialogActions from '@material-ui/core/DialogActions';
 import DialogContent from '@material-ui/core/DialogContent';
 import DialogContentText from '@material-ui/core/DialogContentText';
 import DialogTitle from '@material-ui/core/DialogTitle';
+import { useBlockstack } from 'react-blockstack';
 import { makeStyles } from '@material-ui/core/styles';
 
 const useStyles = makeStyles({
@@ -22,6 +23,22 @@ const useStyles = makeStyles({
   },
 });
 export const Disclaimer = props => {
+  const { userSession } = useBlockstack();
+
+  const disclaimerAnswer = {
+    answerChoice: null,
+  };
+
+  const storeAnswer = async answer => {
+    props.setAnswer(answer);
+    disclaimerAnswer.answerChoice = answer;
+
+    await userSession
+      .putFile(`disclaimer.json`, JSON.stringify(disclaimerAnswer))
+      .then(res => 200)
+      .catch(err => console.error(err));
+  };
+
   const classes =useStyles()
   return (
     <div>
@@ -44,10 +61,10 @@ export const Disclaimer = props => {
               </DialogContentText>
             </DialogContent>
             <DialogActions>
-              <Button variant="outlined" onClick={() => props.setAnswer(true)}>
+              <Button variant="outlined" onClick={() => storeAnswer(true)}>
                 I agree
               </Button>
-              <Button variant="outlined" onClick={() => props.setAnswer(false)}>
+              <Button variant="outlined" onClick={() => storeAnswer(false)}>
                 I don't agree
               </Button>
             </DialogActions>
