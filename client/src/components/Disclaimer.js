@@ -9,8 +9,20 @@ import DialogActions from '@material-ui/core/DialogActions';
 import DialogContent from '@material-ui/core/DialogContent';
 import DialogContentText from '@material-ui/core/DialogContentText';
 import DialogTitle from '@material-ui/core/DialogTitle';
+import { useBlockstack } from 'react-blockstack';
 
 export const Disclaimer = props => {
+  const disclaimerAnswer = {
+    answerChoice: null,
+  };
+
+  const storeAnswer = answer => {
+    props.setAnswer(answer);
+    disclaimerAnswer.answerChoice = answer;
+    userSession;
+    //send answer to gaia
+  };
+
   return (
     <div>
       {!props.answer ? (
@@ -32,10 +44,10 @@ export const Disclaimer = props => {
               </DialogContentText>
             </DialogContent>
             <DialogActions>
-              <Button variant="outlined" onClick={() => props.setAnswer(true)}>
+              <Button variant="outlined" onClick={() => storeAnswer(true)}>
                 I agree
               </Button>
-              <Button variant="outlined" onClick={() => props.setAnswer(false)}>
+              <Button variant="outlined" onClick={() => storeAnswer(false)}>
                 I don't agree
               </Button>
             </DialogActions>
