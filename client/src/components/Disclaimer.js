@@ -22,11 +22,10 @@ export const Disclaimer = props => {
     props.setAnswer(answer);
     disclaimerAnswer.answerChoice = answer;
 
-    try {
-      userSession.putFile(`disclaimer.json`, JSON.stringify(disclaimerAnswer));
-    } catch (error) {
-      console.error(error);
-    }
+    await userSession
+      .putFile(`disclaimer.json`, JSON.stringify(disclaimerAnswer))
+      .then(res => 200)
+      .catch(err => console.error(err));
   };
 
   return (
