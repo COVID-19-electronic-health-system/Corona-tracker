@@ -22,7 +22,7 @@ describe('ChartJs', () => {
 
     const wrapper = mount(
       <Provider store={store}>
-        {/* <Chart /> */}
+        <Chart />
       </Provider>
     )
     
