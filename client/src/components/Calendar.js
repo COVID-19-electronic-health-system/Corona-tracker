@@ -7,10 +7,18 @@ import interactionPlugin from '@fullcalendar/interaction';
 import '@fullcalendar/core/main.css';
 import '@fullcalendar/daygrid/main.css';
 import '@fullcalendar/timegrid/main.css';
-import '../css/Calendar.css';
+import { makeStyles } from '@material-ui/core/styles';
 
+const useStyles = makeStyles({
+  appCalendar: {
+    margin: '0 auto',
+    maxWidth: '50%',
+    maxheight: '50%'
+  },
+});
 
 const AppCalendar = () => {
+  const classes = useStyles()
   // state emulation, store all events user created
   const [calendarEvents, setCalendarEvents] = useState([])
 
@@ -29,7 +37,7 @@ const AppCalendar = () => {
 
   return (
     <div>
-      <div className="app-calendar">
+      <div className={classes.appCalendar}>
         <FullCalendar
           defaultView="dayGridMonth"
           header={{

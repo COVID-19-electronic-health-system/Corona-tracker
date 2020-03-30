@@ -9,6 +9,7 @@ import { Provider } from 'react-redux';
 import thunk from 'redux-thunk';
 import rootReducer from './redux/reducers/rootReducer';
 import logger from 'redux-logger';
+import Loading from './components/Loding'
 import './i18n';
 // creating the store, connecting to the reducer and applying middleware with thunk
 const store = createStore(rootReducer, applyMiddleware(thunk, logger));
@@ -16,7 +17,7 @@ const store = createStore(rootReducer, applyMiddleware(thunk, logger));
 // Wraping App.js into Provider component to make data from the store avaliable throughout all application
 ReactDOM.render(
 <div>
-<Suspense fallback={<h1>Loading...</h1>}>
+<Suspense fallback={<Loading/>}>
     <Provider store={store}>
       <App />
     </Provider>
