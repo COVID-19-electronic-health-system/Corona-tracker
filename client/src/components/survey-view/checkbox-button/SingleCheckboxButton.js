@@ -121,38 +121,38 @@ export default function SingleCheckboxButton(props) {
           </ButtonGroup>
 
       ) : (
-        <ButtonGroup color="secondary" variant="outlined">
-          <Button
-            variant="contained"
-            name={props.symptomName}
-            onClick={props.symptomChecked ? props.handleButtonGroupChange : () => {}}
-            color={props.symptomValue === 'Minimal' ? 'secondary' : 'primary'}
-            value="Minimal"
-          >
-            Minimal
+            <ButtonGroup color="secondary" variant="outlined">
+              <Button
+                variant="contained"
+                name={props.symptomName}
+                onClick={props.symptomChecked ? props.handleButtonGroupChange : () => { }}
+                color={props.symptomValue === 'Minimal' ? 'secondary' : 'primary'}
+                value="Minimal"
+              >
+                Minimal
           </Button>
 
-          <Button
-            variant="contained"
-            name={props.symptomName}
-            onClick={props.symptomChecked ? props.handleButtonGroupChange : () => {}}
-            color={props.symptomValue === 'Moderate' ? 'secondary' : 'primary'}
-            value="Moderate"
-          >
-            Moderate
+              <Button
+                variant="contained"
+                name={props.symptomName}
+                onClick={props.symptomChecked ? props.handleButtonGroupChange : () => { }}
+                color={props.symptomValue === 'Moderate' ? 'secondary' : 'primary'}
+                value="Moderate"
+              >
+                Moderate
           </Button>
 
-          <Button
-            variant="contained"
-            name={props.symptomName}
-            onClick={props.symptomChecked ? props.handleButtonGroupChange : () => {}}
-            color={props.symptomValue === 'Severe' ? 'secondary' : 'primary'}
-            value="Severe"
-          >
-            Severe
+              <Button
+                variant="contained"
+                name={props.symptomName}
+                onClick={props.symptomChecked ? props.handleButtonGroupChange : () => { }}
+                color={props.symptomValue === 'Severe' ? 'secondary' : 'primary'}
+                value="Severe"
+              >
+                Severe
           </Button>
-        </ButtonGroup>
-      )}
+            </ButtonGroup>
+          )}
     </div>
   );
 }

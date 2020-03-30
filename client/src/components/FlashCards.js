@@ -2,7 +2,16 @@ import React, { useState } from 'react'
 import { useSprings } from 'react-spring'
 import { useDrag } from 'react-use-gesture'
 import Card from './Card'
-import '../css/FlashCards.css'
+import { makeStyles } from '@material-ui/core/styles';
+
+const useStyles = makeStyles({
+  FlashCards: {
+    display: 'flex',
+    justifyContent: 'center',
+    cursor:
+      "url('https://uploads.codesandbox.io/uploads/user/b3e56831-8b98-4fee-b941-0e27f39883ab/Ad1_-cursor.png') 39 39, auto;",
+  },
+});
 
 const to = i => ({
   x: 0,
@@ -13,9 +22,10 @@ const to = i => ({
 })
 const from = i => ({ x: 0, rot: 0, scale: 1.5, y: -1000 })
 
-const trans = (r, s) => `perspective(1500px) rotateX(30deg) rotateY(${r / 10}deg) rotateZ(${r}deg) scale(${s})`
+const trans = (r, s) => `perspective(1500px) rotateX(15deg) rotateY(${r / 10}deg) rotateZ(${r}deg) scale(${s})`
 
 const FlashCards = (props) => {
+  const classes = useStyles()
   const { cardData, mode } = props
   const [score, setScore] = useState(0)
   const [gone] = useState(() => new Set()) 
@@ -53,7 +63,7 @@ const FlashCards = (props) => {
   })
   // Now we're just mapping the animated values to our view, that's it. Btw, this component only renders once. :-)
   return (
-    <div className="FlashCards">
+    <div className={classes.FlashCards}>
       {cardProp.map(({ x, y, rot, scale }, i) => (
       <Card
         key={i+'card'}

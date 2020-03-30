@@ -1,5 +1,5 @@
 import React from 'react';
-import { MuiThemeProvider, createMuiTheme, CssBaseline } from '@material-ui/core';
+import { MuiThemeProvider, createMuiTheme, CssBaseline, ThemeProvider } from '@material-ui/core';
 import { makeStyles } from '@material-ui/core/styles';
 import Button from '@material-ui/core/Button';
 import { ReactComponent as Logo } from '../img/Logo_CORONATRACKER_Logo.svg';
@@ -56,14 +56,13 @@ const Layout = props => {
   const { t } = useTranslation();
 
   return (
-    <MuiThemeProvider theme={theme}>
-      <CssBaseline>
+    <ThemeProvider theme={theme}>
         {authenticated ? (
           <div className={classes.root}>
             <Logo className={classes.logo} />
             <TextLogo className={classes.textLogo} />
 
-            <Button size="medium" color="secondary" variant="contained" onClick={signOut}>
+            <Button  size="medium" color="secondary" variant="contained" onClick={signOut}>
           {t('signoutButtonText')}
             </Button>
             {props.children}
@@ -72,8 +71,7 @@ const Layout = props => {
         ) : (
           <Login />
         )}
-      </CssBaseline>
-    </MuiThemeProvider>
+    </ThemeProvider>
   );
 };
 
