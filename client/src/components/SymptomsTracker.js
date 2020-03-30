@@ -154,13 +154,13 @@ const SymptomsTracker = () => {
       });
   };
 
-    userSession.putFile(`observation/0000000${numObservations+1}.json`, JSON.stringify(observation.attrs), encryptOptions).then((res) => {
-      history.push('/');
-    }).catch(err => {
-      console.log(err)
-    })
+  userSession.putFile(`observation/0000000${numObservations + 1}.json`, JSON.stringify(observation.attrs), encryptOptions).then((res) => {
+    history.push('/');
+  }).catch(err => {
+    console.log(err)
+  })
 
-  }
+
 
 
   return (
