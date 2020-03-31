@@ -14,6 +14,7 @@ import FactQuizContainer from './FactQuizContainer';
 import PrivateRoute from './PrivateRoute';
 import SymptomsTracker from './SymptomsTracker';
 import OnboardUser from './OnboardUser';
+import Calendar from './Calendar';
 
 const RADIKS_URL = process.env.REACT_APP_QA_URL || 'http://127.0.0.1:1260'; // TODO this will change to wherever our radiks server will be hosted in prod
 
@@ -45,6 +46,7 @@ function App() {
     <BrowserRouter>
       <Connect authOptions={authOptions}>
         <Layout>
+          <Calendar />
           <Switch>
             <PrivateRoute exact path="/" component={() => <DiagnosticContainer />} />
 
