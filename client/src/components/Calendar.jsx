@@ -1,4 +1,4 @@
-import React, { createRef, useRef, useState } from 'react';
+import React, { useRef, useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { useHistory } from 'react-router-dom';
 import FullCalendar from '@fullcalendar/react';
@@ -15,31 +15,29 @@ const useStyles = makeStyles({
   appCalendar: {
     margin: '0 auto',
     maxWidth: '50%',
-    maxheight: '50%'
+    maxheight: '50%',
   },
 });
 
 const AppCalendar = () => {
-  const classes = useStyles()
-  // state emulation, store all events user created
-  const [calendarEvents, setCalendarEvents] = useState([])
-  
-  const dispatch = useDispatch()
+  const classes = useStyles();
+
+  const dispatch = useDispatch();
 
   const history = useHistory();
-  
+
   // create new event function
   const handleCreateEventClick = args => {
-    dispatch(actions.selectDate(args.dateStr))
-    
-    let todaysDate = new Date().toISOString().slice(0, 10);
+    dispatch(actions.selectDate(args.dateStr));
+
+    const todaysDate = new Date().toISOString().slice(0, 10);
     if (args.dateStr === todaysDate) {
       history.push('/symptomsurvey');
     }
   };
 
-  const calendarComponentRef = useRef(null)
-  
+  const calendarComponentRef = useRef(null);
+
   return (
     <div>
       <div className={classes.appCalendar}>
@@ -54,12 +52,12 @@ const AppCalendar = () => {
           ref={calendarComponentRef}
           events={calendarEvents}
           dateClick={args => {
-            handleCreateEventClick(args)
+            handleCreateEventClick(args);
           }}
         />
       </div>
     </div>
   );
-}
+};
 
 export default AppCalendar;
