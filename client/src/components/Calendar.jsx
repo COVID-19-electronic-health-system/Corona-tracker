@@ -1,13 +1,7 @@
 import React, { useRef } from 'react';
 import { useDispatch } from 'react-redux';
 import { useHistory } from 'react-router-dom';
-import FullCalendar from '@fullcalendar/react';
-import dayGridPlugin from '@fullcalendar/daygrid';
-import timeGridPlugin from '@fullcalendar/timegrid';
-import interactionPlugin from '@fullcalendar/interaction';
-import '@fullcalendar/core/main.css';
-import '@fullcalendar/daygrid/main.css';
-import '@fullcalendar/timegrid/main.css';
+import Calendar from 'react-calendar';
 import { makeStyles } from '@material-ui/core/styles';
 import actions from '../redux/actions/actions';
 
@@ -26,12 +20,12 @@ const AppCalendar = () => {
 
   const history = useHistory();
 
-  // create new event function
-  const handleCreateEventClick = args => {
-    dispatch(actions.selectDate(args.dateStr));
+  // select date function
+  const handleDateClick = date => { 
+    dispatch(actions.selectDate(JSON.stringify(date).slice(0,11)));
 
     const todaysDate = new Date().toISOString().slice(0, 10);
-    if (args.dateStr === todaysDate) {
+    if (date.dateStr === todaysDate) {
       history.push('/symptomsurvey');
     }
   };
@@ -39,22 +33,8 @@ const AppCalendar = () => {
   const calendarComponentRef = useRef(null);
 
   return (
-    <div>
-      <div className={classes.appCalendar}>
-        <FullCalendar
-          defaultView="dayGridMonth"
-          header={{
-            left: 'prev,next today',
-            center: 'title',
-            right: 'dayGridMonth,timeGridWeek,timeGridDay,listWeek',
-          }}
-          plugins={[dayGridPlugin, timeGridPlugin, interactionPlugin]}
-          ref={calendarComponentRef}
-          dateClick={args => {
-            handleCreateEventClick(args);
-          }}
-        />
-      </div>
+    <div className={classes.appCalendar}>
+      <Calendar onChange={handleDateClick}/>
     </div>
   );
 };
