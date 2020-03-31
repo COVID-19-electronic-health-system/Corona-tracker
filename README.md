@@ -63,10 +63,6 @@ Over the past week, the team has been in consultation with individuals and stake
 
 The idea **for our IPR** is to help doctors monitor large numbers of patients' symptoms over time (daily or less). Doctors can text the patients if the patients are still ok, or call the patient if they start to get worse. Or, as time goes on, the doctor can refer them to telemedicine service like Jamaica Hospital or other. This will ultimately manifest itself as, mainly, a dashboard and a survey that people update daily with information.
 
-### Wireframe Overview
-
-![app overview](/design/wireframes/FINAL-V1-03.20/MASTER_WIREFRAME.png)
-
 ### Technology Stack
 
 __Front End:__
@@ -86,6 +82,10 @@ __Testing:__
 - TravisCI
 - ESLint
 - Prettier
+
+### Wireframe Overview
+
+![app overview](/design/wireframes/FINAL-V1-03.20/MASTER_WIREFRAME.png)
 
 ## COMING SOON Install, Build and Run Locally (For OSX, Windows)
 
