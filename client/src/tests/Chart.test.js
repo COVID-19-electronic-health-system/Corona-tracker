@@ -18,15 +18,11 @@ const mockChartJsState = {
 };
 
 describe('Chart', () => {
-  it('should render a ChartJs component ', () => {
+  it('should render a Chart component ', () => {
     const store = mockStore({ root: { dataSample: mockChartJsState.dataSample } });
     window.HTMLCanvasElement.prototype.getContext = () => {};
 
-    const wrapper = mount(
-      <Provider store={store}>
-        {/* <Chart /> */}
-      </Provider>
-    );
+    const wrapper = mount(<Provider store={store}>{/* <Chart /> */}</Provider>);
 
     expect(wrapper.find('Chart')).toMatchSnapshot();
   });
