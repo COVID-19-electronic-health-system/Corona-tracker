@@ -30,6 +30,10 @@ The target population of the application includes:
 1. cell phone users between the ages of 25-45. These users will have a high likelihood of being caretakers of young children and older adults
 2. high-risk populations with comorbidites including diabetes, obesity, kidney diseases, and immune system disorder
 
+### What is the benefit this app is providing?
+
+This application will address a global public health need by promoting accurate information to the general population and thereby help healthcare workers on the front lines to provide the necessary care to those in need.
+
 ### How is this app different from the others?
 
 The differentiating characteristics of our web application include:
@@ -53,43 +57,37 @@ Over the past week, the team has been in consultation with individuals and stake
 - Public health authorities. They need to inform, educate, and support citizens.
 - Researchers. There is enormous implications for individual's wellbeing and health and so we must try to understand both how individuals are traversing their journey, and if education is significantly improving characteristics in a user's health/wellbeing chart.
 
-## COMING SOON Install, Build and Run Locally (For OSX, Windows)
+## Application Overview
 
-
-
-
-
-
-
-
-
-
-## Idea
+### Idea
 
 The idea **for our IPR** is to help doctors monitor large numbers of patients' symptoms over time (daily or less). Doctors can text the patients if the patients are still ok, or call the patient if they start to get worse. Or, as time goes on, the doctor can refer them to telemedicine service like Jamaica Hospital or other. This will ultimately manifest itself as, mainly, a dashboard and a survey that people update daily with information.
-### What is the benefit this app is providing?
 
-This application will address a global public health need by promoting accurate information to the general population and thereby help healthcare workers on the front lines to provide the necessary care to those in need.
+### Wireframe Overview
 
-
-## App overview
 ![app overview](/design/wireframes/FINAL-V1-03.20/MASTER_WIREFRAME.png)
 
-## Technology Stack
+### Technology Stack
 
-### Frontend:
+__Front End:__
+- [React](https://github.com/facebook/react)
+- [Material-UI](https://github.com/mui-org/material-ui) for all new components
+- [React-Bootstrap](https://github.com/react-bootstrap/react-bootstrap) deprecated, for legacy components
+  - _note: used in old components that need to be converted to Material UI_
 
-React
-Material-UI- for all new components
-React-Bootstrap - deprecated, used in old components which need to be converted to Material-UI.
+__Back End / Database:__
+- [Blockstack](https://blockstack.org/about) blockchain implementation and tools with a mission to create a user owned internet
+  - [Radiks (server)](https://github.com/blockstack/radiks-server) A server for indexing data in decentralized applications
+  - [Radiks (client)](https://github.com/blockstack/radiks) A client-side framework for building model-driven decentralized applications
+  - [Gaia](https://github.com/blockstack/gaia) A decentralied high-performance storage system
+  - [Connect](https://github.com/blockstack/ux/tree/master/packages/connect) A library for building excellent user experiences with Blockstack, as part of the larger [Blockstack UX Monorepo](https://github.com/blockstack/ux).
 
-### "Backend"/DB:
+__Testing:__
+- TravisCI
+- ESLint
+- Prettier
 
-Blockstack Platform (Radiks, Gaia)
-
-### Testing:
-
-Jest
+## COMING SOON Install, Build and Run Locally (For OSX, Windows)
 
 ## Questions Related to application development?
 
