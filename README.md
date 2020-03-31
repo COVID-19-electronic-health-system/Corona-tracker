@@ -72,7 +72,7 @@ __Front End:__
   - _note: used in old components that need to be converted to Material UI_
 
 __Back End / Database:__
-- [Blockstack](https://blockstack.org/about) blockchain implementation and tools with a mission to create a user owned internet
+- [Blockstack](https://blockstack.org/about) Blockstack apps protect your digital rights and are powered by the Stacks blockchain.
   - [Radiks (server)](https://github.com/blockstack/radiks-server) A server for indexing data in decentralized applications
   - [Radiks (client)](https://github.com/blockstack/radiks) A client-side framework for building model-driven decentralized applications
   - [Gaia](https://github.com/blockstack/gaia) A decentralied high-performance storage system
@@ -187,3 +187,5 @@ If you choose to add tests, please place in client/src/tests.
 #### A Note on Blockstack, Privacy
 
 In these strange and often trying times, individual privacy is of utmost concern. In order to bootstrap this tool and get it off the ground and into the hands of those in need as quickly as possible, a serverless approach works great. Blockstack is decentralized - individuals still own their information. Everything is kept on the client until given permission. Therefore, we felt it best suited the overall needs.
+
+To learn more about Blockstack, please [visit their website](https://blockstack.org/).
