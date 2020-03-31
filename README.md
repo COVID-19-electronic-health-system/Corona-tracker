@@ -93,58 +93,53 @@ If you have questions related to application development, these are the people t
 
 ### Useful Github Repo Links
 
+- [Contributing Guidelines - get involved!]()
 - [Design, Wireframes, and Brand Guide](./design)
--
+- [Client, based on Create React App](./client)
+- [Translations](./translations.md)
 
 ### Carter Klein: back end, front end, systems architecture
 
 Github: @Carter Klein
 Discord: @Carter Klein
 
-###
+### Brian H. Hough: design, social media marketing, front end
 
+Github: @Brian H. Hough
+Discord: @InterstellarX
 
-#### @Brian H. Hough: is implementing design, social media marketing, front end code.
-
-See [/design](https://github.com/COVID-19-electronic-health-system/Corona-tracker/tree/master/design) and [/design](https://github.com/COVID-19-electronic-health-system/Corona-tracker/tree/master/design/wireframes)
-(@InterstellarX on discord)
-
-#### @tesla809: is implementing front end code, documentation and booking meetings with experts.
+#### Anthony A: front end code, documentation and booking meetings with experts
 
 Open to peer program any issue or bugs!
-See [/client](https://github.com/COVID-19-electronic-health-system/Corona-tracker/tree/master/client)
-(@Anthony A. on discord)
 
-#### @akilhylton: is implementing front end code, documentation, has machine learning experience.
+Github: @tesla809
+Discord: @Anthony A.
+
+#### Akil Hylton: front end code, documentation, has machine learning experience
 
 Open to peer program any issue or bugs!
-See [/client](https://github.com/COVID-19-electronic-health-system/Corona-tracker/tree/master/client)
-(@Akil Hylton on discord)
 
-#### @ngiangre: is advising on the data model, analytics, data science
+Github: @akilhylton
+Discord: @Akil Hylton
 
-See [analytics thread](https://github.com/COVID-19-electronic-health-system/Corona-tracker/issues/51)
-(@NickG on discord)
+#### Nick G: advising on data model, analytics, data science
 
-#### @salvolpe: is helping with translations, analytics
+See [analytics thread / issue.](https://github.com/COVID-19-electronic-health-system/Corona-tracker/issues/51)
 
-(@laseplov on discord)
-See [translations.md](translations.md)
+Github: @ngiangre
+Discord: @NickG
 
-#### @lukelin1991: Managing discord, discord roles, front-end, translations.
+#### Salvatore Volpe: translations, analytics
 
-(@kirbypooh on discord)
+Github: @salvolpe
+Discord: @laseplov
 
-And YOU!
-How would you like to help?
-see [CONTRIBUTING.md](./CONTRIBUTING.md) PENDING
+#### Luke Lin: Managing discord, discord roles, front end, translations
 
+Github: @lukelin1991
+Discord: @kirbypooh
 
 ## COMING SOON Install, Build and Run Locally (For OSX, Windows)
-
-
-
-
 
 ## Questions?
 
