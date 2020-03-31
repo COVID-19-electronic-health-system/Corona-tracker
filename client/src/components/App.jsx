@@ -12,7 +12,7 @@ import { appConfig } from '../utils/constants';
 import setLoginLoading from '../redux/actions/actions';
 import FactQuizContainer from './FactQuizContainer';
 import PrivateRoute from './PrivateRoute';
-// import SymptomsTracker from './SymptomsTracker';
+import SymptomsTracker from './SymptomsTracker';
 import OnboardUser from './OnboardUser';
 import Calendar from './Calendar'
 
@@ -52,7 +52,7 @@ function App() {
 
             {/* ADD/EDIT ROUTES WITH THEIR COMPONENTS HERE: */}
             <PrivateRoute path="/signup" />
-            {/* <PrivateRoute path="/symptomsurvey" component={() => <SymptomsTracker />} /> */}
+            <PrivateRoute path="/symptomsurvey" component={() => <SymptomsTracker />} />
             <PrivateRoute path="/log" />
             <PrivateRoute path="/healthlog" />
             <PrivateRoute path="/education" component={() => <FactQuizContainer />} />
