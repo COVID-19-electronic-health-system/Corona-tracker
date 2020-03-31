@@ -139,12 +139,17 @@ Discord: @laseplov
 Github: @lukelin1991
 Discord: @kirbypooh
 
-## COMING SOON Install, Build and Run Locally (For OSX, Windows)
-
 ## Questions?
 
-Submit an [issue](https://github.com/COVID-19-electronic-health-system/Corona-tracker/issues). Issues are welcomed! We are new developer friendly and happy to help in anyway!
-Message @Anthony A. on the [discord](https://discord.gg/pPERUuv) if you have any questions!
+Feel free to chat with us on [Discord](https://discord.gg/pPERUuv) and message @Anthony A if you have any questions!
+
+Our group is new developer friendly and happy to help in any way!
+
+We also welcome your Github contributions and encourage [opening an issue](https://github.com/COVID-19-electronic-health-system/Corona-tracker/issues) before filing a pull request. Please see [our contributing guidelines](./CONTRIBUTING.md) for more information.
+
+## COMING SOON Install, Build and Run Locally (For OSX, Windows)
+
+
 
 ## Appendix
 
