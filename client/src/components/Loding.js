@@ -1,7 +1,7 @@
 import React from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 
-const useStyles = makeStyles(theme => ({
+const useStyles = makeStyles(() => ({
   root: {
     backgroundImage: 'linear-gradient(#d7e1fa, #bbcef9)',
     height: '100vh',
@@ -61,7 +61,7 @@ const Loding = () => {
       <div className={classes.bowlG}>
         <div className={classes.bowlRingG}>
           <div className={classes.ballHolderG}>
-            <div className={classes.ballG}></div>
+            <div className={classes.ballG} />
           </div>
         </div>
       </div>

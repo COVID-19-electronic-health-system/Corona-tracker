@@ -2,7 +2,7 @@ export const SUBMIT_SURVEY = 'SUBMIT_SURVEY';
 
 const initialState = {
   isSubmitted: null,
-}
+};
 
 const submitSurveyReducer = (state = initialState, action) => {
   switch (action.type) {
@@ -11,6 +11,6 @@ const submitSurveyReducer = (state = initialState, action) => {
     default:
       return state;
   }
-}
+};
 
 export default submitSurveyReducer;

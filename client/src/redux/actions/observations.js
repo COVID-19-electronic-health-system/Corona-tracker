@@ -1,5 +1,9 @@
 import Observation from '../../models/observation';
-import { SAVING, IDLE, LOADING, OBSERVATIONS_LOADED } from './actions';
+
+export const SAVING = 'SAVING';
+export const IDLE = 'IDLE';
+export const LOADING = 'LOADING';
+export const OBSERVATIONS_LOADED = 'OBSERVATIONS_LOADED';
 
 export function saveObservation(observation) {
   return async dispatch => {
