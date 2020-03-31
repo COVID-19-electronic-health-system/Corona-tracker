@@ -1,4 +1,4 @@
-import { SELECT_DATE } from '../actions/actions';
+import { SELECT_DATE } from '../actions/calendar';
 
 const initialState = {
   date: [],

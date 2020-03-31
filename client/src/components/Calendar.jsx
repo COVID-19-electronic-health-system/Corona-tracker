@@ -1,5 +1,5 @@
-import React, { useRef, useState } from 'react';
-import { useSelector, useDispatch } from 'react-redux';
+import React, { useRef } from 'react';
+import { useDispatch } from 'react-redux';
 import { useHistory } from 'react-router-dom';
 import FullCalendar from '@fullcalendar/react';
 import dayGridPlugin from '@fullcalendar/daygrid';
@@ -50,7 +50,6 @@ const AppCalendar = () => {
           }}
           plugins={[dayGridPlugin, timeGridPlugin, interactionPlugin]}
           ref={calendarComponentRef}
-          events={calendarEvents}
           dateClick={args => {
             handleCreateEventClick(args);
           }}

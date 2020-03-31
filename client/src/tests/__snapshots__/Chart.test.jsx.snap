@@ -1,5 +1,0 @@
-// Jest Snapshot v1, https://goo.gl/fbAQLP
-
-exports[`Chart should render a Chart component  1`] = `ReactWrapper {}`;
-
-exports[`ChartJs should render a ChartJs component  1`] = `ReactWrapper {}`;

@@ -1,8 +1,8 @@
 import React from 'react';
-import { render } from '@testing-library/react';
+// import { render } from '@testing-library/react';
 
-import { shallow, mount } from 'enzyme';
-import { Provider, useSelector } from 'react-redux';
+import { mount } from 'enzyme';
+import { Provider } from 'react-redux';
 import configureMockStore from 'redux-mock-store';
 import thunk from 'redux-thunk';
 
