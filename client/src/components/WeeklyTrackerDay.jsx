@@ -1,19 +1,57 @@
 import React from 'react';
-import { Container, Row, Col } from 'react-bootstrap';
+import Grid from '@material-ui/core/Grid';
+import Typography from '@material-ui/core/Typography';
+import { makeStyles } from '@material-ui/core/styles';
+import PropTypes from 'prop-types';
+import CalendarThreeLines from '../img/Calendar_Three-Lines.svg';
 
-function WeeklyTrackerDay() {
+const useStyles = makeStyles(() => ({
+  root: {
+    flexGrow: 1,
+  },
+  div: {
+    width: '375px',
+  },
+}));
+
+const WeeklyTrackerDay = props => {
+  const classes = useStyles();
+  const { dayData } = props;
   return (
-    <Container>
-      <Row xs={2} md={4} lg={6}>
-        <Col>1 of 2</Col>
-        <Col>2 of 2</Col>
-      </Row>
-      <Row xs={1} md={2}>
-        <Col>1 of 3</Col>
-        <Col>2 of 3</Col>
-        <Col>3 of 3</Col>
-      </Row>
-    </Container>
+    <div className={classes.div}>
+      <Grid container spacing={0} className="day-container">
+        <Grid item>
+          <img alt="threeLinesSvg" src={CalendarThreeLines} />
+        </Grid>
+        <Grid item>
+          <Typography variant="h4">{dayData.date}</Typography>
+        </Grid>
+        <Grid item>
+          <Typography variant="subtitle2">You said you felt: {dayData.status} / 10</Typography>
+          <Typography variant="subtitle2">{dayData.day}, 12:00pm</Typography>
+        </Grid>
+        <Grid item>
+          <Typography variant="subtitle2">
+            Fever: <strong>{dayData.temp}</strong>
+          </Typography>
+          <Typography variant="subtitle2">
+            Symptoms: <strong>{dayData.symptoms}</strong>
+          </Typography>
+          <Typography variant="subtitle2">Comments: ugh</Typography>
+        </Grid>
+      </Grid>
+    </div>
   );
-}
+};
+
+WeeklyTrackerDay.propTypes = {
+  // Had to set dayData to check for string, object is forbidden in the Proptype checker
+  dayData: PropTypes.string.isRequired,
+  date: PropTypes.number.isRequired,
+  day: PropTypes.string.isRequired,
+  status: PropTypes.string.isRequired,
+  temp: PropTypes.number.isRequired,
+  symptoms: PropTypes.number.isRequired,
+};
+
 export default WeeklyTrackerDay;
