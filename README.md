@@ -20,29 +20,49 @@ Furthermore, the effects of social distancing and isolation and the impact of lo
 
 (The initial plan was developing a EHR, but this is too ambitious in scope and unecessary. However [@BrianHHough took down some great notes](https://docs.google.com/document/d/15DekMbBnLjWSk_hAQclLzTFBCYygyeMGkGknJrBHnnM/edit?usp=sharing) that @SomeMoosery and @tesla809 will add to.)
 
-## COMING SOON Install, Build and Run Locally (For OSX, Windows)
-
 ## TL;DR FAQ
 
 ### Who is this app for?
 
 This app is for the global population going through this crisis: those who are feeling generally well, possibly not too well physically or mentally, and are concerned they may be carrying COVID-19 or are showing symptoms.
 
-The target population of the application includes: 1) Cellphone users between the ages of 25-45. These users will have a high likelihood of being caretakers of young children and older adults and 2) High-risk populations with comorbidites including diabetes, obesity, kidney diseases, and immune system disorder.
+The target population of the application includes:
+1. cell phone users between the ages of 25-45. These users will have a high likelihood of being caretakers of young children and older adults
+2. high-risk populations with comorbidites including diabetes, obesity, kidney diseases, and immune system disorder
 
 ### How is this app different from the others?
 
-The differentiating characteristics of our web application include: 1) integrating education, measurement of education with key performance indicators, and insights via data analytics, 2) decentralization and privatization which allows for data ownership by users, 3) data interoperability which allows for modular and extensible features and a B2C approach to medical care, and 4) support of multiple languages to target developing regions with high levels of urbanization, poor medical infrastructure, yet high mobile phone connectivity.
+The differentiating characteristics of our web application include:
+1. integrating education, measurement of education with key performance indicators, and insights via data analytics
+2. decentralization and privatization which allows for data ownership by users
+3. data interoperability which allows for modular and extensible features and a B2C approach to medical care
+4. support of multiple languages to target developing regions with high levels of urbanization, poor medical infrastructure, yet high mobile phone connectivity
 
 ### What insights have been considered?
 
-Over the past week, the team has been in consultation with individuals and stakeholders in the academic, medical, business, and technology sectors. The provided insights into our application development include: 1) understanding viral infection, disease pathogenesis, and public health guidelines followed by medical staff at a top tier NYC hospital, 2) providing education to the general public and patients is crucial to avoid unnecessary ER visits and engage patients in their health, 3) properly scoping our product to be an enterprise ready application by including key features based on expert feedback, 4) developing useful survey content for users and stakeholders that can address public health and clinical research needs, and 5) building a decentralized platform to increase data ownership and privacy.
+Over the past week, the team has been in consultation with individuals and stakeholders in the academic, medical, business, and technology sectors. The provided insights into our application development include:
+1. understanding viral infection, disease pathogenesis, and public health guidelines followed by medical staff at a top tier NYC hospital
+2. providing education to the general public and patients is crucial to avoid unnecessary ER visits and engage patients in their health
+3. properly scoping our product to be an enterprise ready application by including key features based on expert feedback
+4. developing useful survey content for users and stakeholders that can address public health and clinical research needs
+5. building a decentralized platform to increase data ownership and privacy
 
 ### Who are the stakeholders?
 
-- All individuals. This affects all society
+- All individuals. This affects all society.
 - Public health authorities. They need to inform, educate, and support citizens.
-- Researchers. There is enormous implications for individual's wellbeing and health and so we must try to understand how 1) individuals are traversing their journey and 2) if education is significantly improving characteristics in user's health/wellbeing chart.
+- Researchers. There is enormous implications for individual's wellbeing and health and so we must try to understand both how individuals are traversing their journey, and if education is significantly improving characteristics in a user's health/wellbeing chart.
+
+## COMING SOON Install, Build and Run Locally (For OSX, Windows)
+
+
+
+
+
+
+
+
+
 
 ## Idea
 
