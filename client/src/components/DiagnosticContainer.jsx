@@ -9,6 +9,7 @@ import HealthLogToggle from './HealthLogToggle';
 import Scroll from './Scroll';
 import Disclaimer from './Disclaimer';
 import Subscribe from './Subscribe';
+import WeeklyTracker from './WeeklyTracker';
 
 const useStyles = makeStyles({
   hr: {
@@ -30,7 +31,7 @@ function DiagnosticContainer() {
   const today = new Date();
   const { t } = useTranslation();
   dispatch(loadObservations());
-  const [disclaimer, setDisclaimer] = useFile("disclaimer.json")
+  const [disclaimer] = useFile('disclaimer.json');
   return (
     <div>
       <h4>
@@ -42,10 +43,10 @@ function DiagnosticContainer() {
       <hr className={classes.hr} />
       <Scroll>
         <HealthLogToggle />
+        {/* <AppCalendar /> */}
+        <WeeklyTracker />
       </Scroll>
-      <Container>
-        {disclaimer === null && <Disclaimer />}
-      </Container>
+      <Container>{disclaimer === null && <Disclaimer />}</Container>
       <Subscribe />
     </div>
   );
