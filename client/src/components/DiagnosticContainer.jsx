@@ -30,7 +30,7 @@ function DiagnosticContainer() {
   const today = new Date();
   const { t } = useTranslation();
   dispatch(loadObservations());
-  const disclaimer = useFile("disclaimer.json")
+  const [disclaimer, setDisclaimer] = useFile("disclaimer.json")
   return (
     <div>
       <h4>
