@@ -9,8 +9,8 @@ import DialogActions from '@material-ui/core/DialogActions';
 import DialogContent from '@material-ui/core/DialogContent';
 import DialogContentText from '@material-ui/core/DialogContentText';
 import DialogTitle from '@material-ui/core/DialogTitle';
-import { useBlockstack } from 'react-blockstack';
 import { makeStyles } from '@material-ui/core/styles';
+import { useBlockstack } from 'react-blockstack';
 import { Trans } from 'react-i18next';
 
 const useStyles = makeStyles({
@@ -26,21 +26,16 @@ const useStyles = makeStyles({
 export const Disclaimer = props => {
   const { userSession } = useBlockstack();
 
-  const disclaimerAnswer = {
+  const disclaimerAnswerJSON = {
     answerChoice: null,
   };
 
-  const storeAnswer = async answer => {
-    props.setAnswer(answer);
-    disclaimerAnswer.answerChoice = answer;
-
-    await userSession
-      .putFile(`disclaimer.json`, JSON.stringify(disclaimerAnswer))
-      .then(res => 200)
-      .catch(err => console.error(err));
+  const storeAnswer = answer => {
+    disclaimerAnswerJSON.answerChoice = answer;
+    props.setAnswer(answer, disclaimerAnswerJSON, userSession);
   };
 
-  const classes = useStyles()
+  const classes = useStyles();
   return (
     <div>
       {!props.answer ? (
@@ -79,7 +74,8 @@ const mapStateToProps = state => {
 
 const mapDispatchToProps = dispatch => {
   return {
-    setAnswer: answer => dispatch(actions.setDisclaimerAnswer(answer)),
+    setAnswer: (answer, disclaimerAnswerJSON, userSession) =>
+      dispatch(actions.setDisclaimerAnswerThunk(answer, disclaimerAnswerJSON, userSession)),
   };
 };
 
