@@ -189,3 +189,7 @@ If you choose to add tests, please place in client/src/tests.
 In these strange and often trying times, individual privacy is of utmost concern. In order to bootstrap this tool and get it off the ground and into the hands of those in need as quickly as possible, a serverless approach works great. Blockstack is decentralized - individuals still own their information. Everything is kept on the client until given permission. Therefore, we felt it best suited the overall needs.
 
 To learn more about Blockstack, please [visit their website](https://blockstack.org/).
+
+## Licensing
+
+This repository and all contributions herein are [licensed under the MIT license](./LICENSE). Please note that, by contributing to this repository, whether via commit, pull request, issue, comment, or in any other fashion, you are explicitly agreeing that all of your contributions will fall under the same permissive license.
