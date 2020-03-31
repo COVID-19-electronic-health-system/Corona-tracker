@@ -87,16 +87,22 @@ __Testing:__
 
 ![app overview](/design/wireframes/FINAL-V1-03.20/MASTER_WIREFRAME.png)
 
-## COMING SOON Install, Build and Run Locally (For OSX, Windows)
+## Project Leads and Contact Info
 
-## Questions Related to application development?
+If you have questions related to application development, these are the people to talk to!
 
-### Reach-out to:
+### Useful Github Repo Links
 
-#### @Carter Klein is implementing backend with blockstack, front end, systems architecture.
+- [Design, Wireframes, and Brand Guide](./design)
+-
 
-See [/design/backend](https://github.com/COVID-19-electronic-health-system/Corona-tracker/tree/master/design), [/design/models](https://github.com/COVID-19-electronic-health-system/Corona-tracker/tree/master/design/database_models), and [/client](https://github.com/COVID-19-electronic-health-system/Corona-tracker/tree/master/client)
-(@Carter Klein on discord)
+### Carter Klein: back end, front end, systems architecture
+
+Github: @Carter Klein
+Discord: @Carter Klein
+
+###
+
 
 #### @Brian H. Hough: is implementing design, social media marketing, front end code.
 
@@ -132,6 +138,13 @@ See [translations.md](translations.md)
 And YOU!
 How would you like to help?
 see [CONTRIBUTING.md](./CONTRIBUTING.md) PENDING
+
+
+## COMING SOON Install, Build and Run Locally (For OSX, Windows)
+
+
+
+
 
 ## Questions?
 
