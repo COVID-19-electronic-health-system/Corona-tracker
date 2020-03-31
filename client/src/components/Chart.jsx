@@ -59,7 +59,6 @@ const Chart = () => {
   // With second argument we pass chartConfig object which contain all paramets of the chart
   useEffect(() => {
     const ChartJS = new chartJs.Chart(chartContainer.current, chartConfig);
-    ChartJS();
   }, [chartContainer, chartConfig]);
 
   return (
