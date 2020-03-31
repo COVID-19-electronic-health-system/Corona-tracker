@@ -24,8 +24,9 @@ describe('Chart', () => {
 
     const wrapper = mount(
       <Provider store={store}>
-         <Chart />
-      </Provider>);
+        <Chart />
+      </Provider>
+    );
 
     expect(wrapper.find('Chart')).toMatchSnapshot();
   });
