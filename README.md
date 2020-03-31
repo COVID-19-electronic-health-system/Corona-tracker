@@ -93,10 +93,10 @@ If you have questions related to application development, these are the people t
 
 ### Useful Github Repo Links
 
-- [Contributing Guidelines - get involved!]()
+- [Contributing Guidelines - get involved!](./CONTRIBUTING.md)
 - [Design, Wireframes, and Brand Guide](./design)
 - [Client, based on Create React App](./client)
-- [Translations](./translations.md)
+- [Translations](./Translations.md)
 
 ### Carter Klein: back end, front end, systems architecture
 
