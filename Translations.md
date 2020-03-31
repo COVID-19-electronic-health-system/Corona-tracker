@@ -234,6 +234,110 @@ _____________________________________
 
 # French
 
+UI CORONATRACKER - # 1.png
+
+Moniteur CoronaTracker SaaS (Symptômes en tant que service), tracker de santé mobile et carte des ressources
+
+CORONATRACKER UI - Journal de santé - My Log.png
+
+Bonjour Jonathan!
+
+Aujourd'hui est mardi 14 avril 2020
+
+Enregistrons votre santé pour aujourd'hui:
+
+Mon carnet de santé | Montre m'en plus
+
+Avril 2020
+
+Dim | Lun | Mar | Mer. | Jeu | Ven | Sam
+11 Vous avez dit que vous vous sentiez: 10/10
+
+Samedi, 14 h 00
+12 Vous avez dit que vous vous sentiez: 10/10
+
+Dimanche, 15h00
+13 Vous avez dit que vous vous sentiez : 9/10
+
+Lundi, 13h30
+14 Il est temps d'enregistrer votre santé pour aujourd'hui!
+
+Mardi
+
+Température moyenne: 98,8 ºC
+
+Température | Symptômes
+
+Journal de santé | Actualités | Parler à un document | Carte | Paramètres
+
+CORONATRACKER UI - Journal de santé - Show Me More.png
+
+Date | Comment je me sens? | Comment sont mes symptômes? | Différence par rapport à hier? | Tout symptôme remarqué? | Commentaires
+
+03/11 | 10 | 10 | Le même | Aucun | Ressenti super!
+
+03/12 | 9.5 | 10 | Le même | Aucun | Ressenti super!
+
+13/03 | 9 | 9 | Pire | Toux | Préoccupé ...
+
+14/03 | 9.5 | 9 | Mieux | Toux | Mieux aujourd'hui ...
+
+Voilà toutes les données que nous avons pour vous jusqu'à présent!
+
+Journal de santé | Actualités | Parler à un  médecin | Carte | Paramètres
+
+CORONATRACKER UI - Login Screen.png
+
+Votre application de santé pour surveiller les symptômes pseudo-grippaux, vous connecter aux médecins de télésanté de votre région et découvrir des ressources proches de vous.
+
+[mot de passe] OUBLIER LA CONNEXION
+
+Dernière mise à jour: 14 avril 2020, à 02:20:18 A.M. est
+
+Journal de santé | Actualités | Parler à un  médecin | Carte | Paramètres
+
+CORONATRACKER UI - News.png
+
+Consultez les actualités du mardi 14 avril 2020
+
+Le Center for Disease Control @CDC
+
+L'Organisation mondiale de la santé @WHO
+
+Journal de santé | Actualités | Parler à un  médecin | Carte | Paramètres
+
+CORONATRACKER UI - Symptom Screen.png
+
+Répondons à quelques questions!
+
+Assurez-vous de répondre honnêtement et honnêtement afin que votre dossier de santé soit précis et utile pour vous et les professionnels de la santé.
+
+Q1: Comment vous sentez-vous aujourd'hui?
+
+Considérez votre santé mentale sur une échelle de 1 à 10, 1 étant le pire absolu et 10 étant le meilleur sentiment absolu de santé.
+
+Q2: Comment vous sentez-vous par rapport à hier?
+
+Si vous vous sentiez "bien" hier et que vous vous sentiez "bien" aujourd'hui, choisissez "La même chose".
+
+Q3: Quels symptômes ressentez-vous?
+
+Essoufflement - Minimial | Modéré | Fièvre sévère - Entrez votre température ici: 0.0ºF Toux - Minimale | Modéré | Étourdissements sévères - Minimial | Modéré | Maux de tête sévères - Combien de temps a-t-il duré?: Mins, Hers Maux de gorge - Minimial | Modéré | Congestion sévère - Minimale | Modéré | Sévère 
+
+Q4: Comment sont vos symptômes?
+
+Considérez tous vos symptômes sur une échelle de 1 à 10, 1 étant le pire absolu et 10 le meilleur sentiment de santé.
+
+Q5: Avez-vous quelque chose à partager?
+
+Commencez à taper ici pour ajouter des notes ou des clarifications ...
+
+En appuyant sur le bouton ci-dessous, je confirme que mes réponses ci-dessus sont une représentation précise de mes symptômes et de ma santé globale au mieux de mes capacités.
+
+[bouton] ENREGISTRER MES RÉPONSES
+
+Journal de santé | Actualités | Parler à un médecin | Carte | Paramètres 
+
 _____________________________________
 
 # More languages to be added by other contributors

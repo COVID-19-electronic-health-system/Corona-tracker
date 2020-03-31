@@ -11,6 +11,7 @@ import DialogContentText from '@material-ui/core/DialogContentText';
 import DialogTitle from '@material-ui/core/DialogTitle';
 import { makeStyles } from '@material-ui/core/styles';
 import { useBlockstack } from 'react-blockstack';
+import { Trans } from 'react-i18next';
 
 const useStyles = makeStyles({
   logo: {
@@ -39,28 +40,25 @@ export const Disclaimer = props => {
     <div>
       {!props.answer ? (
         <Dialog open={true} aria-describedby="disclaimer">
-          <DialogTitle align="center" id="alert-dialog-title">
+          <DialogTitle align='center' id="alert-dialog-title">
             <Logo className={classes.logo} />
             <TextLogo className={classes.textLogo} />
           </DialogTitle>
           <DialogContent>
             <DialogContent align="left" id="disclaimer-text">
               <DialogContentText>
-                The CoronaTracker is designed to help you navigate through the pandemic with accurate information,
-                charting your wellbeing, and tracking your health. The CoronaTracker is not intended to be used or
-                viewed as diagnosis or treatment of disease or other symptoms, including but not limited to COVID-19.
+                <Trans i18nKey="disclaimer.text0" />
               </DialogContentText>
               <DialogContentText>
-                This application was made by the community for the community. This application is made for you! You are
-                in control of how you would like to contribute your data for public health and research.
+                <Trans i18nKey="disclaimer.text1" />
               </DialogContentText>
             </DialogContent>
             <DialogActions>
               <Button variant="outlined" onClick={() => storeAnswer(true)}>
-                I agree
+                <Trans i18nKey="disclaimer.agree" />
               </Button>
               <Button variant="outlined" onClick={() => storeAnswer(false)}>
-                I don't agree
+                <Trans i18nKey="disclaimer.disagree" />
               </Button>
             </DialogActions>
           </DialogContent>
