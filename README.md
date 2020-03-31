@@ -128,7 +128,7 @@ If you have questions related to application development, these are the people t
 - [Contributing Guidelines - get involved!](./CONTRIBUTING.md)
 - [Design, Wireframes, and Brand Guide](./design)
 - [Client, based on Create React App](./client)
-- [Translations](./Translations.md)
+- [Translations](./Translations/Translations.md)
 
 ### Carter Klein: back end, front end, systems architecture
 
