@@ -20,6 +20,9 @@ const RADIKS_URL = process.env.REACT_APP_QA_URL || 'http://127.0.0.1:1260'; // T
 ReactBlockstack({ appConfig });
 
 function App(props) {
+
+  setTimeout(function() { alert("Fill in your health survey for today!") }, 5000)
+
   const { userSession } = useBlockstack();
   const finished = useCallback(({ userSession }) => {
     if (RADIKS_URL) {
