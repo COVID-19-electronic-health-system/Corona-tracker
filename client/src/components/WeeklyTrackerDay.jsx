@@ -45,6 +45,7 @@ const WeeklyTrackerDay = props => {
 };
 
 WeeklyTrackerDay.propTypes = {
+  // Had to set dayData to check for string, object is forbidden in the Proptype checker
   dayData: PropTypes.string.isRequired,
   date: PropTypes.number.isRequired,
   day: PropTypes.string.isRequired,
