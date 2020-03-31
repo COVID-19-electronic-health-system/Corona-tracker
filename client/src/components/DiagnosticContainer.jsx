@@ -1,7 +1,7 @@
 import React from 'react';
 import { useDispatch } from 'react-redux';
 import Container from '@material-ui/core/Container';
-import { useBlockstack } from 'react-blockstack';
+import { useBlockstack, useFile } from 'react-blockstack';
 import { useTranslation } from 'react-i18next';
 import { makeStyles } from '@material-ui/core/styles';
 import { loadObservations } from '../redux/actions/observations';
@@ -30,6 +30,7 @@ function DiagnosticContainer() {
   const today = new Date();
   const { t } = useTranslation();
   dispatch(loadObservations());
+  const disclaimer = useFile("disclaimer.json")
   return (
     <div>
       <h4>
@@ -43,7 +44,7 @@ function DiagnosticContainer() {
         <HealthLogToggle />
       </Scroll>
       <Container>
-        <Disclaimer />
+        {disclaimer === null && <Disclaimer />}
       </Container>
       <Subscribe />
     </div>
