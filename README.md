@@ -147,11 +147,9 @@ Our group is new developer friendly and happy to help in any way!
 
 We also welcome your Github contributions and encourage [opening an issue](https://github.com/COVID-19-electronic-health-system/Corona-tracker/issues) before filing a pull request. Please see [our contributing guidelines](./CONTRIBUTING.md) for more information.
 
-## COMING SOON Install, Build and Run Locally (For OSX, Windows)
-
-
-
 ## Appendix
+
+### COMING SOON: Instructions to install, build, and run locally
 
 ### Design considerations
 
