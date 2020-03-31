@@ -10,6 +10,38 @@ A tool to help reduce the number of unnecessary hospital visits, educate the pub
 - [View our Contributing Guidelines](./CONTRIBUTING.md)
   - __*Use these guidelines to onboard, run the application locally, or in QA*__
 
+<!-- TOC -->
+
+## Table of Contents
+
+- [We are in crisis and we need to act](#we-are-in-crisis-and-we-need-to-act)
+- [TL;DR FAQ](#tldr-faq)
+  - [Who is this app for?](#who-is-this-app-for)
+  - [What is the benefit this app is providing?](#what-is-the-benefit-this-app-is-providing)
+  - [How is this app different from the others?](#how-is-this-app-different-from-the-others)
+  - [What insights have been considered?](#what-insights-have-been-considered)
+  - [Who are the stakeholders?](#who-are-the-stakeholders)
+- [Application Overview](#application-overview)
+  - [Idea](#idea)
+  - [Technology Stack](#technology-stack)
+  - [Wireframe Overview](#wireframe-overview)
+- [Project Leads and Contact Info](#project-leads-and-contact-info)
+  - [Useful Github Repo Links](#useful-github-repo-links)
+  - [Carter Klein: back end, front end, systems architecture](#carter-klein-back-end-front-end-systems-architecture)
+  - [Brian H. Hough: design, social media marketing, front end](#brian-h-hough-design-social-media-marketing-front-end)
+  - [Anthony A: front end code, documentation and booking meetings with experts](#anthony-a-front-end-code-documentation-and-booking-meetings-with-experts)
+  - [Akil Hylton: front end code, documentation, has machine learning experience](#akil-hylton-front-end-code-documentation-has-machine-learning-experience)
+  - [Nick G: advising on data model, analytics, data science](#nick-g-advising-on-data-model-analytics-data-science)
+  - [Salvatore Volpe: translations, analytics](#salvatore-volpe-translations-analytics)
+  - [Luke Lin: Managing discord, discord roles, front end, translations](#luke-lin-managing-discord-discord-roles-front-end-translations)
+- [Questions?](#questions)
+- [Appendix](#appendix)
+  - [COMING SOON: Instructions to install, build, and run locally](#coming-soon-instructions-to-install-build-and-run-locally)
+  - [Design considerations](#design-considerations)
+- [Licensing](#licensing)
+
+<!-- /TOC -->
+
 ## We are in crisis and we need to act
 
 The COVID-19 outbreak is a threat to the global population with formidable challenges to the health system. Social distancing measures and telemedicine have been established to mitigate clinic burden and reduce additional spread. The behavior of the general public plays an important part in effectively fighting the outbreak and in improving the situation for persons that need medical care. There is a pressing need to provide accurate information and appropriate suggestions to the general population in order to avoid causing overburden of hospitals across the globe.
@@ -108,33 +140,33 @@ Discord: @Carter Klein
 Github: @Brian H. Hough
 Discord: @InterstellarX
 
-#### Anthony A: front end code, documentation and booking meetings with experts
+### Anthony A: front end code, documentation and booking meetings with experts
 
 Open to peer program any issue or bugs!
 
 Github: @tesla809
 Discord: @Anthony A.
 
-#### Akil Hylton: front end code, documentation, has machine learning experience
+### Akil Hylton: front end code, documentation, has machine learning experience
 
 Open to peer program any issue or bugs!
 
 Github: @akilhylton
 Discord: @Akil Hylton
 
-#### Nick G: advising on data model, analytics, data science
+### Nick G: advising on data model, analytics, data science
 
 See [analytics thread / issue.](https://github.com/COVID-19-electronic-health-system/Corona-tracker/issues/51)
 
 Github: @ngiangre
 Discord: @NickG
 
-#### Salvatore Volpe: translations, analytics
+### Salvatore Volpe: translations, analytics
 
 Github: @salvolpe
 Discord: @laseplov
 
-#### Luke Lin: Managing discord, discord roles, front end, translations
+### Luke Lin: Managing discord, discord roles, front end, translations
 
 Github: @lukelin1991
 Discord: @kirbypooh
