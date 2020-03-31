@@ -4,7 +4,7 @@
 
 A tool to help reduce the number of unnecessary hospital visits, educate the public on facts vs myths, and provide a health and wellbeing chart for logging their journey during these uncertain and tumultuous times.
 
-## Get Involved
+## Get Involved and Help Out!
 - [Join our Discord Server](https://discord.gg/pPERUuv)
 - [Visit our Website CoronaTracker.me](https://coronatracker.me)
 - [View our Contributing Guidelines](./CONTRIBUTING.md)
