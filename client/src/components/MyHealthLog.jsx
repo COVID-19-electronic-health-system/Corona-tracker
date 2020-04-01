@@ -3,6 +3,10 @@ import Button from '@material-ui/core/Button';
 import { Link } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 
+import WeeklyTracker from './WeeklyTracker';
+import AppCalendar from './Calendar';
+import { Grid } from '@material-ui/core';
+
 function HealthLogButton() {
   const { t } = useTranslation();
 
@@ -11,6 +15,11 @@ function HealthLogButton() {
       <Button color="secondary" variant="contained">
         {t('surveyButtonText')}
       </Button>
+
+      <Grid container direction="column" alignContent="center">
+        <AppCalendar />
+        <WeeklyTracker />
+      </Grid>
     </Link>
   );
 }
