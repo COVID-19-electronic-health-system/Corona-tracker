@@ -50,7 +50,7 @@ export default function Settings() {
   };
 
   return (
-    <Link href="#fixeslint" className={classes.root} onClick={handleClickOpen}>
+    <Link href="#settings" className={classes.root} onClick={handleClickOpen}>
       <SettingsOutlinedIcon className={classes.icon} />
 
       <Dialog
