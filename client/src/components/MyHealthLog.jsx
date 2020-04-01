@@ -10,16 +10,17 @@ function HealthLogButton() {
   const { t } = useTranslation();
 
   return (
-    <Link to="/symptomsurvey">
-      <Button color="secondary" variant="contained">
-        {t('surveyButtonText')}
-      </Button>
-
+    <div>
+      <Link to="/symptomsurvey">
+        <Button color="secondary" variant="contained">
+          {t('surveyButtonText')}
+        </Button>
+      </Link>
       <Grid container direction="column" alignContent="center">
         <AppCalendar />
         <WeeklyTracker />
       </Grid>
-    </Link>
+    </div>
   );
 }
 export default function MyHealthLog() {
