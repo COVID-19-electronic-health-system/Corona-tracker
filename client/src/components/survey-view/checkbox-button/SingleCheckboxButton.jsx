@@ -51,7 +51,7 @@ const TemperatureAutocomplete = props => {
   const { symptomChecked, handleFever, feverValue } = props;
 
   return (
-    <TextField
+    <Autocomplete
       size="small"
       id="temperature"
       options={temperature}

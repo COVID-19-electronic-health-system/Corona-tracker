@@ -31,7 +31,6 @@ function DiagnosticContainer(props) {
   const { t } = useTranslation();
   const files = [];
   let numObservations = 0;
-
   const fetchFiles = async () => {
     for (let i = 0; i < files.length; i += 1) {
       if (files[i].includes('observation')) {
