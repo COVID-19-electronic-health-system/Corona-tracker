@@ -59,30 +59,26 @@ function reducer(state, action) {
   let value;
   switch (action.type) {
     case HANDLE_CHECKBOX_CHANGE:
-      action.event.preventDefault();
       symptomName = action.event.target.name;
       symptomChecked = action.event.target.checked;
       return { ...state, [symptomName]: { ...state[symptomName], checked: symptomChecked } };
 
     case HANDLE_BUTTON_GROUP_CHANGE:
-      action.event.preventDefault();
       symptomName = action.event.currentTarget.name;
       symptomValue = action.event.currentTarget.value;
       return { ...state, [symptomName]: { checked: true, value: symptomValue } };
 
     case HANDLE_FEVER:
-      action.event.preventDefault();
-      return { ...state, fever: { checked: true, value: action.value } };
+      value = action.value;
+      return { ...state, fever: { checked: true, value } };
 
     case HANDLE_HOURS:
-      action.event.preventDefault();
       value = action.value;
       value = value || '0';
       value = state.headache.value ? state.headache.value.replace(/\d*(?=:)/, value) : `${value}:00`;
       return { ...state, headache: { checked: true, value } };
 
     case HANDLE_MINUTES:
-      action.event.preventDefault();
       value = action.value;
       value = value || '00';
       value = state.headache.value ? state.headache.value.replace(/:.*/, `:${value}`) : `0:${value}`;
