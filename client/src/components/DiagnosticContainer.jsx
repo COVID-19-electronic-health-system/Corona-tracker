@@ -10,7 +10,7 @@ import Scroll from './Scroll';
 import Disclaimer from './Disclaimer';
 import Subscribe from './Subscribe';
 import WeeklyTracker from './WeeklyTracker';
-import AppCalendar from './Calendar'
+import AppCalendar from './Calendar';
 
 const useStyles = makeStyles({
   hr: {

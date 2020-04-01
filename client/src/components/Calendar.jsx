@@ -9,7 +9,9 @@ const useStyles = makeStyles({
   appCalendar: {
     margin: '0 auto',
     maxWidth: '50%',
-    maxheight: '50%',
+    maxheight: '30%',
+    backgroundColor: '#f64141',
+    color: 'white',
   },
 });
 
@@ -21,8 +23,8 @@ const AppCalendar = () => {
   const history = useHistory();
 
   // select date function
-  const handleDateClick = date => { 
-    dispatch(actions.selectDate(JSON.stringify(date).slice(0,11)));
+  const handleDateClick = date => {
+    dispatch(actions.selectDate(JSON.stringify(date).slice(0, 11)));
 
     const todaysDate = new Date().toISOString().slice(0, 10);
     if (date.dateStr === todaysDate) {
@@ -34,7 +36,7 @@ const AppCalendar = () => {
 
   return (
     <div className={classes.appCalendar}>
-      <Calendar onChange={handleDateClick}/>
+      <Calendar onChange={handleDateClick} />
     </div>
   );
 };
