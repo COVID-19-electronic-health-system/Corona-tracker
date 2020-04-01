@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import { connect } from 'react-redux';
 import Container from '@material-ui/core/Container';
 import { useBlockstack, useFile } from 'react-blockstack';
@@ -9,6 +9,7 @@ import HealthLogToggle from './HealthLogToggle';
 import Disclaimer from './Disclaimer';
 import Subscribe from './Subscribe';
 import actions from '../redux/actions/actions';
+import Chart from './Chart'
 
 const useStyles = makeStyles({
   hr: {
@@ -67,6 +68,7 @@ function DiagnosticContainer(props) {
       </h5>
       <hr className={classes.hr} />
       <HealthLogToggle />
+      <Chart />
       <Container>{disclaimer === null && <Disclaimer />}</Container>
       <Subscribe />
     </div>

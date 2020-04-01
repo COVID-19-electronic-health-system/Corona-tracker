@@ -6,7 +6,7 @@ import * as chartJs from 'chart.js';
 
 const Chart = () => {
   // Extratring dummy data from the store
-  const dataSample = useSelector(state => state.root.dataSample);
+  const temperatureData = useSelector(state => state.temperatureReducer.temperature);
 
   // Configuring chart parameters and pusing dummy data
   const chartConfig = {
@@ -14,7 +14,7 @@ const Chart = () => {
     // passing data to out chart
     data: {
       // labels for X axe, inserting labels data from the store
-      labels: dataSample.labels,
+      labels: temperatureData.labels,
       datasets: [
         {
           // title of the dataset
@@ -24,7 +24,7 @@ const Chart = () => {
           // Do not fill space bitween X and Y axes
           fill: false,
           // data for Y axe, inserting values data from the store
-          data: dataSample.values,
+          data: temperatureData.values,
         },
       ],
     },
