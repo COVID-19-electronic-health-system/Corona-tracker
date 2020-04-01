@@ -145,9 +145,10 @@ const SymptomsTracker = () => {
 
     const observation = childRef.current.createObservation(submission);
     const encryptOptions = { encrypt: true };
+    const fileNumber = `${numObservations + 1}`.padStart(7, '0');
 
     userSession
-      .putFile(`observation/0000000${numObservations + 1}.json`, JSON.stringify(observation.attrs), encryptOptions)
+      .putFile(`observation/${fileNumber}.json`, JSON.stringify(observation.attrs), encryptOptions)
       .then(() => {
         history.push('/');
       })
