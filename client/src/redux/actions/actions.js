@@ -1,4 +1,4 @@
-import { loadObservations, saveObservation } from './observations';
+import { loadObservations, saveObservation, setNumObservations } from './observations';
 import { setLoginLoading } from './login';
 import { setNavbarSection } from './navigation';
 import { setDisclaimerAnswerThunk } from './disclaimer';
@@ -9,6 +9,7 @@ const actions = {
   loadObservations,
   saveObservation,
   setNavbarSection,
+  setNumObservations,
   setDisclaimerAnswerThunk,
   selectDate,
 };
