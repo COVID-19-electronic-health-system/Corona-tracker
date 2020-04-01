@@ -21,8 +21,8 @@ const AppCalendar = () => {
   const history = useHistory();
 
   // select date function
-  const handleDateClick = date => { 
-    dispatch(actions.selectDate(JSON.stringify(date).slice(0,11)));
+  const handleDateClick = date => {
+    dispatch(actions.selectDate(JSON.stringify(date).slice(0, 11)));
 
     const todaysDate = new Date().toISOString().slice(0, 10);
     if (date.dateStr === todaysDate) {
@@ -30,11 +30,12 @@ const AppCalendar = () => {
     }
   };
 
+  // eslint-disable-next-line
   const calendarComponentRef = useRef(null);
 
   return (
     <div className={classes.appCalendar}>
-      <Calendar onChange={handleDateClick}/>
+      <Calendar onChange={handleDateClick} />
     </div>
   );
 };

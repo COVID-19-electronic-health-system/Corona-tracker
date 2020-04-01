@@ -6,11 +6,9 @@ import { useTranslation } from 'react-i18next';
 import { makeStyles } from '@material-ui/core/styles';
 import { loadObservations } from '../redux/actions/observations';
 import HealthLogToggle from './HealthLogToggle';
-import Scroll from './Scroll';
+// import Scroll from './Scroll';
 import Disclaimer from './Disclaimer';
 import Subscribe from './Subscribe';
-import WeeklyTracker from './WeeklyTracker';
-import AppCalendar from './Calendar'
 
 const useStyles = makeStyles({
   hr: {
@@ -42,11 +40,7 @@ function DiagnosticContainer() {
         {t('todayText')} <b>{today.toLocaleDateString(undefined, dateOptions)}</b>{' '}
       </h5>
       <hr className={classes.hr} />
-      <Scroll>
-        <HealthLogToggle />
-        <AppCalendar />
-        <WeeklyTracker />
-      </Scroll>
+      <HealthLogToggle />
       <Container>{disclaimer === null && <Disclaimer />}</Container>
       <Subscribe />
     </div>
