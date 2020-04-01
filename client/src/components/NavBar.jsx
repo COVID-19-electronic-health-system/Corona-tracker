@@ -8,6 +8,7 @@ import StarBorderIcon from '@material-ui/icons/StarBorder';
 import LocationOnOutlinedIcon from '@material-ui/icons/LocationOnOutlined';
 import PropTypes from 'prop-types';
 import Settings from './Settings';
+
 const styles = {
   root: {
     width: '100%',

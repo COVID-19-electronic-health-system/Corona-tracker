@@ -30,6 +30,7 @@ const AppCalendar = () => {
     }
   };
 
+  // eslint-disable-next-line
   const calendarComponentRef = useRef(null);
 
   return (
