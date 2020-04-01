@@ -194,6 +194,7 @@ export default function SingleCheckboxButton(props) {
           <Button
             variant="contained"
             name={symptomName}
+            disabled={!symptomChecked}
             onClick={symptomChecked ? handleButtonGroupChange : () => {}}
             color={symptomValue === 'Minimal' ? 'secondary' : 'primary'}
             value="Minimal"
@@ -204,6 +205,7 @@ export default function SingleCheckboxButton(props) {
           <Button
             variant="contained"
             name={symptomName}
+            disabled={!symptomChecked}
             onClick={symptomChecked ? handleButtonGroupChange : () => {}}
             color={symptomValue === 'Moderate' ? 'secondary' : 'primary'}
             value="Moderate"
@@ -214,6 +216,7 @@ export default function SingleCheckboxButton(props) {
           <Button
             variant="contained"
             name={symptomName}
+            disabled={!symptomChecked}
             onClick={symptomChecked ? handleButtonGroupChange : () => {}}
             color={symptomValue === 'Severe' ? 'secondary' : 'primary'}
             value="Severe"
