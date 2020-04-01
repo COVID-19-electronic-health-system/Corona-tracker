@@ -1,5 +1,5 @@
 import Observation from '../../models/observation';
-import { OBSERVATIONS_LOADED } from '../actions/actions';
+import { OBSERVATIONS_LOADED } from '../actions/observations';
 
 const initialState = [
   new Observation({ physical: { temperature: 80 } }),

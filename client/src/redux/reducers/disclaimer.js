@@ -1,4 +1,4 @@
-import { DISCLAIMER_ANSWER } from '../actions/actions';
+import { DISCLAIMER_ANSWER } from '../actions/disclaimer';
 
 const initialState = {
   answer: false,
