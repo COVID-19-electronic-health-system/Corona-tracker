@@ -46,7 +46,7 @@ const AppCalendar = () => {
           if (date.toISOString().slice(0, 10) === today) {
             return classes.today;
           }
-          return null
+          return null;
         }}
       />
     </div>
