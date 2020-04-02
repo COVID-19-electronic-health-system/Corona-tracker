@@ -6,7 +6,6 @@ import disclaimerReducer from './disclaimer';
 import calendarReducer from './calendar';
 import temperatureReducer from './temperature';
 
-
 export default combineReducers({
   loginLoading,
   observationsReducer,

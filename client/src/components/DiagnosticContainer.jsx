@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect } from 'react';
 import { connect } from 'react-redux';
 import Container from '@material-ui/core/Container';
 import { useBlockstack, useFile } from 'react-blockstack';
@@ -9,7 +9,7 @@ import HealthLogToggle from './HealthLogToggle';
 import Disclaimer from './Disclaimer';
 import Subscribe from './Subscribe';
 import actions from '../redux/actions/actions';
-import Chart from './Chart'
+import Chart from './Chart';
 
 const useStyles = makeStyles({
   hr: {
