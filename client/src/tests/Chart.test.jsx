@@ -19,7 +19,11 @@ describe('Chart', () => {
     const store = mockStore({ temperatureReducer: mockChartJsState });
     window.HTMLCanvasElement.prototype.getContext = () => {};
 
-    const wrapper = mount(<Provider store={store}>{<Chart chartType='test'/>}</Provider>);
+    const wrapper = mount(
+      <Provider store={store}>
+        <Chart chartType="test" />
+      </Provider>
+    );
     expect(wrapper.find('Chart')).toMatchSnapshot();
   });
 });
