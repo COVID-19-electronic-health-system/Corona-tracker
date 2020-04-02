@@ -9,6 +9,7 @@ import HealthLogToggle from './HealthLogToggle';
 import Scroll from './Scroll';
 import Disclaimer from './Disclaimer';
 import Subscribe from './Subscribe';
+import SymptomsTracker from './SymptomsTracker';
 
 const useStyles = makeStyles({
   hr: {
@@ -23,6 +24,21 @@ const dateOptions = {
   day: 'numeric',
 };
 
+// check if the survey has been submitted today
+const hasSubmitted = () => {
+  const date = window.localStorage.getItem('date');
+  const todaysDate = new Date().toISOString().slice(0, 10);
+  if (date === todaysDate) {
+    if (window.localStorage.getItem('surveyCompleted') === 'false') {
+      return false;
+    }
+    return true;
+  }
+  window.localStorage.setItem('date', todaysDate);
+  window.localStorage.setItem('surveyCompleted', 'false');
+  return false;
+};
+
 function DiagnosticContainer() {
   const classes = useStyles();
   const { userSession } = useBlockstack();
@@ -30,24 +46,27 @@ function DiagnosticContainer() {
   const today = new Date();
   const { t } = useTranslation();
   dispatch(loadObservations());
-  const [disclaimer, setDisclaimer] = useFile("disclaimer.json")
+  const [disclaimer] = useFile('disclaimer.json');
   return (
-    <div>
-      <h4>
-        {t('hello')} <b>{userSession.loadUserData().profile.name} </b>
-      </h4>
-      <h5>
-        {t('todayText')} <b>{today.toLocaleDateString(undefined, dateOptions)}</b>{' '}
-      </h5>
-      <hr className={classes.hr} />
-      <Scroll>
-        <HealthLogToggle />
-      </Scroll>
-      <Container>
-        {disclaimer === null && <Disclaimer />}
-      </Container>
-      <Subscribe />
-    </div>
+    // if the survey has been submitted for the day render home page, else render survey page
+    hasSubmitted() ? (
+      <div>
+        <h4>
+          {t('hello')} <b>{userSession.loadUserData().profile.name} </b>
+        </h4>
+        <h5>
+          {t('todayText')} <b>{today.toLocaleDateString(undefined, dateOptions)}</b>{' '}
+        </h5>
+        <hr className={classes.hr} />
+        <Scroll>
+          <HealthLogToggle />
+        </Scroll>
+        <Container>{disclaimer === null && <Disclaimer />}</Container>
+        <Subscribe />
+      </div>
+    ) : (
+        <SymptomsTracker />
+      )
   );
 }
 
