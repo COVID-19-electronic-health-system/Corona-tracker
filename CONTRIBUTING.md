@@ -2,7 +2,58 @@
 
 # Table of Contents
 
-insert TOC here
+<!-- TOC -->
+
+- [About the Project](#about-the-project)
+  - [Quick Note](#quick-note)
+  - [How Can I Contribute?](#how-can-i-contribute)
+  - [Background](#background)
+  - [Values](#values)
+- [Contributions](#contributions)
+  - [Getting the Repo](#getting-the-repo)
+    - [Terminology](#terminology)
+    - [Forking the Repo](#forking-the-repo)
+    - [Updating a Forked Repo](#updating-a-forked-repo)
+    - [Helpful Resources](#helpful-resources)
+- [Front End Configuration](#front-end-configuration)
+  - [Using Windows?](#using-windows)
+  - [Configure Yarn](#configure-yarn)
+    - [Installing Yarn](#installing-yarn)
+- [Back-End Configuration](#back-end-configuration)
+  - [What is a QA Envrionment?](#what-is-a-qa-envrionment)
+  - [QA Envrionment Setup](#qa-envrionment-setup)
+  - [Starting up QA Environment](#starting-up-qa-environment)
+  - [Developing in the QA Environment](#developing-in-the-qa-environment)
+- [Style Guide](#style-guide)
+  - [Pull Request Process](#pull-request-process)
+    - [Git Workflow](#git-workflow)
+    - [Contributions](#contributions-1)
+    - [Merging pull requests](#merging-pull-requests)
+  - [Front End Style Guide](#front-end-style-guide)
+  - [Design Style Guide](#design-style-guide)
+  - [Back End Style Guide](#back-end-style-guide)
+- [Bug Reports](#bug-reports)
+  - [Data Science / Analytics Style Guide](#data-science--analytics-style-guide)
+- [Reporting Bugs](#reporting-bugs)
+  - [Before Submitting A Bug Report](#before-submitting-a-bug-report)
+  - [How Do I Submit A (Good) Bug Report?](#how-do-i-submit-a-good-bug-report)
+  - [Suggesting Enhancements](#suggesting-enhancements)
+    - [How Do I Submit A (Good) Enhancement Suggestion?](#how-do-i-submit-a-good-enhancement-suggestion)
+  - [Your First Code Contribution](#your-first-code-contribution)
+- [Common Commands](#common-commands)
+  - [Git](#git)
+    - [Information](#information)
+    - [Making Changes](#making-changes)
+    - [Committing Changes](#committing-changes)
+    - [Modify last commit message](#modify-last-commit-message)
+    - [Updating the Repo](#updating-the-repo)
+    - [Rebasing](#rebasing)
+    - [Cleaning Up](#cleaning-up)
+    - [Resources](#resources)
+  - [Yarn](#yarn)
+  - [Other commands](#other-commands)
+
+<!-- /TOC -->
 
 # About the Project
 
