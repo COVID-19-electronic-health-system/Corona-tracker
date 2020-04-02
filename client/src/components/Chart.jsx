@@ -78,8 +78,6 @@ const Chart = ({ chartType }) => {
 
 export default Chart;
 
-
-
 Chart.propTypes = {
   chartType: PropTypes.string.isRequired,
 };
