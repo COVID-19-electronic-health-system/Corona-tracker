@@ -97,23 +97,10 @@ The idea **for our IPR** is to help doctors monitor large numbers of patients' s
 
 ### Technology Stack
 
-__Front End:__
-- [React](https://github.com/facebook/react)
-- [Material-UI](https://github.com/mui-org/material-ui) for all new components
-- [React-Bootstrap](https://github.com/react-bootstrap/react-bootstrap) deprecated, for legacy components
-  - _note: used in old components that need to be converted to Material UI_
-
-__Back End / Database:__
-- [Blockstack](https://blockstack.org/about) Blockstack apps protect your digital rights and are powered by the Stacks blockchain.
-  - [Radiks (server)](https://github.com/blockstack/radiks-server) A server for indexing data in decentralized applications
-  - [Radiks (client)](https://github.com/blockstack/radiks) A client-side framework for building model-driven decentralized applications
-  - [Gaia](https://github.com/blockstack/gaia) A decentralied high-performance storage system
-  - [Connect](https://github.com/blockstack/ux/tree/master/packages/connect) A library for building excellent user experiences with Blockstack, as part of the larger [Blockstack UX Monorepo](https://github.com/blockstack/ux).
-
-__Testing:__
-- TravisCI
-- ESLint
-- Prettier
+- Frontend: [React](https://github.com/facebook/react)
+- Backend: [Blockstack](https://blockstack.org/about)
+- Database: [Gaia](https://github.com/blockstack/gaia)
+- Deployment: [AWS](https://aws.amazon.com/)
 
 ### Wireframe Overview
 
