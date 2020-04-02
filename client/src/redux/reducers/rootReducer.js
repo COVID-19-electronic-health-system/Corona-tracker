@@ -1,5 +1,5 @@
 import { combineReducers } from 'redux';
-import observations from './observations';
+import observationsReducer from './observations';
 import loginLoading from './login';
 import navigationReducer from './navigation';
 import disclaimerReducer from './disclaimer';
@@ -31,7 +31,7 @@ const root = (oldState = initialState, action) => {
 export default combineReducers({
   root,
   loginLoading,
-  observations,
+  observationsReducer,
   navigationReducer,
   disclaimerReducer,
   calendarReducer,

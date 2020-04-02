@@ -27,3 +27,4 @@ Demonstrate the code is solid. Example: The exact commands you ran and their out
 - [ ] Did you use yarn, not npm?
 - [ ] Did you use Material-UI wherever possible?
 - [ ] Did you format according to Prettier?
+- [ ] Did you run all of your most recent changes locally to make sure everything is working?

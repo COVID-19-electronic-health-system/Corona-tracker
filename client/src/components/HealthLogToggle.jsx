@@ -4,6 +4,7 @@ import Button from '@material-ui/core/Button';
 import Container from '@material-ui/core/Container';
 import { Trans } from 'react-i18next';
 import MyHealthLog from './MyHealthLog';
+import Table from './Table';
 
 export default function HealthLogToggle() {
   const [toggleValue, setToggleValue] = useState('myHealthLog');
@@ -22,7 +23,7 @@ export default function HealthLogToggle() {
         </ButtonGroup>
       </Container>
       {toggleValue === 'myHealthLog' && <MyHealthLog />}
-      {/* {toggleValue==='showMeMore'&&</>} */}
+      {toggleValue === 'showMeMore' && <Table />}
     </div>
   );
 }
