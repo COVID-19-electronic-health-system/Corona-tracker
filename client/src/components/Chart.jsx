@@ -1,16 +1,16 @@
 /* eslint-disable no-unused-vars */
-
 import React, { useEffect, useRef } from 'react';
 import { useSelector } from 'react-redux';
 import * as chartJs from 'chart.js';
+import PropTypes from 'prop-types';
 
-const Chart = () => {
+const Chart = ({ chartType }) => {
   // Extratring dummy data from the store
   const temperatureData = useSelector(state => state.temperatureReducer.temperature);
 
   // Configuring chart parameters and pusing dummy data
   const chartConfig = {
-    type: 'line',
+    type: chartType,
     // passing data to out chart
     data: {
       // labels for X axe, inserting labels data from the store
@@ -77,3 +77,9 @@ const Chart = () => {
 };
 
 export default Chart;
+
+
+
+Chart.propTypes = {
+  chartType: PropTypes.string.isRequired,
+};
