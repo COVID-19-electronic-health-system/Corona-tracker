@@ -9,6 +9,8 @@ import HealthLogToggle from './HealthLogToggle';
 import Disclaimer from './Disclaimer';
 import Subscribe from './Subscribe';
 import actions from '../redux/actions/actions';
+import Chart from './Chart';
+import chartType from '../utils/chartType';
 
 const useStyles = makeStyles({
   hr: {
@@ -67,6 +69,7 @@ function DiagnosticContainer(props) {
       </h5>
       <hr className={classes.hr} />
       <HealthLogToggle />
+      <Chart chartType={chartType.bar} />
       <Container>{disclaimer === null && <Disclaimer />}</Container>
       <Subscribe />
     </div>
