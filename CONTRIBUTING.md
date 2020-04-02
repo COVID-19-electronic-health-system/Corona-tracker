@@ -295,8 +295,6 @@ We use the [Git Forking workflow]((https://www.atlassian.com/git/tutorials/compa
 
 See [how to stay synced with Git](https://www.atlassian.com/git/tutorials/syncing).
 
-LINK TO WORKFLOW SECTION
-
 ### Contributions
 
 Please follow these steps to have your contribution considered by the maintainers:
@@ -450,8 +448,8 @@ After a PR is accepted, bring master up to date.
 
 `git checkout master`
 `git fetch --all`
-`git merge upstream/master` # fast-forward to upstream changes
-`git push origin master`                 # update changes on github to origin/master
+`git merge upstream/master` - fast-forward to upstream changes
+`git push origin master` - update changes on github to origin/master
 
 If deleting the branch:
 
@@ -474,11 +472,11 @@ If updating the branch for re-use:
 
 ### Cleaning Up
 
-`git fetch --all`                  # Fetch changes from remote
-`git push origin -d <branch>`      # Delete Remote Branch
-`git branch -d <branch>`           # Delete Local Branch
-`git branch -D <branch>`           # Force Delete Local Branch
-`git branch -dr <remote>/<branch>` # Delete Remote-Tracking Branch
+`git fetch --all` - Fetch changes from remote
+`git push origin -d <branch>` - Delete Remote Branch
+`git branch -d <branch>` - Delete Local Branch
+`git branch -D <branch>` - Force Delete Local Branch
+`git branch -dr <remote>/<branch>` - Delete Remote-Tracking Branch
 
 ### Resources
 
