@@ -5,31 +5,23 @@ import * as chartJs from 'chart.js';
 import PropTypes from 'prop-types';
 
 const Chart = ({ chartType }) => {
-  // Extratring dummy data from the store
   const temperatureData = useSelector(state => state.temperatureReducer.temperature);
 
   // Configuring chart parameters and pusing dummy data
   const chartConfig = {
     type: chartType,
-    // passing data to out chart
     data: {
-      // labels for X axe, inserting labels data from the store
       labels: temperatureData.labels,
       datasets: [
         {
-          // title of the dataset
           label: 'Patent temperature',
-          // Y axe color
           borderColor: 'rgb(200, 30, 132)',
-          // Do not fill space bitween X and Y axes
           fill: false,
-          // data for Y axe, inserting values data from the store
           data: temperatureData.values,
         },
       ],
     },
     options: {
-      // Chart positioning on the page
       layout: {
         padding: {
           left: 0,
@@ -52,20 +44,14 @@ const Chart = ({ chartType }) => {
     },
   };
 
-  // useRef is the React hook which allow us to select DOM node when it's avaliable
   const chartContainer = useRef(null);
 
-  // Chart.js uses the Canvas tag to render Chat inside it
-  // and the ctx parameter in new Chart(ctx, options) is a reference to the
-  // <canvas /> element where chart will be attached.
-  // With second argument we pass chartConfig object which contain all paramets of the chart
   useEffect(() => {
     const ChartJS = new chartJs.Chart(chartContainer.current, chartConfig);
   }, [chartContainer, chartConfig]);
 
   return (
     <div
-      className="chart-container"
       style={{
         width: '600px',
         height: '300px',
