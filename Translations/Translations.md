@@ -1,6 +1,121 @@
-# English
+# Nederlands
 
-**This document is a reference sheet for the text utilized in the app for translating purposes**
+**Dit document is een referentie pagina voor de tekst gebruikt in de app als vertaling**
+
+# Nederlands
+## CORONATRACKER UI - #1.png
+**CoronaTracker SaaS (Symptomen als een Service) monitor, mobiele gezondheids tracker en kaart**
+
+## CORONATRACKER UI - Health Log - My Log.png
+Goede morgen, **Jonathan!**
+
+Vandaag is het dinsdag, 14 april 2020
+
+**Laat ons een dagboek maken van uw huidige gezondheidstoestand:**
+
+Mijn Gezondheidsdagboek | Toon Meer
+
+April 2020
+
+Zon | Ma | Di | Woe | Do | Vrij | Zat 
+
+#### 11 U gaf volgende volgende score aan: 10/10
+Zaterdag, 14:00
+
+#### 12 U gaf volgende volgende score aan: 10/10
+Zondag, 15:00
+
+#### 13 U voelde zich: 9/10
+Maandag, 13:30
+
+#### 14 Het is het moment voor uw gezondsdagboek!
+Dinsdag
+
+Gemiddelde Temperatuur: 38.8 ºC
+
+Temperatuur|Symptomen
+
+Gezondheidsdagboek|Nieuws|Spreek met een Arts|Kaart|Instellingen
+
+## CORONATRACKER UI - - Health Log - Show Me More.png
+
+#### Datum|Hoe Voel Ik Mij?|Wat mijn mijn klachten?|Verschil Met Gisteren ?|Enige Symptomen Genoteerd?|Commentaren
+
+11/03|10|10|Hetzelfde|Geen|Voelde Mij Goed!
+
+12/03|9.5|10|Hetzelfde|Geen|Voelde Mij Goed!
+
+13/03|9|9|Erger|Hoesten|Bezorgd...
+
+14/03|9.5|9|Beter|Hoesten|Beter vandaag...
+
+**Dat is alle informatie die we voor u hebben!**
+
+Gezondheidsdagboek|Nieuws|Spreek met een Arts|Kaart|Instellingen
+
+## CORONATRACKER UI - Login Screen.png
+
+Uw gezondheidsapp die uw griepale klachten **monitored**, u **in contact brengt** met locale tele-gezondheidsartsen en informatie **weergeeft** uit uw omgeving.
+
+[passwoord] Vergeten
+LOGIN
+
+Laatst geupdated: 14 April, 2020, om 02:20:18 A.M. CET
+
+Gezondheidsdagboek|Nieuws|Spreek met een Arts|Kaart|Instellingen
+
+## CORONATRACKER UI - News.png
+
+Lees het laatste nieuws
+**Dinsdag, 14 April, 2020**
+
+**The Center for Disease Control**
+@CDC
+
+**The World Health Organization**
+@WHO
+
+Gezondheidsdagboek|Nieuws|Spreek met een Arts|Kaart|Instellingen
+
+## CORONATRACKER UI - Symptom Screen.png
+
+**Laat ons een paar vragen beantwoorden!**
+
+Beantwoord waarheidsgetrouw en eerlijk opdat uw gezondheidsdossier accuraat is en u en uw gezondheidsverleners kan helpen. 
+
+**Q1: Hoe voelt u zich vandaag?**
+
+Op een schaal van 1-10, hoe is uw gemoedstoestand waarbij 1 aangeeft dat u zich nooit slechter heeft gevoeld en 10 dat u zich opperbest voelt.
+
+**Q2: Hoe voelt u zich in vergelijking met gisteren?**
+
+Indien u zich "goed" voelde gisteren en u voelt zich "goed" vandaag, kies "Hetzelfde."
+
+**Q3: Welke klachten heeft u, wat voelt u?**
+
+Kortademigheid – Minimaal | Matig | Ernstig
+Koorts – Geef hier uw temperatuur: _0.0ºC_
+Hoest – Minimaal | Matig | Ernstig
+Duizeligheid – Minimaal | Matig | Ernstig
+Hoofdpijn – Hoe lang reeds aanwezig?: _Min, Uren_
+Keelpijn – Minimaal | Matig | Ernstig
+Constipatie – Minimaal | Matig | Ernstig
+
+**Q4: Hoe ernstig zijn uw klachten?**
+
+Alle klachten gezamelijk op een schaal van 1-10, waar 1 zeer ernstig is en 10 aangeeft dat u zich heel gezond voelt.
+
+**Q5: Wenst u verder nog iets te delen?**
+
+_Start te typen en voeg nota's toe..._
+
+Door onderaan te drukken, bevestigt u dat uw ingevulde antwoorden waarheidsgetrouw en eerlijk een weergave bieden van uw klachten en uw algemene gezondheidstoestand.
+
+[button] BEWAAR MIJN ANTWOORDEN
+
+Gezondheidsdagboek|Nieuws|Spreek met een Arts|Kaart|Instellingen
+
+____________________________
 
 # English
 ## CORONATRACKER UI - #1.png
