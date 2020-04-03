@@ -65,8 +65,8 @@ function DiagnosticContainer() {
         <Subscribe />
       </div>
     ) : (
-        <SymptomsTracker />
-      )
+      <SymptomsTracker />
+    )
   );
 }
 
