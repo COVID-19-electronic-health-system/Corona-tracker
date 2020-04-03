@@ -4,13 +4,13 @@ import React from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import { useSpring, animated, interpolate } from 'react-spring';
 import { useGesture } from 'react-with-gesture';
-import PropTypes, { object } from 'prop-types';
+import PropTypes from 'prop-types';
 
 const useStyles = makeStyles({
   item: {
     position: 'relative',
     width: '100vw',
-    height: '10vh',
+    height: '15vh',
     pointerEvents: 'auto',
     transformOrigin: '50% 50% 0px',
     paddingLeft: '32px',
@@ -49,6 +49,10 @@ const useStyles = makeStyles({
     borderRadius: '50%',
     backgroundColor: 'white',
   },
+  weeklyTrackerContainer: {
+    left: '0',
+    transform: 'translateX(-50%)',
+  },
 });
 
 const WeeklyTracker = props => {
@@ -68,7 +72,7 @@ const WeeklyTracker = props => {
     extrapolate: 'clamp',
   });
   return (
-    <div className="weekly-tracker-container">
+    <div className={classes.weeklyTrackerContainer}>
       <animated.div {...bind()} className={classes.item} style={{ background: bg }}>
         <animated.div
           className={classes.av}
@@ -86,7 +90,11 @@ const WeeklyTracker = props => {
 };
 
 WeeklyTracker.propTypes = {
-  children: PropTypes.objectOf(object).isRequired,
+  children: PropTypes.string,
+};
+
+WeeklyTracker.defaultProps = {
+  children: '',
 };
 
 export default WeeklyTracker;

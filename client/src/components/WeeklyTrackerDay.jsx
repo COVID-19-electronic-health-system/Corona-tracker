@@ -23,7 +23,9 @@ const useStyles = makeStyles(() => ({
 
 const WeeklyTrackerDay = props => {
   const classes = useStyles();
-  const { dayData } = props;
+  let { dayData } = props;
+  dayData = JSON.parse(dayData);
+
   return (
     <div className={classes.div}>
       <Grid container spacing={0} className="day-container">
@@ -31,20 +33,19 @@ const WeeklyTrackerDay = props => {
           <img alt="threeLinesSvg" src={CalendarThreeLines} />
         </Grid>
         <Grid item className={classes.topMargin}>
-          <Typography variant="h4">{dayData.date}</Typography>
+          <Typography variant="h5">{new Date(dayData.date).toISOString().slice(0, 10)}</Typography>
         </Grid>
         <Grid item className={classes.summary}>
-          <Typography variant="subtitle2">You felt: {dayData.status}/10</Typography>
-          <Typography variant="subtitle2">{dayData.day} </Typography>
+          <Typography variant="subtitle2">You felt: {dayData.physical.dailyfeeling}/10</Typography>
         </Grid>
         <Grid item>
           <Typography variant="subtitle2">
-            Fever: <strong>{dayData.temp}</strong>
+            Fever? <strong>{dayData.physical.hasfever.toString()}</strong>
           </Typography>
           <Typography variant="subtitle2">
-            Symptoms: <strong>{dayData.symptoms}</strong>
+            Cough? <strong>{dayData.physical.hasCough.toString()}</strong>
           </Typography>
-          <Typography variant="subtitle2">Comments: ugh</Typography>
+          <Typography variant="subtitle2">Comments: {dayData.nonPhysical.openComment}</Typography>
         </Grid>
       </Grid>
     </div>
@@ -53,19 +54,6 @@ const WeeklyTrackerDay = props => {
 
 WeeklyTrackerDay.propTypes = {
   dayData: PropTypes.objectOf(object).isRequired,
-  date: PropTypes.number,
-  day: PropTypes.string,
-  status: PropTypes.string,
-  temp: PropTypes.number,
-  symptoms: PropTypes.string,
-};
-
-WeeklyTrackerDay.defaultProps = {
-  date: 0,
-  day: '0/0/0000',
-  status: 'n/a',
-  temp: 0,
-  symptoms: 'n/a',
 };
 
 export default WeeklyTrackerDay;
