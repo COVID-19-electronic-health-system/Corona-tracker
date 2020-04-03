@@ -64,21 +64,21 @@ Quick summary:
 
 1. Check your repo's origin (where your forked code is located)
    `git remote -v`
-2. Add an upstream  
-   `git remote add upstream git@github.com:COVID-19-electronic-health-system/Corona-tracker.git`  
-3. Check remote again  
-   `git remote -v`  
+2. Add an upstream
+   `git remote add upstream git@github.com:COVID-19-electronic-health-system/Corona-tracker.git`
+3. Check remote again
+   `git remote -v`
 
 Now you can collect the latest changes of the upstream repository with fetch!
 
-To get updates, do this every time:  
+To get updates, do this every time:
 `git fetch upstream`
 
 👀 Note: Keep your local master branch as a close mirror of the upstream master. Execute any work in a feature branches, as they might later become pull requests.
 
-4. Now merge or rebase with the upstream master (aka the main repo you are contributing to)  
-   `git checkout master`  
-   `git merge upstream/master`  
+4. Now merge or rebase with the upstream master (aka the main repo you are contributing to)
+   `git checkout master`
+   `git merge upstream/master`
 
 Boom! Now you are all set!
 
@@ -86,63 +86,63 @@ Boom! Now you are all set!
 ##### Using MacOS?
 Skip ahead to the next section.
 
-##### Using Windows?  
+##### Using Windows?
 Terminal related installation instructions are usually written for BASH-based command languages.
 
-[BASH](https://en.wikipedia.org/wiki/Bash_(Unix_shell)) is a [command language](https://en.wikipedia.org/wiki/Command_language) that is often used by developers to configure, install and work with software on [Unix-like](https://en.wikipedia.org/wiki/Unix-like) environments. The alternative is to user [PowerShell](https://www.brycemcdonald.net/powershell/automation/exchange/2019/04/10/PowerShell-vs-Bash.html), but information written with it is harder to find. 
+[BASH](https://en.wikipedia.org/wiki/Bash_(Unix_shell)) is a [command language](https://en.wikipedia.org/wiki/Command_language) that is often used by developers to configure, install and work with software on [Unix-like](https://en.wikipedia.org/wiki/Unix-like) environments. The alternative is to user [PowerShell](https://www.brycemcdonald.net/powershell/automation/exchange/2019/04/10/PowerShell-vs-Bash.html), but information written with it is harder to find.
 
 To keep things consistent (and life easier), stick to BASH.
 
 Luckily, Windows has Visual Studio Code, which has a built in terminal that can run BASH. Try using [Visual Studio Code](https://code.visualstudio.com/) as your code editor. It has a built-in console which comes with BASH.
 
-**To install:**  
+**To install:**
 Download [Visual Studio Code](https://code.visualstudio.com/), also known as VSCode.
 
 **Set up BASH on Windows VSCode**
 See [how to pick BASH in the integreated terminal](https://code.visualstudio.com/docs/editor/integrated-terminal#_windows).
-1) Opening up terminal in VSCode.  
-2) Click on bash.  
-3) Restart VSCODE.  
+1) Opening up terminal in VSCode.
+2) Click on bash.
+3) Restart VSCODE.
 
 Boom! You are done!
 
 👀☝️ Note: The next section will apply to all Operating Systems (MacOS, Linux-based, Windows).
 
 #### Front End Setup
-**Yarn**  
-NOTE: We are using [Yarn](https://yarnpkg.com/) instead of [NPM](https://en.wikipedia.org/wiki/Npm_(software)) as our package manager. 
+**Yarn**
+NOTE: We are using [Yarn](https://yarnpkg.com/) instead of [NPM](https://en.wikipedia.org/wiki/Npm_(software)) as our package manager.
 
-**Why Yarn?**  
+**Why Yarn?**
 Its faster than NPM
 
-**ONLY USE YARN**  
+**ONLY USE YARN**
 👀⚠️ Please make sure that you **ONLY** use Yarn. Using NPM in combination with Yarn **will break the code** when the [continuous integration](https://codeship.com/continuous-integration-essentials) tests run.
 
 This means that your Pull Request will not be merged into the code base. Avoid the errors and save the time. that will be tricky to debug.
 
 See [great this example](https://github.com/COVID-19-electronic-health-system/Corona-tracker/pull/258).
 
-**To Install**:  
+**To Install**:
 
 1. Install Yarn 1.x on your machine globally. Go to [Yarn's website](https://classic.yarnpkg.com/en/docs/install#mac-stable) and pick which method you'd like to use.
 
-Run `yarn --version`  
+Run `yarn --version`
 You should get something like `1.22`.
 
-**Installing /client packages**  
-While in root:  
-`cd /client`  
+**Installing /client packages**
+While in root:
+`cd /client`
 
-Install all the packages:  
+Install all the packages:
 `yarn install`
 
 **Installing /server packages**
 We are using Blockstack, a technology that allows users to decentralize their data by allowing them to control it. As such, alot of the servers code can also be considered front end code.
 
-While in root:  
-`cd /server`  
+While in root:
+`cd /server`
 
-Install all the packages:  
+Install all the packages:
 `yarn install`
 
 #### Back-End Setup (Currently Only Documentation for OSX)
@@ -160,7 +160,7 @@ To run locally, you'll need to have MongoDB installed locally. Follow [this](htt
   - `use coronatracker` - switch to a new local database, coronatracker
   - `db.createUser({user: "admin", pwd:"foobar1",roles: ["readWrite","dbAdmin"]});` - create a new admin user for this database
 
-You'll also need `radiks-server`, which you can install simply with  
+You'll also need `radiks-server`, which you can install simply with
 
 **yarn**
 `yarn global add radiks-server`
@@ -223,7 +223,7 @@ The process described here has several goals:
 2. Update the README.md with details of changes to the interface, this includes new environment variables, exposed ports, useful file locations and container parameters.
 
 
-### Making Pull Requests 
+### Making Pull Requests
 #### Proper Git Hygiene
 
 Add Carter Issue here
@@ -261,13 +261,13 @@ Why? Because we want all our code to merge well
 
 #### Front end style guide
 
-📝 Use Material-UI to build and style components.  
+📝 Use Material-UI to build and style components.
 
 📝 When styling, use Material-UI styling APIs.
 
 🛑 Don’t use separate CSS file or inline-style i.e. “style={{width:’100px’}}"
 
-📝 We already included ThemeProvider and CssBaseline APIs. Please use it to advantage of full Material-UI options and not worry about styling every little aspect.  
+📝 We already included ThemeProvider and CssBaseline APIs. Please use it to advantage of full Material-UI options and not worry about styling every little aspect.
 
 📖 Material-UI has great documentation. There are a lot of examples and answers to many questions you may face from the community. You also can ask for help via Discord in the #front-end chat.
 
@@ -364,7 +364,7 @@ Unsure where to begin contributing to Atom? You can start by looking through the
 
 [How to use `rebase`.](https://help.github.com/en/github/using-git/using-git-rebase-on-the-command-line)
 
-[See Beginner's guide to rebasing and squashing.](https://github.com/servo/servo/wiki/Beginner's-guide-to-rebasing-and-squashing) 
+[See Beginner's guide to rebasing and squashing.](https://github.com/servo/servo/wiki/Beginner's-guide-to-rebasing-and-squashing)
 
 ### When to use merge vs rebase
 
@@ -378,33 +378,33 @@ Unsure where to begin contributing to Atom? You can start by looking through the
 
 ### Yarn
 
-See the full list of commands [here](https://classic.yarnpkg.com/en/docs/cli/).  
+See the full list of commands [here](https://classic.yarnpkg.com/en/docs/cli/).
 
-`yarn install`  
-Installs all node modules  
-Similar to `npm i`  
+`yarn install`
+Installs all node modules
+Similar to `npm i`
 [See more](https://classic.yarnpkg.com/en/docs/cli/install)
 
-`yarn add`  
-Installs a package and any packages that it depends on.  
-Similar to `npm install <package-name>`  
+`yarn add`
+Installs a package and any packages that it depends on.
+Similar to `npm install <package-name>`
 [See more](https://classic.yarnpkg.com/en/docs/cli/add)
 
-`yarn remove`  
-removes an unused package from your current package.json  
-Similar to `npm uninstall <package-name>`  
+`yarn remove`
+removes an unused package from your current package.json
+Similar to `npm uninstall <package-name>`
 [See more](https://classic.yarnpkg.com/en/docs/cli/remove)
 
 #### Other commands
 
 Commands you probably won't use, but are good to know anyway.
 
-`yarn init`  
-initializes the development of a package.  
-Similar to `npm init`  
+`yarn init`
+initializes the development of a package.
+Similar to `npm init`
 [See more](https://classic.yarnpkg.com/en/docs/cli/init)
 
-`yarn upgrade`  
-Upgrades packages to their latest version based on the specified range  
-Similar to `npm update <package-name>@<verision>`  
+`yarn upgrade`
+Upgrades packages to their latest version based on the specified range
+Similar to `npm update <package-name>@<verision>`
 [See more](https://classic.yarnpkg.com/en/docs/cli/upgrade)
