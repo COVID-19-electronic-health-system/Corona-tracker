@@ -72,23 +72,21 @@ function DiagnosticContainer(props) {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [numObservations]);
 
-  return (
-    hasSubmitted() ? (
-      <div>
-        <h4>
-          {t('hello')} <b>{userSession.loadUserData().profile.name}</b>
-        </h4>
-        <h5>
-          {t('todayText')} <b>{today.toLocaleDateString(undefined, dateOptions)}</b>{' '}
-        </h5>
-        <hr className={classes.hr} />
-        <HealthLogToggle />
-        <Chart chartType={chartType.bar} />
-        <Subscribe />
-      </div>
-    ) : (
-        <SymptomsTracker />
-      )
+  return hasSubmitted() ? (
+    <div>
+      <h4>
+        {t('hello')} <b>{userSession.loadUserData().profile.name}</b>
+      </h4>
+      <h5>
+        {t('todayText')} <b>{today.toLocaleDateString(undefined, dateOptions)}</b>{' '}
+      </h5>
+      <hr className={classes.hr} />
+      <HealthLogToggle />
+      <Chart chartType={chartType.bar} />
+      <Subscribe />
+    </div>
+  ) : (
+    <SymptomsTracker />
   );
 }
 
