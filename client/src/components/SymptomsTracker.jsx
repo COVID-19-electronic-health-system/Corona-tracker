@@ -114,6 +114,7 @@ const SymptomsTracker = props => {
 
   // aggregate collected data
   const submitSurvey = async () => {
+    window.localStorage.setItem('surveyCompleted', 'true');
     const submission = {
       todayFeeling,
       todaySymptoms,

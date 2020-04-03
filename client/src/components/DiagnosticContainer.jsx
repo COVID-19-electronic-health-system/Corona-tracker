@@ -6,6 +6,7 @@ import { makeStyles } from '@material-ui/core/styles';
 import PropTypes from 'prop-types';
 import HealthLogToggle from './HealthLogToggle';
 import Subscribe from './Subscribe';
+import SymptomsTracker from './SymptomsTracker';
 import actions from '../redux/actions/actions';
 import Chart from './Chart';
 import chartType from '../utils/chartType';
@@ -21,6 +22,21 @@ const dateOptions = {
   year: 'numeric',
   month: 'long',
   day: 'numeric',
+};
+
+// check if the survey has been submitted today
+const hasSubmitted = () => {
+  const date = window.localStorage.getItem('date');
+  const todaysDate = new Date().toISOString().slice(0, 10);
+  if (date === todaysDate) {
+    if (window.localStorage.getItem('surveyCompleted') === 'false') {
+      return false;
+    }
+    return true;
+  }
+  window.localStorage.setItem('date', todaysDate);
+  window.localStorage.setItem('surveyCompleted', 'false');
+  return false;
 };
 
 function DiagnosticContainer(props) {
@@ -56,7 +72,7 @@ function DiagnosticContainer(props) {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [numObservations]);
 
-  return (
+  return hasSubmitted() ? (
     <div>
       <h4>
         {t('hello')} <b>{userSession.loadUserData().profile.name}</b>
@@ -69,6 +85,8 @@ function DiagnosticContainer(props) {
       <Chart chartType={chartType.bar} />
       <Subscribe />
     </div>
+  ) : (
+    <SymptomsTracker />
   );
 }
 
