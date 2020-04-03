@@ -1,12 +1,10 @@
 import React, { useEffect } from 'react';
 import { connect } from 'react-redux';
-import Container from '@material-ui/core/Container';
-import { useBlockstack, useFile } from 'react-blockstack';
+import { useBlockstack } from 'react-blockstack';
 import { useTranslation } from 'react-i18next';
 import { makeStyles } from '@material-ui/core/styles';
 import PropTypes from 'prop-types';
 import HealthLogToggle from './HealthLogToggle';
-import Disclaimer from './Disclaimer';
 import Subscribe from './Subscribe';
 import actions from '../redux/actions/actions';
 import Chart from './Chart';
@@ -58,7 +56,6 @@ function DiagnosticContainer(props) {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [numObservations]);
 
-  const [disclaimer] = useFile('disclaimer.json');
   return (
     <div>
       <h4>
@@ -70,7 +67,6 @@ function DiagnosticContainer(props) {
       <hr className={classes.hr} />
       <HealthLogToggle />
       <Chart chartType={chartType.bar} />
-      <Container>{disclaimer === null && <Disclaimer />}</Container>
       <Subscribe />
     </div>
   );
