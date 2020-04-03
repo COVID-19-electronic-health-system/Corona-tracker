@@ -6,6 +6,16 @@ import { Grid } from '@material-ui/core';
 import WeeklyTracker from './WeeklyTracker';
 import WeeklyTrackerDay from './WeeklyTrackerDay';
 import AppCalendar from './Calendar';
+import {makeStyles} from '@material-ui/core'
+const useStyles = makeStyles({
+  button: {
+    background: `linear-gradient(45deg, #4760ff, #82a4f8)`,
+    width: '320px',
+    boxShadow: '0px 1px 15px 0px #4760ff',
+    margin: '10px',
+    color: 'white'
+  }
+})
 
 const dates = [
   {
@@ -20,11 +30,11 @@ const dates = [
 
 function HealthLogButton() {
   const { t } = useTranslation();
-
+  const classes = useStyles()
   return (
     <div>
       <Link to="/symptomsurvey">
-        <Button color="secondary" variant="contained">
+        <Button className={classes.button} variant="contained">
           {t('surveyButtonText')}
         </Button>
       </Link>
