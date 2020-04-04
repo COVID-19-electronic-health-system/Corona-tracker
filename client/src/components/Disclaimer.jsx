@@ -10,8 +10,9 @@ import DialogContentText from '@material-ui/core/DialogContentText';
 import DialogTitle from '@material-ui/core/DialogTitle';
 import { makeStyles } from '@material-ui/core/styles';
 import { useBlockstack } from 'react-blockstack';
-import { Trans } from 'react-i18next';
+import { useTranslation } from 'react-i18next';
 import PropTypes from 'prop-types';
+import { useHistory } from 'react-router-dom';
 import actions from '../redux/actions/actions';
 import { ReactComponent as TextLogo } from '../img/Logo_CORONATRACKER_Text_Logo.svg';
 import { ReactComponent as Logo } from '../img/Logo_CORONATRACKER_Logo.svg';
@@ -29,6 +30,8 @@ const useStyles = makeStyles({
 const Disclaimer = props => {
   const { userSession } = useBlockstack();
   const { answer } = props;
+  const { t } = useTranslation();
+  const history = useHistory();
 
   const disclaimerAnswerJSON = {
     answerChoice: null,
@@ -37,6 +40,11 @@ const Disclaimer = props => {
   const storeAnswer = ans => {
     disclaimerAnswerJSON.answerChoice = ans;
     props.setAnswer(ans, disclaimerAnswerJSON, userSession);
+
+    // Navigate to onboarding screen if user agrees to disclaimer
+    if (ans) {
+      history.push('/onboard');
+    }
   };
 
   const classes = useStyles();
@@ -50,19 +58,15 @@ const Disclaimer = props => {
           </DialogTitle>
           <DialogContent>
             <DialogContent align="left" id="disclaimer-text">
-              <DialogContentText>
-                <Trans i18nKey="disclaimer.text0" />
-              </DialogContentText>
-              <DialogContentText>
-                <Trans i18nKey="disclaimer.text1" />
-              </DialogContentText>
+              <DialogContentText>{t('disclaimer.text0')}</DialogContentText>
+              <DialogContentText>{t('disclaimer.text1')}</DialogContentText>
             </DialogContent>
             <DialogActions>
               <Button variant="outlined" onClick={() => storeAnswer(true)}>
-                <Trans i18nKey="disclaimer.agree" />
+                {t('disclaimer.agree')}
               </Button>
               <Button variant="outlined" onClick={() => storeAnswer(false)}>
-                <Trans i18nKey="disclaimer.disagree" />I don&apos;t agree
+                {t('disclaimer.disagree')}
               </Button>
             </DialogActions>
           </DialogContent>

@@ -1,11 +1,72 @@
-# Contributing
+# Contributing to CoronaTracker
+
+# Table of Contents
+
+<!-- TOC -->
+
+- [About the Project](#about-the-project)
+  - [Quick Note](#quick-note)
+  - [How Can I Contribute?](#how-can-i-contribute)
+  - [Background](#background)
+  - [Values](#values)
+- [Contributions](#contributions)
+  - [Getting the Repo](#getting-the-repo)
+    - [Terminology](#terminology)
+    - [Forking the Repo](#forking-the-repo)
+    - [Updating a Forked Repo](#updating-a-forked-repo)
+    - [Helpful Resources](#helpful-resources)
+- [Front End Configuration](#front-end-configuration)
+  - [Using Windows?](#using-windows)
+  - [Configure Yarn](#configure-yarn)
+    - [Installing Yarn](#installing-yarn)
+- [Back-End Configuration](#back-end-configuration)
+  - [What is a QA Envrionment?](#what-is-a-qa-envrionment)
+  - [QA Envrionment Setup](#qa-envrionment-setup)
+  - [Starting up QA Environment](#starting-up-qa-environment)
+  - [Developing in the QA Environment](#developing-in-the-qa-environment)
+- [Style Guide](#style-guide)
+  - [Pull Request Process](#pull-request-process)
+    - [Git Workflow](#git-workflow)
+    - [Contributions](#contributions-1)
+    - [Merging pull requests](#merging-pull-requests)
+  - [Front End Style Guide](#front-end-style-guide)
+  - [Design Style Guide](#design-style-guide)
+  - [Back End Style Guide](#back-end-style-guide)
+- [Bug Reports](#bug-reports)
+  - [Data Science / Analytics Style Guide](#data-science--analytics-style-guide)
+- [Reporting Bugs](#reporting-bugs)
+  - [Before Submitting A Bug Report](#before-submitting-a-bug-report)
+  - [How Do I Submit A (Good) Bug Report?](#how-do-i-submit-a-good-bug-report)
+  - [Suggesting Enhancements](#suggesting-enhancements)
+    - [How Do I Submit A (Good) Enhancement Suggestion?](#how-do-i-submit-a-good-enhancement-suggestion)
+  - [Your First Code Contribution](#your-first-code-contribution)
+- [Common Commands](#common-commands)
+  - [Git](#git)
+    - [Information](#information)
+    - [Making Changes](#making-changes)
+    - [Committing Changes](#committing-changes)
+    - [Modify last commit message](#modify-last-commit-message)
+    - [Updating the Repo](#updating-the-repo)
+    - [Rebasing](#rebasing)
+    - [Cleaning Up](#cleaning-up)
+    - [Resources](#resources)
+  - [Yarn](#yarn)
+  - [Other commands](#other-commands)
+
+<!-- /TOC -->
+
+# About the Project
 
 ## Quick Note
 
 When contributing to this repository, please first discuss the change you wish to make via [Issues](https://github.com/COVID-19-electronic-health-system/Corona-tracker/issues),
 [Kanban Board](https://github.com/COVID-19-electronic-health-system/Corona-tracker/projects/1), or [Discord](https://discord.gg/pPERUuv) before making a change.
 
-Please note we have a [code of conduct](./CODE_OF_CONDUCT.md), please follow it in all your interactions with the project.
+We are creating tools by the community for the community. Please follow the [code of conduct](./CODE_OF_CONDUCT.md) in all your interactions with the project.
+
+## How Can I Contribute?
+
+Jump on our [Discord](https://discord.gg/pPERUuv) and choose the team that interests you the most. Reach out to the team lead and introduce yourself! We are happy to talk to you.
 
 ## Background
 
@@ -19,22 +80,9 @@ Social good through technology. We value initiative, collaboration and experimen
 
 We are a welcoming, warm and collaborative group of people from all over the world! Here you can experiment, take chances. Failure is ok. We are here to help. We encourage developers to learn new things and best practices while collaborating on a project that is scaling to help mankind against COVID-19.
 
-## Code Of Conduct
+# Contributions
 
-We are creating tools by the community for the community. Please follow the [code of conduct](./CODE_OF_CONDUCT.md) in all your interactions with the project.
-
-## How Can I Contribute?
-Jump on our [Discord](https://discord.gg/pPERUuv) and choose the team that interests you the most. Reach out to the team lead and introduce yourself! We are happy to talk to you.
-
-## What should I know before I get started?
-
-Coming soon.. For now, feel free to jump on the [Discord](https://discord.gg/pPERUuv) and ask @Anthony A.
-
-## Setup
-
-### Local development
-
-#### Getting the repo
+## Getting the Repo
 
 **Our community project works by accepting pull requests, instead of having developers contribute directly to master.**
 
@@ -42,116 +90,155 @@ It will save headaches in the long run and allow us to scale. After the first ti
 
 As our CTO/technical lead @somemoosery says "As software engineers we have a responsibility to deliver good code AND a clean git history".
 
-Let's scale while learning to build some cool stuff together.  🚀
+Let's scale while learning to build some cool stuff together. 🚀
 
-👀 To get a copy of our repo:
-1. FORK [our repo.](https://github.com/COVID-19-electronic-health-system/Corona-tracker).
-See [how to fork a repo in Github.](https://help.github.com/en/github/getting-started-with-github/fork-a-repo)
+### Terminology
 
-1. In your terminal Run `git clone <path>`, using the `<path>` of your forked repo.
+The following terms are standards used when working with a repository.
+
+- __upstream:__ the original repository the fork was created from (on github)
+- __origin:__ your forked copy of the repository (on github)
+- __local:__ the local repository (on your computer)
+
+### Forking the Repo
 
 ⚠️ **Please do not clone directly from our main repository**. This will point your local repo's [origin](https://www.git-tower.com/learn/git/glossary/origin) to our main repo, to which you will not have write access. Doing so will eventually cause an error when attempting to push code.
 
-#### Configuing Your Git Repo to Contribute
+👀 To get a copy of our repository and start making changes, follow the steps below.
 
-We contribute from our forked repo, but need updates from the main repo. How do we solve this?
+1. Fork [our respository](https://github.com/COVID-19-electronic-health-system/Corona-tracker) , which creates a copy of the repository under your account to submit changes to.
+2. Clone the forked repository to your computer using the Clone button and address from github.
+`git clone <address of fork>`
+3. Change the working directory to your cloned project.
+Mac/Linux: `cd ./Corona-tracker`
+Windows: `cd .\Corona-tracker`
+4. Add our project repository as a remote to track changes.
+`git remote add upstream https://github.com/COVID-19-electronic-health-system/Corona-tracker.git`
+5. Create and checkout new branch in your local project to make changes.
+`git checkout -b <branch-name>`
+_Note: the `-b` is required when first creating the branch (combines `git checkout` and `git branch`)_
+6. Make changes by adding and committing files as necessary.
+`git add <filename> or git add -A`
+`git commit -m "<commit-msg>"`
+7. When ready to submit changes, first push the changes to the origin repository on Github (your fork).
+`git push -u origin <branch-name>`
+_Note: the `-u` is required when first pushing a new branch to the origin (your fork)._
+8. On github, [submit the pull request (PR)](https://help.github.com/en/github/collaborating-with-issues-and-pull-requests/about-pull-requests) to the upstream repository when changes are complete.
 
-Simple! We can learn how to set the `upstream` and do the `fetch` and `merge` with [this article.](https://www.atlassian.com/git/tutorials/git-forks-and-upstreams)
+Sometimes a pull request will require extra steps before going into review, which may include signing an agreement, testing the code, testing server deployment, or similar. If all checks are passed, then the PR is ready for review by the project maintainer.
 
-What is an [upstream]()
+### Updating a Forked Repo
 
-Quick summary:
+After creating a forked repo, it can quickly become out of date with changes made in the upstream repo. How do we solve this?
 
-1. Check your repo's origin (where your forked code is located)
-   `git remote -v`
-2. Add an upstream  
-   `git remote add upstream git@github.com:COVID-19-electronic-health-system/Corona-tracker.git`  
-3. Check remote again  
-   `git remote -v`  
+Simple! We can use the `remote upstream` feature to `fetch` and `merge` changes into our forked repo.
 
-Now you can collect the latest changes of the upstream repository with fetch!
+1. Verify the `remote upstream` repo is configured based on our earlier steps.
 
-To get updates, do this every time:  
-`git fetch upstream`
+`git remote -v`
 
-👀 Note: Keep your local master branch as a close mirror of the upstream master. Execute any work in a feature branches, as they might later become pull requests.
+Which should output something similar to:
 
-4. Now merge or rebase with the upstream master (aka the main repo you are contributing to)  
-   `git checkout master`  
-   `git merge upstream/master`  
+```
+origin	git@github.com:YOUR_USERNAME/COVID-19-TRACKER.git (fetch)
+origin	git@github.com:YOUR_USERNAME/COVID-19-TRACKER.git (push)
+upstream	git@github.com:COVID-19-electronic-health-system/Corona-tracker.git (fetch)
+upstream	git@github.com:COVID-19-electronic-health-system/Corona-tracker.git (push)
+```
 
-Boom! Now you are all set!
+2. Once we confirm the `remote upstream` repo exists, we can `fetch` the most recent changes.
 
-#### Front-End Setup
-##### Using MacOS?
-Skip ahead to the next section.
+```
+git fetch upstream
+git merge upstream/master
+```
 
-##### Using Windows?  
+3. Now that our local repository has the changes, we need to push those changes back to our fork on github.
+
+`git push origin`
+
+### Helpful Resources
+
+- [How to fork a repository in Github](https://help.github.com/en/github/getting-started-with-github/fork-a-repo)
+- [GitHub Standard Fork & Pull Request Workflow](https://gist.github.com/Chaser324/ce0505fbed06b947d962)
+- [Git Forks and Upstream](https://www.atlassian.com/git/tutorials/git-forks-and-upstreams)
+- [Git Documentation](https://git-scm.com/docs/)
+
+# Front End Configuration
+
+## Using Windows?
+
 Terminal related installation instructions are usually written for BASH-based command languages.
 
-[BASH](https://en.wikipedia.org/wiki/Bash_(Unix_shell)) is a [command language](https://en.wikipedia.org/wiki/Command_language) that is often used by developers to configure, install and work with software on [Unix-like](https://en.wikipedia.org/wiki/Unix-like) environments. The alternative is to user [PowerShell](https://www.brycemcdonald.net/powershell/automation/exchange/2019/04/10/PowerShell-vs-Bash.html), but information written with it is harder to find. 
+[BASH](https://en.wikipedia.org/wiki/Bash_(Unix_shell)) is a [command language](https://en.wikipedia.org/wiki/Command_language) that is often used by developers to configure, install and work with software on [Unix-like](https://en.wikipedia.org/wiki/Unix-like) environments. The alternative is to user [PowerShell](https://www.brycemcdonald.net/powershell/automation/exchange/2019/04/10/PowerShell-vs-Bash.html), but information written with it is harder to find.
 
 To keep things consistent (and life easier), stick to BASH.
 
 Luckily, Windows has Visual Studio Code, which has a built in terminal that can run BASH. Try using [Visual Studio Code](https://code.visualstudio.com/) as your code editor. It has a built-in console which comes with BASH.
 
-**To install:**  
+**To install:**
 Download [Visual Studio Code](https://code.visualstudio.com/), also known as VSCode.
 
 **Set up BASH on Windows VSCode**
 See [how to pick BASH in the integreated terminal](https://code.visualstudio.com/docs/editor/integrated-terminal#_windows).
-1) Opening up terminal in VSCode.  
-2) Click on bash.  
-3) Restart VSCODE.  
+1) Opening up terminal in VSCode.
+2) Click on bash.
+3) Restart VSCODE.
 
 Boom! You are done!
 
 👀☝️ Note: The next section will apply to all Operating Systems (MacOS, Linux-based, Windows).
 
-#### Front End Setup
-**Yarn**  
-NOTE: We are using [Yarn](https://yarnpkg.com/) instead of [NPM](https://en.wikipedia.org/wiki/Npm_(software)) as our package manager. 
+## Configure Yarn
 
-**Why Yarn?**  
+NOTE: We are using [Yarn](https://yarnpkg.com/) instead of [NPM](https://en.wikipedia.org/wiki/Npm_(software)) as our package manager.
+
+**Why Yarn?**
 Its faster than NPM
 
-**ONLY USE YARN**  
+**ONLY USE YARN**
 👀⚠️ Please make sure that you **ONLY** use Yarn. Using NPM in combination with Yarn **will break the code** when the [continuous integration](https://codeship.com/continuous-integration-essentials) tests run.
 
 This means that your Pull Request will not be merged into the code base. Avoid the errors and save the time. that will be tricky to debug.
 
 See [great this example](https://github.com/COVID-19-electronic-health-system/Corona-tracker/pull/258).
 
-**To Install**:  
+### Installing Yarn
 
 1. Install Yarn 1.x on your machine globally. Go to [Yarn's website](https://classic.yarnpkg.com/en/docs/install#mac-stable) and pick which method you'd like to use.
 
-Run `yarn --version`  
+Run `yarn --version`
 You should get something like `1.22`.
 
-**Installing /client packages**  
-While in root:  
-`cd /client`  
+**Installing /client packages**
+While in root:
+`cd /client`
 
-Install all the packages:  
+Install all the packages:
 `yarn install`
 
 **Installing /server packages**
 We are using Blockstack, a technology that allows users to decentralize their data by allowing them to control it. As such, alot of the servers code can also be considered front end code.
 
-While in root:  
-`cd /server`  
+While in root:
+`cd /server`
 
-Install all the packages:  
+Install all the packages:
 `yarn install`
 
-#### Back-End Setup (Currently Only Documentation for OSX)
+# Back-End Configuration
+
+_Note: Documentation currently only supports OSX_
+
 **WE SUGGEST RUNNING ON QA ENVRIONMENT**
 
-##### What is a QA Envrionment ?
+## What is a QA Envrionment?
 
-##### QA Envrionment Setup
-To run locally, you'll need to have MongoDB installed locally. Follow [this](https://docs.mongodb.com/manual/tutorial/install-mongodb-on-os-x/) guide if you don't have it already
+A QA environment is where you test your upgrade procedure against data, hardware, and software that closely simulate the Production environment and where you allow intended users to test the resulting application.
+
+## QA Envrionment Setup
+
+To run locally, you'll need to have MongoDB installed locally. Follow [this](https://docs.mongodb.com/manual/tutorial/install-mongodb-on-os-x/) guide if you don't have it already.
 
 - Once you have MongoDB installed, start MongoDB, create a new database and create a user with admin privileges:
   - `brew services start mongodb` - start MongoDB
@@ -160,24 +247,21 @@ To run locally, you'll need to have MongoDB installed locally. Follow [this](htt
   - `use coronatracker` - switch to a new local database, coronatracker
   - `db.createUser({user: "admin", pwd:"foobar1",roles: ["readWrite","dbAdmin"]});` - create a new admin user for this database
 
-You'll also need `radiks-server`, which you can install simply with  
+You'll also need `radiks-server`, which you can install simply with **yarn**.
 
-**yarn**
 `yarn global add radiks-server`
 
 - Create a `MONGODB_URI` environment variable on the same machine you're running `radiks-server`
 - `export MONGODB_URI="mongodb://admin:foobar1@localhost:27017/test1"` - `admin`, `foobar1`, `test1` are the username/pass/db from the admin user you created when setting up MongoDB
 
-##### Starting up QA Environment
+## Starting up QA Environment
 
 1. Ensure MongoDB is running (see Prerequisites).
 2. Open a new tab on your console.
-3. `radiks-server` - start the local radiks server
-4. `Yarn run start` - run the application locally
+3. `radiks-server` - start the local radiks server.
+4. `Yarn run start` - run the application locally.
 
-### QA development
-
-#### Installation and run steps
+## Developing in the QA Environment
 
 1. Fork this repo `https://github.com/COVID-19-electronic-health-system/Corona-tracker`
 2. `cd Corona-tracker/client`
@@ -187,30 +271,11 @@ You'll also need `radiks-server`, which you can install simply with
 6. In `.env.development`, write and save `REACT_APP_QA_URL: <THE-URL-CODE>`
 7. `yarn start` - run the application locally
 
-### BEFORE YOU MAKE CHANGES TO YOUR FORKED CODE VIA BRANCH OR MASTER
+__REMEMBER to always sync up with the remote repository first before making any changes!__
 
-Make sure stay updated with the master branch of the main repo, as multiple people are contributing code and to avoid merge conflicts for the admins.
-Unsure of how to stay updated? Paste this in your terminal:
+# Style Guide
 
-`git remote add upstream https://github.com/COVID-19-electronic-health-system/Corona-tracker`
-
-And now when you `git remote -v`, you should see this if everything set correctly.
-
-```
-> origin https://github.com/YOUR_USERNAME/YOUR_FORK.git (fetch)
-> origin https://github.com/YOUR_USERNAME/YOUR_FORK.git (push)
-> upstream https://github.com/ORIGINAL_OWNER/ORIGINAL_REPOSITORY.git (fetch)
-> upstream https://github.com/ORIGINAL_OWNER/ORIGINAL_REPOSITORY.git (push)
-```
-
-Anytime you want to make alterations to your forked code, now just make sure to:
-`git fetch upstream`
-`git merge upstream/master`
-And your current branch is up to date with the master branch of the main repo! Use this link from Github if you need more guidance [Setting up an upstream repo](https://help.github.com/en/github/collaborating-with-issues-and-pull-requests/configuring-a-remote-for-a-fork)
-
-### Pull Requests
-
-### Pull request process
+## Pull Request Process
 
 The process described here has several goals:
 
@@ -219,32 +284,24 @@ The process described here has several goals:
 - Engage the community in working toward the best possible CoronaTracker
 - Enable a sustainable system for CoronaTracker's maintainers to review contributions
 
+The process:
+
 1. Ensure any install or build dependencies are removed before the end of the layer when doing a build.
-2. Update the README.md with details of changes to the interface, this includes new environment variables, exposed ports, useful file locations and container parameters.
+2. Update the [README.md](./README.md) with details of changes to the interface, this includes new environment variables, exposed ports, useful file locations and container parameters.
 
+### Git Workflow
 
-### Making Pull Requests 
-#### Proper Git Hygiene
+We use the [Git Forking workflow]((https://www.atlassian.com/git/tutorials/comparing-workflows/forking-workflow)) as a way to organize our Git history.
 
-Add Carter Issue here
+See [how to stay synced with Git](https://www.atlassian.com/git/tutorials/syncing).
 
-#### Git Workflow
-We will use the Forking workflow as a way to organize our Git history
-See [Git workflow overview](https://www.atlassian.com/git/tutorials/comparing-workflows/forking-workflow)
+### Contributions
 
-See [how to stay synched with Git](https://www.atlassian.com/git/tutorials/syncing)
-
-More to come describing this.
-
-#### Contributions to our codebase?
-See the how to create a [Pull Request](###How-to-create-a-Pull-Request?)
-
-#### How to become a maintainers
 Please follow these steps to have your contribution considered by the maintainers:
 
-1. Follow all instructions in [the template](/.github/pull_request_template.md)
-2. Follow the style guides - COMING SOON
-3. After you submit your pull request, verify that all Travis CI steps are passing <details><summary>What if the Travis CI are failing?</summary>If a Travis CI step is failing, and you believe that the failure is unrelated to your change, please leave a comment on the pull request explaining why you believe the failure is unrelated. A maintainer will re-run the Travis CI steps for you. If we conclude that the failure was a false positive, then we will open an issue to track that problem with our status check suite.</details>
+1. Follow all instructions in [the pull request template](/.github/pull_request_template.md)
+2. Follow the style guides listed here
+3. After you submit your pull request, verify that all Travis CI steps are passing. <details><summary>What if the Travis CI fails?</summary>If a Travis CI step is failing, and you believe that the failure is unrelated to your change, please leave a comment on the pull request explaining why you believe the failure is unrelated. A maintainer will re-run the Travis CI steps for you. If we conclude that the failure was a false positive, then we will open an issue to track that problem with our status check suite.</details>
 
 While the prerequisites above must be satisfied prior to having your pull request reviewed, the reviewer(s) may ask you to complete additional design work, tests, or other changes before your pull request can be ultimately accepted.
 
@@ -256,41 +313,33 @@ Ideally, the team lead or back up team lead should lookg over your code, and giv
 
 Once you open a pull request make sure that it passes all continous integration tests. If they do not, please attempt to fix them before asking for a review. If you do need help, mention that in the Pull Request comments and in the Discord channel for your team.
 
-### Style Guides
-Why? Because we want all our code to merge well
+## Front End Style Guide
 
-#### Front end style guide
-
-📝 Use Material-UI to build and style components.  
+📝 Use Material-UI to build and style components.
 
 📝 When styling, use Material-UI styling APIs.
 
 🛑 Don’t use separate CSS file or inline-style i.e. “style={{width:’100px’}}"
 
-📝 We already included ThemeProvider and CssBaseline APIs. Please use it to advantage of full Material-UI options and not worry about styling every little aspect.  
+📝 We already included ThemeProvider and CssBaseline APIs. Please use it to advantage of full Material-UI options and not worry about styling every little aspect.
 
 📖 Material-UI has great documentation. There are a lot of examples and answers to many questions you may face from the community. You also can ask for help via Discord in the #front-end chat.
 
-#### Design style guide
+## Design Style Guide
 
-Coming soon
+_Coming soon_, see #ux-ui in Discord chat.
 
-See #ux-ui in discord chat.
+## Back End Style Guide
 
-#### Back end style guide
+_Coming soon_, see #backend in Discord chat.
 
-Coming soon
+# Bug Reports
 
-See #backend in discord chat.
+#### Data Science / Analytics Style Guide
 
-#### Data science / analytics style guide
+_Coming soon_, see #analytics in Discord chat.
 
-Coming soon
-
-See #analytics in discord chat.
-
-
-## Reporting Bugs
+# Reporting Bugs
 
 This section guides you through submitting a bug report for CoronaTracker. Following these guidelines helps maintainers and the community understand your report, reproduce the behavior, and find related reports (if applicable).
 
@@ -348,63 +397,123 @@ Enhancement suggestions are tracked as [GitHub issues](https://guides.github.com
 
 ### Your First Code Contribution
 
-Unsure where to begin contributing to Atom? You can start by looking through these `good first issue` and `help-wanted` issues:
+Unsure where to begin contributing to CoronaTracker? You can start by looking through [these "good first issue" and "help-wanted" issues.](https://github.com/COVID-19-electronic-health-system/Corona-tracker/issues?q=is%3Aopen+label%3A"good+first+issue"+label%3A"help+wanted")
 
-## Common Commands
+# Common Commands
 
-### Git
+## Git
 
-#### merge
+### Information
 
-...coming soon
+- Show the working tree status
+`git status`
+- show commit logs
+`git log`
+  - Note: optionally can add formatting
+  `git log --pretty=format:"%h %s" --graph`
+- show all branches
+`git branch -a`
+- list remote repositories
+`git remote -v`
 
-#### rebase
-... more coming soon
+### Making Changes
+
+- Checkout branch to make changes
+`git checkout <branch>`
+- Add all files with changes
+`git add -A`
+- Change file name
+`git mv <old-file> <new-file>`
+- Delete file
+`git rm <file>`
+
+### Committing Changes
+
+- Make changes to the file
+`atom <filename>` _(or text editor of your choice)_
+- Update the index
+`git add <filename>`
+- Commit the change with a message
+`git commit -m "Commit Message"`
+- Push change to repository (on Github)
+`git push -u origin <branch>`
+
+### Modify last commit message
+
+`git commit --amend`
+
+### Updating the Repo
+
+After a PR is accepted, bring master up to date.
+
+`git checkout master`
+`git fetch --all`
+`git merge upstream/master` - fast-forward to upstream changes
+`git push origin master` - update changes on github to origin/master
+
+If deleting the branch:
+
+`git push origin -d upd/resource-list`
+`git branch -d upd/resource-list`
+
+If updating the branch for re-use:
+
+`git checkout upd/resource-list`
+`git rebase master`
+`git push origin`
+
+### Rebasing
+
 [Overview of `rebase`.](https://www.atlassian.com/git/tutorials/rewriting-history/git-rebase)
 
 [How to use `rebase`.](https://help.github.com/en/github/using-git/using-git-rebase-on-the-command-line)
 
-[See Beginner's guide to rebasing and squashing.](https://github.com/servo/servo/wiki/Beginner's-guide-to-rebasing-and-squashing) 
+[See Beginner's guide to rebasing and squashing.](https://github.com/servo/servo/wiki/Beginner's-guide-to-rebasing-and-squashing)
 
-### When to use merge vs rebase
+### Cleaning Up
 
-#### fetch
+`git fetch --all` - Fetch changes from remote
+`git push origin -d <branch>` - Delete Remote Branch
+`git branch -d <branch>` - Delete Local Branch
+`git branch -D <branch>` - Force Delete Local Branch
+`git branch -dr <remote>/<branch>` - Delete Remote-Tracking Branch
 
-...coming soon
+### Resources
 
-### remote
+- [Git Manual](https://git-scm.com/doc)
+- [Dangit, git!](https://dangitgit.com/) with real problems and solutions.
+- [GitHub Standard Fork & Pull Request Workflow (Chaser324)](https://gist.github.com/Chaser324/ce0505fbed06b947d962)
+- [Digital Ocean - How To Create a Pull Request on GitHub](https://www.digitalocean.com/community/tutorials/how-to-create-a-pull-request-on-github)
 
-...coming soon
+## Yarn
 
-### Yarn
+See the full list of commands [here](https://classic.yarnpkg.com/en/docs/cli/).
 
-See the full list of commands [here](https://classic.yarnpkg.com/en/docs/cli/).  
-
-`yarn install`  
-Installs all node modules  
-Similar to `npm i`  
+`yarn install`
+Installs all node modules
+Similar to `npm i`
 [See more](https://classic.yarnpkg.com/en/docs/cli/install)
 
-`yarn add`  
-Installs a package and any packages that it depends on.  
-Similar to `npm install <package-name>`  
+`yarn add`
+Installs a package and any packages that it depends on.
+Similar to `npm install <package-name>`
 [See more](https://classic.yarnpkg.com/en/docs/cli/add)
 
-`yarn remove`  
-removes an unused package from your current package.json  
-Similar to `npm uninstall <package-name>`  
+`yarn remove`
+removes an unused package from your current package.json
+Similar to `npm uninstall <package-name>`
 [See more](https://classic.yarnpkg.com/en/docs/cli/remove)
 
-#### Other commands
+## Other commands
 
 Commands you probably won't use, but are good to know anyway.
 
-`yarn init`  
-initializes the development of a package.  
-Similar to `npm init`  
+`yarn init`
+initializes the development of a package.
+Similar to `npm init`
 [See more](https://classic.yarnpkg.com/en/docs/cli/init)
 
-`yarn upgrade`  
-Upgrades packages to their latest version based on the specified range  
-Similar to `npm update <package-name>@<verision>`  
+`yarn upgrade`
+Upgrades packages to their latest version based on the specified range
+Similar to `npm update <package-name>@<verision>`
 [See more](https://classic.yarnpkg.com/en/docs/cli/upgrade)
