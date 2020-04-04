@@ -1,7 +1,7 @@
 /* eslint-disable no-unused-vars */
 /* eslint-disable no-await-in-loop */
 /* eslint-disable no-shadow */
-
+import { red } from '@material-ui/core/colors';
 import React, { useRef, useState } from 'react';
 import { useDispatch } from 'react-redux';
 import Calendar from 'react-calendar';
@@ -11,8 +11,6 @@ import actions from '../redux/actions/actions';
 import WeeklyTracker from './WeeklyTracker';
 import WeeklyTrackerDay from './WeeklyTrackerDay';
 import '../css/Calendar.css';
-import { red } from '@material-ui/core/colors';
-
 
 const useStyles = makeStyles({
   appCalendar: {
