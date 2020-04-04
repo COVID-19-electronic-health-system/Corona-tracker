@@ -49,7 +49,7 @@ function DiagnosticContainer(props) {
   let numObservations = 0;
   const fetchFiles = async () => {
     for (let i = 0; i < files.length; i += 1) {
-      if (files[i].includes('observation')) {
+      if (files[i].includes('observation/')) {
         const currObservation = parseInt(files[i].replace(/^\D+/g, ''), 10);
         numObservations = currObservation;
       }
