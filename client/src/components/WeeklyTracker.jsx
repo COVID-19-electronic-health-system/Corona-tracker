@@ -53,7 +53,6 @@ const useStyles = makeStyles({
   },
   weeklyTrackerContainer: {
     left: '0',
-    transform: 'translateX(-50%)',
   },
 });
 
