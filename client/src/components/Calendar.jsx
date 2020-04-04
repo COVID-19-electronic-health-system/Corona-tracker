@@ -16,11 +16,14 @@ import '../css/Calendar.css';
 const useStyles = makeStyles({
   appCalendar: {
     margin: '0 auto',
-    maxWidth: '50%',
+    width: '100vw',
     maxheight: '30%',
     backgroundColor: '#97b9f7',
     color: 'white',
     fontWeight: 'bold',
+  },
+  reactCalendar: {
+    width: '100vw',
   },
   today: {
     color: 'white',
@@ -74,6 +77,7 @@ const AppCalendar = props => {
   return (
     <div className={classes.appCalendar}>
       <Calendar
+        className={classes.reactCalendar}
         onChange={handleDateClick}
         tileClassName={({ date, view }) => {
           if (date.toISOString().slice(0, 10) === today) {
