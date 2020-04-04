@@ -1,22 +1,17 @@
 import expect from 'expect';
-import reducer from '../../../redux/reducers/observations'
-import { OBSERVATIONS_LOADED } from '../../../redux/actions/actions';
-import Observation from '../../../models/observation';
+import reducer from '../../../redux/reducers/observations';
+import { NUM_OBSERVATIONS } from '../../../redux/actions/observations';
 
 describe('obervations reducer', () => {
   it('should return the initial state', () => {
-    expect(reducer(undefined, {})).toHaveLength(5);
+    expect(reducer(undefined, {})).toEqual({ numObservations: 0 });
   });
 
-  it('should handle OBSERVATIONS_LOADED', () => {
-    const loadedAction = {
-      type: OBSERVATIONS_LOADED,
-      observations: [new Observation({physical:{temperature:90}})]
+  it('should handle NUM_OBSERVATIONS', () => {
+    const numObs = {
+      type: NUM_OBSERVATIONS,
+      numObservations: 2,
     };
-    // it's empty on purpose because it's just starting to fetch posts
-    expect(reducer({}, loadedAction)).toEqual(loadedAction.observations);
-  }
-  )
-
-   });
-
+    expect(reducer({}, numObs)).toEqual({ numObservations: 2 });
+  });
+});

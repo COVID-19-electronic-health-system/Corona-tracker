@@ -1,0 +1,52 @@
+@media (max-width: 680px) {
+  .Login {
+    padding-top: 7vh;
+    text-align: center;
+    height: 100vh;
+
+    background-image: linear-gradient(#d7e1fa, #bbcef9);
+    height: 100vh;
+  }
+
+  .LoginLogo {
+    width: 70vw;
+    height: 70vw;
+  }
+
+  .TextLogo {
+    width: 90vw;
+    height: 20vw;
+  }
+
+  .ShortDescriptionText {
+    margin: auto;
+    width: 80vw;
+    margin-bottom: 3vh;
+  }
+}
+
+@media (min-width: 680px) {
+  .Login {
+    text-align: center;
+    height: 100vh;
+
+    background-image: linear-gradient(#d7e1fa, #bbcef9);
+    height: 100vh;
+  }
+
+  .LoginLogo {
+    width: 20vw;
+    height: 20vw;
+  }
+
+  .TextLogo {
+    width: 85vw;
+    height: 10vw;
+  }
+
+  .ShortDescriptionText {
+    margin: auto;
+    width: 80vw;
+    margin-bottom: 6vh;
+  }
+}

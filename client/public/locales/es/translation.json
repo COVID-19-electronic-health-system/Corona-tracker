@@ -1,0 +1,23 @@
+{
+  "hello": "Hola,",
+  "todayText": "Hoy es",
+  "login": {
+    "text": "Su aplicación de salud para monitorear los síntomas similares a la gripe, conectarse a los médicos de telesalud en su área y descubrir recursos cercanos a usted.",
+    "buttonText": "Empezar"
+  },
+  "signoutButtonText": "Desconectar",
+  "surveyButtonText": "Realizar una encuesta",
+  "health": {
+    "logButton": "Mi registro de salud",
+    "showMoreButton": "Muestrame mas"
+  },
+  "disclaimer": {
+    "text0": "El CoronaTracker está diseñado para ayudarlo a navegar a través de la pandemia con información precisa, registrando su bienestar y rastreando su salud. El CoronaTracker no está destinado a ser utilizado o visto como diagnóstico o tratamiento de enfermedad u otros síntomas, incluidos, entre otros, COVID-19.",
+    "text1": "Esta aplicación fue hecha por la comunidad para la comunidad. Esta aplicación está hecha para ti! Usted está en control de cómo le gustaría contribuir con sus datos para la salud pública y la investigación.",
+    "agree": "Estoy de acuerdo",
+    "disagree": "No estoy de acuerdo"
+  },
+  "subscribe": "Suscríbase para recibir alertas",
+  "phoneNumber": "Ingresar número telefónico",
+  "selectLan": "Seleccione el idioma"
+}

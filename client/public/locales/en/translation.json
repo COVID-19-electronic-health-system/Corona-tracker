@@ -1,0 +1,23 @@
+{
+  "hello": "Hello,",
+  "todayText": "Today is",
+  "login": {
+    "text": "Your health app to monitor flu-like symptoms, connect to telehealth doctors in your area and discover resources close to you.",
+    "buttonText": "Get started"
+  },
+  "signoutButtonText": "Sign Out",
+  "surveyButtonText": "Take a survey",
+  "health": {
+    "logButton": "My health log",
+    "showMoreButton": "Show me more"
+  },
+  "disclaimer": {
+    "text0": "The CoronaTracker is designed to help you navigate through the pandemic with accurate information, charting your wellbeing, and tracking your health. The CoronaTracker is not intended to be used or viewed as diagnosis or treatment of disease or other symptoms, including but not limited to COVID-19.",
+    "text1": "This application was made by the community for the community. This application is made for you! You are in control of how you would like to contribute your data for public health and research.",
+    "agree": "I agree",
+    "disagree": "I don't agree"
+  },
+  "subscribe": "Subscribe for alerts",
+  "phoneNumber": "Enter Phone Number",
+  "selectLan": "Select Language"
+}

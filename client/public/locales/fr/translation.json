@@ -1,0 +1,23 @@
+{
+  "hello": "Bonjour,",
+  "todayText": "Aujourd'hui c'est",
+  "login": {
+    "text": "Votre application de santé pour surveiller les symptômes pseudo-grippaux, vous connecter aux médecins de télésanté de votre région et découvrir des ressources proches de vous.",
+    "buttonText": "Commencer"
+  },
+  "signoutButtonText": "Déconnexion",
+  "surveyButtonText": "Faire un sondage",
+  "health": {
+    "logButton": "Mon carnet de santé",
+    "showMoreButton": "Montre m'en plus"
+  },
+  "disclaimer": {
+    "text0": "Le CoronaTracker est conçu pour vous aider à naviguer à travers la pandémie avec des informations précises, à tracer votre bien-être et à suivre votre santé. Le CoronaTracker n'est pas destiné à être utilisé ou considéré comme un diagnostic ou un traitement d'une maladie ou d'autres symptômes, y compris, mais sans s'y limiter, COVID-19.",
+    "text1": "Cette demande a été faite par la communauté pour la communauté. Cette application est faite pour vous! Vous contrôlez la manière dont vous souhaitez apporter vos données à la santé publique et à la recherche.",
+    "agree": "Je suis d'accord",
+    "disagree": "Je ne suis pas d'accord"
+  },
+  "subscribe": "Abonnez-vous aux alertes",
+  "phoneNumber": "Entrez le numéro de téléphone",
+  "selectLan": "Choisir la langue"
+}
