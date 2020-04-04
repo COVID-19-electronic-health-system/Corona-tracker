@@ -8,8 +8,8 @@ import AppCalendar from './Calendar';
 const useStyles = makeStyles({
   root: {
     '&:hover': {
-        textDecoration: 'none',
-      }
+      textDecoration: 'none',
+    },
   },
   button: {
     background: `linear-gradient(45deg, #4760ff, #82a4f8)`,
@@ -18,8 +18,8 @@ const useStyles = makeStyles({
     margin: '10px',
     color: 'white',
     '&:hover': {
-        boxShadow: '0px 1px 20px 0px #4760ff',
-      }
+      boxShadow: '0px 1px 20px 0px #4760ff',
+    },
   },
 });
 
@@ -27,7 +27,7 @@ function HealthLogButton() {
   const { t } = useTranslation();
   const classes = useStyles();
   return (
-    <div >
+    <div>
       <Link className={classes.root} to="/symptomsurvey">
         <Button className={classes.button} variant="contained">
           {t('surveyButtonText')}
