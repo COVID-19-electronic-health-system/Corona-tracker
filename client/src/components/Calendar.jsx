@@ -1,29 +1,43 @@
 /* eslint-disable no-unused-vars */
 /* eslint-disable no-await-in-loop */
 /* eslint-disable no-shadow */
-
+import { red } from '@material-ui/core/colors';
 import React, { useRef, useState } from 'react';
 import { useDispatch } from 'react-redux';
 import Calendar from 'react-calendar';
 import { makeStyles } from '@material-ui/core/styles';
 import { useBlockstack } from 'react-blockstack';
+import PropTypes from 'prop-types';
 import actions from '../redux/actions/actions';
 import WeeklyTracker from './WeeklyTracker';
 import WeeklyTrackerDay from './WeeklyTrackerDay';
+import '../css/Calendar.css';
 
 const useStyles = makeStyles({
   appCalendar: {
     margin: '0 auto',
     maxWidth: '50%',
-    maxheight: '50%',
+    maxheight: '30%',
+    backgroundColor: '#97b9f7',
+    color: 'white',
+    fontWeight: 'bold',
   },
   today: {
     color: 'white',
-    backgroundColor: '#f64141',
+    backgroundColor: '#97b9f7',
+  },
+  item: {
+    backgroundColor: '#97b9f7',
+    fontSizeAdjust: '16vh',
+    color: 'white',
+    width: '100vw',
+    height: '5vh',
+    border: 'none',
   },
 });
 
-const AppCalendar = () => {
+const AppCalendar = props => {
+  const { setToggleValue } = props;
   const classes = useStyles();
   const dispatch = useDispatch();
   const [today] = useState(new Date().toISOString().slice(0, 10));
@@ -70,7 +84,7 @@ const AppCalendar = () => {
       />
       {trackers.map(tracker => {
         return (
-          <div>
+          <div className={classes.day}>
             <WeeklyTracker key={tracker.date}>
               <WeeklyTrackerDay dayData={tracker} />
             </WeeklyTracker>
@@ -79,6 +93,10 @@ const AppCalendar = () => {
       })}
     </div>
   );
+};
+
+AppCalendar.propTypes = {
+  setToggleValue: PropTypes.func.isRequired,
 };
 
 export default AppCalendar;
