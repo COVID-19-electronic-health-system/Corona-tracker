@@ -1,4 +1,4 @@
-import React, { useRef } from 'react';
+import React from 'react';
 import { useDispatch } from 'react-redux';
 import { useHistory } from 'react-router-dom';
 import Calendar from 'react-calendar';
@@ -32,7 +32,7 @@ const AppCalendar = () => {
     }
   };
 
-  const calendarComponentRef = useRef(null);
+  // const calendarComponentRef = useRef(null);
 
   return (
     <div className={classes.appCalendar}>
