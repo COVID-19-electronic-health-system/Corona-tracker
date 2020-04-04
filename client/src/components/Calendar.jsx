@@ -7,6 +7,7 @@ import { useDispatch } from 'react-redux';
 import Calendar from 'react-calendar';
 import { makeStyles } from '@material-ui/core/styles';
 import { useBlockstack } from 'react-blockstack';
+import PropTypes from 'prop-types';
 import actions from '../redux/actions/actions';
 import WeeklyTracker from './WeeklyTracker';
 import WeeklyTrackerDay from './WeeklyTrackerDay';
@@ -35,7 +36,8 @@ const useStyles = makeStyles({
   },
 });
 
-const AppCalendar = () => {
+const AppCalendar = props => {
+  const { setToggleValue } = props;
   const classes = useStyles();
   const dispatch = useDispatch();
   const [today] = useState(new Date().toISOString().slice(0, 10));
@@ -91,6 +93,10 @@ const AppCalendar = () => {
       })}
     </div>
   );
+};
+
+AppCalendar.propTypes = {
+  setToggleValue: PropTypes.func.isRequired,
 };
 
 export default AppCalendar;

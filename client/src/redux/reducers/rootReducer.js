@@ -5,6 +5,7 @@ import navigationReducer from './navigation';
 import disclaimerReducer from './disclaimer';
 import calendarReducer from './calendar';
 import temperatureReducer from './temperature';
+import healthToggleReducer from './healthToggle';
 
 export default combineReducers({
   loginLoading,
@@ -13,4 +14,5 @@ export default combineReducers({
   disclaimerReducer,
   calendarReducer,
   temperatureReducer,
+  healthToggleReducer,
 });

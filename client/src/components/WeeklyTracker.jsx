@@ -5,6 +5,8 @@ import { makeStyles } from '@material-ui/core/styles';
 import { useSpring, animated, interpolate } from 'react-spring';
 import { useGesture } from 'react-with-gesture';
 import PropTypes from 'prop-types';
+import { connect } from 'react-redux';
+import actions from '../redux/actions/actions';
 
 const useStyles = makeStyles({
   item: {
@@ -56,7 +58,7 @@ const useStyles = makeStyles({
 });
 
 const WeeklyTracker = props => {
-  const { children } = props;
+  const { children, setToggleValue, setDetailData } = props;
   const classes = useStyles();
   const [bind, { delta, down }] = useGesture();
   const { x, bg, size } = useSpring({
@@ -71,13 +73,24 @@ const WeeklyTracker = props => {
     output: ['scale(0.5)', 'scale(1)'],
     extrapolate: 'clamp',
   });
+
+  const openDetail = () => {
+    setDetailData([JSON.parse(children.props.dayData)]);
+    setToggleValue('myHealthLog');
+  };
+
   return (
     <div className={classes.weeklyTrackerContainer}>
-      <animated.div {...bind()} className={classes.item} style={{ background: bg }}>
-        <animated.div
-          className={classes.av}
-          style={{ transform: avSize, justifySelf: delta[0] < 0 ? 'end' : 'start' }}
-        />
+      <animated.div
+        {...bind()}
+        className={classes.item}
+        style={{ background: bg }}
+        onMouseUp={() => openDetail()}
+        onTouchEnd={() => openDetail()}
+      >
+        <animated.div className={classes.av} style={{ transform: avSize, justifySelf: delta[0] < 0 ? 'end' : 'start' }}>
+          Detail
+        </animated.div>
         <animated.div
           className={classes.fg}
           style={{ transform: interpolate([x, size], (_x, _s) => `translate3d(${_x}px,0,0) scale(${_s})`) }}
@@ -91,10 +104,19 @@ const WeeklyTracker = props => {
 
 WeeklyTracker.propTypes = {
   children: PropTypes.string,
+  setToggleValue: PropTypes.func.isRequired,
+  setDetailData: PropTypes.func.isRequired,
 };
 
 WeeklyTracker.defaultProps = {
   children: '',
 };
 
-export default WeeklyTracker;
+const mapDispatchToProps = dispatch => {
+  return {
+    setToggleValue: toggleValue => dispatch(actions.setToggleValue(toggleValue)),
+    setDetailData: detailData => dispatch(actions.setDetailData(detailData)),
+  };
+};
+
+export default connect(null, mapDispatchToProps)(WeeklyTracker);

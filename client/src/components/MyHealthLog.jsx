@@ -6,12 +6,20 @@ import { Grid, makeStyles } from '@material-ui/core';
 import AppCalendar from './Calendar';
 
 const useStyles = makeStyles({
+  root: {
+    '&:hover': {
+        textDecoration: 'none',
+      }
+  },
   button: {
     background: `linear-gradient(45deg, #4760ff, #82a4f8)`,
     width: '320px',
-    boxShadow: '0px 1px 15px 0px #4760ff',
+    boxShadow: '0px 1px 10px 0px #4760ff',
     margin: '10px',
     color: 'white',
+    '&:hover': {
+        boxShadow: '0px 1px 20px 0px #4760ff',
+      }
   },
 });
 
@@ -19,8 +27,8 @@ function HealthLogButton() {
   const { t } = useTranslation();
   const classes = useStyles();
   return (
-    <div>
-      <Link to="/symptomsurvey">
+    <div >
+      <Link className={classes.root} to="/symptomsurvey">
         <Button className={classes.button} variant="contained">
           {t('surveyButtonText')}
         </Button>
