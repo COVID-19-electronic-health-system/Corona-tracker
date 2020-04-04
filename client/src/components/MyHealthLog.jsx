@@ -4,6 +4,7 @@ import { Link } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 import { Grid, makeStyles } from '@material-ui/core';
 import AppCalendar from './Calendar';
+import LogHealthSlider from './LogHealthSlider';
 
 const useStyles = makeStyles({
   root: {
@@ -36,6 +37,7 @@ function HealthLogButton() {
       <Grid container direction="column" alignContent="center">
         <AppCalendar />
       </Grid>
+      <LogHealthSlider />
     </div>
   );
 }
