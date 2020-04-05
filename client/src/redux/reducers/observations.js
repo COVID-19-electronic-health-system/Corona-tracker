@@ -1,7 +1,8 @@
-import { OBSERVATIONS_LOADED, NUM_OBSERVATIONS } from '../actions/observations';
+import { OBSERVATIONS_LOADED, NUM_OBSERVATIONS, SET_OBSERVATIONS } from '../actions/observations';
 
 const initialState = {
   numObservations: 0,
+  observations: [],
 };
 
 // Updating store based on type of the action
@@ -13,6 +14,11 @@ const observationsReducer = (state = initialState, action) => {
       return {
         ...state,
         numObservations: action.numObservations,
+      };
+    case SET_OBSERVATIONS:
+      return {
+        ...state,
+        observations: action.observations,
       };
     default:
       return state;
