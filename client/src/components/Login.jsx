@@ -10,6 +10,7 @@ import { ReactComponent as Logo } from '../img/Logo_CORONATRACKER_Logo.svg';
 import { ReactComponent as TextLogo } from '../img/Logo_CORONATRACKER_Text_Logo.svg';
 import setLoginLoading from '../redux/actions/actions';
 import Loding from './Loding';
+import buttonsCss from '../css/buttons';
 
 const useStyles = makeStyles(theme => ({
   Login: {
@@ -18,7 +19,7 @@ const useStyles = makeStyles(theme => ({
     backgroundImage: 'linear-gradient(#d7e1fa, #bbcef9)',
   },
   Button: {
-    backgroundColor: '#f64141',
+    ...buttonsCss.buttons,
     marginTop: '5vh',
   },
   logo: {

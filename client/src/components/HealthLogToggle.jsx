@@ -12,22 +12,12 @@ import { makeStyles } from '@material-ui/core';
 import MyHealthLog from './MyHealthLog';
 import Table from './Table';
 import actions from '../redux/actions/actions';
+import buttonsCss from '../css/buttons';
 
 const useStyles = makeStyles({
   buttons: {
-    background: `linear-gradient(0deg, #4760ff, #82a4f8)`,
-
-    boxShadow: '0px 1px 5px 0px #4760ff',
-    color: 'white',
-    border: 'none',
+    ...buttonsCss.buttons,
     margin: '2px 15px',
-    '&:hover': {
-      boxShadow: '0px 1px 10px 0px #4760ff',
-    },
-    '&:focus': {
-      outline: 'none',
-      color: 'wheat',
-    },
   },
 });
 
