@@ -3,24 +3,16 @@ import { Button, ButtonGroup, Grid, Typography } from '@material-ui/core';
 import FlashCards from './FlashCards';
 import { cardData, quizData } from '../utils/fakeCardData';
 import buttonsCss from '../css/buttons';
-import { makeStyles } from '@material-ui/core/styles';
 
 const FactQuizContainer = () => {
   const [factsOrQuiz, setFactsQuiz] = useState('facts');
   const setQuiz = () => setFactsQuiz('quiz');
   const setFacts = () => setFactsQuiz('facts');
 
-  const useStyles = makeStyles({
-    buttons: {
-      ...buttonsCss.buttons,
-      margin: '2px 15px',
-    },
-  });
-
   return (
     <Grid>
       <Grid>
-        <ButtonGroup size="medium" color={'primary'} aria-label="outlined button group" style={{...buttonsCss.buttons}}>
+        <ButtonGroup size="medium" color="primary" aria-label="outlined button group" style={{ ...buttonsCss.buttons }}>
           <Button onClick={setFacts} variant={factsOrQuiz === 'facts' && 'contained'}>
             Facts
           </Button>
