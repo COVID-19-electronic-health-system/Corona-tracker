@@ -2,7 +2,7 @@ import React from 'react';
 import Grid from '@material-ui/core/Grid';
 import Typography from '@material-ui/core/Typography';
 import { makeStyles } from '@material-ui/core/styles';
-import PropTypes from 'prop-types';
+import PropTypes, { object } from 'prop-types';
 import CalendarThreeLines from '../img/Calendar_Three-Lines.svg';
 
 const useStyles = makeStyles(() => ({
@@ -12,32 +12,40 @@ const useStyles = makeStyles(() => ({
   div: {
     width: '375px',
   },
+  summary: {
+    marginTop: '1vh',
+    marginRight: '2vw',
+  },
+  topMargin: {
+    marginTop: '1vh',
+  },
 }));
 
 const WeeklyTrackerDay = props => {
   const classes = useStyles();
-  const { dayData } = props;
+  let { dayData } = props;
+  dayData = JSON.parse(dayData);
+
   return (
     <div className={classes.div}>
       <Grid container spacing={0} className="day-container">
-        <Grid item>
+        <Grid item className={classes.topMargin}>
           <img alt="threeLinesSvg" src={CalendarThreeLines} />
         </Grid>
-        <Grid item>
-          <Typography variant="h4">{dayData.date}</Typography>
+        <Grid item className={classes.topMargin}>
+          <Typography variant="h5">{new Date(dayData.date).toISOString().slice(0, 10)}</Typography>
         </Grid>
-        <Grid item>
-          <Typography variant="subtitle2">You said you felt: {dayData.status} / 10</Typography>
-          <Typography variant="subtitle2">{dayData.day}, 12:00pm</Typography>
+        <Grid item className={classes.summary}>
+          <Typography variant="subtitle2">You felt: {dayData.physical.dailyfeeling}/10</Typography>
         </Grid>
         <Grid item>
           <Typography variant="subtitle2">
-            Fever: <strong>{dayData.temp}</strong>
+            Fever? <strong>{dayData.physical.hasfever.toString()}</strong>
           </Typography>
           <Typography variant="subtitle2">
-            Symptoms: <strong>{dayData.symptoms}</strong>
+            Cough? <strong>{dayData.physical.hasCough.toString()}</strong>
           </Typography>
-          <Typography variant="subtitle2">Comments: ugh</Typography>
+          <Typography variant="subtitle2">Comments: {dayData.nonPhysical.openComment}</Typography>
         </Grid>
       </Grid>
     </div>
@@ -45,13 +53,7 @@ const WeeklyTrackerDay = props => {
 };
 
 WeeklyTrackerDay.propTypes = {
-  // Had to set dayData to check for string, object is forbidden in the Proptype checker
-  dayData: PropTypes.string.isRequired,
-  date: PropTypes.number.isRequired,
-  day: PropTypes.string.isRequired,
-  status: PropTypes.string.isRequired,
-  temp: PropTypes.number.isRequired,
-  symptoms: PropTypes.number.isRequired,
+  dayData: PropTypes.objectOf(object).isRequired,
 };
 
 export default WeeklyTrackerDay;
