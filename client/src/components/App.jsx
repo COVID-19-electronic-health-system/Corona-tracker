@@ -23,9 +23,7 @@ const RADIKS_URL = process.env.REACT_APP_QA_URL || 'http://127.0.0.1:1260'; // T
 ReactBlockstack({ appConfig });
 
 function App() {
-
   const { userSession } = useBlockstack();
-  console.log(userSession)
   const finished = useCallback(() => {
     if (RADIKS_URL) {
       configure({
@@ -45,7 +43,7 @@ function App() {
     },
     userSession,
   };
-  console.log('userlogged', userSession)
+
   const [disclaimerString] = useFile('disclaimer.json');
 
   // If the content is null, disclaimer was not found, show disclaimer

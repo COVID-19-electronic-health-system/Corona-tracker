@@ -1,23 +1,21 @@
 import React, { useState } from 'react';
 import { Button, ButtonGroup, Grid, Typography } from '@material-ui/core';
+import { makeStyles } from '@material-ui/core/styles';
 import FlashCards from './FlashCards';
 import { cardData, quizData } from '../utils/fakeCardData';
 import buttonsCss from '../css/buttons';
-import { makeStyles } from '@material-ui/core/styles';
 
 const useStyles = makeStyles({
   buttonGroup: {
-    ...buttonsCss.buttons
-  }
+    ...buttonsCss.buttons,
+  },
 });
-
 
 const FactQuizContainer = () => {
   const [factsOrQuiz, setFactsQuiz] = useState('facts');
   const setQuiz = () => setFactsQuiz('quiz');
   const setFacts = () => setFactsQuiz('facts');
-  let classes = useStyles();
-
+  const classes = useStyles();
 
   return (
     <Grid>
