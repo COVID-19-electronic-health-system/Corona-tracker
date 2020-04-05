@@ -98,7 +98,7 @@ const useStyles = makeStyles(() => ({
 const blankForm = {
   firstName: '',
   age: '',
-  sex: '',
+  gender: '',
   city: '',
   state: '',
   zip: '',
@@ -160,7 +160,7 @@ export default function OnboardUser(props) {
         </div>
         <div className={classes.inputArea}>
           <h5 className={classes.inputFieldLabel}>
-            <b>Sex:</b>
+            <b>Gender:</b>
           </h5>
           <div>
             <button
@@ -169,11 +169,11 @@ export default function OnboardUser(props) {
                 e.preventDefault();
                 setFormState({
                   ...formState,
-                  sex: 'male',
+                  gender: 'male',
                 });
               }}
               className={classes.button}
-              style={formState.sex === 'male' ? { backgroundColor: 'white', color: 'red' } : {}}
+              style={formState.gender === 'male' ? { backgroundColor: 'white', color: 'red' } : {}}
             >
               Male
             </button>
@@ -183,11 +183,11 @@ export default function OnboardUser(props) {
                 e.preventDefault();
                 setFormState({
                   ...formState,
-                  sex: 'female',
+                  gender: 'female',
                 });
               }}
               className={classes.button}
-              style={formState.sex === 'female' ? { backgroundColor: 'white', color: 'red' } : {}}
+              style={formState.gender === 'female' ? { backgroundColor: 'white', color: 'red' } : {}}
             >
               Female
             </button>

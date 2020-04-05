@@ -7,8 +7,6 @@ import PropTypes from 'prop-types';
 import HealthLogToggle from './HealthLogToggle';
 import SymptomsTracker from './SymptomsTracker';
 import actions from '../redux/actions/actions';
-import Chart from './Chart';
-import chartType from '../utils/chartType';
 
 const useStyles = makeStyles({
   hr: {
@@ -16,6 +14,7 @@ const useStyles = makeStyles({
     border: '1px black solid',
   },
 });
+
 const dateOptions = {
   weekday: 'long',
   year: 'numeric',
@@ -81,7 +80,6 @@ function DiagnosticContainer(props) {
       </h5>
       <hr className={classes.hr} />
       <HealthLogToggle />
-      <Chart chartType={chartType.bar} />
     </div>
   ) : (
     <SymptomsTracker />

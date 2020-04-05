@@ -56,8 +56,15 @@ const useStyle = makeStyles({
   },
   buttons: {
     ...buttonsCss.buttons,
-    width: '30vw',
+    width: '33vw',
     height: '8vh',
+  },
+  link: {
+    height: '100%',
+    width: '100vw',
+    textDecoration: 'none',
+    color: 'white',
+    alignContent: 'center',
   },
 });
 
@@ -133,11 +140,15 @@ const More = () => {
             </Button>
           </DialogActions>
           <DialogActions>
-            <Button size="medium" color="secondary" variant="contained" className={classes.buttons}>
-              Settings
+            <Button size="medium" variant="contained" className={classes.buttons}>
+              <Link to="/onboard" className={classes.link}>
+                Settings
+              </Link>
             </Button>
-            <Button size="medium" color="secondary" variant="contained" className={classes.buttons}>
-              About
+            <Button size="medium" variant="contained" className={classes.buttons}>
+              <Link to="/about" className={classes.link}>
+                About
+              </Link>
             </Button>
             <Button size="medium" color="secondary" variant="contained" className={classes.buttons} onClick={signOut}>
               {t('signoutButtonText')}

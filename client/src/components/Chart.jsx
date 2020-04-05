@@ -53,8 +53,8 @@ const Chart = ({ chartType }) => {
   return (
     <div
       style={{
-        width: '600px',
-        height: '300px',
+        width: '100%',
+        height: '100px',
       }}
     >
       <canvas id="chart" ref={chartContainer} />
