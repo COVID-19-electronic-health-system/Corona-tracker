@@ -4,6 +4,8 @@ import { Link } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 import { Grid, makeStyles } from '@material-ui/core';
 import AppCalendar from './Calendar';
+import LogHealthSlider from './LogHealthSlider';
+import buttonsCss from '../css/buttons';
 
 const useStyles = makeStyles({
   root: {
@@ -12,14 +14,9 @@ const useStyles = makeStyles({
     },
   },
   button: {
-    background: `linear-gradient(45deg, #4760ff, #82a4f8)`,
+    ...buttonsCss.buttons,
     width: '320px',
-    boxShadow: '0px 1px 10px 0px #4760ff',
     margin: '10px',
-    color: 'white',
-    '&:hover': {
-      boxShadow: '0px 1px 20px 0px #4760ff',
-    },
   },
 });
 
@@ -36,6 +33,7 @@ function HealthLogButton() {
       <Grid container direction="column" alignContent="center">
         <AppCalendar />
       </Grid>
+      <LogHealthSlider />
     </div>
   );
 }
