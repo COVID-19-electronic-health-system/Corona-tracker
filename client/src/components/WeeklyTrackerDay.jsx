@@ -23,8 +23,7 @@ const useStyles = makeStyles(() => ({
 
 const WeeklyTrackerDay = props => {
   const classes = useStyles();
-  let { dayData } = props;
-  dayData = JSON.parse(dayData);
+  const { dayData } = props;
 
   return (
     <div className={classes.div}>
@@ -33,7 +32,7 @@ const WeeklyTrackerDay = props => {
           <img alt="threeLinesSvg" src={CalendarThreeLines} />
         </Grid>
         <Grid item className={classes.topMargin}>
-          <Typography variant="h5">{new Date(dayData.date).toISOString().slice(0, 10)}</Typography>
+          <Typography variant="h5">{new Date(dayData.date).toLocaleDateString()}</Typography>
         </Grid>
         <Grid item className={classes.summary}>
           <Typography variant="subtitle2">You felt: {dayData.physical.dailyfeeling}/10</Typography>
