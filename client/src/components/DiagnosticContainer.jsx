@@ -5,7 +5,6 @@ import { useTranslation } from 'react-i18next';
 import { makeStyles } from '@material-ui/core/styles';
 import PropTypes from 'prop-types';
 import HealthLogToggle from './HealthLogToggle';
-import Subscribe from './Subscribe';
 import SymptomsTracker from './SymptomsTracker';
 import actions from '../redux/actions/actions';
 import Chart from './Chart';
@@ -83,7 +82,6 @@ function DiagnosticContainer(props) {
       <hr className={classes.hr} />
       <HealthLogToggle />
       <Chart chartType={chartType.bar} />
-      <Subscribe />
     </div>
   ) : (
     <SymptomsTracker />
