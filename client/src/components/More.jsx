@@ -13,6 +13,7 @@ import MoreHorizIcon from '@material-ui/icons/MoreHoriz';
 import { useBlockstack } from 'react-blockstack';
 import { useTranslation } from 'react-i18next';
 import { DialogContent, DialogContentText, TextField } from '@material-ui/core';
+import buttonsCss from '../css/buttons';
 
 const useStyle = makeStyles({
   root: {
@@ -54,9 +55,9 @@ const useStyle = makeStyles({
     },
   },
   buttons: {
+    ...buttonsCss.buttons,
     width: '30vw',
     height: '8vh',
-    backgroundImage: 'linear-gradient(40deg, #4760ff 0%, #82a4f8 100%)',
   },
 });
 
