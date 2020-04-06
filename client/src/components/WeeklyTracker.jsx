@@ -53,7 +53,6 @@ const useStyles = makeStyles({
   },
   weeklyTrackerContainer: {
     left: '0',
-    transform: 'translateX(-50%)',
   },
 });
 
@@ -75,7 +74,7 @@ const WeeklyTracker = props => {
   });
 
   const openDetail = () => {
-    setDetailData([JSON.parse(children.props.dayData)]);
+    setDetailData([children.props.dayData]);
     setToggleValue('myHealthLog');
   };
 
