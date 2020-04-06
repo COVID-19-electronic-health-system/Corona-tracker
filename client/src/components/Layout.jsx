@@ -28,7 +28,7 @@ const useStyles = makeStyles(() => ({
   root: {
     textAlign: 'center',
     backgroundImage: 'linear-gradient(#d7e1fa, #bbcef9)',
-    overflowY: 'auto',
+    overflowY: 'hidden',
     height: '85vh',
     overflowX: 'hidden',
   },
