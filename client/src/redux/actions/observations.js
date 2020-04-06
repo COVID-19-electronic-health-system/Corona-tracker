@@ -18,4 +18,3 @@ export function setObservations(observations) {
     observations,
   };
 }
-

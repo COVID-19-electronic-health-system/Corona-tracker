@@ -1,4 +1,3 @@
-
 import { setNumObservations, setObservations } from './observations';
 import { setLoginLoading } from './login';
 import { setNavbarSection } from './navigation';
