@@ -45,7 +45,6 @@ export default function TranslationsMenu() {
           onClose={handleClose}
           value={anchorEl}
           onChange={handleClick}
-          label="Language"
         >
           <MenuItem value={'en'}>English</MenuItem>
           <MenuItem value={'es'}>Spanish</MenuItem>
