@@ -14,10 +14,12 @@ const LogTable = props => {
     'Overall Feeling',
     'Cough',
     'Fever',
-    'Dizziness',
-    'Headache',
+    'Chills',
+    'Shortness Of Breath',
     'Sore Throat',
-    'Congestion',
+    'Chest Pain',
+    'Fatigue',
+    'Bluishness',
     'Comments',
   ];
 
@@ -37,24 +39,14 @@ const LogTable = props => {
               <TableRow>
                 <TableCell>{new Date(observation.date).toISOString().slice(0, 10)}</TableCell>
                 <TableCell>{observation.physical.dailyfeeling}</TableCell>
-                <TableCell>
-                  {observation.physical.hasCough.toString()} ({observation.physical.coughSeverity})
-                </TableCell>
-                <TableCell>
-                  {observation.physical.hasfever.toString()} ({observation.physical.feverSeverity})
-                </TableCell>
-                <TableCell>
-                  {observation.physical.hasDizziness.toString()} ({observation.physical.dizzinessSeverity})
-                </TableCell>
-                <TableCell>
-                  {observation.physical.hasHeadache.toString()} ({observation.physical.headacheSeverity})
-                </TableCell>
-                <TableCell>
-                  {observation.physical.hasSoreThroat.toString()} ({observation.physical.soreThroatSeverity})
-                </TableCell>
-                <TableCell>
-                  {observation.physical.hasCongestion.toString()} ({observation.physical.congestionSeverity})
-                </TableCell>
+                <TableCell>{observation.physical.coughSeverity}</TableCell>
+                <TableCell>{observation.physical.feverSeverity}</TableCell>
+                <TableCell>{observation.physical.chillsSeverity}</TableCell>
+                <TableCell>{observation.physical.shortnessOfBreathSeverity}</TableCell>
+                <TableCell>{observation.physical.soreThroatSeverity}</TableCell>
+                <TableCell>{observation.physical.chestPainSeverity}</TableCell>
+                <TableCell>{observation.physical.fatigueSeverity}</TableCell>
+                <TableCell>{observation.physical.bluishnessSeverity}</TableCell>
                 <TableCell>{observation.nonPhysical.openComment}</TableCell>
               </TableRow>
             </TableBody>
