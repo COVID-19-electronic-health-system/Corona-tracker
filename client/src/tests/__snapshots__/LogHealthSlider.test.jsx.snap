@@ -2,48 +2,48 @@
 
 exports[`LogHealthSlider should render correctly 1`] = `
 <div
-  className="makeStyles-noSelect-8"
+  className="makeStyles-noSelect-1"
 >
   <div
-    className="makeStyles-item-1"
+    className="makeStyles-item-2"
   >
     <div
-      className="makeStyles-itemGridDiv-2"
+      className="makeStyles-itemGridDiv-3"
     >
       <div
         className="MuiGrid-root MuiGrid-container MuiGrid-align-items-xs-center MuiGrid-justify-xs-space-around"
       >
         <div
-          className="MuiGrid-root makeStyles-imageContainer-6 MuiGrid-item"
+          className="MuiGrid-root makeStyles-imageContainer-7 MuiGrid-item"
         >
           <img
             alt="Yes"
-            className="makeStyles-image-7"
+            className="makeStyles-image-8"
             src="Calendar_Menu_Checkmark.svg"
           />
         </div>
         <div
-          className="MuiGrid-root makeStyles-imageContainer-6 MuiGrid-item"
+          className="MuiGrid-root makeStyles-imageContainer-7 MuiGrid-item"
         >
           <img
             alt="Remind Me"
-            className="makeStyles-image-7"
+            className="makeStyles-image-8"
             src="Calendar_Menu_Alarm.svg"
           />
         </div>
         <div
-          className="MuiGrid-root makeStyles-imageContainer-6 MuiGrid-item"
+          className="MuiGrid-root makeStyles-imageContainer-7 MuiGrid-item"
         >
           <img
             alt="No"
-            className="makeStyles-image-7"
+            className="makeStyles-image-8"
             src="Calendar_Menu_X.svg"
           />
         </div>
       </div>
     </div>
     <div
-      className="makeStyles-fg-3"
+      className="makeStyles-fg-4"
       onMouseDown={[Function]}
       onTouchStart={[Function]}
       style={
@@ -53,17 +53,17 @@ exports[`LogHealthSlider should render correctly 1`] = `
       }
     >
       <div
-        className="makeStyles-fgGridDiv-4"
+        className="makeStyles-fgGridDiv-5"
       >
         <div
           className="MuiGrid-root MuiGrid-container MuiGrid-align-items-xs-center"
         >
           <div
-            className="MuiGrid-root makeStyles-imageContainer-6 MuiGrid-item MuiGrid-grid-xs-1"
+            className="MuiGrid-root makeStyles-imageContainer-7 MuiGrid-item MuiGrid-grid-xs-1"
           >
             <img
               alt="threeLinesSvg"
-              className="makeStyles-image-7"
+              className="makeStyles-image-8"
               src="Calendar_Three-Lines.svg"
             />
           </div>
@@ -74,7 +74,7 @@ exports[`LogHealthSlider should render correctly 1`] = `
               className="MuiGrid-root MuiGrid-item MuiGrid-grid-xs-2"
             >
               <p
-                className="MuiTypography-root makeStyles-bold-5 MuiTypography-body1"
+                className="MuiTypography-root makeStyles-bold-6 MuiTypography-body1"
               >
                 Today
               </p>
@@ -93,7 +93,7 @@ Daily Health Log!
               className="MuiGrid-root MuiGrid-item MuiGrid-grid-xs-7 MuiGrid-grid-sm-6"
             >
               <p
-                className="MuiTypography-root makeStyles-bold-5 MuiTypography-body1"
+                className="MuiTypography-root makeStyles-bold-6 MuiTypography-body1"
               >
                 Swipe to Complete &gt; &gt; &gt;
               </p>
