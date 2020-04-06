@@ -6,8 +6,8 @@ import { BottomNavigation, BottomNavigationAction } from '@material-ui/core/';
 import FeaturedPlayListOutlinedIcon from '@material-ui/icons/FeaturedPlayListOutlined';
 import StarBorderIcon from '@material-ui/icons/StarBorder';
 import LocationOnOutlinedIcon from '@material-ui/icons/LocationOnOutlined';
-import SettingsOutlinedIcon from '@material-ui/icons/SettingsOutlined';
 import PropTypes from 'prop-types';
+import More from './More';
 
 const styles = {
   root: {
@@ -90,13 +90,13 @@ const NavBar = props => {
           icon={<LocationOnOutlinedIcon className={classes.buttons} />}
         />
         <BottomNavigationAction
-          label="Settings"
-          value="settings"
+          label="More"
+          value="more"
           classes={{
             root: classes.actionItem,
             selected: classes.selected,
           }}
-          icon={<SettingsOutlinedIcon className={classes.buttons} />}
+          icon={<More />}
         />
       </BottomNavigation>
     </div>

@@ -1,3 +1,13 @@
-test('renders Calendar component', () => {
-  // render(<AppCalendar />); DOESN'T WORK FOR TOP-LEVEL TESTS. NEEDS TO BE PLACED UNDER A ROUTER
+import React from 'react';
+import Calendar from 'react-calendar/dist/umd/Calendar';
+import { render } from '@testing-library/react';
+
+// describe('Calendar', () => {
+//   it('should render a Calendar component', () => {
+//     return <Calendar />;
+//   });
+// });
+
+test('renders a Calendar component', () => {
+  render(<Calendar />);
 });

@@ -4,7 +4,8 @@ import { configure, User } from 'radiks';
 import { Connect } from '@blockstack/connect';
 import { BrowserRouter, Switch } from 'react-router-dom';
 import { connect } from 'react-redux';
-import ReactBlockstack, { useBlockstack, didConnect } from 'react-blockstack';
+import ReactBlockstack, { useBlockstack, didConnect, useFile } from 'react-blockstack';
+import Container from '@material-ui/core/Container';
 import Layout from './Layout';
 import Map from './Map';
 import DiagnosticContainer from './DiagnosticContainer';
@@ -14,6 +15,8 @@ import FactQuizContainer from './FactQuizContainer';
 import PrivateRoute from './PrivateRoute';
 import SymptomsTracker from './SymptomsTracker';
 import OnboardUser from './OnboardUser';
+import About from './About';
+import Disclaimer from './Disclaimer';
 
 const RADIKS_URL = process.env.REACT_APP_QA_URL || 'http://127.0.0.1:1260'; // TODO this will change to wherever our radiks server will be hosted in prod
 
@@ -41,10 +44,27 @@ function App() {
     userSession,
   };
 
+  const [disclaimerString] = useFile('disclaimer.json');
+
+  // If the content is null, disclaimer was not found, show disclaimer
+  let showDisclaimer = disclaimerString === null;
+
+  if (disclaimerString) {
+    const disclaimer = JSON.parse(disclaimerString);
+
+    // If disclaimer was found, show disclaimer if user did not agree
+    showDisclaimer = !disclaimer.answerChoice;
+  }
+
   return (
     <BrowserRouter>
       <Connect authOptions={authOptions}>
         <Layout>
+          {showDisclaimer && (
+            <Container>
+              <Disclaimer />
+            </Container>
+          )}
           <Switch>
             <PrivateRoute exact path="/" component={() => <DiagnosticContainer />} />
 
@@ -56,7 +76,8 @@ function App() {
             <PrivateRoute path="/education" component={() => <FactQuizContainer />} />
             <PrivateRoute path="/map" component={() => <Map />} />
             <PrivateRoute path="/settings" />
-            <PrivateRoute path="/onboard" component={OnboardUser} />
+            <PrivateRoute path="/onboard" component={() => <OnboardUser />} />
+            <PrivateRoute paht="/about" component={() => <About />} />
           </Switch>
         </Layout>
       </Connect>

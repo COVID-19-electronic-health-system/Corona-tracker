@@ -1,0 +1,107 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`LogHealthSlider should render correctly 1`] = `
+<div
+  className="makeStyles-noSelect-1"
+>
+  <div
+    className="makeStyles-item-2"
+  >
+    <div
+      className="makeStyles-itemGridDiv-3"
+    >
+      <div
+        className="MuiGrid-root MuiGrid-container MuiGrid-align-items-xs-center MuiGrid-justify-xs-space-around"
+      >
+        <div
+          className="MuiGrid-root makeStyles-imageContainer-7 MuiGrid-item"
+        >
+          <img
+            alt="Yes"
+            className="makeStyles-image-8"
+            src="Calendar_Menu_Checkmark.svg"
+          />
+        </div>
+        <div
+          className="MuiGrid-root makeStyles-imageContainer-7 MuiGrid-item"
+        >
+          <img
+            alt="Remind Me"
+            className="makeStyles-image-8"
+            src="Calendar_Menu_Alarm.svg"
+          />
+        </div>
+        <div
+          className="MuiGrid-root makeStyles-imageContainer-7 MuiGrid-item"
+        >
+          <img
+            alt="No"
+            className="makeStyles-image-8"
+            src="Calendar_Menu_X.svg"
+          />
+        </div>
+      </div>
+    </div>
+    <div
+      className="makeStyles-fg-4"
+      onMouseDown={[Function]}
+      onTouchStart={[Function]}
+      style={
+        Object {
+          "transform": "none",
+        }
+      }
+    >
+      <div
+        className="makeStyles-fgGridDiv-5"
+      >
+        <div
+          className="MuiGrid-root MuiGrid-container MuiGrid-align-items-xs-center"
+        >
+          <div
+            className="MuiGrid-root makeStyles-imageContainer-7 MuiGrid-item MuiGrid-grid-xs-1"
+          >
+            <img
+              alt="threeLinesSvg"
+              className="makeStyles-image-8"
+              src="Calendar_Three-Lines.svg"
+            />
+          </div>
+          <div
+            className="MuiGrid-root MuiGrid-container MuiGrid-spacing-xs-1 MuiGrid-item MuiGrid-align-items-xs-center MuiGrid-grid-xs-11"
+          >
+            <div
+              className="MuiGrid-root MuiGrid-item MuiGrid-grid-xs-2"
+            >
+              <p
+                className="MuiTypography-root makeStyles-bold-6 MuiTypography-body1"
+              >
+                Today
+              </p>
+            </div>
+            <div
+              className="MuiGrid-root makeStyles-itsTime-9 MuiGrid-item MuiGrid-grid-xs-4"
+            >
+              <p
+                className="MuiTypography-root MuiTypography-body1"
+              >
+                It's time to enter your
+Daily Health Log!
+              </p>
+            </div>
+            <div
+              className="MuiGrid-root MuiGrid-item MuiGrid-grid-xs-7 MuiGrid-grid-sm-6"
+            >
+              <p
+                className="MuiTypography-root makeStyles-bold-6 MuiTypography-body1"
+              >
+                Swipe to Complete &gt; &gt; &gt;
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+`;

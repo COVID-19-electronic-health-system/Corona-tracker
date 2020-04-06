@@ -1,9 +1,7 @@
 import React from 'react';
-import { createMuiTheme, ThemeProvider } from '@material-ui/core';
+import { createMuiTheme, ThemeProvider, CssBaseline } from '@material-ui/core';
 import { makeStyles } from '@material-ui/core/styles';
-import Button from '@material-ui/core/Button';
 import { useBlockstack } from 'react-blockstack';
-import { useTranslation } from 'react-i18next';
 import PropTypes from 'prop-types';
 import { ReactComponent as Logo } from '../img/Logo_CORONATRACKER_Logo.svg';
 import { ReactComponent as TextLogo } from '../img/Logo_CORONATRACKER_Text_Logo.svg';
@@ -27,12 +25,12 @@ const theme = createMuiTheme({
   },
 });
 const useStyles = makeStyles(() => ({
-  // the styles goes here as an object
   root: {
     textAlign: 'center',
     backgroundImage: 'linear-gradient(#d7e1fa, #bbcef9)',
-    overflowY: 'scroll',
+    overflowY: 'auto',
     height: '85vh',
+    overflowX: 'hidden',
   },
   logo: {
     width: '75px',
@@ -54,25 +52,23 @@ const useStyles = makeStyles(() => ({
 const Layout = props => {
   const { children } = props;
   const classes = useStyles();
-  const { authenticated, signOut } = useBlockstack();
-  const { t } = useTranslation();
+  const { authenticated } = useBlockstack();
 
   return (
     <ThemeProvider theme={theme}>
-      {authenticated ? (
-        <div className={classes.root}>
-          <Logo className={classes.logo} />
-          <TextLogo className={classes.textLogo} />
+      <CssBaseline>
+        {authenticated ? (
+          <div className={classes.root}>
+            <Logo className={classes.logo} />
+            <TextLogo className={classes.textLogo} />
 
-          <Button size="medium" color="secondary" variant="contained" onClick={signOut}>
-            {t('signoutButtonText')}
-          </Button>
-          {children}
-          <NavBar />
-        </div>
-      ) : (
-        <Login />
-      )}
+            {children}
+            <NavBar />
+          </div>
+        ) : (
+          <Login />
+        )}
+      </CssBaseline>
     </ThemeProvider>
   );
 };

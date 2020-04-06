@@ -1,48 +1,37 @@
+/* eslint-disable no-unused-vars */
+/* eslint-disable no-await-in-loop */
+
 import React, { useEffect, useRef } from 'react';
 import { useSelector } from 'react-redux';
 import * as chartJs from 'chart.js';
+import PropTypes from 'prop-types';
+import { useBlockstack } from 'react-blockstack';
 
-const Chart = () => {
-  // Extratring dummy data from the store
-  const dataSample = useSelector(state => state.root.dataSample);
+const Chart = ({ chartType }) => {
+  const temperatureData = useSelector(state => state.temperatureReducer.temperature);
+  const data = [];
+  let files = [];
+  const { userSession } = useBlockstack();
 
-  // Configuring chart parameters and pusing dummy data
   const chartConfig = {
-    type: 'line',
-    // passing data to out chart
+    type: chartType,
     data: {
-      // labels for X axe, inserting labels data from the store
-      labels: dataSample.labels,
+      labels: temperatureData.labels,
       datasets: [
         {
-          // title of the dataset
-          label: 'Patent temperature',
-          // Y axe color
-          borderColor: 'rgb(200, 30, 132)',
-          // Do not fill space bitween X and Y axes
-          fill: false,
-          // data for Y axe, inserting values data from the store
-          data: dataSample.values,
+          label: 'Patient temperature',
+          backgroundColor: '#4760ff',
+          data: temperatureData.values,
         },
       ],
     },
     options: {
-      // Chart positioning on the page
-      layout: {
-        padding: {
-          left: 0,
-          right: 0,
-          top: 0,
-          bottom: 50,
-        },
-      },
       scales: {
         yAxes: [
           {
-            // Range on the values bitween which Y axe will be streched despite of the dataset values
             ticks: {
-              suggestedMax: 150,
-              suggestedMin: 0,
+              max: 110,
+              min: 80,
             },
           },
         ],
@@ -50,24 +39,77 @@ const Chart = () => {
     },
   };
 
-  // useRef is the React hook which allow us to select DOM node when it's avaliable
   const chartContainer = useRef(null);
 
-  // Chart.js uses the Canvas tag to render Chat inside it
-  // and the ctx parameter in new Chart(ctx, options) is a reference to the
-  // <canvas /> element where chart will be attached.
-  // With second argument we pass chartConfig object which contain all paramets of the chart
+  const getFiles = async () => {
+    files = [];
+    await userSession
+      .listFiles(file => {
+        files.push(file);
+        return true;
+      })
+      .then(async () => {
+        for (let i = 0; i < files.length; i += 1) {
+          if (files[i].includes('observation/')) {
+            const curr = await userSession.getFile(files[i]);
+            data.push(JSON.parse(curr));
+          }
+        }
+      })
+      .then(() => {
+        const map = new Map();
+        data.map(dataPoint => {
+          const date = new Date(dataPoint.date).toISOString().slice(0, 10);
+          let temp = 0;
+
+          if (!parseInt(dataPoint.physical.feverSeverity, 10) > 0) {
+            temp = 0;
+          } else {
+            temp = parseInt(dataPoint.physical.feverSeverity, 10);
+          }
+
+          if (map.has(date)) {
+            if (map.get(date).temp !== 0) {
+              map.get(date).temp = (map.get(date).temp + temp) / (map.get(date).numObservations + 1);
+              map.get(date).numObservations += 1;
+            }
+          } else {
+            map.set(date, {
+              temp,
+              numObservations: 1,
+              date,
+            });
+          }
+          return true;
+        });
+
+        const dates = [];
+        const temps = [];
+
+        map.forEach(entry => {
+          dates.push(entry.date);
+          temps.push(entry.temp);
+        });
+
+        chartConfig.data.labels = dates;
+        chartConfig.labdels = dates;
+        chartConfig.data.datasets[0].data = temps;
+        return true;
+      });
+  };
+
   useEffect(() => {
-    const ChartJS = new chartJs.Chart(chartContainer.current, chartConfig);
-    ChartJS();
+    getFiles(chartConfig).then(() => {
+      const ChartJS = new chartJs.Chart(chartContainer.current, chartConfig);
+    });
+    // eslint-disable-next-line
   }, [chartContainer, chartConfig]);
 
   return (
     <div
-      className="chart-container"
       style={{
-        width: '600px',
-        height: '300px',
+        width: '100%',
+        height: '100px',
       }}
     >
       <canvas id="chart" ref={chartContainer} />
@@ -76,3 +118,7 @@ const Chart = () => {
 };
 
 export default Chart;
+
+Chart.propTypes = {
+  chartType: PropTypes.string.isRequired,
+};

@@ -1,59 +1,116 @@
-import React, { createRef, useState } from 'react';
-import { useHistory } from 'react-router-dom';
-import FullCalendar from '@fullcalendar/react';
-import dayGridPlugin from '@fullcalendar/daygrid';
-import timeGridPlugin from '@fullcalendar/timegrid';
-import interactionPlugin from '@fullcalendar/interaction';
-import '@fullcalendar/core/main.css';
-import '@fullcalendar/daygrid/main.css';
-import '@fullcalendar/timegrid/main.css';
+/* eslint-disable no-unused-vars */
+/* eslint-disable no-await-in-loop */
+/* eslint-disable no-shadow */
+import React, { useRef, useState } from 'react';
+import { useDispatch, connect } from 'react-redux';
+import Calendar from 'react-calendar';
 import { makeStyles } from '@material-ui/core/styles';
+import PropTypes from 'prop-types';
+import actions from '../redux/actions/actions';
+import WeeklyTracker from './WeeklyTracker';
+import WeeklyTrackerDay from './WeeklyTrackerDay';
+import '../css/Calendar.css';
+import calendarDotSvg from '../img/Calendar_Dot.svg';
 
 const useStyles = makeStyles({
   appCalendar: {
     margin: '0 auto',
-    maxWidth: '50%',
-    maxheight: '50%',
+    width: '100vw',
+    maxheight: '30%',
+    backgroundColor: '#97b9f7',
+    color: 'white',
+    fontWeight: 'bold',
+  },
+  reactCalendar: {
+    width: '100vw',
+  },
+  calendarTile: {
+    paddingTop: '15px',
+  },
+  today: {
+    color: 'white',
+    backgroundColor: '#97b9f7',
+  },
+  completedSurvey: {
+    backgroundImage: `url(${calendarDotSvg})`,
+    backgroundPosition: '50% 10%',
+    backgroundRepeat: 'no-repeat',
+    backgroundSize: '8px',
+  },
+  item: {
+    backgroundColor: '#97b9f7',
+    fontSizeAdjust: '16vh',
+    color: 'white',
+    width: '100vw',
+    height: '5vh',
+    border: 'none',
   },
 });
 
-const AppCalendar = () => {
+const AppCalendar = props => {
+  const { setToggleValue, observations } = props;
   const classes = useStyles();
-  // state emulation, store all events user created
-  const [calendarEvents] = useState([]);
+  const dispatch = useDispatch();
+  const [today] = useState(new Date().toLocaleDateString());
+  const [currentObservations, setCurrentObservations] = useState([]);
 
-  const history = useHistory();
+  // select date function
+  const handleDateClick = date => {
+    const dateClickedString = date.toLocaleDateString();
+    setCurrentObservations([]);
+    dispatch(actions.selectDate(JSON.stringify(date).slice(0, 11)));
 
-  // create new event function
-  const handleCreateEventClick = args => {
-    const todaysDate = new Date().toISOString().slice(0, 10);
-    if (args.dateStr === todaysDate) {
-      history.push('/symptomsurvey');
-    }
+    observations.forEach(observation => {
+      const dateString = new Date(observation.date).toLocaleDateString();
+      if (dateString === dateClickedString) {
+        setCurrentObservations(currentObservations => [...currentObservations, observation]);
+      }
+    });
   };
 
-  const calendarComponentRef = createRef();
+  // eslint-disable-next-line
+  const calendarComponentRef = useRef(null);
 
   return (
-    <div>
-      <div className={classes.appCalendar}>
-        <FullCalendar
-          defaultView="dayGridMonth"
-          header={{
-            left: 'prev,next today',
-            center: 'title',
-            right: 'dayGridMonth,timeGridWeek,timeGridDay,listWeek',
-          }}
-          plugins={[dayGridPlugin, timeGridPlugin, interactionPlugin]}
-          ref={calendarComponentRef}
-          events={calendarEvents}
-          dateClick={args => {
-            handleCreateEventClick(args);
-          }}
-        />
-      </div>
+    <div className={classes.appCalendar}>
+      <Calendar
+        className={classes.reactCalendar}
+        onChange={handleDateClick}
+        tileClassName={({ date, view }) => {
+          const dateString = date.toLocaleDateString();
+          const tileClasses = [classes.calendarTile];
+
+          if (dateString === today) {
+            tileClasses.push(classes.today);
+          }
+
+          if (observations.find(observation => new Date(observation.date).toLocaleDateString() === dateString)) {
+            tileClasses.push(classes.completedSurvey);
+          }
+
+          return tileClasses;
+        }}
+      />
+      {currentObservations.map((observation, index) => {
+        return (
+          <div key={observation.date} className={classes.day}>
+            <WeeklyTracker>
+              <WeeklyTrackerDay dayData={observation} />
+            </WeeklyTracker>
+          </div>
+        );
+      })}
     </div>
   );
 };
 
-export default AppCalendar;
+AppCalendar.propTypes = {
+  setToggleValue: PropTypes.func.isRequired,
+  observations: PropTypes.objectOf(Object).isRequired,
+};
+
+function mapStateToProps(state) {
+  return { observations: state.observationsReducer.observations };
+}
+
+export default connect(mapStateToProps)(AppCalendar);

@@ -1,10 +1,12 @@
 /* eslint-disable no-console */
 
-import React, { useState, useEffect, useRef } from 'react';
+import React, { useState, useRef } from 'react';
 import { useHistory } from 'react-router-dom';
 import { makeStyles } from '@material-ui/core/styles';
 import { Typography, Slider, ButtonGroup, Button, TextField, Grid } from '@material-ui/core';
 import { useBlockstack } from 'react-blockstack';
+import { connect } from 'react-redux';
+import PropTypes from 'prop-types';
 import CheckboxButton from './survey-view/checkbox-button/CheckboxButton';
 
 // custom style for material ui elements
@@ -80,7 +82,8 @@ const marks = [
   },
 ];
 
-const SymptomsTracker = () => {
+const SymptomsTracker = props => {
+  const { numObservations } = props;
   const { userSession } = useBlockstack();
   const childRef = useRef();
   const classes = useStyles();
@@ -109,33 +112,9 @@ const SymptomsTracker = () => {
     setAdditionalInfo(e);
   };
 
-  const files = [];
-  let numObservations = 0;
-
-  const fetchFiles = async () => {
-    for (let i = 0; i < files.length; i += 1) {
-      if (files[i].includes('observation')) {
-        const currObservation = parseInt(files[i].replace(/^\D+/g, ''), 10);
-        numObservations = currObservation;
-      }
-    }
-  };
-
-  useEffect(() => {
-    async function fetchData() {
-      await userSession.listFiles(file => {
-        files.push(file);
-        return true;
-      });
-      return files;
-    }
-    fetchData().then(() => {
-      fetchFiles();
-    });
-  });
-
   // aggregate collected data
   const submitSurvey = async () => {
+    window.localStorage.setItem('surveyCompleted', 'true');
     const submission = {
       todayFeeling,
       todaySymptoms,
@@ -145,9 +124,10 @@ const SymptomsTracker = () => {
 
     const observation = childRef.current.createObservation(submission);
     const encryptOptions = { encrypt: true };
+    const fileNumber = `${numObservations + 1}`.padStart(7, '0');
 
     userSession
-      .putFile(`observation/0000000${numObservations + 1}.json`, JSON.stringify(observation.attrs), encryptOptions)
+      .putFile(`observation/${fileNumber}.json`, JSON.stringify(observation.attrs), encryptOptions)
       .then(() => {
         history.push('/');
       })
@@ -214,4 +194,14 @@ const SymptomsTracker = () => {
   );
 };
 
-export default SymptomsTracker;
+SymptomsTracker.propTypes = {
+  numObservations: PropTypes.number.isRequired,
+};
+
+const mapStateToProps = state => {
+  return {
+    numObservations: state.observationsReducer.numObservations,
+  };
+};
+
+export default connect(mapStateToProps)(SymptomsTracker);
