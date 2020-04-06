@@ -1,27 +1,21 @@
-import { OBSERVATIONS_LOADED, NUM_OBSERVATIONS, SET_OBSERVATIONS } from '../actions/observations';
+import Observation from '../../models/observation';
+import { OBSERVATIONS_LOADED } from '../actions/actions';
 
-const initialState = {
-  numObservations: 0,
-  observations: [],
-};
+const initialState = [
+  new Observation({ physical: { temperature: 80 } }),
+  new Observation({ physical: { temperature: 70 } }),
+  new Observation({ physical: { temperature: 56 } }),
+  new Observation({ physical: { temperature: 90 } }),
+  new Observation({ physical: { temperature: 55 } }),
+];
 
 // Updating store based on type of the action
-const observationsReducer = (state = initialState, action) => {
+const observationsReducer = (oldState = initialState, action) => {
   switch (action.type) {
     case OBSERVATIONS_LOADED:
       return action.observations;
-    case NUM_OBSERVATIONS:
-      return {
-        ...state,
-        numObservations: action.numObservations,
-      };
-    case SET_OBSERVATIONS:
-      return {
-        ...state,
-        observations: action.observations,
-      };
     default:
-      return state;
+      return oldState;
   }
 };
 

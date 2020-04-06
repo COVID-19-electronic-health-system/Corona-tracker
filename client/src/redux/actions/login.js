@@ -1,8 +1,8 @@
-export const SET_LOGIN_LOADING = 'SET_LOGIN_LOADING';
+import { SET_LOGIN_LOADING } from './actions'
 
 export function setLoginLoading(isLoading) {
-  return {
-    type: SET_LOGIN_LOADING,
-    isLoading,
-  };
+    return {
+        type: SET_LOGIN_LOADING,
+        isLoading
+    }
 }
