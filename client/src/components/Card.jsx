@@ -22,6 +22,7 @@ const useStyles = makeStyles(() => ({
     boxShadow: '1px 2px 10px 5px #97a2bd',
     padding: '15px',
     willChange: 'transform',
+    userSelect: 'none',
   },
 }));
 const Facts = ({ data }) => {
