@@ -1,4 +1,3 @@
-
 export default class Demographics {
   constructor() {
     this.age = 0;

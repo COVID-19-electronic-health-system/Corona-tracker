@@ -1,4 +1,3 @@
-
 export default class Education {
   constructor() {
     this.education_type = '';

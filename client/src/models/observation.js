@@ -5,11 +5,11 @@ export default class Observation {
     this.coronavirus = {
       closeContactSuspected: false,
       hasCoronaVirus: false,
-      closeContactConfirmedCase: false
+      closeContactConfirmedCase: false,
     };
     this.clinicalStatus = {
       clinicalComorbidties: [],
-      clinicalComorbidtiesAll: '', 
+      clinicalComorbidtiesAll: '',
       height: 0,
       weight: 0,
       isCurrentSmoker: false,
@@ -29,7 +29,7 @@ export default class Observation {
       hasObesity: false,
       isPregnant: false,
       takesImmunodepressants: false,
-      hasFluShot: false
+      hasFluShot: false,
     };
     this.physical = {
       dailyFeeling: 0,
@@ -59,5 +59,5 @@ export default class Observation {
       topConcerns: [],
       openComment: '',
     };
-  } 
+  }
 }

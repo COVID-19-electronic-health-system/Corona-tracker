@@ -1,4 +1,3 @@
-
 export const SAVING = 'SAVING';
 export const IDLE = 'IDLE';
 export const LOADING = 'LOADING';
@@ -11,4 +10,3 @@ export function setNumObservations(numObservations) {
     numObservations,
   };
 }
-
