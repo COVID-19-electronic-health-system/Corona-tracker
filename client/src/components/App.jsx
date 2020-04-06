@@ -1,6 +1,5 @@
 import React, { useCallback } from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
-import { configure, User } from 'radiks';
 import { Connect } from '@blockstack/connect';
 import { BrowserRouter, Switch } from 'react-router-dom';
 import { connect } from 'react-redux';
@@ -18,20 +17,11 @@ import OnboardUser from './OnboardUser';
 import About from './About';
 import Disclaimer from './Disclaimer';
 
-const RADIKS_URL = process.env.REACT_APP_QA_URL || 'http://127.0.0.1:1260'; // TODO this will change to wherever our radiks server will be hosted in prod
-
 ReactBlockstack({ appConfig });
 
 function App() {
   const { userSession } = useBlockstack();
   const finished = useCallback(() => {
-    if (RADIKS_URL) {
-      configure({
-        apiServer: RADIKS_URL,
-        userSession,
-      });
-      User.createWithCurrentUser();
-    }
     didConnect({ userSession });
   }, [userSession]);
   const authOptions = {
