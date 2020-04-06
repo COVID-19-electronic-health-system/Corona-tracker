@@ -16,7 +16,6 @@ import SymptomsTracker from './SymptomsTracker';
 import OnboardUser from './OnboardUser';
 import Disclaimer from './Disclaimer';
 
-
 ReactBlockstack({ appConfig });
 
 function App() {
