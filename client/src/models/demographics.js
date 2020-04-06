@@ -1,20 +1,14 @@
-import { Model } from 'radiks';
-
-export default class Demographics extends Model {
-  static className = 'Demographics';
-
-  static schema = {
-    age: Number,
-    gender: String,
-    race: String,
-    isHispanicOrLatino: Boolean,
-    educationLevel: String,
-    householdSize: Number,
-    essentialJobsInHouseholdNumber: Number,
-    childrenInHouseholdNumber: Number,
-    elderlyInHouseholdNumber: Number,
-    assisstanceHouseholdNumber: Number,
-    livesAlone: Boolean,
-    lastTravelDate: Date,
-  };
+export default class Demographics {
+  constructor() {
+    this.age = 0;
+    this.gender = '';
+    this.race = '';
+    this.isHispanicOrLatino = false;
+    this.educationLevel = '';
+    this.householdSize = 0;
+    this.essentialJobsInHouseholdNumber = 0;
+    this.childrenInHouseholdNumber = 0;
+    this.elderlyInHouseholdNumber = 0;
+    this.assisstanceHouseholdNumber = 0;
+  }
 }
