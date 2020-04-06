@@ -6,6 +6,7 @@ import disclaimerReducer from './disclaimer';
 import calendarReducer from './calendar';
 import temperatureReducer from './temperature';
 import healthToggleReducer from './healthToggle';
+import surveyReducer from './survey';
 
 export default combineReducers({
   loginLoading,
@@ -15,4 +16,5 @@ export default combineReducers({
   calendarReducer,
   temperatureReducer,
   healthToggleReducer,
+  surveyReducer,
 });

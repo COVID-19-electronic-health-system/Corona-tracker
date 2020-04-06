@@ -4,6 +4,7 @@ import { setNavbarSection } from './navigation';
 import { setDisclaimerAnswerThunk } from './disclaimer';
 import { selectDate } from './calendar';
 import { setToggleValue, setDetailData } from './healthToggle';
+import { setSurveyPage1, setSurveyPage2, setSurveyPage3 } from './survey';
 
 const actions = {
   setLoginLoading,
@@ -14,6 +15,9 @@ const actions = {
   selectDate,
   setToggleValue,
   setDetailData,
+  setSurveyPage1,
+  setSurveyPage2,
+  setSurveyPage3,
 };
 
 export default actions;

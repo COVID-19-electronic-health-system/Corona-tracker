@@ -18,8 +18,12 @@ const useStyles = makeStyles(theme => ({
 
 export default function TranslationsMenu() {
   const [anchorEl, setAnchorEl] = React.useState('');
-
   const classes = useStyles();
+  const { i18n, t } = useTranslation();
+
+  const changeLanguage = lng => {
+    i18n.changeLanguage(lng);
+  };
 
   const handleClick = event => {
     setAnchorEl(event.target.value);
@@ -28,11 +32,6 @@ export default function TranslationsMenu() {
 
   const handleClose = () => {
     setAnchorEl('');
-  };
-  const { i18n, t } = useTranslation();
-
-  const changeLanguage = lng => {
-    i18n.changeLanguage(lng);
   };
 
   return (
@@ -46,11 +45,11 @@ export default function TranslationsMenu() {
           value={anchorEl}
           onChange={handleClick}
         >
-          <MenuItem value={'en'}>English</MenuItem>
-          <MenuItem value={'es'}>Spanish</MenuItem>
-          <MenuItem value={'it'}>Italian</MenuItem>
-          <MenuItem value={'fr'}>French</MenuItem>
-          <MenuItem value={'rus'}>Russian</MenuItem>
+          <MenuItem value="en">English</MenuItem>
+          <MenuItem value="es">Spanish</MenuItem>
+          <MenuItem value="it">Italian</MenuItem>
+          <MenuItem value="fr">French</MenuItem>
+          <MenuItem value="rus">Russian</MenuItem>
         </Select>
         <FormHelperText>{t('selectLan')}</FormHelperText>
       </FormControl>
