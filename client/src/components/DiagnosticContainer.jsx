@@ -5,11 +5,8 @@ import { useTranslation } from 'react-i18next';
 import { makeStyles } from '@material-ui/core/styles';
 import PropTypes from 'prop-types';
 import HealthLogToggle from './HealthLogToggle';
-import Subscribe from './Subscribe';
 import SymptomsTracker from './SymptomsTracker';
 import actions from '../redux/actions/actions';
-import Chart from './Chart';
-import chartType from '../utils/chartType';
 
 const useStyles = makeStyles({
   hr: {
@@ -17,6 +14,7 @@ const useStyles = makeStyles({
     border: '1px black solid',
   },
 });
+
 const dateOptions = {
   weekday: 'long',
   year: 'numeric',
@@ -40,37 +38,40 @@ const hasSubmitted = () => {
 };
 
 function DiagnosticContainer(props) {
-  const { setNumObservations } = props;
+  const { setNumObservations, setObservations } = props;
   const classes = useStyles();
   const { userSession } = useBlockstack();
   const today = new Date();
   const { t } = useTranslation();
-  const files = [];
-  let numObservations = 0;
-  const fetchFiles = async () => {
-    for (let i = 0; i < files.length; i += 1) {
-      if (files[i].includes('observation/')) {
-        const currObservation = parseInt(files[i].replace(/^\D+/g, ''), 10);
-        numObservations = currObservation;
-      }
-    }
-    setNumObservations(numObservations);
-  };
-
-  const fetchData = async () => {
-    await userSession.listFiles(file => {
-      files.push(file);
-      return true;
-    });
-    return files;
-  };
 
   useEffect(() => {
-    fetchData().then(() => {
-      fetchFiles();
-    });
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [numObservations]);
+    (async () => {
+      const fileNames = [];
+      const observations = [];
+      let numObservations = 0;
+
+      await userSession.listFiles(fileName => {
+        if (fileName.includes('observation/')) {
+          fileNames.push(fileName);
+        }
+        return true;
+      });
+
+      const getFilePromises = fileNames.map(fileName => {
+        const observationNum = parseInt(fileName.replace(/^\D+/g, ''), 10);
+        numObservations = observationNum;
+        return userSession.getFile(fileName);
+      });
+
+      (await Promise.all(getFilePromises)).forEach(observationString => {
+        const observation = JSON.parse(observationString);
+        observations.push(observation);
+      });
+
+      setObservations(observations);
+      setNumObservations(numObservations);
+    })();
+  });
 
   return hasSubmitted() ? (
     <div>
@@ -82,8 +83,6 @@ function DiagnosticContainer(props) {
       </h5>
       <hr className={classes.hr} />
       <HealthLogToggle />
-      <Chart chartType={chartType.bar} />
-      <Subscribe />
     </div>
   ) : (
     <SymptomsTracker />
@@ -92,18 +91,14 @@ function DiagnosticContainer(props) {
 
 DiagnosticContainer.propTypes = {
   setNumObservations: PropTypes.func.isRequired,
-};
-
-const mapStateToProps = state => {
-  return {
-    numObservations: state.observationsReducer.numObservations,
-  };
+  setObservations: PropTypes.func.isRequired,
 };
 
 const mapDispatchToProps = dispatch => {
   return {
     setNumObservations: numObservations => dispatch(actions.setNumObservations(numObservations)),
+    setObservations: observations => dispatch(actions.setObservations(observations)),
   };
 };
 
-export default connect(mapStateToProps, mapDispatchToProps)(DiagnosticContainer);
+export default connect(null, mapDispatchToProps)(DiagnosticContainer);

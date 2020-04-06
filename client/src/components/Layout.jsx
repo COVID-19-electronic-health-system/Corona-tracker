@@ -25,12 +25,12 @@ const theme = createMuiTheme({
   },
 });
 const useStyles = makeStyles(() => ({
-  // the styles goes here as an object
   root: {
     textAlign: 'center',
     backgroundImage: 'linear-gradient(#d7e1fa, #bbcef9)',
-    overflowY: 'scroll',
+    overflowY: 'auto',
     height: '85vh',
+    overflowX: 'hidden',
   },
   logo: {
     width: '75px',

@@ -1,42 +1,37 @@
 /* eslint-disable no-unused-vars */
+/* eslint-disable no-await-in-loop */
+
 import React, { useEffect, useRef } from 'react';
 import { useSelector } from 'react-redux';
 import * as chartJs from 'chart.js';
 import PropTypes from 'prop-types';
+import { useBlockstack } from 'react-blockstack';
 
 const Chart = ({ chartType }) => {
   const temperatureData = useSelector(state => state.temperatureReducer.temperature);
+  const data = [];
+  let files = [];
+  const { userSession } = useBlockstack();
 
-  // Configuring chart parameters and pusing dummy data
   const chartConfig = {
     type: chartType,
     data: {
       labels: temperatureData.labels,
       datasets: [
         {
-          label: 'Patent temperature',
-          borderColor: 'rgb(200, 30, 132)',
-          fill: false,
+          label: 'Patient temperature',
+          backgroundColor: '#4760ff',
           data: temperatureData.values,
         },
       ],
     },
     options: {
-      layout: {
-        padding: {
-          left: 0,
-          right: 0,
-          top: 0,
-          bottom: 50,
-        },
-      },
       scales: {
         yAxes: [
           {
-            // Range on the values bitween which Y axe will be streched despite of the dataset values
             ticks: {
-              suggestedMax: 150,
-              suggestedMin: 0,
+              max: 110,
+              min: 80,
             },
           },
         ],
@@ -46,15 +41,75 @@ const Chart = ({ chartType }) => {
 
   const chartContainer = useRef(null);
 
+  const getFiles = async () => {
+    files = [];
+    await userSession
+      .listFiles(file => {
+        files.push(file);
+        return true;
+      })
+      .then(async () => {
+        for (let i = 0; i < files.length; i += 1) {
+          if (files[i].includes('observation/')) {
+            const curr = await userSession.getFile(files[i]);
+            data.push(JSON.parse(curr));
+          }
+        }
+      })
+      .then(() => {
+        const map = new Map();
+        data.map(dataPoint => {
+          const date = new Date(dataPoint.date).toISOString().slice(0, 10);
+          let temp = 0;
+
+          if (!parseInt(dataPoint.physical.feverSeverity, 10) > 0) {
+            temp = 0;
+          } else {
+            temp = parseInt(dataPoint.physical.feverSeverity, 10);
+          }
+
+          if (map.has(date)) {
+            if (map.get(date).temp !== 0) {
+              map.get(date).temp = (map.get(date).temp + temp) / (map.get(date).numObservations + 1);
+              map.get(date).numObservations += 1;
+            }
+          } else {
+            map.set(date, {
+              temp,
+              numObservations: 1,
+              date,
+            });
+          }
+          return true;
+        });
+
+        const dates = [];
+        const temps = [];
+
+        map.forEach(entry => {
+          dates.push(entry.date);
+          temps.push(entry.temp);
+        });
+
+        chartConfig.data.labels = dates;
+        chartConfig.labdels = dates;
+        chartConfig.data.datasets[0].data = temps;
+        return true;
+      });
+  };
+
   useEffect(() => {
-    const ChartJS = new chartJs.Chart(chartContainer.current, chartConfig);
+    getFiles(chartConfig).then(() => {
+      const ChartJS = new chartJs.Chart(chartContainer.current, chartConfig);
+    });
+    // eslint-disable-next-line
   }, [chartContainer, chartConfig]);
 
   return (
     <div
       style={{
-        width: '600px',
-        height: '300px',
+        width: '100%',
+        height: '100px',
       }}
     >
       <canvas id="chart" ref={chartContainer} />
