@@ -2,98 +2,88 @@
 
 import React from 'react';
 import { makeStyles } from '@material-ui/core/styles';
-import { useSpring, animated, interpolate } from 'react-spring';
-import { useGesture } from 'react-with-gesture';
+import { useSpring, animated } from 'react-spring';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
+import { useDrag } from 'react-use-gesture';
 import actions from '../redux/actions/actions';
+import noSelectCss from '../css/noSelect';
 
 const useStyles = makeStyles({
+  ...noSelectCss,
   item: {
+    backgroundColor: '#ffffff',
     position: 'relative',
-    width: '100vw',
-    height: '15vh',
+    height: '90px',
     pointerEvents: 'auto',
     transformOrigin: '50% 50% 0px',
-    paddingLeft: '32px',
-    paddingRight: '32px',
     boxSizing: 'border-box',
     display: 'grid',
     alignItems: 'center',
     textAlign: 'center',
-    boxShadow: '0px 10px 10px -5px rgba(0, 0, 0, 0.2)',
   },
   fg: {
     cursor: '-webkit-grab',
-    background: `linear-gradient(45deg, #4760ff, #82a4f8)`,
-    color: 'rgba(255, 255, 255, 0.8)',
+    backgroundColor: '#6795fc',
+    color: '#ffffff',
     position: 'absolute',
     height: '100%',
     width: '100%',
     display: 'grid',
     alignItems: 'center',
     textAlign: 'center',
-    boxShadow: '0px 10px 30px -5px rgba(0, 0, 0, 0.2)',
+    boxShadow: '-10px 0 10px 0 #aaaaaa',
     fontsize: '3em',
     fontWeight: '600',
     transition: 'box-shadow 0.75s',
     '&:active': {
       cursor: '-webkit-grabbing',
-      boxShadow: '0px 15px 30px -5px rgba(0, 0, 0, 0.4)',
     },
     ' > *': {
       pointerEvents: 'none',
     },
-  },
-  av: {
-    width: '60px',
-    height: '60px',
-    borderRadius: '50%',
-    backgroundColor: 'white',
-  },
-  weeklyTrackerContainer: {
-    left: '0',
   },
 });
 
 const WeeklyTracker = props => {
   const { children, setToggleValue, setDetailData } = props;
   const classes = useStyles();
-  const [bind, { delta, down }] = useGesture();
-  const { x, bg, size } = useSpring({
-    x: down ? delta[0] : 0,
-    bg: `linear-gradient(120deg, ${delta[0] < 0 ? '#f093fb 0%, #f5576c' : '#96fbc4 0%, #f9f586'} 100%)`,
-    size: down ? 1.1 : 1,
-    immediate: name => down && name === 'x',
-  });
-  const avSize = x.interpolate({
-    map: Math.abs,
-    range: [50, 300],
-    output: ['scale(0.5)', 'scale(1)'],
-    extrapolate: 'clamp',
-  });
+  let swiped = false;
 
-  const openDetail = () => {
-    setDetailData([children.props.dayData]);
-    setToggleValue('myHealthLog');
-  };
+  const [{ x }, set] = useSpring(() => ({
+    x: 0,
+    onRest: () => {
+      if (swiped) {
+        // After swipe animation finishes, show survey details
+        setDetailData([children.props.dayData]);
+        setToggleValue('myHealthLog');
+      }
+    },
+  }));
+
+  const bind = useDrag(
+    ({ down, movement: [mx], swipe: [swipeX] }) => {
+      if (swipeX === 1) {
+        // User swiped
+        set({ x: window.innerWidth });
+        swiped = true;
+        return;
+      }
+
+      // Don't allow user to drag off the left side of the screen
+      if (mx < 0) {
+        return;
+      }
+
+      set({ x: down ? mx : 0, immediate: down });
+    },
+    { axis: 'x' }
+  );
 
   return (
-    <div className={classes.weeklyTrackerContainer}>
-      <animated.div
-        {...bind()}
-        className={classes.item}
-        style={{ background: bg }}
-        onMouseUp={() => openDetail()}
-        onTouchEnd={() => openDetail()}
-      >
-        <animated.div className={classes.av} style={{ transform: avSize, justifySelf: delta[0] < 0 ? 'end' : 'start' }}>
-          Detail
-        </animated.div>
-        <animated.div
-          className={classes.fg}
-          style={{ transform: interpolate([x, size], (_x, _s) => `translate3d(${_x}px,0,0) scale(${_s})`) }}
-        >
+    <div className={classes.noSelect}>
+      <animated.div className={classes.item}>
+        <animated.div {...bind()} className={classes.fg} style={{ x }}>
           {children}
         </animated.div>
       </animated.div>

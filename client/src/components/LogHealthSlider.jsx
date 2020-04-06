@@ -11,8 +11,10 @@ import CalendarThreeLines from '../img/Calendar_Three-Lines.svg';
 import alarmSvg from '../img/Calendar_Menu_Alarm.svg';
 import checkSvg from '../img/Calendar_Menu_Checkmark.svg';
 import xSvg from '../img/Calendar_Menu_X.svg';
+import noSelectCss from '../css/noSelect';
 
 const useStyles = makeStyles({
+  ...noSelectCss,
   item: {
     backgroundColor: '#ffffff',
     position: 'relative',
@@ -30,7 +32,7 @@ const useStyles = makeStyles({
   },
   fg: {
     cursor: '-webkit-grab',
-    background: `#f64141`,
+    backgroundColor: `#f64141`,
     color: '#ffffff',
     position: 'absolute',
     height: '100%',
@@ -62,14 +64,6 @@ const useStyles = makeStyles({
   },
   image: {
     height: '100%',
-  },
-  noSelect: {
-    WebkitTouchCallout: 'none',
-    WebkitUserSelect: 'none',
-    KhtmlUserSelect: 'none',
-    MozUserSelect: 'none',
-    msUserSelect: 'none',
-    userSelect: 'none',
   },
   itsTime: {
     textAlign: 'left',
