@@ -14,7 +14,7 @@ const styles = {
     width: '100%',
     backgroundColor: '#f64141',
     position: 'fixed',
-    height: '15%',
+    height: '75px',
     bottom: 0,
   },
   actionItem: {
