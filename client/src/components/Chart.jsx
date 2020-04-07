@@ -60,9 +60,13 @@ const Chart = ({ chartType }) => {
         const map = new Map();
         data.map(dataPoint => {
           const date = new Date(dataPoint.date).toISOString().slice(0, 10);
-          let temp = 0;
 
-          if (!parseInt(dataPoint.physical.feverSeverity, 10) > 0) {
+          let temp;
+          if (
+            !dataPoint.physical.feverSeverity ||
+            dataPoint.physical.feverSeverity === '' ||
+            !parseInt(dataPoint.physical.feverSeverity, 10) > 0
+          ) {
             temp = 0;
           } else {
             temp = parseInt(dataPoint.physical.feverSeverity, 10);
@@ -71,12 +75,14 @@ const Chart = ({ chartType }) => {
           if (map.has(date)) {
             if (map.get(date).temp !== 0) {
               map.get(date).temp = (map.get(date).temp + temp) / (map.get(date).numObservations + 1);
-              map.get(date).numObservations += 1;
             }
+            map.set(temp, {
+              temp,
+              date,
+            });
           } else {
             map.set(date, {
               temp,
-              numObservations: 1,
               date,
             });
           }
@@ -85,7 +91,6 @@ const Chart = ({ chartType }) => {
 
         const dates = [];
         const temps = [];
-
         map.forEach(entry => {
           dates.push(entry.date);
           temps.push(entry.temp);

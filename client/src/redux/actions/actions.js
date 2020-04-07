@@ -1,14 +1,14 @@
-import { loadObservations, saveObservation, setNumObservations, setObservations } from './observations';
+import { setNumObservations, setObservations } from './observations';
 import { setLoginLoading } from './login';
 import { setNavbarSection } from './navigation';
 import { setDisclaimerAnswerThunk } from './disclaimer';
 import { selectDate } from './calendar';
 import { setToggleValue, setDetailData } from './healthToggle';
+import { setSurveyPage1, setSurveyPage2, setSurveyPage3 } from './survey';
+import { setDemographicsComorbiditiesThunk } from './onboarding';
 
 const actions = {
   setLoginLoading,
-  loadObservations,
-  saveObservation,
   setNavbarSection,
   setNumObservations,
   setObservations,
@@ -16,6 +16,10 @@ const actions = {
   selectDate,
   setToggleValue,
   setDetailData,
+  setSurveyPage1,
+  setSurveyPage2,
+  setSurveyPage3,
+  setDemographicsComorbiditiesThunk,
 };
 
 export default actions;

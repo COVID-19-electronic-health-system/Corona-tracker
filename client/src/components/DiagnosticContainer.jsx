@@ -5,7 +5,7 @@ import { useTranslation } from 'react-i18next';
 import { makeStyles } from '@material-ui/core/styles';
 import PropTypes from 'prop-types';
 import HealthLogToggle from './HealthLogToggle';
-import SymptomsTracker from './SymptomsTracker';
+import Survey from './survey/Survey';
 import actions from '../redux/actions/actions';
 
 const useStyles = makeStyles({
@@ -85,7 +85,7 @@ function DiagnosticContainer(props) {
       <HealthLogToggle />
     </div>
   ) : (
-    <SymptomsTracker />
+    <Survey />
   );
 }
 
