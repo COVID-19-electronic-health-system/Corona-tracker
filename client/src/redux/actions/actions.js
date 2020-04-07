@@ -5,6 +5,7 @@ import { setDisclaimerAnswerThunk } from './disclaimer';
 import { selectDate } from './calendar';
 import { setToggleValue, setDetailData } from './healthToggle';
 import { setSurveyPage1, setSurveyPage2, setSurveyPage3 } from './survey';
+import { setDemographicsComorbiditiesThunk } from './onboarding';
 
 const actions = {
   setLoginLoading,
@@ -18,6 +19,7 @@ const actions = {
   setSurveyPage1,
   setSurveyPage2,
   setSurveyPage3,
+  setDemographicsComorbiditiesThunk,
 };
 
 export default actions;
