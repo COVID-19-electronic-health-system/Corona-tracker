@@ -29,14 +29,19 @@ const useStyles = makeStyles(() => ({
 }));
 
 const SurveyPage3 = props => {
-  const { numObservations, setSurveyPage3, survey } = props;
+  const { numObservations, setSurveyPage3, survey, toSurveyPage2, clearSurvey } = props;
+  const { nonPhysical } = survey;
   const classes = useStyles();
-  const [openComment, setOpenComment] = useState('');
+  const [openComment, setOpenComment] = useState(nonPhysical.openComment || '');
   const history = useHistory();
   const { userSession } = useBlockstack();
 
   const handleopenComment = value => {
     setOpenComment(value);
+  };
+
+  const sendBackToPage2 = () => {
+    toSurveyPage2({ openComment });
   };
 
   const submitSurveyPage3 = async () => {
@@ -55,6 +60,8 @@ const SurveyPage3 = props => {
         openComment,
       });
 
+      clearSurvey();
+
       window.localStorage.setItem('surveyCompleted', 'true');
     } catch (err) {
       console.log(err);
@@ -72,10 +79,14 @@ const SurveyPage3 = props => {
             <TextField
               variant="outlined"
               className={classes.additionalComments}
+              defaultValue={openComment}
               onChange={e => handleopenComment(e.target.value)}
             />
           </Grid>
           <Grid item xs={12} xl={4}>
+            <Button onClick={sendBackToPage2} variant="outlined" color="secondary" className={classes.continueButton}>
+              BACK
+            </Button>
             <Button onClick={submitSurveyPage3} color="secondary" className={classes.continueButton}>
               SUBMIT
             </Button>
@@ -89,6 +100,8 @@ SurveyPage3.propTypes = {
   numObservations: PropTypes.number.isRequired,
   setSurveyPage3: PropTypes.func.isRequired,
   survey: PropTypes.objectOf(object).isRequired,
+  toSurveyPage2: PropTypes.func.isRequired,
+  clearSurvey: PropTypes.func.isRequired,
 };
 
 const mapStateToProps = state => {
@@ -101,6 +114,8 @@ const mapStateToProps = state => {
 const mapDispatchToProps = dispatch => {
   return {
     setSurveyPage3: survey => dispatch(actions.setSurveyPage3(survey)),
+    toSurveyPage2: survey => dispatch(actions.toSurveyPage2(survey)),
+    clearSurvey: () => dispatch(actions.clearSurvey()),
   };
 };
 
