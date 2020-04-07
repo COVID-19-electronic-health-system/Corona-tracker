@@ -8,6 +8,7 @@ import buttonsCss from '../css/buttons';
 const useStyles = makeStyles({
   buttonGroup: {
     ...buttonsCss.buttons,
+    overflow: 'hidden'
   },
 });
 
