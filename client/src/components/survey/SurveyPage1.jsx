@@ -104,9 +104,9 @@ const SurveyPage1 = props => {
   const { setSurveyPage1, dailyfeeling, dailySymptomsFeeling, dailyComparedToYesterday } = props;
   const classes = useStyles();
   const [open, setOpen] = useState(false);
-  const [todaySet, setTodaySet] = useState(!!dailyfeeling);
-  const [symptomsSet, setSymptomsSet] = useState(!!dailySymptomsFeeling);
-  const [comparedSet, setComparedSet] = useState(!!dailyComparedToYesterday);
+  const [todaySet, setTodaySet] = useState(dailyfeeling);
+  const [symptomsSet, setSymptomsSet] = useState(dailySymptomsFeeling);
+  const [comparedSet, setComparedSet] = useState(dailyComparedToYesterday);
   const [todayFeeling, setTodayFeeling] = useState(dailyfeeling);
   const [todaySymptoms, setTodaySymptoms] = useState(dailySymptomsFeeling);
   const [comparedFeeling, setcomparedFeeling] = useState(dailyComparedToYesterday);

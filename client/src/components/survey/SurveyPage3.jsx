@@ -84,11 +84,11 @@ const SurveyPage3 = props => {
             />
           </Grid>
           <Grid item xs={12} xl={4}>
-            <Button onClick={submitSurveyPage3} color="secondary" className={classes.continueButton}>
-              SUBMIT
-            </Button>
             <Button onClick={sendBackToPage2} variant="outlined" color="secondary" className={classes.continueButton}>
               BACK
+            </Button>
+            <Button onClick={submitSurveyPage3} color="secondary" className={classes.continueButton}>
+              SUBMIT
             </Button>
           </Grid>
         </Grid>

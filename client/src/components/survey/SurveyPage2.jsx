@@ -451,11 +451,11 @@ const SurveyPage2 = props => {
           </ButtonGroup>
         </Grid>
       </Grid>
-      <Button onClick={submitSurveyPage2} variant="outlined" color="secondary" className={classes.continueButton}>
-        CONTINUE
-      </Button>
       <Button onClick={sendBackToPage1} variant="outlined" color="secondary" className={classes.continueButton}>
         BACK
+      </Button>
+      <Button onClick={submitSurveyPage2} variant="outlined" color="secondary" className={classes.continueButton}>
+        CONTINUE
       </Button>
       <Dialog open={open} onClose={handleClose}>
         <DialogContent className={classes.dialog}>
