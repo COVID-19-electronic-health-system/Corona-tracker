@@ -40,26 +40,25 @@ const SurveyPage3 = props => {
   };
 
   const submitSurveyPage3 = async () => {
-    const surveyPage3 = {
-      openComment,
-    };
-
-    setSurveyPage3(surveyPage3);
-
-    window.localStorage.setItem('surveyCompleted', 'true');
+    survey.nonPhysical.openComment = openComment;
 
     const observation = survey;
     const encryptOptions = { encrypt: true };
     const fileNumber = `${numObservations + 1}`.padStart(7, '0');
 
-    userSession
-      .putFile(`observation/${fileNumber}.json`, JSON.stringify(observation), encryptOptions)
-      .then(() => {
-        history.push('/');
-      })
-      .catch(err => {
-        console.log(err);
+    try {
+      await userSession.putFile(`observation/${fileNumber}.json`, JSON.stringify(observation), encryptOptions);
+
+      history.push('/');
+
+      setSurveyPage3({
+        openComment,
       });
+
+      window.localStorage.setItem('surveyCompleted', 'true');
+    } catch (err) {
+      console.log(err);
+    }
   };
 
   return (
