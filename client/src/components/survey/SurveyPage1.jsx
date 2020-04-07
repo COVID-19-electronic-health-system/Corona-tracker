@@ -101,15 +101,15 @@ const marks = [
 ];
 
 const SurveyPage1 = props => {
-  const { setSurveyPage1 } = props;
+  const { setSurveyPage1, dailyfeeling, dailySymptomsFeeling, dailyComparedToYesterday } = props;
   const classes = useStyles();
   const [open, setOpen] = useState(false);
-  const [todaySet, setTodaySet] = useState(false);
-  const [symptomsSet, setSymptomsSet] = useState(false);
-  const [comparedSet, setComparedSet] = useState(false);
-  const [todayFeeling, setTodayFeeling] = useState(-1);
-  const [todaySymptoms, setTodaySymptoms] = useState(-1);
-  const [comparedFeeling, setcomparedFeeling] = useState('');
+  const [todaySet, setTodaySet] = useState(!!dailyfeeling);
+  const [symptomsSet, setSymptomsSet] = useState(!!dailySymptomsFeeling);
+  const [comparedSet, setComparedSet] = useState(!!dailyComparedToYesterday);
+  const [todayFeeling, setTodayFeeling] = useState(dailyfeeling);
+  const [todaySymptoms, setTodaySymptoms] = useState(dailySymptomsFeeling);
+  const [comparedFeeling, setcomparedFeeling] = useState(dailyComparedToYesterday);
 
   const handlerTodayFeeling = e => {
     setTodayFeeling(e);
@@ -164,7 +164,7 @@ const SurveyPage1 = props => {
           <Slider
             onChange={(e, val) => handlerTodayFeeling(val)}
             color="secondary"
-            defaultValue={3}
+            defaultValue={todayFeeling || 3}
             aria-labelledby="discrete-slider"
             valueLabelDisplay="auto"
             step={0.5}
@@ -179,7 +179,7 @@ const SurveyPage1 = props => {
           <Slider
             onChange={(e, val) => handlerTodaySymptoms(val)}
             color="secondary"
-            defaultValue={3}
+            defaultValue={todaySymptoms || 3}
             aria-labelledby="discrete-slider"
             valueLabelDisplay="auto"
             step={0.5}
@@ -248,6 +248,23 @@ const SurveyPage1 = props => {
 
 SurveyPage1.propTypes = {
   setSurveyPage1: PropTypes.func.isRequired,
+  dailyfeeling: PropTypes.number,
+  dailySymptomsFeeling: PropTypes.number,
+  dailyComparedToYesterday: PropTypes.string,
+};
+
+SurveyPage1.defaultProps = {
+  dailyfeeling: 3,
+  dailySymptomsFeeling: 3,
+  dailyComparedToYesterday: '',
+};
+
+const mapStateToProps = state => {
+  return {
+    dailyfeeling: state.surveyReducer.survey.physical.dailyfeeling,
+    dailySymptomsFeeling: state.surveyReducer.survey.physical.dailySymptomsFeeling,
+    dailyComparedToYesterday: state.surveyReducer.survey.physical.dailyComparedToYesterday,
+  };
 };
 
 const mapDispatchToProps = dispatch => {
@@ -256,4 +273,4 @@ const mapDispatchToProps = dispatch => {
   };
 };
 
-export default connect(null, mapDispatchToProps)(SurveyPage1);
+export default connect(mapStateToProps, mapDispatchToProps)(SurveyPage1);
