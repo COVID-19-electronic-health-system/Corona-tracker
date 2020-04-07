@@ -1,14 +1,10 @@
-import { Model } from 'radiks';
-
-export default class Education extends Model {
-  static className = 'Education';
-
-  static schema = {
-    education_type: String,
-    content_english: String,
-    content_spanish: String,
-    answer_english: String,
-    answer_spanish: String,
-    source: String,
-  };
+export default class Education {
+  constructor() {
+    this.education_type = '';
+    this.content_english = '';
+    this.content_spanish = '';
+    this.answer_english = '';
+    this.answer_spanish = '';
+    this.source = '';
+  }
 }
