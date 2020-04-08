@@ -102,18 +102,20 @@ const useStyles = makeStyles(() => ({
   },
   logo: {
     width: '75px',
-
-    height: '60px',
+    height: '75px',
     // this is for small devices, theme media query there are (sm, md and lg)
-    [theme.breakpoints.down('xs')]: {
-      width: '80px',
+    [theme.breakpoints.up('md')]: {
+      width: '100px',
+
+      height: '100px',
     },
   },
   textLogo: {
-    width: '350px',
-    height: '55px',
-    [theme.breakpoints.down('xs')]: {
-      width: '200px',
+    width: '17em',
+    height: '6em',
+    [theme.breakpoints.up('md')]: {
+      width: '30em',
+      height: '8em',
     },
   },
 }));
