@@ -59,6 +59,7 @@ const useStyles = makeStyles(theme => ({
     alignItems: 'center',
     justifyContent: 'center',
     height: '10vh',
+    marginTop: '2em'
   },
   dialog: {
     background: '#7a9cf9',
@@ -211,7 +212,7 @@ const SurveyPage2 = props => {
 
   return (
     <div className={classes.root}>
-      <Typography variant="body1">
+      <Typography variant="subtitle1">
         <b>Q4: What is your temperature?</b>
       </Typography>
       <Grid container justify="center" spacing={1} className={classes.grid}>
@@ -226,13 +227,13 @@ const SurveyPage2 = props => {
           </TextField>
         </Grid>
       </Grid>
-      <Typography>
+      <Typography variant="subtitle2">
         <b>Q5: Which of the following are you feeling or exhibiting?</b>
       </Typography>
 
       <Grid container justify="center" spacing={1} className={classes.grid}>
         <Grid item xs={3} xl={4} className={classes.gridItem}>
-          <Typography className={classes.text}>Shortness of Breath?</Typography>
+          <Typography variant="body1">Shortness of Breath?</Typography>
         </Grid>
         <Grid item xs={9} xl={4} className={classes.gridItem}>
           <ButtonGroup color="secondary" aria-label="outlined primary button group" className={classes.buttonGroup}>
@@ -265,7 +266,7 @@ const SurveyPage2 = props => {
       </Grid>
       <Grid container justify="center" spacing={1} className={classes.grid}>
         <Grid item xs={3} xl={4} className={classes.gridItem}>
-          <Typography className={classes.text}>Chills?</Typography>
+          <Typography variant="body1">Chills?</Typography>
         </Grid>
         <Grid item xs={9} xl={4} className={classes.gridItem}>
           <ButtonGroup color="secondary" aria-label="outlined primary button group" className={classes.buttonGroup}>
@@ -298,7 +299,7 @@ const SurveyPage2 = props => {
       </Grid>
       <Grid container justify="center" spacing={1} className={classes.grid}>
         <Grid item xs={3} xl={4} className={classes.gridItem}>
-          <Typography className={classes.text}>Dry Cough?</Typography>
+          <Typography variant="body1">Dry Cough?</Typography>
         </Grid>
         <Grid item xs={9} xl={4} className={classes.gridItem}>
           <ButtonGroup color="secondary" aria-label="outlined primary button group" className={classes.buttonGroup}>
@@ -330,7 +331,7 @@ const SurveyPage2 = props => {
       </Grid>
       <Grid container justify="center" spacing={1} className={classes.grid}>
         <Grid item xs={3} xl={4} className={classes.gridItem}>
-          <Typography className={classes.text}>Chest Pain or Pressure?</Typography>
+          <Typography variant="body1">Chest Pain or Pressure?</Typography>
         </Grid>
         <Grid item xs={9} xl={4} className={classes.gridItem}>
           <ButtonGroup color="secondary" aria-label="outlined primary button group" className={classes.buttonGroup}>
@@ -363,7 +364,7 @@ const SurveyPage2 = props => {
       </Grid>
       <Grid container justify="center" spacing={1} className={classes.grid}>
         <Grid item xs={3} xl={4} className={classes.gridItem}>
-          <Typography className={classes.text}>Fatigue?</Typography>
+          <Typography variant="body1">Fatigue?</Typography>
         </Grid>
         <Grid item xs={9} xl={4} className={classes.gridItem}>
           <ButtonGroup color="secondary" aria-label="outlined primary button group" className={classes.buttonGroup}>
@@ -396,7 +397,7 @@ const SurveyPage2 = props => {
       </Grid>
       <Grid container justify="center" spacing={1} className={classes.grid}>
         <Grid item xs={3} xl={4} className={classes.gridItem}>
-          <Typography className={classes.text}>Sore Throat?</Typography>
+          <Typography variant="body1">Sore Throat?</Typography>
         </Grid>
         <Grid item xs={9} xl={4} className={classes.gridItem}>
           <ButtonGroup color="secondary" aria-label="outlined primary button group" className={classes.buttonGroup}>
@@ -429,7 +430,7 @@ const SurveyPage2 = props => {
       </Grid>
       <Grid container justify="center" spacing={1} className={classes.grid}>
         <Grid item xs={3} xl={4} className={classes.gridItem}>
-          <Typography className={classes.text}>Bluish Lips or Face?</Typography>
+          <Typography variant="body1">Bluish Lips or Face?</Typography>
         </Grid>
         <Grid item xs={9} xl={4} className={classes.gridItem}>
           <ButtonGroup color="secondary" aria-label="outlined primary button group" className={classes.buttonGroup}>
