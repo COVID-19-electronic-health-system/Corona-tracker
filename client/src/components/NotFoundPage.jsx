@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 import Button from '@material-ui/core/Button';
 import { makeStyles } from '@material-ui/core/styles';
 import buttonsCss from '../css/buttons';
-import notFoundImgText from '../img/Not-Found.png'
+import notFoundImgText from '../img/Not-Found.png';
 import { ReactComponent as NotFoundImg } from '../img/undraw_not_found.svg';
 
 const useStyles = makeStyles(() => ({
@@ -40,13 +40,11 @@ const useStyles = makeStyles(() => ({
 const NotFoundPage = () => {
   const classes = useStyles();
   return (
-    <div >
+    <div>
       <img src={notFoundImgText} alt="Not found" className={classes.imageText} />
       <hr className={classes.hr} />
       <NotFoundImg className={classes.image} />
-      <div className={classes.mediumText}>
-        Sorry, we couldn’t find the page you were looking for.
-      </div>
+      <div className={classes.mediumText}>Sorry, we couldn’t find the page you were looking for.</div>
       <Button component={Link} to="/" className={classes.button} variant="contained">
         Go back home
       </Button>

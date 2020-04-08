@@ -72,8 +72,8 @@ const Layout = props => {
             <NavBar />
           </div>
         ) : (
-            <Login />
-          )}
+          <Login />
+        )}
       </CssBaseline>
     </ThemeProvider>
   );
