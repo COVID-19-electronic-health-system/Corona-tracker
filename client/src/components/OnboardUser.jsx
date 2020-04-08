@@ -1,10 +1,15 @@
+/* eslint-disable react/button-has-type */
+
 import React, { useState } from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import PropTypes from 'prop-types';
+import { connect } from 'react-redux';
+import { useHistory } from 'react-router-dom';
+import { useBlockstack } from 'react-blockstack';
+import actions from '../redux/actions/actions';
 import profileImg from '../img/profile.png';
 
 const useStyles = makeStyles(() => ({
-  // the styles goes here as an object
   root: {
     display: 'flex',
     flexDirection: 'column',
@@ -96,7 +101,6 @@ const useStyles = makeStyles(() => ({
 }));
 
 const blankForm = {
-  firstName: '',
   age: '',
   gender: '',
   city: '',
@@ -104,8 +108,10 @@ const blankForm = {
   zip: '',
 };
 
-export default function OnboardUser(props) {
-  const { postNewUser, history } = props;
+const OnboardUser = props => {
+  const history = useHistory();
+  const { setDemographicsComorbiditiesThunk } = props;
+  const { userSession } = useBlockstack();
   const [formState, setFormState] = useState(blankForm);
   const handleChange = e => {
     e.preventDefault();
@@ -129,23 +135,7 @@ export default function OnboardUser(props) {
           <b>PROFILE</b>
         </h4>
       </div>
-      <form
-        onSubmit={() => {
-          postNewUser(formState).then(() => history.push('/'));
-        }}
-      >
-        <div className={classes.inputArea}>
-          <h5 className={classes.inputFieldLabel}>
-            <b>First Name:</b>
-          </h5>
-          <input
-            className={classes.inputField}
-            name="firstName"
-            placeholder="Click Here"
-            value={formState.firstName}
-            onChange={handleChange}
-          />
-        </div>
+      <div>
         <div className={classes.inputArea}>
           <h5 className={classes.inputFieldLabel}>
             <b>Age (Years):</b>
@@ -221,8 +211,48 @@ export default function OnboardUser(props) {
             />
           </div>
         </div>
+        <div className={classes.inputArea}>
+          <h5 className={classes.inputFieldLabel}>
+            <b>Do you smoke?</b>
+          </h5>
+          <input
+            className={classes.inputField}
+            name="isSmoker"
+            placeholder="Click Here"
+            value={formState.isSmoker}
+            onChange={handleChange}
+          />
+        </div>
+        <div className={classes.inputArea}>
+          <h5 className={classes.inputFieldLabel}>
+            <b>Do you have obesity?</b>
+          </h5>
+          <input
+            className={classes.inputField}
+            name="isObese"
+            placeholder="Click Here"
+            value={formState.isObese}
+            onChange={handleChange}
+          />
+        </div>
+        <div className={classes.inputArea}>
+          <h5 className={classes.inputFieldLabel}>
+            <b>Do you have asthma?</b>
+          </h5>
+          <input
+            className={classes.inputField}
+            name="isAsthmatic"
+            placeholder="Click Here"
+            value={formState.isAsthmatic}
+            onChange={handleChange}
+          />
+        </div>
         <button
-          type="submit"
+          onClick={() => {
+            // setDemographicsComorbiditiesThunk(formState, userSession).then(() => history.push('/'));
+            setDemographicsComorbiditiesThunk(formState, userSession);
+            history.push('/');
+          }}
           className={classes.button}
           style={{
             width: '300px',
@@ -232,12 +262,20 @@ export default function OnboardUser(props) {
         >
           SAVE MY RESPONSES
         </button>
-      </form>
+      </div>
     </div>
   );
-}
+};
 
 OnboardUser.propTypes = {
-  postNewUser: PropTypes.func.isRequired,
-  history: PropTypes.func.isRequired,
+  setDemographicsComorbiditiesThunk: PropTypes.func.isRequired,
 };
+
+const mapDispatchToProps = dispatch => {
+  return {
+    setDemographicsComorbiditiesThunk: (formData, userSession) =>
+      dispatch(actions.setDemographicsComorbiditiesThunk(formData, userSession)),
+  };
+};
+
+export default connect(null, mapDispatchToProps)(OnboardUser);

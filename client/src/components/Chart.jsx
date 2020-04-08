@@ -60,12 +60,13 @@ const Chart = ({ chartType }) => {
         const map = new Map();
         data.map(dataPoint => {
           const date = new Date(dataPoint.date).toISOString().slice(0, 10);
-          let temp = 0;
-          if (!dataPoint.physical.feverSeverity || dataPoint.physical.feverSeverity === '') {
-            dataPoint.physical.feverSeverity = 0;
-          }
 
-          if (!parseInt(dataPoint.physical.feverSeverity, 10) > 0) {
+          let temp;
+          if (
+            !dataPoint.physical.feverSeverity ||
+            dataPoint.physical.feverSeverity === '' ||
+            !parseInt(dataPoint.physical.feverSeverity, 10) > 0
+          ) {
             temp = 0;
           } else {
             temp = parseInt(dataPoint.physical.feverSeverity, 10);

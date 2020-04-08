@@ -99,17 +99,28 @@ const useStyles = makeStyles(() => ({
 }));
 
 const SurveyPage2 = props => {
-  const { setSurveyPage2 } = props;
+  const {
+    setSurveyPage2,
+    toSurveyPage1,
+    feverSeverity,
+    shortnessOfBreathSeverity,
+    chillsSeverity,
+    coughSeverity,
+    chestPainSeverity,
+    fatigueSeverity,
+    soreThroatSeverity,
+    bluishnessSeverity,
+  } = props;
   const classes = useStyles();
   const [open, setOpen] = useState(false);
-  const [fever, setFever] = useState(-1);
-  const [shortnessOfBreath, setShortnessOfBreath] = useState('');
-  const [chills, setChills] = useState('');
-  const [dryCough, setDryCough] = useState('');
-  const [chestPain, setChestPain] = useState('');
-  const [fatigue, setFatigue] = useState('');
-  const [soreThroat, setSoreThroat] = useState('');
-  const [bluish, setBluish] = useState('');
+  const [fever, setFever] = useState(feverSeverity);
+  const [shortnessOfBreath, setShortnessOfBreath] = useState(shortnessOfBreathSeverity);
+  const [chills, setChills] = useState(chillsSeverity);
+  const [dryCough, setDryCough] = useState(coughSeverity);
+  const [chestPain, setChestPain] = useState(chestPainSeverity);
+  const [fatigue, setFatigue] = useState(fatigueSeverity);
+  const [soreThroat, setSoreThroat] = useState(soreThroatSeverity);
+  const [bluish, setBluish] = useState(bluishnessSeverity);
 
   const handleFever = value => {
     setFever(value);
@@ -147,6 +158,20 @@ const SurveyPage2 = props => {
     setOpen(false);
   };
 
+  const sendBackToPage1 = () => {
+    const currentSurveyState = {
+      fever,
+      shortnessOfBreath,
+      chills,
+      dryCough,
+      chestPain,
+      fatigue,
+      soreThroat,
+      bluish,
+    };
+    toSurveyPage1(currentSurveyState);
+  };
+
   const submitSurveyPage2 = async () => {
     if (
       fever === -1 ||
@@ -182,7 +207,12 @@ const SurveyPage2 = props => {
       </Typography>
       <Grid container justify="center" spacing={1} className={classes.grid}>
         <Grid item xs={3} xl={4}>
-          <TextField type="number" onChange={e => handleFever(e.target.value)} className={classes.temperatureField}>
+          <TextField
+            type="number"
+            onChange={e => handleFever(e.target.value)}
+            className={classes.temperatureField}
+            defaultValue={fever}
+          >
             Fever?
           </TextField>
         </Grid>
@@ -421,6 +451,9 @@ const SurveyPage2 = props => {
           </ButtonGroup>
         </Grid>
       </Grid>
+      <Button onClick={sendBackToPage1} variant="outlined" color="secondary" className={classes.continueButton}>
+        BACK
+      </Button>
       <Button onClick={submitSurveyPage2} variant="outlined" color="secondary" className={classes.continueButton}>
         CONTINUE
       </Button>
@@ -450,12 +483,46 @@ const SurveyPage2 = props => {
 
 SurveyPage2.propTypes = {
   setSurveyPage2: PropTypes.func.isRequired,
+  toSurveyPage1: PropTypes.func.isRequired,
+  feverSeverity: PropTypes.number,
+  shortnessOfBreathSeverity: PropTypes.string,
+  chillsSeverity: PropTypes.string,
+  coughSeverity: PropTypes.string,
+  chestPainSeverity: PropTypes.string,
+  fatigueSeverity: PropTypes.string,
+  soreThroatSeverity: PropTypes.string,
+  bluishnessSeverity: PropTypes.string,
+};
+
+SurveyPage2.defaultProps = {
+  feverSeverity: 98.6,
+  shortnessOfBreathSeverity: '',
+  chillsSeverity: '',
+  coughSeverity: '',
+  chestPainSeverity: '',
+  fatigueSeverity: '',
+  soreThroatSeverity: '',
+  bluishnessSeverity: '',
+};
+
+const mapStateToProps = state => {
+  return {
+    feverSeverity: state.surveyReducer.survey.physical.feverSeverity,
+    shortnessOfBreathSeverity: state.surveyReducer.survey.physical.shortnessOfBreathSeverity,
+    chillsSeverity: state.surveyReducer.survey.physical.chillsSeverity,
+    coughSeverity: state.surveyReducer.survey.physical.coughSeverity,
+    chestPainSeverity: state.surveyReducer.survey.physical.chestPainSeverity,
+    fatigueSeverity: state.surveyReducer.survey.physical.fatigueSeverity,
+    soreThroatSeverity: state.surveyReducer.survey.physical.soreThroatSeverity,
+    bluishnessSeverity: state.surveyReducer.survey.physical.bluishnessSeverity,
+  };
 };
 
 const mapDispatchToProps = dispatch => {
   return {
     setSurveyPage2: survey => dispatch(actions.setSurveyPage2(survey)),
+    toSurveyPage1: survey => dispatch(actions.toSurveyPage1(survey)),
   };
 };
 
-export default connect(null, mapDispatchToProps)(SurveyPage2);
+export default connect(mapStateToProps, mapDispatchToProps)(SurveyPage2);

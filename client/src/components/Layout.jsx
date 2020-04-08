@@ -28,9 +28,15 @@ const useStyles = makeStyles(() => ({
   root: {
     textAlign: 'center',
     backgroundImage: 'linear-gradient(#d7e1fa, #bbcef9)',
-    overflowY: 'hidden',
-    height: '85vh',
+    overflowY: 'auto',
+    height: 'calc(100vh - 75px)',
     overflowX: 'hidden',
+    margin: '0px',
+  },
+  '@global': {
+    'html, body, #root': {
+      height: '100vh',
+    },
   },
   logo: {
     width: '75px',
