@@ -309,7 +309,13 @@ __REMEMBER to always sync up with the remote repository first before making any 
 
 📝 We already included ThemeProvider and CssBaseline APIs. Please use it to advantage of full Material-UI options and not worry about styling every little aspect.
 
+📝 Use Material-UI `Typography` with `variant='x'` where x stands for ` h1,....h6, subtitle1, subtitle2, body1, body2` you can check the sizes on `Layout.jsx` components 
+
+📝 Use Material-UI breakingpoints i.e. `[theme.breakingpoints.up('md'):{width: '100px'} ` and they are as followed`keys:[xs: 0, sm: 479, md: 839,lg: 1279, xl: 1599]` So when using `[theme.breakingpoints.` with ` .down(key)]: .up(key)]: .between(start, end)]: .only(key)]: ` you need to consider these points.
+
 📖 Material-UI has great documentation. There are a lot of examples and answers to many questions you may face from the community. You also can ask for help via Discord in the #front-end chat.
+
+
 
 ## Design Style Guide
 
