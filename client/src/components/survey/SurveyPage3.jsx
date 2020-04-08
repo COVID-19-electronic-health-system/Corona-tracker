@@ -23,7 +23,6 @@ const useStyles = makeStyles(() => ({
     border: '2px solid #f64141',
   },
   continueButton: {
-   
     ...buttonsCss.buttons,
 
     margin: '20px 8px 10px 8px',
