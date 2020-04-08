@@ -23,20 +23,82 @@ const theme = createMuiTheme({
       contrastText: '#fff',
     },
   },
+  breakpoints: {
+    values: {
+      xs: 0,
+      sm: 479,
+      md: 839,
+      lg: 1279,
+      xl: 1599,
+    },
+  },
+  typography: {
+    fontFamily: [
+      '-apple-system',
+      'BlinkMacSystemFont',
+      '"Segoe UI"',
+      'Roboto',
+      '"Helvetica Neue"',
+      'Arial',
+      'Nunito',
+      'sans-serif',
+      '"Apple Color Emoji"',
+      '"Segoe UI Emoji"',
+      '"Segoe UI Symbol"',
+    ].join(','),
+    htmlFontSize: 18,
+    h1: {
+      fontFamily: 'sans-serif',
+      fontSize: '2.5rem',
+    },
+    h2: {
+      fontFamily: 'sans-serif',
+      fontSize: '2.25rem',
+    },
+    h3: {
+      fontFamily: 'sans-serif',
+      fontSize: '2rem',
+    },
+    h4: {
+      fontFamily: 'sans-serif',
+      fontSize: '1.8rem',
+    },
+    h5: {
+      fontFamily: 'sans-serif',
+      fontSize: '1.6rem',
+    },
+    h6: {
+      fontFamily: 'sans-serif',
+      fontSize: '1.4rem',
+    },
+    subtitle1: {
+      fontSize: '1.2rem',
+    },
+    subtitle2: {
+      fontSize: '1.1rem',
+    },
+    body1: {
+      fontSize: '1rem',
+    },
+    body2: {
+      fontSize: '.9rem',
+    },
+  },
 });
 const useStyles = makeStyles(() => ({
+  '@global': {
+    'html, body, #root': {
+      height: '100vh',
+    },
+  },
   root: {
+    fontFamily: 'Helvetica Neue',
     textAlign: 'center',
     backgroundImage: 'linear-gradient(#d7e1fa, #bbcef9)',
     overflowY: 'auto',
     height: 'calc(100vh - 75px)',
     overflowX: 'hidden',
     margin: '0px',
-  },
-  '@global': {
-    'html, body, #root': {
-      height: '100vh',
-    },
   },
   logo: {
     width: '75px',

@@ -29,7 +29,7 @@ const useStyles = makeStyles(() => ({
   buttons: {
     ...buttonsCss.buttons,
     width: '20vw',
-    height: '10vh',
+    height: '5vh',
     margin: '1em',
   },
   continueButton: {
@@ -66,7 +66,6 @@ const useStyles = makeStyles(() => ({
     height: '100%',
     width: '100%',
     margin: '0 auto',
-    marginTop: '2em',
     '@media (min-width: 780px)': {
       // eslint-disable-line no-useless-computed-key
       margin: '0 auto',
@@ -79,13 +78,25 @@ const useStyles = makeStyles(() => ({
   },
   button: {
     ...buttonsCss.buttons,
-    margin: '0.5em',
+    width: '75px',
+    height: '35px',
+    margin: '.5rem',
     background: 'rgba(255,255,255,0.5)',
     backgroundColor: `linear-gradient(45deg, #4760ff, #82a4f8)`,
     color: 'black',
     '&:hover': {
       ...buttonsCss.buttons,
+      width: '75px',
+      height: '35px',
+      margin: '.5rem',
       backgroundColor: `linear-gradient(45deg, #4760ff, #82a4f8)`,
+    },
+
+    '&:active': {
+      ...buttonsCss.buttons,
+      width: '75px',
+      height: '35px',
+      margin: '.5rem',
     },
   },
   text: {
