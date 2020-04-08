@@ -1,7 +1,7 @@
 import React, { useCallback } from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { Connect } from '@blockstack/connect';
-import { BrowserRouter, Switch } from 'react-router-dom';
+import { BrowserRouter, Switch, Route } from 'react-router-dom';
 import { connect } from 'react-redux';
 import ReactBlockstack, { useBlockstack, didConnect, useFile } from 'react-blockstack';
 import Container from '@material-ui/core/Container';
@@ -16,6 +16,7 @@ import Survey from './survey/Survey';
 import OnboardUser from './OnboardUser';
 import About from './About';
 import Disclaimer from './Disclaimer';
+import NotFoundPage from './NotFoundPage';
 
 ReactBlockstack({ appConfig });
 
@@ -67,7 +68,9 @@ function App() {
             <PrivateRoute path="/map" component={() => <Map />} />
             <PrivateRoute path="/settings" />
             <PrivateRoute path="/onboard" component={() => <OnboardUser />} />
-            <PrivateRoute paht="/about" component={() => <About />} />
+            <PrivateRoute path="/about" component={() => <About />} />
+            <Route path="/404" component={NotFoundPage} />
+            <Route path="*" component={NotFoundPage} />
           </Switch>
         </Layout>
       </Connect>
