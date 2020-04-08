@@ -1,11 +1,10 @@
 import React, { useCallback } from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { Connect } from '@blockstack/connect';
-import { BrowserRouter, Switch } from 'react-router-dom';
+import { BrowserRouter, Switch, Route } from 'react-router-dom';
 import { connect } from 'react-redux';
 import ReactBlockstack, { useBlockstack, didConnect, useFile } from 'react-blockstack';
 import Container from '@material-ui/core/Container';
-import { Route, Redirect } from 'react-router-dom';
 import Layout from './Layout';
 import Map from './Map';
 import DiagnosticContainer from './DiagnosticContainer';
@@ -71,7 +70,7 @@ function App() {
             <PrivateRoute path="/onboard" component={() => <OnboardUser />} />
             <PrivateRoute path="/about" component={() => <About />} />
             <Route path="/404" component={NotFoundPage} />
-            <Redirect to="/404" />
+            <Route path="*" component={NotFoundPage} />
           </Switch>
         </Layout>
       </Connect>
