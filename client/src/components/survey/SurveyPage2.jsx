@@ -44,10 +44,15 @@ const useStyles = makeStyles(theme => ({
   grid: {
     overflow: 'scroll',
     marginTop: '2em',
-    [theme.breakpoints.up('lg')]: {
+    [theme.breakpoints.up('sm')]: {
       // eslint-disable-line no-useless-computed-key
       overflow: 'hidden',
-      margin: '0 auto',
+      margin: '0 0 0 7em',
+    },
+    [theme.breakpoints.up('md')]: {
+      // eslint-disable-line no-useless-computed-key
+      overflow: 'hidden',
+      margin: '0 0 0 10em',
     },
   },
   gridItem: {
@@ -65,7 +70,7 @@ const useStyles = makeStyles(theme => ({
     height: '100%',
     width: '100%',
     margin: '0 auto',
-    [theme.breakpoints.up('lg')]: {
+    [theme.breakpoints.up('sm')]: {
       // eslint-disable-line no-useless-computed-key
       margin: '0 auto',
       justifyContent: 'center',
