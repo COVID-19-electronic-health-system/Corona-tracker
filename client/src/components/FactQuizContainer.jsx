@@ -8,7 +8,9 @@ import buttonsCss from '../css/buttons';
 const useStyles = makeStyles({
   buttonGroup: {
     ...buttonsCss.buttons,
-    overflow: 'hidden',
+
+    margin: '20px 8px 10px 8px',
+    width: '160px',
   },
 });
 
@@ -29,7 +31,7 @@ const FactQuizContainer = () => {
             Quiz
           </Button>
         </ButtonGroup>
-        <Typography variant="subtitle1">
+        <Typography variant="body1">
           {factsOrQuiz === 'facts' && `Swipe to the right or click on the TODOARROW to learn more about COVID-19`}
           {factsOrQuiz === 'quiz' && `QUIZ TIME!`}
         </Typography>

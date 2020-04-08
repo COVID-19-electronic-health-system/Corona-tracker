@@ -24,7 +24,9 @@ const useStyles = makeStyles(() => ({
   },
   continueButton: {
     ...buttonsCss.buttons,
-    width: '50vw',
+
+    margin: '20px 8px 10px 8px',
+    width: '160px',
   },
 }));
 

@@ -16,7 +16,7 @@ import PropTypes from 'prop-types';
 import buttonsCss from '../../css/buttons';
 import actions from '../../redux/actions/actions';
 
-const useStyles = makeStyles(() => ({
+const useStyles = makeStyles(theme => ({
   root: {
     alignItems: 'center',
     justifyContent: 'center',
@@ -29,14 +29,14 @@ const useStyles = makeStyles(() => ({
   buttons: {
     ...buttonsCss.buttons,
     width: '20vw',
-    height: '10vh',
-    margin: '1em',
+    height: '5vh',
+    margin: '1.2em',
   },
   continueButton: {
     ...buttonsCss.buttons,
-    marginTop: '2vh',
-    width: '50vw',
-    marginBottom: '8vh',
+
+    margin: '20px 8px 10px 8px',
+    width: '160px',
   },
   temperatureField: {
     marginBottom: '1em',
@@ -44,17 +44,22 @@ const useStyles = makeStyles(() => ({
   grid: {
     overflow: 'scroll',
     marginTop: '2em',
-    '@media (min-width: 780px)': {
+    [theme.breakpoints.up('sm')]: {
       // eslint-disable-line no-useless-computed-key
       overflow: 'hidden',
-      margin: '0 auto',
-      borderBottom: '1px solid black',
+      margin: '0 0 0 7em',
+    },
+    [theme.breakpoints.up('md')]: {
+      // eslint-disable-line no-useless-computed-key
+      overflow: 'hidden',
+      margin: '0 0 0 10em',
     },
   },
   gridItem: {
     alignItems: 'center',
     justifyContent: 'center',
     height: '10vh',
+    marginTop: '2em'
   },
   dialog: {
     background: '#7a9cf9',
@@ -66,8 +71,7 @@ const useStyles = makeStyles(() => ({
     height: '100%',
     width: '100%',
     margin: '0 auto',
-    marginTop: '2em',
-    '@media (min-width: 780px)': {
+    [theme.breakpoints.up('sm')]: {
       // eslint-disable-line no-useless-computed-key
       margin: '0 auto',
       justifyContent: 'center',
@@ -76,24 +80,30 @@ const useStyles = makeStyles(() => ({
   selectedButton: {
     ...buttonsCss.buttons,
     margin: '0.5em',
+
+    width: '75px',
+    height: '35px',
   },
   button: {
     ...buttonsCss.buttons,
-    margin: '0.5em',
+    width: '75px',
+    height: '35px',
+    margin: '.5rem',
     background: 'rgba(255,255,255,0.5)',
     backgroundColor: `linear-gradient(45deg, #4760ff, #82a4f8)`,
     color: 'black',
     '&:hover': {
       ...buttonsCss.buttons,
+      width: '75px',
+      height: '35px',
       backgroundColor: `linear-gradient(45deg, #4760ff, #82a4f8)`,
     },
-  },
-  text: {
-    '@media (min-width: 780px)': {
-      // eslint-disable-line no-useless-computed-key
-      fontSize: '2rem',
-      marginTop: '0.8em',
-      width: '150%',
+
+    '&:active': {
+      ...buttonsCss.buttons,
+      width: '75px',
+      height: '35px',
+      margin: '.5rem',
     },
   },
 }));
@@ -202,7 +212,7 @@ const SurveyPage2 = props => {
 
   return (
     <div className={classes.root}>
-      <Typography>
+      <Typography variant="subtitle1">
         <b>Q4: What is your temperature?</b>
       </Typography>
       <Grid container justify="center" spacing={1} className={classes.grid}>
@@ -217,13 +227,13 @@ const SurveyPage2 = props => {
           </TextField>
         </Grid>
       </Grid>
-      <Typography>
+      <Typography variant="subtitle2">
         <b>Q5: Which of the following are you feeling or exhibiting?</b>
       </Typography>
 
       <Grid container justify="center" spacing={1} className={classes.grid}>
         <Grid item xs={3} xl={4} className={classes.gridItem}>
-          <Typography className={classes.text}>Shortness of Breath?</Typography>
+          <Typography variant="body1">Shortness of Breath?</Typography>
         </Grid>
         <Grid item xs={9} xl={4} className={classes.gridItem}>
           <ButtonGroup color="secondary" aria-label="outlined primary button group" className={classes.buttonGroup}>
@@ -256,7 +266,7 @@ const SurveyPage2 = props => {
       </Grid>
       <Grid container justify="center" spacing={1} className={classes.grid}>
         <Grid item xs={3} xl={4} className={classes.gridItem}>
-          <Typography className={classes.text}>Chills?</Typography>
+          <Typography variant="body1">Chills?</Typography>
         </Grid>
         <Grid item xs={9} xl={4} className={classes.gridItem}>
           <ButtonGroup color="secondary" aria-label="outlined primary button group" className={classes.buttonGroup}>
@@ -289,7 +299,7 @@ const SurveyPage2 = props => {
       </Grid>
       <Grid container justify="center" spacing={1} className={classes.grid}>
         <Grid item xs={3} xl={4} className={classes.gridItem}>
-          <Typography className={classes.text}>Dry Cough?</Typography>
+          <Typography variant="body1">Dry Cough?</Typography>
         </Grid>
         <Grid item xs={9} xl={4} className={classes.gridItem}>
           <ButtonGroup color="secondary" aria-label="outlined primary button group" className={classes.buttonGroup}>
@@ -321,7 +331,7 @@ const SurveyPage2 = props => {
       </Grid>
       <Grid container justify="center" spacing={1} className={classes.grid}>
         <Grid item xs={3} xl={4} className={classes.gridItem}>
-          <Typography className={classes.text}>Chest Pain or Pressure?</Typography>
+          <Typography variant="body1">Chest Pain or Pressure?</Typography>
         </Grid>
         <Grid item xs={9} xl={4} className={classes.gridItem}>
           <ButtonGroup color="secondary" aria-label="outlined primary button group" className={classes.buttonGroup}>
@@ -354,7 +364,7 @@ const SurveyPage2 = props => {
       </Grid>
       <Grid container justify="center" spacing={1} className={classes.grid}>
         <Grid item xs={3} xl={4} className={classes.gridItem}>
-          <Typography className={classes.text}>Fatigue?</Typography>
+          <Typography variant="body1">Fatigue?</Typography>
         </Grid>
         <Grid item xs={9} xl={4} className={classes.gridItem}>
           <ButtonGroup color="secondary" aria-label="outlined primary button group" className={classes.buttonGroup}>
@@ -387,7 +397,7 @@ const SurveyPage2 = props => {
       </Grid>
       <Grid container justify="center" spacing={1} className={classes.grid}>
         <Grid item xs={3} xl={4} className={classes.gridItem}>
-          <Typography className={classes.text}>Sore Throat?</Typography>
+          <Typography variant="body1">Sore Throat?</Typography>
         </Grid>
         <Grid item xs={9} xl={4} className={classes.gridItem}>
           <ButtonGroup color="secondary" aria-label="outlined primary button group" className={classes.buttonGroup}>
@@ -420,7 +430,7 @@ const SurveyPage2 = props => {
       </Grid>
       <Grid container justify="center" spacing={1} className={classes.grid}>
         <Grid item xs={3} xl={4} className={classes.gridItem}>
-          <Typography className={classes.text}>Bluish Lips or Face?</Typography>
+          <Typography variant="body1">Bluish Lips or Face?</Typography>
         </Grid>
         <Grid item xs={9} xl={4} className={classes.gridItem}>
           <ButtonGroup color="secondary" aria-label="outlined primary button group" className={classes.buttonGroup}>
@@ -451,12 +461,14 @@ const SurveyPage2 = props => {
           </ButtonGroup>
         </Grid>
       </Grid>
-      <Button onClick={sendBackToPage1} variant="outlined" color="secondary" className={classes.continueButton}>
-        BACK
-      </Button>
-      <Button onClick={submitSurveyPage2} variant="outlined" color="secondary" className={classes.continueButton}>
-        CONTINUE
-      </Button>
+      <ButtonGroup>
+        <Button onClick={sendBackToPage1} variant="outlined" color="secondary" className={classes.continueButton}>
+          BACK
+        </Button>
+        <Button onClick={submitSurveyPage2} variant="outlined" color="secondary" className={classes.continueButton}>
+          CONTINUE
+        </Button>
+      </ButtonGroup>
       <Dialog open={open} onClose={handleClose}>
         <DialogContent className={classes.dialog}>
           <DialogContentText className={classes.dialogText}>Please complete:</DialogContentText>

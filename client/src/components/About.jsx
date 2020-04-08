@@ -82,7 +82,7 @@ const About = () => {
             <Typography component="h1" variant="h3" align="center" color="textPrimary" gutterBottom>
               For the community, by the community
             </Typography>
-            <Typography variant="h5" align="center" color="textSecondary" paragraph>
+            <Typography variant="body1" align="center" color="textSecondary" paragraph>
               CoronaTracker is an easy-to-use, private-by-design, open-source application for monitoring your health and
               staying informed during the COVID-19 crisis. Here&apos;s what we&apos;ve accomplished so far
             </Typography>
@@ -96,10 +96,10 @@ const About = () => {
                 <Card className={classes.card}>
                   <CardMedia className={classes.cardMedia} image={card.img} title="Image title" />
                   <CardContent className={classes.cardContent}>
-                    <Typography gutterBottom variant="h5" component="h2">
+                    <Typography gutterBottom variant="subtitle1" component="h2">
                       {card.title}
                     </Typography>
-                    <Typography>{card.about}</Typography>
+                    <Typography variant="body2">{card.about}</Typography>
                   </CardContent>
                 </Card>
               </Grid>
@@ -111,7 +111,7 @@ const About = () => {
         <Typography variant="h6" align="center" gutterBottom>
           Support Us!
         </Typography>
-        <Typography variant="subtitle1" align="center" color="textSecondary" component="p">
+        <Typography variant="body1" align="center" color="textSecondary" component="p">
           Star our GitHub, fill out our user survey, anything counts! CoronaTracker is made with{' '}
           <span role="img" aria-label="heart">
             ❤️

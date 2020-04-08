@@ -3,6 +3,7 @@ import { connect } from 'react-redux';
 import { useBlockstack } from 'react-blockstack';
 import { useTranslation } from 'react-i18next';
 import { makeStyles } from '@material-ui/core/styles';
+import { Typography } from '@material-ui/core';
 import PropTypes from 'prop-types';
 import HealthLogToggle from './HealthLogToggle';
 import Survey from './survey/Survey';
@@ -75,12 +76,12 @@ function DiagnosticContainer(props) {
 
   return hasSubmitted() ? (
     <div>
-      <h4>
+      <Typography variant="h5">
         {t('hello')} <b>{userSession.loadUserData().profile.name}</b>
-      </h4>
-      <h5>
+      </Typography>
+      <Typography variant="h6">
         {t('todayText')} <b>{today.toLocaleDateString(undefined, dateOptions)}</b>{' '}
-      </h5>
+      </Typography>
       <hr className={classes.hr} />
       <HealthLogToggle />
     </div>
