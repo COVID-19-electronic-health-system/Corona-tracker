@@ -16,7 +16,7 @@ import PropTypes from 'prop-types';
 import buttonsCss from '../../css/buttons';
 import actions from '../../redux/actions/actions';
 
-const useStyles = makeStyles(() => ({
+const useStyles = makeStyles(theme => ({
   root: {
     alignItems: 'center',
     justifyContent: 'center',
@@ -30,13 +30,13 @@ const useStyles = makeStyles(() => ({
     ...buttonsCss.buttons,
     width: '20vw',
     height: '5vh',
-    margin: '1em',
+    margin: '1.2em',
   },
   continueButton: {
     ...buttonsCss.buttons,
-    marginTop: '2vh',
-    width: '50vw',
-    marginBottom: '8vh',
+
+    margin: '20px 8px 10px 8px',
+    width: '160px',
   },
   temperatureField: {
     marginBottom: '1em',
@@ -44,11 +44,10 @@ const useStyles = makeStyles(() => ({
   grid: {
     overflow: 'scroll',
     marginTop: '2em',
-    '@media (min-width: 780px)': {
+    [theme.breakpoints.up('lg')]: {
       // eslint-disable-line no-useless-computed-key
       overflow: 'hidden',
       margin: '0 auto',
-      borderBottom: '1px solid black',
     },
   },
   gridItem: {
@@ -66,7 +65,7 @@ const useStyles = makeStyles(() => ({
     height: '100%',
     width: '100%',
     margin: '0 auto',
-    '@media (min-width: 780px)': {
+    [theme.breakpoints.up('lg')]: {
       // eslint-disable-line no-useless-computed-key
       margin: '0 auto',
       justifyContent: 'center',
@@ -75,6 +74,9 @@ const useStyles = makeStyles(() => ({
   selectedButton: {
     ...buttonsCss.buttons,
     margin: '0.5em',
+
+    width: '75px',
+    height: '35px',
   },
   button: {
     ...buttonsCss.buttons,
@@ -88,7 +90,6 @@ const useStyles = makeStyles(() => ({
       ...buttonsCss.buttons,
       width: '75px',
       height: '35px',
-      margin: '.5rem',
       backgroundColor: `linear-gradient(45deg, #4760ff, #82a4f8)`,
     },
 
@@ -97,14 +98,6 @@ const useStyles = makeStyles(() => ({
       width: '75px',
       height: '35px',
       margin: '.5rem',
-    },
-  },
-  text: {
-    '@media (min-width: 780px)': {
-      // eslint-disable-line no-useless-computed-key
-      fontSize: '2rem',
-      marginTop: '0.8em',
-      width: '150%',
     },
   },
 }));
@@ -213,7 +206,7 @@ const SurveyPage2 = props => {
 
   return (
     <div className={classes.root}>
-      <Typography>
+      <Typography variant="body1">
         <b>Q4: What is your temperature?</b>
       </Typography>
       <Grid container justify="center" spacing={1} className={classes.grid}>
@@ -462,12 +455,14 @@ const SurveyPage2 = props => {
           </ButtonGroup>
         </Grid>
       </Grid>
-      <Button onClick={sendBackToPage1} variant="outlined" color="secondary" className={classes.continueButton}>
-        BACK
-      </Button>
-      <Button onClick={submitSurveyPage2} variant="outlined" color="secondary" className={classes.continueButton}>
-        CONTINUE
-      </Button>
+      <ButtonGroup>
+        <Button onClick={sendBackToPage1} variant="outlined" color="secondary" className={classes.continueButton}>
+          BACK
+        </Button>
+        <Button onClick={submitSurveyPage2} variant="outlined" color="secondary" className={classes.continueButton}>
+          CONTINUE
+        </Button>
+      </ButtonGroup>
       <Dialog open={open} onClose={handleClose}>
         <DialogContent className={classes.dialog}>
           <DialogContentText className={classes.dialogText}>Please complete:</DialogContentText>
