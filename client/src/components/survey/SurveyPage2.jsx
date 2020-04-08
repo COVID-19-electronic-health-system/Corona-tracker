@@ -59,7 +59,7 @@ const useStyles = makeStyles(theme => ({
     alignItems: 'center',
     justifyContent: 'center',
     height: '10vh',
-    marginTop: '2em',
+    marginTop: '2em'
   },
   dialog: {
     background: '#7a9cf9',
