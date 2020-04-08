@@ -5,6 +5,7 @@ import { BrowserRouter, Switch } from 'react-router-dom';
 import { connect } from 'react-redux';
 import ReactBlockstack, { useBlockstack, didConnect, useFile } from 'react-blockstack';
 import Container from '@material-ui/core/Container';
+import { Route, Redirect } from 'react-router-dom';
 import Layout from './Layout';
 import Map from './Map';
 import DiagnosticContainer from './DiagnosticContainer';
@@ -16,6 +17,7 @@ import Survey from './survey/Survey';
 import OnboardUser from './OnboardUser';
 import About from './About';
 import Disclaimer from './Disclaimer';
+import NotFoundPage from './NotFoundPage';
 
 ReactBlockstack({ appConfig });
 
@@ -67,7 +69,9 @@ function App() {
             <PrivateRoute path="/map" component={() => <Map />} />
             <PrivateRoute path="/settings" />
             <PrivateRoute path="/onboard" component={() => <OnboardUser />} />
-            <PrivateRoute paht="/about" component={() => <About />} />
+            <PrivateRoute path="/about" component={() => <About />} />
+            <Route path="/404" component={NotFoundPage} />
+            <Redirect to="/404" />
           </Switch>
         </Layout>
       </Connect>
