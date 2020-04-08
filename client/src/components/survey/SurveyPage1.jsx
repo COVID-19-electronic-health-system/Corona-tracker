@@ -23,8 +23,8 @@ const useStyles = makeStyles(() => ({
     justifyContent: 'center',
     marginLeft: 'auto',
     marginRight: 'auto',
-    maxWidth: '992px',
-    padding: '24px',
+    fontFamily: 'Nunito',
+    width: '92vw',
   },
   controlLabels: {
     marginLeft: -20,
@@ -37,7 +37,7 @@ const useStyles = makeStyles(() => ({
   },
   continueButton: {
     ...buttonsCss.buttons,
-    marginTop: '10vh',
+    marginTop: '1vh',
     width: '50vw',
   },
   dialog: {
@@ -66,7 +66,7 @@ const useStyles = makeStyles(() => ({
 
 const WellnessSlider = withStyles({
   markLabel: {
-    fontSize: '1.25rem',
+    fontSize: '1.17rem',
   },
 })(Slider);
 
@@ -161,13 +161,13 @@ const SurveyPage1 = props => {
             <b>Let&apos;s answer a few questions!</b>
           </Typography>
         </Grid>
-        <Grid item xs={12}>
-          <Typography>
+        <Grid item xs={12} xl={4}>
+          <Typography variant="body1">
             Be sure to answer truthfully and honestly so that your health record will be accurate and helpful
           </Typography>
         </Grid>
-        <Grid item xs={12}>
-          <Typography id="discrete-slider" gutterBottom>
+        <Grid item xs={12} xl={4} className={classes.gridItem}>
+          <Typography variant="subtitle1" id="discrete-slider" gutterBottom>
             <b>Q1: How do you feel today?</b>
           </Typography>
         </Grid>
@@ -183,9 +183,8 @@ const SurveyPage1 = props => {
             max={5}
             marks={marks}
           />
-        </Grid>
-        <Grid item xs={12}>
-          <Typography id="discrete-slider" gutterBottom>
+
+          <Typography variant="subtitle1" id="discrete-slider" gutterBottom>
             <b>Q2: How are your symptoms?</b>
           </Typography>
         </Grid>
@@ -201,9 +200,8 @@ const SurveyPage1 = props => {
             max={5}
             marks={marks}
           />
-        </Grid>
-        <Grid item xs={12}>
-          <Typography>
+
+          <Typography variant="subtitle1">
             <b>Q3: How are your feeling compared yesterday?</b>
           </Typography>
         </Grid>
