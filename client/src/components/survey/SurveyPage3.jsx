@@ -53,21 +53,17 @@ const SurveyPage3 = props => {
     const encryptOptions = { encrypt: true };
     const fileNumber = `${numObservations + 1}`.padStart(7, '0');
 
-    try {
-      await userSession.putFile(`observation/${fileNumber}.json`, JSON.stringify(observation), encryptOptions);
+    props.submitSurvey(fileNumber, observation, encryptOptions, userSession);
 
-      history.push('/');
+    history.push('/');
 
-      setSurveyPage3({
-        openComment,
-      });
+    setSurveyPage3({
+      openComment,
+    });
 
-      clearSurvey();
+    clearSurvey();
 
-      window.localStorage.setItem('surveyCompleted', 'true');
-    } catch (err) {
-      console.log(err);
-    }
+    window.localStorage.setItem('surveyCompleted', 'true');
   };
 
   return (
@@ -118,6 +114,8 @@ const mapDispatchToProps = dispatch => {
     setSurveyPage3: survey => dispatch(actions.setSurveyPage3(survey)),
     toSurveyPage2: survey => dispatch(actions.toSurveyPage2(survey)),
     clearSurvey: () => dispatch(actions.clearSurvey()),
+    submitSurvey: (fileNumber, observation, encryptOptions, userSession) =>
+      dispatch(actions.submitSurveyThunk(fileNumber, observation, encryptOptions, userSession)),
   };
 };
 
