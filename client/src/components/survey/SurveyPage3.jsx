@@ -8,16 +8,17 @@ import PropTypes from 'prop-types';
 import buttonsCss from '../../css/buttons';
 import actions from '../../redux/actions/actions';
 
-const useStyles = makeStyles(() => ({
+const useStyles = makeStyles(theme => ({
   root: {
     alignItems: 'center',
     justifyContent: 'center',
     marginLeft: 'auto',
     marginRight: 'auto',
+    maxWidth: theme.breakpoints.values.md,
+    padding: '4px 32px',
   },
   additionalComments: {
-    margin: '3em',
-    width: '80vw',
+    width: '100%',
     border: '2px solid #f64141',
   },
   continueButton: {
@@ -61,26 +62,26 @@ const SurveyPage3 = props => {
   return (
     <div className={classes.root}>
       <Grid container justify="center" spacing={1} className={classes.grid}>
-        <Typography>
-          <b>Q6: Anything else you want to add?</b>
-        </Typography>
-        <Grid container justify="center" spacing={1} className={classes.grid}>
-          <Grid item xs={12} xl={4}>
-            <TextField
-              variant="outlined"
-              className={classes.additionalComments}
-              defaultValue={openComment}
-              onChange={e => handleopenComment(e.target.value)}
-            />
-          </Grid>
-          <Grid item xs={12} xl={4}>
-            <Button onClick={sendBackToPage2} variant="outlined" color="secondary" className={classes.continueButton}>
-              BACK
-            </Button>
-            <Button onClick={submitSurveyPage3} color="secondary" className={classes.continueButton}>
-              SUBMIT
-            </Button>
-          </Grid>
+        <Grid item xs={12}>
+          <Typography>
+            <b>Q6: Anything else you want to add?</b>
+          </Typography>
+        </Grid>
+        <Grid item xs={12}>
+          <TextField
+            variant="outlined"
+            className={classes.additionalComments}
+            defaultValue={openComment}
+            onChange={e => handleopenComment(e.target.value)}
+          />
+        </Grid>
+        <Grid item xs={12}>
+          <Button onClick={sendBackToPage2} variant="outlined" color="secondary" className={classes.continueButton}>
+            BACK
+          </Button>
+          <Button onClick={submitSurveyPage3} color="secondary" className={classes.continueButton}>
+            SUBMIT
+          </Button>
         </Grid>
       </Grid>
     </div>
