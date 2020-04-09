@@ -8,7 +8,7 @@ import PropTypes from 'prop-types';
 import TranslationsMenu from './Translations';
 import { ReactComponent as Logo } from '../img/Logo_CORONATRACKER_Logo.svg';
 import { ReactComponent as TextLogo } from '../img/Logo_CORONATRACKER_Text_Logo.svg';
-import setLoginLoading from '../redux/actions/actions';
+import actions from '../redux/actions/actions';
 import Loding from './Loding';
 import buttonsCss from '../css/buttons';
 
@@ -70,7 +70,7 @@ const Login = props => {
 };
 
 Login.propTypes = {
-  loginLoading: PropTypes.bool.isRequired,
+  loginLoading: PropTypes.objectOf(Object).isRequired,
   setLoading: PropTypes.func.isRequired,
 };
 
@@ -79,11 +79,7 @@ const mapStateToProps = ({ loginLoading }) => ({
 });
 
 const mapDispatchToProps = dispatch => ({
-  setLoading(isLoading) {
-    // return () => {
-    dispatch(setLoginLoading.setLoginLoading(isLoading));
-    // }
-  },
+  setLoading: isLoading => dispatch(actions.setLoginLoading(isLoading)),
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(Login);

@@ -17,13 +17,14 @@ import PropTypes from 'prop-types';
 import buttonsCss from '../../css/buttons';
 import actions from '../../redux/actions/actions';
 
-const useStyles = makeStyles(() => ({
+const useStyles = makeStyles(theme => ({
   root: {
     alignItems: 'center',
     justifyContent: 'center',
     marginLeft: 'auto',
     marginRight: 'auto',
     fontFamily: 'Nunito',
+    maxWidth: theme.breakpoints.values.md,
     width: '92vw',
   },
   controlLabels: {
@@ -161,12 +162,12 @@ const SurveyPage1 = props => {
             <b>Let&apos;s answer a few questions!</b>
           </Typography>
         </Grid>
-        <Grid item xs={12} xl={4}>
+        <Grid item xs={12}>
           <Typography variant="body1">
             Be sure to answer truthfully and honestly so that your health record will be accurate and helpful
           </Typography>
         </Grid>
-        <Grid item xs={12} xl={4} className={classes.gridItem}>
+        <Grid item xs={12} className={classes.gridItem}>
           <Typography variant="subtitle1" id="discrete-slider" gutterBottom>
             <b>Q1: How do you feel today?</b>
           </Typography>

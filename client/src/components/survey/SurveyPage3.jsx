@@ -1,12 +1,10 @@
-/* eslint-disable no-console */
-
 import React, { useState } from 'react';
 import { useHistory } from 'react-router-dom';
 import { makeStyles } from '@material-ui/core/styles';
 import { Typography, Button, TextField, Grid } from '@material-ui/core';
 import { useBlockstack } from 'react-blockstack';
 import { connect } from 'react-redux';
-import PropTypes, { object } from 'prop-types';
+import PropTypes from 'prop-types';
 import buttonsCss from '../../css/buttons';
 import actions from '../../redux/actions/actions';
 
@@ -31,7 +29,7 @@ const useStyles = makeStyles(() => ({
 }));
 
 const SurveyPage3 = props => {
-  const { numObservations, setSurveyPage3, survey, toSurveyPage2, clearSurvey } = props;
+  const { setSurveyPage3, survey, toSurveyPage2, submitSurvey } = props;
   const { nonPhysical } = survey;
   const classes = useStyles();
   const [openComment, setOpenComment] = useState(nonPhysical.openComment || '');
@@ -49,19 +47,13 @@ const SurveyPage3 = props => {
   const submitSurveyPage3 = async () => {
     survey.nonPhysical.openComment = openComment;
 
-    const observation = survey;
-    const encryptOptions = { encrypt: true };
-    const fileNumber = `${numObservations + 1}`.padStart(7, '0');
-
-    props.submitSurvey(fileNumber, observation, encryptOptions, userSession);
+    submitSurvey(survey, userSession);
 
     history.push('/');
 
     setSurveyPage3({
       openComment,
     });
-
-    clearSurvey();
 
     window.localStorage.setItem('surveyCompleted', 'true');
   };
@@ -95,17 +87,15 @@ const SurveyPage3 = props => {
   );
 };
 SurveyPage3.propTypes = {
-  numObservations: PropTypes.number.isRequired,
   setSurveyPage3: PropTypes.func.isRequired,
-  survey: PropTypes.objectOf(object).isRequired,
+  survey: PropTypes.objectOf(Object).isRequired,
   toSurveyPage2: PropTypes.func.isRequired,
-  clearSurvey: PropTypes.func.isRequired,
+  submitSurvey: PropTypes.func.isRequired,
 };
 
 const mapStateToProps = state => {
   return {
     survey: state.surveyReducer.survey,
-    numObservations: state.observationsReducer.numObservations,
   };
 };
 
@@ -113,7 +103,6 @@ const mapDispatchToProps = dispatch => {
   return {
     setSurveyPage3: survey => dispatch(actions.setSurveyPage3(survey)),
     toSurveyPage2: survey => dispatch(actions.toSurveyPage2(survey)),
-    clearSurvey: () => dispatch(actions.clearSurvey()),
     submitSurvey: (fileNumber, observation, encryptOptions, userSession) =>
       dispatch(actions.submitSurveyThunk(fileNumber, observation, encryptOptions, userSession)),
   };

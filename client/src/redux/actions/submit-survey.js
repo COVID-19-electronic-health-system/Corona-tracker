@@ -1,4 +1,8 @@
+/* eslint-disable no-console */
+
 import { SUBMIT_SURVEY } from '../reducers/submit-survey';
+import { addObservation } from './observations';
+import { clearSurvey } from './survey';
 
 // action creator
 export const submitSurvey = () => ({
@@ -6,11 +10,17 @@ export const submitSurvey = () => ({
 });
 
 // thunk
-export const submitSurveyThunk = (fileNumber, observation, encryptOptions, userSession) => async dispatch => {
-  await userSession
-    .putFile(`observation/${fileNumber}.json`, JSON.stringify(observation), encryptOptions)
-    .then(() => 200)
-    .catch(err => console.error(err));
+export const submitSurveyThunk = (observation, userSession) => (dispatch, getState) => {
+  const { numObservations } = getState().observationsReducer;
+  const observationNumber = numObservations + 1;
+  const fileNumber = `${observationNumber}`.padStart(7, '0');
 
-  dispatch(submitSurvey());
+  userSession
+    .putFile(`observation/${fileNumber}.json`, JSON.stringify(observation))
+    .then(() => {
+      dispatch(submitSurvey());
+      dispatch(addObservation(observation, observationNumber));
+      dispatch(clearSurvey());
+    })
+    .catch(err => console.error(err));
 };

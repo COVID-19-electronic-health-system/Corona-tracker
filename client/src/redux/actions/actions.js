@@ -1,4 +1,4 @@
-import { setNumObservations, setObservations } from './observations';
+import { setNumObservations, setObservations, fetchObservations } from './observations';
 import { setLoginLoading } from './login';
 import { setNavbarSection } from './navigation';
 import { setDisclaimerAnswerThunk } from './disclaimer';
@@ -25,6 +25,7 @@ const actions = {
   clearSurvey,
   setDemographicsComorbiditiesThunk,
   submitSurveyThunk,
+  fetchObservations,
 };
 
 export default actions;

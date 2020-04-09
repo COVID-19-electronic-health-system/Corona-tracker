@@ -144,7 +144,7 @@ const Layout = props => {
 };
 
 Layout.propTypes = {
-  children: PropTypes.objectOf(Object).isRequired,
+  children: PropTypes.node.isRequired,
 };
 
 export default Layout;
