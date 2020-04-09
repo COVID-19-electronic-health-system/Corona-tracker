@@ -136,7 +136,7 @@ const SurveyPage1 = props => {
   };
 
   const handlerComparedFeeling = e => {
-    setcomparedFeeling(e);
+    setcomparedFeeling(e.toLowerCase());
     setComparedSet(true);
   };
 
