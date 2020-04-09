@@ -6,58 +6,47 @@ import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { useHistory } from 'react-router-dom';
 import { useBlockstack } from 'react-blockstack';
+import { Typography, Grid, ButtonGroup, Button } from '@material-ui/core';
 import actions from '../redux/actions/actions';
-import profileImg from '../img/profile.png';
+import profileImg from '../img/profileBlue.png';
+
+import buttonsCss from '../css/buttons';
 
 const useStyles = makeStyles(() => ({
   root: {
-    display: 'flex',
-    flexDirection: 'column',
-    alignItems: 'center',
-    justifyContent: 'space-evenly',
-    margin: '2em 0 2em 0',
+    padding: '10px',
   },
-  button: {
-    color: 'white',
-    backgroundColor: 'red',
-    fontWeight: 'bold',
-    alignSelf: 'center',
-    height: '4vh',
-    borderRadius: '5px',
-    margin: '0 0 0 0',
-    maxWidth: '300px',
-    minWidth: '42%',
+  buttonFemale: {
+    ...buttonsCss.buttons,
+
+    margin: '5px 0px 0px 9px',
+    background: '#4760ff',
+    width: '75px',
   },
-  header: {
-    width: 325,
-    display: `inline-block`,
-    marginBottom: '.5em',
-    fontSize: '.5em',
+  buttonMale: {
+    ...buttonsCss.buttons,
+
+    background: '#4760ff',
+    margin: '5px 10px 0px 0px',
+    width: '75px',
+    height: '40px',
   },
-  profile: {
-    width: '100px',
-    height: '140px',
-    marginBottom: '.5em',
-    fontSize: '1em',
+  saveButton: {
+    ...buttonsCss.buttons,
+    margin: '0px 8px 2px 8px',
+    width: '150px',
+    cursor: 'pointer',
   },
   image: {
-    width: '100%',
-  },
-  inputArea: {
-    display: 'flex',
-    flexDirection: 'row',
-    marginBottom: '.5vh',
+    maxWidth: '120px',
   },
   inputField: {
-    width: '48%',
+    ...buttonsCss.buttons,
     textAlign: 'center',
-    maxWidth: '180px',
-    color: 'white',
-    backgroundColor: 'red',
-    height: '4vh',
-    justifyContent: 'space-between',
-    border: 'none',
-    borderRadius: '5px',
+    width: '160px',
+    height: '40px',
+
+    background: '#4760ff',
     '&::placeholder': {
       color: 'white',
     },
@@ -70,22 +59,14 @@ const useStyles = makeStyles(() => ({
       color: 'white',
     },
   },
-  inputFieldLabel: {
-    textAlign: 'right',
-    width: '48%',
-  },
   location: {
-    border: 'none',
-    marginBottom: '10px',
+    ...buttonsCss.buttons,
     textAlign: 'center',
     color: 'white',
-    backgroundColor: 'red',
-    width: '33%',
-    maxWidth: '60px',
-    fontSize: '1em',
-    borderRadius: '5px',
-    fontFamily:
-      '-apple-system, BlinkMacSystemFont, avenir next, avenir, helvetica neue, helvetica, ubuntu, roboto, noto, segoe ui, arial,',
+    background: '#4760ff',
+    width: '50px',
+    height: '40px',
+    margin: '5px 2px 5px 0px',
     '&::placeholder': {
       color: 'white',
     },
@@ -122,148 +103,180 @@ const OnboardUser = props => {
   };
   const classes = useStyles();
   return (
-    <div className={classes.root}>
-      <div className={classes.header}>
-        <h4>
-          <b>Welcome to CoronaTracker!</b>
-        </h4>
-        <h4>Let&apos;s get your profile set up with a few quick questions and start logging your health:</h4>
-      </div>
-      <div className={classes.profile}>
-        <img src={profileImg} className={classes.image} alt="Profile" />
-        <h4>
-          <b>PROFILE</b>
-        </h4>
-      </div>
-      <div>
-        <div className={classes.inputArea}>
-          <h5 className={classes.inputFieldLabel}>
-            <b>Age (Years):</b>
-          </h5>
-          <input
-            className={classes.inputField}
-            name="age"
-            placeholder="Click Here"
-            value={formState.age}
-            onChange={handleChange}
-          />
+    <Grid container justify="center" className={classes.root}>
+      <Grid container alignItems="center" direction="column">
+        <Grid item>
+          <Typography variant="h5">
+            <b>Welcome to CoronaTracker!</b>
+          </Typography>
+          <Typography variant="subtitle1" paragraph color="textSecondary">
+            Let&apos;s get your profile set up with a few quick questions and start logging your health:
+          </Typography>
+        </Grid>
+        <Grid item>
+          <img src={profileImg} className={classes.image} alt="Profile" />
+          <Typography variant="h6">
+            <b>PROFILE</b>
+          </Typography>
+        </Grid>
+        <div>
+          <Grid container spacing={1} justify="space-between">
+            <Grid item>
+              <Typography variant="subtitle2" color="textSecondary">
+                <b>Age (Years):</b>
+              </Typography>
+            </Grid>
+            <Grid item>
+              <input
+                className={classes.inputField}
+                name="age"
+                placeholder="Click Here"
+                value={formState.age}
+                onChange={handleChange}
+              />
+            </Grid>
+          </Grid>
+          <Grid container spacing={1} justify="space-between">
+            <Grid item>
+              <Typography variant="subtitle2" color="textSecondary">
+                <b>Gender:</b>
+              </Typography>
+            </Grid>
+            <Grid item>
+              <ButtonGroup>
+                <button
+                  type="button"
+                  onClick={e => {
+                    e.preventDefault();
+                    setFormState({
+                      ...formState,
+                      gender: 'male',
+                    });
+                  }}
+                  className={classes.buttonMale}
+                  style={
+                    formState.gender === 'male' ? { backgroundColor: '#82a4f8', outline: 'none', color: 'wheat' } : {}
+                  }
+                >
+                  Male
+                </button>
+                <button
+                  type="button"
+                  onClick={e => {
+                    e.preventDefault();
+                    setFormState({
+                      ...formState,
+                      gender: 'female',
+                    });
+                  }}
+                  className={classes.buttonFemale}
+                  style={
+                    formState.gender === 'female' ? { backgroundColor: '#82a4f8', outline: 'none', color: 'wheat' } : {}
+                  }
+                >
+                  Female
+                </button>
+              </ButtonGroup>
+            </Grid>
+          </Grid>
+          <Grid container spacing={1} justify="space-between">
+            <Grid item>
+              <Typography variant="subtitle2" color="textSecondary">
+                <b>City, State & ZIP:</b>
+              </Typography>
+            </Grid>
+            <Grid item>
+              <ButtonGroup>
+                <input
+                  name="city"
+                  value={formState.city}
+                  onChange={handleChange}
+                  placeholder="City"
+                  className={classes.location}
+                />
+                <input
+                  name="state"
+                  value={formState.state}
+                  onChange={handleChange}
+                  placeholder="State"
+                  className={classes.location}
+                />
+                <input
+                  name="zip"
+                  value={formState.zip}
+                  onChange={handleChange}
+                  placeholder="Zip"
+                  className={classes.location}
+                />
+              </ButtonGroup>
+            </Grid>
+          </Grid>
+          <Grid container spacing={1} justify="space-between">
+            <Grid item>
+              <Typography variant="subtitle2" color="textSecondary">
+                <b>Do you smoke?</b>
+              </Typography>
+            </Grid>
+            <Grid item>
+              <input
+                className={classes.inputField}
+                name="isSmoker"
+                placeholder="Click Here"
+                value={formState.isSmoker}
+                onChange={handleChange}
+              />
+            </Grid>
+          </Grid>
+          <Grid container spacing={1} justify="space-between">
+            <Grid item>
+              <Typography variant="subtitle2" color="textSecondary">
+                <b>Do you have obesity?</b>
+              </Typography>
+            </Grid>
+            <Grid item>
+              <input
+                className={classes.inputField}
+                name="isObese"
+                placeholder="Click Here"
+                value={formState.isObese}
+                onChange={handleChange}
+              />
+            </Grid>
+          </Grid>
+          <Grid container spacing={1} justify="space-between">
+            <Grid item>
+              <Typography variant="subtitle2" color="textSecondary">
+                <b>Do you have asthma?</b>
+              </Typography>
+            </Grid>
+            <Grid item>
+              <input
+                className={classes.inputField}
+                name="isAsthmatic"
+                placeholder="Click Here"
+                value={formState.isAsthmatic}
+                onChange={handleChange}
+              />
+            </Grid>
+          </Grid>
+          <Button
+            onClick={() => {
+              // setDemographicsComorbiditiesThunk(formState, userSession).then(() => history.push('/'));
+              setDemographicsComorbiditiesThunk(formState, userSession);
+              history.push('/');
+            }}
+            className={classes.saveButton}
+            style={{
+              width: '300px',
+              height: '3.5em',
+              marginTop: '2em',
+            }}
+          >
+            SAVE MY RESPONSES
+          </Button>
         </div>
-        <div className={classes.inputArea}>
-          <h5 className={classes.inputFieldLabel}>
-            <b>Gender:</b>
-          </h5>
-          <div>
-            <button
-              type="button"
-              onClick={e => {
-                e.preventDefault();
-                setFormState({
-                  ...formState,
-                  gender: 'male',
-                });
-              }}
-              className={classes.button}
-              style={formState.gender === 'male' ? { backgroundColor: 'white', color: 'red' } : {}}
-            >
-              Male
-            </button>
-            <button
-              type="button"
-              onClick={e => {
-                e.preventDefault();
-                setFormState({
-                  ...formState,
-                  gender: 'female',
-                });
-              }}
-              className={classes.button}
-              style={formState.gender === 'female' ? { backgroundColor: 'white', color: 'red' } : {}}
-            >
-              Female
-            </button>
-          </div>
-        </div>
-        <div className={classes.inputArea}>
-          <h5 className={classes.inputFieldLabel}>
-            <b>City, State & ZIP:</b>
-          </h5>
-          <div className={classes.inputField}>
-            <input
-              name="city"
-              value={formState.city}
-              onChange={handleChange}
-              placeholder="City"
-              className={classes.location}
-            />
-            <input
-              name="state"
-              value={formState.state}
-              onChange={handleChange}
-              placeholder="State"
-              className={classes.location}
-            />
-            <input
-              name="zip"
-              value={formState.zip}
-              onChange={handleChange}
-              placeholder="Zip"
-              className={classes.location}
-            />
-          </div>
-        </div>
-        <div className={classes.inputArea}>
-          <h5 className={classes.inputFieldLabel}>
-            <b>Do you smoke?</b>
-          </h5>
-          <input
-            className={classes.inputField}
-            name="isSmoker"
-            placeholder="Click Here"
-            value={formState.isSmoker}
-            onChange={handleChange}
-          />
-        </div>
-        <div className={classes.inputArea}>
-          <h5 className={classes.inputFieldLabel}>
-            <b>Do you have obesity?</b>
-          </h5>
-          <input
-            className={classes.inputField}
-            name="isObese"
-            placeholder="Click Here"
-            value={formState.isObese}
-            onChange={handleChange}
-          />
-        </div>
-        <div className={classes.inputArea}>
-          <h5 className={classes.inputFieldLabel}>
-            <b>Do you have asthma?</b>
-          </h5>
-          <input
-            className={classes.inputField}
-            name="isAsthmatic"
-            placeholder="Click Here"
-            value={formState.isAsthmatic}
-            onChange={handleChange}
-          />
-        </div>
-        <button
-          onClick={() => {
-            // setDemographicsComorbiditiesThunk(formState, userSession).then(() => history.push('/'));
-            setDemographicsComorbiditiesThunk(formState, userSession);
-            history.push('/');
-          }}
-          className={classes.button}
-          style={{
-            width: '300px',
-            height: '3.5em',
-            marginTop: '2em',
-          }}
-        >
-          SAVE MY RESPONSES
-        </button>
-      </div>
-    </div>
+      </Grid>
+    </Grid>
   );
 };
 

@@ -1,6 +1,5 @@
 import React from 'react';
 import { Card } from 'react-bootstrap';
-import '../css/themePalette.css';
 import '../css/Temperature.css';
 import { useSelector } from 'react-redux';
 

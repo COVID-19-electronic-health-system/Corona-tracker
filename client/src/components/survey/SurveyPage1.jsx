@@ -26,6 +26,9 @@ const useStyles = makeStyles(theme => ({
     fontFamily: 'Nunito',
     maxWidth: theme.breakpoints.values.md,
     width: '92vw',
+    [theme.breakpoints.up('sm')]: {
+      width: '50%',
+    },
   },
   controlLabels: {
     marginLeft: -20,
@@ -167,7 +170,7 @@ const SurveyPage1 = props => {
             Be sure to answer truthfully and honestly so that your health record will be accurate and helpful
           </Typography>
         </Grid>
-        <Grid item xs={12} className={classes.gridItem}>
+        <Grid item xs={12} xl={4}>
           <Typography variant="subtitle1" id="discrete-slider" gutterBottom>
             <b>Q1: How do you feel today?</b>
           </Typography>
