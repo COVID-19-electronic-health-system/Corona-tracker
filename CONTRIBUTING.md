@@ -4,8 +4,6 @@
 
 <!-- TOC -->
 
-- [Contributing to CoronaTracker](#contributing-to-coronatracker)
-- [Table of Contents](#table-of-contents)
 - [About the Project](#about-the-project)
   - [Quick Note](#quick-note)
   - [How Can I Contribute?](#how-can-i-contribute)
@@ -65,7 +63,7 @@
 
 <!-- /TOC -->
 
-# About the Project 
+# About the Project
 
 ## Quick Note
 
@@ -96,7 +94,7 @@ We are a welcoming, warm and collaborative group of people from all over the wor
 
 We also hold weekly townhalls Saturdays from 12:00pm EST to 12:30 EST. Join discord for more details.
 
-The typical agenda is:  
+The typical agenda is:
 
 1) Team leads will give an update of the project.
 2) Discuss roadmap.
@@ -125,28 +123,28 @@ The following terms are standards used when working with a repository.
 
 ### Forking the Repo
 
-⚠️ **Please do not clone directly from our main repository**. This will point your local repo's [origin](https://www.git-tower.com/learn/git/glossary/origin) to our main repo, to which you will not have write access. Doing so will eventually cause an error when attempting to push code.  
+⚠️ **Please do not clone directly from our main repository**. This will point your local repo's [origin](https://www.git-tower.com/learn/git/glossary/origin) to our main repo, to which you will not have write access. Doing so will eventually cause an error when attempting to push code.
 
-👀 To get a copy of our repository and start making changes, follow the steps below.  
+👀 To get a copy of our repository and start making changes, follow the steps below.
 
-1. Fork [our respository](https://github.com/COVID-19-electronic-health-system/Corona-tracker), which creates a copy of the repository under your account to submit changes to.  
-2. Clone the forked repository to your computer using the Clone button and address from github.  
-`git clone <address of fork>`  
-3. Change the working directory to your cloned project.  
-Mac/Linux: `cd ./Corona-tracker`  
-Windows: `cd .\Corona-tracker`  
-4. Add our project repository as a remote to track changes.  
-`git remote add upstream git@github.com:COVID-19-electronic-health-system/Corona-tracker.git`   
-5. Create and checkout new branch in your local project to make changes.  
-`git checkout -b <branch-name>`  
-_Note: the `-b` is required when first creating the branch (combines `git checkout` and `git branch`)_  
-6. Make changes by adding and committing files as necessary.  
-`git add <filename> or git add -A`  
-`git commit -m "<commit-msg>"`  
-7. When ready to submit changes, first push the changes to the origin repository on Github (your fork).  
-`git push -u origin <branch-name>`  
-_Note: the `-u` is required when first pushing a new branch to the origin (your fork)._  
-8. On github, [submit the pull request (PR)](https://help.github.com/en/github/collaborating-with-issues-and-pull-requests/about-pull-requests) to the upstream repository when changes are complete.  
+1. Fork [our respository](https://github.com/COVID-19-electronic-health-system/Corona-tracker), which creates a copy of the repository under your account to submit changes to.
+2. Clone the forked repository to your computer using the Clone button and address from github.
+`git clone <address of fork>`
+3. Change the working directory to your cloned project.
+Mac/Linux: `cd ./Corona-tracker`
+Windows: `cd .\Corona-tracker`
+4. Add our project repository as a remote to track changes.
+`git remote add upstream git@github.com:COVID-19-electronic-health-system/Corona-tracker.git`
+5. Create and checkout new branch in your local project to make changes.
+`git checkout -b <branch-name>`
+_Note: the `-b` is required when first creating the branch (combines `git checkout` and `git branch`)_
+6. Make changes by adding and committing files as necessary.
+`git add <filename> or git add -A`
+`git commit -m "<commit-msg>"`
+7. When ready to submit changes, first push the changes to the origin repository on Github (your fork).
+`git push -u origin <branch-name>`
+_Note: the `-u` is required when first pushing a new branch to the origin (your fork)._
+8. On github, [submit the pull request (PR)](https://help.github.com/en/github/collaborating-with-issues-and-pull-requests/about-pull-requests) to the upstream repository when changes are complete.
 
 Sometimes a pull request will require extra steps before going into review, which may include signing an agreement, testing the code, testing server deployment, or similar. If all checks are passed, then the PR is ready for review by the project maintainer.
 
@@ -163,14 +161,14 @@ Simple! We can use the `remote upstream` feature to `fetch` and `merge` changes 
 Which should output something similar to:
 
 ```
-origin	git@github.com:YOUR_USERNAME/COVID-19-TRACKER.git (fetch)
-origin	git@github.com:YOUR_USERNAME/COVID-19-TRACKER.git (push)
+origin	git@github.com:YOUR_USERNAME/Corona-tracker.git (fetch)
+origin	git@github.com:YOUR_USERNAME/Corona-tracker.git (push)
 upstream	git@github.com:COVID-19-electronic-health-system/Corona-tracker.git (fetch)
 upstream	git@github.com:COVID-19-electronic-health-system/Corona-tracker.git (push)
 ```
 
 2. Once we confirm the `remote upstream` repo exists, we can `fetch` the most recent changes.
-   
+
 ```
 git fetch upstream
 git merge upstream/master
@@ -309,7 +307,7 @@ __REMEMBER to always sync up with the remote repository first before making any 
 
 📝 We already included ThemeProvider and CssBaseline APIs. Please use it to advantage of full Material-UI options and not worry about styling every little aspect.
 
-📝 Use Material-UI `Typography` with `variant='x'` where x stands for ` h1,....h6, subtitle1, subtitle2, body1, body2` you can check the sizes on `Layout.jsx` components 
+📝 Use Material-UI `Typography` with `variant='x'` where x stands for ` h1,....h6, subtitle1, subtitle2, body1, body2` you can check the sizes on `Layout.jsx` components
 
 📝 Use Material-UI breakingpoints i.e. `[theme.breakingpoints.up('md'):{width: '100px'} ` and they are as followed`keys:[xs: 0, sm: 479, md: 839,lg: 1279, xl: 1599]` So when using `[theme.breakingpoints.` with ` .down(key)]: .up(key)]: .between(start, end)]: .only(key)]: ` you need to consider these points.
 
@@ -330,29 +328,29 @@ _Coming soon_, see #backend in Discord chat.
 _Coming soon_, see #analytics in Discord chat.
 
 ## Git Style Guide
-### Git branch naming 
-**Use a structure of "verb/intent"**  
+### Git branch naming
+**Use a structure of "verb/intent"**
 
-Examples:  
-`upd/resource-list`  
-`feat/omni-auth`  
-`fix/auth-flow`  
+Examples:
+`upd/resource-list`
+`feat/omni-auth`
+`fix/auth-flow`
 
-Then, checkout and create your branch:  
+Then, checkout and create your branch:
 `git checkout -b <branch-name>`
 
 See [this opinion on naming branches](https://allenan.com/git-branch-naming-conventions/)
 
-### Git message styling  
-Keep git messages short, simple, and informative.  
-You can create two lines with two -m followed by message back to back.  
+### Git message styling
+Keep git messages short, simple, and informative.
+You can create two lines with two -m followed by message back to back.
 
-First line: Verb + file changed + short overview.  
-Second line: Description of work done  
-`git commit -m "<commit-msg-title>" -m"<commit-msg-short-description>"`  
+First line: Verb + file changed + short overview.
+Second line: Description of work done
+`git commit -m "<commit-msg-title>" -m"<commit-msg-short-description>"`
 
-Example:  
-`git commit -m "HOTFIX: App.js- fixed call to API" -m"fixed call to notifications API in componentDidMount(), which did not have the correct api key."`  
+Example:
+`git commit -m "HOTFIX: App.js- fixed call to API" -m"fixed call to notifications API in componentDidMount(), which did not have the correct api key."`
 
 See this [article on good git commits](https://tbaggery.com/2008/04/19/a-note-about-git-commit-messages.html)
 
@@ -379,31 +377,31 @@ Unsure where to begin contributing to CoronaTracker? You can start by looking th
 ### Submitting Code
 1. First, before starting to code, get the latest updates from the [upstream](#terminology) master branch.
 
-`git status` <-- always check what branch you are on!    
-`git checkout master`  
-`git fetch upstream master`  
-`git merge upstream/master` <-- updates local repo based on upstream    
-`git push origin master` <-- updates the origin repo based on local   
+`git status` <-- always check what branch you are on!
+`git checkout master`
+`git fetch upstream master`
+`git merge upstream/master` <-- updates local repo based on upstream
+`git push origin master` <-- updates the origin repo based on local
 
-2. Create and checkout new branch to make changes.  
+2. Create and checkout new branch to make changes.
 See [style guide on naming branches](###Git-branch-naming)
 
-3. Write some code, make commits, etc  
-*make code changes and update docs/dependencies*   
-`git add <filename> or git add -A (for all updated files)`   
-`git commit -m "<commit-msg-title>" -m"<commit-msg-short-description>"`  
+3. Write some code, make commits, etc
+*make code changes and update docs/dependencies*
+`git add <filename> or git add -A (for all updated files)`
+`git commit -m "<commit-msg-title>" -m"<commit-msg-short-description>"`
 
-4. Make sure to update all dependencies  
+4. Make sure to update all dependencies
 Example: your updated React component has new properties and is being used
 elsewhere, make sure to update that dependant file.
 
-5. Update all docs if necessary, like [README.md](./README.md)  
+5. Update all docs if necessary, like [README.md](./README.md)
 Update details of changes to the interface, this includes new environment variables, exposed ports, useful file locations and container parameters.
 
-6. Before submitting, [squash](https://github.com/servo/servo/wiki/Beginner's-guide-to-rebasing-and-squashing#squashing) your code into with git [rebase](https://github.com/servo/servo/wiki/Beginner's-guide-to-rebasing-and-squashing#rebasing) 
-Squashing your code means reducing all your local commits to one commit that will be placed in the master's Git history.  
+6. Before submitting, [squash](https://github.com/servo/servo/wiki/Beginner's-guide-to-rebasing-and-squashing#squashing) your code into with git [rebase](https://github.com/servo/servo/wiki/Beginner's-guide-to-rebasing-and-squashing#rebasing)
+Squashing your code means reducing all your local commits to one commit that will be placed in the master's Git history.
 
-This keeps our Git history clean and straight forward to read over time.  
+This keeps our Git history clean and straight forward to read over time.
 
 See this article from Mozilla's Servo Project on [squashing and rebasing](https://github.com/servo/servo/wiki/Beginner's-guide-to-rebasing-and-squashing#squashing)
 
@@ -417,7 +415,7 @@ pick 92n20sc: GM: Re-hashed the flumboolator
 pick d928404: GM: Activated the perculators
 
 Rebase 2ac7894..d928404 onto 5f57fe2 (12 command(s))
- 
+
 Commands:
 p, pick = use commit
 r, reword = use commit, but edit the commit message
@@ -444,7 +442,7 @@ s 92n20sc: GM: Re-hashed the flumboolator
 s d928404: GM: Activated the perculators
 
 Rebase 2ac7894..d928404 onto 5f57fe2 (12 command(s))
- 
+
 Commands:
 p, pick = use commit
 r, reword = use commit, but edit the commit message
@@ -485,14 +483,14 @@ See [Style Guide- Git](###Git-message-styling) for the proper way to create squa
 
 We save and quit with `esc` + `:x`
 
-Now we can check our new commit history with  
+Now we can check our new commit history with
 `git log --oneline`
 
 Then we push the edited branch to our origin. Since we rewrote the history, we need to force push.
 
 `git push --force origin HEAD`
 
-7. Push the changes to the origin repository on Github (your fork)  
+7. Push the changes to the origin repository on Github (your fork)
 `git push origin <branch-name>`
 
 8. On github.com, [submit the pull request PR](https://help.github.com/en/github/collaborating-with-issues-and-pull-requests/about-pull-requests) to the `upstream` repository when changes are complete.
@@ -504,7 +502,7 @@ Pull request will require extra steps before going into review, such as going th
 
 To update your code, then do something like this:
 
-`git add <the file you fixed>`  
+`git add <the file you fixed>`
 `git commit -m "<message>"`
 
 See [git commit style](###git-message-styling)
@@ -514,8 +512,8 @@ See [Fixing Review Comments](https://github.com/servo/servo/wiki/Beginner's-guid
 
 So we rebase. It is HIGHLY RECOMMENDED you read this section on [Rebasing](https://github.com/servo/servo/wiki/Beginner's-guide-to-rebasing-and-squashing#rebasing) from Mozilla's servo Project for an explaination on why. There are diagrams to help you understand WHY and how rebasing works. This is a common issue for new developers. Take the time to read this short part entry. It will save you ALOT of time in the long run.
 
-`git fetch upstream` <----- get latest code from upstream   
-`git rebase upstream/master` <----- attach your linear git commit history to head of upstream's git commit history. This avoids merge commits.  
+`git fetch upstream` <----- get latest code from upstream
+`git rebase upstream/master` <----- attach your linear git commit history to head of upstream's git commit history. This avoids merge commits.
 
 Remember to [squash your commits to one commit](https://github.com/servo/servo/wiki/Beginner's-guide-to-rebasing-and-squashing#squashing).
 
@@ -656,24 +654,24 @@ Enhancement suggestions are tracked as [GitHub issues](https://guides.github.com
 
 After a PR is accepted, bring master up to date.
 
-`git checkout master`  
-`git fetch --all`  
-`git merge upstream/master` - fast-forward to upstream changes  
-`git push origin master` - update changes on github to origin/master  
+`git checkout master`
+`git fetch --all`
+`git merge upstream/master` - fast-forward to upstream changes
+`git push origin master` - update changes on github to origin/master
 
 If deleting the branch:
 
-`git push origin -d upd/resource-list`  
-`git branch -d upd/resource-list`  
+`git push origin -d upd/resource-list`
+`git branch -d upd/resource-list`
 
 If updating the branch for re-use:
 
-`git checkout upd/resource-list`  
-`git rebase master`  
-`git push origin`  
+`git checkout upd/resource-list`
+`git rebase master`
+`git push origin`
 
 ### Rebasing
-From git-tower:   
+From git-tower:
 "In Git, the rebase command integrates changes from one branch into another. It is an alternative to the better known "merge" command.
 
 Most visibly, rebase differs from merge by rewriting the commit history in order to produce a straight, linear succession of commits."
@@ -684,10 +682,10 @@ See [What is a rebase in Git?](https://www.git-tower.com/learn/git/glossary/reba
 
 [How to use `rebase`.](https://help.github.com/en/github/using-git/using-git-rebase-on-the-command-line)
 
-Why do we prefer rebase versus merge?  
+Why do we prefer rebase versus merge?
 "Some people prefer to go without such automatic merge commits. Instead, they want the project's history to look as if it had evolved in a single, straight line. No indication remains that it had been split into multiple branches at some point."
 
-⚠️ 👀 **WARNING:**  
+⚠️ 👀 **WARNING:**
 You should use rebase only for squashing YOUR local commits prior to a pull request. DO NOT ever to rebase commits that have already been published to master. This will rewrite our public project's history. This applies to maintainers of the project.
 
 Read this EXCELLENT article on [Rebase as an Alternative to Merge](https://www.git-tower.com/learn/git/ebook/en/desktop-gui/advanced-topics/rebase#start) from git-tower.
@@ -696,11 +694,11 @@ Read this EXCELLENT article on [Rebase as an Alternative to Merge](https://www.g
 
 ### Cleaning Up
 
-`git fetch --all` - Fetch changes from remote  
-`git push origin -d <branch>` - Delete Remote Branch  
-`git branch -d <branch>` - Delete Local Branch  
-`git branch -D <branch>` - Force Delete Local Branch  
-`git branch -dr <remote>/<branch>` - Delete Remote-Tracking Branch  
+`git fetch --all` - Fetch changes from remote
+`git push origin -d <branch>` - Delete Remote Branch
+`git branch -d <branch>` - Delete Local Branch
+`git branch -D <branch>` - Force Delete Local Branch
+`git branch -dr <remote>/<branch>` - Delete Remote-Tracking Branch
 
 ### Resources
 
@@ -716,31 +714,31 @@ A step-by-step course for the complete beginner](https://www.git-tower.com/learn
 
 See the full list of commands [here](https://classic.yarnpkg.com/en/docs/cli/).
 
-`yarn install`  
-Installs all node modules  
-Similar to `npm i`  
+`yarn install`
+Installs all node modules
+Similar to `npm i`
 [See more](https://classic.yarnpkg.com/en/docs/cli/install)
 
-`yarn add`  
-Installs a package and any packages that it depends on.  
-Similar to `npm install <package-name>`  
+`yarn add`
+Installs a package and any packages that it depends on.
+Similar to `npm install <package-name>`
 [See more](https://classic.yarnpkg.com/en/docs/cli/add)
 
-`yarn remove`  
-removes an unused package from your current package.json  
-Similar to `npm uninstall <package-name>`  
+`yarn remove`
+removes an unused package from your current package.json
+Similar to `npm uninstall <package-name>`
 [See more](https://classic.yarnpkg.com/en/docs/cli/remove)
 
 ## Other commands
 
 Commands you probably won't use, but are good to know anyway.
 
-`yarn init`  
-initializes the development of a package.  
-Similar to `npm init`  
+`yarn init`
+initializes the development of a package.
+Similar to `npm init`
 [See more](https://classic.yarnpkg.com/en/docs/cli/init)
 
-`yarn upgrade`  
-Upgrades packages to their latest version based on the specified range  
-Similar to `npm update <package-name>@<verision>`  
+`yarn upgrade`
+Upgrades packages to their latest version based on the specified range
+Similar to `npm update <package-name>@<verision>`
 [See more](https://classic.yarnpkg.com/en/docs/cli/upgrade)
