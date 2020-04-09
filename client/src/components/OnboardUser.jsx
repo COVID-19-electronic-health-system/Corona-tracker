@@ -34,8 +34,10 @@ const useStyles = makeStyles(() => ({
   saveButton: {
     ...buttonsCss.buttons,
     margin: '0px 8px 2px 8px',
-    width: '150px',
+    width: '300px',
     cursor: 'pointer',
+    height: '3.5em',
+    marginTop: '2em',
   },
   image: {
     maxWidth: '120px',
@@ -266,11 +268,6 @@ const OnboardUser = props => {
               history.push('/');
             }}
             className={classes.saveButton}
-            style={{
-              width: '300px',
-              height: '3.5em',
-              marginTop: '2em',
-            }}
           >
             SAVE MY RESPONSES
           </Button>

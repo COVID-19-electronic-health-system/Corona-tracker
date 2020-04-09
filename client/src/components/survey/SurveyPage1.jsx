@@ -43,7 +43,7 @@ const useStyles = makeStyles(theme => ({
     ...buttonsCss.buttons,
     marginTop: '1vh',
     width: '50vw',
-    maxWidth: '180px'
+    maxWidth: '180px',
   },
   dialog: {
     background: '#7a9cf9',
