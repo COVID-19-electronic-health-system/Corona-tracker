@@ -1,6 +1,5 @@
 import React from 'react';
 import '../css/Table.css';
-import '../css/themePalette.css';
 import { connect } from 'react-redux';
 import PropTypes, { object } from 'prop-types';
 import { Table, TableBody, TableCell, TableContainer, TableHead, TableRow } from '@material-ui/core';
