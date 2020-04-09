@@ -1,13 +1,10 @@
-import React, { useEffect } from 'react';
-import { connect } from 'react-redux';
+import React from 'react';
 import { useBlockstack } from 'react-blockstack';
 import { useTranslation } from 'react-i18next';
 import { makeStyles } from '@material-ui/core/styles';
 import { Typography } from '@material-ui/core';
-import PropTypes from 'prop-types';
 import HealthLogToggle from './HealthLogToggle';
 import Survey from './survey/Survey';
-import actions from '../redux/actions/actions';
 
 const useStyles = makeStyles({
   hr: {
@@ -38,41 +35,11 @@ const hasSubmitted = () => {
   return false;
 };
 
-function DiagnosticContainer(props) {
-  const { setNumObservations, setObservations } = props;
+function DiagnosticContainer() {
   const classes = useStyles();
   const { userSession } = useBlockstack();
   const today = new Date();
   const { t } = useTranslation();
-
-  useEffect(() => {
-    (async () => {
-      const fileNames = [];
-      const observations = [];
-      let numObservations = 0;
-
-      await userSession.listFiles(fileName => {
-        if (fileName.includes('observation/')) {
-          fileNames.push(fileName);
-        }
-        return true;
-      });
-
-      const getFilePromises = fileNames.map(fileName => {
-        const observationNum = parseInt(fileName.replace(/^\D+/g, ''), 10);
-        numObservations = observationNum;
-        return userSession.getFile(fileName);
-      });
-
-      (await Promise.all(getFilePromises)).forEach(observationString => {
-        const observation = JSON.parse(observationString);
-        observations.push(observation);
-      });
-
-      setObservations(observations);
-      setNumObservations(numObservations);
-    })();
-  });
 
   return hasSubmitted() ? (
     <div>
@@ -90,16 +57,4 @@ function DiagnosticContainer(props) {
   );
 }
 
-DiagnosticContainer.propTypes = {
-  setNumObservations: PropTypes.func.isRequired,
-  setObservations: PropTypes.func.isRequired,
-};
-
-const mapDispatchToProps = dispatch => {
-  return {
-    setNumObservations: numObservations => dispatch(actions.setNumObservations(numObservations)),
-    setObservations: observations => dispatch(actions.setObservations(observations)),
-  };
-};
-
-export default connect(null, mapDispatchToProps)(DiagnosticContainer);
+export default DiagnosticContainer;

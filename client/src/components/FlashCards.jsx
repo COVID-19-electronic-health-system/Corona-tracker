@@ -82,7 +82,7 @@ const FlashCards = props => {
 };
 
 FlashCards.propTypes = {
-  cardData: PropTypes.objectOf(Object).isRequired,
+  cardData: PropTypes.arrayOf(Object).isRequired,
   mode: PropTypes.string.isRequired,
 };
 
