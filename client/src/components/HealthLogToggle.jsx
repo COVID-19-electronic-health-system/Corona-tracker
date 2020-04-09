@@ -17,7 +17,8 @@ import buttonsCss from '../css/buttons';
 const useStyles = makeStyles({
   buttons: {
     ...buttonsCss.buttons,
-    margin: '2px 15px',
+    margin: '0px 8px 2px 8px',
+    width: '160px',
   },
 });
 

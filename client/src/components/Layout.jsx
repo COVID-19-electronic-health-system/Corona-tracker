@@ -23,9 +23,76 @@ const theme = createMuiTheme({
       contrastText: '#fff',
     },
   },
+  breakpoints: {
+    values: {
+      xs: 0,
+      sm: 479,
+      md: 839,
+      lg: 1279,
+      xl: 1599,
+    },
+  },
+  typography: {
+    fontFamily: [
+      '-apple-system',
+      'BlinkMacSystemFont',
+      '"Segoe UI"',
+      'Roboto',
+      '"Helvetica Neue"',
+      'Arial',
+      'Nunito',
+      'sans-serif',
+      '"Apple Color Emoji"',
+      '"Segoe UI Emoji"',
+      '"Segoe UI Symbol"',
+    ].join(','),
+    htmlFontSize: 18,
+    h1: {
+      fontFamily: 'sans-serif',
+      fontSize: '2.5rem',
+    },
+    h2: {
+      fontFamily: 'sans-serif',
+      fontSize: '2.25rem',
+    },
+    h3: {
+      fontFamily: 'sans-serif',
+      fontSize: '2rem',
+    },
+    h4: {
+      fontFamily: 'sans-serif',
+      fontSize: '1.8rem',
+    },
+    h5: {
+      fontFamily: 'sans-serif',
+      fontSize: '1.6rem',
+    },
+    h6: {
+      fontFamily: 'sans-serif',
+      fontSize: '1.4rem',
+    },
+    subtitle1: {
+      fontSize: '1.2rem',
+    },
+    subtitle2: {
+      fontSize: '1.1rem',
+    },
+    body1: {
+      fontSize: '1rem',
+    },
+    body2: {
+      fontSize: '.9rem',
+    },
+  },
 });
 const useStyles = makeStyles(() => ({
+  '@global': {
+    'html, body, #root': {
+      height: '100vh',
+    },
+  },
   root: {
+    fontFamily: 'Helvetica Neue',
     textAlign: 'center',
     backgroundImage: 'linear-gradient(#d7e1fa, #bbcef9)',
     overflowY: 'auto',
@@ -33,25 +100,22 @@ const useStyles = makeStyles(() => ({
     overflowX: 'hidden',
     margin: '0px',
   },
-  '@global': {
-    'html, body, #root': {
-      height: '100vh',
-    },
-  },
   logo: {
     width: '75px',
-
-    height: '60px',
+    height: '75px',
     // this is for small devices, theme media query there are (sm, md and lg)
-    [theme.breakpoints.down('xs')]: {
-      width: '80px',
+    [theme.breakpoints.up('md')]: {
+      width: '100px',
+
+      height: '100px',
     },
   },
   textLogo: {
-    width: '350px',
-    height: '55px',
-    [theme.breakpoints.down('xs')]: {
-      width: '200px',
+    width: '17em',
+    height: '6em',
+    [theme.breakpoints.up('md')]: {
+      width: '30em',
+      height: '8em',
     },
   },
 }));
@@ -80,7 +144,7 @@ const Layout = props => {
 };
 
 Layout.propTypes = {
-  children: PropTypes.objectOf(Object).isRequired,
+  children: PropTypes.node.isRequired,
 };
 
 export default Layout;

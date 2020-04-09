@@ -7,6 +7,11 @@ import Survey from '../../components/survey/Survey';
 const mockStore = configureMockStore();
 
 const mockSurveyReducerState = {
+  survey: {
+    date: 0,
+    physical: {},
+    nonPhysical: {},
+  },
   surveyPage: 1,
 };
 

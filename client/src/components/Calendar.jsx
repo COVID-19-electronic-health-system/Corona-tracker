@@ -48,7 +48,7 @@ const useStyles = makeStyles({
 });
 
 const AppCalendar = props => {
-  const { setToggleValue, observations } = props;
+  const { observations } = props;
   const classes = useStyles();
   const dispatch = useDispatch();
   const [today] = useState(new Date().toLocaleDateString());
@@ -105,8 +105,7 @@ const AppCalendar = props => {
 };
 
 AppCalendar.propTypes = {
-  setToggleValue: PropTypes.func.isRequired,
-  observations: PropTypes.objectOf(Object).isRequired,
+  observations: PropTypes.arrayOf(Object).isRequired,
 };
 
 function mapStateToProps(state) {

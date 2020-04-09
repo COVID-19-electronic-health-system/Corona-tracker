@@ -74,7 +74,7 @@ exports[`LogHealthSlider should render correctly 1`] = `
               className="MuiGrid-root MuiGrid-item MuiGrid-grid-xs-2"
             >
               <p
-                className="MuiTypography-root makeStyles-bold-6 MuiTypography-body1"
+                className="MuiTypography-root makeStyles-bold-6 MuiTypography-body2"
               >
                 Today
               </p>
@@ -83,7 +83,7 @@ exports[`LogHealthSlider should render correctly 1`] = `
               className="MuiGrid-root makeStyles-itsTime-9 MuiGrid-item MuiGrid-grid-xs-4"
             >
               <p
-                className="MuiTypography-root MuiTypography-body1"
+                className="MuiTypography-root MuiTypography-body2"
               >
                 It's time to enter your
 Daily Health Log!
@@ -93,7 +93,7 @@ Daily Health Log!
               className="MuiGrid-root MuiGrid-item MuiGrid-grid-xs-7 MuiGrid-grid-sm-6"
             >
               <p
-                className="MuiTypography-root makeStyles-bold-6 MuiTypography-body1"
+                className="MuiTypography-root makeStyles-bold-6 MuiTypography-body2"
               >
                 Swipe to Complete &gt; &gt; &gt;
               </p>
