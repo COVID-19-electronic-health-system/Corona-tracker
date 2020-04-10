@@ -1,13 +1,13 @@
 import React from 'react';
 import '../css/Table.css';
 import { connect } from 'react-redux';
-import PropTypes, { object } from 'prop-types';
+import PropTypes from 'prop-types';
 import { Table, TableBody, TableCell, TableContainer, TableHead, TableRow } from '@material-ui/core';
 import Chart from './Chart';
 import chartType from '../utils/chartType';
 
 const LogTable = props => {
-  const { detailData } = props;
+  const { detailData, observations } = props;
   const questions = [
     'Date',
     'Overall Feeling',
@@ -25,18 +25,18 @@ const LogTable = props => {
   return (
     <div>
       <TableContainer>
-        <Table responsive className="table">
+        <Table className="table">
           <TableHead className="table-head">
             <TableRow>
               {questions.map(question => (
-                <TableCell>{question}</TableCell>
+                <TableCell key={question}>{question}</TableCell>
               ))}
             </TableRow>
           </TableHead>
-          {detailData.map(observation => (
-            <TableBody>
+          {(detailData.length ? detailData : observations).map(observation => (
+            <TableBody key={observation.date}>
               <TableRow>
-                <TableCell>{new Date(observation.date).toISOString().slice(0, 10)}</TableCell>
+                <TableCell>{new Date(observation.date).toLocaleDateString()}</TableCell>
                 <TableCell>{observation.physical.dailyfeeling}</TableCell>
                 <TableCell>{observation.physical.coughSeverity}</TableCell>
                 <TableCell>{observation.physical.feverSeverity}</TableCell>
@@ -58,12 +58,14 @@ const LogTable = props => {
 };
 
 LogTable.propTypes = {
-  detailData: PropTypes.arrayOf(object).isRequired,
+  detailData: PropTypes.arrayOf(Object).isRequired,
+  observations: PropTypes.arrayOf(Object).isRequired,
 };
 
 const mapStateToProps = state => {
   return {
     detailData: state.healthToggleReducer.detailData,
+    observations: state.observationsReducer.observations,
   };
 };
 
