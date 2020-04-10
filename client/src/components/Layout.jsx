@@ -129,7 +129,7 @@ const Layout = props => {
     <ThemeProvider theme={theme}>
       <CssBaseline>
         {authenticated ? (
-          <div className={classes.root}>
+          <div id="content" className={classes.root}>
             <Logo className={classes.logo} />
             <TextLogo className={classes.textLogo} />
 

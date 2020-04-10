@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import SurveyPage1 from './SurveyPage1';
@@ -7,6 +7,12 @@ import SurveyPage3 from './SurveyPage3';
 
 const Survey = props => {
   const { surveyPage } = props;
+  const contentEl = document.getElementById('content');
+
+  useEffect(() => {
+    if (contentEl) contentEl.scrollTop = 0;
+  }, [surveyPage]);
+
   return (
     <div>
       {surveyPage === 1 && <SurveyPage1 />}
