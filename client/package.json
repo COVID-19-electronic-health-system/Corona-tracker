@@ -1,6 +1,6 @@
 {
   "name": "corona-tracker",
-  "version": "0.3.15",
+  "version": "0.3.16",
   "private": true,
   "prettier": "@blockstack/prettier-config",
   "husky": {
