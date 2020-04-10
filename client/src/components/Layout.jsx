@@ -128,7 +128,7 @@ const Layout = props => {
   return (
     <ThemeProvider theme={theme}>
       <CssBaseline>
-      {authenticated ? (
+        {authenticated ? (
           <div className={classes.root}>
             <Logo className={classes.logo} />
             <TextLogo className={classes.textLogo} />
@@ -136,10 +136,10 @@ const Layout = props => {
             {children}
             <NavBar />
           </div>
-      ) : (
-        <Login />
-      )}
-        </CssBaseline>
+        ) : (
+          <Login />
+        )}
+      </CssBaseline>
     </ThemeProvider>
   );
 };
