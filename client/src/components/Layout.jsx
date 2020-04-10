@@ -96,9 +96,10 @@ const useStyles = makeStyles(() => ({
     textAlign: 'center',
     backgroundImage: 'linear-gradient(#d7e1fa, #bbcef9)',
     overflowY: 'auto',
-    height: 'calc(100vh - 75px)',
+    height: '100vh',
     overflowX: 'hidden',
     margin: '0px',
+    paddingBottom: '150px',
   },
   logo: {
     width: '75px',
@@ -127,7 +128,7 @@ const Layout = props => {
   return (
     <ThemeProvider theme={theme}>
       <CssBaseline>
-        {authenticated ? (
+      {authenticated ? (
           <div className={classes.root}>
             <Logo className={classes.logo} />
             <TextLogo className={classes.textLogo} />
@@ -135,10 +136,10 @@ const Layout = props => {
             {children}
             <NavBar />
           </div>
-        ) : (
-          <Login />
-        )}
-      </CssBaseline>
+      ) : (
+        <Login />
+      )}
+        </CssBaseline>
     </ThemeProvider>
   );
 };
