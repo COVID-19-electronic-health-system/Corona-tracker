@@ -1,21 +1,34 @@
-import { loadObservations, saveObservation } from './observations';
+import { setNumObservations, setObservations, fetchObservations } from './observations';
 import { setLoginLoading } from './login';
 import { setNavbarSection } from './navigation';
-import { setDisclaimerAnswer } from './disclaimer';
-export const SAVING = 'SAVING';
-export const IDLE = 'IDLE';
-export const LOADING = 'LOADING';
-export const OBSERVATIONS_LOADED = 'OBSERVATIONS_LOADED';
-export const SET_LOGIN_LOADING = 'SET_LOGIN_LOADING';
-export const SET_NAVBAR_SECTION = 'SET_NAVBAR_SECTION';
-export const DISCLAIMER_ANSWER = 'DISCLAIMER_ANSWER';
+import { setDisclaimerAnswerThunk } from './disclaimer';
+import { selectDate } from './calendar';
+import { setToggleValue, setDetailData } from './healthToggle';
+import { setSurveyPage1, setSurveyPage2, setSurveyPage3, setSurveyPage4, toSurveyPage1, toSurveyPage2, toSurveyPage3, toSurveyPage4, clearSurvey } from './survey';
+import { setDemographicsComorbiditiesThunk } from './onboarding';
+import { submitSurveyThunk } from './submit-survey';
 
 const actions = {
   setLoginLoading,
-  loadObservations,
-  saveObservation,
   setNavbarSection,
-  setDisclaimerAnswer,
+  setNumObservations,
+  setObservations,
+  setDisclaimerAnswerThunk,
+  selectDate,
+  setToggleValue,
+  setDetailData,
+  setSurveyPage1,
+  setSurveyPage2,
+  setSurveyPage3,
+  setSurveyPage4,
+  toSurveyPage1,
+  toSurveyPage2,
+  toSurveyPage3,
+  toSurveyPage4,
+  clearSurvey,
+  setDemographicsComorbiditiesThunk,
+  submitSurveyThunk,
+  fetchObservations,
 };
 
 export default actions;

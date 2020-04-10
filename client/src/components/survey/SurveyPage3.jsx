@@ -1,0 +1,151 @@
+import React, { useState } from 'react';
+import { useHistory } from 'react-router-dom';
+import { makeStyles } from '@material-ui/core/styles';
+import { Typography, Button, TextField, Grid } from '@material-ui/core';
+import { useBlockstack } from 'react-blockstack';
+import { connect } from 'react-redux';
+import PropTypes from 'prop-types';
+import buttonsCss from '../../css/buttons';
+import actions from '../../redux/actions/actions';
+
+const useStyles = makeStyles(() => ({
+  root: {
+    alignItems: 'center',
+    justifyContent: 'center',
+    marginLeft: 'auto',
+    marginRight: 'auto',
+  },
+  additionalComments: {
+    margin: '3em',
+    width: '80vw',
+    border: '2px solid #f64141',
+  },
+  continueButton: {
+    ...buttonsCss.buttons,
+
+    margin: '20px 8px 10px 8px',
+    width: '160px',
+  },
+}));
+
+const SurveyPage3 = props => {
+  const { setSurveyPage3, survey, toSurveyPage2, setSurveyPage4, toSurveyPage4, submitSurvey } = props;
+  const { nonPhysical } = survey;
+  const classes = useStyles();
+  const [openComment, setOpenComment] = useState(nonPhysical.openComment || '');
+  const history = useHistory();
+  const { userSession } = useBlockstack();
+
+  const handleopenComment = value => {
+    setOpenComment(value);
+  };
+
+  const sendBackToPage2 = () => {
+    toSurveyPage2({ openComment });
+  };
+
+  const submitSurveyPage3 = async () => {
+    survey.nonPhysical.openComment = openComment;
+
+    submitSurvey(survey, userSession);
+
+    history.push('/');
+
+    setSurveyPage3({
+      openComment,
+    });
+
+    window.localStorage.setItem('surveyCompleted', 'true');
+  };
+
+  const surveyPage3 = {
+    openComment
+  }
+  // const SurveyPage4 = props => {
+  //   const { setSurveyPage4, interest, sadness, sleep, energy, appetite } = props
+  //   const [interestAnswer, setInterestAnswer] = useState(interest)
+     
+  //   const [sadAnswer, setSadAnswer] = useState(sadness)
+    
+  //   const [sleepAnswer, setSleepAnswer] = useState(sleep)
+    
+  //   const [energyAnswer, setEnergyAnswer] = useState(energy)
+    
+  //   const [appetiteAnswer, setAppetiteAnswer] = useState(appetite)
+  
+
+  // const surveyPage4 = {
+  //   interestAnswer,
+  //   sadAnswer,
+  //  sleepAnswer,
+  //   energyAnswer,
+  //   appetiteAnswer
+  // };
+
+
+  const openSurveyPage4 = () => {
+    // survey.nonPhysical.openComment = openComment;
+    // submitSurvey(survey, userSession);
+    // setSurveyPage3({
+    //   openComment,
+    // });
+    setSurveyPage3(surveyPage3)
+
+  }
+  
+
+
+  return (
+    <div className={classes.root}>
+      <Grid container justify="center" spacing={1} className={classes.grid}>
+        <Typography>
+          <b>Q6: Anything else you want to add?</b>
+        </Typography>
+        <Grid container justify="center" spacing={1} className={classes.grid}>
+          <Grid item xs={12} xl={4}>
+            <TextField
+              variant="outlined"
+              className={classes.additionalComments}
+              defaultValue={openComment}
+              onChange={e => handleopenComment(e.target.value)}
+            />
+          </Grid>
+          <Grid item xs={12} xl={4}>
+            <Button onClick={sendBackToPage2} variant="outlined" color="secondary" className={classes.continueButton}>
+              BACK
+            </Button>
+            <Button onClick={submitSurveyPage3} color="secondary" className={classes.continueButton}>
+              SUBMIT
+            </Button>
+            <Button onClick={openSurveyPage4} color="secondary" className={classes.continueButton}>
+              CONTINUE TO BEHAVIORAL SURVEY
+            </Button>
+          </Grid>
+        </Grid>
+      </Grid>
+    </div>
+  );
+};
+SurveyPage3.propTypes = {
+  setSurveyPage3: PropTypes.func.isRequired,
+  survey: PropTypes.objectOf(Object).isRequired,
+  toSurveyPage2: PropTypes.func.isRequired,
+  submitSurvey: PropTypes.func.isRequired,
+};
+
+const mapStateToProps = state => {
+  return {
+    survey: state.surveyReducer.survey,
+  };
+};
+
+const mapDispatchToProps = dispatch => {
+  return {
+    setSurveyPage3: survey => dispatch(actions.setSurveyPage3(survey)),
+    toSurveyPage2: survey => dispatch(actions.toSurveyPage2(survey)),
+    submitSurvey: (fileNumber, observation, encryptOptions, userSession) =>
+      dispatch(actions.submitSurveyThunk(fileNumber, observation, encryptOptions, userSession)),
+  };
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(SurveyPage3);
