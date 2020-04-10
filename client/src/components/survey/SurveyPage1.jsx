@@ -205,7 +205,7 @@ const SurveyPage1 = props => {
           />
 
           <Typography variant="subtitle1">
-            <b>Q3: How are your feeling compared yesterday?</b>
+            <b>Q3: How are your feeling compared to yesterday?</b>
           </Typography>
         </Grid>
         <Grid item xs={12}>
