@@ -9,6 +9,21 @@ import NavBar from './NavBar';
 import Login from './Login';
 
 const theme = createMuiTheme({
+  overrides: {
+    MuiSelect: {
+      select: {
+        '&&': {
+          // overrides .MuiSelect-select.MuiSelect-select
+          paddingRight: '0px',
+        },
+      },
+    },
+    MuiInputBase: {
+      root: {
+        fontSize: 'inherit',
+      },
+    },
+  },
   palette: {
     primary: {
       light: '#c8d7fa',
@@ -131,17 +146,17 @@ const Layout = props => {
     <ThemeProvider theme={theme}>
       <CssBaseline>
         {authenticated ? (
-        <div>
-          <div id="content" className={classes.root}>
-            <Logo className={classes.logo} />
-            <TextLogo className={classes.textLogo} />
-
-            {children}
-          </div>
           <div>
-            <NavBar />
+            <div id="content" className={classes.root}>
+              <Logo className={classes.logo} />
+              <TextLogo className={classes.textLogo} />
+
+              {children}
+            </div>
+            <div>
+              <NavBar />
+            </div>
           </div>
-        </div>
         ) : (
           <Login />
         )}
