@@ -7,13 +7,15 @@ export const FETCH_OBSERVATIONS = 'FETCH_OBSERVATIONS';
 export const addObservation = (userSession, observation) => async dispatch => {
   const obs = await getObservations(userSession);
   let obsArray;
+  let fileNumber = 1
   if (obs) {
     const currentArray = JSON.parse(obs);
+    fileNumber = currentArray.length + 1
     obsArray = [...currentArray, observation];
   } else {
     obsArray = [observation];
   }
-  postObservation(userSession, obsArray).then(didPost => {
+  postObservation(userSession, obsArray, fileNumber).then(didPost => {
     if (didPost) {
       dispatch({ type: ADD_OBSERVATION, payload: observation });
     }
