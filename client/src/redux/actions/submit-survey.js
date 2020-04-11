@@ -1,8 +1,7 @@
 /* eslint-disable no-console */
-
-import { SUBMIT_SURVEY } from '../reducers/submit-survey';
 import { addObservation } from './observations';
 import { clearSurvey } from './survey';
+export const SUBMIT_SURVEY = 'SUBMIT_SURVEY';
 
 // action creator
 export const submitSurvey = () => ({
@@ -16,7 +15,7 @@ export const submitSurveyThunk = (observation, userSession) => (dispatch, getSta
   const fileNumber = `${observationNumber}`.padStart(7, '0');
 
   userSession
-    .putFile(`observation/${fileNumber}.json`, JSON.stringify(observation))
+    .putFile(`observation.json`, JSON.stringify(observation))
     .then(() => {
       dispatch(submitSurvey());
       dispatch(addObservation(observation, observationNumber));

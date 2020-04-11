@@ -18,11 +18,17 @@ import About from './About';
 import Disclaimer from './Disclaimer';
 import NotFoundPage from './NotFoundPage';
 import actions from '../redux/actions/actions';
+import { fetchObservations } from '../redux/actions/observations'
+// import { fetchDemographicsComorbidities } from '../redux/actions/onboarding'
 
 ReactBlockstack({ appConfig });
 
 const App = props => {
-  const { setLoading, fetchObservations } = props;
+  const { 
+    setLoading, 
+    fetchObservations, 
+    // fetchDemographicsComorbidities 
+  } = props;
   const { userSession, authenticated } = useBlockstack();
   const finished = useCallback(() => {
     didConnect({ userSession });
@@ -41,8 +47,9 @@ const App = props => {
   useEffect(() => {
     if (authenticated) {
       fetchObservations(userSession);
+      // fetchDemographicsComorbidities(userSession)
     }
-  }, [userSession, fetchObservations, authenticated]);
+  }, [fetchObservations, authenticated, userSession]);
 
   const [disclaimerString] = useFile('disclaimer.json');
 
@@ -94,7 +101,8 @@ App.propTypes = {
 
 const mapDispatchToProps = dispatch => ({
   setLoading: isLoading => dispatch(actions.setLoginLoading(isLoading)),
-  fetchObservations: userSession => dispatch(actions.fetchObservations(userSession)),
+  fetchObservations: userSession => dispatch(fetchObservations(userSession)),
+  // fetchDemographicsComorbidities: userSession => dispatch(fetchDemographicsComorbidities(userSession))
 });
 
 export default connect(null, mapDispatchToProps)(App);
