@@ -61,39 +61,11 @@ const SurveyPage3 = props => {
   const surveyPage3 = {
     openComment
   }
-  // const SurveyPage4 = props => {
-  //   const { setSurveyPage4, interest, sadness, sleep, energy, appetite } = props
-  //   const [interestAnswer, setInterestAnswer] = useState(interest)
-     
-  //   const [sadAnswer, setSadAnswer] = useState(sadness)
-    
-  //   const [sleepAnswer, setSleepAnswer] = useState(sleep)
-    
-  //   const [energyAnswer, setEnergyAnswer] = useState(energy)
-    
-  //   const [appetiteAnswer, setAppetiteAnswer] = useState(appetite)
   
-
-  // const surveyPage4 = {
-  //   interestAnswer,
-  //   sadAnswer,
-  //  sleepAnswer,
-  //   energyAnswer,
-  //   appetiteAnswer
-  // };
-
-
   const openSurveyPage4 = () => {
-    // survey.nonPhysical.openComment = openComment;
-    // submitSurvey(survey, userSession);
-    // setSurveyPage3({
-    //   openComment,
-    // });
     setSurveyPage3(surveyPage3)
-
   }
   
-
 
   return (
     <div className={classes.root}>

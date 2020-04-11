@@ -175,8 +175,6 @@ const handleChange = (evt, value) => {
          appetiteAnswer
         }
         
-        // submitSurvey(survey, userSession);
-        
         history.push('/');
         
         setSurveyPage4(surveyPage4)
@@ -187,7 +185,6 @@ const handleChange = (evt, value) => {
 
  return (
      <>
-     {/* <div>hellp</div> */}
      <div className={classes.root} style={{marginTop: "10px"}}>
       <Grid container justify="center" alignItems="center" spacing={3}>
        <Grid container spacing={2} noValidate>
@@ -305,8 +302,6 @@ const handleChange = (evt, value) => {
        </>
  )
 }
-//   );
-// };
 
 SurveyPage4.propTypes = {
     setSurveyPage4: PropTypes.func.isRequired,
@@ -335,32 +330,3 @@ const mapDispatchToProps = dispatch => {
   };
 
 export default connect(mapStateToProps, mapDispatchToProps)(SurveyPage4)
-// export default SurveyPage4
-
-// const submitSurveyPage2 = async () => {
-//     if (
-//       fever === -1 ||
-//       shortnessOfBreath === '' ||
-//       chills === '' ||
-//       dryCough === '' ||
-//       chestPain === '' ||
-//       fatigue === '' ||
-//       soreThroat === '' ||
-//       bluish === ''
-//     ) {
-//       setOpen(true);
-//     } else {
-//       const surveyPage2 = {
-//         fever,
-//         shortnessOfBreath,
-//         chills,
-//         dryCough,
-//         chestPain,
-//         fatigue,
-//         soreThroat,
-//         bluish,
-//       };
-
-//       setSurveyPage2(surveyPage2);
-//     }
-//   };
