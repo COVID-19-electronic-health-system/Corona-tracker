@@ -13,6 +13,7 @@ const useStyles = makeStyles({
   FlashCards: {
     display: 'flex',
     justifyContent: 'center',
+    marginTop: '35px',
     cursor:
       "url('https://uploads.codesandbox.io/uploads/user/b3e56831-8b98-4fee-b941-0e27f39883ab/Ad1_-cursor.png') 39 39, auto;",
   },
