@@ -6,7 +6,7 @@ import FormControlLabel from '@material-ui/core/FormControlLabel';
 
 import { ResponsiveContainer, Line, LineChart, Tooltip, Legend, YAxis, XAxis, CartesianGrid } from 'recharts';
 
-export default function Rechart () {
+export default function BehavioralChart () {
   
     const rechartData = [
         {name: 'Day 1', Interest: 3, Sadness: 4, Sleep: 3, Energy:4, Appetite: 5},

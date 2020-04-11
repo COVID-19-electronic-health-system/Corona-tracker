@@ -18,7 +18,7 @@ import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import buttonsCss from '../../css/buttons';
 import actions from '../../redux/actions/actions';
-import Rechart from '../behavior/chart/Rechart'
+import BehavioralChart from '../behavior/chart/BehavioralChart';
 
 const useStyles = makeStyles(theme => ({
     root: {
@@ -297,7 +297,7 @@ const handleChange = (evt, value) => {
        </div> 
        </div>
        <div style={{height:500}}>
-        <Rechart/>
+        <BehavioralChart/>
         </div>
        </>
  )
