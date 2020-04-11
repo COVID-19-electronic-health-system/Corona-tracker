@@ -6,7 +6,7 @@ import Button from '@material-ui/core/Button';
 import Dialog from '@material-ui/core/Dialog';
 import DialogActions from '@material-ui/core/DialogActions';
 import DialogTitle from '@material-ui/core/DialogTitle';
-import { Link } from 'react-router-dom';
+import { Link, useHistory } from 'react-router-dom';
 import axios from 'axios';
 import { makeStyles } from '@material-ui/core/styles';
 import MoreHorizIcon from '@material-ui/icons/MoreHoriz';
@@ -74,6 +74,7 @@ const More = () => {
   const classes = useStyle();
   const { signOut } = useBlockstack();
   const { t } = useTranslation();
+  const history = useHistory();
   const handleClickOpen = () => {
     setOpen(!open);
   };
@@ -104,6 +105,10 @@ const More = () => {
         console.log(err);
       });
   };
+
+  const navigateTo = href => {
+    history.push(href);
+  }
 
   return (
     <Link to="#more" className={classes.root} onClick={handleClickOpen}>
@@ -140,15 +145,11 @@ const More = () => {
             </Button>
           </DialogActions>
           <DialogActions>
-            <Button size="medium" variant="contained" className={classes.buttons}>
-              <Link to="/onboard" className={classes.link}>
-                Settings
-              </Link>
+            <Button size="medium" onClick={() => navigateTo('/onboard')} variant="contained" className={classes.buttons}>
+              Settings
             </Button>
-            <Button size="medium" variant="contained" className={classes.buttons}>
-              <Link to="/about" className={classes.link}>
-                About
-              </Link>
+            <Button size="medium" onClick={() => navigateTo('/about')} variant="contained" className={classes.buttons}>
+              About
             </Button>
             <Button size="medium" color="secondary" variant="contained" className={classes.buttons} onClick={signOut}>
               {t('signoutButtonText')}
