@@ -1,10 +1,7 @@
 import React, { useState } from 'react';
 import { Container } from 'react-bootstrap';
 import { Button, ButtonGroup } from '@material-ui/core';
-// import FlashCards from './FlashCards'
-// import { cardData, quizData } from '../utils/fakeCardData'
 
-// What should const FactQuizContainer be changed to?
 const ToggleInfo = () => {
   const [tempOrSymptoms, setTempSymptoms] = useState('temperature');
   const setTemp = () => setTempSymptoms('temperature');
