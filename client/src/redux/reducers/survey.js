@@ -77,10 +77,10 @@ const surveyReducer = (oldState = initialState, action) => {
           },
         },
       };
-      case SET_SURVEY_PAGE_4:
-        return {
-          ...oldState,
-          surveyPage: 1,
+    case SET_SURVEY_PAGE_4:
+      return {
+        ...oldState,
+        surveyPage: 1,
         survey: {
           ...oldState.survey,
           date: Date.now(),
@@ -93,10 +93,10 @@ const surveyReducer = (oldState = initialState, action) => {
             sadness: action.survey.sadAnswer,
             sleep: action.survey.sleepAnswer,
             energy: action.survey.energyAnswer,
-            appetite: action.survey.appetiteAnswer
+            appetite: action.survey.appetiteAnswer,
           },
         },
-        };
+      };
     case TO_SURVEY_PAGE_1:
       return {
         ...oldState,
@@ -136,14 +136,14 @@ const surveyReducer = (oldState = initialState, action) => {
           },
         },
       };
-     case TO_SURVEY_PAGE_3:
-       return {
-         ...oldState,
-         surveyPage: 3,
-         survey: {
-           ...oldState.survey,
-           date: Date.now(),
-           physical: {
+    case TO_SURVEY_PAGE_3:
+      return {
+        ...oldState,
+        surveyPage: 3,
+        survey: {
+          ...oldState.survey,
+          date: Date.now(),
+          physical: {
             ...oldState.survey.physical,
           },
           nonPhysical: {
@@ -152,9 +152,9 @@ const surveyReducer = (oldState = initialState, action) => {
             sadness: action.survey.sadAnswer,
             sleep: action.survey.sleepAnswer,
             energy: action.survey.energyAnswer,
-            appetite: action.survey.appetiteAnswer
-         },
-       } ,
+            appetite: action.survey.appetiteAnswer,
+          },
+        },
       };
     case CLEAR_SURVEY:
       return {

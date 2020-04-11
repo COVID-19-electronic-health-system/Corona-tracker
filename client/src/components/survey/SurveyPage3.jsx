@@ -30,7 +30,7 @@ const useStyles = makeStyles(theme => ({
 }));
 
 const SurveyPage3 = props => {
-  const { setSurveyPage3, survey, toSurveyPage2, setSurveyPage4, toSurveyPage4, submitSurvey } = props;
+  const { setSurveyPage3, survey, toSurveyPage2, submitSurvey } = props;
   const { nonPhysical } = survey;
   const classes = useStyles();
   const [openComment, setOpenComment] = useState(nonPhysical.openComment || '');
@@ -60,13 +60,12 @@ const SurveyPage3 = props => {
   };
 
   const surveyPage3 = {
-    openComment
-  }
-  
+    openComment,
+  };
+
   const openSurveyPage4 = () => {
-    setSurveyPage3(surveyPage3)
-  }
-  
+    setSurveyPage3(surveyPage3);
+  };
 
   return (
     <div className={classes.root}>

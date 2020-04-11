@@ -62,8 +62,7 @@ export default class Observation {
       sadness: 0,
       sleep: 0,
       energy: 0,
-      appetite: 0
-
+      appetite: 0,
     };
   }
 }

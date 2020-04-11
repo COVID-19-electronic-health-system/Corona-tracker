@@ -48,7 +48,6 @@ export const toSurveyPage4 = survey => ({
   survey,
 });
 
-
 export const clearSurvey = () => ({
   type: CLEAR_SURVEY,
 });
