@@ -1,10 +1,10 @@
-import { 
-  // OBSERVATIONS_LOADED, 
-//   NUM_OBSERVATIONS, 
-//   SET_OBSERVATIONS, 
+import {
+  // OBSERVATIONS_LOADED,
+  //   NUM_OBSERVATIONS,
+  //   SET_OBSERVATIONS,
   FETCH_OBSERVATIONS,
+  ADD_OBSERVATION,
 } from '../actions/observations';
-import { ADD_OBSERVATION } from '../actions/observations'
 
 const initialState = {
   numObservations: 0,
@@ -22,16 +22,16 @@ const observationsReducer = (state = initialState, action) => {
     //     numObservations: action.numObservations,
     //   };
     case ADD_OBSERVATION: {
-        return {
-            ...state,
-            observations: [...state.observations, action.payload]
-        }
+      return {
+        ...state,
+        observations: [...state.observations, action.payload],
+      };
     }
     case FETCH_OBSERVATIONS: {
-        return {
-            ...state,
-            observations: action.observations
-        }
+      return {
+        ...state,
+        observations: action.observations,
+      };
     }
     // case SET_OBSERVATIONS:
     //   return {

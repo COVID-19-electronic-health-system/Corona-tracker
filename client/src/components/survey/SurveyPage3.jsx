@@ -7,7 +7,6 @@ import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import buttonsCss from '../../css/buttons';
 import actions from '../../redux/actions/actions';
-import { addObservation } from '../../redux/actions/observations'
 
 const useStyles = makeStyles(theme => ({
   root: {
@@ -31,8 +30,7 @@ const useStyles = makeStyles(theme => ({
 }));
 
 const SurveyPage3 = props => {
-  const { setSurveyPage3, survey, toSurveyPage2, submitSurvey, addObservation } = props;
-  console.log(submitSurvey)
+  const { setSurveyPage3, survey, toSurveyPage2, addObservation } = props;
   const { nonPhysical } = survey;
   const classes = useStyles();
   const [openComment, setOpenComment] = useState(nonPhysical.openComment || '');
@@ -93,6 +91,7 @@ SurveyPage3.propTypes = {
   setSurveyPage3: PropTypes.func.isRequired,
   survey: PropTypes.objectOf(Object).isRequired,
   toSurveyPage2: PropTypes.func.isRequired,
+  addObservation: PropTypes.func.isRequired,
 };
 
 const mapStateToProps = state => {
@@ -105,8 +104,7 @@ const mapDispatchToProps = dispatch => {
   return {
     setSurveyPage3: survey => dispatch(actions.setSurveyPage3(survey)),
     toSurveyPage2: survey => dispatch(actions.toSurveyPage2(survey)),
-    addObservation: (userSession, survey) =>
-      dispatch(addObservation(userSession, survey)),
+    addObservation: (userSession, survey) => dispatch(actions.addObservation(userSession, survey)),
   };
 };
 
