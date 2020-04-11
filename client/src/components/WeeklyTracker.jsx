@@ -92,7 +92,7 @@ const WeeklyTracker = props => {
 };
 
 WeeklyTracker.propTypes = {
-  children: PropTypes.string,
+  children: PropTypes.node,
   setToggleValue: PropTypes.func.isRequired,
   setDetailData: PropTypes.func.isRequired,
 };

@@ -8,16 +8,17 @@ import PropTypes from 'prop-types';
 import buttonsCss from '../../css/buttons';
 import actions from '../../redux/actions/actions';
 
-const useStyles = makeStyles(() => ({
+const useStyles = makeStyles(theme => ({
   root: {
     alignItems: 'center',
     justifyContent: 'center',
     marginLeft: 'auto',
     marginRight: 'auto',
+    maxWidth: theme.breakpoints.values.md,
+    padding: '4px 32px',
   },
   additionalComments: {
-    margin: '3em',
-    width: '80vw',
+    width: '100%',
     border: '2px solid #f64141',
   },
   continueButton: {

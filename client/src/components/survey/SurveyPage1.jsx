@@ -60,11 +60,9 @@ const useStyles = makeStyles(theme => ({
     ...buttonsCss.buttons,
     margin: '0.5em',
     background: 'rgba(255,255,255,0.5)',
-    backgroundColor: `linear-gradient(45deg, #4760ff, #82a4f8)`,
     color: 'black',
     '&:hover': {
       ...buttonsCss.buttons,
-      backgroundColor: `linear-gradient(45deg, #4760ff, #82a4f8)`,
     },
   },
 }));
@@ -136,7 +134,7 @@ const SurveyPage1 = props => {
   };
 
   const handlerComparedFeeling = e => {
-    setcomparedFeeling(e);
+    setcomparedFeeling(e.toLowerCase());
     setComparedSet(true);
   };
 
@@ -207,7 +205,7 @@ const SurveyPage1 = props => {
           />
 
           <Typography variant="subtitle1">
-            <b>Q3: How are your feeling compared yesterday?</b>
+            <b>Q3: How are your feeling compared to yesterday?</b>
           </Typography>
         </Grid>
         <Grid item xs={12}>

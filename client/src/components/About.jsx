@@ -74,8 +74,7 @@ const About = () => {
   const classes = useStyles();
 
   return (
-    <>
-      <CssBaseline />
+    <Grid>
       <main>
         <div className={classes.heroContent}>
           <Container maxWidth="sm">
@@ -120,7 +119,7 @@ const About = () => {
         </Typography>
         {/* <Copyright /> */}
       </footer>
-    </>
+    </Grid>
   );
 };
 

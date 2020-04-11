@@ -220,13 +220,40 @@ const OnboardUser = props => {
               </Typography>
             </Grid>
             <Grid item>
-              <input
-                className={classes.inputField}
-                name="isSmoker"
-                placeholder="Click Here"
-                value={formState.isSmoker}
-                onChange={handleChange}
-              />
+              <ButtonGroup>
+                <button
+                  type="button"
+                  onClick={e => {
+                    e.preventDefault();
+                    setFormState({
+                      ...formState,
+                      isSmoker: 'yes',
+                    });
+                  }}
+                  className={classes.buttonMale}
+                  style={
+                    formState.isSmoker === 'yes' ? { backgroundColor: '#82a4f8', outline: 'none', color: 'wheat' } : {}
+                  }
+                >
+                  Yes
+                </button>
+                <button
+                  type="button"
+                  onClick={e => {
+                    e.preventDefault();
+                    setFormState({
+                      ...formState,
+                      isSmoker: 'no',
+                    });
+                  }}
+                  className={classes.buttonFemale}
+                  style={
+                    formState.isSmoker === 'no' ? { backgroundColor: '#82a4f8', outline: 'none', color: 'wheat' } : {}
+                  }
+                >
+                  No
+                </button>
+              </ButtonGroup>
             </Grid>
           </Grid>
           <Grid container spacing={1} justify="space-between">
@@ -236,13 +263,40 @@ const OnboardUser = props => {
               </Typography>
             </Grid>
             <Grid item>
-              <input
-                className={classes.inputField}
-                name="isObese"
-                placeholder="Click Here"
-                value={formState.isObese}
-                onChange={handleChange}
-              />
+              <ButtonGroup>
+                <button
+                  type="button"
+                  onClick={e => {
+                    e.preventDefault();
+                    setFormState({
+                      ...formState,
+                      isObese: 'yes',
+                    });
+                  }}
+                  className={classes.buttonMale}
+                  style={
+                    formState.isObese === 'yes' ? { backgroundColor: '#82a4f8', outline: 'none', color: 'wheat' } : {}
+                  }
+                >
+                  Yes
+                </button>
+                <button
+                  type="button"
+                  onClick={e => {
+                    e.preventDefault();
+                    setFormState({
+                      ...formState,
+                      isObese: 'no',
+                    });
+                  }}
+                  className={classes.buttonFemale}
+                  style={
+                    formState.isObese === 'no' ? { backgroundColor: '#82a4f8', outline: 'none', color: 'wheat' } : {}
+                  }
+                >
+                  No
+                </button>
+              </ButtonGroup>
             </Grid>
           </Grid>
           <Grid container spacing={1} justify="space-between">
@@ -252,13 +306,44 @@ const OnboardUser = props => {
               </Typography>
             </Grid>
             <Grid item>
-              <input
-                className={classes.inputField}
-                name="isAsthmatic"
-                placeholder="Click Here"
-                value={formState.isAsthmatic}
-                onChange={handleChange}
-              />
+              <ButtonGroup>
+                <button
+                  type="button"
+                  onClick={e => {
+                    e.preventDefault();
+                    setFormState({
+                      ...formState,
+                      isAsthmatic: 'yes',
+                    });
+                  }}
+                  className={classes.buttonMale}
+                  style={
+                    formState.isAsthmatic === 'yes'
+                      ? { backgroundColor: '#82a4f8', outline: 'none', color: 'wheat' }
+                      : {}
+                  }
+                >
+                  Yes
+                </button>
+                <button
+                  type="button"
+                  onClick={e => {
+                    e.preventDefault();
+                    setFormState({
+                      ...formState,
+                      isAsthmatic: 'no',
+                    });
+                  }}
+                  className={classes.buttonFemale}
+                  style={
+                    formState.isAsthmatic === 'no'
+                      ? { backgroundColor: '#82a4f8', outline: 'none', color: 'wheat' }
+                      : {}
+                  }
+                >
+                  No
+                </button>
+              </ButtonGroup>
             </Grid>
           </Grid>
           <Button
