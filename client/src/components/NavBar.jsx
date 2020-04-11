@@ -104,7 +104,7 @@ const NavBar = props => {
 };
 
 NavBar.propTypes = {
-  classes: PropTypes.func.isRequired,
+  classes: PropTypes.objectOf(Object).isRequired,
 };
 
 export default withStyles(styles)(NavBar);

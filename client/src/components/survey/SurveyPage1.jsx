@@ -17,14 +17,18 @@ import PropTypes from 'prop-types';
 import buttonsCss from '../../css/buttons';
 import actions from '../../redux/actions/actions';
 
-const useStyles = makeStyles(() => ({
+const useStyles = makeStyles(theme => ({
   root: {
     alignItems: 'center',
     justifyContent: 'center',
     marginLeft: 'auto',
     marginRight: 'auto',
-    maxWidth: '992px',
-    padding: '24px',
+    fontFamily: 'Nunito',
+    maxWidth: theme.breakpoints.values.md,
+    width: '92vw',
+    [theme.breakpoints.up('sm')]: {
+      width: '50%',
+    },
   },
   controlLabels: {
     marginLeft: -20,
@@ -37,8 +41,9 @@ const useStyles = makeStyles(() => ({
   },
   continueButton: {
     ...buttonsCss.buttons,
-    marginTop: '10vh',
+    marginTop: '1vh',
     width: '50vw',
+    maxWidth: '180px',
   },
   dialog: {
     background: '#7a9cf9',
@@ -55,18 +60,16 @@ const useStyles = makeStyles(() => ({
     ...buttonsCss.buttons,
     margin: '0.5em',
     background: 'rgba(255,255,255,0.5)',
-    backgroundColor: `linear-gradient(45deg, #4760ff, #82a4f8)`,
     color: 'black',
     '&:hover': {
       ...buttonsCss.buttons,
-      backgroundColor: `linear-gradient(45deg, #4760ff, #82a4f8)`,
     },
   },
 }));
 
 const WellnessSlider = withStyles({
   markLabel: {
-    fontSize: '1.25rem',
+    fontSize: '1.17rem',
   },
 })(Slider);
 
@@ -131,7 +134,7 @@ const SurveyPage1 = props => {
   };
 
   const handlerComparedFeeling = e => {
-    setcomparedFeeling(e);
+    setcomparedFeeling(e.toLowerCase());
     setComparedSet(true);
   };
 
@@ -162,12 +165,12 @@ const SurveyPage1 = props => {
           </Typography>
         </Grid>
         <Grid item xs={12}>
-          <Typography>
+          <Typography variant="body1">
             Be sure to answer truthfully and honestly so that your health record will be accurate and helpful
           </Typography>
         </Grid>
         <Grid item xs={12}>
-          <Typography id="discrete-slider" gutterBottom>
+          <Typography variant="subtitle1" id="discrete-slider" gutterBottom>
             <b>Q1: How do you feel today?</b>
           </Typography>
         </Grid>
@@ -183,9 +186,8 @@ const SurveyPage1 = props => {
             max={5}
             marks={marks}
           />
-        </Grid>
-        <Grid item xs={12}>
-          <Typography id="discrete-slider" gutterBottom>
+
+          <Typography variant="subtitle1" id="discrete-slider" gutterBottom>
             <b>Q2: How are your symptoms?</b>
           </Typography>
         </Grid>
@@ -201,10 +203,9 @@ const SurveyPage1 = props => {
             max={5}
             marks={marks}
           />
-        </Grid>
-        <Grid item xs={12}>
-          <Typography>
-            <b>Q3: How are your feeling compared yesterday?</b>
+
+          <Typography variant="subtitle1">
+            <b>Q3: How are your feeling compared to yesterday?</b>
           </Typography>
         </Grid>
         <Grid item xs={12}>

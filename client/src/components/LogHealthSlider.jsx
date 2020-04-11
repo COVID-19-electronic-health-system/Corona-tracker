@@ -146,15 +146,15 @@ const LogHealthSlider = () => {
               </Grid>
               <Grid item xs={11} container alignItems="center" spacing={1}>
                 <Grid item xs={2}>
-                  <Typography variant="body1" className={classes.bold}>
+                  <Typography variant="body2" className={classes.bold}>
                     Today
                   </Typography>
                 </Grid>
                 <Grid item xs={4} className={classes.itsTime}>
-                  <Typography variant="body1">{`It's time to enter your\nDaily Health Log!`}</Typography>
+                  <Typography variant="body2">{`It's time to enter your\nDaily Health Log!`}</Typography>
                 </Grid>
                 <Grid item xs={7} sm={6}>
-                  <Typography variant="body1" className={classes.bold}>
+                  <Typography variant="body2" className={classes.bold}>
                     Swipe to Complete &gt; &gt; &gt;
                   </Typography>
                 </Grid>

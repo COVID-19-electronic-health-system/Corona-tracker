@@ -17,7 +17,7 @@ import buttonsCss from '../css/buttons';
 
 const useStyle = makeStyles({
   root: {
-    width: '150px',
+    width: '100px',
   },
   dialog: {
     width: '100vw',
