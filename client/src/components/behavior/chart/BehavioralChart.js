@@ -47,7 +47,6 @@ export default function BehavioralChart() {
 
   const onMouseMoveHandler = event => {
     if (!isActive) return;
-
     console.warn(event);
   };
 
