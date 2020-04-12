@@ -11,7 +11,7 @@ const Survey = props => {
 
   useEffect(() => {
     if (contentEl) contentEl.scrollTop = 0;
-  }, [surveyPage]);
+  }, [surveyPage, contentEl]);
 
   return (
     <div>
