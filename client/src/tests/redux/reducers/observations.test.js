@@ -5,7 +5,10 @@ import Observation from '../../../models/observation';
 
 describe('obervations reducer', () => {
   it('should return the initial state', () => {
-    expect(reducer(undefined, {})).toEqual({ numObservations: 0, observations: [] });
+    expect(reducer(undefined, {})).toEqual({
+      selectedObservation: null,
+      observations: [],
+    });
   });
 
   // it('should handle NUM_OBSERVATIONS', () => {
