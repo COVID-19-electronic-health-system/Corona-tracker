@@ -11,7 +11,6 @@ describe('obervations reducer', () => {
     });
   });
 
-
   it('should handle FETCH_OBSERVATIONS', () => {
     const observation = new Observation().attrs;
     const setObs = {
@@ -23,11 +22,11 @@ describe('obervations reducer', () => {
 });
 
 it('should handle ADD_OBSERVATIONS', () => {
-  const observation = new Observation().attrs
-  const oldObs = new Observation().attrs
+  const observation = new Observation().attrs;
+  const oldObs = new Observation().attrs;
   const addObs = {
     type: ADD_OBSERVATION,
-    observations: [observation]
-  }
-  expect(reducer({observations: [oldObs]}, addObs)).toEqual({ observations: [oldObs, observation] });
-})
+    observations: [observation],
+  };
+  expect(reducer({ observations: [oldObs] }, addObs)).toEqual({ observations: [oldObs, observation] });
+});

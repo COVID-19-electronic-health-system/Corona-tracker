@@ -1,5 +1,4 @@
-import { getObservations, postObservation } from '../../utils/blockstackHelpers';
-import { clearSurvey } from './survey';
+import { getObservations, postObservationsList, postSingleObservation } from '../../utils/blockstackHelpers';
 
 export const ADD_OBSERVATION = 'ADD_OBSERVATION';
 export const FETCH_OBSERVATIONS = 'FETCH_OBSERVATIONS';
@@ -15,13 +14,12 @@ export const addObservation = (userSession, observation) => async dispatch => {
   } else {
     obsArray = [observation];
   }
-  postObservation(userSession, obsArray, fileNumber).then(didPost => {
+  postObservationsList(userSession, obsArray, fileNumber).then(didPost => {
     if (didPost) {
+      postSingleObservation(userSession, observation, fileNumber);
       dispatch({ type: ADD_OBSERVATION, payload: observation });
     }
   });
-
-  dispatch(clearSurvey());
 };
 
 export const fetchObservations = userSession => async dispatch => {

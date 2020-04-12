@@ -30,7 +30,7 @@ const useStyles = makeStyles(theme => ({
 }));
 
 const SurveyPage3 = props => {
-  const { setSurveyPage3, survey, toSurveyPage2, addObservation } = props;
+  const { setSurveyPage3, survey, toSurveyPage2, addObservation, clearSurvey } = props;
   const { nonPhysical } = survey;
   const classes = useStyles();
   const [openComment, setOpenComment] = useState(nonPhysical.openComment || '');
@@ -55,6 +55,8 @@ const SurveyPage3 = props => {
     setSurveyPage3({
       openComment,
     });
+
+    clearSurvey();
 
     window.localStorage.setItem('surveyCompleted', 'true');
   };
@@ -92,6 +94,7 @@ SurveyPage3.propTypes = {
   survey: PropTypes.objectOf(Object).isRequired,
   toSurveyPage2: PropTypes.func.isRequired,
   addObservation: PropTypes.func.isRequired,
+  clearSurvey: PropTypes.func.isRequired,
 };
 
 const mapStateToProps = state => {
@@ -105,6 +108,7 @@ const mapDispatchToProps = dispatch => {
     setSurveyPage3: survey => dispatch(actions.setSurveyPage3(survey)),
     toSurveyPage2: survey => dispatch(actions.toSurveyPage2(survey)),
     addObservation: (userSession, survey) => dispatch(actions.addObservation(userSession, survey)),
+    clearSurvey: () => dispatch(actions.clearSurvey()),
   };
 };
 

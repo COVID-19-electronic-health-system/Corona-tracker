@@ -22,10 +22,7 @@ import actions from '../redux/actions/actions';
 ReactBlockstack({ appConfig });
 
 const App = props => {
-  const {
-    setLoading,
-    fetchObservations,
-  } = props;
+  const { setLoading, fetchObservations } = props;
   const { userSession, authenticated } = useBlockstack();
   const finished = useCallback(() => {
     didConnect({ userSession });
