@@ -1,7 +1,4 @@
-import {
-  FETCH_OBSERVATIONS,
-  ADD_OBSERVATION,
-} from '../actions/observations';
+import { FETCH_OBSERVATIONS, ADD_OBSERVATION } from '../actions/observations';
 
 const initialState = {
   selectedObservation: null,

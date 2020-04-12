@@ -1,6 +1,6 @@
 import expect from 'expect';
 import reducer from '../../../redux/reducers/observations';
-import { FETCH_OBSERVATIONS } from '../../../redux/actions/observations';
+import { FETCH_OBSERVATIONS, ADD_OBSERVATION } from '../../../redux/actions/observations';
 import Observation from '../../../models/observation';
 
 describe('obervations reducer', () => {
@@ -11,13 +11,6 @@ describe('obervations reducer', () => {
     });
   });
 
-  // it('should handle NUM_OBSERVATIONS', () => {
-  //   const numObs = {
-  //     type: NUM_OBSERVATIONS,
-  //     numObservations: 2,
-  //   };
-  //   expect(reducer({}, numObs)).toEqual({ numObservations: 2 });
-  // });
 
   it('should handle FETCH_OBSERVATIONS', () => {
     const observation = new Observation().attrs;
@@ -28,3 +21,13 @@ describe('obervations reducer', () => {
     expect(reducer({}, setObs)).toEqual({ observations: [observation] });
   });
 });
+
+it('should handle ADD_OBSERVATIONS', () => {
+  const observation = new Observation().attrs
+  const oldObs = new Observation().attrs
+  const addObs = {
+    type: ADD_OBSERVATION,
+    observations: [observation]
+  }
+  expect(reducer({observations: [oldObs]}, addObs)).toEqual({ observations: [oldObs, observation] });
+})

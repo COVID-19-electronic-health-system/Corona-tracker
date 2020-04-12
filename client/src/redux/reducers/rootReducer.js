@@ -8,7 +8,6 @@ import temperatureReducer from './temperature';
 import healthToggleReducer from './healthToggle';
 import surveyReducer from './survey';
 import onboardingReducer from './onboarding';
-import submitSurveyReducer from './submit-survey';
 
 export default combineReducers({
   loginLoading,
@@ -20,5 +19,4 @@ export default combineReducers({
   healthToggleReducer,
   surveyReducer,
   onboardingReducer,
-  submitSurveyReducer,
 });

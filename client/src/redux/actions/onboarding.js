@@ -15,7 +15,6 @@ export const fetchDemographicsComorbidities = userSession => async dispatch => {
 };
 
 export const setDemographicsComorbiditiesThunk = (formData, userSession) => async dispatch => {
-  console.log(formData);
   await userSession
     .putFile(`demographics-comorbidities.json`, JSON.stringify(formData))
     .then(() => 200)
