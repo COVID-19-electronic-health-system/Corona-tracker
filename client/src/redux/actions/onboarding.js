@@ -9,8 +9,12 @@ export function setDemographicsComorbidities(formData) {
   };
 }
 
+export const fetchDemographicsComorbidities = userSession => async dispatch => {
+  const data = await userSession.getFile(`demographics-comorbidities.json`);
+  if (data) dispatch(setDemographicsComorbidities(JSON.parse(data)));
+};
+
 export const setDemographicsComorbiditiesThunk = (formData, userSession) => async dispatch => {
-  console.log(formData);
   await userSession
     .putFile(`demographics-comorbidities.json`, JSON.stringify(formData))
     .then(() => 200)

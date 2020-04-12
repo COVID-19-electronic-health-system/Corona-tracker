@@ -43,7 +43,7 @@ const App = props => {
     if (authenticated) {
       fetchObservations(userSession);
     }
-  }, [userSession, fetchObservations, authenticated]);
+  }, [fetchObservations, authenticated, userSession]);
 
   const [disclaimerString] = useFile('disclaimer.json');
 
