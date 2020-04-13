@@ -27,7 +27,7 @@ const to = i => ({
 });
 const from = () => ({ x: 0, rot: 0, scale: 1.5, y: -1000 });
 
-const trans = (r, s) => `perspective(1500px) rotateX(15deg) rotateY(${r/5}deg) rotateZ(${r}deg) scale(${s})`;
+const trans = (r, s) => `perspective(1500px) rotateX(15deg) rotateY(${r / 5}deg) rotateZ(${r}deg) scale(${s})`;
 
 const FlashCards = props => {
   const { cardData, mode } = props;
