@@ -13,8 +13,13 @@ import checkSvg from '../img/Calendar_Menu_Checkmark.svg';
 import xSvg from '../img/Calendar_Menu_X.svg';
 import noSelectCss from '../css/noSelect';
 
-const useStyles = makeStyles({
+const useStyles = makeStyles(theme=>({
   ...noSelectCss,
+
+  width: '100vw',
+  [theme.breakpoints.up('md')]: {
+    width: '60vw',
+  },
   item: {
     backgroundColor: '#ffffff',
     position: 'relative',
@@ -25,6 +30,10 @@ const useStyles = makeStyles({
     display: 'grid',
     alignItems: 'center',
     textAlign: 'center',
+    width: '100vw',
+    [theme.breakpoints.up('md')]: {
+      width: '60vw',
+    },
   },
   itemGridDiv: {
     borderRight: '1px solid #aaaaaa',
@@ -69,7 +78,7 @@ const useStyles = makeStyles({
     textAlign: 'left',
     whiteSpace: 'pre-wrap',
   },
-});
+}));
 
 const LogHealthSlider = () => {
   const classes = useStyles();
@@ -123,47 +132,49 @@ const LogHealthSlider = () => {
   );
 
   return (
-    <div className={classes.noSelect}>
-      <animated.div className={classes.item}>
-        <div className={classes.itemGridDiv}>
-          <Grid container justify="space-around" alignItems="center">
-            <Grid item className={classes.imageContainer}>
-              <img alt="Yes" src={checkSvg} className={classes.image} />
-            </Grid>
-            <Grid item className={classes.imageContainer}>
-              <img alt="Remind Me" src={alarmSvg} className={classes.image} />
-            </Grid>
-            <Grid item className={classes.imageContainer}>
-              <img alt="No" src={xSvg} className={classes.image} />
-            </Grid>
-          </Grid>
-        </div>
-        <animated.div {...bind()} className={classes.fg} style={{ x }}>
-          <div className={classes.fgGridDiv}>
-            <Grid container alignItems="center">
-              <Grid item xs={1} className={classes.imageContainer}>
-                <img alt="threeLinesSvg" src={CalendarThreeLines} className={classes.image} />
+    <Grid container justify='center'>
+      <Grid className={classes.noSelect}>
+        <animated.div className={classes.item}>
+          <div className={classes.itemGridDiv}>
+            <Grid container justify="space-around" alignItems="center">
+              <Grid item className={classes.imageContainer}>
+                <img alt="Yes" src={checkSvg} className={classes.image} />
               </Grid>
-              <Grid item xs={11} container alignItems="center" spacing={1}>
-                <Grid item xs={2}>
-                  <Typography variant="body2" className={classes.bold}>
-                    Today
-                  </Typography>
-                </Grid>
-                <Grid item xs={4} className={classes.itsTime}>
-                  <Typography variant="body2">{`It's time to enter your\nDaily Health Log!`}</Typography>
-                </Grid>
-                <Grid item xs={7} sm={6}>
-                  <Typography variant="body2" className={classes.bold}>
-                    Swipe to Complete &gt; &gt; &gt;
-                  </Typography>
-                </Grid>
+              <Grid item className={classes.imageContainer}>
+                <img alt="Remind Me" src={alarmSvg} className={classes.image} />
+              </Grid>
+              <Grid item className={classes.imageContainer}>
+                <img alt="No" src={xSvg} className={classes.image} />
               </Grid>
             </Grid>
           </div>
+          <animated.div {...bind()} className={classes.fg} style={{ x }}>
+            <div className={classes.fgGridDiv}>
+              <Grid container alignItems="center">
+                <Grid item xs={1} className={classes.imageContainer}>
+                  <img alt="threeLinesSvg" src={CalendarThreeLines} className={classes.image} />
+                </Grid>
+                <Grid item xs={11} container alignItems="center" spacing={1}>
+                  <Grid item xs={2}>
+                    <Typography variant="body2" className={classes.bold}>
+                      Today
+                    </Typography>
+                  </Grid>
+                  <Grid item xs={4} className={classes.itsTime}>
+                    <Typography variant="body2">{`It's time to enter your\nDaily Health Log!`}</Typography>
+                  </Grid>
+                  <Grid item xs={7} sm={6}>
+                    <Typography variant="body2" className={classes.bold}>
+                      Swipe to Complete &gt; &gt; &gt;
+                    </Typography>
+                  </Grid>
+                </Grid>
+              </Grid>
+            </div>
+          </animated.div>
         </animated.div>
-      </animated.div>
-    </div>
+      </Grid>
+    </Grid>
   );
 };
 
