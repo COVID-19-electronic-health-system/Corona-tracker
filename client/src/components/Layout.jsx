@@ -13,7 +13,6 @@ const theme = createMuiTheme({
     MuiSelect: {
       select: {
         '&&': {
-          // overrides .MuiSelect-select.MuiSelect-select
           paddingRight: '0px',
         },
       },
