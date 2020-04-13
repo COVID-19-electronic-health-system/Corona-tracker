@@ -58,6 +58,7 @@ const useStyle = makeStyles({
     ...buttonsCss.buttons,
     width: '33vw',
     height: '8vh',
+    minHeight: '50px',
   },
   link: {
     height: '100%',
