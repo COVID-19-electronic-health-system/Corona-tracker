@@ -82,7 +82,7 @@ const Quiz = ({ data }) => {
         {question}
       </Typography>
       <footer>
-        {footer}
+        <Typography variant="caption">{footer}</Typography>
         {link && (
           <Button size="small" href={link}>
             Learn More
