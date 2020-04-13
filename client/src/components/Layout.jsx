@@ -131,17 +131,17 @@ const Layout = props => {
     <ThemeProvider theme={theme}>
       <CssBaseline>
         {authenticated ? (
-        <div>
-          <div id="content" className={classes.root}>
-            <Logo className={classes.logo} />
-            <TextLogo className={classes.textLogo} />
-
-            {children}
-          </div>
           <div>
-            <NavBar />
+            <div id="content" className={classes.root}>
+              <Logo className={classes.logo} />
+              <TextLogo className={classes.textLogo} />
+
+              {children}
+            </div>
+            <div>
+              <NavBar />
+            </div>
           </div>
-        </div>
         ) : (
           <Login />
         )}

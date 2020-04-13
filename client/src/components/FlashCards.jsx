@@ -21,7 +21,7 @@ const useStyles = makeStyles({
 const to = i => ({
   x: 0,
   y: 0,
-  scale: .95,
+  scale: 0.95,
   rot: -1 + Math.random() * 5,
   delay: i * 100,
 });
