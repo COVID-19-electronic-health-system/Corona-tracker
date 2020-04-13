@@ -5,7 +5,7 @@
 import React from 'react';
 import { animated, to } from 'react-spring';
 import Button from '@material-ui/core/Button';
-import { Typography } from '@material-ui/core';
+import { Typography, Grid } from '@material-ui/core';
 import { makeStyles } from '@material-ui/core/styles';
 
 const useStyles = makeStyles(theme => ({
@@ -29,11 +29,11 @@ const useStyles = makeStyles(theme => ({
     },
     [theme.breakpoints.up('md')]: {
       width: '350px',
-      height: '400px',
+      height: '380px',
     },
     borderRadius: '20px',
     boxShadow: '1px 2px 10px 5px #97a2bd',
-    padding: '20px',
+    padding: '10px',
     willChange: 'transform',
     userSelect: 'none',
   },
@@ -52,7 +52,7 @@ const Facts = ({ data }) => {
 
   const classes = useStyles();
   return (
-    <div>
+    <Grid>
       <Typography variant="h4" color="secondary">
         {title}
       </Typography>
@@ -67,19 +67,21 @@ const Facts = ({ data }) => {
           </Button>
         )}
       </footer>
-    </div>
+    </Grid>
   );
 };
 
 const Quiz = ({ data }) => {
   const { question, footer, link } = data;
   return (
-    <div style={{ textAlign: 'left' }}>
-      <h1 style={{ fontStyle: 'cursive', fontSize: '1rem' }}>{question}</h1>
-      <h3 className="item2" style={{ fontSize: '1rem' }}>
-        False or True
-      </h3>
-      <footer style={{ textAlign: 'left' }}>
+    <Grid>
+      <Typography color="secondary" variant="subtitle1">
+        False or True?
+      </Typography>
+      <Typography paragraph variant="body1">
+        {question}
+      </Typography>
+      <footer>
         {footer}
         {link && (
           <Button size="small" href={link}>
@@ -87,7 +89,7 @@ const Quiz = ({ data }) => {
           </Button>
         )}
       </footer>
-    </div>
+    </Grid>
   );
 };
 

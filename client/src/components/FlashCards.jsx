@@ -8,6 +8,7 @@ import { useDrag } from 'react-use-gesture';
 import { makeStyles } from '@material-ui/core/styles';
 import PropTypes from 'prop-types';
 import Card from './Card';
+import { Typography } from '@material-ui/core';
 
 const useStyles = makeStyles({
   FlashCards: {
@@ -23,7 +24,7 @@ const to = i => ({
   y: 0,
   scale: 0.95,
   rot: -1 + Math.random() * 5,
-  delay: i * 100,
+  delay: i * 30,
 });
 const from = () => ({ x: 0, rot: 0, scale: 1.5, y: -1000 });
 
@@ -61,22 +62,26 @@ const FlashCards = props => {
   });
   // Now we're just mapping the animated values to our view, that's it. Btw, this component only renders once. :-)
   return (
-    <div className={classes.FlashCards}>
-      {cardProp.map(({ x, y, rot, scale }, i) => (
-        <Card
-          key={`${i}card`}
-          i={i}
-          x={x}
-          y={y}
-          rot={rot}
-          scale={scale}
-          trans={trans}
-          data={cardData[i]}
-          bind={bind}
-          mode={mode}
-        />
-      ))}
-      {mode === 'quiz' && `Score ${score}/${cardData.length}`}
+    <div>
+      <Typography color="secondary" variant="button">
+        {mode === 'quiz' && `Score ${score}/${cardData.length}`}
+      </Typography>
+      <div className={classes.FlashCards}>
+        {cardProp.map(({ x, y, rot, scale }, i) => (
+          <Card
+            key={`${i}card`}
+            i={i}
+            x={x}
+            y={y}
+            rot={rot}
+            scale={scale}
+            trans={trans}
+            data={cardData[i]}
+            bind={bind}
+            mode={mode}
+          />
+        ))}
+      </div>
     </div>
   );
 };
