@@ -199,16 +199,17 @@ const SurveyPage2 = props => {
       <Typography variant="subtitle1">
         <b>Q4: What is your temperature?</b>
       </Typography>
-      <Grid container justify="center" spacing={1} className={classes.grid}>
+      <Grid container justify="center" direction="row" spacing={1} className={classes.grid}>
         <Grid item xs={3}>
           <TextField
             type="number"
             onChange={e => handleFever(e.target.value)}
             className={classes.temperatureField}
             defaultValue={fever}
-          >
-            Fever?
-          </TextField>
+          />
+        </Grid>
+        <Grid item>
+          <Typography> &#8457;</Typography>
         </Grid>
       </Grid>
       <Typography variant="subtitle2">

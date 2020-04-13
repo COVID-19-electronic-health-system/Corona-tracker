@@ -7,8 +7,8 @@ import { useSprings } from 'react-spring';
 import { useDrag } from 'react-use-gesture';
 import { makeStyles } from '@material-ui/core/styles';
 import PropTypes from 'prop-types';
-import Card from './Card';
 import { Typography } from '@material-ui/core';
+import Card from './Card';
 
 const useStyles = makeStyles({
   FlashCards: {
