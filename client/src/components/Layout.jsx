@@ -9,6 +9,20 @@ import NavBar from './NavBar';
 import Login from './Login';
 
 const theme = createMuiTheme({
+  overrides: {
+    MuiSelect: {
+      select: {
+        '&&': {
+          paddingRight: '0px',
+        },
+      },
+    },
+    MuiInputBase: {
+      root: {
+        fontSize: 'inherit',
+      },
+    },
+  },
   palette: {
     primary: {
       light: '#c8d7fa',
@@ -92,10 +106,12 @@ const useStyles = makeStyles(() => ({
     },
   },
   root: {
+    position: 'fixed',
     fontFamily: 'Helvetica Neue',
     textAlign: 'center',
     backgroundImage: 'linear-gradient(#d7e1fa, #bbcef9)',
     overflowY: 'auto',
+    width: '100%',
     height: '100vh',
     overflowX: 'hidden',
     margin: '0px',
@@ -128,18 +144,22 @@ const Layout = props => {
   return (
     <ThemeProvider theme={theme}>
       <CssBaseline>
-      {authenticated ? (
-          <div className={classes.root}>
-            <Logo className={classes.logo} />
-            <TextLogo className={classes.textLogo} />
+        {authenticated ? (
+          <div>
+            <div id="content" className={classes.root}>
+              <Logo className={classes.logo} />
+              <TextLogo className={classes.textLogo} />
 
-            {children}
-            <NavBar />
+              {children}
+            </div>
+            <div>
+              <NavBar />
+            </div>
           </div>
-      ) : (
-        <Login />
-      )}
-        </CssBaseline>
+        ) : (
+          <Login />
+        )}
+      </CssBaseline>
     </ThemeProvider>
   );
 };

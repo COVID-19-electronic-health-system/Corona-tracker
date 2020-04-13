@@ -1,19 +1,12 @@
-/* eslint-disable no-unused-vars */
-/* eslint-disable no-await-in-loop */
-
-import React, { useEffect, useRef } from 'react';
-import { useSelector } from 'react-redux';
+import React, { useEffect, useRef, useCallback, useState } from 'react';
+import { useSelector, connect } from 'react-redux';
 import * as chartJs from 'chart.js';
 import PropTypes from 'prop-types';
-import { useBlockstack } from 'react-blockstack';
 
-const Chart = ({ chartType }) => {
+const Chart = props => {
+  const { chartType, observations } = props;
   const temperatureData = useSelector(state => state.temperatureReducer.temperature);
-  const data = [];
-  let files = [];
-  const { userSession } = useBlockstack();
-
-  const chartConfig = {
+  const [chartConfig, setChartConfig] = useState({
     type: chartType,
     data: {
       labels: temperatureData.labels,
@@ -37,93 +30,80 @@ const Chart = ({ chartType }) => {
         ],
       },
     },
-  };
+  });
 
   const chartContainer = useRef(null);
 
-  const getFiles = async () => {
-    files = [];
-    await userSession
-      .listFiles(file => {
-        files.push(file);
-        return true;
-      })
-      .then(async () => {
-        for (let i = 0; i < files.length; i += 1) {
-          if (files[i].includes('observation/')) {
-            const curr = await userSession.getFile(files[i]);
-            data.push(JSON.parse(curr));
-          }
+  const updateChartConfig = useCallback(() => {
+    const map = new Map();
+    observations.map(observation => {
+      const date = new Date(observation.date).toISOString().slice(0, 10);
+
+      let temp;
+      if (
+        !observation.physical.feverSeverity ||
+        observation.physical.feverSeverity === '' ||
+        !parseInt(observation.physical.feverSeverity, 10) > 0
+      ) {
+        temp = 0;
+      } else {
+        temp = parseInt(observation.physical.feverSeverity, 10);
+      }
+
+      if (map.has(date)) {
+        if (map.get(date).temp !== 0) {
+          map.get(date).temp = (map.get(date).temp + temp) / (map.get(date).numObservations + 1);
         }
-      })
-      .then(() => {
-        const map = new Map();
-        data.map(dataPoint => {
-          const date = new Date(dataPoint.date).toISOString().slice(0, 10);
-
-          let temp;
-          if (
-            !dataPoint.physical.feverSeverity ||
-            dataPoint.physical.feverSeverity === '' ||
-            !parseInt(dataPoint.physical.feverSeverity, 10) > 0
-          ) {
-            temp = 0;
-          } else {
-            temp = parseInt(dataPoint.physical.feverSeverity, 10);
-          }
-
-          if (map.has(date)) {
-            if (map.get(date).temp !== 0) {
-              map.get(date).temp = (map.get(date).temp + temp) / (map.get(date).numObservations + 1);
-            }
-            map.set(temp, {
-              temp,
-              date,
-            });
-          } else {
-            map.set(date, {
-              temp,
-              date,
-            });
-          }
-          return true;
+        map.set(temp, {
+          temp,
+          date,
         });
-
-        const dates = [];
-        const temps = [];
-        map.forEach(entry => {
-          dates.push(entry.date);
-          temps.push(entry.temp);
+      } else {
+        map.set(date, {
+          temp,
+          date,
         });
+      }
+      return true;
+    });
 
-        chartConfig.data.labels = dates;
-        chartConfig.labdels = dates;
-        chartConfig.data.datasets[0].data = temps;
-        return true;
-      });
-  };
+    const dates = [];
+    const temps = [];
+    map.forEach(entry => {
+      dates.push(entry.date);
+      temps.push(entry.temp);
+    });
+
+    setChartConfig(config => {
+      const newConfig = config;
+      newConfig.data.labels = dates;
+      newConfig.data.datasets[0].data = temps;
+      return newConfig;
+    });
+  }, [observations]);
 
   useEffect(() => {
-    getFiles(chartConfig).then(() => {
-      const ChartJS = new chartJs.Chart(chartContainer.current, chartConfig);
-    });
-    // eslint-disable-next-line
-  }, [chartContainer, chartConfig]);
+    updateChartConfig();
+    // eslint-disable-next-line no-unused-vars
+    const chart = new chartJs.Chart(chartContainer.current, chartConfig);
+  }, [chartContainer, chartConfig, updateChartConfig]);
 
   return (
-    <div
-      style={{
-        width: '100%',
-        height: '100px',
-      }}
-    >
+    <div>
       <canvas id="chart" ref={chartContainer} />
     </div>
   );
 };
 
-export default Chart;
-
 Chart.propTypes = {
   chartType: PropTypes.string.isRequired,
+  observations: PropTypes.arrayOf(Object).isRequired,
 };
+
+const mapStateToProps = state => {
+  return {
+    observations: state.observationsReducer.observations,
+  };
+};
+
+export default connect(mapStateToProps)(Chart);

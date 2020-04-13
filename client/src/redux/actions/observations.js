@@ -1,57 +1,31 @@
-export const SAVING = 'SAVING';
-export const IDLE = 'IDLE';
-export const LOADING = 'LOADING';
-export const OBSERVATIONS_LOADED = 'OBSERVATIONS_LOADED';
-export const NUM_OBSERVATIONS = 'NUM_OBSERVATIONS';
-export const SET_OBSERVATIONS = 'SET_OBSERVATIONS';
+import { getObservations, postObservationsList, postSingleObservation } from '../../utils/blockstackHelpers';
 
-export function setNumObservations(numObservations) {
-  return {
-    type: NUM_OBSERVATIONS,
-    numObservations,
-  };
-}
+export const ADD_OBSERVATION = 'ADD_OBSERVATION';
+export const FETCH_OBSERVATIONS = 'FETCH_OBSERVATIONS';
 
-export function setObservations(observations) {
-  return {
-    type: SET_OBSERVATIONS,
-    observations,
-  };
-}
-
-export const addObservation = (observation, observationNumber) => (dispatch, getState) => {
-  const { observations } = getState().observationsReducer;
-  dispatch(setObservations(observations.concat(observation)));
-  dispatch(setNumObservations(observationNumber));
+export const addObservation = (userSession, observation) => async dispatch => {
+  const obs = await getObservations(userSession);
+  let obsArray;
+  let fileNumber = 1;
+  if (obs) {
+    const currentArray = JSON.parse(obs);
+    fileNumber = currentArray.length + 1;
+    obsArray = [...currentArray, observation];
+  } else {
+    obsArray = [observation];
+  }
+  postObservationsList(userSession, obsArray, fileNumber).then(didPost => {
+    if (didPost) {
+      postSingleObservation(userSession, observation, fileNumber);
+      dispatch({ type: ADD_OBSERVATION, payload: observation });
+    }
+  });
 };
 
 export const fetchObservations = userSession => async dispatch => {
-  const fileNames = [];
-  const observations = [];
-  let numObservations = 0;
-
-  // Get the observation file names
-  await userSession.listFiles(fileName => {
-    if (fileName.includes('observation/')) {
-      fileNames.push(fileName);
-    }
-    return true;
-  });
-
-  // Prepare to get each observation file and determine the number of observations
-  const getFilePromises = fileNames.map(fileName => {
-    const observationNum = parseInt(fileName.replace(/^\D+/g, ''), 10);
-    numObservations = observationNum;
-    return userSession.getFile(fileName);
-  });
-
-  dispatch(setNumObservations(numObservations));
-
-  // Convert the observations to JSON objects
-  (await Promise.all(getFilePromises)).forEach(observationString => {
-    const observation = JSON.parse(observationString);
-    observations.push(observation);
-  });
-
-  dispatch(setObservations(observations));
+  const observations = await getObservations(userSession);
+  const JSONobservations = JSON.parse(observations);
+  if (JSONobservations) {
+    dispatch({ type: FETCH_OBSERVATIONS, observations: JSONobservations });
+  }
 };

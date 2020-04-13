@@ -30,7 +30,7 @@ const useStyles = makeStyles(theme => ({
 }));
 
 const SurveyPage3 = props => {
-  const { setSurveyPage3, survey, toSurveyPage2, submitSurvey } = props;
+  const { setSurveyPage3, survey, toSurveyPage2, addObservation, clearSurvey } = props;
   const { nonPhysical } = survey;
   const classes = useStyles();
   const [openComment, setOpenComment] = useState(nonPhysical.openComment || '');
@@ -48,13 +48,15 @@ const SurveyPage3 = props => {
   const submitSurveyPage3 = async () => {
     survey.nonPhysical.openComment = openComment;
 
-    submitSurvey(survey, userSession);
+    addObservation(userSession, survey);
 
     history.push('/');
 
     setSurveyPage3({
       openComment,
     });
+
+    clearSurvey();
 
     window.localStorage.setItem('surveyCompleted', 'true');
   };
@@ -91,7 +93,8 @@ SurveyPage3.propTypes = {
   setSurveyPage3: PropTypes.func.isRequired,
   survey: PropTypes.objectOf(Object).isRequired,
   toSurveyPage2: PropTypes.func.isRequired,
-  submitSurvey: PropTypes.func.isRequired,
+  addObservation: PropTypes.func.isRequired,
+  clearSurvey: PropTypes.func.isRequired,
 };
 
 const mapStateToProps = state => {
@@ -104,8 +107,8 @@ const mapDispatchToProps = dispatch => {
   return {
     setSurveyPage3: survey => dispatch(actions.setSurveyPage3(survey)),
     toSurveyPage2: survey => dispatch(actions.toSurveyPage2(survey)),
-    submitSurvey: (fileNumber, observation, encryptOptions, userSession) =>
-      dispatch(actions.submitSurveyThunk(fileNumber, observation, encryptOptions, userSession)),
+    addObservation: (userSession, survey) => dispatch(actions.addObservation(userSession, survey)),
+    clearSurvey: () => dispatch(actions.clearSurvey()),
   };
 };
 

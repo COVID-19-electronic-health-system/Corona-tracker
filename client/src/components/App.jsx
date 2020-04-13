@@ -18,6 +18,7 @@ import About from './About';
 import Disclaimer from './Disclaimer';
 import NotFoundPage from './NotFoundPage';
 import actions from '../redux/actions/actions';
+import ScrollToTop from './ScrollToTop';
 
 ReactBlockstack({ appConfig });
 
@@ -42,7 +43,7 @@ const App = props => {
     if (authenticated) {
       fetchObservations(userSession);
     }
-  }, [userSession, fetchObservations, authenticated]);
+  }, [fetchObservations, authenticated, userSession]);
 
   const [disclaimerString] = useFile('disclaimer.json');
 
@@ -58,6 +59,7 @@ const App = props => {
 
   return (
     <BrowserRouter>
+      <ScrollToTop />
       <Connect authOptions={authOptions}>
         <Layout>
           {showDisclaimer && (
