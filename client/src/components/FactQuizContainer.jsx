@@ -33,7 +33,7 @@ const FactQuizContainer = () => {
         </ButtonGroup>
         <Typography variant="body1" color="textSecondary">
           {factsOrQuiz === 'facts' && `Swipe to the right or left to learn more about COVID-19`}
-          {factsOrQuiz === 'quiz' && `QUIZ TIME! Swipe right if true and left if false`}
+          {factsOrQuiz === 'quiz' && `QUIZ TIME! Swipe right if false and left if true`}
         </Typography>
       </Grid>
       {factsOrQuiz === 'facts' && <FlashCards mode="facts" cardData={cardData} />}

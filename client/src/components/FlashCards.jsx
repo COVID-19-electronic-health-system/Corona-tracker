@@ -49,7 +49,7 @@ const FlashCards = props => {
       const rot = mx / 100 + (isGone ? dir * 10 * velocity : 0); // How much the card tilts, flicking it harder makes it rotate faster
       const scale = down ? 1.1 : 1; // Active cards lift up a bit
       if (mode === 'quiz' && isGone) {
-        const userAns = !(x < 0);
+        const userAns = !(x > 0);
         if (userAns === cardData[i].answer) setScore(score + 1);
       }
       return { x, rot, scale, delay: undefined, config: { friction: 50, tension: down ? 800 : isGone ? 200 : 500 } };
