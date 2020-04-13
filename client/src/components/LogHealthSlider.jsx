@@ -13,7 +13,7 @@ import checkSvg from '../img/Calendar_Menu_Checkmark.svg';
 import xSvg from '../img/Calendar_Menu_X.svg';
 import noSelectCss from '../css/noSelect';
 
-const useStyles = makeStyles(theme=>({
+const useStyles = makeStyles(theme => ({
   ...noSelectCss,
 
   width: '100vw',
@@ -132,7 +132,7 @@ const LogHealthSlider = () => {
   );
 
   return (
-    <Grid container justify='center'>
+    <Grid container justify="center">
       <Grid className={classes.noSelect}>
         <animated.div className={classes.item}>
           <div className={classes.itemGridDiv}>
