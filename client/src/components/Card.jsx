@@ -8,33 +8,59 @@ import Button from '@material-ui/core/Button';
 import { Typography } from '@material-ui/core';
 import { makeStyles } from '@material-ui/core/styles';
 
-const useStyles = makeStyles(() => ({
+const useStyles = makeStyles(theme => ({
   animatedMain: {
     position: 'fixed',
     willChange: 'transform',
-    marginTop: '40px',
+    bottom: '10',
+    // eslint-disable-next-line
+    ['@media (max-width:320px)']: {
+      bottom: '7',
+    },
   },
   animatedSub: {
     backgroundColor: 'white',
-    width: '300px',
-    height: '330px',
+    width: '310px',
+    height: '350px',
+    // eslint-disable-next-line
+    ['@media (max-width:320px)']: {
+      width: '280',
+      height: '300px',
+    },
+    [theme.breakpoints.up('md')]: {
+      width: '350px',
+      height: '400px',
+    },
     borderRadius: '20px',
     boxShadow: '1px 2px 10px 5px #97a2bd',
-    padding: '15px',
+    padding: '20px',
     willChange: 'transform',
     userSelect: 'none',
+  },
+  fontChange: {
+    // eslint-disable-next-line
+    ['@media (max-width:320px)']: {
+      fontSize: '1em',
+    },
+    [theme.breakpoints.up('md')]: {
+      fontSize: '1.2rem'
+    },
   },
 }));
 const Facts = ({ data }) => {
   const { title, body, footer, link } = data;
+
+  const classes = useStyles();
   return (
     <div>
       <Typography variant="h4" color="secondary">
         {title}
       </Typography>
-      <Typography paragraph>{body}</Typography>
+      <Typography paragraph variant="body1" className={classes.fontChange} color="textSecondary">
+        {body}
+      </Typography>
       <footer>
-        {footer}
+        <Typography variant="caption">{footer}</Typography>
         {link && (
           <Button size="small" href={link}>
             Learn More

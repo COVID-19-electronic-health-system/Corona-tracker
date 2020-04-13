@@ -31,8 +31,8 @@ const FactQuizContainer = () => {
             Quiz
           </Button>
         </ButtonGroup>
-        <Typography variant="body1">
-          {factsOrQuiz === 'facts' && `Swipe to the right or click on the TODOARROW to learn more about COVID-19`}
+        <Typography variant="body2">
+          {factsOrQuiz === 'facts' && `Swipe to the right or left to learn more about COVID-19`}
           {factsOrQuiz === 'quiz' && `QUIZ TIME!`}
         </Typography>
       </Grid>

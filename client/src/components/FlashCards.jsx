@@ -20,14 +20,14 @@ const useStyles = makeStyles({
 
 const to = i => ({
   x: 0,
-  y: i * -4,
-  scale: 1,
-  rot: -10 + Math.random() * 20,
+  y: 0,
+  scale: .95,
+  rot: -1 + Math.random() * 5,
   delay: i * 100,
 });
 const from = () => ({ x: 0, rot: 0, scale: 1.5, y: -1000 });
 
-const trans = (r, s) => `perspective(1500px) rotateX(15deg) rotateY(${r / 10}deg) rotateZ(${r}deg) scale(${s})`;
+const trans = (r, s) => `perspective(1500px) rotateX(15deg) rotateY(${r/5}deg) rotateZ(${r}deg) scale(${s})`;
 
 const FlashCards = props => {
   const { cardData, mode } = props;
