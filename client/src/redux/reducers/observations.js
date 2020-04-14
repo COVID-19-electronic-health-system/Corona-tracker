@@ -1,25 +1,25 @@
-import { OBSERVATIONS_LOADED, NUM_OBSERVATIONS, SET_OBSERVATIONS } from '../actions/observations';
+import { FETCH_OBSERVATIONS, ADD_OBSERVATION } from '../actions/observations';
 
 const initialState = {
-  numObservations: 0,
+  selectedObservation: null,
   observations: [],
 };
 
 // Updating store based on type of the action
 const observationsReducer = (state = initialState, action) => {
   switch (action.type) {
-    case OBSERVATIONS_LOADED:
-      return action.observations;
-    case NUM_OBSERVATIONS:
+    case ADD_OBSERVATION: {
       return {
         ...state,
-        numObservations: action.numObservations,
+        observations: [...state.observations, action.payload],
       };
-    case SET_OBSERVATIONS:
+    }
+    case FETCH_OBSERVATIONS: {
       return {
         ...state,
         observations: action.observations,
       };
+    }
     default:
       return state;
   }

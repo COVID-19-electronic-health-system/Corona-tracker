@@ -6,7 +6,7 @@ import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { useHistory } from 'react-router-dom';
 import { useBlockstack } from 'react-blockstack';
-import { Typography, Grid, ButtonGroup, Button } from '@material-ui/core';
+import { Typography, Select, MenuItem, FormControl, Grid, ButtonGroup, Button } from '@material-ui/core';
 import actions from '../redux/actions/actions';
 import profileImg from '../img/profileBlue.png';
 
@@ -145,40 +145,23 @@ const OnboardUser = props => {
               </Typography>
             </Grid>
             <Grid item>
-              <ButtonGroup>
-                <button
-                  type="button"
-                  onClick={e => {
-                    e.preventDefault();
-                    setFormState({
-                      ...formState,
-                      gender: 'male',
-                    });
-                  }}
-                  className={classes.buttonMale}
-                  style={
-                    formState.gender === 'male' ? { backgroundColor: '#82a4f8', outline: 'none', color: 'wheat' } : {}
-                  }
+              <FormControl className={classes.formControl}>
+                <Select
+                  className={classes.inputField}
+                  name="gender"
+                  value={formState.gender}
+                  onChange={handleChange}
+                  displayEmpty
+                  style={formState.gender !== '' ? { backgroundColor: '#82a4f8', outline: 'none', color: 'wheat' } : {}}
                 >
-                  Male
-                </button>
-                <button
-                  type="button"
-                  onClick={e => {
-                    e.preventDefault();
-                    setFormState({
-                      ...formState,
-                      gender: 'female',
-                    });
-                  }}
-                  className={classes.buttonFemale}
-                  style={
-                    formState.gender === 'female' ? { backgroundColor: '#82a4f8', outline: 'none', color: 'wheat' } : {}
-                  }
-                >
-                  Female
-                </button>
-              </ButtonGroup>
+                  <MenuItem value="" disabled>
+                    Click Here
+                  </MenuItem>
+                  <MenuItem value="male">Male</MenuItem>
+                  <MenuItem value="female">Female</MenuItem>
+                  <MenuItem value="nonbinary">Non-Binary</MenuItem>
+                </Select>
+              </FormControl>
             </Grid>
           </Grid>
           <Grid container spacing={1} justify="space-between">

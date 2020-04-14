@@ -58,6 +58,7 @@ const useStyle = makeStyles({
     ...buttonsCss.buttons,
     width: '33vw',
     height: '8vh',
+    minHeight: '50px',
   },
   link: {
     height: '100%',
@@ -108,7 +109,7 @@ const More = () => {
 
   const navigateTo = href => {
     history.push(href);
-  }
+  };
 
   return (
     <Link to="#more" className={classes.root} onClick={handleClickOpen}>
@@ -145,7 +146,12 @@ const More = () => {
             </Button>
           </DialogActions>
           <DialogActions>
-            <Button size="medium" onClick={() => navigateTo('/onboard')} variant="contained" className={classes.buttons}>
+            <Button
+              size="medium"
+              onClick={() => navigateTo('/onboard')}
+              variant="contained"
+              className={classes.buttons}
+            >
               Settings
             </Button>
             <Button size="medium" onClick={() => navigateTo('/about')} variant="contained" className={classes.buttons}>
