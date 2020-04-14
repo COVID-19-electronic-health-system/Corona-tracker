@@ -9,6 +9,7 @@ exports[`LogHealthSlider should render correctly 1`] = `
   >
     <div
       className="makeStyles-item-3"
+      id="health-slider"
     >
       <div
         className="makeStyles-itemGridDiv-4"
