@@ -97,7 +97,7 @@ const OnboardUser = props => {
   const { setDemographicsComorbiditiesThunk } = props;
   const { userSession } = useBlockstack();
   const [formState, setFormState] = useState(blankForm);
-  const [swipedLeft, setSwipedLeft] = useState(false);
+  const [userWantsToDelete, setuserWantsToDelete] = useState(false);
   const handleChange = e => {
     e.preventDefault();
     setFormState({
@@ -344,13 +344,13 @@ const OnboardUser = props => {
         </div>
         <Button
           onClick={() => {
-            setSwipedLeft(true);
+            setuserWantsToDelete(true);
           }}
           className={classes.saveButton}
         >
           DELETE ALL OBSERVATION DATA
         </Button>
-        {swipedLeft && <DeletionDialog setSwipedLeft={setSwipedLeft} />}
+        {userWantsToDelete && <DeletionDialog setuserWantsToDelete={setuserWantsToDelete} />}
       </Grid>
     </Grid>
   );
