@@ -76,7 +76,7 @@ const Quiz = ({ data }) => {
   return (
     <Grid>
       <Typography color="secondary" variant="subtitle1">
-        False or True?
+        True or False?
       </Typography>
       <Typography paragraph variant="body1">
         {question}

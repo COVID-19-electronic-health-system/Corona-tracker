@@ -1,7 +1,6 @@
 import React, { useCallback } from 'react';
 import ButtonGroup from '@material-ui/core/ButtonGroup';
 import Button from '@material-ui/core/Button';
-import Container from '@material-ui/core/Container';
 import { Trans } from 'react-i18next';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
@@ -15,7 +14,7 @@ const useStyles = makeStyles({
   buttons: {
     ...buttonsCss.buttons,
     margin: '0px 8px 2px 8px',
-    width: '160px',
+    width: '150px',
   },
 });
 
@@ -30,7 +29,7 @@ const HealthLogToggle = props => {
 
   return (
     <div>
-      <Container>
+      <div>
         <ButtonGroup size="medium" aria-label="outlined button group">
           <Button onClick={() => setToggleValue('showMeMore')} className={classes.buttons}>
             <Trans i18nKey="health.logButton" />
@@ -39,7 +38,7 @@ const HealthLogToggle = props => {
             <Trans i18nKey="health.showMoreButton" />
           </Button>
         </ButtonGroup>
-      </Container>
+      </div>
       {toggleValue === 'myHealthLog' && <MyHealthLog />}
       {toggleValue === 'showMeMore' && <Table />}
     </div>
