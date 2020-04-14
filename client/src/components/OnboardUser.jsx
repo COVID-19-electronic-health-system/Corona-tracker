@@ -9,6 +9,7 @@ import { useBlockstack } from 'react-blockstack';
 import { Typography, Select, MenuItem, FormControl, Grid, ButtonGroup, Button } from '@material-ui/core';
 import actions from '../redux/actions/actions';
 import profileImg from '../img/profileBlue.png';
+import DeletionDialog from './DeletionDialog';
 
 import buttonsCss from '../css/buttons';
 
@@ -96,6 +97,7 @@ const OnboardUser = props => {
   const { setDemographicsComorbiditiesThunk } = props;
   const { userSession } = useBlockstack();
   const [formState, setFormState] = useState(blankForm);
+  const [swipedLeft, setSwipedLeft] = useState(false);
   const handleChange = e => {
     e.preventDefault();
     setFormState({
@@ -340,6 +342,15 @@ const OnboardUser = props => {
             SAVE MY RESPONSES
           </Button>
         </div>
+        <Button
+          onClick={() => {
+            setSwipedLeft(true);
+          }}
+          className={classes.saveButton}
+        >
+          DELETE ALL OBSERVATION DATA
+        </Button>
+        {swipedLeft && <DeletionDialog setSwipedLeft={setSwipedLeft} />}
       </Grid>
     </Grid>
   );

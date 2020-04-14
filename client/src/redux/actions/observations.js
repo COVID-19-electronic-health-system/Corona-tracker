@@ -1,6 +1,13 @@
-import { getObservations, postObservationsList, postSingleObservation } from '../../utils/blockstackHelpers';
+import {
+  getObservations,
+  postObservationsList,
+  postSingleObservation,
+  deleteAllObservations,
+  deleteSingleObservations,
+} from '../../utils/blockstackHelpers';
 
 export const ADD_OBSERVATION = 'ADD_OBSERVATION';
+export const DELETE_OBSERVATIONS = 'DELETE_OBSERVATIONS';
 export const FETCH_OBSERVATIONS = 'FETCH_OBSERVATIONS';
 
 export const addObservation = (userSession, observation) => async dispatch => {
@@ -20,6 +27,18 @@ export const addObservation = (userSession, observation) => async dispatch => {
       dispatch({ type: ADD_OBSERVATION, payload: observation });
     }
   });
+};
+
+export const deleteObservations = userSession => async dispatch => {
+  const obs = await getObservations(userSession);
+  if (obs) {
+    const obsArray = JSON.parse(obs);
+    const numOfObservations = obsArray.length - 1;
+    deleteAllObservations(userSession).then(() => {
+      deleteSingleObservations(userSession, numOfObservations);
+      dispatch({ type: DELETE_OBSERVATIONS });
+    });
+  }
 };
 
 export const fetchObservations = userSession => async dispatch => {

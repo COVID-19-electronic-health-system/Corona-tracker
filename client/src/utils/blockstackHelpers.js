@@ -8,6 +8,17 @@ export const postSingleObservation = async (userSession, observation, observatio
   userSession.putFile(`observation/${fileNumber}.json`, JSON.stringify(observation));
 };
 
+export const deleteAllObservations = async userSession => {
+  await userSession.deleteFile(`observations.json`);
+};
+
+export const deleteSingleObservations = async (userSession, numOfObservations) => {
+  for (let num = 1; num < numOfObservations; num += 1) {
+    const fileNumber = `${num}`.padStart(7, '0');
+    userSession.deleteFile(`observation/${fileNumber}.json`);
+  }
+};
+
 export const getObservations = async userSession => {
   const observations = await userSession.getFile('observations.json');
   return observations;
