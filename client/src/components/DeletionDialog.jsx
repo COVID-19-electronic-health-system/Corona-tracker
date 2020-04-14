@@ -28,7 +28,7 @@ const useStyles = makeStyles({
 });
 const DeletionDialog = props => {
   const { userSession } = useBlockstack();
-  const { deleteObservations, deleteDetailData, setuserWantsToDelete } = props;
+  const { deleteObservations, deleteDetailData, setDeleteAllFiles } = props;
   const history = useHistory();
 
   const classes = useStyles();
@@ -54,7 +54,7 @@ const DeletionDialog = props => {
             >
               Yes
             </Button>
-            <Button variant="outlined" onClick={() => setuserWantsToDelete(false)}>
+            <Button variant="outlined" onClick={() => setDeleteAllFiles(false)}>
               No
             </Button>
           </DialogActions>
@@ -67,12 +67,12 @@ const DeletionDialog = props => {
 DeletionDialog.propTypes = {
   deleteObservations: PropTypes.func.isRequired,
   deleteDetailData: PropTypes.func.isRequired,
-  setuserWantsToDelete: PropTypes.func.isRequired,
+  setDeleteAllFiles: PropTypes.func.isRequired,
 };
 
 const mapStateToProps = (state, ownProps) => {
   return {
-    setuserWantsToDelete: ownProps.setuserWantsToDelete,
+    setDeleteAllFiles: ownProps.setDeleteAllFiles,
   };
 };
 

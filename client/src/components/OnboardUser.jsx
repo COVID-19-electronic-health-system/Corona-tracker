@@ -40,6 +40,15 @@ const useStyles = makeStyles(() => ({
     height: '3.5em',
     marginTop: '2em',
   },
+  deleteButton: {
+    ...buttonsCss.buttons,
+    margin: '0px 8px 2px 8px',
+    width: '300px',
+    cursor: 'pointer',
+    height: '3.5em',
+    marginTop: '2em',
+    background: `#f64141`,
+  },
   image: {
     maxWidth: '120px',
   },
@@ -97,7 +106,7 @@ const OnboardUser = props => {
   const { setDemographicsComorbiditiesThunk } = props;
   const { userSession } = useBlockstack();
   const [formState, setFormState] = useState(blankForm);
-  const [userWantsToDelete, setuserWantsToDelete] = useState(false);
+  const [deleteAllFiles, setDeleteAllFiles] = useState(false);
   const handleChange = e => {
     e.preventDefault();
     setFormState({
@@ -344,13 +353,13 @@ const OnboardUser = props => {
         </div>
         <Button
           onClick={() => {
-            setuserWantsToDelete(true);
+            setDeleteAllFiles(true);
           }}
-          className={classes.saveButton}
+          className={classes.deleteButton}
         >
           DELETE ALL OBSERVATION DATA
         </Button>
-        {userWantsToDelete && <DeletionDialog setuserWantsToDelete={setuserWantsToDelete} />}
+        {deleteAllFiles && <DeletionDialog setDeleteAllFiles={setDeleteAllFiles} />}
       </Grid>
     </Grid>
   );
