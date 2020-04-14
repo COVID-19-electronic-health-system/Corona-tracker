@@ -1,6 +1,6 @@
 /* eslint-disable react/jsx-props-no-spreading */
 
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import Grid from '@material-ui/core/Grid';
 import Typography from '@material-ui/core/Typography';
@@ -83,7 +83,19 @@ const useStyles = makeStyles(theme => ({
 const LogHealthSlider = () => {
   const classes = useStyles();
   const history = useHistory();
-  const oneThird = window.innerWidth / 3; // Note: doesn't support window resizing
+  const [oneThird, setOneThird] = useState(0);
+
+  useEffect(() => {
+    // grab slider element and use its width to calculate the oneThird Value
+    let slider = document.querySelector('.makeStyles-item-250');
+    getSliderBound();
+    function getSliderBound() {
+      let newOneThird = slider.clientWidth / 3;
+      setOneThird(newOneThird);
+    }
+    window.onresize = getSliderBound;
+  }, []);
+
   let showOptions = false;
   let swiped = false;
 
