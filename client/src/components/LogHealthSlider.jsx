@@ -87,12 +87,12 @@ const LogHealthSlider = () => {
 
   useEffect(() => {
     // grab slider element and use its width to calculate the oneThird Value
-    let slider = document.querySelector('.makeStyles-item-250');
-    getSliderBound();
+    const slider = document.querySelector('#health-slider');
     function getSliderBound() {
-      let newOneThird = slider.clientWidth / 3;
+      const newOneThird = slider.clientWidth / 3;
       setOneThird(newOneThird);
     }
+    getSliderBound();
     window.onresize = getSliderBound;
   }, []);
 
@@ -146,7 +146,7 @@ const LogHealthSlider = () => {
   return (
     <Grid container justify="center">
       <Grid className={classes.noSelect}>
-        <animated.div className={classes.item}>
+        <animated.div id="health-slider" className={classes.item}>
           <div className={classes.itemGridDiv}>
             <Grid container justify="space-around" alignItems="center">
               <Grid item className={classes.imageContainer}>
