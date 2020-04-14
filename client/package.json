@@ -1,6 +1,6 @@
 {
   "name": "corona-tracker",
-  "version": "0.3.24",
+  "version": "0.3.25",
   "private": true,
   "prettier": "@blockstack/prettier-config",
   "husky": {
@@ -48,7 +48,6 @@
     "react-spring": "^9.0.0-canary.808.11.4be2ac3",
     "react-test-renderer": "16.9.0",
     "react-use-gesture": "^7.0.0-beta.1",
-    "react-with-gesture": "^4.0.8",
     "redux": "^4.0.5",
     "redux-logger": "^3.0.6",
     "redux-mock-store": "1.5.3",
