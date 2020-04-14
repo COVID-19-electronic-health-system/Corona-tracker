@@ -52,8 +52,8 @@ const Disclaimer = props => {
       {!answer ? (
         <Dialog open aria-describedby="disclaimer">
           <DialogTitle align="center" id="alert-dialog-title">
-            <img src={Logo} alt='logo' className={classes.logo} />
-            <img src={TextLogo} alt='textLogo' className={classes.textLogo} />
+            <img src={Logo} alt="logo" className={classes.logo} />
+            <img src={TextLogo} alt="textLogo" className={classes.textLogo} />
           </DialogTitle>
           <DialogContent>
             <DialogContent align="left" id="disclaimer-text">

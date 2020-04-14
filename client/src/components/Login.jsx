@@ -54,9 +54,9 @@ const Login = props => {
       ) : (
         <div>
           <Grid item xs={12}>
-            <img src={Logo} alt='logo' className={classes.logo} />
+            <img src={Logo} alt="logo" className={classes.logo} />
           </Grid>
-          <img src={TextLogo} alt='textLogo' className={classes.textLogo} />
+          <img src={TextLogo} alt="textLogo" className={classes.textLogo} />
           <Typography variant="h6">{t('login.text')} </Typography>
           <Button variant="login" className={classes.Button} onClick={onClick}>
             {t('login.buttonText')}
