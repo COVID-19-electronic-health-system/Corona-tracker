@@ -58,13 +58,11 @@ const SurveyPage3 = props => {
 
     setSurveyPage3(surveyPage3);
   };
-  
+
   const submitButton = () => {
     submitSurveyPage3();
     openSurveyPage4();
   };
-
-
 
   return (
     <div className={classes.root}>
