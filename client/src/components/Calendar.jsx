@@ -10,7 +10,7 @@ import actions from '../redux/actions/actions';
 import WeeklyTracker from './WeeklyTracker';
 import WeeklyTrackerDay from './WeeklyTrackerDay';
 import '../css/Calendar.css';
-import calendarDotSvg from '../img/Calendar_Dot.svg';
+import { calendarDotSvg } from '../utils/imgUrl';
 
 const useStyles = makeStyles(theme => ({
   appCalendar: {
