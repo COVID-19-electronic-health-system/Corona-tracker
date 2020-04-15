@@ -106,27 +106,8 @@ const LogTable = props => {
             ))}
           </Table>
         </TableContainer>
-        <div>
-          <FormControlLabel
-            control={<Checkbox checked={feverClicked} onChange={handleChange} color="primary" name="Fever" />}
-            label="Fever"
-          />
-          <FormControlLabel
-            control={<Checkbox checked={behaveClicked} onChange={handleChange} name="Behavioral" color="primary" />}
-            label="Behavioral"
-          />
-        </div>
+        <Chart chartType={chartType.bar} />
       </div>
-      {behaveClicked ? <Typography variant="h2">Your Behavioral Health Progress</Typography> : null}
-      {renderBehavior}
-      {behaveClicked ? (
-        <div className={classes.tagLine}>
-          <Typography variant="h6">
-            See this past week's daily progress. Hover over the chart to see individual scores.
-          </Typography>
-        </div>
-      ) : null}
-      {renderFever}
     </>
   );
 };
