@@ -69,7 +69,7 @@ const WeeklyTrackerDay = props => {
           </Grid>
           <Grid item xs={12}>
             <Typography variant="body1" className={`${classes.bold} ${classes.feeling}`}>
-              {dayData.physical.dailyfeeling}/10
+              {dayData.physical.dailyfeeling}/5
             </Typography>
           </Grid>
         </Grid>
@@ -88,7 +88,7 @@ const WeeklyTrackerDay = props => {
             <Typography variant="body2">
               Symptoms:&nbsp;
               <strong>
-                {dayData.physical.dailySymptomsFeeling ? `${dayData.physical.dailySymptomsFeeling}/10` : noDataText}
+                {dayData.physical.dailySymptomsFeeling ? `${dayData.physical.dailySymptomsFeeling}/5` : noDataText}
               </strong>
             </Typography>
           </Grid>

@@ -37,7 +37,7 @@ const LogTable = props => {
             <TableBody key={observation.date}>
               <TableRow>
                 <TableCell>{new Date(observation.date).toLocaleDateString()}</TableCell>
-                <TableCell>{observation.physical.dailyfeeling}</TableCell>
+                <TableCell>{observation.physical.dailyfeeling}/5</TableCell>
                 <TableCell>{observation.physical.coughSeverity}</TableCell>
                 <TableCell>{observation.physical.feverSeverity}</TableCell>
                 <TableCell>{observation.physical.chillsSeverity}</TableCell>
