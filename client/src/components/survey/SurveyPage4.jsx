@@ -16,6 +16,7 @@ const useStyles = makeStyles(theme => ({
     marginLeft: 'auto',
     marginRight: 'auto',
     fontFamily: 'Nunito',
+    marginTop: '10px',
     maxWidth: theme.breakpoints.values.md,
     width: '92vw',
     [theme.breakpoints.up('sm')]: {
@@ -82,7 +83,7 @@ const WellnessSlider = withStyles({
 const marks = [
   {
     value: 1,
-    label: 'Not at All',
+    label: '😁',
   },
   {
     value: 1.5,
@@ -90,7 +91,7 @@ const marks = [
   },
   {
     value: 2,
-    label: 2,
+    label: '🙂',
   },
   {
     value: 2.5,
@@ -98,7 +99,7 @@ const marks = [
   },
   {
     value: 3,
-    label: 'Somewhat',
+    label: '😐',
   },
   {
     value: 3.5,
@@ -106,7 +107,7 @@ const marks = [
   },
   {
     value: 4,
-    label: 4,
+    label: '🙁',
   },
   {
     value: 4.5,
@@ -114,7 +115,7 @@ const marks = [
   },
   {
     value: 5,
-    label: 'A lot',
+    label: '😥',
   },
 ];
 
@@ -185,9 +186,8 @@ const SurveyPage4 = props => {
 
   return (
     <>
-      <div className={classes.root} style={{ marginTop: '10px' }}>
+      <div className={classes.root}>
         <Grid container justify="center" alignItems="center" spacing={3}>
-          <Grid container spacing={2} noValidate>
             <Grid item xs={12}>
               <Typography variant="subtitle1" id="discrete-slider" gutterBottom>
                 <b>1: Have you lost interest or pleasure in doing things?</b>
@@ -302,20 +302,17 @@ const SurveyPage4 = props => {
                 SUBMIT
               </Button>
             </Grid>
-          </Grid>
         </Grid>
         <div className={classes.chartDiv} />
       </div>
       <div>
-        <Typography variant="h2">Your Behavioral Health Progress</Typography>
+   
       </div>
       <div className={classes.innerChartDiv}>
-        <BehavioralChart />
+       
       </div>
       <div className={classes.tagLine}>
-        <Typography variant="h6">
-          See this past week's daily progress. Hover over the chart to see individual scores.
-        </Typography>
+        
       </div>
     </>
   );
