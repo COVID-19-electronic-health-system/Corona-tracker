@@ -146,8 +146,8 @@ const Layout = props => {
         {authenticated ? (
           <div>
             <div id="content" className={classes.root}>
-              <img src={Logo} alt="logo" className={classes.logo} />
-              <img src={TextLogo} alt="textLogo" className={classes.textLogo} />
+              <object title="logo" className={classes.logo} data={Logo} type="image/svg+xml" />
+              <object title="logoText" className={classes.textLogo} data={TextLogo} type="image/svg+xml" />
               {children}
             </div>
             <div>
