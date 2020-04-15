@@ -45,28 +45,35 @@ const SurveyPage3 = props => {
     toSurveyPage2({ openComment });
   };
 
+  const submitButton = () => {
+    submitSurveyPage3();
+    openSurveyPage4()
+  }
+
   const submitSurveyPage3 = async () => {
     survey.nonPhysical.openComment = openComment;
 
-    addObservation(userSession, survey);
+    // addObservation(userSession, survey);
 
-    history.push('/');
+    // history.push('/');
 
     setSurveyPage3({
       openComment,
     });
 
-    clearSurvey();
+    // clearSurvey();
 
-    window.localStorage.setItem('surveyCompleted', 'true');
+    // window.localStorage.setItem('surveyCompleted', 'true');
+    
+    setSurveyPage3(surveyPage3);
   };
 
   const surveyPage3 = {
     openComment,
   };
 
-  const openSurveyPage4 = () => {
-    setSurveyPage3(surveyPage3);
+   const openSurveyPage4 = () => {
+     setSurveyPage3(surveyPage3);
   };
 
   return (
@@ -88,12 +95,12 @@ const SurveyPage3 = props => {
             <Button onClick={sendBackToPage2} variant="outlined" color="secondary" className={classes.continueButton}>
               BACK
             </Button>
-            <Button onClick={submitSurveyPage3} color="secondary" className={classes.continueButton}>
-              SUBMIT
+            <Button onClick={submitButton} color="secondary" className={classes.continueButton}>
+              CONTINUE
             </Button>
-            <Button onClick={openSurveyPage4} color="secondary" className={classes.continueButton}>
+            {/* <Button onClick={openSurveyPage4} color="secondary" className={classes.continueButton}>
               CONTINUE TO BEHAVIORAL SURVEY
-            </Button>
+            </Button> */}
           </Grid>
         </Grid>
       </Grid>

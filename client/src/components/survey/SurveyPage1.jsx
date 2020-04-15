@@ -142,6 +142,7 @@ const SurveyPage1 = props => {
     setOpen(false);
   };
 
+
   const submitSurveyPage1 = async () => {
     if (!todaySet || !symptomsSet || !comparedSet) {
       setOpen(true);
@@ -151,10 +152,16 @@ const SurveyPage1 = props => {
         todaySymptoms,
         comparedFeeling: comparedFeeling.toLowerCase(),
       };
-
+      
       setSurveyPage1(surveyPage1);
     }
   };
+
+  // const random = () => {
+  //   console.log(surveyPage1)
+  // }
+
+  
 
   return (
     <div className={classes.root}>

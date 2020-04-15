@@ -107,8 +107,9 @@ const marks = [
 ];
 
 const SurveyPage4 = props => {
-  const { setSurveyPage4, toSurveyPage3 } = props;
+  const { setSurveyPage4, toSurveyPage3, survey, addObservation, clearSurvey } = props;
   const classes = useStyles();
+//   const { nonPhysical } = survey;
   const { interest, sadness, sleep, energy, appetite } = props;
   const history = useHistory();
   const { userSession } = useBlockstack();
@@ -154,20 +155,28 @@ const SurveyPage4 = props => {
   };
 
   const submitSurveyPage4 = async () => {
-    const surveyPage4 = {
-      interestAnswer,
-      sadAnswer,
-      sleepAnswer,
-      energyAnswer,
-      appetiteAnswer,
-    };
-
+      const surveyPage4 = {
+          interestAnswer,
+          sadAnswer,
+          sleepAnswer,
+          energyAnswer,
+          appetiteAnswer,
+        };
+    survey.nonPhysical.interest = interestAnswer;
+    survey.nonPhysical.sadness = sadAnswer
+    survey.nonPhysical.sleep = sleepAnswer
+    survey.nonPhysical.energy = energyAnswer
+    survey.nonPhysical.appetite = appetiteAnswer
+        
     history.push('/');
-
+        
     setSurveyPage4(surveyPage4);
+    addObservation(userSession, survey)
+    clearSurvey();
 
     window.localStorage.setItem('surveyCompleted', 'true');
   };
+
 
   return (
     <>
@@ -273,15 +282,15 @@ const SurveyPage4 = props => {
                 max={5}
                 marks={marks}
               />
-            </Grid>
-            <ButtonGroup>
-              <Button onClick={sendBackToPage3} variant="outlined" color="secondary" className={classes.continueButton}>
+            </Grid><br/>
+            <Grid item xs={12} xl={4}>
+              <Button onClick={sendBackToPage3} variant="outlined" color="secondary" className={classes.continueButton} style={{marginRight:"5px"}}>
                 BACK
-              </Button>
-              <Button onClick={submitSurveyPage4} color="secondary" className={classes.continueButton}>
+              </Button >
+              <Button onClick={submitSurveyPage4} variant="outlined" color="secondary" className={classes.continueButton}>
                 SUBMIT
               </Button>
-            </ButtonGroup>
+            </Grid>
           </Grid>
         </Grid>
         <div style={{ display: 'flex', marginTop: 50, justifyContent: 'flex-end' }} />
@@ -294,25 +303,29 @@ const SurveyPage4 = props => {
 };
 
 SurveyPage4.propTypes = {
+ survey: PropTypes.objectOf(Object).isRequired,
   setSurveyPage4: PropTypes.func.isRequired,
   toSurveyPage3: PropTypes.func.isRequired,
-  interest: PropTypes.string,
-  sadness: PropTypes.string,
-  sleep: PropTypes.string,
-  energy: PropTypes.string,
-  appetite: PropTypes.string,
+  interest: PropTypes.number,
+  sadness: PropTypes.number,
+  sleep: PropTypes.number,
+  energy: PropTypes.number,
+  appetite: PropTypes.number,
+  addObservation: PropTypes.func.isRequired,
+  clearSurvey: PropTypes.func.isRequired,
 };
 
 SurveyPage4.defaultProps = {
-  interest: '',
-  sadness: '',
-  sleep: '',
-  energy: '',
-  appetite: '',
+  interest: 1,
+  sadness: 1,
+  sleep: 1,
+  energy: 1,
+  appetite: 1,
 };
 
 const mapStateToProps = state => {
   return {
+    survey: state.surveyReducer.survey,
     interest: state.surveyReducer.survey.nonPhysical.interest,
     sadness: state.surveyReducer.survey.nonPhysical.sadness,
     sleep: state.surveyReducer.survey.nonPhysical.sleep,
@@ -324,6 +337,9 @@ const mapStateToProps = state => {
 const mapDispatchToProps = dispatch => {
   return {
     setSurveyPage4: survey => dispatch(actions.setSurveyPage4(survey)),
+    toSurveyPage3: survey => dispatch(actions.toSurveyPage3(survey)),
+    addObservation: (userSession, survey) => dispatch(actions.addObservation(userSession, survey)),
+    clearSurvey: () => dispatch(actions.clearSurvey()),
   };
 };
 

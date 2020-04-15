@@ -68,10 +68,17 @@ const AppCalendar = props => {
     });
   };
 
+  const random =() => {
+    console.log(observations)
+  }
+
   // eslint-disable-next-line
   const calendarComponentRef = useRef(null);
 
   return (
+    <>
+  <button onClick={random}>random</button>
+  
     <div className={classes.appCalendar}>
       <Calendar
         className={classes.reactCalendar}
@@ -101,6 +108,7 @@ const AppCalendar = props => {
         );
       })}
     </div>
+    </>
   );
 };
 
