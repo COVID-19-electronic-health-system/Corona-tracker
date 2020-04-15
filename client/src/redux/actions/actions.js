@@ -4,7 +4,17 @@ import { setNavbarSection } from './navigation';
 import { setDisclaimerAnswerThunk } from './disclaimer';
 import { selectDate } from './calendar';
 import { setToggleValue, setDetailData, deleteDetailData } from './healthToggle';
-import { setSurveyPage1, setSurveyPage2, setSurveyPage3, toSurveyPage1, toSurveyPage2, clearSurvey } from './survey';
+import {
+  setSurveyPage1,
+  setSurveyPage2,
+  setSurveyPage3,
+  setSurveyPage4,
+  toSurveyPage1,
+  toSurveyPage2,
+  toSurveyPage3,
+  toSurveyPage4,
+  clearSurvey,
+} from './survey';
 import { setDemographicsComorbiditiesThunk } from './onboarding';
 
 const actions = {
@@ -21,8 +31,11 @@ const actions = {
   setSurveyPage1,
   setSurveyPage2,
   setSurveyPage3,
+  setSurveyPage4,
   toSurveyPage1,
   toSurveyPage2,
+  toSurveyPage3,
+  toSurveyPage4,
   clearSurvey,
   setDemographicsComorbiditiesThunk,
 };

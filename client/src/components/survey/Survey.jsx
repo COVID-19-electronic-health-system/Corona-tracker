@@ -4,6 +4,7 @@ import PropTypes from 'prop-types';
 import SurveyPage1 from './SurveyPage1';
 import SurveyPage2 from './SurveyPage2';
 import SurveyPage3 from './SurveyPage3';
+import SurveyPage4 from './SurveyPage4';
 
 const Survey = props => {
   const { surveyPage } = props;
@@ -18,6 +19,7 @@ const Survey = props => {
       {surveyPage === 1 && <SurveyPage1 />}
       {surveyPage === 2 && <SurveyPage2 />}
       {surveyPage === 3 && <SurveyPage3 />}
+      {surveyPage === 4 && <SurveyPage4 />}
     </div>
   );
 };
