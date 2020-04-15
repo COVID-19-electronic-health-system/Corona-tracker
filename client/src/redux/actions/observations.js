@@ -2,8 +2,8 @@ import {
   getObservations,
   postObservationsList,
   postSingleObservation,
-  deleteAllObservations,
-  deleteSingleObservations,
+  deleteObservationsList,
+  deleteObservationFiles,
 } from '../../utils/blockstackHelpers';
 
 export const ADD_OBSERVATION = 'ADD_OBSERVATION';
@@ -34,9 +34,9 @@ export const deleteObservations = userSession => async dispatch => {
   if (obs) {
     const obsArray = JSON.parse(obs);
     const numOfObservations = obsArray.length;
-    deleteAllObservations(userSession)
+    deleteObservationsList(userSession)
       .then(() => {
-        deleteSingleObservations(userSession, numOfObservations);
+        deleteObservationFiles(userSession, numOfObservations);
         dispatch({ type: DELETE_OBSERVATIONS });
         return 200;
       })
