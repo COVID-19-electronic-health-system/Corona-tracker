@@ -36,7 +36,7 @@ const useStyles = makeStyles(theme => ({
     marginTop: '1vh',
     width: '50vw',
     maxWidth: '180px',
-    marginRight: '5px'
+    marginRight: '5px',
   },
   dialog: {
     background: '#7a9cf9',
@@ -61,12 +61,15 @@ const useStyles = makeStyles(theme => ({
     },
   },
   chartDiv: {
-    display: 'flex', 
-    marginTop: 50, 
-    justifyContent: 'flex-end'
+    display: 'flex',
+    marginTop: 50,
+    justifyContent: 'flex-end',
   },
   innerChartDiv: {
-    height: 500
+    height: 700,
+  },
+  tagLine: {
+    marginTop:"40px"
   }
 }));
 
@@ -287,12 +290,7 @@ const SurveyPage4 = props => {
             </Grid>
             <br />
             <Grid item xs={12}>
-              <Button
-                onClick={sendBackToPage3}
-                variant="outlined"
-                color="secondary"
-                className={classes.continueButton}
-              >
+              <Button onClick={sendBackToPage3} variant="outlined" color="secondary" className={classes.continueButton}>
                 BACK
               </Button>
               <Button
@@ -308,10 +306,17 @@ const SurveyPage4 = props => {
         </Grid>
         <div className={classes.chartDiv} />
       </div>
+      <div>
+      <Typography variant="h2">Your Behavioral Health Progress</Typography>
+      </div>
       <div className={classes.innerChartDiv}>
         <BehavioralChart />
       </div>
+      <div className={classes.tagLine}>
+        <Typography variant="h6">See this past week's daily progress. Hover over the chart to see individual scores.</Typography>
+      </div>
     </>
+      
   );
 };
 

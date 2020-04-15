@@ -21,7 +21,6 @@ const useStyles = makeStyles(theme => ({
   },
   continueButton: {
     ...buttonsCss.buttons,
-    
 
     margin: '20px 8px 10px 8px',
     width: '160px',
@@ -80,7 +79,7 @@ const SurveyPage3 = props => {
               onChange={e => handleopenComment(e.target.value)}
             />
           </Grid>
-          <Grid item xs={12} >
+          <Grid item xs={12}>
             <Button onClick={sendBackToPage2} variant="outlined" color="secondary" className={classes.continueButton}>
               BACK
             </Button>

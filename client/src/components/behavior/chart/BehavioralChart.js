@@ -4,25 +4,21 @@ import FormControlLabel from '@material-ui/core/FormControlLabel';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import moment from 'moment';
-
 import { ResponsiveContainer, Line, LineChart, Tooltip, Legend, YAxis, XAxis, CartesianGrid } from 'recharts';
+
 
 const BehavioralChart = props => {
   const { observations } = props;
 
   const behaveData = observations.map(obj => {
-    return [
-      `${moment(new Date(obj.date)).format('MMM Do, h:mm a')}`,
-      `${parseInt(obj.nonPhysical.interest, 10)}`,
-      `${parseInt(obj.nonPhysical.sadness, 10)}`,
-      `${parseInt(obj.nonPhysical.sleep, 10)}`,
-      `${parseInt(obj.nonPhysical.energy, 10)}`,
-      `${parseInt(obj.nonPhysical.appetite, 10)}`,
-    ];
-  });
-
-  const behaveObjArray = behaveData.map(arr => {
-    return { name: arr[0], Interest: arr[1], Sadness: arr[2], Sleep: arr[3], Energy: arr[4], Appetite: arr[5] };
+    return {
+      "name":`${moment(new Date(obj.date)).format('MMM Do, h:mm a')}`,
+      "Interest":`${obj.nonPhysical.interest}`,
+      "Sadness":`${obj.nonPhysical.sadness}`,
+      "Sleep":`${obj.nonPhysical.sleep}`,
+      "Energy":`${obj.nonPhysical.energy}`,
+      "Appetite":`${obj.nonPhysical.appetite}`,
+    };
   });
 
   const [isActive, setActive] = useState(false);
@@ -35,18 +31,26 @@ const BehavioralChart = props => {
   const handleChange = evt => {
     const targetName = evt.target.name;
 
-    if (targetName === 'interest') {
-      setInterest(!interest);
-    } else if (targetName === 'sadness') {
-      setSadness(!sadness);
-    } else if (targetName === 'sleep') {
-      setSleep(!sleep);
-    } else if (targetName === 'energy') {
-      setEnergy(!energy);
-    } else if (targetName === 'appetite') {
-      setAppetite(!appetite);
+    switch(targetName){
+      case "interest":
+        setInterest(!interest)
+        break
+      case "sadness":
+        setSadness(!sadness)
+        break
+        case "sleep":
+        setSleep(!sleep)
+        break
+      case "energy":
+        setEnergy(!energy)
+        break
+      case "appetite":
+        setAppetite(!appetite) 
+        break
+      default:
+          break
     }
-  };
+  }
 
   const onMouseDownHandler = (event, type) => {
     console.info(type, event);
@@ -70,7 +74,7 @@ const BehavioralChart = props => {
       stroke={colour}
     />
   );
-
+ 
   const interestLine = interest ? createLine('Interest', 'green') : null;
   const sadnessLine = sadness ? createLine('Sadness', 'black') : null;
   const sleepLine = sleep ? createLine('Sleep', 'purple') : null;
@@ -78,7 +82,7 @@ const BehavioralChart = props => {
   const appetiteLine = appetite ? createLine('Appetite', 'magenta') : null;
 
   return (
-    <>
+    <> 
       <FormControlLabel
         control={<Checkbox checked={interest} onChange={handleChange} color="primary" name="interest" />}
         label="Interest"
@@ -103,7 +107,7 @@ const BehavioralChart = props => {
       <>
         <ResponsiveContainer height="100%" width="100%">
           <LineChart
-            data={behaveObjArray}
+            data={behaveData}
             onMouseUp={onMouseUpHandler}
             onMouseMove={onMouseMoveHandler}
             margin={{ top: 2, right: 30, left: 20, bottom: 5 }}

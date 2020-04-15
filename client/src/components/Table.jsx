@@ -1,12 +1,29 @@
-import React from 'react';
+import React,  { useState } from 'react';
 import '../css/Table.css';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
-import { Table, TableBody, TableCell, TableContainer, TableHead, TableRow } from '@material-ui/core';
+import { Table, TableBody, TableCell, TableContainer, TableHead, TableRow, FormControlLabel, Checkbox, Typography } from '@material-ui/core';
 import Chart from './Chart';
 import chartType from '../utils/chartType';
+import BehavioralChart from './behavior/chart/BehavioralChart'
+import { makeStyles } from '@material-ui/core/styles';
+
+const useStyles = makeStyles(theme => ({
+  tagLine: {
+    marginTop:"40px"
+  }, 
+  behaveDiv: {
+    height:700
+  },
+  feverDiv: {
+    height:500
+  }
+
+})
+)
 
 const LogTable = props => {
+  const classes = useStyles();
   const { detailData, observations } = props;
   const questions = [
     'Date',
@@ -22,7 +39,28 @@ const LogTable = props => {
     'Comments',
   ];
 
+  const[behaveClicked, setBehaveClicked] = useState(false)
+  const [feverClicked, setFeverClicked] = useState(false)
+  const renderBehavior = behaveClicked ? <div className={classes.behaveDiv}><BehavioralChart/></div> : null
+  const renderFever = feverClicked ? <div className={classes.feverDiv}><Chart chartType={chartType.bar}/></div> : null
+
+  const handleChange = evt => {
+    const targetName = evt.target.name;
+
+    switch(targetName){
+      case "Fever":
+        setFeverClicked(!feverClicked)
+        break
+      case "Behavioral":
+        setBehaveClicked(!behaveClicked)
+        break
+        default:
+          break
+    }
+  }
+
   return (
+    <>
     <div>
       <TableContainer>
         <Table className="table">
@@ -52,8 +90,22 @@ const LogTable = props => {
           ))}
         </Table>
       </TableContainer>
-      <Chart chartType={chartType.bar} />
+      <div>
+      <FormControlLabel
+        control={<Checkbox checked={feverClicked} onChange={handleChange} color="primary" name="Fever" />}
+        label="Fever"
+      />
+       <FormControlLabel
+        control={<Checkbox checked={behaveClicked} onChange={handleChange} name="Behavioral" color="primary" />}
+        label="Behavioral"
+      />
+      </div>
     </div>
+        { behaveClicked ? <Typography variant="h2">Your Behavioral Health Progress</Typography>:null}
+        {renderBehavior}
+        {behaveClicked ? <div className={classes.tagLine}><Typography variant="h6">See this past week's daily progress. Hover over the chart to see individual scores.</Typography></div>:null }
+        {renderFever} 
+      </>
   );
 };
 
