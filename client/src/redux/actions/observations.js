@@ -40,7 +40,9 @@ export const deleteObservations = userSession => async dispatch => {
         dispatch({ type: DELETE_OBSERVATIONS });
         return 200;
       })
-      .catch(err => console.error(err));
+      .catch(err => {
+        throw new Error(err.message);
+      });
   }
 };
 
