@@ -15,13 +15,13 @@ it('should handle SET_DETAIL_DATA', () => {
   const oldData = [];
   const setData = {
     type: SET_DETAIL_DATA,
-    detailData: [{ test: test }],
+    detailData: [{ test }],
   };
-  expect(reducer({ detailData: oldData }, setData)).toEqual({ detailData: [{ test: test }] });
+  expect(reducer({ detailData: oldData }, setData)).toEqual({ detailData: [{ test }] });
 });
 
 it('should handle DELETE_DETAIL_DATA', () => {
-  const oldData = [{ test: test }];
+  const oldData = [{ test }];
   const deleteObs = {
     type: DELETE_DETAIL_DATA,
   };
