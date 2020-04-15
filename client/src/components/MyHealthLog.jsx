@@ -15,7 +15,7 @@ const useStyles = makeStyles({
   },
   button: {
     ...buttonsCss.buttons,
-    width: '320px',
+    width: '300px',
     margin: '10px',
   },
 });

@@ -7,6 +7,7 @@ import { useSprings } from 'react-spring';
 import { useDrag } from 'react-use-gesture';
 import { makeStyles } from '@material-ui/core/styles';
 import PropTypes from 'prop-types';
+import { Typography } from '@material-ui/core';
 import Card from './Card';
 
 const useStyles = makeStyles({
@@ -20,14 +21,14 @@ const useStyles = makeStyles({
 
 const to = i => ({
   x: 0,
-  y: i * -4,
-  scale: 1,
-  rot: -10 + Math.random() * 20,
-  delay: i * 100,
+  y: 0,
+  scale: 0.95,
+  rot: -1 + Math.random() * 5,
+  delay: i * 30,
 });
 const from = () => ({ x: 0, rot: 0, scale: 1.5, y: -1000 });
 
-const trans = (r, s) => `perspective(1500px) rotateX(15deg) rotateY(${r / 10}deg) rotateZ(${r}deg) scale(${s})`;
+const trans = (r, s) => `perspective(1500px) rotateX(15deg) rotateY(${r / 5}deg) rotateZ(${r}deg) scale(${s})`;
 
 const FlashCards = props => {
   const { cardData, mode } = props;
@@ -61,22 +62,26 @@ const FlashCards = props => {
   });
   // Now we're just mapping the animated values to our view, that's it. Btw, this component only renders once. :-)
   return (
-    <div className={classes.FlashCards}>
-      {cardProp.map(({ x, y, rot, scale }, i) => (
-        <Card
-          key={`${i}card`}
-          i={i}
-          x={x}
-          y={y}
-          rot={rot}
-          scale={scale}
-          trans={trans}
-          data={cardData[i]}
-          bind={bind}
-          mode={mode}
-        />
-      ))}
-      {mode === 'quiz' && `Score ${score}/${cardData.length}`}
+    <div>
+      <Typography color="secondary" variant="button">
+        {mode === 'quiz' && `Score ${score}/${cardData.length}`}
+      </Typography>
+      <div className={classes.FlashCards}>
+        {cardProp.map(({ x, y, rot, scale }, i) => (
+          <Card
+            key={`${i}card`}
+            i={i}
+            x={x}
+            y={y}
+            rot={rot}
+            scale={scale}
+            trans={trans}
+            data={cardData[i]}
+            bind={bind}
+            mode={mode}
+          />
+        ))}
+      </div>
     </div>
   );
 };

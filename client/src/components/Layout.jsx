@@ -9,6 +9,20 @@ import NavBar from './NavBar';
 import Login from './Login';
 
 const theme = createMuiTheme({
+  overrides: {
+    MuiSelect: {
+      select: {
+        '&&': {
+          paddingRight: '0px',
+        },
+      },
+    },
+    MuiInputBase: {
+      root: {
+        fontSize: 'inherit',
+      },
+    },
+  },
   palette: {
     primary: {
       light: '#c8d7fa',
