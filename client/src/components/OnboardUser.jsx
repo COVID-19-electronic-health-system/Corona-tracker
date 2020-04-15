@@ -15,18 +15,18 @@ const useStyles = makeStyles(() => ({
   root: {
     padding: '10px',
   },
-  buttonFemale: {
+  buttonRight: {
     ...buttonsCss.buttons,
 
     margin: '5px 0px 0px 9px',
     background: 'rgba(255,255,255,0.5)',
-    color: 'gray',
+    color: 'black',
     width: '75px',
   },
-  buttonMale: {
+  buttonLeft: {
     ...buttonsCss.buttons,
     background: 'rgba(255,255,255,0.5)',
-    color: 'gray',
+    color: 'black',
     margin: '5px 10px 0px 0px',
     width: '75px',
     height: '40px',
@@ -235,7 +235,7 @@ const OnboardUser = props => {
                       isSmoker: 'yes',
                     });
                   }}
-                  className={classes.buttonMale}
+                  className={classes.buttonLeft}
                   style={
                     formState.isSmoker === 'yes'
                       ? {
@@ -257,7 +257,7 @@ const OnboardUser = props => {
                       isSmoker: 'no',
                     });
                   }}
-                  className={classes.buttonFemale}
+                  className={classes.buttonRight}
                   style={
                     formState.isSmoker === 'no'
                       ? {
@@ -290,7 +290,7 @@ const OnboardUser = props => {
                       isObese: 'yes',
                     });
                   }}
-                  className={classes.buttonMale}
+                  className={classes.buttonLeft}
                   style={
                     formState.isObese === 'yes'
                       ? {
@@ -312,7 +312,7 @@ const OnboardUser = props => {
                       isObese: 'no',
                     });
                   }}
-                  className={classes.buttonFemale}
+                  className={classes.buttonRight}
                   style={
                     formState.isObese === 'no'
                       ? {
@@ -345,7 +345,7 @@ const OnboardUser = props => {
                       isAsthmatic: 'yes',
                     });
                   }}
-                  className={classes.buttonMale}
+                  className={classes.buttonLeft}
                   style={
                     formState.isAsthmatic === 'yes'
                       ? {
@@ -367,7 +367,7 @@ const OnboardUser = props => {
                       isAsthmatic: 'no',
                     });
                   }}
-                  className={classes.buttonFemale}
+                  className={classes.buttonRight}
                   style={
                     formState.isAsthmatic === 'no'
                       ? {
