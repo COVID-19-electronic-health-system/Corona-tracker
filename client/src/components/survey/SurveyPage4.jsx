@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import { useBlockstack } from 'react-blockstack';
 import { useHistory } from 'react-router-dom';
-import { Typography, Slider, ButtonGroup, Button, Grid, withStyles } from '@material-ui/core';
+import { Typography, Slider, Button, Grid, withStyles } from '@material-ui/core';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import buttonsCss from '../../css/buttons';
@@ -109,7 +109,6 @@ const marks = [
 const SurveyPage4 = props => {
   const { setSurveyPage4, toSurveyPage3, survey, addObservation, clearSurvey } = props;
   const classes = useStyles();
-//   const { nonPhysical } = survey;
   const { interest, sadness, sleep, energy, appetite } = props;
   const history = useHistory();
   const { userSession } = useBlockstack();
@@ -155,28 +154,27 @@ const SurveyPage4 = props => {
   };
 
   const submitSurveyPage4 = async () => {
-      const surveyPage4 = {
-          interestAnswer,
-          sadAnswer,
-          sleepAnswer,
-          energyAnswer,
-          appetiteAnswer,
-        };
+    const surveyPage4 = {
+      interestAnswer,
+      sadAnswer,
+      sleepAnswer,
+      energyAnswer,
+      appetiteAnswer,
+    };
     survey.nonPhysical.interest = interestAnswer;
-    survey.nonPhysical.sadness = sadAnswer
-    survey.nonPhysical.sleep = sleepAnswer
-    survey.nonPhysical.energy = energyAnswer
-    survey.nonPhysical.appetite = appetiteAnswer
-        
+    survey.nonPhysical.sadness = sadAnswer;
+    survey.nonPhysical.sleep = sleepAnswer;
+    survey.nonPhysical.energy = energyAnswer;
+    survey.nonPhysical.appetite = appetiteAnswer;
+
     history.push('/');
-        
+
     setSurveyPage4(surveyPage4);
-    addObservation(userSession, survey)
+    addObservation(userSession, survey);
     clearSurvey();
 
     window.localStorage.setItem('surveyCompleted', 'true');
   };
-
 
   return (
     <>
@@ -282,12 +280,24 @@ const SurveyPage4 = props => {
                 max={5}
                 marks={marks}
               />
-            </Grid><br/>
-            <Grid item xs={12} xl={4}>
-              <Button onClick={sendBackToPage3} variant="outlined" color="secondary" className={classes.continueButton} style={{marginRight:"5px"}}>
+            </Grid>
+            <br />
+            <Grid item xs={12}>
+              <Button
+                onClick={sendBackToPage3}
+                variant="outlined"
+                color="secondary"
+                className={classes.continueButton}
+                style={{ marginRight: '5px' }}
+              >
                 BACK
-              </Button >
-              <Button onClick={submitSurveyPage4} variant="outlined" color="secondary" className={classes.continueButton}>
+              </Button>
+              <Button
+                onClick={submitSurveyPage4}
+                variant="outlined"
+                color="secondary"
+                className={classes.continueButton}
+              >
                 SUBMIT
               </Button>
             </Grid>
@@ -303,7 +313,7 @@ const SurveyPage4 = props => {
 };
 
 SurveyPage4.propTypes = {
- survey: PropTypes.objectOf(Object).isRequired,
+  survey: PropTypes.objectOf(Object).isRequired,
   setSurveyPage4: PropTypes.func.isRequired,
   toSurveyPage3: PropTypes.func.isRequired,
   interest: PropTypes.number,

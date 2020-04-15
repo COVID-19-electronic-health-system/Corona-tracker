@@ -68,46 +68,40 @@ const AppCalendar = props => {
     });
   };
 
-  const random =() => {
-    console.log(observations)
-  }
-
   // eslint-disable-next-line
   const calendarComponentRef = useRef(null);
 
   return (
     <>
-  <button onClick={random}>random</button>
-  
-    <div className={classes.appCalendar}>
-      <Calendar
-        className={classes.reactCalendar}
-        onChange={handleDateClick}
-        tileClassName={({ date, view }) => {
-          const dateString = date.toLocaleDateString();
-          const tileClasses = [classes.calendarTile];
+      <div className={classes.appCalendar}>
+        <Calendar
+          className={classes.reactCalendar}
+          onChange={handleDateClick}
+          tileClassName={({ date, view }) => {
+            const dateString = date.toLocaleDateString();
+            const tileClasses = [classes.calendarTile];
 
-          if (dateString === today) {
-            tileClasses.push(classes.today);
-          }
+            if (dateString === today) {
+              tileClasses.push(classes.today);
+            }
 
-          if (observations.find(observation => new Date(observation.date).toLocaleDateString() === dateString)) {
-            tileClasses.push(classes.completedSurvey);
-          }
+            if (observations.find(observation => new Date(observation.date).toLocaleDateString() === dateString)) {
+              tileClasses.push(classes.completedSurvey);
+            }
 
-          return tileClasses;
-        }}
-      />
-      {currentObservations.map((observation, index) => {
-        return (
-          <div key={observation.date} className={classes.day}>
-            <WeeklyTracker>
-              <WeeklyTrackerDay dayData={observation} />
-            </WeeklyTracker>
-          </div>
-        );
-      })}
-    </div>
+            return tileClasses;
+          }}
+        />
+        {currentObservations.map((observation, index) => {
+          return (
+            <div key={observation.date} className={classes.day}>
+              <WeeklyTracker>
+                <WeeklyTrackerDay dayData={observation} />
+              </WeeklyTracker>
+            </div>
+          );
+        })}
+      </div>
     </>
   );
 };

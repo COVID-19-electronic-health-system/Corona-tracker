@@ -72,7 +72,6 @@ const WeeklyTrackerDay = props => {
               {dayData.physical.dailyfeeling}/10
             </Typography>
           </Grid>
-          
         </Grid>
         <Grid item xs={6} sm={5} container className={classes.textAlignLeft}>
           <Grid item xs={12}>
