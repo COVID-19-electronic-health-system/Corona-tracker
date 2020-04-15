@@ -8,7 +8,7 @@ import { useHistory } from 'react-router-dom';
 import { useBlockstack } from 'react-blockstack';
 import { Typography, Select, MenuItem, FormControl, Grid, ButtonGroup, Button } from '@material-ui/core';
 import actions from '../redux/actions/actions';
-
+import DeletionDialog from './DeletionDialog';
 import buttonsCss from '../css/buttons';
 
 const useStyles = makeStyles(() => ({
@@ -38,6 +38,19 @@ const useStyles = makeStyles(() => ({
     cursor: 'pointer',
     height: '3.5em',
     marginTop: '2em',
+  },
+  deleteButton: {
+    ...buttonsCss.buttons,
+    margin: '0px 8px 2px 8px',
+    width: '300px',
+    cursor: 'pointer',
+    height: '3.5em',
+    marginTop: '2em',
+    background: `#f64141`,
+    '&:hover': {
+      boxShadow: '0px 1px 10px 0px #f64141',
+      background: `#f64141`,
+    },
   },
   image: {
     maxWidth: '120px',
@@ -76,6 +89,7 @@ const OnboardUser = props => {
   const { setDemographicsComorbiditiesThunk } = props;
   const { userSession } = useBlockstack();
   const [formState, setFormState] = useState(blankForm);
+  const [showDeletionDialog, setShowDeletionDialog] = useState(false);
   const handleChange = e => {
     e.preventDefault();
     setFormState({
@@ -393,6 +407,16 @@ const OnboardUser = props => {
           >
             SAVE MY RESPONSES
           </Button>
+
+          <Button
+            onClick={() => {
+              setShowDeletionDialog(true);
+            }}
+            className={classes.deleteButton}
+          >
+            DELETE ALL OBSERVATION DATA
+          </Button>
+          {showDeletionDialog && <DeletionDialog setShowDeletionDialog={setShowDeletionDialog} />}
         </Grid>
       </Grid>
     </Grid>
