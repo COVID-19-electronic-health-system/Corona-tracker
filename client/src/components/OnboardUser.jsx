@@ -48,6 +48,10 @@ const useStyles = makeStyles(() => ({
     height: '3.5em',
     marginTop: '2em',
     background: `#f64141`,
+    '&:hover': {
+      boxShadow: '0px 1px 10px 0px #f64141',
+      background: `#f64141`,
+    },
   },
   image: {
     maxWidth: '120px',
