@@ -16,17 +16,18 @@ const useStyles = makeStyles(() => ({
   root: {
     padding: '10px',
   },
-  buttonFemale: {
+  buttonRight: {
     ...buttonsCss.buttons,
 
     margin: '5px 0px 0px 9px',
-    background: '#4760ff',
+    background: 'rgba(255,255,255,0.5)',
+    color: 'black',
     width: '75px',
   },
-  buttonMale: {
+  buttonLeft: {
     ...buttonsCss.buttons,
-
-    background: '#4760ff',
+    background: 'rgba(255,255,255,0.5)',
+    color: 'black',
     margin: '5px 10px 0px 0px',
     width: '75px',
     height: '40px',
@@ -74,26 +75,6 @@ const useStyles = makeStyles(() => ({
       color: 'white',
     },
   },
-  location: {
-    ...buttonsCss.buttons,
-    textAlign: 'center',
-    color: 'white',
-    background: '#4760ff',
-    width: '50px',
-    height: '40px',
-    margin: '5px 2px 5px 0px',
-    '&::placeholder': {
-      color: 'white',
-    },
-
-    '&:-ms-input-placeholder': {
-      color: 'white',
-    },
-
-    '&::-ms-input-placeholder': {
-      color: 'white',
-    },
-  },
 }));
 
 const blankForm = {
@@ -129,13 +110,7 @@ const OnboardUser = props => {
             Let&apos;s get your profile set up with a few quick questions and start logging your health:
           </Typography>
         </Grid>
-        <Grid item>
-          <img src={profileImg} className={classes.image} alt="Profile" />
-          <Typography variant="h6">
-            <b>PROFILE</b>
-          </Typography>
-        </Grid>
-        <div>
+        <Grid>
           <Grid container spacing={1} justify="space-between">
             <Grid item>
               <Typography variant="subtitle2" color="textSecondary">
@@ -149,6 +124,14 @@ const OnboardUser = props => {
                 placeholder="Click Here"
                 value={formState.age}
                 onChange={handleChange}
+                style={
+                  formState.age !== null
+                    ? {
+                        outline: 'none',
+                        color: 'wheat',
+                      }
+                    : {}
+                }
               />
             </Grid>
           </Grid>
@@ -159,14 +142,14 @@ const OnboardUser = props => {
               </Typography>
             </Grid>
             <Grid item>
-              <FormControl className={classes.formControl}>
+              <FormControl>
                 <Select
                   className={classes.inputField}
                   name="gender"
                   value={formState.gender}
                   onChange={handleChange}
                   displayEmpty
-                  style={formState.gender !== '' ? { backgroundColor: '#82a4f8', outline: 'none', color: 'wheat' } : {}}
+                  style={formState.gender !== '' ? { ...buttonsCss, outline: 'none', color: 'wheat' } : {}}
                 >
                   <MenuItem value="" disabled>
                     Click Here
@@ -181,33 +164,73 @@ const OnboardUser = props => {
           <Grid container spacing={1} justify="space-between">
             <Grid item>
               <Typography variant="subtitle2" color="textSecondary">
-                <b>City, State & ZIP:</b>
+                <b>City:</b>
               </Typography>
             </Grid>
             <Grid item>
-              <ButtonGroup>
-                <input
-                  name="city"
-                  value={formState.city}
-                  onChange={handleChange}
-                  placeholder="City"
-                  className={classes.location}
-                />
-                <input
-                  name="state"
-                  value={formState.state}
-                  onChange={handleChange}
-                  placeholder="State"
-                  className={classes.location}
-                />
-                <input
-                  name="zip"
-                  value={formState.zip}
-                  onChange={handleChange}
-                  placeholder="Zip"
-                  className={classes.location}
-                />
-              </ButtonGroup>
+              <input
+                name="city"
+                value={formState.city}
+                onChange={handleChange}
+                placeholder="City"
+                className={classes.inputField}
+                style={
+                  formState.city !== null
+                    ? {
+                        outline: 'none',
+                        color: 'wheat',
+                      }
+                    : {}
+                }
+              />
+            </Grid>
+          </Grid>
+          <Grid container spacing={1} justify="space-between">
+            <Grid item>
+              <Typography variant="subtitle2" color="textSecondary">
+                <b>State:</b>
+              </Typography>
+            </Grid>
+            <Grid item>
+              <input
+                name="state"
+                value={formState.state}
+                onChange={handleChange}
+                placeholder="State"
+                className={classes.inputField}
+                style={
+                  formState.state !== null
+                    ? {
+                        outline: 'none',
+                        color: 'wheat',
+                      }
+                    : {}
+                }
+              />
+            </Grid>
+          </Grid>
+          <Grid container spacing={1} justify="space-between">
+            <Grid item>
+              <Typography variant="subtitle2" color="textSecondary">
+                <b>Zip:</b>
+              </Typography>
+            </Grid>
+            <Grid item>
+              <input
+                name="zip"
+                value={formState.zip}
+                onChange={handleChange}
+                placeholder="Zip"
+                className={classes.inputField}
+                style={
+                  formState.zip !== null
+                    ? {
+                        outline: 'none',
+                        color: 'wheat',
+                      }
+                    : {}
+                }
+              />
             </Grid>
           </Grid>
           <Grid container spacing={1} justify="space-between">
@@ -227,9 +250,15 @@ const OnboardUser = props => {
                       isSmoker: 'yes',
                     });
                   }}
-                  className={classes.buttonMale}
+                  className={classes.buttonLeft}
                   style={
-                    formState.isSmoker === 'yes' ? { backgroundColor: '#82a4f8', outline: 'none', color: 'wheat' } : {}
+                    formState.isSmoker === 'yes'
+                      ? {
+                          ...buttonsCss.buttons,
+                          outline: 'none',
+                          color: 'wheat',
+                        }
+                      : {}
                   }
                 >
                   Yes
@@ -243,9 +272,15 @@ const OnboardUser = props => {
                       isSmoker: 'no',
                     });
                   }}
-                  className={classes.buttonFemale}
+                  className={classes.buttonRight}
                   style={
-                    formState.isSmoker === 'no' ? { backgroundColor: '#82a4f8', outline: 'none', color: 'wheat' } : {}
+                    formState.isSmoker === 'no'
+                      ? {
+                          ...buttonsCss.buttons,
+                          outline: 'none',
+                          color: 'wheat',
+                        }
+                      : {}
                   }
                 >
                   No
@@ -270,9 +305,15 @@ const OnboardUser = props => {
                       isObese: 'yes',
                     });
                   }}
-                  className={classes.buttonMale}
+                  className={classes.buttonLeft}
                   style={
-                    formState.isObese === 'yes' ? { backgroundColor: '#82a4f8', outline: 'none', color: 'wheat' } : {}
+                    formState.isObese === 'yes'
+                      ? {
+                          ...buttonsCss.buttons,
+                          outline: 'none',
+                          color: 'wheat',
+                        }
+                      : {}
                   }
                 >
                   Yes
@@ -286,9 +327,15 @@ const OnboardUser = props => {
                       isObese: 'no',
                     });
                   }}
-                  className={classes.buttonFemale}
+                  className={classes.buttonRight}
                   style={
-                    formState.isObese === 'no' ? { backgroundColor: '#82a4f8', outline: 'none', color: 'wheat' } : {}
+                    formState.isObese === 'no'
+                      ? {
+                          ...buttonsCss.buttons,
+                          outline: 'none',
+                          color: 'wheat',
+                        }
+                      : {}
                   }
                 >
                   No
@@ -313,10 +360,14 @@ const OnboardUser = props => {
                       isAsthmatic: 'yes',
                     });
                   }}
-                  className={classes.buttonMale}
+                  className={classes.buttonLeft}
                   style={
                     formState.isAsthmatic === 'yes'
-                      ? { backgroundColor: '#82a4f8', outline: 'none', color: 'wheat' }
+                      ? {
+                          ...buttonsCss.buttons,
+                          outline: 'none',
+                          color: 'wheat',
+                        }
                       : {}
                   }
                 >
@@ -331,10 +382,14 @@ const OnboardUser = props => {
                       isAsthmatic: 'no',
                     });
                   }}
-                  className={classes.buttonFemale}
+                  className={classes.buttonRight}
                   style={
                     formState.isAsthmatic === 'no'
-                      ? { backgroundColor: '#82a4f8', outline: 'none', color: 'wheat' }
+                      ? {
+                          ...buttonsCss.buttons,
+                          outline: 'none',
+                          color: 'wheat',
+                        }
                       : {}
                   }
                 >
@@ -363,6 +418,7 @@ const OnboardUser = props => {
           DELETE ALL OBSERVATION DATA
         </Button>
         {showDeletionDialog && <DeletionDialog setShowDeletionDialog={setShowDeletionDialog} />}
+        </Grid>
       </Grid>
     </Grid>
   );
