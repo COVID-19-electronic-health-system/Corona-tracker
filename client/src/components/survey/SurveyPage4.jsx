@@ -36,6 +36,7 @@ const useStyles = makeStyles(theme => ({
     marginTop: '1vh',
     width: '50vw',
     maxWidth: '180px',
+    marginRight: '5px'
   },
   dialog: {
     background: '#7a9cf9',
@@ -59,6 +60,14 @@ const useStyles = makeStyles(theme => ({
       backgroundColor: `linear-gradient(45deg, #4760ff, #82a4f8)`,
     },
   },
+  chartDiv: {
+    display: 'flex', 
+    marginTop: 50, 
+    justifyContent: 'flex-end'
+  },
+  innerChartDiv: {
+    height: 500
+  }
 }));
 
 const WellnessSlider = withStyles({
@@ -113,15 +122,10 @@ const SurveyPage4 = props => {
   const history = useHistory();
   const { userSession } = useBlockstack();
   const [interestAnswer, setInterestAnswer] = useState(interest);
-
   const [sadAnswer, setSadAnswer] = useState(sadness);
-
   const [sleepAnswer, setSleepAnswer] = useState(sleep);
-
   const [energyAnswer, setEnergyAnswer] = useState(energy);
-
   const [appetiteAnswer, setAppetiteAnswer] = useState(appetite);
-
   const handleChange = (evt, value) => {
     setInterestAnswer(value);
   };
@@ -288,7 +292,6 @@ const SurveyPage4 = props => {
                 variant="outlined"
                 color="secondary"
                 className={classes.continueButton}
-                style={{ marginRight: '5px' }}
               >
                 BACK
               </Button>
@@ -303,9 +306,9 @@ const SurveyPage4 = props => {
             </Grid>
           </Grid>
         </Grid>
-        <div style={{ display: 'flex', marginTop: 50, justifyContent: 'flex-end' }} />
+        <div className={classes.chartDiv} />
       </div>
-      <div style={{ height: 500 }}>
+      <div className={classes.innerChartDiv}>
         <BehavioralChart />
       </div>
     </>

@@ -156,10 +156,6 @@ const SurveyPage1 = props => {
     }
   };
 
-  // const random = () => {
-  //   console.log(surveyPage1)
-  // }
-
   return (
     <div className={classes.root}>
       <Grid container justify="center" alignItems="center" spacing={3}>
@@ -238,7 +234,6 @@ const SurveyPage1 = props => {
             </Button>
           </ButtonGroup>
         </Grid>
-
         <Grid item xs={12}>
           <Button onClick={submitSurveyPage1} variant="outlined" color="secondary" className={classes.continueButton}>
             CONTINUE
