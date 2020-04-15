@@ -6,18 +6,17 @@ import PropTypes from 'prop-types';
 import moment from 'moment';
 import { ResponsiveContainer, Line, LineChart, Tooltip, Legend, YAxis, XAxis, CartesianGrid } from 'recharts';
 
-
 const BehavioralChart = props => {
   const { observations } = props;
 
-  const behaveData = observations.map(obj => {
+  const behaveData = observations.slice(observations.length - 7, observations.length).map(obj => {
     return {
-      "name":`${moment(new Date(obj.date)).format('MMM Do, h:mm a')}`,
-      "Interest":`${obj.nonPhysical.interest}`,
-      "Sadness":`${obj.nonPhysical.sadness}`,
-      "Sleep":`${obj.nonPhysical.sleep}`,
-      "Energy":`${obj.nonPhysical.energy}`,
-      "Appetite":`${obj.nonPhysical.appetite}`,
+      name: `${moment(new Date(obj.date)).format('MMM Do, h:mm a')}`,
+      Interest: `${obj.nonPhysical.interest}`,
+      Sadness: `${obj.nonPhysical.sadness}`,
+      Sleep: `${obj.nonPhysical.sleep}`,
+      Energy: `${obj.nonPhysical.energy}`,
+      Appetite: `${obj.nonPhysical.appetite}`,
     };
   });
 
@@ -31,26 +30,26 @@ const BehavioralChart = props => {
   const handleChange = evt => {
     const targetName = evt.target.name;
 
-    switch(targetName){
-      case "interest":
-        setInterest(!interest)
-        break
-      case "sadness":
-        setSadness(!sadness)
-        break
-        case "sleep":
-        setSleep(!sleep)
-        break
-      case "energy":
-        setEnergy(!energy)
-        break
-      case "appetite":
-        setAppetite(!appetite) 
-        break
+    switch (targetName) {
+      case 'interest':
+        setInterest(!interest);
+        break;
+      case 'sadness':
+        setSadness(!sadness);
+        break;
+      case 'sleep':
+        setSleep(!sleep);
+        break;
+      case 'energy':
+        setEnergy(!energy);
+        break;
+      case 'appetite':
+        setAppetite(!appetite);
+        break;
       default:
-          break
+        break;
     }
-  }
+  };
 
   const onMouseDownHandler = (event, type) => {
     console.info(type, event);
@@ -74,7 +73,7 @@ const BehavioralChart = props => {
       stroke={colour}
     />
   );
- 
+
   const interestLine = interest ? createLine('Interest', 'green') : null;
   const sadnessLine = sadness ? createLine('Sadness', 'black') : null;
   const sleepLine = sleep ? createLine('Sleep', 'purple') : null;
@@ -82,7 +81,7 @@ const BehavioralChart = props => {
   const appetiteLine = appetite ? createLine('Appetite', 'magenta') : null;
 
   return (
-    <> 
+    <>
       <FormControlLabel
         control={<Checkbox checked={interest} onChange={handleChange} color="primary" name="interest" />}
         label="Interest"

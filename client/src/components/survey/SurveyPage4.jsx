@@ -69,8 +69,8 @@ const useStyles = makeStyles(theme => ({
     height: 700,
   },
   tagLine: {
-    marginTop:"40px"
-  }
+    marginTop: '40px',
+  },
 }));
 
 const WellnessSlider = withStyles({
@@ -307,16 +307,17 @@ const SurveyPage4 = props => {
         <div className={classes.chartDiv} />
       </div>
       <div>
-      <Typography variant="h2">Your Behavioral Health Progress</Typography>
+        <Typography variant="h2">Your Behavioral Health Progress</Typography>
       </div>
       <div className={classes.innerChartDiv}>
         <BehavioralChart />
       </div>
       <div className={classes.tagLine}>
-        <Typography variant="h6">See this past week's daily progress. Hover over the chart to see individual scores.</Typography>
+        <Typography variant="h6">
+          See this past week's daily progress. Hover over the chart to see individual scores.
+        </Typography>
       </div>
     </>
-      
   );
 };
 
