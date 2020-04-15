@@ -8,7 +8,7 @@ import { useHistory } from 'react-router-dom';
 import { useBlockstack } from 'react-blockstack';
 import { Typography, Select, MenuItem, FormControl, Grid, ButtonGroup, Button } from '@material-ui/core';
 import actions from '../redux/actions/actions';
-import profileImg from '../img/profileBlue.png';
+import { profileImg } from '../utils/imgUrl';
 
 import buttonsCss from '../css/buttons';
 

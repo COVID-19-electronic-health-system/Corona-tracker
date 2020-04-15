@@ -3,10 +3,9 @@ import { createMuiTheme, ThemeProvider, CssBaseline } from '@material-ui/core';
 import { makeStyles } from '@material-ui/core/styles';
 import { useBlockstack } from 'react-blockstack';
 import PropTypes from 'prop-types';
-import { ReactComponent as Logo } from '../img/Logo_CORONATRACKER_Logo.svg';
-import { ReactComponent as TextLogo } from '../img/Logo_CORONATRACKER_Text_Logo.svg';
 import NavBar from './NavBar';
 import Login from './Login';
+import { TextLogo, Logo } from '../utils/imgUrl';
 
 const theme = createMuiTheme({
   overrides: {
@@ -99,6 +98,7 @@ const theme = createMuiTheme({
     },
   },
 });
+
 const useStyles = makeStyles(() => ({
   '@global': {
     'html, body, #root': {
@@ -123,7 +123,6 @@ const useStyles = makeStyles(() => ({
     // this is for small devices, theme media query there are (sm, md and lg)
     [theme.breakpoints.up('md')]: {
       width: '100px',
-
       height: '100px',
     },
   },
@@ -147,9 +146,8 @@ const Layout = props => {
         {authenticated ? (
           <div>
             <div id="content" className={classes.root}>
-              <Logo className={classes.logo} />
-              <TextLogo className={classes.textLogo} />
-
+              <object title="logo" className={classes.logo} data={Logo} type="image/svg+xml" />
+              <object title="logoText" className={classes.textLogo} data={TextLogo} type="image/svg+xml" />
               {children}
             </div>
             <div>
