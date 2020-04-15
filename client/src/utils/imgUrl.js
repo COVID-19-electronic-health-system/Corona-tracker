@@ -23,7 +23,7 @@ const imgUrl = {
   notFoundImgText,
   profileImg,
   CodivId,
-  AdvisoryBoard
+  AdvisoryBoard,
 };
 
 export default imgUrl;
