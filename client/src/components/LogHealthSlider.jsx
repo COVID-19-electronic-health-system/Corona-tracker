@@ -7,11 +7,8 @@ import Typography from '@material-ui/core/Typography';
 import { useSpring, animated } from 'react-spring';
 import { useDrag } from 'react-use-gesture';
 import { useHistory } from 'react-router-dom';
-import CalendarThreeLines from '../img/Calendar_Three-Lines.svg';
-import alarmSvg from '../img/Calendar_Menu_Alarm.svg';
-import checkSvg from '../img/Calendar_Menu_Checkmark.svg';
-import xSvg from '../img/Calendar_Menu_X.svg';
 import noSelectCss from '../css/noSelect';
+import { CalendarThreeLines, alarmSvg, checkSvg, xSvg } from '../utils/imgUrl';
 
 const useStyles = makeStyles(theme => ({
   ...noSelectCss,
