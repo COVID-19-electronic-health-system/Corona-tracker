@@ -21,7 +21,13 @@ const theme = createMuiTheme({
         fontSize: 'inherit',
       },
     },
+    MuiList: {
+      root: {
+        backgroundColor: '#bbcef9',
+      },
+    },
   },
+
   palette: {
     primary: {
       light: '#c8d7fa',
