@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React /*, { useState }*/ from 'react';
 import '../css/Table.css';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
@@ -9,29 +9,29 @@ import {
   TableContainer,
   TableHead,
   TableRow,
-  FormControlLabel,
-  Checkbox,
-  Typography,
+  // FormControlLabel,
+  // Checkbox,
+  // Typography,
 } from '@material-ui/core';
-import { makeStyles } from '@material-ui/core/styles';
+// import { makeStyles } from '@material-ui/core/styles';
 import Chart from './Chart';
 import chartType from '../utils/chartType';
-import BehavioralChart from './behavior/chart/BehavioralChart';
+// import BehavioralChart from './behavior/chart/BehavioralChart';
 
-const useStyles = makeStyles(theme => ({
-  tagLine: {
-    marginTop: '40px',
-  },
-  behaveDiv: {
-    height: 700,
-  },
-  feverDiv: {
-    height: 500,
-  },
-}));
+// const useStyles = makeStyles(() => ({
+//   tagLine: {
+//     marginTop: '40px',
+//   },
+//   behaveDiv: {
+//     height: 700,
+//   },
+//   feverDiv: {
+//     height: 500,
+//   },
+// }));
 
 const LogTable = props => {
-  const classes = useStyles();
+  // const classes = useStyles();
   const { detailData, observations } = props;
   const questions = [
     'Date',
@@ -47,33 +47,33 @@ const LogTable = props => {
     'Comments',
   ];
 
-  const [behaveClicked, setBehaveClicked] = useState(false);
-  const [feverClicked, setFeverClicked] = useState(false);
-  const renderBehavior = behaveClicked ? (
-    <div className={classes.behaveDiv}>
-      <BehavioralChart />
-    </div>
-  ) : null;
-  const renderFever = feverClicked ? (
-    <div className={classes.feverDiv}>
-      <Chart chartType={chartType.bar} />
-    </div>
-  ) : null;
+  // const [behaveClicked, setBehaveClicked] = useState(false);
+  // const [feverClicked, setFeverClicked] = useState(false);
+  // const renderBehavior = behaveClicked ? (
+  //   <div className={classes.behaveDiv}>
+  //     <BehavioralChart />
+  //   </div>
+  // ) : null;
+  // const renderFever = feverClicked ? (
+  //   <div className={classes.feverDiv}>
+  //     <Chart chartType={chartType.bar} />
+  //   </div>
+  // ) : null;
 
-  const handleChange = evt => {
-    const targetName = evt.target.name;
+  // const handleChange = evt => {
+  //   const targetName = evt.target.name;
 
-    switch (targetName) {
-      case 'Fever':
-        setFeverClicked(!feverClicked);
-        break;
-      case 'Behavioral':
-        setBehaveClicked(!behaveClicked);
-        break;
-      default:
-        break;
-    }
-  };
+  //   switch (targetName) {
+  //     case 'Fever':
+  //       setFeverClicked(!feverClicked);
+  //       break;
+  //     case 'Behavioral':
+  //       setBehaveClicked(!behaveClicked);
+  //       break;
+  //     default:
+  //       break;
+  //   }
+  // };
 
   return (
     <>
