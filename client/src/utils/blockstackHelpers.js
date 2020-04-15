@@ -1,3 +1,5 @@
+/* eslint-disable no-console */
+
 export const postObservationsList = async (userSession, observation) => {
   const result = await userSession.putFile(`observations.json`, JSON.stringify(observation));
   return result;
@@ -12,9 +14,7 @@ export const deleteObservationsList = async userSession => {
   await userSession
     .deleteFile(`observations.json`)
     .then(() => 200)
-    .catch(err => {
-      throw new Error(err.message);
-    });
+    .catch(err => console.error(err));
 };
 
 export const deleteObservationFiles = async (userSession, numOfObservations) => {
@@ -23,9 +23,7 @@ export const deleteObservationFiles = async (userSession, numOfObservations) => 
     userSession
       .deleteFile(`observation/${fileNumber}.json`)
       .then(() => 200)
-      .catch(err => {
-        throw new Error(err.message);
-      });
+      .catch(err => console.error(err));
   }
 };
 

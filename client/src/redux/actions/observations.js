@@ -1,3 +1,5 @@
+/* eslint-disable no-console */
+
 import {
   getObservations,
   postObservationsList,
@@ -40,9 +42,7 @@ export const deleteObservations = userSession => async dispatch => {
         dispatch({ type: DELETE_OBSERVATIONS });
         return 200;
       })
-      .catch(err => {
-        throw new Error(err.message);
-      });
+      .catch(err => console.error(err));
   }
 };
 
