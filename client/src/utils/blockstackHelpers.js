@@ -12,7 +12,9 @@ export const deleteObservationsList = async userSession => {
   await userSession
     .deleteFile(`observations.json`)
     .then(() => 200)
-    .catch(err => console.error(err));
+    .catch(err => {
+      throw new Error(err.message);
+    });
 };
 
 export const deleteObservationFiles = async (userSession, numOfObservations) => {
@@ -21,7 +23,9 @@ export const deleteObservationFiles = async (userSession, numOfObservations) => 
     userSession
       .deleteFile(`observation/${fileNumber}.json`)
       .then(() => 200)
-      .catch(err => console.error(err));
+      .catch(err => {
+        throw new Error(err.message);
+      });
   }
 };
 
