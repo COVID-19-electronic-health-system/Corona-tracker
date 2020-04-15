@@ -1,6 +1,7 @@
 import React from 'react';
 import { mount } from 'enzyme';
 import { Provider } from 'react-redux';
+import { BrowserRouter } from 'react-router-dom';
 import configureMockStore from 'redux-mock-store';
 import DeletionDialog from '../components/DeletionDialog';
 
@@ -13,11 +14,13 @@ describe('DeletionDialog', () => {
 
     const wrapper = mount(
       <Provider store={store}>
-        <DeletionDialog
-          setShowDeletionDialog={() => {
-            return 'test';
-          }}
-        />
+        <BrowserRouter>
+          <DeletionDialog
+            setShowDeletionDialog={() => {
+              return 'test';
+            }}
+          />
+        </BrowserRouter>
       </Provider>
     );
     expect(wrapper.find('DeletionDialog')).toMatchSnapshot();
