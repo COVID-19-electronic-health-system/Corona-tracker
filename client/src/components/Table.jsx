@@ -81,27 +81,27 @@ const LogTable = props => {
         <TableContainer>
           <Table className="table">
             <TableHead className="table-head">
-            <TableRow>
-              {questions.map(question => (
-                <TableCell key={question}>{question}</TableCell>
-              ))}
-            </TableRow>
+              <TableRow>
+                {questions.map(question => (
+                  <TableCell key={question}>{question}</TableCell>
+                ))}
+              </TableRow>
             </TableHead>
             {(detailData.length ? detailData : observations).map(observation => (
               <TableBody key={observation.date}>
                 <TableRow>
-                <TableCell>{new Date(observation.date).toLocaleDateString()}</TableCell>
-                <TableCell>{observation.physical.dailyfeeling}/5</TableCell>
-                <TableCell>{observation.physical.coughSeverity}</TableCell>
-                <TableCell>{observation.physical.feverSeverity}</TableCell>
-                <TableCell>{observation.physical.chillsSeverity}</TableCell>
-                <TableCell>{observation.physical.shortnessOfBreathSeverity}</TableCell>
-                <TableCell>{observation.physical.soreThroatSeverity}</TableCell>
-                <TableCell>{observation.physical.chestPainSeverity}</TableCell>
-                <TableCell>{observation.physical.fatigueSeverity}</TableCell>
-                <TableCell>{observation.physical.bluishnessSeverity}</TableCell>
-                <TableCell>{observation.nonPhysical.openComment}</TableCell>
-              </TableRow>
+                  <TableCell>{new Date(observation.date).toLocaleDateString()}</TableCell>
+                  <TableCell>{observation.physical.dailyfeeling}/5</TableCell>
+                  <TableCell>{observation.physical.coughSeverity}</TableCell>
+                  <TableCell>{observation.physical.feverSeverity}</TableCell>
+                  <TableCell>{observation.physical.chillsSeverity}</TableCell>
+                  <TableCell>{observation.physical.shortnessOfBreathSeverity}</TableCell>
+                  <TableCell>{observation.physical.soreThroatSeverity}</TableCell>
+                  <TableCell>{observation.physical.chestPainSeverity}</TableCell>
+                  <TableCell>{observation.physical.fatigueSeverity}</TableCell>
+                  <TableCell>{observation.physical.bluishnessSeverity}</TableCell>
+                  <TableCell>{observation.nonPhysical.openComment}</TableCell>
+                </TableRow>
               </TableBody>
             ))}
           </Table>
