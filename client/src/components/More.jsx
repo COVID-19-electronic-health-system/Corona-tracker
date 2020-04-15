@@ -15,10 +15,13 @@ import { useTranslation } from 'react-i18next';
 import { DialogContent, DialogContentText, TextField, Grid, Typography } from '@material-ui/core';
 import buttonsCss from '../css/buttons';
 
-const useStyle = makeStyles({
+const useStyle = makeStyles(theme => ({
   root: {
-    width: '93px',
+    width: '80px',
     cursor: 'pointer',
+    [theme.breakpoints.up('md')]: {
+      width: '93px',
+    },
   },
   grow: {
     color: 'white',
@@ -70,7 +73,7 @@ const useStyle = makeStyles({
     color: 'white',
     alignContent: 'center',
   },
-});
+}));
 
 const More = () => {
   const [open, setOpen] = useState(false);
