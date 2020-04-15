@@ -1,4 +1,4 @@
-import { SET_TOGGLE_VALUE, SET_DETAIL_DATA } from '../actions/healthToggle';
+import { SET_TOGGLE_VALUE, SET_DETAIL_DATA, DELETE_DETAIL_DATA } from '../actions/healthToggle';
 
 const initialState = {
   toggleValue: 'myHealthLog',
@@ -22,6 +22,11 @@ const healthToggleReducer = (oldState = initialState, action) => {
       return {
         ...oldState,
         detailData: action.detailData,
+      };
+    case DELETE_DETAIL_DATA:
+      return {
+        ...oldState,
+        detailData: [],
       };
     default:
       return oldState;

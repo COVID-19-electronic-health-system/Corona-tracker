@@ -1,6 +1,6 @@
 import expect from 'expect';
 import reducer from '../../../redux/reducers/observations';
-import { FETCH_OBSERVATIONS, ADD_OBSERVATION } from '../../../redux/actions/observations';
+import { FETCH_OBSERVATIONS, ADD_OBSERVATION, DELETE_OBSERVATIONS } from '../../../redux/actions/observations';
 import Observation from '../../../models/observation';
 
 describe('obervations reducer', () => {
@@ -29,4 +29,12 @@ it('should handle ADD_OBSERVATIONS', () => {
     observations: [observation],
   };
   expect(reducer({ observations: [oldObs] }, addObs)).toEqual({ observations: [oldObs, observation] });
+});
+
+it('should handle DELETE_OBSERVATIONS', () => {
+  const observation = new Observation().attrs;
+  const deleteObs = {
+    type: DELETE_OBSERVATIONS,
+  };
+  expect(reducer({ observations: [observation] }, deleteObs)).toEqual({ observations: [] });
 });
