@@ -6,11 +6,10 @@ import { useTranslation } from 'react-i18next';
 import { makeStyles } from '@material-ui/core/styles';
 import PropTypes from 'prop-types';
 import TranslationsMenu from './Translations';
-import { ReactComponent as Logo } from '../img/Logo_CORONATRACKER_Logo.svg';
-import { ReactComponent as TextLogo } from '../img/Logo_CORONATRACKER_Text_Logo.svg';
 import actions from '../redux/actions/actions';
 import Loding from './Loding';
 import buttonsCss from '../css/buttons';
+import { TextLogo, Logo } from '../utils/imgUrl';
 
 const useStyles = makeStyles(theme => ({
   Login: {
@@ -55,9 +54,9 @@ const Login = props => {
       ) : (
         <div>
           <Grid item xs={12}>
-            <Logo className={classes.logo} />{' '}
+            <object title="logo" className={classes.logo} data={Logo} type="image/svg+xml" />
           </Grid>
-          <TextLogo className={classes.textLogo} />
+          <object title="logoText" className={classes.textLogo} data={TextLogo} type="image/svg+xml" />
           <Typography variant="h6">{t('login.text')} </Typography>
           <Button variant="login" className={classes.Button} onClick={onClick}>
             {t('login.buttonText')}

@@ -1,17 +1,14 @@
 /* eslint-disable react/jsx-props-no-spreading */
 
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import Grid from '@material-ui/core/Grid';
 import Typography from '@material-ui/core/Typography';
 import { useSpring, animated } from 'react-spring';
 import { useDrag } from 'react-use-gesture';
 import { useHistory } from 'react-router-dom';
-import CalendarThreeLines from '../img/Calendar_Three-Lines.svg';
-import alarmSvg from '../img/Calendar_Menu_Alarm.svg';
-import checkSvg from '../img/Calendar_Menu_Checkmark.svg';
-import xSvg from '../img/Calendar_Menu_X.svg';
 import noSelectCss from '../css/noSelect';
+import { CalendarThreeLines, alarmSvg, checkSvg, xSvg } from '../utils/imgUrl';
 
 const useStyles = makeStyles(theme => ({
   ...noSelectCss,
@@ -83,7 +80,19 @@ const useStyles = makeStyles(theme => ({
 const LogHealthSlider = () => {
   const classes = useStyles();
   const history = useHistory();
-  const oneThird = window.innerWidth / 3; // Note: doesn't support window resizing
+  const [oneThird, setOneThird] = useState(0);
+
+  useEffect(() => {
+    // grab slider element and use its width to calculate the oneThird Value
+    const slider = document.querySelector('#health-slider');
+    function getSliderBound() {
+      const newOneThird = slider.clientWidth / 3;
+      setOneThird(newOneThird);
+    }
+    getSliderBound();
+    window.onresize = getSliderBound;
+  }, []);
+
   let showOptions = false;
   let swiped = false;
 
@@ -134,7 +143,7 @@ const LogHealthSlider = () => {
   return (
     <Grid container justify="center">
       <Grid className={classes.noSelect}>
-        <animated.div className={classes.item}>
+        <animated.div id="health-slider" className={classes.item}>
           <div className={classes.itemGridDiv}>
             <Grid container justify="space-around" alignItems="center">
               <Grid item className={classes.imageContainer}>
