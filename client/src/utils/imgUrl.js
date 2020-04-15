@@ -9,6 +9,8 @@ export const notFoundImgText = `${baseUrl}undraw_not_found.svg`;
 export const profileImg = `${baseUrl}profileBlue.png`;
 export const TextLogo = `${baseUrl}Logo_CORONATRACKER_Text_Logo.svg`;
 export const Logo = `${baseUrl}Logo_CORONATRACKER_Logo.svg`;
+export const AdvisoryBoard = `${baseUrl}advisory-board.png`;
+export const CodivId = `${baseUrl}codevscovid.jpg`;
 
 const imgUrl = {
   calendarDotSvg,
@@ -20,6 +22,8 @@ const imgUrl = {
   xSvg,
   notFoundImgText,
   profileImg,
+  CodivId,
+  AdvisoryBoard,
 };
 
 export default imgUrl;
