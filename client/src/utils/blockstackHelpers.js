@@ -13,7 +13,7 @@ export const deleteAllObservations = async userSession => {
 };
 
 export const deleteSingleObservations = async (userSession, numOfObservations) => {
-  for (let num = 1; num < numOfObservations; num += 1) {
+  for (let num = 1; num <= numOfObservations; num += 1) {
     const fileNumber = `${num}`.padStart(7, '0');
     userSession.deleteFile(`observation/${fileNumber}.json`);
   }
