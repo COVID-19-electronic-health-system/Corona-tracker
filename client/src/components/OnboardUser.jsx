@@ -106,7 +106,7 @@ const OnboardUser = props => {
   const { setDemographicsComorbiditiesThunk } = props;
   const { userSession } = useBlockstack();
   const [formState, setFormState] = useState(blankForm);
-  const [deleteAllFiles, setDeleteAllFiles] = useState(false);
+  const [showDeletionDialog, setShowDeletionDialog] = useState(false);
   const handleChange = e => {
     e.preventDefault();
     setFormState({
@@ -353,13 +353,13 @@ const OnboardUser = props => {
         </div>
         <Button
           onClick={() => {
-            setDeleteAllFiles(true);
+            setShowDeletionDialog(true);
           }}
           className={classes.deleteButton}
         >
           DELETE ALL OBSERVATION DATA
         </Button>
-        {deleteAllFiles && <DeletionDialog setDeleteAllFiles={setDeleteAllFiles} />}
+        {showDeletionDialog && <DeletionDialog setShowDeletionDialog={setShowDeletionDialog} />}
       </Grid>
     </Grid>
   );
