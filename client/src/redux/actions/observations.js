@@ -33,11 +33,14 @@ export const deleteObservations = userSession => async dispatch => {
   const obs = await getObservations(userSession);
   if (obs) {
     const obsArray = JSON.parse(obs);
-    const numOfObservations = obsArray.length - 1;
-    deleteAllObservations(userSession).then(() => {
-      deleteSingleObservations(userSession, numOfObservations);
-      dispatch({ type: DELETE_OBSERVATIONS });
-    });
+    const numOfObservations = obsArray.length;
+    deleteAllObservations(userSession)
+      .then(() => {
+        deleteSingleObservations(userSession, numOfObservations);
+        dispatch({ type: DELETE_OBSERVATIONS });
+        return 200;
+      })
+      .catch(err => console.error(err));
   }
 };
 
