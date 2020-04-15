@@ -58,6 +58,11 @@ export default class Observation {
     this.nonPhysical = {
       topConcerns: [],
       openComment: '',
+      interest: 0,
+      sadness: 0,
+      sleep: 0,
+      energy: 0,
+      appetite: 0,
     };
   }
 }
