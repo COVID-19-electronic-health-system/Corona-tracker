@@ -2,10 +2,18 @@
 
 export const SET_DEMOGRAPHICS_COMORBIDITIES = 'SET_DEMOGRAPHICS_COMORBIDITIES';
 
+export const RESET_DEMOGRAPHICS_COMORBIDITIES = 'RESET_DEMOGRAPHICS_COMORBIDITIES';
+
 export function setDemographicsComorbidities(formData) {
   return {
     type: SET_DEMOGRAPHICS_COMORBIDITIES,
     formData,
+  };
+}
+
+export function resetDemographicsComorbidities() {
+  return {
+    type: RESET_DEMOGRAPHICS_COMORBIDITIES,
   };
 }
 
