@@ -18,6 +18,7 @@ import buttonsCss from '../css/buttons';
 const useStyle = makeStyles(theme => ({
   root: {
     width: '80px',
+    marginTop: '8px',
     cursor: 'pointer',
     [theme.breakpoints.up('md')]: {
       width: '93px',
@@ -83,7 +84,7 @@ const More = () => {
   const { t } = useTranslation();
   const history = useHistory();
   const handleClickOpen = () => {
-    setOpen(!open);
+    setOpen(true);
   };
   const handleClose = () => {
     setOpen(false);
@@ -129,74 +130,105 @@ const More = () => {
   };
 
   return (
-    <Grid container alignContent="center" className={classes.root} onClick={handleClickOpen}>
-      <Grid container className={classes.grow} alignContent="center" justify="center">
-        <Grid container style={{ width: '100%' }} alignContent="center" justify="center">
-          <MoreHorizIcon className={classes.icon} />
-        </Grid>
+    <div>
+      <Grid container alignContent="center" className={classes.root} onClick={handleClickOpen}>
+        <Grid container className={classes.grow} alignContent="center" justify="center">
+          <Grid container style={{ width: '100%' }} alignContent="center" justify="center">
+            <MoreHorizIcon className={classes.icon} />
+          </Grid>
 
-        <Dialog
-          className={classes.dialog}
-          open={open}
-          onClose={handleClose}
-          aria-labelledby="alert-dialog-title"
-          aria-describedby="alert-dialog-description"
-        >
-          <DialogTitle id="alert-dialog-title" className={classes.text}>
-            More
-          </DialogTitle>
-          <DialogContent className={classes.dialogContent}>
-            <DialogContent>
-              <DialogContentText className={classes.descriptionText}>
-                Enter your phone number to subscribe/unsubscribe to the occasional question/survey to answer over text.
-              </DialogContentText>
-              <TextField
-                className={classes.subtitleText}
-                onChange={e => setPhoneNumber(e.target.value)}
-                autoFocus
-                margin="dense"
-                id="filled-phone"
-                label={t('phoneNumber')}
-                type="email"
-                fullWidth
-              />
-            </DialogContent>
-            <DialogActions className={classes.subscribeContainer}>
-              <Button onClick={() => subscribe()} color="primary" className={classes.subtitleText}>
-                Subscribe
-              </Button>
-              <Button onClick={unsubscribe} color="secondary" className={classes.subtitleText}>
-                Unsubscribe
-              </Button>
-            </DialogActions>
-            <DialogActions>
-              <Button
-                size="medium"
-                onClick={() => navigateTo('/onboard')}
-                variant="contained"
-                className={classes.buttons}
-              >
-                Settings
-              </Button>
-              <Button
-                size="medium"
-                onClick={() => navigateTo('/about')}
-                variant="contained"
-                className={classes.buttons}
-              >
-                About
-              </Button>
-              <Button size="medium" color="secondary" variant="contained" className={classes.buttons} onClick={signOut}>
-                {t('signoutButtonText')}
-              </Button>
-            </DialogActions>
-          </DialogContent>
-        </Dialog>
-        <Grid container alignContent="center" justify="center">
-          <Typography variant="caption">more</Typography>
+          <Grid container alignContent="center" justify="center">
+            <Typography variant="caption">more</Typography>
+          </Grid>
         </Grid>
       </Grid>
-    </Grid>
+      <Dialog
+        className={classes.dialog}
+        open={open}
+        onClose={handleClose}
+        aria-labelledby="alert-dialog-title"
+        aria-describedby="alert-dialog-description"
+      >
+        <DialogTitle id="alert-dialog-title" className={classes.text}>
+          More
+        </DialogTitle>
+        <DialogContent className={classes.dialogContent}>
+          <DialogContent>
+            <DialogContentText className={classes.descriptionText}>
+              Enter your phone number to subscribe/unsubscribe to the occasional question/survey to answer over text.
+            </DialogContentText>
+            <TextField
+              className={classes.subtitleText}
+              onChange={e => setPhoneNumber(e.target.value)}
+              autoFocus
+              margin="dense"
+              id="filled-phone"
+              label={t('phoneNumber')}
+              type="email"
+              fullWidth
+            />
+          </DialogContent>
+          <DialogActions className={classes.subscribeContainer}>
+            <Button
+              onClick={() => {
+                subscribe();
+                handleClose();
+              }}
+              color="primary"
+              className={classes.subtitleText}
+            >
+              Subscribe
+            </Button>
+            <Button
+              onClick={() => {
+                unsubscribe();
+                handleClose();
+              }}
+              color="secondary"
+              className={classes.subtitleText}
+            >
+              Unsubscribe
+            </Button>
+          </DialogActions>
+          <DialogActions>
+            <Button
+              size="medium"
+              onClick={() => {
+                handleClose();
+                navigateTo('/onboard');
+              }}
+              variant="contained"
+              className={classes.buttons}
+            >
+              Settings
+            </Button>
+            <Button
+              size="medium"
+              onClick={() => {
+                navigateTo('/about');
+                handleClose();
+              }}
+              variant="contained"
+              className={classes.buttons}
+            >
+              About
+            </Button>
+            <Button
+              size="medium"
+              color="secondary"
+              variant="contained"
+              className={classes.buttons}
+              onClick={() => {
+                handleClose();
+                signOut();
+              }}
+            >
+              {t('signoutButtonText')}
+            </Button>
+          </DialogActions>
+        </DialogContent>
+      </Dialog>
+    </div>
   );
 };
 
