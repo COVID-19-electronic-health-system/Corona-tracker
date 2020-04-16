@@ -418,6 +418,7 @@ const OnboardUser = props => {
           </Button>
           {showDeletionDialog && <DeletionDialog setShowDeletionDialog={setShowDeletionDialog} />}
         </Grid>
+        <Button className={classes.deleteButton}>DELETE ALL DATA</Button>
       </Grid>
     </Grid>
   );
