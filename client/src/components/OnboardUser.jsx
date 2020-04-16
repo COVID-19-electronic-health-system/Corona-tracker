@@ -290,7 +290,7 @@ const OnboardUser = props => {
           <Grid container spacing={1} justify="space-between">
             <Grid item>
               <Typography variant="subtitle2" color="textSecondary">
-                <b>Do you have obesity?</b>
+                <b>Based on your Body Mass Index (BMI) are you considered Obese?</b>
               </Typography>
             </Grid>
             <Grid item>
