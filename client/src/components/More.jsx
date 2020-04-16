@@ -18,6 +18,7 @@ import buttonsCss from '../css/buttons';
 const useStyle = makeStyles(theme => ({
   root: {
     width: '80px',
+    marginTop: '8px',
     cursor: 'pointer',
     [theme.breakpoints.up('md')]: {
       width: '93px',

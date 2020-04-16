@@ -1,6 +1,6 @@
 {
   "name": "corona-tracker",
-  "version": "0.3.38",
+  "version": "0.3.41",
   "private": true,
   "prettier": "@blockstack/prettier-config",
   "husky": {
@@ -76,7 +76,8 @@
     "husky": "^4.2.3",
     "parcel-bundler": "^1.6.1",
     "prettier": "^2.0.2",
-    "pretty-quick": "^2.0.1"
+    "pretty-quick": "^2.0.1",
+    "@babel/compat-data": "~7.8.0"
   },
   "scripts": {
     "start": "react-app-rewired start",
