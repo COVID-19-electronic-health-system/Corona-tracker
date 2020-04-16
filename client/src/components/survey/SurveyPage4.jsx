@@ -59,7 +59,7 @@ const useStyles = makeStyles(theme => ({
       ...buttonsCss.buttons,
       backgroundColor: `linear-gradient(45deg, #4760ff, #82a4f8)`,
     },
-  }
+  },
 }));
 
 const WellnessSlider = withStyles({
