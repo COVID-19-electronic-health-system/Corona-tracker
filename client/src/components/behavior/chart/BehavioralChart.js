@@ -7,6 +7,7 @@ import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import moment from 'moment';
 import { ResponsiveContainer, Line, LineChart, Tooltip, Legend, YAxis, XAxis, CartesianGrid } from 'recharts';
+import { Typography } from '@material-ui/core';
 
 const BehavioralChart = props => {
   const { observations } = props;
@@ -83,24 +84,28 @@ const BehavioralChart = props => {
 
   return (
     <>
+      <Typography variant="h4">
+        <b>Behavioral Health History</b>
+      </Typography>
+
       <FormControlLabel
-        control={<Checkbox checked={interest} onChange={handleChange} color="primary" name="interest" />}
+        control={<Checkbox checked={interest} onChange={handleChange} color="Secondary" name="interest" />}
         label="Interest"
       />
       <FormControlLabel
-        control={<Checkbox checked={sadness} onChange={handleChange} name="sadness" color="primary" />}
+        control={<Checkbox checked={sadness} onChange={handleChange} name="sadness" color="Secondary" />}
         label="Sadness"
       />
       <FormControlLabel
-        control={<Checkbox checked={sleep} onChange={handleChange} name="sleep" color="primary" />}
+        control={<Checkbox checked={sleep} onChange={handleChange} name="sleep" color="Secondary" />}
         label="Sleep"
       />
       <FormControlLabel
-        control={<Checkbox checked={energy} onChange={handleChange} name="energy" color="primary" />}
+        control={<Checkbox checked={energy} onChange={handleChange} name="energy" color="Secondary" />}
         label="Energy"
       />
       <FormControlLabel
-        control={<Checkbox checked={appetite} onChange={handleChange} name="appetite" color="primary" />}
+        control={<Checkbox checked={appetite} onChange={handleChange} name="appetite" color="Secondary" />}
         label="Appetite"
       />
 
@@ -110,11 +115,11 @@ const BehavioralChart = props => {
             data={behaveData}
             onMouseUp={onMouseUpHandler}
             onMouseMove={onMouseMoveHandler}
-            margin={{ top: 2, right: 30, left: 20, bottom: 5 }}
+            margin={{ top: 10, right: 30, left: 20, bottom: 5 }}
           >
             <CartesianGrid strokeDasharray="1 1" />
-            <XAxis dataKey="name" />
-            <YAxis />
+            <XAxis dx={15} dataKey="name" />
+            <YAxis dy={-4} type="number" domain={[0, 5]} />
             <Tooltip />
             <Legend />
             {interestLine}
@@ -125,6 +130,9 @@ const BehavioralChart = props => {
           </LineChart>
         </ResponsiveContainer>
       </>
+      <Typography variant="h6">
+        See this past week's daily progress. Hover over the chart to see individual scores.
+      </Typography>
     </>
   );
 };

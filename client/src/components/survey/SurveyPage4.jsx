@@ -7,7 +7,6 @@ import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import buttonsCss from '../../css/buttons';
 import actions from '../../redux/actions/actions';
-// import BehavioralChart from '../behavior/chart/BehavioralChart';
 
 const useStyles = makeStyles(theme => ({
   root: {
@@ -60,17 +59,6 @@ const useStyles = makeStyles(theme => ({
       ...buttonsCss.buttons,
       backgroundColor: `linear-gradient(45deg, #4760ff, #82a4f8)`,
     },
-  },
-  chartDiv: {
-    display: 'flex',
-    marginTop: 50,
-    justifyContent: 'flex-end',
-  },
-  innerChartDiv: {
-    height: 700,
-  },
-  tagLine: {
-    marginTop: '40px',
   },
 }));
 
@@ -298,11 +286,8 @@ const SurveyPage4 = props => {
             </Button>
           </Grid>
         </Grid>
-        <div className={classes.chartDiv} />
       </div>
       <div />
-      <div className={classes.innerChartDiv} />
-      <div className={classes.tagLine} />
     </>
   );
 };
