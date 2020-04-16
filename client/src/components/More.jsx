@@ -178,7 +178,7 @@ const More = () => {
             </DialogActions>
           </DialogContent>
         </Dialog>
-        <Grid container style={{ width: '100%' }} alignContent="center" justify="center">
+        <Grid container alignContent="center" justify="center">
           <Typography variant="caption">more</Typography>
         </Grid>
       </Grid>
