@@ -1,4 +1,4 @@
-import { DISCLAIMER_ANSWER } from '../actions/disclaimer';
+import { DISCLAIMER_ANSWER, RESET_ANSWER } from '../actions/disclaimer';
 
 const initialState = {
   answer: false,
@@ -10,6 +10,11 @@ const disclaimerReducer = (state = initialState, action) => {
       return {
         ...state,
         answer: action.answer,
+      };
+    case RESET_ANSWER:
+      return {
+        ...state,
+        answer: false,
       };
     default:
       return state;

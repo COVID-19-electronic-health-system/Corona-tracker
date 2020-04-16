@@ -10,6 +10,7 @@ import { Typography, Select, MenuItem, FormControl, Grid, ButtonGroup, Button } 
 import actions from '../redux/actions/actions';
 import DeletionDialog from './DeletionDialog';
 import buttonsCss from '../css/buttons';
+import DeleteAllDataDialog from './DeleteAllDataDialog';
 
 const useStyles = makeStyles(() => ({
   root: {
@@ -418,6 +419,15 @@ const OnboardUser = props => {
           </Button>
           {showDeletionDialog && <DeletionDialog setShowDeletionDialog={setShowDeletionDialog} />}
         </Grid>
+        <Button
+          className={classes.deleteButton}
+          onClick={() => {
+            setShowDeletionDialog(true);
+          }}
+        >
+          DELETE ALL DATA
+        </Button>
+        {showDeletionDialog && <DeleteAllDataDialog setShowDeletionDialog={setShowDeletionDialog} />}
       </Grid>
     </Grid>
   );
