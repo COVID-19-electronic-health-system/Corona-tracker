@@ -14,8 +14,7 @@ import { useTranslation } from 'react-i18next';
 import PropTypes from 'prop-types';
 import { useHistory } from 'react-router-dom';
 import actions from '../redux/actions/actions';
-import { ReactComponent as TextLogo } from '../img/Logo_CORONATRACKER_Text_Logo.svg';
-import { ReactComponent as Logo } from '../img/Logo_CORONATRACKER_Logo.svg';
+import { TextLogo, Logo } from '../utils/imgUrl';
 
 const useStyles = makeStyles({
   logo: {
@@ -53,8 +52,8 @@ const Disclaimer = props => {
       {!answer ? (
         <Dialog open aria-describedby="disclaimer">
           <DialogTitle align="center" id="alert-dialog-title">
-            <Logo className={classes.logo} />
-            <TextLogo className={classes.textLogo} />
+            <object title="logo" className={classes.logo} data={Logo} type="image/svg+xml" />
+            <object title="logoText" className={classes.textLogo} data={TextLogo} type="image/svg+xml" />
           </DialogTitle>
           <DialogContent>
             <DialogContent align="left" id="disclaimer-text">

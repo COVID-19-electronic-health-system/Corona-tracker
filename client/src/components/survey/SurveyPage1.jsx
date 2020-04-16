@@ -234,7 +234,6 @@ const SurveyPage1 = props => {
             </Button>
           </ButtonGroup>
         </Grid>
-
         <Grid item xs={12}>
           <Button onClick={submitSurveyPage1} variant="outlined" color="secondary" className={classes.continueButton}>
             CONTINUE

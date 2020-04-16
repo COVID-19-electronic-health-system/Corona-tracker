@@ -9,6 +9,7 @@ exports[`LogHealthSlider should render correctly 1`] = `
   >
     <div
       className="makeStyles-item-3"
+      id="health-slider"
     >
       <div
         className="makeStyles-itemGridDiv-4"
@@ -22,7 +23,7 @@ exports[`LogHealthSlider should render correctly 1`] = `
             <img
               alt="Yes"
               className="makeStyles-image-9"
-              src="Calendar_Menu_Checkmark.svg"
+              src="https://dg1fd6ea8poyj.cloudfront.net/images/Calendar_Menu_Checkmark.svg"
             />
           </div>
           <div
@@ -31,7 +32,7 @@ exports[`LogHealthSlider should render correctly 1`] = `
             <img
               alt="Remind Me"
               className="makeStyles-image-9"
-              src="Calendar_Menu_Alarm.svg"
+              src="https://dg1fd6ea8poyj.cloudfront.net/images/Calendar_Menu_Alarm.svg"
             />
           </div>
           <div
@@ -40,7 +41,7 @@ exports[`LogHealthSlider should render correctly 1`] = `
             <img
               alt="No"
               className="makeStyles-image-9"
-              src="Calendar_Menu_X.svg"
+              src="https://dg1fd6ea8poyj.cloudfront.net/images/Calendar_Menu_X.svg"
             />
           </div>
         </div>
@@ -67,7 +68,7 @@ exports[`LogHealthSlider should render correctly 1`] = `
               <img
                 alt="threeLinesSvg"
                 className="makeStyles-image-9"
-                src="Calendar_Three-Lines.svg"
+                src="https://dg1fd6ea8poyj.cloudfront.net/images/Calendar_Three-Lines.svg"
               />
             </div>
             <div

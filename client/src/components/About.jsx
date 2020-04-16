@@ -11,6 +11,7 @@ import Typography from '@material-ui/core/Typography';
 import { makeStyles } from '@material-ui/core/styles';
 import Container from '@material-ui/core/Container';
 import Link from '@material-ui/core/Link';
+import { CodivId, AdvisoryBoard } from '../utils/imgUrl';
 
 // TODO add once we get it :)
 function Copyright() {
@@ -59,14 +60,14 @@ const cards = [
     title: 'Top 20 in CodeVsCOVID-19',
     about: `CoronaTracker has recently placed in the top 20 out of over 300 teams in HackZurich's CodeVSCOVID-19`,
     // TODO replace these required with static images in S3 after beta, remove eslint-disable tag
-    img: require('../img/codevscovid.jpg'),
+    img: CodivId,
   },
   {
     id: 2,
     title: 'Advisory board',
     about:
       'Our advisory board consists of a health-tech CFO, epidemiologist, pulmonary critical care specialist, systems architect, neuropsychologist and emergency room doctor',
-    img: require('../img/advisory-board.png'),
+    img: AdvisoryBoard,
   },
 ];
 
