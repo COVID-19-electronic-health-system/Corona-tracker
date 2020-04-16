@@ -148,7 +148,7 @@ const More = () => {
           <DialogContent className={classes.dialogContent}>
             <DialogContent>
               <DialogContentText className={classes.descriptionText}>
-              Enter your phone number to subscribe/unsubscribe to the occasional question/survey to answer over text.
+                Enter your phone number to subscribe/unsubscribe to the occasional question/survey to answer over text.
               </DialogContentText>
               <TextField
                 className={classes.subtitleText}
