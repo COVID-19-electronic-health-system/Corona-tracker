@@ -1,4 +1,4 @@
-![Corona Tracker Logo](./client/src/img/Logo_CORONATRACKER_Text_Logo.png)
+![Corona Tracker Logo](https://dg1fd6ea8poyj.cloudfront.net/images/Logo_CORONATRACKER_Text_Logo.png)
 
 [![Build Status](http://img.shields.io/travis/COVID-19-electronic-health-system/Corona-tracker/master.svg?style=for-the-badge)](https://travis-ci.org/COVID-19-electronic-health-system/Corona-tracker)
 
