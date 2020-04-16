@@ -93,13 +93,13 @@ const More = () => {
   const subscribe = () => {
     axios
       .post(
-        'https://m72j7fayxh.execute-api.us-east-1.amazonaws.com/api/subscribe',
+        'https://kplh25sfce.execute-api.us-east-1.amazonaws.com/default/coronalert-subscribe',
         {
-          number: phoneNumber,
+          phoneNumber: phoneNumber,
         },
         {
           headers: {
-            'Content-Type': 'application/x-www-form-urlencoded',
+            'Content-Type': 'application/json',
           },
         }
       )
