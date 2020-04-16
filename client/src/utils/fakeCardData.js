@@ -96,7 +96,7 @@ export const quizData = [
   },
   {
     question: 'If I experience any symptoms of COVID-19, I should immediately go to the Emergency Room.',
-    answer: true,
+    answer: false,
   },
   {
     question: 'The virus is thought to spread mainly from person-to-person',
