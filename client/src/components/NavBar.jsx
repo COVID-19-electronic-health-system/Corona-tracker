@@ -89,15 +89,7 @@ const NavBar = props => {
           }}
           icon={<LocationOnOutlinedIcon className={classes.buttons} />}
         />
-        <BottomNavigationAction
-          label="More"
-          value="more"
-          classes={{
-            root: classes.actionItem,
-            selected: classes.selected,
-          }}
-          icon={<More />}
-        />
+        <More />
       </BottomNavigation>
     </div>
   );
