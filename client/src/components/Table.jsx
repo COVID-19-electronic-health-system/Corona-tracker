@@ -79,7 +79,7 @@ const LogTable = props => {
     <>
       <div>
         <TableContainer>
-          <Table stickyHeader className="table">
+          <Table className="table">
             <TableHead className="table-head">
               <TableRow>
                 {questions.map(question => (
