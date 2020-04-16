@@ -1,3 +1,5 @@
+/* eslint-disable no-console */
+
 import React, { useState } from 'react';
 import Checkbox from '@material-ui/core/Checkbox';
 import FormControlLabel from '@material-ui/core/FormControlLabel';
@@ -52,7 +54,6 @@ const BehavioralChart = props => {
   };
 
   const onMouseDownHandler = (event, type) => {
-    console.info(type, event);
     setActive(type);
   };
 
