@@ -6,18 +6,29 @@ import Button from '@material-ui/core/Button';
 import Dialog from '@material-ui/core/Dialog';
 import DialogActions from '@material-ui/core/DialogActions';
 import DialogTitle from '@material-ui/core/DialogTitle';
-import { Link, useHistory } from 'react-router-dom';
+import { useHistory } from 'react-router-dom';
 import axios from 'axios';
 import { makeStyles } from '@material-ui/core/styles';
 import MoreHorizIcon from '@material-ui/icons/MoreHoriz';
 import { useBlockstack } from 'react-blockstack';
 import { useTranslation } from 'react-i18next';
-import { DialogContent, DialogContentText, TextField } from '@material-ui/core';
+import { DialogContent, DialogContentText, TextField, Grid, Typography } from '@material-ui/core';
 import buttonsCss from '../css/buttons';
 
-const useStyle = makeStyles({
+const useStyle = makeStyles(theme => ({
   root: {
-    width: '100px',
+    width: '80px',
+    cursor: 'pointer',
+    [theme.breakpoints.up('md')]: {
+      width: '93px',
+    },
+  },
+  grow: {
+    color: 'white',
+    transition: 'all .3s ease-in-out',
+    '&:hover': {
+      transform: 'scale(1.2)',
+    },
   },
   dialog: {
     width: '100vw',
@@ -48,11 +59,6 @@ const useStyle = makeStyles({
   },
   icon: {
     fontSize: '40px',
-    color: 'white',
-    transition: 'all .3s ease-in-out',
-    '&:hover': {
-      transform: 'scale(1.1)',
-    },
   },
   buttons: {
     ...buttonsCss.buttons,
@@ -67,11 +73,11 @@ const useStyle = makeStyles({
     color: 'white',
     alignContent: 'center',
   },
-});
+}));
 
 const More = () => {
   const [open, setOpen] = useState(false);
-  const [number, setNumber] = useState('');
+  const [phoneNumber, setPhoneNumber] = useState('');
   const classes = useStyle();
   const { signOut } = useBlockstack();
   const { t } = useTranslation();
@@ -88,7 +94,7 @@ const More = () => {
       .post(
         'https://m72j7fayxh.execute-api.us-east-1.amazonaws.com/api/subscribe',
         {
-          number,
+          number: phoneNumber,
         },
         {
           headers: {
@@ -107,63 +113,90 @@ const More = () => {
       });
   };
 
+  const unsubscribe = async () => {
+    const url = 'https://kplh25sfce.execute-api.us-east-1.amazonaws.com/default/coronalert-unsubscribe';
+    const data = { phoneNumber };
+    try {
+      await axios.post(url, data);
+      alert('Unsubscribed successfully!');
+    } catch (err) {
+      console.error(err);
+    }
+  };
+
   const navigateTo = href => {
     history.push(href);
   };
 
   return (
-    <Link to="#more" className={classes.root} onClick={handleClickOpen}>
-      <MoreHorizIcon className={classes.icon} />
-      <Dialog
-        className={classes.dialog}
-        open={open}
-        onClose={handleClose}
-        aria-labelledby="alert-dialog-title"
-        aria-describedby="alert-dialog-description"
-      >
-        <DialogTitle id="alert-dialog-title" className={classes.text}>
-          More
-        </DialogTitle>
-        <DialogContent className={classes.dialogContent}>
-          <DialogContent>
-            <DialogContentText className={classes.descriptionText}>
-              Enter your phone number to be subscribed to the occasional question/survey to answer over text
-            </DialogContentText>
-            <TextField
-              className={classes.subtitleText}
-              onChange={e => setNumber(e.target.value)}
-              autoFocus
-              margin="dense"
-              id="filled-phone"
-              label={t('phoneNumber')}
-              type="email"
-              fullWidth
-            />
+    <Grid container alignContent="center" className={classes.root} onClick={handleClickOpen}>
+      <Grid container className={classes.grow} alignContent="center" justify="center">
+        <Grid container style={{ width: '100%' }} alignContent="center" justify="center">
+          <MoreHorizIcon className={classes.icon} />
+        </Grid>
+
+        <Dialog
+          className={classes.dialog}
+          open={open}
+          onClose={handleClose}
+          aria-labelledby="alert-dialog-title"
+          aria-describedby="alert-dialog-description"
+        >
+          <DialogTitle id="alert-dialog-title" className={classes.text}>
+            More
+          </DialogTitle>
+          <DialogContent className={classes.dialogContent}>
+            <DialogContent>
+              <DialogContentText className={classes.descriptionText}>
+                Enter your phone number to subscribe/unsubscribe to the occasional question/survey to answer over text.
+              </DialogContentText>
+              <TextField
+                className={classes.subtitleText}
+                onChange={e => setPhoneNumber(e.target.value)}
+                autoFocus
+                margin="dense"
+                id="filled-phone"
+                label={t('phoneNumber')}
+                type="email"
+                fullWidth
+              />
+            </DialogContent>
+            <DialogActions className={classes.subscribeContainer}>
+              <Button onClick={() => subscribe()} color="primary" className={classes.subtitleText}>
+                Subscribe
+              </Button>
+              <Button onClick={unsubscribe} color="secondary" className={classes.subtitleText}>
+                Unsubscribe
+              </Button>
+            </DialogActions>
+            <DialogActions>
+              <Button
+                size="medium"
+                onClick={() => navigateTo('/onboard')}
+                variant="contained"
+                className={classes.buttons}
+              >
+                Settings
+              </Button>
+              <Button
+                size="medium"
+                onClick={() => navigateTo('/about')}
+                variant="contained"
+                className={classes.buttons}
+              >
+                About
+              </Button>
+              <Button size="medium" color="secondary" variant="contained" className={classes.buttons} onClick={signOut}>
+                {t('signoutButtonText')}
+              </Button>
+            </DialogActions>
           </DialogContent>
-          <DialogActions className={classes.subscribeContainer}>
-            <Button onClick={() => subscribe()} color="primary" className={classes.subtitleText}>
-              Subscribe
-            </Button>
-          </DialogActions>
-          <DialogActions>
-            <Button
-              size="medium"
-              onClick={() => navigateTo('/onboard')}
-              variant="contained"
-              className={classes.buttons}
-            >
-              Settings
-            </Button>
-            <Button size="medium" onClick={() => navigateTo('/about')} variant="contained" className={classes.buttons}>
-              About
-            </Button>
-            <Button size="medium" color="secondary" variant="contained" className={classes.buttons} onClick={signOut}>
-              {t('signoutButtonText')}
-            </Button>
-          </DialogActions>
-        </DialogContent>
-      </Dialog>
-    </Link>
+        </Dialog>
+        <Grid container alignContent="center" justify="center">
+          <Typography variant="caption">more</Typography>
+        </Grid>
+      </Grid>
+    </Grid>
   );
 };
 

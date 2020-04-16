@@ -70,6 +70,9 @@ const SurveyPage3 = props => {
         <Typography>
           <b>Q6: Anything else you want to add?</b>
         </Typography>
+        <Typography>
+          <b>Loss of smell or taste, headache, diarrhea, nausea, vomiting, abdominal pain, etc.</b>
+        </Typography>
         <Grid container justify="center" spacing={1} className={classes.grid}>
           <Grid item xs={12} xl={4}>
             <TextField
