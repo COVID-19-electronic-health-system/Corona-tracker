@@ -1,12 +1,19 @@
 /* eslint-disable no-console */
 
 export const DISCLAIMER_ANSWER = 'DISCLAIMER_ANSWER';
+export const RESET_ANSWER = 'RESET_ANSWER';
 
-// action creator
+// action creators
 export function setDisclaimerAnswer(answer) {
   return {
     type: DISCLAIMER_ANSWER,
     answer,
+  };
+}
+
+export function resetDisclaimerAnswer() {
+  return {
+    type: RESET_ANSWER,
   };
 }
 
