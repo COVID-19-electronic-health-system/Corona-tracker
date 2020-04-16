@@ -1,3 +1,5 @@
+/* eslint-disable import/no-cycle */
+
 import {
   addObservation,
   deleteObservations,

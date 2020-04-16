@@ -130,9 +130,6 @@ const BehavioralChart = props => {
           </LineChart>
         </ResponsiveContainer>
       </>
-      <Typography variant="h6">
-        See this past week's daily progress. Hover over the chart to see individual scores.
-      </Typography>
     </>
   );
 };

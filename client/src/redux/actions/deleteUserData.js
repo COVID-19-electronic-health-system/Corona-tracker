@@ -1,4 +1,6 @@
 /* eslint-disable no-console */
+/* eslint-disable import/no-cycle */
+/* eslint-disable import/prefer-default-export */
 
 import actions from './actions';
 
