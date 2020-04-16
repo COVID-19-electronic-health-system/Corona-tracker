@@ -7,7 +7,6 @@ import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import buttonsCss from '../../css/buttons';
 import actions from '../../redux/actions/actions';
-import BehavioralChart from '../behavior/chart/BehavioralChart';
 
 const useStyles = makeStyles(theme => ({
   root: {
@@ -60,11 +59,7 @@ const useStyles = makeStyles(theme => ({
       ...buttonsCss.buttons,
       backgroundColor: `linear-gradient(45deg, #4760ff, #82a4f8)`,
     },
-  },
-  innerChartDiv: {
-    height: 700,
-    overflow: 'auto',
-  },
+  }
 }));
 
 const WellnessSlider = withStyles({
@@ -293,9 +288,6 @@ const SurveyPage4 = props => {
         </Grid>
       </div>
       <div />
-      <div className={classes.innerChartDiv}>
-        <BehavioralChart />
-      </div>
     </>
   );
 };
