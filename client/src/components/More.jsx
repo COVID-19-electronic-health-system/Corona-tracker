@@ -77,7 +77,7 @@ const useStyle = makeStyles(theme => ({
 
 const More = () => {
   const [open, setOpen] = useState(false);
-  const [number, setNumber] = useState('');
+  const [phoneNumber, setPhoneNumber] = useState('');
   const classes = useStyle();
   const { signOut } = useBlockstack();
   const { t } = useTranslation();
@@ -94,7 +94,7 @@ const More = () => {
       .post(
         'https://m72j7fayxh.execute-api.us-east-1.amazonaws.com/api/subscribe',
         {
-          number,
+          number: phoneNumber,
         },
         {
           headers: {
@@ -111,6 +111,17 @@ const More = () => {
       .catch(err => {
         console.log(err);
       });
+  };
+
+  const unsubscribe = async () => {
+    const url = 'https://kplh25sfce.execute-api.us-east-1.amazonaws.com/default/coronalert-unsubscribe';
+    const data = { phoneNumber };
+    try {
+      await axios.post(url, data);
+      alert('Unsubscribed successfully!');
+    } catch (err) {
+      console.error(err);
+    }
   };
 
   const navigateTo = href => {
@@ -137,11 +148,11 @@ const More = () => {
           <DialogContent className={classes.dialogContent}>
             <DialogContent>
               <DialogContentText className={classes.descriptionText}>
-                Enter your phone number to be subscribed to the occasional question/survey to answer over text
+              Enter your phone number to subscribe/unsubscribe to the occasional question/survey to answer over text.
               </DialogContentText>
               <TextField
                 className={classes.subtitleText}
-                onChange={e => setNumber(e.target.value)}
+                onChange={e => setPhoneNumber(e.target.value)}
                 autoFocus
                 margin="dense"
                 id="filled-phone"
@@ -153,6 +164,9 @@ const More = () => {
             <DialogActions className={classes.subscribeContainer}>
               <Button onClick={() => subscribe()} color="primary" className={classes.subtitleText}>
                 Subscribe
+              </Button>
+              <Button onClick={unsubscribe} color="secondary" className={classes.subtitleText}>
+                Unsubscribe
               </Button>
             </DialogActions>
             <DialogActions>
