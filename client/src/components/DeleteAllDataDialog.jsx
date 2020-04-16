@@ -31,10 +31,16 @@ const DeleteAllDataDialog = props => {
   const history = useHistory();
 
   const deleteAllData = () => {
-    //deletes observation data
+    // deletes observation data
+    userSession.listFiles(fileName => {
+      console.log(fileName);
+      userSession.deleteFile(fileName);
+      return true;
+    });
+
     deleteObservations(userSession);
     deleteDetailData();
-    //deletes all other data
+    // deletes all other data
 
     //
     history.push('/');

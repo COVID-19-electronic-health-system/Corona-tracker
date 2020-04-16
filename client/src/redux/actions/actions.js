@@ -1,7 +1,7 @@
 import { addObservation, deleteObservations, fetchObservations } from './observations';
 import { setLoginLoading } from './login';
 import { setNavbarSection } from './navigation';
-import { setDisclaimerAnswerThunk } from './disclaimer';
+import { setDisclaimerAnswerThunk, resetDisclaimerAnswer } from './disclaimer';
 import { selectDate } from './calendar';
 import { setToggleValue, setDetailData, deleteDetailData } from './healthToggle';
 import {
@@ -15,7 +15,7 @@ import {
   toSurveyPage4,
   clearSurvey,
 } from './survey';
-import { setDemographicsComorbiditiesThunk } from './onboarding';
+import { setDemographicsComorbiditiesThunk, resetDemographicsComorbidities } from './onboarding';
 
 const actions = {
   setLoginLoading,
@@ -38,6 +38,8 @@ const actions = {
   toSurveyPage4,
   clearSurvey,
   setDemographicsComorbiditiesThunk,
+  resetDisclaimerAnswer,
+  resetDemographicsComorbidities,
 };
 
 export default actions;
