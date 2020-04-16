@@ -1,4 +1,10 @@
-import { addObservation, deleteObservations, fetchObservations } from './observations';
+import {
+  addObservation,
+  deleteObservations,
+  fetchObservations,
+  resetObservations,
+  addObservationToStore,
+} from './observations';
 import { setLoginLoading } from './login';
 import { setNavbarSection } from './navigation';
 import { setDisclaimerAnswerThunk, resetDisclaimerAnswer } from './disclaimer';
@@ -42,6 +48,8 @@ const actions = {
   resetDisclaimerAnswer,
   resetDemographicsComorbidities,
   deleteUserDataThunk,
+  resetObservations,
+  addObservationToStore,
 };
 
 export default actions;

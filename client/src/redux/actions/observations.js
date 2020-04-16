@@ -12,6 +12,19 @@ export const ADD_OBSERVATION = 'ADD_OBSERVATION';
 export const DELETE_OBSERVATIONS = 'DELETE_OBSERVATIONS';
 export const FETCH_OBSERVATIONS = 'FETCH_OBSERVATIONS';
 
+export function resetObservations() {
+  return {
+    type: DELETE_OBSERVATIONS,
+  };
+}
+
+export function addObservationToStore(observation) {
+  return {
+    type: ADD_OBSERVATION,
+    payload: observation,
+  };
+}
+
 export const addObservation = (userSession, observation) => async dispatch => {
   const obs = await getObservations(userSession);
   let obsArray;
@@ -26,7 +39,7 @@ export const addObservation = (userSession, observation) => async dispatch => {
   postObservationsList(userSession, obsArray, fileNumber).then(didPost => {
     if (didPost) {
       postSingleObservation(userSession, observation, fileNumber);
-      dispatch({ type: ADD_OBSERVATION, payload: observation });
+      dispatch(addObservationToStore(observation));
     }
   });
 };
@@ -39,7 +52,7 @@ export const deleteObservations = userSession => async dispatch => {
     deleteObservationsList(userSession)
       .then(() => {
         deleteObservationFiles(userSession, numOfObservations);
-        dispatch({ type: DELETE_OBSERVATIONS });
+        dispatch(resetObservations());
         return 200;
       })
       .catch(err => console.error(err));
