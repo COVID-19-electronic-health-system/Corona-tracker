@@ -79,8 +79,8 @@ const LogTable = props => {
     <>
       <div>
         <TableContainer>
-          <Table stickyHeader>
-            <TableHead>
+          <Table stickyHeader className="table">
+            <TableHead className="table-head">
               <TableRow>
                 {questions.map(question => (
                   <TableCell key={question}>{question}</TableCell>

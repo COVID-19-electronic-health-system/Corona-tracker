@@ -37,7 +37,7 @@ const Chart = props => {
       >
         <CartesianGrid strokeDasharray="3 3" />
         <XAxis dataKey="date" />
-        <YAxis type="number" domain={[90, 110]} />
+        <YAxis type="number" domain={[94, 105]} />
         <Tooltip />
         <Legend />
         <Line type="monotone" dataKey="temperature" stroke="#8884d8" activeDot={{ r: 8 }} />
