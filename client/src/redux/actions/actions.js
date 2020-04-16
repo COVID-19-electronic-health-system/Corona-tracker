@@ -16,6 +16,7 @@ import {
   clearSurvey,
 } from './survey';
 import { setDemographicsComorbiditiesThunk, resetDemographicsComorbidities } from './onboarding';
+import { deleteUserDataThunk } from './deleteUserData';
 
 const actions = {
   setLoginLoading,
@@ -40,6 +41,7 @@ const actions = {
   setDemographicsComorbiditiesThunk,
   resetDisclaimerAnswer,
   resetDemographicsComorbidities,
+  deleteUserDataThunk,
 };
 
 export default actions;

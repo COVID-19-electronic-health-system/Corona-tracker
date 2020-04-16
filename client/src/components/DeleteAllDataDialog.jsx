@@ -27,22 +27,12 @@ const useStyles = makeStyles({
 });
 const DeleteAllDataDialog = props => {
   const { userSession } = useBlockstack();
-  const { deleteObservations, deleteDetailData, setShowDeletionDialog } = props;
+  const { setShowDeletionDialog, deleteUserData } = props;
   const history = useHistory();
 
   const deleteAllData = () => {
-    // deletes observation data
-    userSession.listFiles(fileName => {
-      console.log(fileName);
-      userSession.deleteFile(fileName);
-      return true;
-    });
-
-    deleteObservations(userSession);
-    deleteDetailData();
-    // deletes all other data
-
-    //
+    // deletes all data including observation data
+    deleteUserData(userSession);
     history.push('/');
   };
 
@@ -73,9 +63,8 @@ const DeleteAllDataDialog = props => {
 };
 
 DeleteAllDataDialog.propTypes = {
-  deleteObservations: PropTypes.func.isRequired,
-  deleteDetailData: PropTypes.func.isRequired,
   setShowDeletionDialog: PropTypes.func.isRequired,
+  deleteUserData: PropTypes.func.isRequired,
 };
 
 const mapStateToProps = (state, ownProps) => {
@@ -86,8 +75,7 @@ const mapStateToProps = (state, ownProps) => {
 
 const mapDispatchToProps = dispatch => {
   return {
-    deleteObservations: userSession => dispatch(actions.deleteObservations(userSession)),
-    deleteDetailData: () => dispatch(actions.deleteDetailData()),
+    deleteUserData: userSession => dispatch(actions.deleteUserDataThunk(userSession)),
   };
 };
 
