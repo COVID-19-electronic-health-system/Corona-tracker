@@ -23,7 +23,11 @@ import {
   toSurveyPage4,
   clearSurvey,
 } from './survey';
-import { setDemographicsComorbiditiesThunk, resetDemographicsComorbidities } from './onboarding';
+import {
+  setDemographicsComorbiditiesThunk,
+  resetDemographicsComorbidities,
+  fetchDemographicsComorbidities,
+} from './onboarding';
 import { deleteUserDataThunk } from './deleteUserData';
 
 const actions = {
@@ -47,6 +51,7 @@ const actions = {
   toSurveyPage4,
   clearSurvey,
   setDemographicsComorbiditiesThunk,
+  fetchDemographicsComorbidities,
   resetDisclaimerAnswer,
   resetDemographicsComorbidities,
   deleteUserDataThunk,

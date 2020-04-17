@@ -23,7 +23,7 @@ import ScrollToTop from './ScrollToTop';
 ReactBlockstack({ appConfig });
 
 const App = props => {
-  const { setLoading, fetchObservations } = props;
+  const { setLoading, fetchObservations, fetchDemographicsComorbidities } = props;
   const { userSession, authenticated } = useBlockstack();
   const finished = useCallback(() => {
     didConnect({ userSession });
@@ -42,8 +42,9 @@ const App = props => {
   useEffect(() => {
     if (authenticated) {
       fetchObservations(userSession);
+      fetchDemographicsComorbidities(userSession);
     }
-  }, [fetchObservations, authenticated, userSession]);
+  }, [fetchObservations, fetchDemographicsComorbidities, authenticated, userSession]);
 
   const [disclaimerString] = useFile('disclaimer.json');
 
@@ -92,11 +93,13 @@ const App = props => {
 App.propTypes = {
   setLoading: PropTypes.func.isRequired,
   fetchObservations: PropTypes.func.isRequired,
+  fetchDemographicsComorbidities: PropTypes.func.isRequired,
 };
 
 const mapDispatchToProps = dispatch => ({
   setLoading: isLoading => dispatch(actions.setLoginLoading(isLoading)),
   fetchObservations: userSession => dispatch(actions.fetchObservations(userSession)),
+  fetchDemographicsComorbidities: userSession => dispatch(actions.fetchDemographicsComorbidities(userSession)),
 });
 
 export default connect(null, mapDispatchToProps)(App);
