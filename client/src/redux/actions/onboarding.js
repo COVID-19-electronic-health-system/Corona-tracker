@@ -1,4 +1,5 @@
 /* eslint-disable no-console */
+export const FETCH_DEMOGRAPHICS_COMORBIDITIES = 'FETCH_DEMOGRAPHICS_COMORBIDITIES';
 
 export const SET_DEMOGRAPHICS_COMORBIDITIES = 'SET_DEMOGRAPHICS_COMORBIDITIES';
 
@@ -19,7 +20,11 @@ export function resetDemographicsComorbidities() {
 
 export const fetchDemographicsComorbidities = userSession => async dispatch => {
   const data = await userSession.getFile(`demographics-comorbidities.json`);
-  if (data) dispatch(setDemographicsComorbidities(JSON.parse(data)));
+  if (data)
+    dispatch({
+      type: FETCH_DEMOGRAPHICS_COMORBIDITIES,
+      payload: JSON.parse(data),
+    });
 };
 
 export const setDemographicsComorbiditiesThunk = (formData, userSession) => async dispatch => {
