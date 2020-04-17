@@ -101,57 +101,12 @@ The team has been in consultation with individuals and stakeholders in the acade
 
 ![app overview](/design/wireframes/FINAL-V1-03.20/MASTER_WIREFRAME.png)
 
-## Project Leads and Contact Info
-
-If you have questions related to application development, these are the people to talk to!
-
 ### Useful Github Repo Links
 
-- [Contributing Guidelines - get involved!](./CONTRIBUTING.md)
+- [Contributing Guidelines - get involved!](https://github.com/COVID-19-electronic-health-system/.github/blob/master/CONTRIBUTING.md)
 - [Design, Wireframes, and Brand Guide](./design)
 - [Client, based on Create React App](./client)
 - [Translations](./Translations/Translations.md)
-
-### Carter Klein: back end, front end, systems architecture
-
-Github: @Carter Klein
-Discord: @Carter Klein
-
-### Brian H. Hough: design, social media marketing, front end
-
-Github: @Brian H. Hough
-Discord: @InterstellarX
-
-### Anthony A: front end code, documentation and booking meetings with experts
-
-Open to peer program any issue or bugs!
-
-Github: @tesla809
-Discord: @Anthony A.
-
-### Akil Hylton: front end code, documentation, has machine learning experience
-
-Open to peer program any issue or bugs!
-
-Github: @akilhylton
-Discord: @Akil Hylton
-
-### Nick G: advising on data model, analytics, data science
-
-See [analytics thread / issue.](https://github.com/COVID-19-electronic-health-system/Corona-tracker/issues/51)
-
-Github: @ngiangre
-Discord: @NickG
-
-### Salvatore Volpe: translations, analytics
-
-Github: @salvolpe
-Discord: @laseplov
-
-### Luke Lin: Managing discord, discord roles, front end, translations
-
-Github: @lukelin1991
-Discord: @kirbypooh
 
 ## Questions?
 
