@@ -6,6 +6,8 @@ import { Typography } from '@material-ui/core';
 import HealthLogToggle from './HealthLogToggle';
 import Survey from './survey/Survey';
 
+import { Transition, animated } from 'react-spring';
+
 const useStyles = makeStyles({
   hr: {
     width: '100px',
@@ -43,6 +45,14 @@ function DiagnosticContainer() {
 
   return hasSubmitted() ? (
     <div>
+
+            <Transition
+              items
+              from={{ opacity: 0, transform: 'translate(0, 100%)' }}
+              enter={{ opacity: 1, transform: 'translate(0, 0%)' }}
+            >
+              {props => (
+                <animated.div style={props}>
       <Typography variant="h5">
         {t('hello')} <b>{userSession.loadUserData().profile.name}</b>
       </Typography>
@@ -51,7 +61,11 @@ function DiagnosticContainer() {
       </Typography>
       <hr className={classes.hr} />
       <HealthLogToggle />
-    </div>
+
+                </animated.div>
+              )}
+            </Transition>
+              </div>
   ) : (
     <Survey />
   );

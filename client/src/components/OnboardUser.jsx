@@ -12,6 +12,8 @@ import DeletionDialog from './DeletionDialog';
 import buttonsCss from '../css/buttons';
 import DeleteAllDataDialog from './DeleteAllDataDialog';
 
+import { Transition, animated } from 'react-spring';
+
 const useStyles = makeStyles(() => ({
   root: {
     paddingBottom: '15em',
@@ -102,340 +104,351 @@ const OnboardUser = props => {
   const classes = useStyles();
   return (
     <Grid container justify="center" className={classes.root}>
-      <Grid container alignItems="center" direction="column">
-        <Grid item>
-          <Typography variant="h5">
-            <b>Welcome to CoronaTracker!</b>
-          </Typography>
-          <Typography variant="subtitle1" paragraph color="textSecondary">
-            Let&apos;s get your profile set up with a few quick questions and start logging your health:
-          </Typography>
-        </Grid>
-        <Grid>
-          <Grid container spacing={1} justify="space-between">
-            <Grid item>
-              <Typography variant="subtitle2" color="textSecondary">
-                <b>Age (Years):</b>
-              </Typography>
-            </Grid>
-            <Grid item>
-              <input
-                className={classes.inputField}
-                name="age"
-                placeholder="Click Here"
-                value={formState.age}
-                onChange={handleChange}
-                style={
-                  formState.age !== null
-                    ? {
-                        outline: 'none',
-                        color: 'wheat',
+      <Transition
+        items
+        from={{ opacity: 0, transform: 'translate(-100%, 0)' }}
+        enter={{ opacity: 1, transform: 'translate(0, 0)' }}
+      >
+        {props => (
+          <animated.div style={props}>
+            <Grid container alignItems="center" direction="column">
+              <Grid item>
+                <Typography variant="h5">
+                  <b>Welcome to CoronaTracker!</b>
+                </Typography>
+                <Typography variant="subtitle1" paragraph color="textSecondary">
+                  Let&apos;s get your profile set up with a few quick questions and start logging your health:
+                </Typography>
+              </Grid>
+              <Grid>
+                <Grid container spacing={1} justify="space-between">
+                  <Grid item>
+                    <Typography variant="subtitle2" color="textSecondary">
+                      <b>Age (Years):</b>
+                    </Typography>
+                  </Grid>
+                  <Grid item>
+                    <input
+                      className={classes.inputField}
+                      name="age"
+                      placeholder="Click Here"
+                      value={formState.age}
+                      onChange={handleChange}
+                      style={
+                        formState.age !== null
+                          ? {
+                              outline: 'none',
+                              color: 'wheat',
+                            }
+                          : {}
                       }
-                    : {}
-                }
-              />
-            </Grid>
-          </Grid>
-          <Grid container spacing={1} justify="space-between">
-            <Grid item>
-              <Typography variant="subtitle2" color="textSecondary">
-                <b>Gender:</b>
-              </Typography>
-            </Grid>
-            <Grid item>
-              <FormControl>
-                <Select
-                  className={classes.inputField}
-                  name="gender"
-                  value={formState.gender}
-                  onChange={handleChange}
-                  displayEmpty
-                  style={formState.gender !== '' ? { ...buttonsCss, outline: 'none', color: 'wheat' } : {}}
-                >
-                  <MenuItem value="" disabled>
-                    Click Here
-                  </MenuItem>
-                  <MenuItem value="male">Male</MenuItem>
-                  <MenuItem value="female">Female</MenuItem>
-                  <MenuItem value="nonbinary">Non-Binary</MenuItem>
-                </Select>
-              </FormControl>
-            </Grid>
-          </Grid>
-          <Grid container spacing={1} justify="space-between">
-            <Grid item>
-              <Typography variant="subtitle2" color="textSecondary">
-                <b>City:</b>
-              </Typography>
-            </Grid>
-            <Grid item>
-              <input
-                name="city"
-                value={formState.city}
-                onChange={handleChange}
-                placeholder="City"
-                className={classes.inputField}
-                style={
-                  formState.city !== null
-                    ? {
-                        outline: 'none',
-                        color: 'wheat',
+                    />
+                  </Grid>
+                </Grid>
+                <Grid container spacing={1} justify="space-between">
+                  <Grid item>
+                    <Typography variant="subtitle2" color="textSecondary">
+                      <b>Gender:</b>
+                    </Typography>
+                  </Grid>
+                  <Grid item>
+                    <FormControl>
+                      <Select
+                        className={classes.inputField}
+                        name="gender"
+                        value={formState.gender}
+                        onChange={handleChange}
+                        displayEmpty
+                        style={formState.gender !== '' ? { ...buttonsCss, outline: 'none', color: 'wheat' } : {}}
+                      >
+                        <MenuItem value="" disabled>
+                          Click Here
+                        </MenuItem>
+                        <MenuItem value="male">Male</MenuItem>
+                        <MenuItem value="female">Female</MenuItem>
+                        <MenuItem value="nonbinary">Non-Binary</MenuItem>
+                      </Select>
+                    </FormControl>
+                  </Grid>
+                </Grid>
+                <Grid container spacing={1} justify="space-between">
+                  <Grid item>
+                    <Typography variant="subtitle2" color="textSecondary">
+                      <b>City:</b>
+                    </Typography>
+                  </Grid>
+                  <Grid item>
+                    <input
+                      name="city"
+                      value={formState.city}
+                      onChange={handleChange}
+                      placeholder="City"
+                      className={classes.inputField}
+                      style={
+                        formState.city !== null
+                          ? {
+                              outline: 'none',
+                              color: 'wheat',
+                            }
+                          : {}
                       }
-                    : {}
-                }
-              />
-            </Grid>
-          </Grid>
-          <Grid container spacing={1} justify="space-between">
-            <Grid item>
-              <Typography variant="subtitle2" color="textSecondary">
-                <b>State:</b>
-              </Typography>
-            </Grid>
-            <Grid item>
-              <input
-                name="state"
-                value={formState.state}
-                onChange={handleChange}
-                placeholder="State"
-                className={classes.inputField}
-                style={
-                  formState.state !== null
-                    ? {
-                        outline: 'none',
-                        color: 'wheat',
+                    />
+                  </Grid>
+                </Grid>
+                <Grid container spacing={1} justify="space-between">
+                  <Grid item>
+                    <Typography variant="subtitle2" color="textSecondary">
+                      <b>State:</b>
+                    </Typography>
+                  </Grid>
+                  <Grid item>
+                    <input
+                      name="state"
+                      value={formState.state}
+                      onChange={handleChange}
+                      placeholder="State"
+                      className={classes.inputField}
+                      style={
+                        formState.state !== null
+                          ? {
+                              outline: 'none',
+                              color: 'wheat',
+                            }
+                          : {}
                       }
-                    : {}
-                }
-              />
-            </Grid>
-          </Grid>
-          <Grid container spacing={1} justify="space-between">
-            <Grid item>
-              <Typography variant="subtitle2" color="textSecondary">
-                <b>Zip:</b>
-              </Typography>
-            </Grid>
-            <Grid item>
-              <input
-                name="zip"
-                value={formState.zip}
-                onChange={handleChange}
-                placeholder="Zip"
-                className={classes.inputField}
-                style={
-                  formState.zip !== null
-                    ? {
-                        outline: 'none',
-                        color: 'wheat',
+                    />
+                  </Grid>
+                </Grid>
+                <Grid container spacing={1} justify="space-between">
+                  <Grid item>
+                    <Typography variant="subtitle2" color="textSecondary">
+                      <b>Zip:</b>
+                    </Typography>
+                  </Grid>
+                  <Grid item>
+                    <input
+                      name="zip"
+                      value={formState.zip}
+                      onChange={handleChange}
+                      placeholder="Zip"
+                      className={classes.inputField}
+                      style={
+                        formState.zip !== null
+                          ? {
+                              outline: 'none',
+                              color: 'wheat',
+                            }
+                          : {}
                       }
-                    : {}
-                }
-              />
-            </Grid>
-          </Grid>
-          <Grid container spacing={1} justify="space-between">
-            <Grid item>
-              <Typography variant="subtitle2" color="textSecondary">
-                <b>Do you smoke?</b>
-              </Typography>
-            </Grid>
-            <Grid item>
-              <ButtonGroup>
-                <button
-                  type="button"
-                  onClick={e => {
-                    e.preventDefault();
-                    setFormState({
-                      ...formState,
-                      isSmoker: 'yes',
-                    });
-                  }}
-                  className={classes.buttonLeft}
-                  style={
-                    formState.isSmoker === 'yes'
-                      ? {
-                          ...buttonsCss.buttons,
-                          outline: 'none',
-                          color: 'wheat',
+                    />
+                  </Grid>
+                </Grid>
+                <Grid container spacing={1} justify="space-between">
+                  <Grid item>
+                    <Typography variant="subtitle2" color="textSecondary">
+                      <b>Do you smoke?</b>
+                    </Typography>
+                  </Grid>
+                  <Grid item>
+                    <ButtonGroup>
+                      <button
+                        type="button"
+                        onClick={e => {
+                          e.preventDefault();
+                          setFormState({
+                            ...formState,
+                            isSmoker: 'yes',
+                          });
+                        }}
+                        className={classes.buttonLeft}
+                        style={
+                          formState.isSmoker === 'yes'
+                            ? {
+                                ...buttonsCss.buttons,
+                                outline: 'none',
+                                color: 'wheat',
+                              }
+                            : {}
                         }
-                      : {}
-                  }
-                >
-                  Yes
-                </button>
-                <button
-                  type="button"
-                  onClick={e => {
-                    e.preventDefault();
-                    setFormState({
-                      ...formState,
-                      isSmoker: 'no',
-                    });
-                  }}
-                  className={classes.buttonRight}
-                  style={
-                    formState.isSmoker === 'no'
-                      ? {
-                          ...buttonsCss.buttons,
-                          outline: 'none',
-                          color: 'wheat',
+                      >
+                        Yes
+                      </button>
+                      <button
+                        type="button"
+                        onClick={e => {
+                          e.preventDefault();
+                          setFormState({
+                            ...formState,
+                            isSmoker: 'no',
+                          });
+                        }}
+                        className={classes.buttonRight}
+                        style={
+                          formState.isSmoker === 'no'
+                            ? {
+                                ...buttonsCss.buttons,
+                                outline: 'none',
+                                color: 'wheat',
+                              }
+                            : {}
                         }
-                      : {}
-                  }
-                >
-                  No
-                </button>
-              </ButtonGroup>
-            </Grid>
-          </Grid>
-          <Grid container spacing={1} justify="space-between">
-            <Grid item>
-              <Typography variant="subtitle2" color="textSecondary">
-                <b>Are you Obese (BMI)?</b>
-              </Typography>
-            </Grid>
-            <Grid item>
-              <ButtonGroup>
-                <button
-                  type="button"
-                  onClick={e => {
-                    e.preventDefault();
-                    setFormState({
-                      ...formState,
-                      isObese: 'yes',
-                    });
-                  }}
-                  className={classes.buttonLeft}
-                  style={
-                    formState.isObese === 'yes'
-                      ? {
-                          ...buttonsCss.buttons,
-                          outline: 'none',
-                          color: 'wheat',
+                      >
+                        No
+                      </button>
+                    </ButtonGroup>
+                  </Grid>
+                </Grid>
+                <Grid container spacing={1} justify="space-between">
+                  <Grid item>
+                    <Typography variant="subtitle2" color="textSecondary">
+                      <b>Are you Obese (BMI)?</b>
+                    </Typography>
+                  </Grid>
+                  <Grid item>
+                    <ButtonGroup>
+                      <button
+                        type="button"
+                        onClick={e => {
+                          e.preventDefault();
+                          setFormState({
+                            ...formState,
+                            isObese: 'yes',
+                          });
+                        }}
+                        className={classes.buttonLeft}
+                        style={
+                          formState.isObese === 'yes'
+                            ? {
+                                ...buttonsCss.buttons,
+                                outline: 'none',
+                                color: 'wheat',
+                              }
+                            : {}
                         }
-                      : {}
-                  }
-                >
-                  Yes
-                </button>
-                <button
-                  type="button"
-                  onClick={e => {
-                    e.preventDefault();
-                    setFormState({
-                      ...formState,
-                      isObese: 'no',
-                    });
-                  }}
-                  className={classes.buttonRight}
-                  style={
-                    formState.isObese === 'no'
-                      ? {
-                          ...buttonsCss.buttons,
-                          outline: 'none',
-                          color: 'wheat',
+                      >
+                        Yes
+                      </button>
+                      <button
+                        type="button"
+                        onClick={e => {
+                          e.preventDefault();
+                          setFormState({
+                            ...formState,
+                            isObese: 'no',
+                          });
+                        }}
+                        className={classes.buttonRight}
+                        style={
+                          formState.isObese === 'no'
+                            ? {
+                                ...buttonsCss.buttons,
+                                outline: 'none',
+                                color: 'wheat',
+                              }
+                            : {}
                         }
-                      : {}
-                  }
-                >
-                  No
-                </button>
-              </ButtonGroup>
-            </Grid>
-          </Grid>
-          <Grid container spacing={1} justify="space-between">
-            <Grid item>
-              <Typography variant="subtitle2" color="textSecondary">
-                <b>Do you have asthma?</b>
-              </Typography>
-            </Grid>
-            <Grid item>
-              <ButtonGroup>
-                <button
-                  type="button"
-                  onClick={e => {
-                    e.preventDefault();
-                    setFormState({
-                      ...formState,
-                      isAsthmatic: 'yes',
-                    });
-                  }}
-                  className={classes.buttonLeft}
-                  style={
-                    formState.isAsthmatic === 'yes'
-                      ? {
-                          ...buttonsCss.buttons,
-                          outline: 'none',
-                          color: 'wheat',
+                      >
+                        No
+                      </button>
+                    </ButtonGroup>
+                  </Grid>
+                </Grid>
+                <Grid container spacing={1} justify="space-between">
+                  <Grid item>
+                    <Typography variant="subtitle2" color="textSecondary">
+                      <b>Do you have asthma?</b>
+                    </Typography>
+                  </Grid>
+                  <Grid item>
+                    <ButtonGroup>
+                      <button
+                        type="button"
+                        onClick={e => {
+                          e.preventDefault();
+                          setFormState({
+                            ...formState,
+                            isAsthmatic: 'yes',
+                          });
+                        }}
+                        className={classes.buttonLeft}
+                        style={
+                          formState.isAsthmatic === 'yes'
+                            ? {
+                                ...buttonsCss.buttons,
+                                outline: 'none',
+                                color: 'wheat',
+                              }
+                            : {}
                         }
-                      : {}
-                  }
-                >
-                  Yes
-                </button>
-                <button
-                  type="button"
-                  onClick={e => {
-                    e.preventDefault();
-                    setFormState({
-                      ...formState,
-                      isAsthmatic: 'no',
-                    });
-                  }}
-                  className={classes.buttonRight}
-                  style={
-                    formState.isAsthmatic === 'no'
-                      ? {
-                          ...buttonsCss.buttons,
-                          outline: 'none',
-                          color: 'wheat',
+                      >
+                        Yes
+                      </button>
+                      <button
+                        type="button"
+                        onClick={e => {
+                          e.preventDefault();
+                          setFormState({
+                            ...formState,
+                            isAsthmatic: 'no',
+                          });
+                        }}
+                        className={classes.buttonRight}
+                        style={
+                          formState.isAsthmatic === 'no'
+                            ? {
+                                ...buttonsCss.buttons,
+                                outline: 'none',
+                                color: 'wheat',
+                              }
+                            : {}
                         }
-                      : {}
-                  }
+                      >
+                        No
+                      </button>
+                    </ButtonGroup>
+                  </Grid>
+                </Grid>
+                <Button
+                  onClick={() => {
+                    // setDemographicsComorbiditiesThunk(formState, userSession).then(() => history.push('/'));
+                    setDemographicsComorbiditiesThunk(formState, userSession);
+                    history.push('/');
+                  }}
+                  className={classes.saveButton}
                 >
-                  No
-                </button>
-              </ButtonGroup>
-            </Grid>
-          </Grid>
-          <Button
-            onClick={() => {
-              // setDemographicsComorbiditiesThunk(formState, userSession).then(() => history.push('/'));
-              setDemographicsComorbiditiesThunk(formState, userSession);
-              history.push('/');
-            }}
-            className={classes.saveButton}
-          >
-            SAVE MY RESPONSES
-          </Button>
+                  SAVE MY RESPONSES
+                </Button>
 
-          <Button
-            onClick={() => {
-              setShowDeletionDialog(true);
-            }}
-            className={classes.deleteButton}
-          >
-            DELETE ALL OBSERVATION DATA
-          </Button>
-          {showDeletionDialog && <DeletionDialog setShowDeletionDialog={setShowDeletionDialog} />}
-        </Grid>
-        <Button
-          className={classes.deleteButton}
-          onClick={() => {
-            setShowDeletionDialog(true);
-          }}
-        >
-          DELETE ALL DATA
-        </Button>
-        {showDeletionDialog && <DeleteAllDataDialog setShowDeletionDialog={setShowDeletionDialog} />}
-      </Grid>
+                <Button
+                  onClick={() => {
+                    setShowDeletionDialog(true);
+                  }}
+                  className={classes.deleteButton}
+                >
+                  DELETE ALL OBSERVATION DATA
+                </Button>
+                {showDeletionDialog && <DeletionDialog setShowDeletionDialog={setShowDeletionDialog} />}
+              </Grid>
+              <Button
+                className={classes.deleteButton}
+                onClick={() => {
+                  setShowDeletionDialog(true);
+                }}
+              >
+                DELETE ALL DATA
+              </Button>
+              {showDeletionDialog && <DeleteAllDataDialog setShowDeletionDialog={setShowDeletionDialog} />}
+            </Grid>
+          </animated.div>
+        )}
+      </Transition>
     </Grid>
   );
 };
 
 OnboardUser.propTypes = {
   setDemographicsComorbiditiesThunk: PropTypes.func.isRequired,
+  style: PropTypes.object.isRequired
 };
 
 const mapDispatchToProps = dispatch => {
