@@ -71,7 +71,7 @@ const WellnessSlider = withStyles({
 const marks = [
   {
     value: 1,
-    label: '😁',
+    label: 'No',
   },
   {
     value: 1.5,
@@ -79,7 +79,7 @@ const marks = [
   },
   {
     value: 2,
-    label: '🙂',
+    label: 2,
   },
   {
     value: 2.5,
@@ -87,7 +87,7 @@ const marks = [
   },
   {
     value: 3,
-    label: '😐',
+    label: 3,
   },
   {
     value: 3.5,
@@ -95,7 +95,7 @@ const marks = [
   },
   {
     value: 4,
-    label: '🙁',
+    label: 4,
   },
   {
     value: 4.5,
@@ -103,7 +103,7 @@ const marks = [
   },
   {
     value: 5,
-    label: '😥',
+    label: 'Yes',
   },
 ];
 
@@ -185,7 +185,7 @@ const SurveyPage4 = props => {
           <Grid item xs={12}>
             <WellnessSlider
               name="interest"
-              defaultValue={1}
+              defaultValue={3}
               step={0.5}
               valueLabelDisplay="on"
               color="secondary"
@@ -205,7 +205,7 @@ const SurveyPage4 = props => {
           <Grid item xs={12}>
             <WellnessSlider
               name="sadness"
-              defaultValue={1}
+              defaultValue={3}
               onChange={handleChange2}
               color="secondary"
               aria-labelledby="discrete-slider"
@@ -226,7 +226,7 @@ const SurveyPage4 = props => {
             <WellnessSlider
               name="sleep"
               onChange={handleChange3}
-              defaultValue={1}
+              defaultValue={3}
               color="secondary"
               aria-labelledby="discrete-slider"
               valueLabelDisplay="on"
@@ -246,7 +246,7 @@ const SurveyPage4 = props => {
             <WellnessSlider
               name="energy"
               onChange={handleChange4}
-              defaultValue={1}
+              defaultValue={3}
               color="secondary"
               aria-labelledby="discrete-slider"
               valueLabelDisplay="on"
@@ -266,7 +266,7 @@ const SurveyPage4 = props => {
             <WellnessSlider
               name="energy"
               onChange={handleChange5}
-              defaultValue={1}
+              defaultValue={3}
               color="secondary"
               aria-labelledby="discrete-slider"
               valueLabelDisplay="on"
