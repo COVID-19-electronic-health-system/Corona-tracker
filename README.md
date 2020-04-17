@@ -118,40 +118,17 @@ We also welcome your Github contributions and encourage [opening an issue](https
 
 ## Appendix
 
-### COMING SOON: Instructions to install, build, and run locally
-
 ### Design considerations
 
-#### CSS Design considerations
+__CSS Design considerations__
 
 We have decided to use regular CSS files to keep things simple for now. This allows for more contributors and less time to upskill to contribute.
 
-Once MVP is done the team can discuss if we want to transition it to styled-components or something like CSS modules.
+Once the MVP is done the team can discuss if we want to transition it to [styled-components](https://styled-components.com) or something like CSS modules.
 
-Folder paths
-CSS is located in /client/src/css
-Components are located in /client/src/components
-
-Style guide for CSS files:
-
-**Naming convention:**
-Component -> Sample.js
-CSS file -> Sample.css
-Reducer -> sampleReducer.js
-
-To avoid naming collisions:
-prefix class names with the name of component and link with kebab case.
-Class name -> .Sample-header { ... }
-
-**How to handle state:**
-Let's use Redux.
-Create action and reducer with an appropriate name.
-Add them to the /actions and /reducers folder.
-**We need help to implement this.**
-
-**Testing**
-No need to worry about testing for now.
-If you choose to add tests, please place in client/src/tests.
+Folder paths:
+- CSS files are located in `/client/src/css`
+- Components are located in `/client/src/components`
 
 #### A Note on Blockstack, Privacy
 
