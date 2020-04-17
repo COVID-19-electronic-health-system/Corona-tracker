@@ -14,6 +14,7 @@ import DeleteAllDataDialog from './DeleteAllDataDialog';
 
 const useStyles = makeStyles(() => ({
   root: {
+    paddingBottom: '15em',
     padding: '10px',
   },
   buttonRight: {
@@ -291,7 +292,7 @@ const OnboardUser = props => {
           <Grid container spacing={1} justify="space-between">
             <Grid item>
               <Typography variant="subtitle2" color="textSecondary">
-                <b>Based on your Body Mass Index (BMI) are you considered Obese?</b>
+                <b>Are you Obese (BMI)?</b>
               </Typography>
             </Grid>
             <Grid item>

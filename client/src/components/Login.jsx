@@ -1,5 +1,5 @@
 import React from 'react';
-import { Button, Typography, Grid } from '@material-ui/core';
+import { Button, Typography } from '@material-ui/core';
 import { useConnect } from '@blockstack/connect';
 import { connect } from 'react-redux';
 import { useTranslation } from 'react-i18next';
@@ -9,7 +9,7 @@ import TranslationsMenu from './Translations';
 import actions from '../redux/actions/actions';
 import Loding from './Loding';
 import buttonsCss from '../css/buttons';
-import { TextLogo, Logo } from '../utils/imgUrl';
+import { FullLogo } from '../utils/imgUrl';
 
 const useStyles = makeStyles(theme => ({
   Login: {
@@ -28,7 +28,7 @@ const useStyles = makeStyles(theme => ({
       height: '20vh',
     },
   },
-  textLogo: {
+  fullLogo: {
     width: '70vw',
     height: '30vh',
 
@@ -53,14 +53,12 @@ const Login = props => {
         <Loding />
       ) : (
         <div>
-          <Grid item xs={12}>
-            <object title="logo" className={classes.logo} data={Logo} type="image/svg+xml" />
-          </Grid>
-          <object title="logoText" className={classes.textLogo} data={TextLogo} type="image/svg+xml" />
+          <object title="fullLogo" className={classes.fullLogo} data={FullLogo} type="image/svg+xml" />
           <Typography variant="h6">{t('login.text')} </Typography>
           <Button variant="login" className={classes.Button} onClick={onClick}>
             {t('login.buttonText')}
           </Button>
+          <Typography>Coming to Chrome for iOS soon!</Typography>
           <TranslationsMenu />
         </div>
       )}
