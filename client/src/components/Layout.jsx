@@ -123,7 +123,6 @@ const useStyles = makeStyles(() => ({
     overflowX: 'hidden',
     margin: '0px',
     paddingTop: '3vh',
-    paddingBottom: '15vh',
   },
   fullLogo: {
     width: '90vw',

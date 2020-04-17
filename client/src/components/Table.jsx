@@ -19,6 +19,7 @@ import BehavioralChart from './behavior/chart/BehavioralChart';
 
 const useStyles = makeStyles(() => ({
   behaveDiv: {
+    paddingBottom: '20em',
     height: 700,
     overflow: 'auto',
   },

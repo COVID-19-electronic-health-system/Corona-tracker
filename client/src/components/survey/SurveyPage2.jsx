@@ -21,6 +21,7 @@ const buttonHeight = '35px';
 
 const useStyles = makeStyles(theme => ({
   root: {
+    paddingBottom: '20em',
     alignItems: 'center',
     justifyContent: 'center',
     marginLeft: 'auto',

@@ -17,6 +17,9 @@ const useStyles = makeStyles(theme => ({
   [theme.breakpoints.up('md')]: {
     width: '60vw',
   },
+  root: {
+    paddingBottom: '15em',
+  },
   item: {
     backgroundColor: '#ffffff',
     position: 'relative',
@@ -141,49 +144,51 @@ const LogHealthSlider = () => {
   );
 
   return (
-    <Grid container justify="center">
-      <Grid className={classes.noSelect}>
-        <animated.div id="health-slider" className={classes.item}>
-          <div className={classes.itemGridDiv}>
-            <Grid container justify="space-around" alignItems="center">
-              <Grid item className={classes.imageContainer}>
-                <img alt="Yes" src={checkSvg} className={classes.image} />
-              </Grid>
-              <Grid item className={classes.imageContainer}>
-                <img alt="Remind Me" src={alarmSvg} className={classes.image} />
-              </Grid>
-              <Grid item className={classes.imageContainer}>
-                <img alt="No" src={xSvg} className={classes.image} />
-              </Grid>
-            </Grid>
-          </div>
-          <animated.div {...bind()} className={classes.fg} style={{ x }}>
-            <div className={classes.fgGridDiv}>
-              <Grid container alignItems="center">
-                <Grid item xs={1} className={classes.imageContainer}>
-                  <img alt="threeLinesSvg" src={CalendarThreeLines} className={classes.image} />
+    <div className={classes.root}>
+      <Grid container justify="center">
+        <Grid className={classes.noSelect}>
+          <animated.div id="health-slider" className={classes.item}>
+            <div className={classes.itemGridDiv}>
+              <Grid container justify="space-around" alignItems="center">
+                <Grid item className={classes.imageContainer}>
+                  <img alt="Yes" src={checkSvg} className={classes.image} />
                 </Grid>
-                <Grid item xs={11} container alignItems="center" spacing={1}>
-                  <Grid item xs={2}>
-                    <Typography variant="body2" className={classes.bold}>
-                      Today
-                    </Typography>
-                  </Grid>
-                  <Grid item xs={4} className={classes.itsTime}>
-                    <Typography variant="body2">{`It's time to enter your\nDaily Health Log!`}</Typography>
-                  </Grid>
-                  <Grid item xs={7} sm={6}>
-                    <Typography variant="body2" className={classes.bold}>
-                      Swipe to Complete &gt; &gt; &gt;
-                    </Typography>
-                  </Grid>
+                <Grid item className={classes.imageContainer}>
+                  <img alt="Remind Me" src={alarmSvg} className={classes.image} />
+                </Grid>
+                <Grid item className={classes.imageContainer}>
+                  <img alt="No" src={xSvg} className={classes.image} />
                 </Grid>
               </Grid>
             </div>
+            <animated.div {...bind()} className={classes.fg} style={{ x }}>
+              <div className={classes.fgGridDiv}>
+                <Grid container alignItems="center">
+                  <Grid item xs={1} className={classes.imageContainer}>
+                    <img alt="threeLinesSvg" src={CalendarThreeLines} className={classes.image} />
+                  </Grid>
+                  <Grid item xs={11} container alignItems="center" spacing={1}>
+                    <Grid item xs={2}>
+                      <Typography variant="body2" className={classes.bold}>
+                        Today
+                      </Typography>
+                    </Grid>
+                    <Grid item xs={4} className={classes.itsTime}>
+                      <Typography variant="body2">{`It's time to enter your\nDaily Health Log!`}</Typography>
+                    </Grid>
+                    <Grid item xs={7} sm={6}>
+                      <Typography variant="body2" className={classes.bold}>
+                        Swipe to Complete &gt; &gt; &gt;
+                      </Typography>
+                    </Grid>
+                  </Grid>
+                </Grid>
+              </div>
+            </animated.div>
           </animated.div>
-        </animated.div>
+        </Grid>
       </Grid>
-    </Grid>
+    </div>
   );
 };
 
