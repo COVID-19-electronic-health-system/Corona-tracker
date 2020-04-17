@@ -110,11 +110,11 @@ The team has been in consultation with individuals and stakeholders in the acade
 
 ## Questions?
 
-Feel free to chat with us on [Discord](https://discord.gg/pPERUuv) and message @Anthony A if you have any questions!
+Feel free to chat with us on [Discord](https://discord.gg/pPERUuv) and message ``@Anthony A` if you have any questions!
 
 Our group is new developer friendly and happy to help in any way!
 
-We also welcome your Github contributions and encourage [opening an issue](https://github.com/COVID-19-electronic-health-system/Corona-tracker/issues) before filing a pull request. Please see [our contributing guidelines](./CONTRIBUTING.md) for more information.
+We also welcome your Github contributions and encourage [opening an issue](https://github.com/COVID-19-electronic-health-system/Corona-tracker/issues) before filing a pull request. Please see [our contributing guidelines](https://github.com/COVID-19-electronic-health-system/.github/blob/master/CONTRIBUTING.md) for more information.
 
 ## Appendix
 
