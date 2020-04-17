@@ -5,27 +5,25 @@ import configureMockStore from 'redux-mock-store';
 import thunk from 'redux-thunk';
 import AvgTemperature from '../components/AvgTemperature';
 
-
 const mockStore = configureMockStore([thunk]);
-const mockObservationsReducerState  = {
-  observations:
-  [
+const mockObservationsReducerState = {
+  observations: [
     {
       date: 1586830448900,
-      physical: {feverSeverity: 98.6}
+      physical: { feverSeverity: 98.6 },
     },
     {
       date: 1586910193682,
-      physical: {feverSeverity: 100.3}
+      physical: { feverSeverity: 100.3 },
     },
     {
       date: 1586966651099,
-      physical: {feverSeverity: 99}
-    }
-  ]
-}
+      physical: { feverSeverity: 99 },
+    },
+  ],
+};
 
-describe ('Average Temperature', () => {
+describe('Average Temperature', () => {
   it('renders AvgTemperature component', () => {
     const store = mockStore({
       observationsReducer: mockObservationsReducerState,
@@ -39,4 +37,3 @@ describe ('Average Temperature', () => {
     expect(wrapper.find('AvgTemperature')).toMatchSnapshot();
   });
 });
-
