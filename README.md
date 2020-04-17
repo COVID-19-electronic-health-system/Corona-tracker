@@ -99,7 +99,7 @@ The team has been in consultation with individuals and stakeholders in the acade
 
 ## Questions?
 
-Feel free to chat with us on [Discord](https://discord.gg/pPERUuv) and message ``@Anthony A` if you have any questions!
+Feel free to chat with us on [Discord](https://discord.gg/pPERUuv) and message `@Anthony A` if you have any questions!
 
 Our group is new developer friendly and happy to help in any way!
 
