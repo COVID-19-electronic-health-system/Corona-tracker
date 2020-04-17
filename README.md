@@ -14,33 +14,22 @@ A tool to help reduce the number of unnecessary hospital visits, educate the pub
     - [Support Documentation:](https://github.com/COVID-19-electronic-health-system/.github/blob/master/SUPPORT.md) including team members, resources, and references
     - [Code of Conduct:](https://github.com/COVID-19-electronic-health-system/.github/blob/master/CODE_OF_CONDUCT.md) including examples of behavior that contributes to creating a positive environment
 
-<!-- TOC -->
-
 ## Table of Contents
 
+<!-- TOC -->
+
 - [We are in crisis and we need to act](#we-are-in-crisis-and-we-need-to-act)
-- [TL;DR FAQ](#tldr-faq)
+- [Frequently Asked Questions](#frequently-asked-questions)
   - [Who is this app for?](#who-is-this-app-for)
   - [What is the benefit this app is providing?](#what-is-the-benefit-this-app-is-providing)
   - [How is this app different from the others?](#how-is-this-app-different-from-the-others)
   - [What insights have been considered?](#what-insights-have-been-considered)
   - [Who are the stakeholders?](#who-are-the-stakeholders)
 - [Application Overview](#application-overview)
-  - [Idea](#idea)
-  - [Technology Stack](#technology-stack)
-  - [Wireframe Overview](#wireframe-overview)
-- [Project Leads and Contact Info](#project-leads-and-contact-info)
   - [Useful Github Repo Links](#useful-github-repo-links)
-  - [Carter Klein: back end, front end, systems architecture](#carter-klein-back-end-front-end-systems-architecture)
-  - [Brian H. Hough: design, social media marketing, front end](#brian-h-hough-design-social-media-marketing-front-end)
-  - [Anthony A: front end code, documentation and booking meetings with experts](#anthony-a-front-end-code-documentation-and-booking-meetings-with-experts)
-  - [Akil Hylton: front end code, documentation, has machine learning experience](#akil-hylton-front-end-code-documentation-has-machine-learning-experience)
-  - [Nick G: advising on data model, analytics, data science](#nick-g-advising-on-data-model-analytics-data-science)
-  - [Salvatore Volpe: translations, analytics](#salvatore-volpe-translations-analytics)
-  - [Luke Lin: Managing discord, discord roles, front end, translations](#luke-lin-managing-discord-discord-roles-front-end-translations)
+  - [Wireframe Overview](#wireframe-overview)
 - [Questions?](#questions)
 - [Appendix](#appendix)
-  - [COMING SOON: Instructions to install, build, and run locally](#coming-soon-instructions-to-install-build-and-run-locally)
   - [Design considerations](#design-considerations)
 - [Licensing](#licensing)
 
@@ -97,16 +86,16 @@ The team has been in consultation with individuals and stakeholders in the acade
 
 [View our support document](https://github.com/COVID-19-electronic-health-system/.github/blob/master/SUPPORT.md) to learn more about the project leads, resources, and technology.
 
-### Wireframe Overview
-
-![app overview](/design/wireframes/FINAL-V1-03.20/MASTER_WIREFRAME.png)
-
 ### Useful Github Repo Links
 
 - [Contributing Guidelines - get involved!](https://github.com/COVID-19-electronic-health-system/.github/blob/master/CONTRIBUTING.md)
 - [Design, Wireframes, and Brand Guide](./design)
 - [Client, based on Create React App](./client)
 - [Translations](./Translations/Translations.md)
+
+### Wireframe Overview
+
+![app overview](/design/wireframes/FINAL-V1-03.20/MASTER_WIREFRAME.png)
 
 ## Questions?
 
@@ -130,7 +119,7 @@ Folder paths:
 - CSS files are located in `/client/src/css`
 - Components are located in `/client/src/components`
 
-#### A Note on Blockstack, Privacy
+__A Note on Blockstack, Privacy__
 
 In these strange and often trying times, individual privacy is of utmost concern. In order to bootstrap this tool and get it off the ground and into the hands of those in need as quickly as possible, a serverless approach works great. Blockstack is decentralized - individuals still own their information. Everything is kept on the client until given permission. Therefore, we felt it best suited the overall needs.
 
