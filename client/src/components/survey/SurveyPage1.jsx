@@ -8,6 +8,7 @@ import actions from '../../redux/actions/actions';
 
 const useStyles = makeStyles(theme => ({
   root: {
+    paddingBottom: '10em',
     alignItems: 'center',
     justifyContent: 'center',
     marginLeft: 'auto',
@@ -181,7 +182,7 @@ SurveyPage1.propTypes = {
   setSurveyPage1: PropTypes.func.isRequired,
   dailyfeeling: PropTypes.number,
   dailySymptomsFeeling: PropTypes.number,
-  dailyComparedToYesterday: PropTypes.string,
+  dailyComparedToYesterday: PropTypes.number,
 };
 
 SurveyPage1.defaultProps = {

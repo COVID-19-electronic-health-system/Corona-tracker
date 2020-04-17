@@ -14,6 +14,7 @@ import DeleteAllDataDialog from './DeleteAllDataDialog';
 
 const useStyles = makeStyles(() => ({
   root: {
+    paddingBottom: '15em',
     padding: '10px',
   },
   buttonRight: {
