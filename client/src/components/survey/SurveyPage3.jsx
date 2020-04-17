@@ -68,15 +68,13 @@ const SurveyPage3 = props => {
     <div className={classes.root}>
       <Grid container justify="center" spacing={1} className={classes.grid}>
         <Typography>
-          <b>Q6: Anything else you want to add?</b>
-        </Typography>
-        <Typography>
-          <b>Loss of smell or taste, headache, diarrhea, nausea, vomiting, abdominal pain, etc.</b>
+          <b>Q6: Anything other symptoms or comments you want to add?</b>
         </Typography>
         <Grid container justify="center" spacing={1} className={classes.grid}>
-          <Grid item xs={12} xl={4}>
+          <Grid item xs={12}>
             <TextField
               variant="outlined"
+              placeholder="e.g. loss of smell or taste"
               className={classes.additionalComments}
               defaultValue={openComment}
               onChange={e => handleopenComment(e.target.value)}
