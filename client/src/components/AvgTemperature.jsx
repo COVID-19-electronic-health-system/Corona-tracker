@@ -18,13 +18,13 @@ const AvgTemperature = props => {
 
   const classes = useStyles();
 
-  const averageTemperature = observations.length ?
-    Math.round(
-      observations.reduce((sum, record) => {
-        return sum + record.physical.feverSeverity * 10;
-      }, 0) / observations.length
-    ) / 10 :
-    '--';
+  const averageTemperature = observations.length
+    ? Math.round(
+        observations.reduce((sum, record) => {
+          return sum + record.physical.feverSeverity * 10;
+        }, 0) / observations.length
+      ) / 10
+    : '--';
 
   return (
     <Grid className={classes.root}>
