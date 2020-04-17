@@ -52,6 +52,11 @@ const useStyles = makeStyles(theme => ({
   footer: {
     padding: theme.spacing(2),
   },
+  link: {
+    color: 'black',
+    textDecoration: 'none',
+    fontSize: '2em',
+  },
 }));
 
 const cards = [
@@ -118,6 +123,13 @@ const About = () => {
           </span>{' '}
           in NYC and across the globe
         </Typography>
+        <Link
+          className={classes.color}
+          href="https://docs.google.com/forms/d/1sMp_qZYIrVxY6dxVCfIF6XQCU2lUeM_3qITC8hOph1w/edit"
+          color="inherit"
+        >
+          Take our Beta Survey!
+        </Link>
         {/* <Copyright /> */}
       </footer>
     </Grid>
