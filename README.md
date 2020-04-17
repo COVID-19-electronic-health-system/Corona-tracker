@@ -5,10 +5,14 @@
 A tool to help reduce the number of unnecessary hospital visits, educate the public on facts vs myths, and provide a health and wellbeing chart for logging their journey during these uncertain and tumultuous times.
 
 ## Get involved and help out!
+
 - [Join our Discord Server](https://discord.gg/pPERUuv)
 - [Visit our Website CoronaTracker.me](https://coronatracker.me)
-- [View our Contributing Guidelines](./CONTRIBUTING.md)
-  - __*Use these guidelines to onboard, run the application locally, or in QA*__
+- [View the Beta Version of the App](https://coronatrackerbeta.com)
+- View our community health files:
+    - [Contributing Guidelines:](https://github.com/COVID-19-electronic-health-system/.github/blob/master/CONTRIBUTING.md) including more about the project and how to get involved
+    - [Support Documentation:](https://github.com/COVID-19-electronic-health-system/.github/blob/master/SUPPORT.md) including team members, resources, and references
+    - [Code of Conduct:](https://github.com/COVID-19-electronic-health-system/.github/blob/master/CODE_OF_CONDUCT.md) including examples of behavior that contributes to creating a positive environment
 
 <!-- TOC -->
 
