@@ -93,16 +93,9 @@ The team has been in consultation with individuals and stakeholders in the acade
 
 ## Application Overview
 
-### Idea
+[View our contributing guidelines](https://github.com/COVID-19-electronic-health-system/.github/blob/master/CONTRIBUTING.md) to learn more about the project, our values, and regular town hall meetings for the group.
 
-The idea **for our IPR** is to help doctors monitor large numbers of patients' symptoms over time (daily or less). Doctors can text the patients if the patients are still ok, or call the patient if they start to get worse. Or, as time goes on, the doctor can refer them to telemedicine service like Jamaica Hospital or other. This will ultimately manifest itself as, mainly, a dashboard and a survey that people update daily with information.
-
-### Technology Stack
-
-- Frontend: [React](https://github.com/facebook/react)
-- Backend: [Blockstack](https://blockstack.org/about)
-- Database: [Gaia](https://github.com/blockstack/gaia)
-- Deployment: [AWS](https://aws.amazon.com/)
+[View our support document](https://github.com/COVID-19-electronic-health-system/.github/blob/master/SUPPORT.md) to learn more about the project leads, resources, and technology.
 
 ### Wireframe Overview
 
