@@ -11,8 +11,8 @@ import Typography from '@material-ui/core/Typography';
 import { makeStyles } from '@material-ui/core/styles';
 import Container from '@material-ui/core/Container';
 import Link from '@material-ui/core/Link';
-import { CodivId, AdvisoryBoard } from '../utils/imgUrl';
 import { Transition, animated } from 'react-spring';
+import { CodivId, AdvisoryBoard } from '../utils/imgUrl';
 
 // TODO add once we get it :)
 function Copyright() {

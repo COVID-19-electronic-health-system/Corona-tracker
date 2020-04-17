@@ -3,10 +3,9 @@ import { useBlockstack } from 'react-blockstack';
 import { useTranslation } from 'react-i18next';
 import { makeStyles } from '@material-ui/core/styles';
 import { Typography } from '@material-ui/core';
+import { Transition, animated } from 'react-spring';
 import HealthLogToggle from './HealthLogToggle';
 import Survey from './survey/Survey';
-
-import { Transition, animated } from 'react-spring';
 
 const useStyles = makeStyles({
   hr: {
@@ -45,27 +44,25 @@ function DiagnosticContainer() {
 
   return hasSubmitted() ? (
     <div>
-
-            <Transition
-              items
-              from={{ opacity: 0, transform: 'translate(0, 100%)' }}
-              enter={{ opacity: 1, transform: 'translate(0, 0%)' }}
-            >
-              {props => (
-                <animated.div style={props}>
-      <Typography variant="h5">
-        {t('hello')} <b>{userSession.loadUserData().profile.name}</b>
-      </Typography>
-      <Typography variant="h6">
-        {t('todayText')} <b>{today.toLocaleDateString(undefined, dateOptions)}</b>{' '}
-      </Typography>
-      <hr className={classes.hr} />
-      <HealthLogToggle />
-
-                </animated.div>
-              )}
-            </Transition>
-              </div>
+      <Transition
+        items
+        from={{ opacity: 0, transform: 'translate(0, 100%)' }}
+        enter={{ opacity: 1, transform: 'translate(0, 0%)' }}
+      >
+        {props => (
+          <animated.div style={props}>
+            <Typography variant="h5">
+              {t('hello')} <b>{userSession.loadUserData().profile.name}</b>
+            </Typography>
+            <Typography variant="h6">
+              {t('todayText')} <b>{today.toLocaleDateString(undefined, dateOptions)}</b>{' '}
+            </Typography>
+            <hr className={classes.hr} />
+            <HealthLogToggle />
+          </animated.div>
+        )}
+      </Transition>
+    </div>
   ) : (
     <Survey />
   );

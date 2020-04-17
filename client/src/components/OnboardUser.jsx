@@ -7,12 +7,11 @@ import { connect } from 'react-redux';
 import { useHistory } from 'react-router-dom';
 import { useBlockstack } from 'react-blockstack';
 import { Typography, Select, MenuItem, FormControl, Grid, ButtonGroup, Button } from '@material-ui/core';
+import { Transition, animated } from 'react-spring';
 import actions from '../redux/actions/actions';
 import DeletionDialog from './DeletionDialog';
 import buttonsCss from '../css/buttons';
 import DeleteAllDataDialog from './DeleteAllDataDialog';
-
-import { Transition, animated } from 'react-spring';
 
 const useStyles = makeStyles(() => ({
   root: {
@@ -105,8 +104,9 @@ const OnboardUser = props => {
   return (
     <Grid container justify="center" className={classes.root}>
       <Transition
+        native
         items
-        from={{ opacity: 0, transform: 'translate(-100%, 0)' }}
+        from={{ opacity: 0, transform: 'translate(-250%, 0)' }}
         enter={{ opacity: 1, transform: 'translate(0, 0)' }}
       >
         {props => (
@@ -448,7 +448,6 @@ const OnboardUser = props => {
 
 OnboardUser.propTypes = {
   setDemographicsComorbiditiesThunk: PropTypes.func.isRequired,
-  style: PropTypes.object.isRequired
 };
 
 const mapDispatchToProps = dispatch => {
