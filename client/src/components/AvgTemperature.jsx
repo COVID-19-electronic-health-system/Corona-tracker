@@ -9,34 +9,33 @@ const useStyles = makeStyles({
     display: 'flex',
     flexDirection: 'column',
     alignItems: 'center',
-    justifyContent: 'flex-start'
-  }
+    justifyContent: 'flex-start',
+  },
 });
 
 const AvgTemperature = props => {
-
-  const {observations} = props;
+  const { observations } = props;
 
   const classes = useStyles();
 
-  const averageTemperature = Math.round(observations.reduce((sum, record) => {
-    return (sum + record.physical.feverSeverity * 10)
-  }, 0) / observations.length) / 10;
-
+  const averageTemperature =
+    Math.round(
+      observations.reduce((sum, record) => {
+        return sum + record.physical.feverSeverity * 10;
+      }, 0) / observations.length
+    ) / 10;
 
   return (
     <Grid className={classes.root}>
       <Typography>Average Temperature:</Typography>
       <Typography>{averageTemperature}&#8457;</Typography>
     </Grid>
-  )
+  );
 };
-
 
 AvgTemperature.propTypes = {
   observations: PropTypes.arrayOf(Object).isRequired,
 };
-
 
 const mapStateToProps = state => {
   return {

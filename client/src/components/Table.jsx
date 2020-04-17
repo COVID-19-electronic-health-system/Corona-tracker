@@ -16,7 +16,7 @@ import { makeStyles } from '@material-ui/core/styles';
 import Chart from './Chart';
 import chartType from '../utils/chartType';
 import BehavioralChart from './behavior/chart/BehavioralChart';
-import AvgTemperature from './AvgTemperature'
+import AvgTemperature from './AvgTemperature';
 
 const useStyles = makeStyles(() => ({
   behaveDiv: {
