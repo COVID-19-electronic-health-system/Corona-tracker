@@ -7,8 +7,9 @@ export const checkSvg = `${baseUrl}Calendar_Menu_Checkmark.svg`;
 export const xSvg = `${baseUrl}Calendar_Menu_X.svg`;
 export const notFoundImgText = `${baseUrl}undraw_not_found.svg`;
 export const profileImg = `${baseUrl}profileBlue.png`;
-export const TextLogo = `${baseUrl}Logo_CORONATRACKER_Text_Logo.svg`;
-export const Logo = `${baseUrl}Logo_CORONATRACKER_Logo.svg`;
+export const TextLogo = `${baseUrl}CoronaTracker-Beta-Text-Logo-No_Background.svg`;
+export const Logo = `${baseUrl}CORONATRACKER_Beta_Logo.svg`;
+export const FullLogo = `${baseUrl}FULL-BETA-LOGO.svg`;
 export const AdvisoryBoard = `${baseUrl}advisory-board.png`;
 export const CodivId = `${baseUrl}codevscovid.jpg`;
 
@@ -16,6 +17,7 @@ const imgUrl = {
   calendarDotSvg,
   TextLogo,
   Logo,
+  FullLogo,
   CalendarThreeLines,
   alarmSvg,
   checkSvg,

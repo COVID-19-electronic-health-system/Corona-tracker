@@ -9,6 +9,7 @@ const useStyles = makeStyles({
     width: '100vw',
     height: 'calc(100vh - 80px)',
     position: 'absolute',
+    scroll: 'hidden',
   },
   mapContainer: {
     paddingTop: '3vh',
