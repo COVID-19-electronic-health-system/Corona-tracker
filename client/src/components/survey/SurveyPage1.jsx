@@ -15,6 +15,7 @@ const useStyles = makeStyles(theme => ({
     fontFamily: 'Nunito',
     maxWidth: theme.breakpoints.values.md,
     width: '92vw',
+    marginBottom: '8vh',
     [theme.breakpoints.up('sm')]: {
       width: '50%',
     },
