@@ -44,7 +44,7 @@ const App = props => {
       fetchObservations(userSession);
       fetchDemographicsComorbidities(userSession);
     }
-  }, [fetchObservations, authenticated, userSession]);
+  }, [fetchObservations, fetchDemographicsComorbidities, authenticated, userSession]);
 
   const [disclaimerString] = useFile('disclaimer.json');
 
