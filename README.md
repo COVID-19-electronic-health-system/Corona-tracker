@@ -54,7 +54,7 @@ After discussions with doctors, start ups, technologists, and academic researche
 
 Furthermore, the effects of social distancing and isolation and the impact of lost jobs and finances is already having a negative impact on the physical, mental, emotional, and spiritual well-being of our society. After learning all of this, we realized that there's a limited amount of time to act, and decisive action must be taken in order to do our part and help our neighbors and healthcare professionals on the ground working towards a solution, keeping people as healthy as possible, and strengthening the well being of our society.
 
-## TL;DR FAQ
+## Frequently Asked Questions
 
 ### Who is this app for?
 
@@ -78,7 +78,7 @@ The differentiating characteristics of our web application include:
 
 ### What insights have been considered?
 
-Over the past week, the team has been in consultation with individuals and stakeholders in the academic, medical, business, and technology sectors. The provided insights into our application development include:
+The team has been in consultation with individuals and stakeholders in the academic, medical, business, and technology sectors. The provided insights into our application development include:
 1. understanding viral infection, disease pathogenesis, and public health guidelines followed by medical staff at a top tier NYC hospital
 2. providing education to the general public and patients is crucial to avoid unnecessary ER visits and engage patients in their health
 3. properly scoping our product to be an enterprise ready application by including key features based on expert feedback
