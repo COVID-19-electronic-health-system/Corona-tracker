@@ -13,6 +13,7 @@ import { useBlockstack } from 'react-blockstack';
 import { useTranslation } from 'react-i18next';
 import PropTypes from 'prop-types';
 import { useHistory } from 'react-router-dom';
+import Link from '@material-ui/core/Link';
 import actions from '../redux/actions/actions';
 import { TextLogo, Logo } from '../utils/imgUrl';
 
@@ -68,6 +69,8 @@ const Disclaimer = props => {
                 {t('disclaimer.disagree')}
               </Button>
             </DialogActions>
+            <Link href="https://coronatracker.me/privacy-policy">Privacy Policy</Link>
+            <Link href="https://coronatracker.me/terms-of-use">Terms of Use</Link>
           </DialogContent>
         </Dialog>
       ) : null}
