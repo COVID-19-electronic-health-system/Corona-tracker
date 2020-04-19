@@ -58,8 +58,8 @@ const Login = props => {
           <Button variant="login" className={classes.Button} onClick={onClick}>
             {t('login.buttonText')}
           </Button>
-          <Typography>Coming to Chrome for iOS soon!</Typography>
           <TranslationsMenu />
+          <Typography>If on mobile, please disable popups for best use!</Typography>
         </div>
       )}
     </div>
