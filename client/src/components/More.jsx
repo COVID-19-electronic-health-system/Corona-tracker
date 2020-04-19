@@ -195,7 +195,7 @@ const More = () => {
               size="medium"
               onClick={() => {
                 handleClose();
-                navigateTo('/onboard');
+                navigateTo('/settings');
               }}
               variant="contained"
               className={classes.buttons}

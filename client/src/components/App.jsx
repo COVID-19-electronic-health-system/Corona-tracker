@@ -19,6 +19,7 @@ import Disclaimer from './Disclaimer';
 import NotFoundPage from './NotFoundPage';
 import actions from '../redux/actions/actions';
 import ScrollToTop from './ScrollToTop';
+import Settings from './Settings';
 
 ReactBlockstack({ appConfig });
 
@@ -78,7 +79,7 @@ const App = props => {
             <PrivateRoute path="/healthlog" />
             <PrivateRoute path="/education" component={() => <FactQuizContainer />} />
             <PrivateRoute path="/map" component={() => <Map />} />
-            <PrivateRoute path="/settings" />
+            <PrivateRoute path="/settings" component={() => <Settings />} />
             <PrivateRoute path="/onboard" component={() => <OnboardUser />} />
             <PrivateRoute path="/about" component={() => <About />} />
             <Route path="/404" component={NotFoundPage} />
