@@ -28,7 +28,7 @@ gc = gspread.authorize(credentials)
 data_model_sheet_name = "Data Model"
 education_sheet_name="Education"
 health_sheet_name = "Health"
-translation_sheets_regex = "Master"
+translation_sheets_regex = " - Master Sheet"
 out_dir = "../../docs/content/"
 
 # Connect to Sheets #
@@ -38,13 +38,16 @@ education_sheet = gc.open(education_sheet_name).sheet1
 health_sheet = gc.open(health_sheet_name).sheet1
 
 list_all_spreadsheets = gc.list_spreadsheet_files()
-list_all_spreadsheets_names = [x['name'] for x in list_all_spreadsheets][x['name'] for x in list_all_spreadsheets]
+list_all_spreadsheets_names = [x['name'] for x in list_all_spreadsheets]
 translation_sheet_names = [x for x in list_all_spreadsheets_names if translation_sheets_regex in x]
 translation_sheets = {}
 for name in translation_sheet_names:
-    language = name.split(' ')[0]
-    translation_sheets[language] = gc.open(name)
+    language = '_'.join(name.split(' ')).replace('/','_')
+    translation_sheets[language] = gc.open(name).worksheets()
+
+    
 languages = [x for x in translation_sheets.keys()]
+languages.sort()
 
 # Data Model, Education, Health - Retrieve Sheet Content, convert to dataframe, convert to json, and output #
 
@@ -63,7 +66,7 @@ health_df.to_json(out_dir+'health.json',orient='index')
 # Translations - Retrieve Sheet Content, convert to dataframe, convert to json, and output #
 
 for language in languages:
-    language_wks = language_sheet.worksheets()
+    language_wks = translation_sheets[language]
     for wk in language_wks:
         wk_name = '_'.join(wk.title.split(' ')).replace('/','_')
         language_lists = wk.get_all_values()
