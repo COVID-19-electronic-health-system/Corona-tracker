@@ -3,7 +3,7 @@
 This document is to provide an overview of styles utilized in the app. The design team has made efforts to uniformly style the UI with Material UI and CSS. All buttons, font, background, icons, should match the wireframes linked above as closely as possible. Please remember to use makeStyles instead of in-line styles.
 
 
-**CORE COLORS**
+### **CORE COLORS**
 
 - Red: #f64141
 - Blue gradient (button): #4760ff (dark blue) --> #82a4f8 (light blue)
