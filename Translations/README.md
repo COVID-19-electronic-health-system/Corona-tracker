@@ -17,7 +17,7 @@ proficiency describes you.** It is important for us to maintain accuracy
 3. If you click on the name of the language, it will link you to a translation sheet in the 
 [Master Sheets Google Drive folder](https://drive.google.com/open?id=12I3IoLc1Li3rtCqhwEoRhLs5FA_6BF7A).
 * Translations that need to be made will be marked in *yellow* and have a *0* in the `Up-to-Date?` column. 
-* When you translate a piece of text, change the *0* to a *1* in the `Up-to-Date?` column.
+* Once you finish translating the text (e.g., question, answer, flashcard, etc.), go into the `Translation Updated (EST)` tab and enter `=now` and hit `Enter` twice.
 * To be updated when new text is ready for translation, on your spreadsheet click `Tools` –> `Notification Rules` and select `Any changes are made` and `Email - daily digest`
 4. All of the text on the app is on those sheets **EXCEPT** the Website info hyperlinked in the `Website Text` column on the [Efforts spreadsheet](https://docs.google.com/spreadsheets/d/1Deaaybwk8TPDlOnXJkFCQe6CIcrAqWoDA5Gbot3joyY/edit#gid=0). This info is kept on 
 [Google Docs](https://drive.google.com/open?id=1CLun7U6GWQOfwnJ_rDSU4PndRwe36hrL) 
