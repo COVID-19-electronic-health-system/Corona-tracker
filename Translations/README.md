@@ -16,13 +16,16 @@ with YOUR help!
 proficiency describes you.** It is important for us to maintain accuracy
 3. If you click on the name of the language, it will link you to a translation sheet in the 
 [Master Sheets Google Drive folder](https://drive.google.com/open?id=12I3IoLc1Li3rtCqhwEoRhLs5FA_6BF7A).
-* The one exception is for the `Website Text` column. This info is kept on 
+* Translations that need to be made will be marked in *yellow* and have a *0* in the `Up-to-Date?` column. 
+* When you translate a piece of text, change the *0* to a *1* in the `Up-to-Date?` column.
+* To be updated when new text is ready for translation, on your spreadsheet click `Tools` –> `Notification Rules` and select `Any changes are made` and `Email - daily digest`
+4. All of the text on the app is on those sheets **EXCEPT** the Website info hyperlinked in the `Website Text` column on the [Efforts spreadsheet](https://docs.google.com/spreadsheets/d/1Deaaybwk8TPDlOnXJkFCQe6CIcrAqWoDA5Gbot3joyY/edit#gid=0). This info is kept on 
 [Google Docs](https://drive.google.com/open?id=1CLun7U6GWQOfwnJ_rDSU4PndRwe36hrL) 
-made for each language so that we can preserve the format and it is easier to document changes. Place your translations immediately below the text in each box on the Google Doc.
-4. Be sure to **monitor your progress** with the provided colors in the `Legend` on the Efforts spreadsheet as this is the best way to inform Sal (@laseplov) of progress you have made.
+made for each language so that we can preserve the format and it is easier to document changes. Place those translations immediately below the text in each box on the Google Doc.
+5. Be sure to **document your progress** described by the provided colors in the `Legend` on the [Efforts spreadsheet](https://docs.google.com/spreadsheets/d/1Deaaybwk8TPDlOnXJkFCQe6CIcrAqWoDA5Gbot3joyY/edit#gid=0) as this is the best way to inform the team of your overall progress.
 * Once you believe that the text you have made is ready to be reviewed by Sal or anyone else working on that language, mark it in **blue** and alert the #translations channel in Discord. 
 After discussing with Sal or others, you can then mark it in **green** and preface your message in the Discord channel with @laseplov and @Back-end so that we all know the text is ready for to be implemented.
-5. Ask me any questions that you have!
+6. Ask me any questions that you have!
 * Contact Sal! Discord: @laseplov ; Email: volpesal@gmail.com
 * Message the #translations channel
 
