@@ -11,6 +11,7 @@ import Typography from '@material-ui/core/Typography';
 import { makeStyles } from '@material-ui/core/styles';
 import Container from '@material-ui/core/Container';
 import Link from '@material-ui/core/Link';
+import { CodivId, AdvisoryBoard } from '../utils/imgUrl';
 
 // TODO add once we get it :)
 function Copyright() {
@@ -27,6 +28,12 @@ function Copyright() {
 }
 
 const useStyles = makeStyles(theme => ({
+  root: {
+    [theme.breakpoints.down('sm')]: {
+      paddingBottom: '15em',
+    },
+    paddingBottom: '10em',
+  },
   icon: {
     marginRight: theme.spacing(2),
   },
@@ -51,6 +58,11 @@ const useStyles = makeStyles(theme => ({
   footer: {
     padding: theme.spacing(2),
   },
+  link: {
+    color: 'black',
+    textDecoration: 'none',
+    fontSize: '2em',
+  },
 }));
 
 const cards = [
@@ -59,14 +71,14 @@ const cards = [
     title: 'Top 20 in CodeVsCOVID-19',
     about: `CoronaTracker has recently placed in the top 20 out of over 300 teams in HackZurich's CodeVSCOVID-19`,
     // TODO replace these required with static images in S3 after beta, remove eslint-disable tag
-    img: require('../img/codevscovid.jpg'),
+    img: CodivId,
   },
   {
     id: 2,
     title: 'Advisory board',
     about:
       'Our advisory board consists of a health-tech CFO, epidemiologist, pulmonary critical care specialist, systems architect, neuropsychologist and emergency room doctor',
-    img: require('../img/advisory-board.png'),
+    img: AdvisoryBoard,
   },
 ];
 
@@ -74,53 +86,61 @@ const About = () => {
   const classes = useStyles();
 
   return (
-    <>
-      <CssBaseline />
-      <main>
-        <div className={classes.heroContent}>
-          <Container maxWidth="sm">
-            <Typography component="h1" variant="h3" align="center" color="textPrimary" gutterBottom>
-              For the community, by the community
-            </Typography>
-            <Typography variant="h5" align="center" color="textSecondary" paragraph>
-              CoronaTracker is an easy-to-use, private-by-design, open-source application for monitoring your health and
-              staying informed during the COVID-19 crisis. Here&apos;s what we&apos;ve accomplished so far
-            </Typography>
+    <div className={classes.root}>
+      <Grid>
+        <main>
+          <div className={classes.heroContent}>
+            <Container maxWidth="sm">
+              <Typography component="h1" variant="h3" align="center" color="textPrimary" gutterBottom>
+                For the community, by the community
+              </Typography>
+              <Typography variant="body1" align="center" color="textSecondary" paragraph>
+                CoronaTracker is an easy-to-use, private-by-design, open-source application for monitoring your health
+                and staying informed during the COVID-19 crisis. Here&apos;s what we&apos;ve accomplished so far
+              </Typography>
+            </Container>
+          </div>
+          <Container className={classes.cardGrid} maxWidth="md">
+            {/* End hero unit */}
+            <Grid container spacing={4}>
+              {cards.map(card => (
+                <Grid item key={card.id} xs={12} sm={6} md={4}>
+                  <Card className={classes.card}>
+                    <CardMedia className={classes.cardMedia} image={card.img} title="Image title" />
+                    <CardContent className={classes.cardContent}>
+                      <Typography gutterBottom variant="subtitle1" component="h2">
+                        {card.title}
+                      </Typography>
+                      <Typography variant="body2">{card.about}</Typography>
+                    </CardContent>
+                  </Card>
+                </Grid>
+              ))}
+            </Grid>
           </Container>
-        </div>
-        <Container className={classes.cardGrid} maxWidth="md">
-          {/* End hero unit */}
-          <Grid container spacing={4}>
-            {cards.map(card => (
-              <Grid item key={card.id} xs={12} sm={6} md={4}>
-                <Card className={classes.card}>
-                  <CardMedia className={classes.cardMedia} image={card.img} title="Image title" />
-                  <CardContent className={classes.cardContent}>
-                    <Typography gutterBottom variant="h5" component="h2">
-                      {card.title}
-                    </Typography>
-                    <Typography>{card.about}</Typography>
-                  </CardContent>
-                </Card>
-              </Grid>
-            ))}
-          </Grid>
-        </Container>
-      </main>
-      <footer className={classes.footer}>
-        <Typography variant="h6" align="center" gutterBottom>
-          Support Us!
-        </Typography>
-        <Typography variant="subtitle1" align="center" color="textSecondary" component="p">
-          Star our GitHub, fill out our user survey, anything counts! CoronaTracker is made with{' '}
-          <span role="img" aria-label="heart">
-            ❤️
-          </span>{' '}
-          in NYC and across the globe
-        </Typography>
-        {/* <Copyright /> */}
-      </footer>
-    </>
+        </main>
+        <footer className={classes.footer}>
+          <Typography variant="h6" align="center" gutterBottom>
+            Support Us!
+          </Typography>
+          <Typography variant="body1" align="center" color="textSecondary" component="p">
+            Star our GitHub, fill out our user survey, anything counts! CoronaTracker is made with{' '}
+            <span role="img" aria-label="heart">
+              ❤️
+            </span>{' '}
+            in NYC and across the globe
+          </Typography>
+          <Link
+            className={classes.color}
+            href="https://docs.google.com/forms/d/1sMp_qZYIrVxY6dxVCfIF6XQCU2lUeM_3qITC8hOph1w/edit"
+            color="inherit"
+          >
+            Take our Beta Survey!
+          </Link>
+          {/* <Copyright /> */}
+        </footer>
+      </Grid>
+    </div>
   );
 };
 

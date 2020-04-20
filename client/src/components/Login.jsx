@@ -1,16 +1,15 @@
 import React from 'react';
-import { Button, Typography, Grid } from '@material-ui/core';
+import { Button, Typography } from '@material-ui/core';
 import { useConnect } from '@blockstack/connect';
 import { connect } from 'react-redux';
 import { useTranslation } from 'react-i18next';
 import { makeStyles } from '@material-ui/core/styles';
 import PropTypes from 'prop-types';
 import TranslationsMenu from './Translations';
-import { ReactComponent as Logo } from '../img/Logo_CORONATRACKER_Logo.svg';
-import { ReactComponent as TextLogo } from '../img/Logo_CORONATRACKER_Text_Logo.svg';
-import setLoginLoading from '../redux/actions/actions';
+import actions from '../redux/actions/actions';
 import Loding from './Loding';
 import buttonsCss from '../css/buttons';
+import { FullLogo } from '../utils/imgUrl';
 
 const useStyles = makeStyles(theme => ({
   Login: {
@@ -29,7 +28,7 @@ const useStyles = makeStyles(theme => ({
       height: '20vh',
     },
   },
-  textLogo: {
+  fullLogo: {
     width: '70vw',
     height: '30vh',
 
@@ -54,15 +53,13 @@ const Login = props => {
         <Loding />
       ) : (
         <div>
-          <Grid item xs={12}>
-            <Logo className={classes.logo} />{' '}
-          </Grid>
-          <TextLogo className={classes.textLogo} />
+          <object title="fullLogo" className={classes.fullLogo} data={FullLogo} type="image/svg+xml" />
           <Typography variant="h6">{t('login.text')} </Typography>
           <Button variant="login" className={classes.Button} onClick={onClick}>
             {t('login.buttonText')}
           </Button>
           <TranslationsMenu />
+          <Typography>If on mobile, please disable popups for best use!</Typography>
         </div>
       )}
     </div>
@@ -70,7 +67,7 @@ const Login = props => {
 };
 
 Login.propTypes = {
-  loginLoading: PropTypes.bool.isRequired,
+  loginLoading: PropTypes.objectOf(Object).isRequired,
   setLoading: PropTypes.func.isRequired,
 };
 
@@ -79,11 +76,7 @@ const mapStateToProps = ({ loginLoading }) => ({
 });
 
 const mapDispatchToProps = dispatch => ({
-  setLoading(isLoading) {
-    // return () => {
-    dispatch(setLoginLoading.setLoginLoading(isLoading));
-    // }
-  },
+  setLoading: isLoading => dispatch(actions.setLoginLoading(isLoading)),
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(Login);

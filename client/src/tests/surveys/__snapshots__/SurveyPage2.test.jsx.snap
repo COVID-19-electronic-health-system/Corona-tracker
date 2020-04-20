@@ -1,0 +1,3 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`SurveyPage2 should render a SurveyPage2 component  1`] = `ReactWrapper {}`;
