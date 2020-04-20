@@ -54,6 +54,14 @@ const useStyles = makeStyles(() => ({
   image: {
     maxWidth: '120px',
   },
+  textField: {
+    ...buttonsCss.buttons,
+    textAlign: 'center',
+    width: '160px',
+    height: '40px',
+    background: 'transparent',
+    color: '#ffffff',
+  },
   inputField: {
     ...buttonsCss.buttons,
     textAlign: 'center',
@@ -109,16 +117,17 @@ const OnboardUser = props => {
             </Grid>
             <Grid item>
               <input
-                className={classes.inputField}
+                type="number"
+                className={classes.textField}
                 name="age"
-                placeholder="Click Here"
+                placeholder="Enter Age"
                 value={formState.age}
                 onChange={handleChange}
                 style={
                   formState.age !== null
                     ? {
                         outline: 'none',
-                        color: 'wheat',
+                        color: 'black',
                       }
                     : {}
                 }
@@ -162,13 +171,13 @@ const OnboardUser = props => {
                 name="city"
                 value={formState.city}
                 onChange={handleChange}
-                placeholder="City"
-                className={classes.inputField}
+                placeholder="Enter City"
+                className={classes.textField}
                 style={
                   formState.city !== null
                     ? {
                         outline: 'none',
-                        color: 'wheat',
+                        color: 'black',
                       }
                     : {}
                 }
@@ -186,13 +195,13 @@ const OnboardUser = props => {
                 name="state"
                 value={formState.state}
                 onChange={handleChange}
-                placeholder="State"
-                className={classes.inputField}
+                placeholder="Enter State"
+                className={classes.textField}
                 style={
                   formState.state !== null
                     ? {
                         outline: 'none',
-                        color: 'wheat',
+                        color: 'black',
                       }
                     : {}
                 }
@@ -210,13 +219,13 @@ const OnboardUser = props => {
                 name="zip"
                 value={formState.zip}
                 onChange={handleChange}
-                placeholder="Zip"
-                className={classes.inputField}
+                placeholder="Enter Zip"
+                className={classes.textField}
                 style={
                   formState.zip !== null
                     ? {
                         outline: 'none',
-                        color: 'wheat',
+                        color: 'black',
                       }
                     : {}
                 }
