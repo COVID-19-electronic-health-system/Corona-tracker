@@ -121,6 +121,8 @@ const SurveyPage2 = props => {
     bluishnessSeverity,
     giIssueSeverity,
     headacheSeverity,
+    lostTasteSeverity,
+    lostSmellSeverity,
   } = props;
   const classes = useStyles();
   const [open, setOpen] = useState(false);
@@ -133,7 +135,9 @@ const SurveyPage2 = props => {
   const [bluish, setBluish] = useState(bluishnessSeverity);
   const [giIssues, setGiIssues] = useState(giIssueSeverity);
   const [headache, setHeadache] = useState(headacheSeverity);
-
+  const [lostTaste, setLostTaste] = useState(lostTasteSeverity);
+  const [lostSmell, setLostSmell] = useState(lostSmellSeverity);
+  
   const handleFever = value => {
     setFever(value);
   };
@@ -170,6 +174,14 @@ const SurveyPage2 = props => {
     setHeadache(value.toLowerCase());
   };
 
+  const handleLostTaste = value => {
+    setLostTaste(value.toLowerCase());
+  };
+
+  const handleLostSmell = value => {
+    setLostSmell(value.toLowerCase());
+  };
+
   const handleClose = () => {
     setOpen(false);
   };
@@ -185,6 +197,8 @@ const SurveyPage2 = props => {
       bluish,
       giIssues,
       headache,
+      lostTaste,
+      lostSmell,
     };
     toSurveyPage1(currentSurveyState);
   };
@@ -199,7 +213,9 @@ const SurveyPage2 = props => {
       soreThroat === '' ||
       bluish === '' ||
       giIssues === '' ||
-      headache === ''
+      headache === '' ||
+      lostTaste === '' ||
+      lostSmell === ''
     ) {
       setOpen(true);
     } else {
@@ -213,6 +229,8 @@ const SurveyPage2 = props => {
         bluish,
         giIssues,
         headache,
+        lostTaste,
+        lostSmell,
       };
 
       setSurveyPage2(surveyPage2);
@@ -276,6 +294,7 @@ const SurveyPage2 = props => {
           </ButtonGroup>
         </Grid>
       </Grid>
+      
       <Grid container justify="center" spacing={1} className={classes.grid}>
         <Grid item xs={3} sm={6} className={classes.gridItem}>
           <Typography variant="body1" className={classes.symptomText}>
@@ -486,6 +505,85 @@ const SurveyPage2 = props => {
           </ButtonGroup>
         </Grid>
       </Grid>
+
+{/* BEGINING */}
+
+
+      <Grid container justify="center" spacing={1} className={classes.grid}>
+        <Grid item xs={3} sm={6} className={`${classes.gridItem} ${classes.giIssues}`}>
+          <Typography variant="body1" className={classes.symptomText}>
+          Loss of Taste
+          </Typography>
+        </Grid>
+        <Grid item xs={9} sm={6} className={classes.gridItem}>
+          <ButtonGroup color="secondary" aria-label="outlined primary button group" className={classes.buttonGroup}>
+            <Button
+              variant="contained"
+              value="minimal"
+              className={giIssues === 'minimal' ? classes.selectedButton : classes.button}
+              onClick={e => handleLostTaste(e.target.innerText)}
+            >
+              Minimal
+            </Button>
+            <Button
+              variant="contained"
+              value="moderate"
+              className={giIssues === 'moderate' ? classes.selectedButton : classes.button}
+              onClick={e => handleLostTaste(e.target.innerText)}
+            >
+              Moderate
+            </Button>
+            <Button
+              variant="contained"
+              value="severe"
+              className={giIssues === 'severe' ? classes.selectedButton : classes.button}
+              onClick={e => handleLostTaste(e.target.innerText)}
+            >
+              Severe
+            </Button>
+          </ButtonGroup>
+        </Grid>
+      </Grid>
+
+
+      <Grid container justify="center" spacing={1} className={classes.grid}>
+        <Grid item xs={3} sm={6} className={`${classes.gridItem} ${classes.giIssues}`}>
+          <Typography variant="body1" className={classes.symptomText}>
+          Loss of Smell
+          </Typography>
+        </Grid>
+        <Grid item xs={9} sm={6} className={classes.gridItem}>
+          <ButtonGroup color="secondary" aria-label="outlined primary button group" className={classes.buttonGroup}>
+            <Button
+              variant="contained"
+              value="minimal"
+              className={giIssues === 'minimal' ? classes.selectedButton : classes.button}
+              onClick={e => handleLostSmell(e.target.innerText)}
+            >
+              Minimal
+            </Button>
+            <Button
+              variant="contained"
+              value="moderate"
+              className={giIssues === 'moderate' ? classes.selectedButton : classes.button}
+              onClick={e => handleLostSmell(e.target.innerText)}
+            >
+              Moderate
+            </Button>
+            <Button
+              variant="contained"
+              value="severe"
+              className={giIssues === 'severe' ? classes.selectedButton : classes.button}
+              onClick={e => handleLostSmell(e.target.innerText)}
+            >
+              Severe
+            </Button>
+          </ButtonGroup>
+        </Grid>
+      </Grid>
+
+{/* END */}
+
       <Grid container justify="center" spacing={1} className={classes.grid}>
         <Grid item xs={3} sm={6} className={`${classes.gridItem} ${classes.giIssues}`}>
           <Typography variant="body1" className={classes.symptomText}>
@@ -549,6 +647,8 @@ const SurveyPage2 = props => {
             <DialogContentText className={classes.dialogText}>Gastrointestinnal issues</DialogContentText>
           ) : null}
           {headache === '' ? <DialogContentText className={classes.dialogText}>Headache</DialogContentText> : null}
+          {lostTaste === '' ? <DialogContentText className={classes.dialogText}>Loss of Taste</DialogContentText> : null}
+          {lostSmell === '' ? <DialogContentText className={classes.dialogText}>Loss of Smell</DialogContentText> : null}
         </DialogContent>
         <DialogActions className={classes.dialog}>
           <Button onClick={handleClose} className={classes.dialogText}>
@@ -572,6 +672,8 @@ SurveyPage2.propTypes = {
   bluishnessSeverity: PropTypes.string,
   giIssueSeverity: PropTypes.string,
   headacheSeverity: PropTypes.string,
+  lostTasteSeverity: PropTypes.string,
+  lostSmellSeverity: PropTypes.string,
 };
 
 SurveyPage2.defaultProps = {
@@ -584,6 +686,8 @@ SurveyPage2.defaultProps = {
   bluishnessSeverity: '',
   giIssueSeverity: '',
   headacheSeverity: '',
+  lostTasteSeverity: '',
+  lostSmellSeverity: '',
 };
 
 const mapStateToProps = state => {
@@ -597,6 +701,8 @@ const mapStateToProps = state => {
     bluishnessSeverity: state.surveyReducer.survey.physical.bluishnessSeverity,
     giIssueSeverity: state.surveyReducer.survey.physical.giIssueSeverity,
     headacheSeverity: state.surveyReducer.survey.physical.headacheSeverity,
+    lostTasteSeverity: state.surveyReducer.survey.physical.lostTasteSeverity,
+    lostSmellSeverity: state.surveyReducer.survey.physical.lostSmellSeverity,
   };
 };
 
