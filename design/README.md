@@ -51,21 +51,6 @@ This document is to provide an overview of styles utilized in the app. The desig
   - [Salvatore Volpe (Translations Lead)](#salvatore-volpe-translations-lead)
   - [Luke Lin (Discord Lead)](#luke-lin-discord-lead)
   - [Jason Schrader (Documentation Lead)](#jason-schrader-documentation-lead)
-- [CoronaTracker Resources](#coronatracker-resources)
-  - [Repositories](#repositories)
-  - [Technology Stack](#technology-stack)
-- [Blockstack Resources](#blockstack-resources)
-- [Common Commands](#common-commands)
-  - [Git](#git)
-  - [Yarn](#yarn)
-- [General Resources and Links](#general-resources-and-links)
-  - [Amazon Web Services (AWS)](#amazon-web-services-aws)
-  - [MongoDB](#mongodb)
-  - [Material UI](#material-ui)
-  - [React](#react)
-  - [Jest](#jest)
-  - [Golang](#golang)
-  - [Git / Github](#git--github)
 
 <!-- /Contacts TOC -->
 
