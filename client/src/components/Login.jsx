@@ -61,7 +61,7 @@ const Login = props => {
           <Button variant="login" className={classes.Button} onClick={onClick}>
             {t('login.buttonText')}
           </Button>
-          <TranslationsMenu /> hi
+          <TranslationsMenu />
           <Typography>If on mobile, please disable popups for best use!</Typography>
         </div>
       )}
