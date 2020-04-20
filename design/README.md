@@ -1,5 +1,6 @@
 # Brand Guide
-
+## Motivation
+This document is to provide an overview of styles utilized in the app. The design team has made efforts to uniformly style the UI with Material UI and CSS. All buttons, font, background, icons, should match the wireframes linked above as closely as possible. Please remember to use makeStyles instead of in-line styles.
 
 
 **CORE COLORS**
@@ -34,9 +35,6 @@
 - [Brand Guide](https://github.com/COVID-19-electronic-health-system/Corona-tracker/tree/master/design)
 - [Corona Tracker Readme](https://github.com/COVID-19-electronic-health-system/Corona-tracker/blob/master/README.md)
 - [Join our Discord Server](https://discord.gg/pPERUuv)
-
-# Motivation
-This document is to provide an overview of styles utilized in the app. The design team has made efforts to uniformly style the UI with Material UI and CSS. All buttons, font, background, icons, should match the wireframes linked above as closely as possible. Please remember to use makeStyles instead of in-line styles.
 
 ## Get involved and help out!
 
