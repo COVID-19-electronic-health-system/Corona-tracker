@@ -99,7 +99,7 @@ Always use `yarn` not  `npm` or the app will break. In the project directory, yo
 - Similar to `npm uninstall <package-name>`
 - [More Info](https://classic.yarnpkg.com/en/docs/cli/remove)
 
-`yarn init`
+### `yarn init`
 - Initializes the development of a package.
 - Similar to `npm init`
 - [More Info](https://classic.yarnpkg.com/en/docs/cli/init)
