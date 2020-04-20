@@ -22,8 +22,13 @@ const useStyles = makeStyles(theme => ({
     fontSize: '28px',
     height: '50px',
     lineHeight: '10px',
-    marginTop: '8%'
-
+    marginTop: '8%',
+    animation: `$glowing 1075ms infinite`,
+  },
+  '@keyframes glowing': {
+    '0% ': { backgroundColor: '#2ba805', boxShadow: '0px 1px 10px 0px #4760ff' },
+    '50%': { backgroundColor: '#49e819', boxShadow: '0px 1px 13px 3px #4760ff' },
+    '100%': { backgroundColor: '#2ba805', boxShadow: '0px 1px 10px 0px #4760ff' },
   },
   logo: {
     width: '40vw',
