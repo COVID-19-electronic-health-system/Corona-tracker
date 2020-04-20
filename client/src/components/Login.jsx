@@ -22,7 +22,8 @@ const useStyles = makeStyles(theme => ({
     fontSize: '28px',
     height: '50px',
     lineHeight: '10px',
-    margin: '20px',
+    marginTop: '8%'
+
   },
   logo: {
     width: '40vw',
