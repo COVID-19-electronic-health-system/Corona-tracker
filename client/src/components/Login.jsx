@@ -19,7 +19,10 @@ const useStyles = makeStyles(theme => ({
   },
   Button: {
     ...buttonsCss.buttons,
-    marginTop: '5vh',
+    fontSize: '28px',
+    height: '50px',
+    lineHeight: '10px',
+    margin: '20px',
   },
   logo: {
     width: '40vw',
@@ -58,7 +61,7 @@ const Login = props => {
           <Button variant="login" className={classes.Button} onClick={onClick}>
             {t('login.buttonText')}
           </Button>
-          <TranslationsMenu />
+          <TranslationsMenu /> {"hi"}
           <Typography>If on mobile, please disable popups for best use!</Typography>
         </div>
       )}
