@@ -19,7 +19,6 @@ const initialState = {
 };
 
 const surveyReducer = (oldState = initialState, action) => {
-  console.log(action)
   switch (action.type) {
     case SET_SURVEY_PAGE_1:
       return {
@@ -59,7 +58,7 @@ const surveyReducer = (oldState = initialState, action) => {
             giIssueSeverity: action.survey.giIssues,
             headacheSeverity: action.survey.headache,
             lostTasteSeverity: action.survey.lostTasteSeverity,
-            lostSmellSeverity: action.survey.lostSmellSeverity
+            lostSmellSeverity: action.survey.lostSmellSeverity,
           },
           nonPhysical: {
             ...oldState.survey.nonPhysical,

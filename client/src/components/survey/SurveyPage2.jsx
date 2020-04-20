@@ -137,7 +137,7 @@ const SurveyPage2 = props => {
   const [headache, setHeadache] = useState(headacheSeverity);
   const [lostTaste, setLostTaste] = useState(lostTasteSeverity);
   const [lostSmell, setLostSmell] = useState(lostSmellSeverity);
-  
+
   const handleFever = value => {
     setFever(value);
   };
@@ -294,7 +294,7 @@ const SurveyPage2 = props => {
           </ButtonGroup>
         </Grid>
       </Grid>
-      
+
       <Grid container justify="center" spacing={1} className={classes.grid}>
         <Grid item xs={3} sm={6} className={classes.gridItem}>
           <Typography variant="body1" className={classes.symptomText}>
@@ -506,13 +506,12 @@ const SurveyPage2 = props => {
         </Grid>
       </Grid>
 
-{/* BEGINING */}
-
+      {/* BEGINING */}
 
       <Grid container justify="center" spacing={1} className={classes.grid}>
         <Grid item xs={3} sm={6} className={`${classes.gridItem} ${classes.giIssues}`}>
           <Typography variant="body1" className={classes.symptomText}>
-          Loss of Taste
+            Loss of Taste
           </Typography>
         </Grid>
         <Grid item xs={9} sm={6} className={classes.gridItem}>
@@ -545,11 +544,10 @@ const SurveyPage2 = props => {
         </Grid>
       </Grid>
 
-
       <Grid container justify="center" spacing={1} className={classes.grid}>
         <Grid item xs={3} sm={6} className={`${classes.gridItem} ${classes.giIssues}`}>
           <Typography variant="body1" className={classes.symptomText}>
-          Loss of Smell
+            Loss of Smell
           </Typography>
         </Grid>
         <Grid item xs={9} sm={6} className={classes.gridItem}>
@@ -582,7 +580,7 @@ const SurveyPage2 = props => {
         </Grid>
       </Grid>
 
-{/* END */}
+      {/* END */}
 
       <Grid container justify="center" spacing={1} className={classes.grid}>
         <Grid item xs={3} sm={6} className={`${classes.gridItem} ${classes.giIssues}`}>
@@ -647,8 +645,12 @@ const SurveyPage2 = props => {
             <DialogContentText className={classes.dialogText}>Gastrointestinnal issues</DialogContentText>
           ) : null}
           {headache === '' ? <DialogContentText className={classes.dialogText}>Headache</DialogContentText> : null}
-          {lostTaste === '' ? <DialogContentText className={classes.dialogText}>Loss of Taste</DialogContentText> : null}
-          {lostSmell === '' ? <DialogContentText className={classes.dialogText}>Loss of Smell</DialogContentText> : null}
+          {lostTaste === '' ? (
+            <DialogContentText className={classes.dialogText}>Loss of Taste</DialogContentText>
+          ) : null}
+          {lostSmell === '' ? (
+            <DialogContentText className={classes.dialogText}>Loss of Smell</DialogContentText>
+          ) : null}
         </DialogContent>
         <DialogActions className={classes.dialog}>
           <Button onClick={handleClose} className={classes.dialogText}>

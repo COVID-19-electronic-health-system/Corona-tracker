@@ -47,7 +47,6 @@ const LogTable = props => {
     'Gastrointestinnal Issues',
     'Headache',
     'Comments',
-
   ];
 
   const [behaveClicked, setBehaveClicked] = useState(false);
