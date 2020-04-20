@@ -91,7 +91,7 @@ The team has been in consultation with individuals and stakeholders in the acade
 - [Contributing Guidelines - get involved!](https://github.com/COVID-19-electronic-health-system/.github/blob/master/CONTRIBUTING.md)
 - [Design, Wireframes, and Brand Guide](./design)
 - [Client, based on Create React App](./client)
-- [Translations](./Translations/Translations.md)
+- [Translations](./Translations/README.md)
 
 ### Wireframe Overview
 
