@@ -38,6 +38,16 @@
 # Motivation
 This document is to provide an overview of styles utilized in the app. The design team has made efforts to uniformly style the UI with Material UI and CSS. All buttons, font, background, icons, should match the wireframes linked above as closely as possible. Please remember to use makeStyles instead of in-line styles.
 
+## Get involved and help out!
+
+- [Join our Discord Server](https://discord.gg/pPERUuv)
+- [Visit our Website CoronaTracker.me](https://coronatracker.me)
+- [View the Beta Version of the App](https://coronatrackerbeta.com)
+- View our community health files:
+    - [Contributing Guidelines:](https://github.com/COVID-19-electronic-health-system/.github/blob/master/CONTRIBUTING.md) including more about the project and how to get involved
+    - [Support Documentation:](https://github.com/COVID-19-electronic-health-system/.github/blob/master/SUPPORT.md) including team members, resources, and references
+    - [Code of Conduct:](https://github.com/COVID-19-electronic-health-system/.github/blob/master/CODE_OF_CONDUCT.md) including examples of behavior that contributes to creating a positive environment
+
 ## Contacts
 
 <!-- contacts table of content -->
@@ -56,7 +66,6 @@ This document is to provide an overview of styles utilized in the app. The desig
 
 ## Project Leads and Contact Info
 
-[Join our Discord Server](https://discord.gg/pPERUuv)
 
 ### Anthony A (Project Organizer)
 
@@ -121,3 +130,17 @@ Documentation, Documentation, Documentation
 
 - Github: @whoabuddy
 - Discord: @whoabuddy
+
+### Repositories
+
+__[Corona-tracker:](https://github.com/COVID-19-electronic-health-system/Corona-tracker)__ CoronaTracker is an easy-to-use and accessible progressive web application that helps you monitor your wellness and stay informed during the COVID-19 crisis, designed by an open-source community invested in public health.
+
+__[Coronalert:](https://github.com/COVID-19-electronic-health-system/Coronalert)__ CoronaTracker notification service
+
+__[Coronalytics:](https://github.com/COVID-19-electronic-health-system/Coronalytics)__ CoronaTracker analytics service
+
+__[Coronadvise:](https://github.com/COVID-19-electronic-health-system/Coronadvise)__ CoronaTracker education service
+
+__[.github](https://github.com/COVID-19-electronic-health-system/.github):__ Community health files for the [@COVID-19-electronic-health-system](https://github.com/COVID-19-electronic-health-system) organization.
+
+__[PanFLUte:](https://github.com/COVID-19-electronic-health-system/PanFLUte)__ An open source spirometer for everyone.
