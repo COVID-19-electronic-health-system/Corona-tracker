@@ -50,7 +50,7 @@ After discussing with Sal or others, you can then mark it in **green** and prefa
 
 ## Q: If I see a question/answer that is not appropriate within the cultural framework of my language(s), what, what should I do?
 **A**: Let us know! These surveys and questions are in no way perfect and we want to be adjusting them. We understand that despite what may be of interest to us, language and cultural barriers supersede that. We will have discussions with Education, Medical, and Analytics to best account for barriers or regional dialects.
-Also, we’re keeping the beta US-oriented, so put non-US translations in the adjacent column after `[language]_answers` (or marked somehow on the Google Doc)
+Also, we’re keeping the beta US-oriented, so leave non-US translations as a note on the respective answer cell (and we will work on reformatting later).
 
 ## Q: So...I finished everything. Now what?
    **A**: Speak up! There’s always more to do or something someone may need help with!
