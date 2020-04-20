@@ -505,11 +505,8 @@ const SurveyPage2 = props => {
           </ButtonGroup>
         </Grid>
       </Grid>
-
-      {/* BEGINING */}
-
       <Grid container justify="center" spacing={1} className={classes.grid}>
-        <Grid item xs={3} sm={6} className={`${classes.gridItem} ${classes.giIssues}`}>
+        <Grid item xs={3} sm={6} className={`${classes.gridItem} ${classes.lostTaste}`}>
           <Typography variant="body1" className={classes.symptomText}>
             Loss of Taste
           </Typography>
@@ -519,7 +516,7 @@ const SurveyPage2 = props => {
             <Button
               variant="contained"
               value="minimal"
-              className={giIssues === 'minimal' ? classes.selectedButton : classes.button}
+              className={lostTaste === 'minimal' ? classes.selectedButton : classes.button}
               onClick={e => handleLostTaste(e.target.innerText)}
             >
               Minimal
@@ -527,7 +524,7 @@ const SurveyPage2 = props => {
             <Button
               variant="contained"
               value="moderate"
-              className={giIssues === 'moderate' ? classes.selectedButton : classes.button}
+              className={lostTaste === 'moderate' ? classes.selectedButton : classes.button}
               onClick={e => handleLostTaste(e.target.innerText)}
             >
               Moderate
@@ -535,7 +532,7 @@ const SurveyPage2 = props => {
             <Button
               variant="contained"
               value="severe"
-              className={giIssues === 'severe' ? classes.selectedButton : classes.button}
+              className={lostTaste === 'severe' ? classes.selectedButton : classes.button}
               onClick={e => handleLostTaste(e.target.innerText)}
             >
               Severe
@@ -545,7 +542,7 @@ const SurveyPage2 = props => {
       </Grid>
 
       <Grid container justify="center" spacing={1} className={classes.grid}>
-        <Grid item xs={3} sm={6} className={`${classes.gridItem} ${classes.giIssues}`}>
+        <Grid item xs={3} sm={6} className={`${classes.gridItem} ${classes.lostSmell}`}>
           <Typography variant="body1" className={classes.symptomText}>
             Loss of Smell
           </Typography>
@@ -555,7 +552,7 @@ const SurveyPage2 = props => {
             <Button
               variant="contained"
               value="minimal"
-              className={giIssues === 'minimal' ? classes.selectedButton : classes.button}
+              className={lostSmell === 'minimal' ? classes.selectedButton : classes.button}
               onClick={e => handleLostSmell(e.target.innerText)}
             >
               Minimal
@@ -563,7 +560,7 @@ const SurveyPage2 = props => {
             <Button
               variant="contained"
               value="moderate"
-              className={giIssues === 'moderate' ? classes.selectedButton : classes.button}
+              className={lostSmell === 'moderate' ? classes.selectedButton : classes.button}
               onClick={e => handleLostSmell(e.target.innerText)}
             >
               Moderate
@@ -571,7 +568,7 @@ const SurveyPage2 = props => {
             <Button
               variant="contained"
               value="severe"
-              className={giIssues === 'severe' ? classes.selectedButton : classes.button}
+              className={lostSmell === 'severe' ? classes.selectedButton : classes.button}
               onClick={e => handleLostSmell(e.target.innerText)}
             >
               Severe
@@ -579,9 +576,6 @@ const SurveyPage2 = props => {
           </ButtonGroup>
         </Grid>
       </Grid>
-
-      {/* END */}
-
       <Grid container justify="center" spacing={1} className={classes.grid}>
         <Grid item xs={3} sm={6} className={`${classes.gridItem} ${classes.giIssues}`}>
           <Typography variant="body1" className={classes.symptomText}>
