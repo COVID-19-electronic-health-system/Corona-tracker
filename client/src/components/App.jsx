@@ -41,6 +41,7 @@ const App = props => {
   };
 
   useEffect(() => {
+    document.body.style.zoom = '100%';
     if (authenticated) {
       fetchObservations(userSession);
       fetchDemographicsComorbidities(userSession);
