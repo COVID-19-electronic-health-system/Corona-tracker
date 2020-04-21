@@ -517,7 +517,7 @@ const SurveyPage2 = props => {
               variant="contained"
               value="minimal"
               className={lostTaste === 'minimal' ? classes.selectedButton : classes.button}
-              onClick={e => handleLostTaste(e.target.innerText)}
+              onClick={e => handleLostTaste(e.target.textContent)}
             >
               Minimal
             </Button>
@@ -525,7 +525,7 @@ const SurveyPage2 = props => {
               variant="contained"
               value="moderate"
               className={lostTaste === 'moderate' ? classes.selectedButton : classes.button}
-              onClick={e => handleLostTaste(e.target.innerText)}
+              onClick={e => handleLostTaste(e.target.textContent)}
             >
               Moderate
             </Button>
@@ -533,7 +533,7 @@ const SurveyPage2 = props => {
               variant="contained"
               value="severe"
               className={lostTaste === 'severe' ? classes.selectedButton : classes.button}
-              onClick={e => handleLostTaste(e.target.innerText)}
+              onClick={e => handleLostTaste(e.target.textContent)}
             >
               Severe
             </Button>
@@ -553,7 +553,7 @@ const SurveyPage2 = props => {
               variant="contained"
               value="minimal"
               className={lostSmell === 'minimal' ? classes.selectedButton : classes.button}
-              onClick={e => handleLostSmell(e.target.innerText)}
+              onClick={e => handleLostSmell(e.target.textContent)}
             >
               Minimal
             </Button>
@@ -561,7 +561,7 @@ const SurveyPage2 = props => {
               variant="contained"
               value="moderate"
               className={lostSmell === 'moderate' ? classes.selectedButton : classes.button}
-              onClick={e => handleLostSmell(e.target.innerText)}
+              onClick={e => handleLostSmell(e.target.textContent)}
             >
               Moderate
             </Button>
@@ -569,7 +569,7 @@ const SurveyPage2 = props => {
               variant="contained"
               value="severe"
               className={lostSmell === 'severe' ? classes.selectedButton : classes.button}
-              onClick={e => handleLostSmell(e.target.innerText)}
+              onClick={e => handleLostSmell(e.target.textContent)}
             >
               Severe
             </Button>
