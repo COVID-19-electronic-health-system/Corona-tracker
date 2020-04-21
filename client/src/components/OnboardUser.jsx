@@ -8,9 +8,7 @@ import { useHistory } from 'react-router-dom';
 import { useBlockstack } from 'react-blockstack';
 import { Typography, Select, MenuItem, FormControl, Grid, ButtonGroup, Button } from '@material-ui/core';
 import actions from '../redux/actions/actions';
-import DeletionDialog from './DeletionDialog';
 import buttonsCss from '../css/buttons';
-import DeleteAllDataDialog from './DeleteAllDataDialog';
 
 const useStyles = makeStyles(() => ({
   root: {
@@ -19,7 +17,6 @@ const useStyles = makeStyles(() => ({
   },
   buttonRight: {
     ...buttonsCss.buttons,
-
     margin: '5px 0px 0px 9px',
     background: 'rgba(255,255,255,0.5)',
     color: 'black',
@@ -57,6 +54,14 @@ const useStyles = makeStyles(() => ({
   image: {
     maxWidth: '120px',
   },
+  textField: {
+    ...buttonsCss.buttons,
+    textAlign: 'center',
+    width: '160px',
+    height: '40px',
+    background: 'transparent',
+    color: '#ffffff',
+  },
   inputField: {
     ...buttonsCss.buttons,
     textAlign: 'center',
@@ -78,20 +83,12 @@ const useStyles = makeStyles(() => ({
   },
 }));
 
-const blankForm = {
-  age: '',
-  gender: '',
-  city: '',
-  state: '',
-  zip: '',
-};
-
 const OnboardUser = props => {
   const history = useHistory();
-  const { setDemographicsComorbiditiesThunk } = props;
+  const { setDemographicsComorbiditiesThunk, demographicsComorbidities } = props;
   const { userSession } = useBlockstack();
-  const [formState, setFormState] = useState(blankForm);
-  const [showDeletionDialog, setShowDeletionDialog] = useState(false);
+  const [formState, setFormState] = useState(demographicsComorbidities);
+
   const handleChange = e => {
     e.preventDefault();
     setFormState({
@@ -120,16 +117,17 @@ const OnboardUser = props => {
             </Grid>
             <Grid item>
               <input
-                className={classes.inputField}
+                type="number"
+                className={classes.textField}
                 name="age"
-                placeholder="Click Here"
+                placeholder="Enter Age"
                 value={formState.age}
                 onChange={handleChange}
                 style={
                   formState.age !== null
                     ? {
                         outline: 'none',
-                        color: 'wheat',
+                        color: 'black',
                       }
                     : {}
                 }
@@ -173,13 +171,13 @@ const OnboardUser = props => {
                 name="city"
                 value={formState.city}
                 onChange={handleChange}
-                placeholder="City"
-                className={classes.inputField}
+                placeholder="Enter City"
+                className={classes.textField}
                 style={
                   formState.city !== null
                     ? {
                         outline: 'none',
-                        color: 'wheat',
+                        color: 'black',
                       }
                     : {}
                 }
@@ -197,13 +195,13 @@ const OnboardUser = props => {
                 name="state"
                 value={formState.state}
                 onChange={handleChange}
-                placeholder="State"
-                className={classes.inputField}
+                placeholder="Enter State"
+                className={classes.textField}
                 style={
                   formState.state !== null
                     ? {
                         outline: 'none',
-                        color: 'wheat',
+                        color: 'black',
                       }
                     : {}
                 }
@@ -221,13 +219,13 @@ const OnboardUser = props => {
                 name="zip"
                 value={formState.zip}
                 onChange={handleChange}
-                placeholder="Zip"
-                className={classes.inputField}
+                placeholder="Enter Zip"
+                className={classes.textField}
                 style={
                   formState.zip !== null
                     ? {
                         outline: 'none',
-                        color: 'wheat',
+                        color: 'black',
                       }
                     : {}
                 }
@@ -409,26 +407,7 @@ const OnboardUser = props => {
           >
             SAVE MY RESPONSES
           </Button>
-
-          <Button
-            onClick={() => {
-              setShowDeletionDialog(true);
-            }}
-            className={classes.deleteButton}
-          >
-            DELETE ALL OBSERVATION DATA
-          </Button>
-          {showDeletionDialog && <DeletionDialog setShowDeletionDialog={setShowDeletionDialog} />}
         </Grid>
-        <Button
-          className={classes.deleteButton}
-          onClick={() => {
-            setShowDeletionDialog(true);
-          }}
-        >
-          DELETE ALL DATA
-        </Button>
-        {showDeletionDialog && <DeleteAllDataDialog setShowDeletionDialog={setShowDeletionDialog} />}
       </Grid>
     </Grid>
   );
@@ -436,13 +415,32 @@ const OnboardUser = props => {
 
 OnboardUser.propTypes = {
   setDemographicsComorbiditiesThunk: PropTypes.func.isRequired,
+  demographicsComorbidities: PropTypes.shape({
+    age: PropTypes.string,
+    gender: PropTypes.string,
+    city: PropTypes.string,
+    state: PropTypes.string,
+    zip: PropTypes.string,
+    isSmoker: PropTypes.string,
+    isObese: PropTypes.string,
+    isAsthmatic: PropTypes.string,
+  }).isRequired,
+};
+
+const mapStateToProps = state => {
+  return {
+    demographicsComorbidities: state.onboardingReducer.demographicsComorbidities,
+  };
 };
 
 const mapDispatchToProps = dispatch => {
   return {
     setDemographicsComorbiditiesThunk: (formData, userSession) =>
       dispatch(actions.setDemographicsComorbiditiesThunk(formData, userSession)),
+    fetchDemographicsComorbidities: userSession => {
+      dispatch(actions.fetchDemographicsComorbidities(userSession));
+    },
   };
 };
 
-export default connect(null, mapDispatchToProps)(OnboardUser);
+export default connect(mapStateToProps, mapDispatchToProps)(OnboardUser);

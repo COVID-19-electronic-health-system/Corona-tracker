@@ -19,7 +19,16 @@ const useStyles = makeStyles(theme => ({
   },
   Button: {
     ...buttonsCss.buttons,
-    marginTop: '5vh',
+    fontSize: '28px',
+    height: '50px',
+    lineHeight: '10px',
+    marginTop: '8%',
+    animation: `$glowing 1075ms infinite`,
+  },
+  '@keyframes glowing': {
+    '0% ': { backgroundColor: '#2ba805', boxShadow: '0px 1px 10px 0px #4760ff' },
+    '50%': { backgroundColor: '#49e819', boxShadow: '0px 1px 13px 3px #4760ff' },
+    '100%': { backgroundColor: '#2ba805', boxShadow: '0px 1px 10px 0px #4760ff' },
   },
   logo: {
     width: '40vw',
@@ -58,8 +67,8 @@ const Login = props => {
           <Button variant="login" className={classes.Button} onClick={onClick}>
             {t('login.buttonText')}
           </Button>
-          <Typography>Coming to Chrome for iOS soon!</Typography>
           <TranslationsMenu />
+          <Typography>If on mobile, please disable popups for best use!</Typography>
         </div>
       )}
     </div>

@@ -1,0 +1,3 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Average Temperature renders AvgTemperature component 1`] = `ShallowWrapper {}`;

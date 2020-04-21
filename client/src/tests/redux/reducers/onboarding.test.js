@@ -3,18 +3,38 @@ import reducer from '../../../redux/reducers/onboarding';
 import { SET_DEMOGRAPHICS_COMORBIDITIES } from '../../../redux/actions/onboarding';
 
 describe('onboarding reducer', () => {
+  const initialState = {
+    demographicsComorbidities: {
+      age: '',
+      gender: '',
+      city: '',
+      state: '',
+      zip: '',
+      isSmoker: '',
+      isObese: '',
+      isAsthmatic: '',
+    },
+  };
+
   it('should return the initial state', () => {
-    expect(reducer(undefined, {})).toEqual({
-      demographicsComorbidities: {},
-    });
+    expect(reducer(initialState, {})).toEqual(initialState);
   });
 
   it('should handle SET_DEMOGRAPHICS_COMORBIDITIES', () => {
-    const formData = {};
+    const formData = {
+      age: '22',
+      gender: 'male',
+      city: 'long beach',
+      state: 'NY',
+      zip: '11561',
+      isSmoker: 'yes',
+      isObese: 'no',
+      isAsthmatic: 'no',
+    };
     const setDemographicsComorbidities = {
       type: SET_DEMOGRAPHICS_COMORBIDITIES,
-      formData: [formData],
+      formData,
     };
-    expect(reducer({}, setDemographicsComorbidities)).toEqual({ demographicsComorbidities: [formData] });
+    expect(reducer(initialState, setDemographicsComorbidities)).toEqual({ demographicsComorbidities: formData });
   });
 });
