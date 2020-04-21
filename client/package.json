@@ -1,6 +1,7 @@
 {
   "name": "corona-tracker",
-  "version": "0.3.6",
+  "version": "1.0.9",
+  "homepage": ".",
   "private": true,
   "prettier": "@blockstack/prettier-config",
   "husky": {
@@ -22,6 +23,7 @@
     "blockstack": "^19.3.0",
     "bootstrap": "^4.4.1",
     "chart.js": "^2.9.3",
+    "clsx": "^1.1.0",
     "enzyme": "3.10.0",
     "enzyme-adapter-react-16": "1.14.0",
     "expect": "^25.2.4",
@@ -31,6 +33,7 @@
     "jest": "24.9.0",
     "jest-enzyme": "7.1.0",
     "mapbox-gl": "^1.9.0",
+    "moment": "^2.24.0",
     "prop-types": "^15.7.2",
     "radiks": "^0.2.2-beta.1",
     "react": "^16.13.0",
@@ -44,10 +47,11 @@
     "react-redux": "^7.2.0",
     "react-router-dom": "^5.1.2",
     "react-scripts": "3.4.1",
+    "react-share": "^4.1.0",
     "react-spring": "^9.0.0-canary.808.11.4be2ac3",
     "react-test-renderer": "16.9.0",
     "react-use-gesture": "^7.0.0-beta.1",
-    "react-with-gesture": "^4.0.8",
+    "recharts": "^1.8.5",
     "redux": "^4.0.5",
     "redux-logger": "^3.0.6",
     "redux-mock-store": "1.5.3",
@@ -57,6 +61,7 @@
     "@babel/preset-env": "^7.8.7"
   },
   "devDependencies": {
+    "@babel/compat-data": "~7.8.0",
     "@blockstack/prettier-config": "0.0.5",
     "babel-jest": "^24.9.0",
     "canvas": "^2.6.1",

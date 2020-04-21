@@ -89,22 +89,14 @@ const NavBar = props => {
           }}
           icon={<LocationOnOutlinedIcon className={classes.buttons} />}
         />
-        <BottomNavigationAction
-          label="More"
-          value="more"
-          classes={{
-            root: classes.actionItem,
-            selected: classes.selected,
-          }}
-          icon={<More />}
-        />
+        <More />
       </BottomNavigation>
     </div>
   );
 };
 
 NavBar.propTypes = {
-  classes: PropTypes.func.isRequired,
+  classes: PropTypes.objectOf(Object).isRequired,
 };
 
 export default withStyles(styles)(NavBar);

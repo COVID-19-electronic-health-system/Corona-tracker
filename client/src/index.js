@@ -1,6 +1,5 @@
 import React, { Suspense } from 'react';
 import ReactDOM from 'react-dom';
-import './css/index.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { createStore, applyMiddleware } from 'redux';
 import { Provider } from 'react-redux';

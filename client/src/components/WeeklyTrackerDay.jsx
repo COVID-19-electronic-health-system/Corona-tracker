@@ -2,7 +2,7 @@ import React from 'react';
 import Grid from '@material-ui/core/Grid';
 import Typography from '@material-ui/core/Typography';
 import { makeStyles } from '@material-ui/core/styles';
-import PropTypes, { object } from 'prop-types';
+import PropTypes from 'prop-types';
 
 const noDataText = 'N/A';
 
@@ -47,7 +47,7 @@ const WeeklyTrackerDay = props => {
     <div className={classes.div}>
       <Grid container spacing={1} alignItems="center">
         <Grid item xs={1}>
-          <Typography variant="body1" className={[classes.bold, classes.rotated]}>
+          <Typography variant="body1" className={`${classes.bold} ${classes.rotated}`}>
             Selected
           </Typography>
         </Grid>
@@ -68,8 +68,8 @@ const WeeklyTrackerDay = props => {
             <Typography variant="body2">You said you felt:</Typography>
           </Grid>
           <Grid item xs={12}>
-            <Typography variant="body1" className={[classes.bold, classes.feeling]}>
-              {dayData.physical.dailyfeeling}/10
+            <Typography variant="body1" className={`${classes.bold} ${classes.feeling}`}>
+              {dayData.physical.dailyfeeling}/5
             </Typography>
           </Grid>
         </Grid>
@@ -88,7 +88,7 @@ const WeeklyTrackerDay = props => {
             <Typography variant="body2">
               Symptoms:&nbsp;
               <strong>
-                {dayData.physical.dailySymptomsFeeling ? `${dayData.physical.dailySymptomsFeeling}/10` : noDataText}
+                {dayData.physical.dailySymptomsFeeling ? `${dayData.physical.dailySymptomsFeeling}/5` : noDataText}
               </strong>
             </Typography>
           </Grid>
@@ -105,7 +105,7 @@ const WeeklyTrackerDay = props => {
 };
 
 WeeklyTrackerDay.propTypes = {
-  dayData: PropTypes.objectOf(object).isRequired,
+  dayData: PropTypes.objectOf(Object).isRequired,
 };
 
 export default WeeklyTrackerDay;

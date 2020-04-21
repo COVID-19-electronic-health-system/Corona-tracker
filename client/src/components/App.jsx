@@ -1,29 +1,35 @@
-import React, { useCallback } from 'react';
+import React, { useCallback, useEffect } from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { Connect } from '@blockstack/connect';
-import { BrowserRouter, Switch } from 'react-router-dom';
+import { BrowserRouter, Switch, Route } from 'react-router-dom';
 import { connect } from 'react-redux';
 import ReactBlockstack, { useBlockstack, didConnect, useFile } from 'react-blockstack';
 import Container from '@material-ui/core/Container';
+import PropTypes from 'prop-types';
 import Layout from './Layout';
 import Map from './Map';
 import DiagnosticContainer from './DiagnosticContainer';
 import { appConfig } from '../utils/constants';
-import setLoginLoading from '../redux/actions/actions';
 import FactQuizContainer from './FactQuizContainer';
 import PrivateRoute from './PrivateRoute';
 import Survey from './survey/Survey';
 import OnboardUser from './OnboardUser';
 import About from './About';
 import Disclaimer from './Disclaimer';
+import NotFoundPage from './NotFoundPage';
+import actions from '../redux/actions/actions';
+import ScrollToTop from './ScrollToTop';
+import Settings from './Settings';
 
 ReactBlockstack({ appConfig });
 
-function App() {
-  const { userSession } = useBlockstack();
+const App = props => {
+  const { setLoading, fetchObservations, fetchDemographicsComorbidities } = props;
+  const { userSession, authenticated } = useBlockstack();
   const finished = useCallback(() => {
     didConnect({ userSession });
-  }, [userSession]);
+    setLoading(false);
+  }, [userSession, setLoading]);
   const authOptions = {
     redirectTo: '/',
     finished,
@@ -33,6 +39,13 @@ function App() {
     },
     userSession,
   };
+
+  useEffect(() => {
+    if (authenticated) {
+      fetchObservations(userSession);
+      fetchDemographicsComorbidities(userSession);
+    }
+  }, [fetchObservations, fetchDemographicsComorbidities, authenticated, userSession]);
 
   const [disclaimerString] = useFile('disclaimer.json');
 
@@ -48,6 +61,7 @@ function App() {
 
   return (
     <BrowserRouter>
+      <ScrollToTop />
       <Connect authOptions={authOptions}>
         <Layout>
           {showDisclaimer && (
@@ -65,26 +79,28 @@ function App() {
             <PrivateRoute path="/healthlog" />
             <PrivateRoute path="/education" component={() => <FactQuizContainer />} />
             <PrivateRoute path="/map" component={() => <Map />} />
-            <PrivateRoute path="/settings" />
+            <PrivateRoute path="/settings" component={() => <Settings />} />
             <PrivateRoute path="/onboard" component={() => <OnboardUser />} />
-            <PrivateRoute paht="/about" component={() => <About />} />
+            <PrivateRoute path="/about" component={() => <About />} />
+            <Route path="/404" component={NotFoundPage} />
+            <Route path="*" component={NotFoundPage} />
           </Switch>
         </Layout>
       </Connect>
     </BrowserRouter>
   );
-}
+};
 
-const mapStateToProps = ({ loginLoading }) => ({
-  loginLoading,
-});
+App.propTypes = {
+  setLoading: PropTypes.func.isRequired,
+  fetchObservations: PropTypes.func.isRequired,
+  fetchDemographicsComorbidities: PropTypes.func.isRequired,
+};
 
 const mapDispatchToProps = dispatch => ({
-  setLoading(isLoading) {
-    return () => {
-      dispatch(setLoginLoading(isLoading));
-    };
-  },
+  setLoading: isLoading => dispatch(actions.setLoginLoading(isLoading)),
+  fetchObservations: userSession => dispatch(actions.fetchObservations(userSession)),
+  fetchDemographicsComorbidities: userSession => dispatch(actions.fetchDemographicsComorbidities(userSession)),
 });
 
-export default connect(mapStateToProps, mapDispatchToProps)(App);
+export default connect(null, mapDispatchToProps)(App);

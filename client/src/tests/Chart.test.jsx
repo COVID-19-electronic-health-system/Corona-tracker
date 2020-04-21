@@ -14,9 +14,16 @@ const mockChartJsState = {
   },
 };
 
+const mockObservationsReducerState = {
+  observations: [],
+};
+
 describe('Chart', () => {
   it('should render a Chart component ', () => {
-    const store = mockStore({ temperatureReducer: mockChartJsState });
+    const store = mockStore({
+      temperatureReducer: mockChartJsState,
+      observationsReducer: mockObservationsReducerState,
+    });
     window.HTMLCanvasElement.prototype.getContext = () => {};
 
     const wrapper = mount(

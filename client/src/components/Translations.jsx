@@ -1,37 +1,30 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import MenuItem from '@material-ui/core/MenuItem';
 import { useTranslation } from 'react-i18next';
 import { makeStyles } from '@material-ui/core/styles';
 import FormControl from '@material-ui/core/FormControl';
 import Select from '@material-ui/core/Select';
 import FormHelperText from '@material-ui/core/FormHelperText';
+import { languages, defaultLanguage } from '../utils/constants';
 
 const useStyles = makeStyles(theme => ({
   formControl: {
     margin: theme.spacing(1),
     minWidth: 120,
   },
-  selectEmpty: {
-    marginTop: theme.spacing(2),
-  },
 }));
 
 export default function TranslationsMenu() {
-  const [anchorEl, setAnchorEl] = React.useState('');
+  const [selectedLanguage, setSelectedLanguage] = React.useState(defaultLanguage.abbreviation);
   const classes = useStyles();
   const { i18n, t } = useTranslation();
 
-  const changeLanguage = lng => {
-    i18n.changeLanguage(lng);
-  };
+  useEffect(() => {
+    i18n.changeLanguage(selectedLanguage);
+  }, [i18n, selectedLanguage]);
 
   const handleClick = event => {
-    setAnchorEl(event.target.value);
-    changeLanguage(event.target.value);
-  };
-
-  const handleClose = () => {
-    setAnchorEl('');
+    setSelectedLanguage(event.target.value);
   };
 
   return (
@@ -41,15 +34,14 @@ export default function TranslationsMenu() {
           labelId="demo-simple-select-outlined-label"
           id="demo-simple-select-outlined"
           keepMounted
-          onClose={handleClose}
-          value={anchorEl}
+          value={selectedLanguage}
           onChange={handleClick}
         >
-          <MenuItem value="en">English</MenuItem>
-          <MenuItem value="es">Spanish</MenuItem>
-          <MenuItem value="it">Italian</MenuItem>
-          <MenuItem value="fr">French</MenuItem>
-          <MenuItem value="rus">Russian</MenuItem>
+          {languages.map(language => (
+            <MenuItem key={language.abbreviation} value={language.abbreviation}>
+              {language.language}
+            </MenuItem>
+          ))}
         </Select>
         <FormHelperText>{t('selectLan')}</FormHelperText>
       </FormControl>

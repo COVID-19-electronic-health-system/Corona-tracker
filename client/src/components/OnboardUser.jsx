@@ -6,86 +6,69 @@ import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { useHistory } from 'react-router-dom';
 import { useBlockstack } from 'react-blockstack';
+import { Typography, Select, MenuItem, FormControl, Grid, ButtonGroup, Button } from '@material-ui/core';
 import actions from '../redux/actions/actions';
-import profileImg from '../img/profile.png';
+import buttonsCss from '../css/buttons';
 
 const useStyles = makeStyles(() => ({
   root: {
-    display: 'flex',
-    flexDirection: 'column',
-    alignItems: 'center',
-    justifyContent: 'space-evenly',
-    margin: '2em 0 2em 0',
+    paddingBottom: '15em',
+    padding: '10px',
   },
-  button: {
-    color: 'white',
-    backgroundColor: 'red',
-    fontWeight: 'bold',
-    alignSelf: 'center',
-    height: '4vh',
-    borderRadius: '5px',
-    margin: '0 0 0 0',
-    maxWidth: '300px',
-    minWidth: '42%',
+  buttonRight: {
+    ...buttonsCss.buttons,
+    margin: '5px 0px 0px 9px',
+    background: 'rgba(255,255,255,0.5)',
+    color: 'black',
+    width: '75px',
   },
-  header: {
-    width: 325,
-    display: `inline-block`,
-    marginBottom: '.5em',
-    fontSize: '.5em',
+  buttonLeft: {
+    ...buttonsCss.buttons,
+    background: 'rgba(255,255,255,0.5)',
+    color: 'black',
+    margin: '5px 10px 0px 0px',
+    width: '75px',
+    height: '40px',
   },
-  profile: {
-    width: '100px',
-    height: '140px',
-    marginBottom: '.5em',
-    fontSize: '1em',
+  saveButton: {
+    ...buttonsCss.buttons,
+    margin: '0px 8px 2px 8px',
+    width: '300px',
+    cursor: 'pointer',
+    height: '3.5em',
+    marginTop: '2em',
+  },
+  deleteButton: {
+    ...buttonsCss.buttons,
+    margin: '0px 8px 2px 8px',
+    width: '300px',
+    cursor: 'pointer',
+    height: '3.5em',
+    marginTop: '2em',
+    background: `#f64141`,
+    '&:hover': {
+      boxShadow: '0px 1px 10px 0px #f64141',
+      background: `#f64141`,
+    },
   },
   image: {
-    width: '100%',
+    maxWidth: '120px',
   },
-  inputArea: {
-    display: 'flex',
-    flexDirection: 'row',
-    marginBottom: '.5vh',
+  textField: {
+    ...buttonsCss.buttons,
+    textAlign: 'center',
+    width: '160px',
+    height: '40px',
+    background: 'transparent',
+    color: '#ffffff',
   },
   inputField: {
-    width: '48%',
+    ...buttonsCss.buttons,
     textAlign: 'center',
-    maxWidth: '180px',
-    color: 'white',
-    backgroundColor: 'red',
-    height: '4vh',
-    justifyContent: 'space-between',
-    border: 'none',
-    borderRadius: '5px',
-    '&::placeholder': {
-      color: 'white',
-    },
+    width: '160px',
+    height: '40px',
 
-    '&:-ms-input-placeholder': {
-      color: 'white',
-    },
-
-    '&::-ms-input-placeholder': {
-      color: 'white',
-    },
-  },
-  inputFieldLabel: {
-    textAlign: 'right',
-    width: '48%',
-  },
-  location: {
-    border: 'none',
-    marginBottom: '10px',
-    textAlign: 'center',
-    color: 'white',
-    backgroundColor: 'red',
-    width: '33%',
-    maxWidth: '60px',
-    fontSize: '1em',
-    borderRadius: '5px',
-    fontFamily:
-      '-apple-system, BlinkMacSystemFont, avenir next, avenir, helvetica neue, helvetica, ubuntu, roboto, noto, segoe ui, arial,',
+    background: '#4760ff',
     '&::placeholder': {
       color: 'white',
     },
@@ -100,19 +83,12 @@ const useStyles = makeStyles(() => ({
   },
 }));
 
-const blankForm = {
-  age: '',
-  gender: '',
-  city: '',
-  state: '',
-  zip: '',
-};
-
 const OnboardUser = props => {
   const history = useHistory();
-  const { setDemographicsComorbiditiesThunk } = props;
+  const { setDemographicsComorbiditiesThunk, demographicsComorbidities } = props;
   const { userSession } = useBlockstack();
-  const [formState, setFormState] = useState(blankForm);
+  const [formState, setFormState] = useState(demographicsComorbidities);
+
   const handleChange = e => {
     e.preventDefault();
     setFormState({
@@ -122,160 +98,349 @@ const OnboardUser = props => {
   };
   const classes = useStyles();
   return (
-    <div className={classes.root}>
-      <div className={classes.header}>
-        <h4>
-          <b>Welcome to CoronaTracker!</b>
-        </h4>
-        <h4>Let&apos;s get your profile set up with a few quick questions and start logging your health:</h4>
-      </div>
-      <div className={classes.profile}>
-        <img src={profileImg} className={classes.image} alt="Profile" />
-        <h4>
-          <b>PROFILE</b>
-        </h4>
-      </div>
-      <div>
-        <div className={classes.inputArea}>
-          <h5 className={classes.inputFieldLabel}>
-            <b>Age (Years):</b>
-          </h5>
-          <input
-            className={classes.inputField}
-            name="age"
-            placeholder="Click Here"
-            value={formState.age}
-            onChange={handleChange}
-          />
-        </div>
-        <div className={classes.inputArea}>
-          <h5 className={classes.inputFieldLabel}>
-            <b>Gender:</b>
-          </h5>
-          <div>
-            <button
-              type="button"
-              onClick={e => {
-                e.preventDefault();
-                setFormState({
-                  ...formState,
-                  gender: 'male',
-                });
-              }}
-              className={classes.button}
-              style={formState.gender === 'male' ? { backgroundColor: 'white', color: 'red' } : {}}
-            >
-              Male
-            </button>
-            <button
-              type="button"
-              onClick={e => {
-                e.preventDefault();
-                setFormState({
-                  ...formState,
-                  gender: 'female',
-                });
-              }}
-              className={classes.button}
-              style={formState.gender === 'female' ? { backgroundColor: 'white', color: 'red' } : {}}
-            >
-              Female
-            </button>
-          </div>
-        </div>
-        <div className={classes.inputArea}>
-          <h5 className={classes.inputFieldLabel}>
-            <b>City, State & ZIP:</b>
-          </h5>
-          <div className={classes.inputField}>
-            <input
-              name="city"
-              value={formState.city}
-              onChange={handleChange}
-              placeholder="City"
-              className={classes.location}
-            />
-            <input
-              name="state"
-              value={formState.state}
-              onChange={handleChange}
-              placeholder="State"
-              className={classes.location}
-            />
-            <input
-              name="zip"
-              value={formState.zip}
-              onChange={handleChange}
-              placeholder="Zip"
-              className={classes.location}
-            />
-          </div>
-        </div>
-        <div className={classes.inputArea}>
-          <h5 className={classes.inputFieldLabel}>
-            <b>Do you smoke?</b>
-          </h5>
-          <input
-            className={classes.inputField}
-            name="isSmoker"
-            placeholder="Click Here"
-            value={formState.isSmoker}
-            onChange={handleChange}
-          />
-        </div>
-        <div className={classes.inputArea}>
-          <h5 className={classes.inputFieldLabel}>
-            <b>Do you have obesity?</b>
-          </h5>
-          <input
-            className={classes.inputField}
-            name="isObese"
-            placeholder="Click Here"
-            value={formState.isObese}
-            onChange={handleChange}
-          />
-        </div>
-        <div className={classes.inputArea}>
-          <h5 className={classes.inputFieldLabel}>
-            <b>Do you have asthma?</b>
-          </h5>
-          <input
-            className={classes.inputField}
-            name="isAsthmatic"
-            placeholder="Click Here"
-            value={formState.isAsthmatic}
-            onChange={handleChange}
-          />
-        </div>
-        <button
-          onClick={() => {
-            // setDemographicsComorbiditiesThunk(formState, userSession).then(() => history.push('/'));
-            setDemographicsComorbiditiesThunk(formState, userSession);
-            history.push('/');
-          }}
-          className={classes.button}
-          style={{
-            width: '300px',
-            height: '3.5em',
-            marginTop: '2em',
-          }}
-        >
-          SAVE MY RESPONSES
-        </button>
-      </div>
-    </div>
+    <Grid container justify="center" className={classes.root}>
+      <Grid container alignItems="center" direction="column">
+        <Grid item>
+          <Typography variant="h5">
+            <b>Welcome to CoronaTracker!</b>
+          </Typography>
+          <Typography variant="subtitle1" paragraph color="textSecondary">
+            Let&apos;s get your profile set up with a few quick questions and start logging your health:
+          </Typography>
+        </Grid>
+        <Grid>
+          <Grid container spacing={1} justify="space-between">
+            <Grid item>
+              <Typography variant="subtitle2" color="textSecondary">
+                <b>Age (Years):</b>
+              </Typography>
+            </Grid>
+            <Grid item>
+              <input
+                type="number"
+                className={classes.textField}
+                name="age"
+                placeholder="Enter Age"
+                value={formState.age}
+                onChange={handleChange}
+                style={
+                  formState.age !== null
+                    ? {
+                        outline: 'none',
+                        color: 'black',
+                      }
+                    : {}
+                }
+              />
+            </Grid>
+          </Grid>
+          <Grid container spacing={1} justify="space-between">
+            <Grid item>
+              <Typography variant="subtitle2" color="textSecondary">
+                <b>Gender:</b>
+              </Typography>
+            </Grid>
+            <Grid item>
+              <FormControl>
+                <Select
+                  className={classes.inputField}
+                  name="gender"
+                  value={formState.gender}
+                  onChange={handleChange}
+                  displayEmpty
+                  style={formState.gender !== '' ? { ...buttonsCss, outline: 'none', color: 'wheat' } : {}}
+                >
+                  <MenuItem value="" disabled>
+                    Click Here
+                  </MenuItem>
+                  <MenuItem value="male">Male</MenuItem>
+                  <MenuItem value="female">Female</MenuItem>
+                  <MenuItem value="nonbinary">Non-Binary</MenuItem>
+                </Select>
+              </FormControl>
+            </Grid>
+          </Grid>
+          <Grid container spacing={1} justify="space-between">
+            <Grid item>
+              <Typography variant="subtitle2" color="textSecondary">
+                <b>City:</b>
+              </Typography>
+            </Grid>
+            <Grid item>
+              <input
+                name="city"
+                value={formState.city}
+                onChange={handleChange}
+                placeholder="Enter City"
+                className={classes.textField}
+                style={
+                  formState.city !== null
+                    ? {
+                        outline: 'none',
+                        color: 'black',
+                      }
+                    : {}
+                }
+              />
+            </Grid>
+          </Grid>
+          <Grid container spacing={1} justify="space-between">
+            <Grid item>
+              <Typography variant="subtitle2" color="textSecondary">
+                <b>State:</b>
+              </Typography>
+            </Grid>
+            <Grid item>
+              <input
+                name="state"
+                value={formState.state}
+                onChange={handleChange}
+                placeholder="Enter State"
+                className={classes.textField}
+                style={
+                  formState.state !== null
+                    ? {
+                        outline: 'none',
+                        color: 'black',
+                      }
+                    : {}
+                }
+              />
+            </Grid>
+          </Grid>
+          <Grid container spacing={1} justify="space-between">
+            <Grid item>
+              <Typography variant="subtitle2" color="textSecondary">
+                <b>Zip:</b>
+              </Typography>
+            </Grid>
+            <Grid item>
+              <input
+                name="zip"
+                value={formState.zip}
+                onChange={handleChange}
+                placeholder="Enter Zip"
+                className={classes.textField}
+                style={
+                  formState.zip !== null
+                    ? {
+                        outline: 'none',
+                        color: 'black',
+                      }
+                    : {}
+                }
+              />
+            </Grid>
+          </Grid>
+          <Grid container spacing={1} justify="space-between">
+            <Grid item>
+              <Typography variant="subtitle2" color="textSecondary">
+                <b>Do you smoke?</b>
+              </Typography>
+            </Grid>
+            <Grid item>
+              <ButtonGroup>
+                <button
+                  type="button"
+                  onClick={e => {
+                    e.preventDefault();
+                    setFormState({
+                      ...formState,
+                      isSmoker: 'yes',
+                    });
+                  }}
+                  className={classes.buttonLeft}
+                  style={
+                    formState.isSmoker === 'yes'
+                      ? {
+                          ...buttonsCss.buttons,
+                          outline: 'none',
+                          color: 'wheat',
+                        }
+                      : {}
+                  }
+                >
+                  Yes
+                </button>
+                <button
+                  type="button"
+                  onClick={e => {
+                    e.preventDefault();
+                    setFormState({
+                      ...formState,
+                      isSmoker: 'no',
+                    });
+                  }}
+                  className={classes.buttonRight}
+                  style={
+                    formState.isSmoker === 'no'
+                      ? {
+                          ...buttonsCss.buttons,
+                          outline: 'none',
+                          color: 'wheat',
+                        }
+                      : {}
+                  }
+                >
+                  No
+                </button>
+              </ButtonGroup>
+            </Grid>
+          </Grid>
+          <Grid container spacing={1} justify="space-between">
+            <Grid item>
+              <Typography variant="subtitle2" color="textSecondary">
+                <b>Are you Obese (BMI)?</b>
+              </Typography>
+            </Grid>
+            <Grid item>
+              <ButtonGroup>
+                <button
+                  type="button"
+                  onClick={e => {
+                    e.preventDefault();
+                    setFormState({
+                      ...formState,
+                      isObese: 'yes',
+                    });
+                  }}
+                  className={classes.buttonLeft}
+                  style={
+                    formState.isObese === 'yes'
+                      ? {
+                          ...buttonsCss.buttons,
+                          outline: 'none',
+                          color: 'wheat',
+                        }
+                      : {}
+                  }
+                >
+                  Yes
+                </button>
+                <button
+                  type="button"
+                  onClick={e => {
+                    e.preventDefault();
+                    setFormState({
+                      ...formState,
+                      isObese: 'no',
+                    });
+                  }}
+                  className={classes.buttonRight}
+                  style={
+                    formState.isObese === 'no'
+                      ? {
+                          ...buttonsCss.buttons,
+                          outline: 'none',
+                          color: 'wheat',
+                        }
+                      : {}
+                  }
+                >
+                  No
+                </button>
+              </ButtonGroup>
+            </Grid>
+          </Grid>
+          <Grid container spacing={1} justify="space-between">
+            <Grid item>
+              <Typography variant="subtitle2" color="textSecondary">
+                <b>Do you have asthma?</b>
+              </Typography>
+            </Grid>
+            <Grid item>
+              <ButtonGroup>
+                <button
+                  type="button"
+                  onClick={e => {
+                    e.preventDefault();
+                    setFormState({
+                      ...formState,
+                      isAsthmatic: 'yes',
+                    });
+                  }}
+                  className={classes.buttonLeft}
+                  style={
+                    formState.isAsthmatic === 'yes'
+                      ? {
+                          ...buttonsCss.buttons,
+                          outline: 'none',
+                          color: 'wheat',
+                        }
+                      : {}
+                  }
+                >
+                  Yes
+                </button>
+                <button
+                  type="button"
+                  onClick={e => {
+                    e.preventDefault();
+                    setFormState({
+                      ...formState,
+                      isAsthmatic: 'no',
+                    });
+                  }}
+                  className={classes.buttonRight}
+                  style={
+                    formState.isAsthmatic === 'no'
+                      ? {
+                          ...buttonsCss.buttons,
+                          outline: 'none',
+                          color: 'wheat',
+                        }
+                      : {}
+                  }
+                >
+                  No
+                </button>
+              </ButtonGroup>
+            </Grid>
+          </Grid>
+          <Button
+            onClick={() => {
+              // setDemographicsComorbiditiesThunk(formState, userSession).then(() => history.push('/'));
+              setDemographicsComorbiditiesThunk(formState, userSession);
+              history.push('/');
+            }}
+            className={classes.saveButton}
+          >
+            SAVE MY RESPONSES
+          </Button>
+        </Grid>
+      </Grid>
+    </Grid>
   );
 };
 
 OnboardUser.propTypes = {
   setDemographicsComorbiditiesThunk: PropTypes.func.isRequired,
+  demographicsComorbidities: PropTypes.shape({
+    age: PropTypes.string,
+    gender: PropTypes.string,
+    city: PropTypes.string,
+    state: PropTypes.string,
+    zip: PropTypes.string,
+    isSmoker: PropTypes.string,
+    isObese: PropTypes.string,
+    isAsthmatic: PropTypes.string,
+  }).isRequired,
+};
+
+const mapStateToProps = state => {
+  return {
+    demographicsComorbidities: state.onboardingReducer.demographicsComorbidities,
+  };
 };
 
 const mapDispatchToProps = dispatch => {
   return {
     setDemographicsComorbiditiesThunk: (formData, userSession) =>
       dispatch(actions.setDemographicsComorbiditiesThunk(formData, userSession)),
+    fetchDemographicsComorbidities: userSession => {
+      dispatch(actions.fetchDemographicsComorbidities(userSession));
+    },
   };
 };
 
-export default connect(null, mapDispatchToProps)(OnboardUser);
+export default connect(mapStateToProps, mapDispatchToProps)(OnboardUser);

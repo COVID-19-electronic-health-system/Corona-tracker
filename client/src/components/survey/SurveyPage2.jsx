@@ -16,45 +16,54 @@ import PropTypes from 'prop-types';
 import buttonsCss from '../../css/buttons';
 import actions from '../../redux/actions/actions';
 
-const useStyles = makeStyles(() => ({
+const buttonWidth = '75px';
+const buttonHeight = '35px';
+
+const useStyles = makeStyles(theme => ({
   root: {
+    paddingBottom: '20em',
     alignItems: 'center',
     justifyContent: 'center',
     marginLeft: 'auto',
     marginRight: 'auto',
-    overflow: 'scroll',
-    height: '85vh',
+    maxWidth: theme.breakpoints.values.md,
+    overflow: 'auto',
+    padding: '4px',
     WebkitOverflowScrolling: 'touch',
   },
   buttons: {
     ...buttonsCss.buttons,
     width: '20vw',
-    height: '10vh',
-    margin: '1em',
+    height: '5vh',
+    margin: '1.2em',
   },
   continueButton: {
     ...buttonsCss.buttons,
-    marginTop: '2vh',
-    width: '50vw',
-    marginBottom: '8vh',
+
+    margin: '20px 8px 10px 8px',
+    width: '160px',
   },
   temperatureField: {
     marginBottom: '1em',
   },
   grid: {
-    overflow: 'scroll',
     marginTop: '2em',
-    '@media (min-width: 780px)': {
-      // eslint-disable-line no-useless-computed-key
-      overflow: 'hidden',
-      margin: '0 auto',
-      borderBottom: '1px solid black',
-    },
   },
   gridItem: {
     alignItems: 'center',
     justifyContent: 'center',
     height: '10vh',
+    marginTop: '2em',
+  },
+  symptomText: {
+    [theme.breakpoints.down('xs')]: {
+      fontSize: '0.75rem',
+    },
+  },
+  giIssues: {
+    [theme.breakpoints.down('xs')]: {
+      marginTop: '0',
+    },
   },
   dialog: {
     background: '#7a9cf9',
@@ -66,34 +75,35 @@ const useStyles = makeStyles(() => ({
     height: '100%',
     width: '100%',
     margin: '0 auto',
-    marginTop: '2em',
-    '@media (min-width: 780px)': {
-      // eslint-disable-line no-useless-computed-key
-      margin: '0 auto',
-      justifyContent: 'center',
-    },
+    justifyContent: 'center',
   },
   selectedButton: {
     ...buttonsCss.buttons,
     margin: '0.5em',
+    width: buttonWidth,
+    height: buttonHeight,
   },
   button: {
     ...buttonsCss.buttons,
+    width: buttonWidth,
+    height: buttonHeight,
     margin: '0.5em',
     background: 'rgba(255,255,255,0.5)',
-    backgroundColor: `linear-gradient(45deg, #4760ff, #82a4f8)`,
     color: 'black',
     '&:hover': {
       ...buttonsCss.buttons,
-      backgroundColor: `linear-gradient(45deg, #4760ff, #82a4f8)`,
+      width: buttonWidth,
+      height: buttonHeight,
+    },
+    '&:active': {
+      ...buttonsCss.buttons,
+      width: buttonWidth,
+      height: buttonHeight,
     },
   },
-  text: {
-    '@media (min-width: 780px)': {
-      // eslint-disable-line no-useless-computed-key
-      fontSize: '2rem',
-      marginTop: '0.8em',
-      width: '150%',
+  continueButtonGroup: {
+    [theme.breakpoints.down('xs')]: {
+      marginTop: '4em',
     },
   },
 }));
@@ -106,10 +116,13 @@ const SurveyPage2 = props => {
     shortnessOfBreathSeverity,
     chillsSeverity,
     coughSeverity,
-    chestPainSeverity,
     fatigueSeverity,
     soreThroatSeverity,
     bluishnessSeverity,
+    giIssueSeverity,
+    headacheSeverity,
+    lostTasteSeverity,
+    lostSmellSeverity,
   } = props;
   const classes = useStyles();
   const [open, setOpen] = useState(false);
@@ -117,10 +130,13 @@ const SurveyPage2 = props => {
   const [shortnessOfBreath, setShortnessOfBreath] = useState(shortnessOfBreathSeverity);
   const [chills, setChills] = useState(chillsSeverity);
   const [dryCough, setDryCough] = useState(coughSeverity);
-  const [chestPain, setChestPain] = useState(chestPainSeverity);
   const [fatigue, setFatigue] = useState(fatigueSeverity);
   const [soreThroat, setSoreThroat] = useState(soreThroatSeverity);
   const [bluish, setBluish] = useState(bluishnessSeverity);
+  const [giIssues, setGiIssues] = useState(giIssueSeverity);
+  const [headache, setHeadache] = useState(headacheSeverity);
+  const [lostTaste, setLostTaste] = useState(lostTasteSeverity);
+  const [lostSmell, setLostSmell] = useState(lostSmellSeverity);
 
   const handleFever = value => {
     setFever(value);
@@ -138,10 +154,6 @@ const SurveyPage2 = props => {
     setDryCough(value.toLowerCase());
   };
 
-  const handlechestPain = value => {
-    setChestPain(value.toLowerCase());
-  };
-
   const handlefatigue = value => {
     setFatigue(value.toLowerCase());
   };
@@ -154,6 +166,22 @@ const SurveyPage2 = props => {
     setBluish(value.toLowerCase());
   };
 
+  const handleGiIssues = value => {
+    setGiIssues(value.toLowerCase());
+  };
+
+  const handleHeadache = value => {
+    setHeadache(value.toLowerCase());
+  };
+
+  const handleLostTaste = value => {
+    setLostTaste(value.toLowerCase());
+  };
+
+  const handleLostSmell = value => {
+    setLostSmell(value.toLowerCase());
+  };
+
   const handleClose = () => {
     setOpen(false);
   };
@@ -164,24 +192,30 @@ const SurveyPage2 = props => {
       shortnessOfBreath,
       chills,
       dryCough,
-      chestPain,
       fatigue,
       soreThroat,
       bluish,
+      giIssues,
+      headache,
+      lostTaste,
+      lostSmell,
     };
     toSurveyPage1(currentSurveyState);
   };
 
   const submitSurveyPage2 = async () => {
     if (
-      fever === -1 ||
+      !fever ||
       shortnessOfBreath === '' ||
       chills === '' ||
       dryCough === '' ||
-      chestPain === '' ||
       fatigue === '' ||
       soreThroat === '' ||
-      bluish === ''
+      bluish === '' ||
+      giIssues === '' ||
+      headache === '' ||
+      lostTaste === '' ||
+      lostSmell === ''
     ) {
       setOpen(true);
     } else {
@@ -190,10 +224,13 @@ const SurveyPage2 = props => {
         shortnessOfBreath,
         chills,
         dryCough,
-        chestPain,
         fatigue,
         soreThroat,
         bluish,
+        giIssues,
+        headache,
+        lostTaste,
+        lostSmell,
       };
 
       setSurveyPage2(surveyPage2);
@@ -202,38 +239,41 @@ const SurveyPage2 = props => {
 
   return (
     <div className={classes.root}>
-      <Typography>
-        <b>Q4: What is your temperature?</b>
+      <Typography variant="subtitle1">
+        <b>Q4: What is your temperature reading today?</b>
       </Typography>
-      <Grid container justify="center" spacing={1} className={classes.grid}>
-        <Grid item xs={3} xl={4}>
+      <Grid container justify="center" direction="row" spacing={1} className={classes.grid}>
+        <Grid item xs={3}>
           <TextField
             type="number"
             onChange={e => handleFever(e.target.value)}
             className={classes.temperatureField}
             defaultValue={fever}
-          >
-            Fever?
-          </TextField>
+          />
+        </Grid>
+        <Grid item>
+          <Typography> &#8457;</Typography>
         </Grid>
       </Grid>
-      <Typography>
-        <b>Q5: Which of the following are you feeling or exhibiting?</b>
+      <Typography variant="subtitle2">
+        <b>Q5: Which symptoms are you feeling or experiencing?</b>
       </Typography>
 
       <Grid container justify="center" spacing={1} className={classes.grid}>
-        <Grid item xs={3} xl={4} className={classes.gridItem}>
-          <Typography className={classes.text}>Shortness of Breath?</Typography>
+        <Grid item xs={3} sm={6} className={classes.gridItem}>
+          <Typography variant="body1" className={classes.symptomText}>
+            Shortness of breath
+          </Typography>
         </Grid>
-        <Grid item xs={9} xl={4} className={classes.gridItem}>
+        <Grid item xs={9} sm={6} className={classes.gridItem}>
           <ButtonGroup color="secondary" aria-label="outlined primary button group" className={classes.buttonGroup}>
             <Button
               variant="contained"
-              value="none"
-              className={shortnessOfBreath === 'none' ? classes.selectedButton : classes.button}
+              value="minimal"
+              className={shortnessOfBreath === 'minimal' ? classes.selectedButton : classes.button}
               onClick={e => handleshortnessOfBreath(e.target.innerText)}
             >
-              None
+              Minimal
             </Button>
             <Button
               variant="contained"
@@ -254,19 +294,22 @@ const SurveyPage2 = props => {
           </ButtonGroup>
         </Grid>
       </Grid>
+
       <Grid container justify="center" spacing={1} className={classes.grid}>
-        <Grid item xs={3} xl={4} className={classes.gridItem}>
-          <Typography className={classes.text}>Chills?</Typography>
+        <Grid item xs={3} sm={6} className={classes.gridItem}>
+          <Typography variant="body1" className={classes.symptomText}>
+            Chills
+          </Typography>
         </Grid>
-        <Grid item xs={9} xl={4} className={classes.gridItem}>
+        <Grid item xs={9} sm={6} className={classes.gridItem}>
           <ButtonGroup color="secondary" aria-label="outlined primary button group" className={classes.buttonGroup}>
             <Button
               variant="contained"
-              value="none"
-              className={chills === 'none' ? classes.selectedButton : classes.button}
+              value="minimal"
+              className={chills === 'minimal' ? classes.selectedButton : classes.button}
               onClick={e => handlechills(e.target.innerText)}
             >
-              None
+              Minimal
             </Button>
             <Button
               variant="contained"
@@ -288,17 +331,20 @@ const SurveyPage2 = props => {
         </Grid>
       </Grid>
       <Grid container justify="center" spacing={1} className={classes.grid}>
-        <Grid item xs={3} xl={4} className={classes.gridItem}>
-          <Typography className={classes.text}>Dry Cough?</Typography>
+        <Grid item xs={3} sm={6} className={classes.gridItem}>
+          <Typography variant="body1" className={classes.symptomText}>
+            Dry cough
+          </Typography>
         </Grid>
-        <Grid item xs={9} xl={4} className={classes.gridItem}>
+        <Grid item xs={9} sm={6} className={classes.gridItem}>
           <ButtonGroup color="secondary" aria-label="outlined primary button group" className={classes.buttonGroup}>
             <Button
               variant="contained"
-              className={dryCough === 'none' ? classes.selectedButton : classes.button}
+              value="minimal"
+              className={dryCough === 'minimal' ? classes.selectedButton : classes.button}
               onClick={e => handledryCough(e.target.innerText)}
             >
-              None
+              Minimal
             </Button>
             <Button
               variant="contained"
@@ -320,51 +366,20 @@ const SurveyPage2 = props => {
         </Grid>
       </Grid>
       <Grid container justify="center" spacing={1} className={classes.grid}>
-        <Grid item xs={3} xl={4} className={classes.gridItem}>
-          <Typography className={classes.text}>Chest Pain or Pressure?</Typography>
+        <Grid item xs={3} sm={6} className={classes.gridItem}>
+          <Typography variant="body1" className={classes.symptomText}>
+            Fatigue
+          </Typography>
         </Grid>
-        <Grid item xs={9} xl={4} className={classes.gridItem}>
+        <Grid item xs={9} sm={6} className={classes.gridItem}>
           <ButtonGroup color="secondary" aria-label="outlined primary button group" className={classes.buttonGroup}>
             <Button
               variant="contained"
-              value="none"
-              className={chestPain === 'none' ? classes.selectedButton : classes.button}
-              onClick={e => handlechestPain(e.target.innerText)}
-            >
-              None
-            </Button>
-            <Button
-              variant="contained"
-              value="moderate"
-              className={chestPain === 'moderate' ? classes.selectedButton : classes.button}
-              onClick={e => handlechestPain(e.target.innerText)}
-            >
-              Moderate
-            </Button>
-            <Button
-              variant="contained"
-              value="severe"
-              className={chestPain === 'severe' ? classes.selectedButton : classes.button}
-              onClick={e => handlechestPain(e.target.innerText)}
-            >
-              Severe
-            </Button>
-          </ButtonGroup>
-        </Grid>
-      </Grid>
-      <Grid container justify="center" spacing={1} className={classes.grid}>
-        <Grid item xs={3} xl={4} className={classes.gridItem}>
-          <Typography className={classes.text}>Fatigue?</Typography>
-        </Grid>
-        <Grid item xs={9} xl={4} className={classes.gridItem}>
-          <ButtonGroup color="secondary" aria-label="outlined primary button group" className={classes.buttonGroup}>
-            <Button
-              variant="contained"
-              value="none"
-              className={fatigue === 'none' ? classes.selectedButton : classes.button}
+              value="minimal"
+              className={fatigue === 'minimal' ? classes.selectedButton : classes.button}
               onClick={e => handlefatigue(e.target.innerText)}
             >
-              None
+              Minimal
             </Button>
             <Button
               variant="contained"
@@ -386,18 +401,20 @@ const SurveyPage2 = props => {
         </Grid>
       </Grid>
       <Grid container justify="center" spacing={1} className={classes.grid}>
-        <Grid item xs={3} xl={4} className={classes.gridItem}>
-          <Typography className={classes.text}>Sore Throat?</Typography>
+        <Grid item xs={3} sm={6} className={classes.gridItem}>
+          <Typography variant="body1" className={classes.symptomText}>
+            Sore throat
+          </Typography>
         </Grid>
-        <Grid item xs={9} xl={4} className={classes.gridItem}>
+        <Grid item xs={9} sm={6} className={classes.gridItem}>
           <ButtonGroup color="secondary" aria-label="outlined primary button group" className={classes.buttonGroup}>
             <Button
               variant="contained"
-              value="none"
-              className={soreThroat === 'none' ? classes.selectedButton : classes.button}
+              value="minimal"
+              className={soreThroat === 'minimal' ? classes.selectedButton : classes.button}
               onClick={e => handlesoreThroat(e.target.innerText)}
             >
-              None
+              Minimal
             </Button>
             <Button
               variant="contained"
@@ -419,18 +436,20 @@ const SurveyPage2 = props => {
         </Grid>
       </Grid>
       <Grid container justify="center" spacing={1} className={classes.grid}>
-        <Grid item xs={3} xl={4} className={classes.gridItem}>
-          <Typography className={classes.text}>Bluish Lips or Face?</Typography>
+        <Grid item xs={3} sm={6} className={classes.gridItem}>
+          <Typography variant="body1" className={classes.symptomText}>
+            Bluish lips or face
+          </Typography>
         </Grid>
-        <Grid item xs={9} xl={4} className={classes.gridItem}>
+        <Grid item xs={9} sm={6} className={classes.gridItem}>
           <ButtonGroup color="secondary" aria-label="outlined primary button group" className={classes.buttonGroup}>
             <Button
               variant="contained"
-              value="none"
-              className={bluish === 'none' ? classes.selectedButton : classes.button}
+              value="minimal"
+              className={bluish === 'minimal' ? classes.selectedButton : classes.button}
               onClick={e => handlebluish(e.target.innerText)}
             >
-              None
+              Minimal
             </Button>
             <Button
               variant="contained"
@@ -451,25 +470,181 @@ const SurveyPage2 = props => {
           </ButtonGroup>
         </Grid>
       </Grid>
-      <Button onClick={sendBackToPage1} variant="outlined" color="secondary" className={classes.continueButton}>
-        BACK
-      </Button>
-      <Button onClick={submitSurveyPage2} variant="outlined" color="secondary" className={classes.continueButton}>
-        CONTINUE
-      </Button>
+      <Grid container justify="center" spacing={1} className={classes.grid}>
+        <Grid item xs={3} sm={6} className={classes.gridItem}>
+          <Typography variant="body1" className={classes.symptomText}>
+            Headache
+          </Typography>
+        </Grid>
+        <Grid item xs={9} sm={6} className={classes.gridItem}>
+          <ButtonGroup color="secondary" aria-label="outlined primary button group" className={classes.buttonGroup}>
+            <Button
+              variant="contained"
+              value="minimal"
+              className={headache === 'minimal' ? classes.selectedButton : classes.button}
+              onClick={e => handleHeadache(e.target.innerText)}
+            >
+              Minimal
+            </Button>
+            <Button
+              variant="contained"
+              value="moderate"
+              className={headache === 'moderate' ? classes.selectedButton : classes.button}
+              onClick={e => handleHeadache(e.target.innerText)}
+            >
+              Moderate
+            </Button>
+            <Button
+              variant="contained"
+              value="severe"
+              className={headache === 'severe' ? classes.selectedButton : classes.button}
+              onClick={e => handleHeadache(e.target.innerText)}
+            >
+              Severe
+            </Button>
+          </ButtonGroup>
+        </Grid>
+      </Grid>
+      <Grid container justify="center" spacing={1} className={classes.grid}>
+        <Grid item xs={3} sm={6} className={`${classes.gridItem} ${classes.lostTaste}`}>
+          <Typography variant="body1" className={classes.symptomText}>
+            Loss of Taste
+          </Typography>
+        </Grid>
+        <Grid item xs={9} sm={6} className={classes.gridItem}>
+          <ButtonGroup color="secondary" aria-label="outlined primary button group" className={classes.buttonGroup}>
+            <Button
+              variant="contained"
+              value="minimal"
+              className={lostTaste === 'minimal' ? classes.selectedButton : classes.button}
+              onClick={e => handleLostTaste(e.target.innerText)}
+            >
+              Minimal
+            </Button>
+            <Button
+              variant="contained"
+              value="moderate"
+              className={lostTaste === 'moderate' ? classes.selectedButton : classes.button}
+              onClick={e => handleLostTaste(e.target.innerText)}
+            >
+              Moderate
+            </Button>
+            <Button
+              variant="contained"
+              value="severe"
+              className={lostTaste === 'severe' ? classes.selectedButton : classes.button}
+              onClick={e => handleLostTaste(e.target.innerText)}
+            >
+              Severe
+            </Button>
+          </ButtonGroup>
+        </Grid>
+      </Grid>
+
+      <Grid container justify="center" spacing={1} className={classes.grid}>
+        <Grid item xs={3} sm={6} className={`${classes.gridItem} ${classes.lostSmell}`}>
+          <Typography variant="body1" className={classes.symptomText}>
+            Loss of Smell
+          </Typography>
+        </Grid>
+        <Grid item xs={9} sm={6} className={classes.gridItem}>
+          <ButtonGroup color="secondary" aria-label="outlined primary button group" className={classes.buttonGroup}>
+            <Button
+              variant="contained"
+              value="minimal"
+              className={lostSmell === 'minimal' ? classes.selectedButton : classes.button}
+              onClick={e => handleLostSmell(e.target.innerText)}
+            >
+              Minimal
+            </Button>
+            <Button
+              variant="contained"
+              value="moderate"
+              className={lostSmell === 'moderate' ? classes.selectedButton : classes.button}
+              onClick={e => handleLostSmell(e.target.innerText)}
+            >
+              Moderate
+            </Button>
+            <Button
+              variant="contained"
+              value="severe"
+              className={lostSmell === 'severe' ? classes.selectedButton : classes.button}
+              onClick={e => handleLostSmell(e.target.innerText)}
+            >
+              Severe
+            </Button>
+          </ButtonGroup>
+        </Grid>
+      </Grid>
+      <Grid container justify="center" spacing={1} className={classes.grid}>
+        <Grid item xs={3} sm={6} className={`${classes.gridItem} ${classes.giIssues}`}>
+          <Typography variant="body1" className={classes.symptomText}>
+            Gastrointestinnal issues (i.e. nausea, diarrhea, vomiting, abdominal pain)
+          </Typography>
+        </Grid>
+        <Grid item xs={9} sm={6} className={classes.gridItem}>
+          <ButtonGroup color="secondary" aria-label="outlined primary button group" className={classes.buttonGroup}>
+            <Button
+              variant="contained"
+              value="minimal"
+              className={giIssues === 'minimal' ? classes.selectedButton : classes.button}
+              onClick={e => handleGiIssues(e.target.innerText)}
+            >
+              Minimal
+            </Button>
+            <Button
+              variant="contained"
+              value="moderate"
+              className={giIssues === 'moderate' ? classes.selectedButton : classes.button}
+              onClick={e => handleGiIssues(e.target.innerText)}
+            >
+              Moderate
+            </Button>
+            <Button
+              variant="contained"
+              value="severe"
+              className={giIssues === 'severe' ? classes.selectedButton : classes.button}
+              onClick={e => handleGiIssues(e.target.innerText)}
+            >
+              Severe
+            </Button>
+          </ButtonGroup>
+        </Grid>
+      </Grid>
+      {/* <div className={classes.continueButtonGroup}> */}
+      <ButtonGroup className={classes.continueButtonGroup}>
+        <Button onClick={sendBackToPage1} variant="outlined" color="secondary" className={classes.continueButton}>
+          BACK
+        </Button>
+        <Button onClick={submitSurveyPage2} variant="outlined" color="secondary" className={classes.continueButton}>
+          CONTINUE
+        </Button>
+      </ButtonGroup>
+      {/* </div> */}
       <Dialog open={open} onClose={handleClose}>
         <DialogContent className={classes.dialog}>
           <DialogContentText className={classes.dialogText}>Please complete:</DialogContentText>
-          {fever === -1 ? <DialogContentText className={classes.dialogText}>Fever</DialogContentText> : null}
+          {!fever ? <DialogContentText className={classes.dialogText}>Temperature reading</DialogContentText> : null}
           {shortnessOfBreath === '' ? (
-            <DialogContentText className={classes.dialogText}>Shortness of Breath</DialogContentText>
+            <DialogContentText className={classes.dialogText}>Shortness of breath</DialogContentText>
           ) : null}
           {chills === '' ? <DialogContentText className={classes.dialogText}>Chills</DialogContentText> : null}
-          {dryCough === '' ? <DialogContentText className={classes.dialogText}>Dry Cough</DialogContentText> : null}
-          {chestPain === '' ? <DialogContentText className={classes.dialogText}>Chest Pain</DialogContentText> : null}
+          {dryCough === '' ? <DialogContentText className={classes.dialogText}>Dry cough</DialogContentText> : null}
           {fatigue === '' ? <DialogContentText className={classes.dialogText}>Fatigue</DialogContentText> : null}
-          {soreThroat === '' ? <DialogContentText className={classes.dialogText}>Sore Throat</DialogContentText> : null}
-          {bluish === '' ? <DialogContentText className={classes.dialogText}>Bluishness</DialogContentText> : null}
+          {soreThroat === '' ? <DialogContentText className={classes.dialogText}>Sore throat</DialogContentText> : null}
+          {bluish === '' ? (
+            <DialogContentText className={classes.dialogText}>Bluish lips or face</DialogContentText>
+          ) : null}
+          {giIssues === '' ? (
+            <DialogContentText className={classes.dialogText}>Gastrointestinnal issues</DialogContentText>
+          ) : null}
+          {headache === '' ? <DialogContentText className={classes.dialogText}>Headache</DialogContentText> : null}
+          {lostTaste === '' ? (
+            <DialogContentText className={classes.dialogText}>Loss of Taste</DialogContentText>
+          ) : null}
+          {lostSmell === '' ? (
+            <DialogContentText className={classes.dialogText}>Loss of Smell</DialogContentText>
+          ) : null}
         </DialogContent>
         <DialogActions className={classes.dialog}>
           <Button onClick={handleClose} className={classes.dialogText}>
@@ -488,10 +663,13 @@ SurveyPage2.propTypes = {
   shortnessOfBreathSeverity: PropTypes.string,
   chillsSeverity: PropTypes.string,
   coughSeverity: PropTypes.string,
-  chestPainSeverity: PropTypes.string,
   fatigueSeverity: PropTypes.string,
   soreThroatSeverity: PropTypes.string,
   bluishnessSeverity: PropTypes.string,
+  giIssueSeverity: PropTypes.string,
+  headacheSeverity: PropTypes.string,
+  lostTasteSeverity: PropTypes.string,
+  lostSmellSeverity: PropTypes.string,
 };
 
 SurveyPage2.defaultProps = {
@@ -499,10 +677,13 @@ SurveyPage2.defaultProps = {
   shortnessOfBreathSeverity: '',
   chillsSeverity: '',
   coughSeverity: '',
-  chestPainSeverity: '',
   fatigueSeverity: '',
   soreThroatSeverity: '',
   bluishnessSeverity: '',
+  giIssueSeverity: '',
+  headacheSeverity: '',
+  lostTasteSeverity: '',
+  lostSmellSeverity: '',
 };
 
 const mapStateToProps = state => {
@@ -511,10 +692,13 @@ const mapStateToProps = state => {
     shortnessOfBreathSeverity: state.surveyReducer.survey.physical.shortnessOfBreathSeverity,
     chillsSeverity: state.surveyReducer.survey.physical.chillsSeverity,
     coughSeverity: state.surveyReducer.survey.physical.coughSeverity,
-    chestPainSeverity: state.surveyReducer.survey.physical.chestPainSeverity,
     fatigueSeverity: state.surveyReducer.survey.physical.fatigueSeverity,
     soreThroatSeverity: state.surveyReducer.survey.physical.soreThroatSeverity,
     bluishnessSeverity: state.surveyReducer.survey.physical.bluishnessSeverity,
+    giIssueSeverity: state.surveyReducer.survey.physical.giIssueSeverity,
+    headacheSeverity: state.surveyReducer.survey.physical.headacheSeverity,
+    lostTasteSeverity: state.surveyReducer.survey.physical.lostTasteSeverity,
+    lostSmellSeverity: state.surveyReducer.survey.physical.lostSmellSeverity,
   };
 };
 

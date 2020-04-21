@@ -1,40 +1,37 @@
-/* eslint-disable no-console */
-
 import React, { useState } from 'react';
-import { useHistory } from 'react-router-dom';
 import { makeStyles } from '@material-ui/core/styles';
 import { Typography, Button, TextField, Grid } from '@material-ui/core';
-import { useBlockstack } from 'react-blockstack';
 import { connect } from 'react-redux';
-import PropTypes, { object } from 'prop-types';
+import PropTypes from 'prop-types';
 import buttonsCss from '../../css/buttons';
 import actions from '../../redux/actions/actions';
 
-const useStyles = makeStyles(() => ({
+const useStyles = makeStyles(theme => ({
   root: {
     alignItems: 'center',
     justifyContent: 'center',
     marginLeft: 'auto',
     marginRight: 'auto',
+    maxWidth: theme.breakpoints.values.md,
+    padding: '4px 32px',
   },
   additionalComments: {
-    margin: '3em',
-    width: '80vw',
+    width: '100%',
     border: '2px solid #f64141',
   },
   continueButton: {
     ...buttonsCss.buttons,
-    width: '50vw',
+
+    margin: '20px 8px 10px 8px',
+    width: '160px',
   },
 }));
 
 const SurveyPage3 = props => {
-  const { numObservations, setSurveyPage3, survey, toSurveyPage2, clearSurvey } = props;
+  const { setSurveyPage3, survey, toSurveyPage2 } = props;
   const { nonPhysical } = survey;
   const classes = useStyles();
   const [openComment, setOpenComment] = useState(nonPhysical.openComment || '');
-  const history = useHistory();
-  const { userSession } = useBlockstack();
 
   const handleopenComment = value => {
     setOpenComment(value);
@@ -44,51 +41,51 @@ const SurveyPage3 = props => {
     toSurveyPage2({ openComment });
   };
 
+  const surveyPage3 = {
+    openComment,
+  };
+
+  const openSurveyPage4 = () => {
+    setSurveyPage3(surveyPage3);
+  };
+
   const submitSurveyPage3 = async () => {
     survey.nonPhysical.openComment = openComment;
 
-    const observation = survey;
-    const encryptOptions = { encrypt: true };
-    const fileNumber = `${numObservations + 1}`.padStart(7, '0');
+    setSurveyPage3({
+      openComment,
+    });
 
-    try {
-      await userSession.putFile(`observation/${fileNumber}.json`, JSON.stringify(observation), encryptOptions);
+    setSurveyPage3(surveyPage3);
+  };
 
-      history.push('/');
-
-      setSurveyPage3({
-        openComment,
-      });
-
-      clearSurvey();
-
-      window.localStorage.setItem('surveyCompleted', 'true');
-    } catch (err) {
-      console.log(err);
-    }
+  const submitButton = () => {
+    submitSurveyPage3();
+    openSurveyPage4();
   };
 
   return (
     <div className={classes.root}>
       <Grid container justify="center" spacing={1} className={classes.grid}>
         <Typography>
-          <b>Q6: Anything else you want to add?</b>
+          <b>Q6: Anything other symptoms or comments you want to add?</b>
         </Typography>
         <Grid container justify="center" spacing={1} className={classes.grid}>
-          <Grid item xs={12} xl={4}>
+          <Grid item xs={12}>
             <TextField
               variant="outlined"
+              placeholder="e.g. loss of smell or taste"
               className={classes.additionalComments}
               defaultValue={openComment}
               onChange={e => handleopenComment(e.target.value)}
             />
           </Grid>
-          <Grid item xs={12} xl={4}>
+          <Grid item xs={12}>
             <Button onClick={sendBackToPage2} variant="outlined" color="secondary" className={classes.continueButton}>
               BACK
             </Button>
-            <Button onClick={submitSurveyPage3} color="secondary" className={classes.continueButton}>
-              SUBMIT
+            <Button onClick={submitButton} color="secondary" className={classes.continueButton}>
+              CONTINUE
             </Button>
           </Grid>
         </Grid>
@@ -97,17 +94,14 @@ const SurveyPage3 = props => {
   );
 };
 SurveyPage3.propTypes = {
-  numObservations: PropTypes.number.isRequired,
   setSurveyPage3: PropTypes.func.isRequired,
-  survey: PropTypes.objectOf(object).isRequired,
+  survey: PropTypes.objectOf(Object).isRequired,
   toSurveyPage2: PropTypes.func.isRequired,
-  clearSurvey: PropTypes.func.isRequired,
 };
 
 const mapStateToProps = state => {
   return {
     survey: state.surveyReducer.survey,
-    numObservations: state.observationsReducer.numObservations,
   };
 };
 
@@ -115,7 +109,6 @@ const mapDispatchToProps = dispatch => {
   return {
     setSurveyPage3: survey => dispatch(actions.setSurveyPage3(survey)),
     toSurveyPage2: survey => dispatch(actions.toSurveyPage2(survey)),
-    clearSurvey: () => dispatch(actions.clearSurvey()),
   };
 };
 

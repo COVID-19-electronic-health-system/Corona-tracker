@@ -1,129 +1,60 @@
-/* eslint-disable no-unused-vars */
-/* eslint-disable no-await-in-loop */
-
-import React, { useEffect, useRef } from 'react';
-import { useSelector } from 'react-redux';
-import * as chartJs from 'chart.js';
+import React, { useState } from 'react';
+import { ResponsiveContainer, LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, Legend } from 'recharts';
+import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
-import { useBlockstack } from 'react-blockstack';
 
-const Chart = ({ chartType }) => {
-  const temperatureData = useSelector(state => state.temperatureReducer.temperature);
-  const data = [];
-  let files = [];
-  const { userSession } = useBlockstack();
+const Chart = props => {
+  const { observations } = props;
 
-  const chartConfig = {
-    type: chartType,
-    data: {
-      labels: temperatureData.labels,
-      datasets: [
-        {
-          label: 'Patient temperature',
-          backgroundColor: '#4760ff',
-          data: temperatureData.values,
-        },
-      ],
-    },
-    options: {
-      scales: {
-        yAxes: [
-          {
-            ticks: {
-              max: 110,
-              min: 80,
-            },
-          },
-        ],
-      },
-    },
-  };
+  const temps = observations.map(observation => {
+    const datetime = new Date(observation.date).toISOString().slice(0, 10);
+    let temp;
+    if (
+      !observation.physical.feverSeverity ||
+      observation.physical.feverSeverity === '' ||
+      !parseFloat(observation.physical.feverSeverity, 10) > 0
+    ) {
+      temp = 0;
+    } else {
+      temp = parseFloat(observation.physical.feverSeverity, 10);
+    }
 
-  const chartContainer = useRef(null);
+    return { date: datetime, temperature: temp };
+  });
 
-  const getFiles = async () => {
-    files = [];
-    await userSession
-      .listFiles(file => {
-        files.push(file);
-        return true;
-      })
-      .then(async () => {
-        for (let i = 0; i < files.length; i += 1) {
-          if (files[i].includes('observation/')) {
-            const curr = await userSession.getFile(files[i]);
-            data.push(JSON.parse(curr));
-          }
-        }
-      })
-      .then(() => {
-        const map = new Map();
-        data.map(dataPoint => {
-          const date = new Date(dataPoint.date).toISOString().slice(0, 10);
-
-          let temp;
-          if (
-            !dataPoint.physical.feverSeverity ||
-            dataPoint.physical.feverSeverity === '' ||
-            !parseInt(dataPoint.physical.feverSeverity, 10) > 0
-          ) {
-            temp = 0;
-          } else {
-            temp = parseInt(dataPoint.physical.feverSeverity, 10);
-          }
-
-          if (map.has(date)) {
-            if (map.get(date).temp !== 0) {
-              map.get(date).temp = (map.get(date).temp + temp) / (map.get(date).numObservations + 1);
-            }
-            map.set(temp, {
-              temp,
-              date,
-            });
-          } else {
-            map.set(date, {
-              temp,
-              date,
-            });
-          }
-          return true;
-        });
-
-        const dates = [];
-        const temps = [];
-        map.forEach(entry => {
-          dates.push(entry.date);
-          temps.push(entry.temp);
-        });
-
-        chartConfig.data.labels = dates;
-        chartConfig.labdels = dates;
-        chartConfig.data.datasets[0].data = temps;
-        return true;
-      });
-  };
-
-  useEffect(() => {
-    getFiles(chartConfig).then(() => {
-      const ChartJS = new chartJs.Chart(chartContainer.current, chartConfig);
-    });
-    // eslint-disable-next-line
-  }, [chartContainer, chartConfig]);
+  const [temperatureData] = useState(temps);
 
   return (
-    <div
-      style={{
-        width: '100%',
-        height: '100px',
-      }}
-    >
-      <canvas id="chart" ref={chartContainer} />
-    </div>
+    <ResponsiveContainer width="100%" aspect={4.0 / 1.5}>
+      <LineChart
+        data={temperatureData}
+        margin={{
+          top: 10,
+          right: 50,
+          left: 20,
+          bottom: 5,
+        }}
+      >
+        <CartesianGrid strokeDasharray="3 3" />
+        <XAxis dataKey="date" />
+        <YAxis type="number" domain={[94, 105]} />
+        <Tooltip />
+        <Legend />
+        <Line type="monotone" dataKey="temperature" stroke="#8884d8" activeDot={{ r: 8 }} />
+        <Tooltip />
+      </LineChart>
+    </ResponsiveContainer>
   );
 };
 
-export default Chart;
-
 Chart.propTypes = {
-  chartType: PropTypes.string.isRequired,
+  observations: PropTypes.arrayOf(PropTypes.instanceOf(Object)).isRequired,
 };
+
+const mapStateToProps = state => {
+  return {
+    observations: state.observationsReducer.observations,
+  };
+};
+
+export default connect(mapStateToProps)(Chart);

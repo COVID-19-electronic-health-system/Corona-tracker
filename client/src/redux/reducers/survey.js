@@ -2,8 +2,10 @@ import {
   SET_SURVEY_PAGE_1,
   SET_SURVEY_PAGE_2,
   SET_SURVEY_PAGE_3,
+  SET_SURVEY_PAGE_4,
   TO_SURVEY_PAGE_1,
   TO_SURVEY_PAGE_2,
+  TO_SURVEY_PAGE_3,
   CLEAR_SURVEY,
 } from '../actions/survey';
 
@@ -53,6 +55,10 @@ const surveyReducer = (oldState = initialState, action) => {
             fatigueSeverity: action.survey.fatigue,
             soreThroatSeverity: action.survey.soreThroat,
             bluishnessSeverity: action.survey.bluish,
+            giIssueSeverity: action.survey.giIssues,
+            headacheSeverity: action.survey.headache,
+            lostTasteSeverity: action.survey.lostTasteSeverity,
+            lostSmellSeverity: action.survey.lostSmellSeverity,
           },
           nonPhysical: {
             ...oldState.survey.nonPhysical,
@@ -60,6 +66,22 @@ const surveyReducer = (oldState = initialState, action) => {
         },
       };
     case SET_SURVEY_PAGE_3:
+      return {
+        ...oldState,
+        surveyPage: 4,
+        survey: {
+          ...oldState.survey,
+          date: Date.now(),
+          physical: {
+            ...oldState.survey.physical,
+          },
+          nonPhysical: {
+            ...oldState.survey.nonPhysical,
+            openComment: action.survey.openComment,
+          },
+        },
+      };
+    case SET_SURVEY_PAGE_4:
       return {
         ...oldState,
         surveyPage: 1,
@@ -71,7 +93,11 @@ const surveyReducer = (oldState = initialState, action) => {
           },
           nonPhysical: {
             ...oldState.survey.nonPhysical,
-            openComment: action.survey.openComment,
+            interest: action.survey.interestAnswer,
+            sadness: action.survey.sadAnswer,
+            sleep: action.survey.sleepAnswer,
+            energy: action.survey.energyAnswer,
+            appetite: action.survey.appetiteAnswer,
           },
         },
       };
@@ -92,6 +118,10 @@ const surveyReducer = (oldState = initialState, action) => {
             fatigueSeverity: action.survey.fatigue,
             soreThroatSeverity: action.survey.soreThroat,
             bluishnessSeverity: action.survey.bluish,
+            giIssueSeverity: action.survey.giIssues,
+            headacheSeverity: action.survey.headache,
+            lostTasteSeverity: action.survey.lostTasteSeverity,
+            lostSmellSeverity: action.survey.lostSmellSeverity,
           },
           nonPhysical: {
             ...oldState.survey.nonPhysical,
@@ -111,6 +141,26 @@ const surveyReducer = (oldState = initialState, action) => {
           nonPhysical: {
             ...oldState.survey.nonPhysical,
             openComment: action.survey.openComment,
+          },
+        },
+      };
+    case TO_SURVEY_PAGE_3:
+      return {
+        ...oldState,
+        surveyPage: 3,
+        survey: {
+          ...oldState.survey,
+          date: Date.now(),
+          physical: {
+            ...oldState.survey.physical,
+          },
+          nonPhysical: {
+            ...oldState.survey.nonPhysical,
+            interest: action.survey.interestAnswer,
+            sadness: action.survey.sadAnswer,
+            sleep: action.survey.sleepAnswer,
+            energy: action.survey.energyAnswer,
+            appetite: action.survey.appetiteAnswer,
           },
         },
       };
