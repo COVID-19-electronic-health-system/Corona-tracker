@@ -55,6 +55,10 @@ const surveyReducer = (oldState = initialState, action) => {
             fatigueSeverity: action.survey.fatigue,
             soreThroatSeverity: action.survey.soreThroat,
             bluishnessSeverity: action.survey.bluish,
+            giIssueSeverity: action.survey.giIssues,
+            headacheSeverity: action.survey.headache,
+            lostTasteSeverity: action.survey.lostTasteSeverity,
+            lostSmellSeverity: action.survey.lostSmellSeverity,
           },
           nonPhysical: {
             ...oldState.survey.nonPhysical,
@@ -114,6 +118,10 @@ const surveyReducer = (oldState = initialState, action) => {
             fatigueSeverity: action.survey.fatigue,
             soreThroatSeverity: action.survey.soreThroat,
             bluishnessSeverity: action.survey.bluish,
+            giIssueSeverity: action.survey.giIssues,
+            headacheSeverity: action.survey.headache,
+            lostTasteSeverity: action.survey.lostTasteSeverity,
+            lostSmellSeverity: action.survey.lostSmellSeverity,
           },
           nonPhysical: {
             ...oldState.survey.nonPhysical,

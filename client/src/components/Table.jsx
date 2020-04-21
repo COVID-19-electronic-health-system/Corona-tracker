@@ -11,22 +11,23 @@ import {
   TableRow,
   FormControlLabel,
   Checkbox,
-  Typography,
 } from '@material-ui/core';
 import { makeStyles } from '@material-ui/core/styles';
 import Chart from './Chart';
 import chartType from '../utils/chartType';
 import BehavioralChart from './behavior/chart/BehavioralChart';
+import AvgTemperature from './AvgTemperature';
 
-const useStyles = makeStyles(theme => ({
-  tagLine: {
-    marginTop: '40px',
-  },
+const useStyles = makeStyles(() => ({
   behaveDiv: {
+    paddingBottom: '20em',
     height: 700,
+    overflow: 'auto',
   },
   feverDiv: {
-    height: 500,
+    height: 700,
+    overflow: 'auto',
+    marginBottom: '10px',
   },
 }));
 
@@ -37,13 +38,16 @@ const LogTable = props => {
     'Date',
     'Overall Feeling',
     'Cough',
-    'Fever',
+    'Temperature',
     'Chills',
     'Shortness Of Breath',
     'Sore Throat',
-    'Chest Pain',
     'Fatigue',
     'Bluishness',
+    'Gastrointestinnal Issues',
+    'Headache',
+    'Loss of Smell',
+    'Loss of Taste',
     'Comments',
   ];
 
@@ -56,6 +60,7 @@ const LogTable = props => {
   ) : null;
   const renderFever = feverClicked ? (
     <div className={classes.feverDiv}>
+      <AvgTemperature />
       <Chart chartType={chartType.bar} />
     </div>
   ) : null;
@@ -75,6 +80,13 @@ const LogTable = props => {
     }
   };
 
+  const getDisplayValue = (value, suffix = '') => {
+    if (!value) {
+      return 'N/A';
+    }
+    return `${value}${suffix}`;
+  };
+
   return (
     <>
       <div>
@@ -91,23 +103,40 @@ const LogTable = props => {
               <TableBody key={observation.date}>
                 <TableRow>
                   <TableCell>{new Date(observation.date).toLocaleDateString()}</TableCell>
-                  <TableCell>{observation.physical.dailyfeeling}/5</TableCell>
-                  <TableCell>{observation.physical.coughSeverity}</TableCell>
-                  <TableCell>{observation.physical.feverSeverity}</TableCell>
-                  <TableCell>{observation.physical.chillsSeverity}</TableCell>
-                  <TableCell>{observation.physical.shortnessOfBreathSeverity}</TableCell>
-                  <TableCell>{observation.physical.soreThroatSeverity}</TableCell>
-                  <TableCell>{observation.physical.chestPainSeverity}</TableCell>
-                  <TableCell>{observation.physical.fatigueSeverity}</TableCell>
-                  <TableCell>{observation.physical.bluishnessSeverity}</TableCell>
-                  <TableCell>{observation.nonPhysical.openComment}</TableCell>
+                  <TableCell>{getDisplayValue(observation.physical.dailyfeeling, '/5')}</TableCell>
+                  <TableCell>{getDisplayValue(observation.physical.coughSeverity)}</TableCell>
+                  <TableCell>
+                    {getDisplayValue(observation.physical.feverSeverity, ` ${String.fromCharCode(176)}F`)}
+                  </TableCell>
+                  <TableCell>{getDisplayValue(observation.physical.chillsSeverity)}</TableCell>
+                  <TableCell>{getDisplayValue(observation.physical.shortnessOfBreathSeverity)}</TableCell>
+                  <TableCell>{getDisplayValue(observation.physical.soreThroatSeverity)}</TableCell>
+                  <TableCell>{getDisplayValue(observation.physical.fatigueSeverity)}</TableCell>
+                  <TableCell>{getDisplayValue(observation.physical.bluishnessSeverity)}</TableCell>
+                  <TableCell>{getDisplayValue(observation.physical.giIssueSeverity)}</TableCell>
+                  <TableCell>{getDisplayValue(observation.physical.headacheSeverity)}</TableCell>
+                  <TableCell>{getDisplayValue(observation.physical.lostTasteSeverity)}</TableCell>
+                  <TableCell>{getDisplayValue(observation.physical.lostSmellSeverity)}</TableCell>
+                  <TableCell>{getDisplayValue(observation.nonPhysical.openComment)}</TableCell>
                 </TableRow>
               </TableBody>
             ))}
           </Table>
         </TableContainer>
-        <Chart chartType={chartType.bar} />
+        <div>
+          <FormControlLabel
+            control={<Checkbox checked={feverClicked} onChange={handleChange} color="secondary" name="Fever" />}
+            label="Fever"
+          />
+          <FormControlLabel
+            control={<Checkbox checked={behaveClicked} onChange={handleChange} name="Behavioral" color="secondary" />}
+            label="Behavioral"
+          />
+        </div>
       </div>
+      {renderBehavior}
+      <br />
+      {renderFever}
     </>
   );
 };

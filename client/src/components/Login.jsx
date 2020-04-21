@@ -1,5 +1,5 @@
 import React from 'react';
-import { Button, Typography, Grid } from '@material-ui/core';
+import { Button, Typography } from '@material-ui/core';
 import { useConnect } from '@blockstack/connect';
 import { connect } from 'react-redux';
 import { useTranslation } from 'react-i18next';
@@ -9,7 +9,7 @@ import TranslationsMenu from './Translations';
 import actions from '../redux/actions/actions';
 import Loding from './Loding';
 import buttonsCss from '../css/buttons';
-import { TextLogo, Logo } from '../utils/imgUrl';
+import { FullLogo } from '../utils/imgUrl';
 
 const useStyles = makeStyles(theme => ({
   Login: {
@@ -19,7 +19,16 @@ const useStyles = makeStyles(theme => ({
   },
   Button: {
     ...buttonsCss.buttons,
-    marginTop: '5vh',
+    fontSize: '28px',
+    height: '50px',
+    lineHeight: '10px',
+    marginTop: '8%',
+    animation: `$glowing 1075ms infinite`,
+  },
+  '@keyframes glowing': {
+    '0% ': { backgroundColor: '#2ba805', boxShadow: '0px 1px 10px 0px #4760ff' },
+    '50%': { backgroundColor: '#49e819', boxShadow: '0px 1px 13px 3px #4760ff' },
+    '100%': { backgroundColor: '#2ba805', boxShadow: '0px 1px 10px 0px #4760ff' },
   },
   logo: {
     width: '40vw',
@@ -28,7 +37,7 @@ const useStyles = makeStyles(theme => ({
       height: '20vh',
     },
   },
-  textLogo: {
+  fullLogo: {
     width: '70vw',
     height: '30vh',
 
@@ -53,15 +62,13 @@ const Login = props => {
         <Loding />
       ) : (
         <div>
-          <Grid item xs={12}>
-            <object title="logo" className={classes.logo} data={Logo} type="image/svg+xml" />
-          </Grid>
-          <object title="logoText" className={classes.textLogo} data={TextLogo} type="image/svg+xml" />
+          <object title="fullLogo" className={classes.fullLogo} data={FullLogo} type="image/svg+xml" />
           <Typography variant="h6">{t('login.text')} </Typography>
           <Button variant="login" className={classes.Button} onClick={onClick}>
             {t('login.buttonText')}
           </Button>
           <TranslationsMenu />
+          <Typography>If on mobile, please disable popups for best use!</Typography>
         </div>
       )}
     </div>

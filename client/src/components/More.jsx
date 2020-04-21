@@ -6,18 +6,32 @@ import Button from '@material-ui/core/Button';
 import Dialog from '@material-ui/core/Dialog';
 import DialogActions from '@material-ui/core/DialogActions';
 import DialogTitle from '@material-ui/core/DialogTitle';
-import { Link, useHistory } from 'react-router-dom';
+import { useHistory } from 'react-router-dom';
 import axios from 'axios';
 import { makeStyles } from '@material-ui/core/styles';
 import MoreHorizIcon from '@material-ui/icons/MoreHoriz';
 import { useBlockstack } from 'react-blockstack';
 import { useTranslation } from 'react-i18next';
-import { DialogContent, DialogContentText, TextField } from '@material-ui/core';
+import { DialogContent, DialogContentText, TextField, Grid, Typography, Snackbar } from '@material-ui/core';
+import MuiAlert from '@material-ui/lab/Alert';
+import PropTypes from 'prop-types';
 import buttonsCss from '../css/buttons';
 
-const useStyle = makeStyles({
+const useStyle = makeStyles(theme => ({
   root: {
-    width: '100px',
+    width: '80px',
+    marginTop: '8px',
+    cursor: 'pointer',
+    [theme.breakpoints.up('md')]: {
+      width: '93px',
+    },
+  },
+  grow: {
+    color: 'white',
+    transition: 'all .3s ease-in-out',
+    '&:hover': {
+      transform: 'scale(1.2)',
+    },
   },
   dialog: {
     width: '100vw',
@@ -48,11 +62,6 @@ const useStyle = makeStyles({
   },
   icon: {
     fontSize: '40px',
-    color: 'white',
-    transition: 'all .3s ease-in-out',
-    '&:hover': {
-      transform: 'scale(1.1)',
-    },
   },
   buttons: {
     ...buttonsCss.buttons,
@@ -67,44 +76,101 @@ const useStyle = makeStyles({
     color: 'white',
     alignContent: 'center',
   },
-});
+}));
+
+function Alert(props) {
+  const { severity, children, onClose } = props;
+  return (
+    <MuiAlert elevation={6} variant="filled" severity={severity} onClose={onClose}>
+      {children}
+    </MuiAlert>
+  );
+}
+
+Alert.propTypes = {
+  severity: PropTypes.string.isRequired,
+  children: PropTypes.node.isRequired,
+  onClose: PropTypes.func.isRequired,
+};
 
 const More = () => {
   const [open, setOpen] = useState(false);
-  const [number, setNumber] = useState('');
+  const [openSnackbar, setOpenSnackbar] = useState(false);
+  const [snackbar, setSnackbar] = useState({});
+  const [phoneNumber, setPhoneNumber] = useState('');
   const classes = useStyle();
   const { signOut } = useBlockstack();
   const { t } = useTranslation();
   const history = useHistory();
   const handleClickOpen = () => {
-    setOpen(!open);
+    setOpen(true);
   };
   const handleClose = () => {
     setOpen(false);
   };
 
+  const handleCloseSnackbar = (event, reason) => {
+    if (reason === 'clickaway') {
+      return;
+    }
+    setOpenSnackbar(false);
+  };
+
+  let errorMessage = '';
+
   const subscribe = () => {
     axios
       .post(
-        'https://m72j7fayxh.execute-api.us-east-1.amazonaws.com/api/subscribe',
+        'https://kplh25sfce.execute-api.us-east-1.amazonaws.com/default/coronalert-subscribe',
         {
-          number,
+          phoneNumber,
         },
         {
           headers: {
-            'Content-Type': 'application/x-www-form-urlencoded',
+            'Content-Type': 'application/json',
           },
         }
       )
       .then(res => {
         console.log(res);
+        handleClose();
         alert(
           `Subscribed successfully! You will be automatically unsubscribed in one day, and will receive three texts in that timespan. If you enter again, you will receive double the notifications - so please do not! This is very early alpha :)`
         );
       })
       .catch(err => {
-        console.log(err);
+        if (err.response && err.response.status === 409) {
+          errorMessage = 'This phone number was already subscribed';
+        } else {
+          errorMessage = 'Something went wrong. Please try again';
+        }
+        setSnackbar({
+          severity: 'error',
+          message: errorMessage,
+        });
+        setOpenSnackbar(true);
       });
+  };
+
+  const unsubscribe = async () => {
+    const url = 'https://kplh25sfce.execute-api.us-east-1.amazonaws.com/default/coronalert-unsubscribe';
+    const data = { phoneNumber };
+    try {
+      await axios.post(url, data);
+      alert('Unsubscribed successfully!');
+      handleClose();
+    } catch (err) {
+      if (err.response && err.response.status === 404) {
+        errorMessage = 'This phone number was not subscribed';
+      } else {
+        errorMessage = 'Something went wrong. Please try again';
+      }
+      setSnackbar({
+        severity: 'error',
+        message: errorMessage,
+      });
+      setOpenSnackbar(true);
+    }
   };
 
   const navigateTo = href => {
@@ -112,8 +178,18 @@ const More = () => {
   };
 
   return (
-    <Link to="#more" className={classes.root} onClick={handleClickOpen}>
-      <MoreHorizIcon className={classes.icon} />
+    <div>
+      <Grid container alignContent="center" className={classes.root} onClick={handleClickOpen}>
+        <Grid container className={classes.grow} alignContent="center" justify="center">
+          <Grid container style={{ width: '100%' }} alignContent="center" justify="center">
+            <MoreHorizIcon className={classes.icon} />
+          </Grid>
+
+          <Grid container alignContent="center" justify="center">
+            <Typography variant="caption">more</Typography>
+          </Grid>
+        </Grid>
+      </Grid>
       <Dialog
         className={classes.dialog}
         open={open}
@@ -127,11 +203,11 @@ const More = () => {
         <DialogContent className={classes.dialogContent}>
           <DialogContent>
             <DialogContentText className={classes.descriptionText}>
-              Enter your phone number to be subscribed to the occasional question/survey to answer over text
+              Enter your phone number to subscribe/unsubscribe to the occasional question/survey to answer over text.
             </DialogContentText>
             <TextField
               className={classes.subtitleText}
-              onChange={e => setNumber(e.target.value)}
+              onChange={e => setPhoneNumber(e.target.value)}
               autoFocus
               margin="dense"
               id="filled-phone"
@@ -141,29 +217,74 @@ const More = () => {
             />
           </DialogContent>
           <DialogActions className={classes.subscribeContainer}>
-            <Button onClick={() => subscribe()} color="primary" className={classes.subtitleText}>
+            <Button
+              onClick={() => {
+                subscribe();
+              }}
+              color="primary"
+              className={classes.subtitleText}
+            >
               Subscribe
+            </Button>
+            <Button
+              onClick={() => {
+                unsubscribe();
+              }}
+              color="secondary"
+              className={classes.subtitleText}
+            >
+              Unsubscribe
             </Button>
           </DialogActions>
           <DialogActions>
             <Button
               size="medium"
-              onClick={() => navigateTo('/onboard')}
+              onClick={() => {
+                handleClose();
+                navigateTo('/settings');
+              }}
               variant="contained"
               className={classes.buttons}
             >
               Settings
             </Button>
-            <Button size="medium" onClick={() => navigateTo('/about')} variant="contained" className={classes.buttons}>
+            <Button
+              size="medium"
+              onClick={() => {
+                navigateTo('/about');
+                handleClose();
+              }}
+              variant="contained"
+              className={classes.buttons}
+            >
               About
             </Button>
-            <Button size="medium" color="secondary" variant="contained" className={classes.buttons} onClick={signOut}>
+            <Button
+              size="medium"
+              color="secondary"
+              variant="contained"
+              className={classes.buttons}
+              onClick={() => {
+                handleClose();
+                signOut();
+              }}
+            >
               {t('signoutButtonText')}
             </Button>
           </DialogActions>
         </DialogContent>
+        <Snackbar
+          open={openSnackbar}
+          autoHideDuration={6000}
+          anchorOrigin={{ vertical: 'top', horizontal: 'center' }}
+          onClose={handleCloseSnackbar}
+        >
+          <Alert onClose={handleCloseSnackbar} severity={snackbar.severity}>
+            {snackbar.message}
+          </Alert>
+        </Snackbar>
       </Dialog>
-    </Link>
+    </div>
   );
 };
 
