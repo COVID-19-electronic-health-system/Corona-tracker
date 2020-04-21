@@ -46,6 +46,8 @@ const LogTable = props => {
     'Bluishness',
     'Gastrointestinnal Issues',
     'Headache',
+    'Loss of Smell',
+    'Loss of Taste',
     'Comments',
   ];
 
@@ -113,6 +115,8 @@ const LogTable = props => {
                   <TableCell>{getDisplayValue(observation.physical.bluishnessSeverity)}</TableCell>
                   <TableCell>{getDisplayValue(observation.physical.giIssueSeverity)}</TableCell>
                   <TableCell>{getDisplayValue(observation.physical.headacheSeverity)}</TableCell>
+                  <TableCell>{getDisplayValue(observation.physical.lostTasteSeverity)}</TableCell>
+                  <TableCell>{getDisplayValue(observation.physical.lostSmellSeverity)}</TableCell>
                   <TableCell>{getDisplayValue(observation.nonPhysical.openComment)}</TableCell>
                 </TableRow>
               </TableBody>

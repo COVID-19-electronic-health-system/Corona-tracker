@@ -57,6 +57,8 @@ const surveyReducer = (oldState = initialState, action) => {
             bluishnessSeverity: action.survey.bluish,
             giIssueSeverity: action.survey.giIssues,
             headacheSeverity: action.survey.headache,
+            lostTasteSeverity: action.survey.lostTasteSeverity,
+            lostSmellSeverity: action.survey.lostSmellSeverity,
           },
           nonPhysical: {
             ...oldState.survey.nonPhysical,
@@ -118,6 +120,8 @@ const surveyReducer = (oldState = initialState, action) => {
             bluishnessSeverity: action.survey.bluish,
             giIssueSeverity: action.survey.giIssues,
             headacheSeverity: action.survey.headache,
+            lostTasteSeverity: action.survey.lostTasteSeverity,
+            lostSmellSeverity: action.survey.lostSmellSeverity,
           },
           nonPhysical: {
             ...oldState.survey.nonPhysical,
