@@ -60,7 +60,7 @@ const Login = props => {
   };
 
   return (
-    <div className={classes.Login} onMouseEnter={loginLoading.isLoading ? closeModal : null}>
+    <div className={classes.Login} onPointerOver={loginLoading.isLoading ? closeModal : null}>
       {loginLoading.isLoading ? (
         <Loding />
       ) : (
