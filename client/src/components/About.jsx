@@ -5,13 +5,12 @@ import React from 'react';
 import Card from '@material-ui/core/Card';
 import CardContent from '@material-ui/core/CardContent';
 import CardMedia from '@material-ui/core/CardMedia';
-import CssBaseline from '@material-ui/core/CssBaseline';
 import Grid from '@material-ui/core/Grid';
 import Typography from '@material-ui/core/Typography';
 import { makeStyles } from '@material-ui/core/styles';
 import Container from '@material-ui/core/Container';
 import Link from '@material-ui/core/Link';
-import { CodivId, AdvisoryBoard } from '../utils/imgUrl';
+import { CodivId, AdvisoryBoard, GlobalHack, Decrypt, HackQuarantine } from '../utils/imgUrl';
 
 // TODO add once we get it :)
 function Copyright() {
@@ -68,9 +67,8 @@ const useStyles = makeStyles(theme => ({
 const cards = [
   {
     id: 1,
-    title: 'Top 20 in CodeVsCOVID-19',
-    about: `CoronaTracker has recently placed in the top 20 out of over 300 teams in HackZurich's CodeVSCOVID-19`,
-    // TODO replace these required with static images in S3 after beta, remove eslint-disable tag
+    title: 'Winner: CodeVsCOVID-19',
+    about: `CoronaTracker placed in the Top 20 out of over 300 teams in HackZurich's CodeVSCOVID-19`,
     img: CodivId,
   },
   {
@@ -79,6 +77,24 @@ const cards = [
     about:
       'Our advisory board consists of a health-tech CFO, epidemiologist, pulmonary critical care specialist, systems architect, neuropsychologist and emergency room doctor',
     img: AdvisoryBoard,
+  },
+  {
+    id: 3,
+    title: 'Winner: Global Hack',
+    about: `CoronaTracker placed in the Top 89 Winners out of over 1500 teams in Facebook's Global Hack 1.0`,
+    img: GlobalHack,
+  },
+  {
+    id: 4,
+    title: 'Decrypt',
+    about: `CoronaTracker was featured in an exclusive article on Decrypt, a leading blockchain news publication`,
+    img: Decrypt,
+  },
+  {
+    id: 5,
+    title: 'Winner: Hack Quarantine',
+    about: `CoronaTracker won "Best Use of Blockstack" in Hack Quarantine`,
+    img: HackQuarantine,
   },
 ];
 
@@ -100,6 +116,13 @@ const About = () => {
               </Typography>
             </Container>
           </div>
+          <Link
+            className={classes.color}
+            href="https://docs.google.com/forms/d/1sMp_qZYIrVxY6dxVCfIF6XQCU2lUeM_3qITC8hOph1w/edit"
+            color="inherit"
+          >
+            Take our Beta Survey!
+          </Link>
           <Container className={classes.cardGrid} maxWidth="md">
             {/* End hero unit */}
             <Grid container spacing={4}>
@@ -130,13 +153,6 @@ const About = () => {
             </span>{' '}
             in NYC and across the globe
           </Typography>
-          <Link
-            className={classes.color}
-            href="https://docs.google.com/forms/d/1sMp_qZYIrVxY6dxVCfIF6XQCU2lUeM_3qITC8hOph1w/edit"
-            color="inherit"
-          >
-            Take our Beta Survey!
-          </Link>
           {/* <Copyright /> */}
         </footer>
       </Grid>
