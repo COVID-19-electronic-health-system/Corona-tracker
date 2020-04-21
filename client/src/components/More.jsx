@@ -12,7 +12,9 @@ import { makeStyles } from '@material-ui/core/styles';
 import MoreHorizIcon from '@material-ui/icons/MoreHoriz';
 import { useBlockstack } from 'react-blockstack';
 import { useTranslation } from 'react-i18next';
-import { DialogContent, DialogContentText, TextField, Grid, Typography } from '@material-ui/core';
+import { DialogContent, DialogContentText, TextField, Grid, Typography, Snackbar } from '@material-ui/core';
+import MuiAlert from '@material-ui/lab/Alert';
+import PropTypes from 'prop-types';
 import buttonsCss from '../css/buttons';
 
 const useStyle = makeStyles(theme => ({
@@ -76,8 +78,25 @@ const useStyle = makeStyles(theme => ({
   },
 }));
 
+function Alert(props) {
+  const { severity, children, onClose } = props;
+  return (
+    <MuiAlert elevation={6} variant="filled" severity={severity} onClose={onClose}>
+      {children}
+    </MuiAlert>
+  );
+}
+
+Alert.propTypes = {
+  severity: PropTypes.string.isRequired,
+  children: PropTypes.node.isRequired,
+  onClose: PropTypes.func.isRequired,
+};
+
 const More = () => {
   const [open, setOpen] = useState(false);
+  const [openSnackbar, setOpenSnackbar] = useState(false);
+  const [snackbar, setSnackbar] = useState({});
   const [phoneNumber, setPhoneNumber] = useState('');
   const classes = useStyle();
   const { signOut } = useBlockstack();
@@ -89,6 +108,15 @@ const More = () => {
   const handleClose = () => {
     setOpen(false);
   };
+
+  const handleCloseSnackbar = (event, reason) => {
+    if (reason === 'clickaway') {
+      return;
+    }
+    setOpenSnackbar(false);
+  };
+
+  let errorMessage = '';
 
   const subscribe = () => {
     axios
@@ -105,12 +133,22 @@ const More = () => {
       )
       .then(res => {
         console.log(res);
+        handleClose();
         alert(
           `Subscribed successfully! You will be automatically unsubscribed in one day, and will receive three texts in that timespan. If you enter again, you will receive double the notifications - so please do not! This is very early alpha :)`
         );
       })
       .catch(err => {
-        console.log(err);
+        if (err.response && err.response.status === 409) {
+          errorMessage = 'This phone number was already subscribed';
+        } else {
+          errorMessage = 'Something went wrong. Please try again';
+        }
+        setSnackbar({
+          severity: 'error',
+          message: errorMessage,
+        });
+        setOpenSnackbar(true);
       });
   };
 
@@ -120,8 +158,18 @@ const More = () => {
     try {
       await axios.post(url, data);
       alert('Unsubscribed successfully!');
+      handleClose();
     } catch (err) {
-      console.error(err);
+      if (err.response && err.response.status === 404) {
+        errorMessage = 'This phone number was not subscribed';
+      } else {
+        errorMessage = 'Something went wrong. Please try again';
+      }
+      setSnackbar({
+        severity: 'error',
+        message: errorMessage,
+      });
+      setOpenSnackbar(true);
     }
   };
 
@@ -172,7 +220,6 @@ const More = () => {
             <Button
               onClick={() => {
                 subscribe();
-                handleClose();
               }}
               color="primary"
               className={classes.subtitleText}
@@ -182,7 +229,6 @@ const More = () => {
             <Button
               onClick={() => {
                 unsubscribe();
-                handleClose();
               }}
               color="secondary"
               className={classes.subtitleText}
@@ -227,6 +273,16 @@ const More = () => {
             </Button>
           </DialogActions>
         </DialogContent>
+        <Snackbar
+          open={openSnackbar}
+          autoHideDuration={6000}
+          anchorOrigin={{ vertical: 'top', horizontal: 'center' }}
+          onClose={handleCloseSnackbar}
+        >
+          <Alert onClose={handleCloseSnackbar} severity={snackbar.severity}>
+            {snackbar.message}
+          </Alert>
+        </Snackbar>
       </Dialog>
     </div>
   );
