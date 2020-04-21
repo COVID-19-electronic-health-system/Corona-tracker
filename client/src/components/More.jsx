@@ -116,6 +116,8 @@ const More = () => {
     setOpenSnackbar(false);
   };
 
+  let errorMessage = '';
+
   const subscribe = () => {
     axios
       .post(
@@ -131,12 +133,12 @@ const More = () => {
       )
       .then(res => {
         console.log(res);
+        handleClose();
         alert(
           `Subscribed successfully! You will be automatically unsubscribed in one day, and will receive three texts in that timespan. If you enter again, you will receive double the notifications - so please do not! This is very early alpha :)`
         );
       })
       .catch(err => {
-        let errorMessage = '';
         if (err.response && err.response.status === 409) {
           errorMessage = 'This phone number was already subscribed';
         } else {
@@ -156,8 +158,8 @@ const More = () => {
     try {
       await axios.post(url, data);
       alert('Unsubscribed successfully!');
+      handleClose();
     } catch (err) {
-      let errorMessage = '';
       if (err.response && err.response.status === 404) {
         errorMessage = 'This phone number was not subscribed';
       } else {
@@ -218,7 +220,6 @@ const More = () => {
             <Button
               onClick={() => {
                 subscribe();
-                // handleClose();
               }}
               color="primary"
               className={classes.subtitleText}
@@ -228,7 +229,6 @@ const More = () => {
             <Button
               onClick={() => {
                 unsubscribe();
-                // handleClose();
               }}
               color="secondary"
               className={classes.subtitleText}
