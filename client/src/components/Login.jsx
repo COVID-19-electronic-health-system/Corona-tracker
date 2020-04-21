@@ -52,12 +52,15 @@ const Login = props => {
   const { doOpenAuth } = useConnect();
   const { t } = useTranslation();
   const onClick = () => {
-    setLoading(true);
-    doOpenAuth();
+      setLoading(true);
+      doOpenAuth();
   };
+  const closeModal = () => {
+    setLoading(false)
+  }
 
   return (
-    <div className={classes.Login}>
+    <div className={classes.Login} onMouseEnter={loginLoading.isLoading ? closeModal : null}>
       {loginLoading.isLoading ? (
         <Loding />
       ) : (
