@@ -27,6 +27,10 @@ export const languages = [
     language: 'Spanish',
     abbreviation: 'es',
   },
+  {
+    language: 'Dutch',
+    abbreviation: 'nl',
+  },
 ];
 
 export const defaultLanguage = languages[0];

@@ -1,0 +1,23 @@
+{
+  "hello": "Hallo,",
+  "todayText": "Vandaag is",
+  "login": {
+    "text": "Uw gezondheids app monitored griepale symptomen, verbindt u met telegezondheidsverleners in uw omgeving en verleent u locale informatie.",
+    "buttonText": "Start nu"
+  },
+  "signoutButtonText": "Sign out",
+  "surveyButtonText": "Beantwoord een vragenlijst",
+  "health": {
+    "logButton": "Mijn gezondheidsdagboek",
+    "showMoreButton": "Toon meer"
+  },
+  "disclaimer": {
+    "text0": "De CoronaTracker is ontwikkeld om uw gezondheidstoestand te helpen opvolgen ten tijde van de COVID-19 crisis. De CoronatTracker heeft niet de intentie of mag niet gebruikt worden als vervanging voor uw diagnose of behandeling van ziekte, symptomen inclusief COVID-19 maar ook andere aandoeningen. De CoronaTracker maakt gebruik van Blockstack om uw persoonlijke data te verwerken en te bewaren. Dit wil zeggen dat u volledige eigenaar bent van uw persoonlijke informatie ingebracht in de CoronaTracker toepassing. Elke analyse of gebruik van informatie welke verzameld kan worden wordt volledig geanonimizeerd and zorgvuldig bewaard zodat niemand uw informatie in verband kan brengen met uw persoon.",
+    "text1": "Deze toepassing is gemaakt voor de samenleving, door de samenleving omdat u uw gezondheid zelf in handen krijgt. Indien u het eens bent met onze visie volgt u onze Algemene Voorwaarden en Privacy Beleid.",
+    "agree": "Ik ben het eens",
+    "disagree": "Ikben het oneens"
+  },
+  "subscribe": "Abonneer op alerten",
+  "phoneNumber": "Geef uw telefoon nummer",
+  "selectLan": "Selecteer taal"
+}
