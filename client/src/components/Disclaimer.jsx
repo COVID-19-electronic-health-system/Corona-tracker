@@ -135,7 +135,7 @@ Disclaimer.propTypes = {
 };
 
 const mapStateToProps = state => {
-  return { answer: state.disclaimerReducer.answer };
+  return { answer: state.onboardingReducer.disclaimerAnswer };
 };
 
 const mapDispatchToProps = dispatch => {
@@ -145,4 +145,7 @@ const mapDispatchToProps = dispatch => {
   };
 };
 
-export default connect(mapStateToProps, mapDispatchToProps)(Disclaimer);
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(Disclaimer);
