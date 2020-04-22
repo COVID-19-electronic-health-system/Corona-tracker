@@ -7,7 +7,6 @@ import {
   resetObservations,
   addObservationToStore,
 } from './observations';
-import { setLoginLoading } from './login';
 import { selectDate } from './calendar';
 import { setToggleValue, setDetailData, deleteDetailData } from './healthToggle';
 import {
@@ -31,7 +30,6 @@ import {
 import { deleteUserDataThunk } from './deleteUserData';
 
 const actions = {
-  setLoginLoading,
   fetchObservations,
   addObservation,
   deleteObservations,

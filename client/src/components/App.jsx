@@ -24,12 +24,11 @@ import Settings from './Settings';
 ReactBlockstack({ appConfig });
 
 const App = props => {
-  const { setLoading, fetchObservations, fetchDemographicsComorbidities } = props;
+  const { fetchObservations, fetchDemographicsComorbidities } = props;
   const { userSession, authenticated } = useBlockstack();
   const finished = useCallback(() => {
     didConnect({ userSession });
-    setLoading(false);
-  }, [userSession, setLoading]);
+  }, [userSession]);
   const authOptions = {
     redirectTo: '/',
     finished,
@@ -93,13 +92,11 @@ const App = props => {
 };
 
 App.propTypes = {
-  setLoading: PropTypes.func.isRequired,
   fetchObservations: PropTypes.func.isRequired,
   fetchDemographicsComorbidities: PropTypes.func.isRequired,
 };
 
 const mapDispatchToProps = dispatch => ({
-  setLoading: isLoading => dispatch(actions.setLoginLoading(isLoading)),
   fetchObservations: userSession => dispatch(actions.fetchObservations(userSession)),
   fetchDemographicsComorbidities: userSession => dispatch(actions.fetchDemographicsComorbidities(userSession)),
 });
