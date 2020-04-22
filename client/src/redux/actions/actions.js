@@ -8,8 +8,6 @@ import {
   addObservationToStore,
 } from './observations';
 import { setLoginLoading } from './login';
-import { setNavbarSection } from './navigation';
-import { setDisclaimerAnswerThunk, resetDisclaimerAnswer } from './disclaimer';
 import { selectDate } from './calendar';
 import { setToggleValue, setDetailData, deleteDetailData } from './healthToggle';
 import {
@@ -27,12 +25,13 @@ import {
   setDemographicsComorbiditiesThunk,
   resetDemographicsComorbidities,
   fetchDemographicsComorbidities,
+  setDisclaimerAnswerThunk,
+  resetDisclaimerAnswer,
 } from './onboarding';
 import { deleteUserDataThunk } from './deleteUserData';
 
 const actions = {
   setLoginLoading,
-  setNavbarSection,
   fetchObservations,
   addObservation,
   deleteObservations,
