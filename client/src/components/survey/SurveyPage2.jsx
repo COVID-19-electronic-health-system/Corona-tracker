@@ -269,6 +269,14 @@ const SurveyPage2 = props => {
           <ButtonGroup color="secondary" aria-label="outlined primary button group" className={classes.buttonGroup}>
             <Button
               variant="contained"
+              value="none"
+              className={shortnessOfBreath === 'none' ? classes.selectedButton : classes.button}
+              onClick={e => handleshortnessOfBreath(e.target.textContent)}
+            >
+              None
+            </Button>
+            <Button
+              variant="contained"
               value="minimal"
               className={shortnessOfBreath === 'minimal' ? classes.selectedButton : classes.button}
               onClick={e => handleshortnessOfBreath(e.target.textContent)}
@@ -303,6 +311,14 @@ const SurveyPage2 = props => {
         </Grid>
         <Grid item xs={9} sm={6} className={classes.gridItem}>
           <ButtonGroup color="secondary" aria-label="outlined primary button group" className={classes.buttonGroup}>
+            <Button
+              variant="contained"
+              value="none"
+              className={chills === 'none' ? classes.selectedButton : classes.button}
+              onClick={e => handlechills(e.target.textContent)}
+            >
+              None
+            </Button>
             <Button
               variant="contained"
               value="minimal"
@@ -340,6 +356,14 @@ const SurveyPage2 = props => {
           <ButtonGroup color="secondary" aria-label="outlined primary button group" className={classes.buttonGroup}>
             <Button
               variant="contained"
+              value="none"
+              className={dryCough === 'none' ? classes.selectedButton : classes.button}
+              onClick={e => handledryCough(e.target.textContent)}
+            >
+              None
+            </Button>
+            <Button
+              variant="contained"
               value="minimal"
               className={dryCough === 'minimal' ? classes.selectedButton : classes.button}
               onClick={e => handledryCough(e.target.textContent)}
@@ -373,6 +397,14 @@ const SurveyPage2 = props => {
         </Grid>
         <Grid item xs={9} sm={6} className={classes.gridItem}>
           <ButtonGroup color="secondary" aria-label="outlined primary button group" className={classes.buttonGroup}>
+            <Button
+              variant="contained"
+              value="none"
+              className={fatigue === 'none' ? classes.selectedButton : classes.button}
+              onClick={e => handlefatigue(e.target.textContent)}
+            >
+              None
+            </Button>
             <Button
               variant="contained"
               value="minimal"
@@ -410,6 +442,14 @@ const SurveyPage2 = props => {
           <ButtonGroup color="secondary" aria-label="outlined primary button group" className={classes.buttonGroup}>
             <Button
               variant="contained"
+              value="none"
+              className={soreThroat === 'none' ? classes.selectedButton : classes.button}
+              onClick={e => handlesoreThroat(e.target.textContent)}
+            >
+              None
+            </Button>
+            <Button
+              variant="contained"
               value="minimal"
               className={soreThroat === 'minimal' ? classes.selectedButton : classes.button}
               onClick={e => handlesoreThroat(e.target.textContent)}
@@ -443,6 +483,14 @@ const SurveyPage2 = props => {
         </Grid>
         <Grid item xs={9} sm={6} className={classes.gridItem}>
           <ButtonGroup color="secondary" aria-label="outlined primary button group" className={classes.buttonGroup}>
+            <Button
+              variant="contained"
+              value="none"
+              className={bluish === 'none' ? classes.selectedButton : classes.button}
+              onClick={e => handlebluish(e.target.textContent)}
+            >
+              None
+            </Button>
             <Button
               variant="contained"
               value="minimal"
@@ -480,6 +528,14 @@ const SurveyPage2 = props => {
           <ButtonGroup color="secondary" aria-label="outlined primary button group" className={classes.buttonGroup}>
             <Button
               variant="contained"
+              value="none"
+              className={headache === 'none' ? classes.selectedButton : classes.button}
+              onClick={e => handleHeadache(e.target.textContent)}
+            >
+              None
+            </Button>
+            <Button
+              variant="contained"
               value="minimal"
               className={headache === 'minimal' ? classes.selectedButton : classes.button}
               onClick={e => handleHeadache(e.target.textContent)}
@@ -513,6 +569,14 @@ const SurveyPage2 = props => {
         </Grid>
         <Grid item xs={9} sm={6} className={classes.gridItem}>
           <ButtonGroup color="secondary" aria-label="outlined primary button group" className={classes.buttonGroup}>
+            <Button
+              variant="contained"
+              value="none"
+              className={lostTaste === 'none' ? classes.selectedButton : classes.button}
+              onClick={e => handleLostTaste(e.target.textContent)}
+            >
+              None
+            </Button>
             <Button
               variant="contained"
               value="minimal"
@@ -551,6 +615,14 @@ const SurveyPage2 = props => {
           <ButtonGroup color="secondary" aria-label="outlined primary button group" className={classes.buttonGroup}>
             <Button
               variant="contained"
+              value="none"
+              className={lostSmell === 'none' ? classes.selectedButton : classes.button}
+              onClick={e => handleLostSmell(e.target.textContent)}
+            >
+              None
+            </Button>
+            <Button
+              variant="contained"
               value="minimal"
               className={lostSmell === 'minimal' ? classes.selectedButton : classes.button}
               onClick={e => handleLostSmell(e.target.textContent)}
@@ -584,6 +656,14 @@ const SurveyPage2 = props => {
         </Grid>
         <Grid item xs={9} sm={6} className={classes.gridItem}>
           <ButtonGroup color="secondary" aria-label="outlined primary button group" className={classes.buttonGroup}>
+            <Button
+              variant="contained"
+              value="none"
+              className={giIssues === 'none' ? classes.selectedButton : classes.button}
+              onClick={e => handleGiIssues(e.target.textContent)}
+            >
+              None
+            </Button>
             <Button
               variant="contained"
               value="minimal"
