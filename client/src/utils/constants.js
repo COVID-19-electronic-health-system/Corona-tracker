@@ -12,6 +12,10 @@ export const languages = [
     abbreviation: 'en',
   },
   {
+    language: 'Dutch',
+    abbreviation: 'nl',
+  },
+  {
     language: 'French',
     abbreviation: 'fr',
   },
