@@ -12,6 +12,9 @@ export const Logo = `${baseUrl}CORONATRACKER_Beta_Logo.svg`;
 export const FullLogo = `${baseUrl}FULL-BETA-LOGO.svg`;
 export const AdvisoryBoard = `${baseUrl}advisory-board.png`;
 export const CodivId = `${baseUrl}codevscovid.jpg`;
+export const GlobalHack = `${baseUrl}global-hack.png`;
+export const Decrypt = `${baseUrl}decrypt.png`;
+export const HackQuarantine = `${baseUrl}hack-quarantine.png`;
 
 const imgUrl = {
   calendarDotSvg,
@@ -26,6 +29,9 @@ const imgUrl = {
   profileImg,
   CodivId,
   AdvisoryBoard,
+  GlobalHack,
+  Decrypt,
+  HackQuarantine,
 };
 
 export default imgUrl;

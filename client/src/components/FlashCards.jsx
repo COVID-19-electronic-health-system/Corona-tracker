@@ -76,7 +76,7 @@ const FlashCards = props => {
             rot={rot}
             scale={scale}
             trans={trans}
-            data={cardData[i]}
+            data={cardData[cardData.length - i - 1]}
             bind={bind}
             mode={mode}
           />
