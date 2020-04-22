@@ -24,14 +24,14 @@ const HealthLogToggle = props => {
 
   const onShowMeMoreClick = useCallback(() => {
     setDetailData(observations);
-    setToggleValue('myHealthLog');
+    setToggleValue('showMeMore');
   }, [observations, setDetailData, setToggleValue]);
 
   return (
     <div>
       <div>
         <ButtonGroup size="medium" aria-label="outlined button group">
-          <Button onClick={() => setToggleValue('showMeMore')} className={classes.buttons}>
+          <Button onClick={() => setToggleValue('myHealthLog')} className={classes.buttons}>
             <Trans i18nKey="health.logButton" />
           </Button>
           <Button onClick={onShowMeMoreClick} className={classes.buttons}>
