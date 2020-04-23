@@ -135,7 +135,7 @@ Disclaimer.propTypes = {
 };
 
 const mapStateToProps = state => {
-  return { answer: state.disclaimerReducer.answer };
+  return { answer: state.onboardingReducer.disclaimerAnswer };
 };
 
 const mapDispatchToProps = dispatch => {

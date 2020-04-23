@@ -11,12 +11,14 @@ import {
   TableRow,
   FormControlLabel,
   Checkbox,
+  Button,
 } from '@material-ui/core';
 import { makeStyles } from '@material-ui/core/styles';
 import Chart from './Chart';
 import chartType from '../utils/chartType';
 import BehavioralChart from './behavior/chart/BehavioralChart';
 import AvgTemperature from './AvgTemperature';
+import buttonsCss from '../css/buttons';
 
 const useStyles = makeStyles(() => ({
   behaveDiv: {
@@ -28,6 +30,11 @@ const useStyles = makeStyles(() => ({
     height: 700,
     overflow: 'auto',
     marginBottom: '10px',
+  },
+  buttons: {
+    ...buttonsCss.buttons,
+    margin: '5px 8px 2px 8px',
+    width: '150px',
   },
 }));
 
@@ -90,6 +97,7 @@ const LogTable = props => {
   return (
     <>
       <div>
+        <Button className={classes.buttons}>Export to Excel</Button>
         <TableContainer>
           <Table className="table">
             <TableHead className="table-head">

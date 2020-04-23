@@ -8,15 +8,9 @@ const initialState = {
 const healthToggleReducer = (oldState = initialState, action) => {
   switch (action.type) {
     case SET_TOGGLE_VALUE:
-      if (action.toggleValue === 'myHealthLog') {
-        return {
-          ...oldState,
-          toggleValue: 'showMeMore',
-        };
-      }
       return {
         ...oldState,
-        toggleValue: 'myHealthLog',
+        toggleValue: action.toggleValue,
       };
     case SET_DETAIL_DATA:
       return {

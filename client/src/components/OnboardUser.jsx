@@ -88,7 +88,6 @@ const OnboardUser = props => {
   const { setDemographicsComorbiditiesThunk, demographicsComorbidities } = props;
   const { userSession } = useBlockstack();
   const [formState, setFormState] = useState(demographicsComorbidities);
-
   const handleChange = e => {
     e.preventDefault();
     setFormState({
