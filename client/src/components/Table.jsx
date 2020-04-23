@@ -22,14 +22,13 @@ import buttonsCss from '../css/buttons';
 
 const useStyles = makeStyles(() => ({
   behaveDiv: {
-    paddingBottom: '20em',
+    paddingBottom: '15%',
     height: 700,
     overflow: 'auto',
   },
   feverDiv: {
-    height: 700,
     overflow: 'auto',
-    marginBottom: '10px',
+    paddingBottom: '15%',
   },
   buttons: {
     ...buttonsCss.buttons,
@@ -60,6 +59,7 @@ const LogTable = props => {
 
   const [behaveClicked, setBehaveClicked] = useState(false);
   const [feverClicked, setFeverClicked] = useState(false);
+
   const renderBehavior = behaveClicked ? (
     <div className={classes.behaveDiv}>
       <BehavioralChart />
@@ -78,9 +78,11 @@ const LogTable = props => {
     switch (targetName) {
       case 'Fever':
         setFeverClicked(!feverClicked);
+        setBehaveClicked(false);
         break;
       case 'Behavioral':
         setBehaveClicked(!behaveClicked);
+        setFeverClicked(false);
         break;
       default:
         break;
@@ -93,12 +95,24 @@ const LogTable = props => {
     }
     return `${value}${suffix}`;
   };
-
   return (
     <>
       <div>
         <Button className={classes.buttons}>Export to Excel</Button>
-        <TableContainer>
+        <div>
+          <FormControlLabel
+            control={<Checkbox checked={feverClicked} onChange={handleChange} color="secondary" name="Fever" />}
+            label="Fever"
+          />
+          <FormControlLabel
+            control={<Checkbox checked={behaveClicked} onChange={handleChange} name="Behavioral" color="secondary" />}
+            label="Behavioral"
+          />
+        </div>
+        {renderBehavior}
+        <br />
+        {renderFever}
+        {!feverClicked && !behaveClicked ? <TableContainer>
           <Table className="table">
             <TableHead className="table-head">
               <TableRow>
@@ -130,21 +144,9 @@ const LogTable = props => {
               </TableBody>
             ))}
           </Table>
-        </TableContainer>
-        <div>
-          <FormControlLabel
-            control={<Checkbox checked={feverClicked} onChange={handleChange} color="secondary" name="Fever" />}
-            label="Fever"
-          />
-          <FormControlLabel
-            control={<Checkbox checked={behaveClicked} onChange={handleChange} name="Behavioral" color="secondary" />}
-            label="Behavioral"
-          />
-        </div>
+        </TableContainer> : null}
+        
       </div>
-      {renderBehavior}
-      <br />
-      {renderFever}
     </>
   );
 };
