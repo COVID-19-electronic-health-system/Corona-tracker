@@ -3,8 +3,6 @@
 We want to make sure that everyone, regardless of their experience with English, can be well-informed and maintain best-practices during this time! And that can only be made possible
 with YOUR help!
 
-**NOTE: The file marked as `Translations.md` in this directory is not currently in use, please follow the instructions below to contribute.**
-
 # Get Involved
 * [Read our README at the head of this directory to learn more about the project](https://github.com/COVID-19-electronic-health-system/Corona-tracker)
 * [Join our Discord!](https://discord.gg/pPERUuv)
