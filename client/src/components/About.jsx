@@ -2,14 +2,8 @@
 /* eslint-disable global-require */
 
 import React from 'react';
-import Card from '@material-ui/core/Card';
-import CardContent from '@material-ui/core/CardContent';
-import CardMedia from '@material-ui/core/CardMedia';
-import Grid from '@material-ui/core/Grid';
-import Typography from '@material-ui/core/Typography';
+import { Card, CardContent, CardMedia, Grid, Typography, Container, Link } from '@material-ui/core';
 import { makeStyles } from '@material-ui/core/styles';
-import Container from '@material-ui/core/Container';
-import Link from '@material-ui/core/Link';
 import { CodivId, AdvisoryBoard, GlobalHack, Decrypt, HackQuarantine } from '../utils/imgUrl';
 
 // TODO add once we get it :)
@@ -64,12 +58,13 @@ const useStyles = makeStyles(theme => ({
   },
 }));
 
-const cards = [
+export const cards = [
   {
     id: 1,
     title: 'Winner: CodeVsCOVID-19',
     about: `CoronaTracker placed in the Top 20 out of over 300 teams in HackZurich's CodeVSCOVID-19`,
     img: CodivId,
+    link: 'https://codevscovid19.devpost.com/',
   },
   {
     id: 2,
@@ -77,24 +72,28 @@ const cards = [
     about:
       'Our advisory board consists of a health-tech CFO, epidemiologist, pulmonary critical care specialist, systems architect, neuropsychologist and emergency room doctor',
     img: AdvisoryBoard,
+    link: 'https://coronatracker.me/leadership',
   },
   {
     id: 3,
     title: 'Winner: Global Hack',
     about: `CoronaTracker placed in the Top 89 Winners out of over 1500 teams in Facebook's Global Hack 1.0`,
     img: GlobalHack,
+    link: 'https://covid-global-hackathon.devpost.com/',
   },
   {
     id: 4,
     title: 'Decrypt',
     about: `CoronaTracker was featured in an exclusive article on Decrypt, a leading blockchain news publication`,
     img: Decrypt,
+    link: 'https://decrypt.co/25951/new-blockchain-app-tracks-covid-19-symptoms-reduce-hospital-overload',
   },
   {
     id: 5,
     title: 'Winner: Hack Quarantine',
     about: `CoronaTracker won "Best Use of Blockstack" in Hack Quarantine`,
     img: HackQuarantine,
+    link: 'https://hackquarantine.devpost.com/',
   },
 ];
 
@@ -128,15 +127,17 @@ const About = () => {
             <Grid container spacing={4}>
               {cards.map(card => (
                 <Grid item key={card.id} xs={12} sm={6} md={4}>
-                  <Card className={classes.card}>
-                    <CardMedia className={classes.cardMedia} image={card.img} title="Image title" />
-                    <CardContent className={classes.cardContent}>
-                      <Typography gutterBottom variant="subtitle1" component="h2">
-                        {card.title}
-                      </Typography>
-                      <Typography variant="body2">{card.about}</Typography>
-                    </CardContent>
-                  </Card>
+                  <Link href={card.link}>
+                    <Card className={classes.card}>
+                      <CardMedia className={classes.cardMedia} image={card.img} title="Image title" />
+                      <CardContent className={classes.cardContent}>
+                        <Typography gutterBottom variant="subtitle1" component="h2">
+                          {card.title}
+                        </Typography>
+                        <Typography variant="body2">{card.about}</Typography>
+                      </CardContent>
+                    </Card>
+                  </Link>
                 </Grid>
               ))}
             </Grid>

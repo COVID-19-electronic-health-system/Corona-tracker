@@ -2,11 +2,12 @@ import React from 'react';
 import { withStyles } from '@material-ui/core/styles';
 import { Link } from 'react-router-dom';
 import { BottomNavigation, BottomNavigationAction } from '@material-ui/core/';
-
+import { connect } from 'react-redux';
 import FeaturedPlayListOutlinedIcon from '@material-ui/icons/FeaturedPlayListOutlined';
 import StarBorderIcon from '@material-ui/icons/StarBorder';
 import LocationOnOutlinedIcon from '@material-ui/icons/LocationOnOutlined';
 import PropTypes from 'prop-types';
+import actions from '../redux/actions/actions';
 import More from './More';
 
 const styles = {
@@ -42,7 +43,7 @@ const styles = {
 };
 
 const NavBar = props => {
-  const { classes } = props;
+  const { setToggleValue, classes } = props;
 
   return (
     <div>
@@ -56,6 +57,7 @@ const NavBar = props => {
             root: classes.actionItem,
             selected: classes.selected,
           }}
+          onClick={() => setToggleValue('myHealthLog')}
           icon={<FeaturedPlayListOutlinedIcon className={classes.buttons} />}
         />
         <BottomNavigationAction
@@ -97,6 +99,12 @@ const NavBar = props => {
 
 NavBar.propTypes = {
   classes: PropTypes.objectOf(Object).isRequired,
+  setToggleValue: PropTypes.func.isRequired,
+};
+const mapDispatchToProps = dispatch => {
+  return {
+    setToggleValue: toggleValue => dispatch(actions.setToggleValue(toggleValue)),
+  };
 };
 
-export default withStyles(styles)(NavBar);
+export default connect(null, mapDispatchToProps)(withStyles(styles)(NavBar));
