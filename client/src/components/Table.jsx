@@ -22,11 +22,13 @@ import buttonsCss from '../css/buttons';
 
 const useStyles = makeStyles(() => ({
   behaveDiv: {
+    paddingBottom: '15%',
     height: 700,
     overflow: 'auto',
   },
   feverDiv: {
     overflow: 'auto',
+    paddingBottom: '15%',
   },
   buttons: {
     ...buttonsCss.buttons,
@@ -57,6 +59,7 @@ const LogTable = props => {
 
   const [behaveClicked, setBehaveClicked] = useState(false);
   const [feverClicked, setFeverClicked] = useState(false);
+
   const renderBehavior = behaveClicked ? (
     <div className={classes.behaveDiv}>
       <BehavioralChart />
@@ -75,9 +78,11 @@ const LogTable = props => {
     switch (targetName) {
       case 'Fever':
         setFeverClicked(!feverClicked);
+        setBehaveClicked(false);
         break;
       case 'Behavioral':
         setBehaveClicked(!behaveClicked);
+        setFeverClicked(false);
         break;
       default:
         break;
@@ -90,7 +95,6 @@ const LogTable = props => {
     }
     return `${value}${suffix}`;
   };
-
   return (
     <>
       <div>
@@ -108,7 +112,7 @@ const LogTable = props => {
         {renderBehavior}
         <br />
         {renderFever}
-        <TableContainer>
+        {!feverClicked && !behaveClicked ? <TableContainer>
           <Table className="table">
             <TableHead className="table-head">
               <TableRow>
@@ -140,7 +144,8 @@ const LogTable = props => {
               </TableBody>
             ))}
           </Table>
-        </TableContainer>
+        </TableContainer> : null}
+        
       </div>
     </>
   );
