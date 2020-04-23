@@ -2,6 +2,8 @@ import {
   SET_DEMOGRAPHICS_COMORBIDITIES,
   RESET_DEMOGRAPHICS_COMORBIDITIES,
   FETCH_DEMOGRAPHICS_COMORBIDITIES,
+  DISCLAIMER_ANSWER,
+  RESET_ANSWER,
 } from '../actions/onboarding';
 
 const initialState = {
@@ -15,6 +17,7 @@ const initialState = {
     isObese: '',
     isAsthmatic: '',
   },
+  disclaimerAnswer: false,
 };
 
 const onboardingReducer = (state = initialState, action) => {
@@ -33,6 +36,16 @@ const onboardingReducer = (state = initialState, action) => {
       return {
         ...state,
         demographicsComorbidities: {},
+      };
+    case DISCLAIMER_ANSWER:
+      return {
+        ...state,
+        disclaimerAnswer: action.answer,
+      };
+    case RESET_ANSWER:
+      return {
+        ...state,
+        disclaimerAnswer: false,
       };
     default:
       return state;
