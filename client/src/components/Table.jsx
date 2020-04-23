@@ -22,14 +22,11 @@ import buttonsCss from '../css/buttons';
 
 const useStyles = makeStyles(() => ({
   behaveDiv: {
-    paddingBottom: '20em',
     height: 700,
     overflow: 'auto',
   },
   feverDiv: {
-    height: 700,
     overflow: 'auto',
-    marginBottom: '10px',
   },
   buttons: {
     ...buttonsCss.buttons,
@@ -98,6 +95,19 @@ const LogTable = props => {
     <>
       <div>
         <Button className={classes.buttons}>Export to Excel</Button>
+        <div>
+          <FormControlLabel
+            control={<Checkbox checked={feverClicked} onChange={handleChange} color="secondary" name="Fever" />}
+            label="Fever"
+          />
+          <FormControlLabel
+            control={<Checkbox checked={behaveClicked} onChange={handleChange} name="Behavioral" color="secondary" />}
+            label="Behavioral"
+          />
+        </div>
+        {renderBehavior}
+        <br />
+        {renderFever}
         <TableContainer>
           <Table className="table">
             <TableHead className="table-head">
@@ -131,20 +141,7 @@ const LogTable = props => {
             ))}
           </Table>
         </TableContainer>
-        <div>
-          <FormControlLabel
-            control={<Checkbox checked={feverClicked} onChange={handleChange} color="secondary" name="Fever" />}
-            label="Fever"
-          />
-          <FormControlLabel
-            control={<Checkbox checked={behaveClicked} onChange={handleChange} name="Behavioral" color="secondary" />}
-            label="Behavioral"
-          />
-        </div>
       </div>
-      {renderBehavior}
-      <br />
-      {renderFever}
     </>
   );
 };
