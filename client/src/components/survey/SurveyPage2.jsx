@@ -54,6 +54,10 @@ const useStyles = makeStyles(theme => ({
     justifyContent: 'center',
     height: '10vh',
     marginTop: '2em',
+    [theme.breakpoints.down('xs')]: {
+      paddingLeft: '0.75em',
+      paddingRight: '0.75em',
+    },
   },
   symptomText: {
     [theme.breakpoints.down('xs')]: {
@@ -260,12 +264,12 @@ const SurveyPage2 = props => {
       </Typography>
 
       <Grid container justify="center" spacing={1} className={classes.grid}>
-        <Grid item xs={3} sm={6} className={classes.gridItem}>
+        <Grid item xs={2} sm={6} className={classes.gridItem}>
           <Typography variant="body1" className={classes.symptomText}>
             Shortness of breath
           </Typography>
         </Grid>
-        <Grid item xs={9} sm={6} className={classes.gridItem}>
+        <Grid item xs={10} sm={6} className={classes.gridItem}>
           <ButtonGroup color="secondary" aria-label="outlined primary button group" className={classes.buttonGroup}>
             <Button
               variant="contained"
@@ -304,12 +308,12 @@ const SurveyPage2 = props => {
       </Grid>
 
       <Grid container justify="center" spacing={1} className={classes.grid}>
-        <Grid item xs={3} sm={6} className={classes.gridItem}>
+        <Grid item xs={2} sm={6} className={classes.gridItem}>
           <Typography variant="body1" className={classes.symptomText}>
             Chills
           </Typography>
         </Grid>
-        <Grid item xs={9} sm={6} className={classes.gridItem}>
+        <Grid item xs={10} sm={6} className={classes.gridItem}>
           <ButtonGroup color="secondary" aria-label="outlined primary button group" className={classes.buttonGroup}>
             <Button
               variant="contained"
@@ -347,12 +351,12 @@ const SurveyPage2 = props => {
         </Grid>
       </Grid>
       <Grid container justify="center" spacing={1} className={classes.grid}>
-        <Grid item xs={3} sm={6} className={classes.gridItem}>
+        <Grid item xs={2} sm={6} className={classes.gridItem}>
           <Typography variant="body1" className={classes.symptomText}>
             Dry cough
           </Typography>
         </Grid>
-        <Grid item xs={9} sm={6} className={classes.gridItem}>
+        <Grid item xs={10} sm={6} className={classes.gridItem}>
           <ButtonGroup color="secondary" aria-label="outlined primary button group" className={classes.buttonGroup}>
             <Button
               variant="contained"
@@ -390,12 +394,12 @@ const SurveyPage2 = props => {
         </Grid>
       </Grid>
       <Grid container justify="center" spacing={1} className={classes.grid}>
-        <Grid item xs={3} sm={6} className={classes.gridItem}>
+        <Grid item xs={2} sm={6} className={classes.gridItem}>
           <Typography variant="body1" className={classes.symptomText}>
             Fatigue
           </Typography>
         </Grid>
-        <Grid item xs={9} sm={6} className={classes.gridItem}>
+        <Grid item xs={10} sm={6} className={classes.gridItem}>
           <ButtonGroup color="secondary" aria-label="outlined primary button group" className={classes.buttonGroup}>
             <Button
               variant="contained"
@@ -433,12 +437,12 @@ const SurveyPage2 = props => {
         </Grid>
       </Grid>
       <Grid container justify="center" spacing={1} className={classes.grid}>
-        <Grid item xs={3} sm={6} className={classes.gridItem}>
+        <Grid item xs={2} sm={6} className={classes.gridItem}>
           <Typography variant="body1" className={classes.symptomText}>
             Sore throat
           </Typography>
         </Grid>
-        <Grid item xs={9} sm={6} className={classes.gridItem}>
+        <Grid item xs={10} sm={6} className={classes.gridItem}>
           <ButtonGroup color="secondary" aria-label="outlined primary button group" className={classes.buttonGroup}>
             <Button
               variant="contained"
@@ -476,12 +480,12 @@ const SurveyPage2 = props => {
         </Grid>
       </Grid>
       <Grid container justify="center" spacing={1} className={classes.grid}>
-        <Grid item xs={3} sm={6} className={classes.gridItem}>
+        <Grid item xs={2} sm={6} className={classes.gridItem}>
           <Typography variant="body1" className={classes.symptomText}>
             Bluish lips or face
           </Typography>
         </Grid>
-        <Grid item xs={9} sm={6} className={classes.gridItem}>
+        <Grid item xs={10} sm={6} className={classes.gridItem}>
           <ButtonGroup color="secondary" aria-label="outlined primary button group" className={classes.buttonGroup}>
             <Button
               variant="contained"
@@ -519,12 +523,12 @@ const SurveyPage2 = props => {
         </Grid>
       </Grid>
       <Grid container justify="center" spacing={1} className={classes.grid}>
-        <Grid item xs={3} sm={6} className={classes.gridItem}>
+        <Grid item xs={2} sm={6} className={classes.gridItem}>
           <Typography variant="body1" className={classes.symptomText}>
             Headache
           </Typography>
         </Grid>
-        <Grid item xs={9} sm={6} className={classes.gridItem}>
+        <Grid item xs={10} sm={6} className={classes.gridItem}>
           <ButtonGroup color="secondary" aria-label="outlined primary button group" className={classes.buttonGroup}>
             <Button
               variant="contained"
@@ -562,12 +566,12 @@ const SurveyPage2 = props => {
         </Grid>
       </Grid>
       <Grid container justify="center" spacing={1} className={classes.grid}>
-        <Grid item xs={3} sm={6} className={`${classes.gridItem} ${classes.lostTaste}`}>
+        <Grid item xs={2} sm={6} className={`${classes.gridItem} ${classes.lostTaste}`}>
           <Typography variant="body1" className={classes.symptomText}>
             Loss of Taste
           </Typography>
         </Grid>
-        <Grid item xs={9} sm={6} className={classes.gridItem}>
+        <Grid item xs={10} sm={6} className={classes.gridItem}>
           <ButtonGroup color="secondary" aria-label="outlined primary button group" className={classes.buttonGroup}>
             <Button
               variant="contained"
@@ -606,12 +610,12 @@ const SurveyPage2 = props => {
       </Grid>
 
       <Grid container justify="center" spacing={1} className={classes.grid}>
-        <Grid item xs={3} sm={6} className={`${classes.gridItem} ${classes.lostSmell}`}>
+        <Grid item xs={2} sm={6} className={`${classes.gridItem} ${classes.lostSmell}`}>
           <Typography variant="body1" className={classes.symptomText}>
             Loss of Smell
           </Typography>
         </Grid>
-        <Grid item xs={9} sm={6} className={classes.gridItem}>
+        <Grid item xs={10} sm={6} className={classes.gridItem}>
           <ButtonGroup color="secondary" aria-label="outlined primary button group" className={classes.buttonGroup}>
             <Button
               variant="contained"
@@ -649,12 +653,12 @@ const SurveyPage2 = props => {
         </Grid>
       </Grid>
       <Grid container justify="center" spacing={1} className={classes.grid}>
-        <Grid item xs={3} sm={6} className={`${classes.gridItem} ${classes.giIssues}`}>
+        <Grid item xs={2} sm={6} className={`${classes.gridItem} ${classes.giIssues}`}>
           <Typography variant="body1" className={classes.symptomText}>
             Gastrointestinnal issues (i.e. nausea, diarrhea, vomiting, abdominal pain)
           </Typography>
         </Grid>
-        <Grid item xs={9} sm={6} className={classes.gridItem}>
+        <Grid item xs={10} sm={6} className={classes.gridItem}>
           <ButtonGroup color="secondary" aria-label="outlined primary button group" className={classes.buttonGroup}>
             <Button
               variant="contained"
