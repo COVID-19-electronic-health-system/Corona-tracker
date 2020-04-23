@@ -1,3 +1,9 @@
+/*=====================================================
+|                                                     |
+|                       APP START                     |
+|                                                     |
+=====================================================*/
+
 {
   "loginSection": {
     "text": "Your health app to monitor flu-like symptoms, connect to telehealth doctors in your area and discover resources close to you.",
