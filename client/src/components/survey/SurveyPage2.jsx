@@ -54,10 +54,6 @@ const useStyles = makeStyles(theme => ({
     justifyContent: 'center',
     height: '10vh',
     marginTop: '2em',
-    [theme.breakpoints.down('xs')]: {
-      paddingLeft: '0.75em',
-      paddingRight: '0.75em',
-    },
   },
   symptomText: {
     [theme.breakpoints.down('xs')]: {
@@ -103,6 +99,9 @@ const useStyles = makeStyles(theme => ({
       ...buttonsCss.buttons,
       width: buttonWidth,
       height: buttonHeight,
+    },
+    [theme.breakpoints.down('xs')]: {
+      fontSize: '0.7rem',
     },
   },
   continueButtonGroup: {
