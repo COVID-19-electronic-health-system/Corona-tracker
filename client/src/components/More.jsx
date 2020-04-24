@@ -17,6 +17,8 @@ import { DialogContent, DialogContentText, TextField, Grid, Typography, Snackbar
 import MuiAlert from '@material-ui/lab/Alert';
 import PropTypes from 'prop-types';
 import buttonsCss from '../css/buttons';
+import { connect } from 'react-redux';
+import actions from '../redux/actions/actions';
 
 const useStyle = makeStyles(theme => ({
   root: {
@@ -96,13 +98,13 @@ Alert.propTypes = {
   onClose: PropTypes.func.isRequired,
 };
 
-const More = () => {
+const More = ({ setSubscribedNumber, unsubscribeNumber, subscribedNumber }) => {
   const [open, setOpen] = useState(false);
   const [openSnackbar, setOpenSnackbar] = useState(false);
   const [snackbar, setSnackbar] = useState({});
-  const [phoneNumber, setPhoneNumber] = useState('');
+  const [phoneNumber, setPhoneNumber] = useState(subscribedNumber || '');
   const classes = useStyle();
-  const { signOut } = useBlockstack();
+  const { signOut, userSession } = useBlockstack();
   const { t } = useTranslation();
   const history = useHistory();
   const handleClickOpen = () => {
@@ -144,6 +146,7 @@ const More = () => {
         )
         .then(res => {
           console.log(res);
+          setSubscribedNumber(userSession, res.data.phoneNumber);
           handleClose();
           errorMessage = `Subscribed successfully! You will be automatically unsubscribed in one day, and will receive three texts in that timespan. If you enter again, you will receive double the notifications - so please do not! This is very early alpha :)`;
           setSnackbar({
@@ -172,9 +175,12 @@ const More = () => {
     const data = { phoneNumber };
     try {
       await axios.post(url, data);
+      unsubscribeNumber(userSession);
+      console.log('should call unsubscribe');
       alert('Unsubscribed successfully!');
       handleClose();
     } catch (err) {
+      console.log(err);
       if (err.response && err.response.status === 404) {
         errorMessage = 'This phone number was not subscribed';
       } else {
@@ -226,36 +232,46 @@ const More = () => {
             >
               Please add your +country code before entering
             </Link>
-            <TextField
-              className={classes.subtitleText}
-              onChange={e => setPhoneNumber(e.target.value)}
-              autoFocus
-              margin="dense"
-              id="filled-phone"
-              label={t('phoneNumber')}
-              type="email"
-              fullWidth
-            />
+            {subscribedNumber ? (
+              <DialogContentText className={classes.descriptionText}>
+                {`You are subscribed to text alerts at phone number: ${subscribedNumber}`}
+              </DialogContentText>
+            ) : (
+              <TextField
+                className={classes.subtitleText}
+                onChange={e => setPhoneNumber(e.target.value)}
+                autoFocus
+                margin="dense"
+                id="filled-phone"
+                label={t('phoneNumber')}
+                type="email"
+                fullWidth
+              />
+            )}
           </DialogContent>
           <DialogActions className={classes.subscribeContainer}>
-            <Button
-              onClick={() => {
-                subscribe();
-              }}
-              color="primary"
-              className={classes.subtitleText}
-            >
-              Subscribe
-            </Button>
-            <Button
-              onClick={() => {
-                unsubscribe();
-              }}
-              color="secondary"
-              className={classes.subtitleText}
-            >
-              Unsubscribe
-            </Button>
+            {!subscribedNumber && (
+              <Button
+                onClick={() => {
+                  subscribe();
+                }}
+                color="primary"
+                className={classes.subtitleText}
+              >
+                Subscribe
+              </Button>
+            )}
+            {subscribedNumber && (
+              <Button
+                onClick={() => {
+                  unsubscribe();
+                }}
+                color="secondary"
+                className={classes.subtitleText}
+              >
+                Unsubscribe
+              </Button>
+            )}
           </DialogActions>
           <DialogActions>
             <Button
@@ -309,4 +325,20 @@ const More = () => {
   );
 };
 
-export default More;
+const mapState = state => {
+  return {
+    subscribedNumber: state.onboardingReducer.subscribedNumber,
+  };
+};
+
+const mapDispatch = dispatch => {
+  return {
+    setSubscribedNumber: (userSession, number) => dispatch(actions.setSubscribedNumber(userSession, number)),
+    unsubscribeNumber: userSession => dispatch(actions.unsubscribeNumber(userSession)),
+  };
+};
+
+export default connect(
+  mapState,
+  mapDispatch
+)(More);

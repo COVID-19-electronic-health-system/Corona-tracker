@@ -4,6 +4,8 @@ import {
   FETCH_DEMOGRAPHICS_COMORBIDITIES,
   DISCLAIMER_ANSWER,
   RESET_ANSWER,
+  SUBSCRIBED_NUMBER,
+  UNSUBSCRIBE,
 } from '../actions/onboarding';
 
 const initialState = {
@@ -18,6 +20,7 @@ const initialState = {
     isAsthmatic: '',
   },
   disclaimerAnswer: false,
+  subscribedNumber: null,
 };
 
 const onboardingReducer = (state = initialState, action) => {
@@ -46,6 +49,16 @@ const onboardingReducer = (state = initialState, action) => {
       return {
         ...state,
         disclaimerAnswer: false,
+      };
+    case SUBSCRIBED_NUMBER:
+      return {
+        ...state,
+        subscribedNumber: action.phoneNumber,
+      };
+    case UNSUBSCRIBE:
+      return {
+        ...state,
+        subscribedNumber: null,
       };
     default:
       return state;

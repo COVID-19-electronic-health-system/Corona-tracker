@@ -23,7 +23,7 @@ import Settings from './Settings';
 ReactBlockstack({ appConfig });
 
 const App = props => {
-  const { fetchObservations, fetchDemographicsComorbidities } = props;
+  const { fetchObservations, fetchDemographicsComorbidities, fetchSubscribedNumber } = props;
   const { userSession, authenticated } = useBlockstack();
   const finished = useCallback(() => {
     didConnect({ userSession });
@@ -43,6 +43,7 @@ const App = props => {
     if (authenticated) {
       fetchObservations(userSession);
       fetchDemographicsComorbidities(userSession);
+      fetchSubscribedNumber(userSession);
     }
   }, [fetchObservations, fetchDemographicsComorbidities, authenticated, userSession]);
 
@@ -93,11 +94,16 @@ const App = props => {
 App.propTypes = {
   fetchObservations: PropTypes.func.isRequired,
   fetchDemographicsComorbidities: PropTypes.func.isRequired,
+  fetchSubscribedNumber: PropTypes.func.isRequired,
 };
 
 const mapDispatchToProps = dispatch => ({
   fetchObservations: userSession => dispatch(actions.fetchObservations(userSession)),
   fetchDemographicsComorbidities: userSession => dispatch(actions.fetchDemographicsComorbidities(userSession)),
+  fetchSubscribedNumber: userSession => dispatch(actions.fetchSubscribedNumber(userSession)),
 });
 
-export default connect(null, mapDispatchToProps)(App);
+export default connect(
+  null,
+  mapDispatchToProps
+)(App);

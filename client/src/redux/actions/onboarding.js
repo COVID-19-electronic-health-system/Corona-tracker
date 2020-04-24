@@ -9,6 +9,10 @@ export const DISCLAIMER_ANSWER = 'DISCLAIMER_ANSWER';
 
 export const RESET_ANSWER = 'RESET_ANSWER';
 
+export const SUBSCRIBED_NUMBER = 'SUBSCRIBED_NUMBER';
+
+export const UNSUBSCRIBE = 'UNSUBSCRIBE';
+
 // action creators
 export function setDisclaimerAnswer(answer) {
   return {
@@ -62,4 +66,22 @@ export const setDemographicsComorbiditiesThunk = (formData, userSession) => asyn
     .catch(err => console.error(err));
 
   dispatch(setDemographicsComorbidities(formData));
+};
+
+export const setSubscribedNumber = (userSession, phoneNumber) => async dispatch => {
+  userSession.putFile('subscribedNumber', phoneNumber).then(() => {
+    dispatch({ type: SUBSCRIBED_NUMBER, phoneNumber });
+  });
+};
+
+export const unsubscribeNumber = userSession => async dispatch => {
+  console.log('calls unsubscribe');
+  userSession.deleteFile('subscribedNumber').then(() => {
+    dispatch({ type: UNSUBSCRIBE });
+  });
+};
+
+export const fetchSubscribedNumber = userSession => async dispatch => {
+  const phoneNumber = await userSession.getFile('subscribedNumber');
+  dispatch({ type: SUBSCRIBED_NUMBER, phoneNumber });
 };
