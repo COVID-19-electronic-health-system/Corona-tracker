@@ -1,6 +1,6 @@
 {
   "name": "corona-tracker",
-  "version": "1.0.25",
+  "version": "1.1.0",
   "homepage": ".",
   "private": true,
   "prettier": "@blockstack/prettier-config",
@@ -21,7 +21,6 @@
     "@testing-library/user-event": "^10.0.0",
     "axios": "^0.19.2",
     "blockstack": "^19.3.0",
-    "bootstrap": "^4.4.1",
     "chart.js": "^2.9.3",
     "clsx": "^1.1.0",
     "enzyme": "3.10.0",
