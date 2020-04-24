@@ -1,4 +1,5 @@
 import {
+  SET_SURVEY_PAGE,
   SET_SURVEY_PAGE_1,
   SET_SURVEY_PAGE_2,
   SET_SURVEY_PAGE_3,
@@ -15,15 +16,17 @@ const initialState = {
     physical: {},
     nonPhysical: {},
   },
-  surveyPage: 1,
+  completedSteps: [],
+  surveyPage: 0,
 };
 
 const surveyReducer = (oldState = initialState, action) => {
   switch (action.type) {
+    case SET_SURVEY_PAGE:
+      return { ...oldState, surveyPage: action.page };
     case SET_SURVEY_PAGE_1:
       return {
         ...oldState,
-        surveyPage: 2,
         survey: {
           ...oldState.survey,
           date: Date.now(),
@@ -41,7 +44,6 @@ const surveyReducer = (oldState = initialState, action) => {
     case SET_SURVEY_PAGE_2:
       return {
         ...oldState,
-        surveyPage: 3,
         survey: {
           ...oldState.survey,
           date: Date.now(),
@@ -68,7 +70,6 @@ const surveyReducer = (oldState = initialState, action) => {
     case SET_SURVEY_PAGE_3:
       return {
         ...oldState,
-        surveyPage: 4,
         survey: {
           ...oldState.survey,
           date: Date.now(),
@@ -84,7 +85,6 @@ const surveyReducer = (oldState = initialState, action) => {
     case SET_SURVEY_PAGE_4:
       return {
         ...oldState,
-        surveyPage: 1,
         survey: {
           ...oldState.survey,
           date: Date.now(),
@@ -104,7 +104,7 @@ const surveyReducer = (oldState = initialState, action) => {
     case TO_SURVEY_PAGE_1:
       return {
         ...oldState,
-        surveyPage: 1,
+        surveyPage: 0,
         survey: {
           ...oldState.survey,
           date: Date.now(),
@@ -131,7 +131,7 @@ const surveyReducer = (oldState = initialState, action) => {
     case TO_SURVEY_PAGE_2:
       return {
         ...oldState,
-        surveyPage: 2,
+        surveyPage: 1,
         survey: {
           ...oldState.survey,
           date: Date.now(),
@@ -147,7 +147,7 @@ const surveyReducer = (oldState = initialState, action) => {
     case TO_SURVEY_PAGE_3:
       return {
         ...oldState,
-        surveyPage: 3,
+        surveyPage: 2,
         survey: {
           ...oldState.survey,
           date: Date.now(),
@@ -172,7 +172,7 @@ const surveyReducer = (oldState = initialState, action) => {
           physical: {},
           nonPhysical: {},
         },
-        surveyPage: 1,
+        surveyPage: 0,
       };
     default:
       return oldState;

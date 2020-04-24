@@ -109,7 +109,7 @@ const marks = [
 ];
 
 const SurveyPage4 = props => {
-  const { setSurveyPage4, toSurveyPage3, survey, addObservation, clearSurvey } = props;
+  const { setSurveyPage, setSurveyPage4, toSurveyPage3, survey, addObservation, clearSurvey } = props;
   const classes = useStyles();
   const { interest, sadness, sleep, energy, appetite } = props;
   const history = useHistory();
@@ -119,24 +119,38 @@ const SurveyPage4 = props => {
   const [sleepAnswer, setSleepAnswer] = useState(sleep);
   const [energyAnswer, setEnergyAnswer] = useState(energy);
   const [appetiteAnswer, setAppetiteAnswer] = useState(appetite);
+
+  const surveyPage4 = {
+    interestAnswer,
+    sadAnswer,
+    sleepAnswer,
+    energyAnswer,
+    appetiteAnswer,
+  };
+
   const handleChange = (evt, value) => {
     setInterestAnswer(value);
+    setSurveyPage4({ ...surveyPage4, interestAnswer: value });
   };
 
   const handleChange2 = (evt, value) => {
     setSadAnswer(value);
+    setSurveyPage4({ ...surveyPage4, sadAnswer: value });
   };
 
   const handleChange3 = (evt, value) => {
     setSleepAnswer(value);
+    setSurveyPage4({ ...surveyPage4, sleepAnswer: value });
   };
 
   const handleChange4 = (evt, value) => {
     setEnergyAnswer(value);
+    setSurveyPage4({ ...surveyPage4, energyAnswer: value });
   };
 
   const handleChange5 = (evt, value) => {
     setAppetiteAnswer(value);
+    setSurveyPage4({ ...surveyPage4, appetiteAnswer: value });
   };
 
   const sendBackToPage3 = () => {
@@ -151,22 +165,9 @@ const SurveyPage4 = props => {
   };
 
   const submitSurveyPage4 = async () => {
-    const surveyPage4 = {
-      interestAnswer,
-      sadAnswer,
-      sleepAnswer,
-      energyAnswer,
-      appetiteAnswer,
-    };
-    survey.nonPhysical.interest = interestAnswer;
-    survey.nonPhysical.sadness = sadAnswer;
-    survey.nonPhysical.sleep = sleepAnswer;
-    survey.nonPhysical.energy = energyAnswer;
-    survey.nonPhysical.appetite = appetiteAnswer;
-
     history.push('/');
-
     setSurveyPage4(surveyPage4);
+    setSurveyPage(0);
     addObservation(userSession, survey);
     clearSurvey();
 
@@ -186,7 +187,7 @@ const SurveyPage4 = props => {
           <Grid item xs={12}>
             <WellnessSlider
               name="interest"
-              defaultValue={3}
+              value={interestAnswer}
               step={0.5}
               valueLabelDisplay="on"
               color="secondary"
@@ -206,7 +207,7 @@ const SurveyPage4 = props => {
           <Grid item xs={12}>
             <WellnessSlider
               name="sadness"
-              defaultValue={3}
+              value={sadAnswer}
               onChange={handleChange2}
               color="secondary"
               aria-labelledby="discrete-slider"
@@ -227,7 +228,7 @@ const SurveyPage4 = props => {
             <WellnessSlider
               name="sleep"
               onChange={handleChange3}
-              defaultValue={3}
+              value={sleepAnswer}
               color="secondary"
               aria-labelledby="discrete-slider"
               valueLabelDisplay="on"
@@ -247,7 +248,7 @@ const SurveyPage4 = props => {
             <WellnessSlider
               name="energy"
               onChange={handleChange4}
-              defaultValue={3}
+              value={energyAnswer}
               color="secondary"
               aria-labelledby="discrete-slider"
               valueLabelDisplay="on"
@@ -265,9 +266,9 @@ const SurveyPage4 = props => {
           </Grid>
           <Grid item xs={12}>
             <WellnessSlider
-              name="energy"
+              name="appetite"
               onChange={handleChange5}
-              defaultValue={3}
+              value={appetiteAnswer}
               color="secondary"
               aria-labelledby="discrete-slider"
               valueLabelDisplay="on"
@@ -304,14 +305,15 @@ SurveyPage4.propTypes = {
   appetite: PropTypes.number,
   addObservation: PropTypes.func.isRequired,
   clearSurvey: PropTypes.func.isRequired,
+  setSurveyPage: PropTypes.func.isRequired,
 };
 
 SurveyPage4.defaultProps = {
-  interest: 1,
-  sadness: 1,
-  sleep: 1,
-  energy: 1,
-  appetite: 1,
+  interest: 3,
+  sadness: 3,
+  sleep: 3,
+  energy: 3,
+  appetite: 3,
 };
 
 const mapStateToProps = state => {
@@ -327,6 +329,7 @@ const mapStateToProps = state => {
 
 const mapDispatchToProps = dispatch => {
   return {
+    setSurveyPage: page => dispatch(actions.setSurveyPage(page)),
     setSurveyPage4: survey => dispatch(actions.setSurveyPage4(survey)),
     toSurveyPage3: survey => dispatch(actions.toSurveyPage3(survey)),
     addObservation: (userSession, survey) => dispatch(actions.addObservation(userSession, survey)),

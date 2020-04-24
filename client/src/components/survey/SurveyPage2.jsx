@@ -113,6 +113,7 @@ const useStyles = makeStyles(theme => ({
 
 const SurveyPage2 = props => {
   const {
+    setSurveyPage,
     setSurveyPage2,
     toSurveyPage1,
     feverSeverity,
@@ -126,6 +127,7 @@ const SurveyPage2 = props => {
     headacheSeverity,
     lostTasteSeverity,
     lostSmellSeverity,
+    surveyPage,
   } = props;
   const classes = useStyles();
   const [open, setOpen] = useState(false);
@@ -141,48 +143,73 @@ const SurveyPage2 = props => {
   const [lostTaste, setLostTaste] = useState(lostTasteSeverity);
   const [lostSmell, setLostSmell] = useState(lostSmellSeverity);
 
+  const surveyPage2 = {
+    fever,
+    shortnessOfBreath,
+    chills,
+    dryCough,
+    fatigue,
+    soreThroat,
+    bluish,
+    giIssues,
+    headache,
+    lostTaste,
+    lostSmell,
+  };
+
   const handleFever = value => {
     setFever(value);
+    setSurveyPage2({ ...surveyPage2, fever: value });
   };
 
   const handleshortnessOfBreath = value => {
     setShortnessOfBreath(value.toLowerCase());
+    setSurveyPage2({ ...surveyPage2, shortnessOfBreath: value.toLowerCase() });
   };
 
   const handlechills = value => {
     setChills(value.toLowerCase());
+    setSurveyPage2({ ...surveyPage2, chills: value.toLowerCase() });
   };
 
   const handledryCough = value => {
     setDryCough(value.toLowerCase());
+    setSurveyPage2({ ...surveyPage2, dryCough: value.toLowerCase() });
   };
 
   const handlefatigue = value => {
     setFatigue(value.toLowerCase());
+    setSurveyPage2({ ...surveyPage2, fatigue: value.toLowerCase() });
   };
 
   const handlesoreThroat = value => {
     setSoreThroat(value.toLowerCase());
+    setSurveyPage2({ ...surveyPage2, soreThroat: value.toLowerCase() });
   };
 
   const handlebluish = value => {
     setBluish(value.toLowerCase());
+    setSurveyPage2({ ...surveyPage2, bluish: value.toLowerCase() });
   };
 
   const handleGiIssues = value => {
     setGiIssues(value.toLowerCase());
+    setSurveyPage2({ ...surveyPage2, giIssues: value.toLowerCase() });
   };
 
   const handleHeadache = value => {
     setHeadache(value.toLowerCase());
+    setSurveyPage2({ ...surveyPage2, headache: value.toLowerCase() });
   };
 
   const handleLostTaste = value => {
     setLostTaste(value.toLowerCase());
+    setSurveyPage2({ ...surveyPage2, lostTaste: value.toLowerCase() });
   };
 
   const handleLostSmell = value => {
     setLostSmell(value.toLowerCase());
+    setSurveyPage2({ ...surveyPage2, lostSmell: value.toLowerCase() });
   };
 
   const handleClose = () => {
@@ -222,21 +249,7 @@ const SurveyPage2 = props => {
     ) {
       setOpen(true);
     } else {
-      const surveyPage2 = {
-        fever,
-        shortnessOfBreath,
-        chills,
-        dryCough,
-        fatigue,
-        soreThroat,
-        bluish,
-        giIssues,
-        headache,
-        lostTaste,
-        lostSmell,
-      };
-
-      setSurveyPage2(surveyPage2);
+      setSurveyPage(surveyPage + 1);
     }
   };
 
@@ -249,7 +262,7 @@ const SurveyPage2 = props => {
         <Grid item xs={3}>
           <TextField
             type="number"
-            onChange={e => handleFever(e.target.value)}
+            onChange={e => handleFever(e.target.valueAsNumber)}
             className={classes.temperatureField}
             defaultValue={fever}
           />
@@ -753,6 +766,8 @@ SurveyPage2.propTypes = {
   headacheSeverity: PropTypes.string,
   lostTasteSeverity: PropTypes.string,
   lostSmellSeverity: PropTypes.string,
+  setSurveyPage: PropTypes.func.isRequired,
+  surveyPage: PropTypes.number.isRequired,
 };
 
 SurveyPage2.defaultProps = {
@@ -782,6 +797,7 @@ const mapStateToProps = state => {
     headacheSeverity: state.surveyReducer.survey.physical.headacheSeverity,
     lostTasteSeverity: state.surveyReducer.survey.physical.lostTasteSeverity,
     lostSmellSeverity: state.surveyReducer.survey.physical.lostSmellSeverity,
+    surveyPage: state.surveyReducer.surveyPage,
   };
 };
 
@@ -789,6 +805,7 @@ const mapDispatchToProps = dispatch => {
   return {
     setSurveyPage2: survey => dispatch(actions.setSurveyPage2(survey)),
     toSurveyPage1: survey => dispatch(actions.toSurveyPage1(survey)),
+    setSurveyPage: page => dispatch(actions.setSurveyPage(page)),
   };
 };
 

@@ -28,40 +28,23 @@ const useStyles = makeStyles(theme => ({
 }));
 
 const SurveyPage3 = props => {
-  const { setSurveyPage3, survey, toSurveyPage2 } = props;
+  const { setSurveyPage, surveyPage, setSurveyPage3, survey, toSurveyPage2 } = props;
   const { nonPhysical } = survey;
   const classes = useStyles();
   const [openComment, setOpenComment] = useState(nonPhysical.openComment || '');
 
   const handleopenComment = value => {
     setOpenComment(value);
+    setSurveyPage3({ openComment: value });
   };
 
   const sendBackToPage2 = () => {
     toSurveyPage2({ openComment });
   };
 
-  const surveyPage3 = {
-    openComment,
-  };
-
-  const openSurveyPage4 = () => {
-    setSurveyPage3(surveyPage3);
-  };
-
-  const submitSurveyPage3 = async () => {
-    survey.nonPhysical.openComment = openComment;
-
-    setSurveyPage3({
-      openComment,
-    });
-
-    setSurveyPage3(surveyPage3);
-  };
-
   const submitButton = () => {
-    submitSurveyPage3();
-    openSurveyPage4();
+    setSurveyPage3({ openComment });
+    setSurveyPage(surveyPage + 1);
   };
 
   return (
@@ -97,11 +80,14 @@ SurveyPage3.propTypes = {
   setSurveyPage3: PropTypes.func.isRequired,
   survey: PropTypes.objectOf(Object).isRequired,
   toSurveyPage2: PropTypes.func.isRequired,
+  setSurveyPage: PropTypes.func.isRequired,
+  surveyPage: PropTypes.number.isRequired,
 };
 
 const mapStateToProps = state => {
   return {
     survey: state.surveyReducer.survey,
+    surveyPage: state.surveyReducer,
   };
 };
 
@@ -109,6 +95,7 @@ const mapDispatchToProps = dispatch => {
   return {
     setSurveyPage3: survey => dispatch(actions.setSurveyPage3(survey)),
     toSurveyPage2: survey => dispatch(actions.toSurveyPage2(survey)),
+    setSurveyPage: page => dispatch(actions.setSurveyPage(page)),
   };
 };
 

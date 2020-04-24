@@ -12,6 +12,7 @@ import SurveyPage1 from './SurveyPage1';
 import SurveyPage2 from './SurveyPage2';
 import SurveyPage3 from './SurveyPage3';
 import SurveyPage4 from './SurveyPage4';
+import actions from '../../redux/actions/actions';
 
 const SurveyConnector = withStyles({
   lineHorizontal: {
@@ -97,19 +98,24 @@ const useStyles = makeStyles(() => ({
 }));
 
 const Survey = props => {
-  const { surveyPage } = props;
+  const { surveyPage, setSurveyPage } = props;
   const classes = useStyles();
-  const [activeStep, setActiveStep] = useState(surveyPage - 1);
+  const [activeStep, setActiveStep] = useState(surveyPage);
   const contentEl = document.getElementById('content');
 
-  const handleStep = e => {
-    const step = parseInt(e.target.innerText, 10);
-    setActiveStep(step - 1);
+  const handleStep = index => {
+    const pageToStepTo = index;
+    // if (pageToStepTo > 1) {
+    //   console.log('finished step 2');
+    // } else {
+    setActiveStep(pageToStepTo);
+    setSurveyPage(pageToStepTo);
+    // }
   };
 
   useEffect(() => {
     if (contentEl) contentEl.scrollTop = 0;
-    setActiveStep(surveyPage - 1);
+    setActiveStep(surveyPage);
   }, [surveyPage, contentEl]);
 
   return (
@@ -121,12 +127,12 @@ const Survey = props => {
         connector={<SurveyConnector />}
         className={classes.stepper}
       >
-        {[1, 2, 3, 4].map(label => {
+        {[0, 1, 2, 3].map(step => {
           return (
-            <Step key={label}>
+            <Step key={step}>
               <StepButton
-                onClick={e => {
-                  handleStep(e);
+                onClick={() => {
+                  handleStep(step);
                 }}
               >
                 <StepLabel StepIconComponent={SurveyStepIcon} />
@@ -145,6 +151,7 @@ const Survey = props => {
 
 Survey.propTypes = {
   surveyPage: PropTypes.number.isRequired,
+  setSurveyPage: PropTypes.func.isRequired,
 };
 
 const mapStateToProps = state => {
@@ -153,4 +160,10 @@ const mapStateToProps = state => {
   };
 };
 
-export default connect(mapStateToProps)(Survey);
+const mapDispatchToProps = dispatch => {
+  return {
+    setSurveyPage: page => dispatch(actions.setSurveyPage(page)),
+  };
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(Survey);

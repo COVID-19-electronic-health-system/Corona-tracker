@@ -75,32 +75,42 @@ const marks = [
 ];
 
 const SurveyPage1 = props => {
-  const { setSurveyPage1, dailyfeeling, dailySymptomsFeeling, dailyComparedToYesterday } = props;
+  const {
+    setSurveyPage,
+    setSurveyPage1,
+    dailyfeeling,
+    dailySymptomsFeeling,
+    dailyComparedToYesterday,
+    surveyPage,
+  } = props;
   const classes = useStyles();
   const [todayFeeling, setTodayFeeling] = useState(dailyfeeling);
   const [todaySymptoms, setTodaySymptoms] = useState(dailySymptomsFeeling);
   const [comparedFeeling, setcomparedFeeling] = useState(dailyComparedToYesterday);
 
+  const surveyPage1 = {
+    todayFeeling,
+    todaySymptoms,
+    comparedFeeling,
+  };
   const handlerTodayFeeling = e => {
     setTodayFeeling(e);
+    setSurveyPage1({ ...surveyPage1, todayFeeling: e });
   };
 
   const handlerTodaySymptoms = e => {
     setTodaySymptoms(e);
+    setSurveyPage1({ ...surveyPage1, todaySymptoms: e });
   };
 
   const handlerComparedFeeling = e => {
     setcomparedFeeling(e);
+    setSurveyPage1({ ...surveyPage1, comparedFeeling: e });
   };
 
   const submitSurveyPage1 = async () => {
-    const surveyPage1 = {
-      todayFeeling,
-      todaySymptoms,
-      comparedFeeling,
-    };
-
     setSurveyPage1(surveyPage1);
+    setSurveyPage(surveyPage + 1);
   };
 
   return (
@@ -125,7 +135,7 @@ const SurveyPage1 = props => {
           <WellnessSlider
             onChange={(e, val) => handlerTodayFeeling(val)}
             color="secondary"
-            defaultValue={todayFeeling || 5}
+            value={todayFeeling}
             aria-labelledby="today-feeling-slider"
             valueLabelDisplay="on"
             step={0.5}
@@ -142,7 +152,7 @@ const SurveyPage1 = props => {
           <WellnessSlider
             onChange={(e, val) => handlerTodaySymptoms(val)}
             color="secondary"
-            defaultValue={todaySymptoms || 5}
+            value={todaySymptoms}
             aria-labelledby="today-symptoms-slider"
             valueLabelDisplay="on"
             step={0.5}
@@ -159,7 +169,7 @@ const SurveyPage1 = props => {
           <WellnessSlider
             onChange={(e, val) => handlerComparedFeeling(val)}
             color="secondary"
-            defaultValue={comparedFeeling || 5}
+            value={comparedFeeling}
             aria-labelledby="compared-feeling-slider"
             valueLabelDisplay="on"
             step={0.5}
@@ -183,6 +193,8 @@ SurveyPage1.propTypes = {
   dailyfeeling: PropTypes.number,
   dailySymptomsFeeling: PropTypes.number,
   dailyComparedToYesterday: PropTypes.number,
+  setSurveyPage: PropTypes.func.isRequired,
+  surveyPage: PropTypes.number.isRequired,
 };
 
 SurveyPage1.defaultProps = {
@@ -196,12 +208,14 @@ const mapStateToProps = state => {
     dailyfeeling: state.surveyReducer.survey.physical.dailyfeeling,
     dailySymptomsFeeling: state.surveyReducer.survey.physical.dailySymptomsFeeling,
     dailyComparedToYesterday: state.surveyReducer.survey.physical.dailyComparedToYesterday,
+    surveyPage: state.surveyReducer.surveyPage,
   };
 };
 
 const mapDispatchToProps = dispatch => {
   return {
     setSurveyPage1: survey => dispatch(actions.setSurveyPage1(survey)),
+    setSurveyPage: page => dispatch(actions.setSurveyPage(page)),
   };
 };
 

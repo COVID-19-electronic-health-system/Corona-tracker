@@ -10,6 +10,7 @@ import {
 import { selectDate } from './calendar';
 import { setToggleValue, setDetailData, deleteDetailData } from './healthToggle';
 import {
+  setSurveyPage,
   setSurveyPage1,
   setSurveyPage2,
   setSurveyPage3,
@@ -38,6 +39,7 @@ const actions = {
   setToggleValue,
   setDetailData,
   deleteDetailData,
+  setSurveyPage,
   setSurveyPage1,
   setSurveyPage2,
   setSurveyPage3,
