@@ -5,6 +5,7 @@ import Step from '@material-ui/core/Step';
 import StepLabel from '@material-ui/core/StepLabel';
 import { makeStyles, withStyles } from '@material-ui/core/styles';
 import StepConnector from '@material-ui/core/StepConnector';
+import StepButton from '@material-ui/core/StepButton';
 import clsx from 'clsx';
 import PropTypes from 'prop-types';
 import SurveyPage1 from './SurveyPage1';
@@ -101,6 +102,11 @@ const Survey = props => {
   const [activeStep, setActiveStep] = useState(surveyPage - 1);
   const contentEl = document.getElementById('content');
 
+  const handleStep = e => {
+    const step = parseInt(e.target.innerText, 10);
+    setActiveStep(step - 1);
+  };
+
   useEffect(() => {
     if (contentEl) contentEl.scrollTop = 0;
     setActiveStep(surveyPage - 1);
@@ -108,19 +114,31 @@ const Survey = props => {
 
   return (
     <div>
-      <Stepper alternativeLabel activeStep={activeStep} connector={<SurveyConnector />} className={classes.stepper}>
+      <Stepper
+        alternativeLabel
+        nonLinear
+        activeStep={activeStep}
+        connector={<SurveyConnector />}
+        className={classes.stepper}
+      >
         {[1, 2, 3, 4].map(label => {
           return (
             <Step key={label}>
-              <StepLabel StepIconComponent={SurveyStepIcon} />
+              <StepButton
+                onClick={e => {
+                  handleStep(e);
+                }}
+              >
+                <StepLabel StepIconComponent={SurveyStepIcon} />
+              </StepButton>
             </Step>
           );
         })}
       </Stepper>
-      {surveyPage === 1 && <SurveyPage1 />}
-      {surveyPage === 2 && <SurveyPage2 />}
-      {surveyPage === 3 && <SurveyPage3 />}
-      {surveyPage === 4 && <SurveyPage4 />}
+      {activeStep === 0 && <SurveyPage1 />}
+      {activeStep === 1 && <SurveyPage2 />}
+      {activeStep === 2 && <SurveyPage3 />}
+      {activeStep === 3 && <SurveyPage4 />}
     </div>
   );
 };
