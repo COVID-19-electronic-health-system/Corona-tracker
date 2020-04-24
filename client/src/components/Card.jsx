@@ -14,7 +14,7 @@ const useStyles = makeStyles(theme => ({
     willChange: 'transform',
     bottom: '10',
     // eslint-disable-next-line
-    ['@media (max-width:375px)']: {
+    ['@media (max-width:320px)']: {
       bottom: '7',
     },
   },
@@ -23,11 +23,11 @@ const useStyles = makeStyles(theme => ({
     width: '310px',
     height: '350px',
     // eslint-disable-next-line
-    ['@media (max-width:375px)']: {
-      width: '300',
+    [theme.breakpoints.down(400)]: {
+      width: '300px',
       height: '270px',
     },
-
+    // eslint-disable-next-line
     [theme.breakpoints.up('md')]: {
       width: '350px',
       height: '380px',
@@ -40,9 +40,10 @@ const useStyles = makeStyles(theme => ({
   },
   fontChange: {
     // eslint-disable-next-line
-    ['@media (max-width:375px)']: {
+    [theme.breakpoints.down(400)]: {
       fontSize: '1em',
     },
+    // eslint-disable-next-line
     [theme.breakpoints.up('md')]: {
       fontSize: '1.2rem',
     },
