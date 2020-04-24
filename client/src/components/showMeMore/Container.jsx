@@ -28,7 +28,7 @@ const useStyles = makeStyles(theme => ({
     paddingBottom: '30vh',
     width: '100vw',
     height: '60vh',
-    [theme.breakpoints.up('md')]: { width: '60vw', height:'70vh' },
+    [theme.breakpoints.up('md')]: { width: '60vw', height: '70vh' },
   },
   feverDiv: {
     marginBottom: '5%',
