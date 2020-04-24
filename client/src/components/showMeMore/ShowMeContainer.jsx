@@ -3,7 +3,7 @@ import Button from '@material-ui/core/Button';
 import ButtonGroup from '@material-ui/core/ButtonGroup';
 import { makeStyles } from '@material-ui/core/styles';
 import { Grid } from '@material-ui/core';
-import Observations from './observations';
+import Observations from './Observations';
 import AvgTemperature from '../AvgTemperature';
 import Chart from '../Chart';
 import chartType from '../../utils/chartType';
@@ -41,7 +41,7 @@ const useStyles = makeStyles(theme => ({
 
 const ShowMeMore = () => {
   const classes = useStyles();
-  const [value, setValue] = useState('observations');
+  const [content, setContent] = useState('observations');
   return (
     <div className={classes.root}>
       <Grid>
@@ -49,24 +49,24 @@ const ShowMeMore = () => {
       </Grid>
       <Grid>
         <ButtonGroup className={classes.buttons} aria-label="contained primary button group">
-          <Button onClick={() => setValue('observations')}>Observations</Button>
-          <Button onClick={() => setValue('behavioralChart')}>Behavioral</Button>
-          <Button onClick={() => setValue('avgTemperature')}>Temperature</Button>
+          <Button onClick={() => setContent('observations')}>Observations</Button>
+          <Button onClick={() => setContent('behavioralChart')}>Behavioral</Button>
+          <Button onClick={() => setContent('avgTemperature')}>Temperature</Button>
         </ButtonGroup>
       </Grid>
       <Grid container justify="center">
-        {value === 'observations' ? <Observations /> : null}
-        {value === 'behavioralChart' ? (
+        {content === 'observations' && <Observations />}
+        {content === 'behavioralChart' && (
           <div className={classes.behaveDiv}>
             <BehavioralChart />
           </div>
-        ) : null}
-        {value === 'avgTemperature' ? (
+        )}
+        {content === 'avgTemperature' && (
           <Grid container justify="center" className={classes.feverDiv}>
             <AvgTemperature />
             <Chart chartType={chartType.bar} />
           </Grid>
-        ) : null}
+        )}
       </Grid>
     </div>
   );
