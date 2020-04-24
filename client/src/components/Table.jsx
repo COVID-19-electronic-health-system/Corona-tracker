@@ -112,40 +112,41 @@ const LogTable = props => {
         {renderBehavior}
         <br />
         {renderFever}
-        {!feverClicked && !behaveClicked ? <TableContainer>
-          <Table className="table">
-            <TableHead className="table-head">
-              <TableRow>
-                {questions.map(question => (
-                  <TableCell key={question}>{question}</TableCell>
-                ))}
-              </TableRow>
-            </TableHead>
-            {(detailData.length ? detailData : observations).map(observation => (
-              <TableBody key={observation.date}>
+        {!feverClicked && !behaveClicked ? (
+          <TableContainer>
+            <Table className="table">
+              <TableHead className="table-head">
                 <TableRow>
-                  <TableCell>{new Date(observation.date).toLocaleDateString()}</TableCell>
-                  <TableCell>{getDisplayValue(observation.physical.dailyfeeling, '/5')}</TableCell>
-                  <TableCell>{getDisplayValue(observation.physical.coughSeverity)}</TableCell>
-                  <TableCell>
-                    {getDisplayValue(observation.physical.feverSeverity, ` ${String.fromCharCode(176)}F`)}
-                  </TableCell>
-                  <TableCell>{getDisplayValue(observation.physical.chillsSeverity)}</TableCell>
-                  <TableCell>{getDisplayValue(observation.physical.shortnessOfBreathSeverity)}</TableCell>
-                  <TableCell>{getDisplayValue(observation.physical.soreThroatSeverity)}</TableCell>
-                  <TableCell>{getDisplayValue(observation.physical.fatigueSeverity)}</TableCell>
-                  <TableCell>{getDisplayValue(observation.physical.bluishnessSeverity)}</TableCell>
-                  <TableCell>{getDisplayValue(observation.physical.giIssueSeverity)}</TableCell>
-                  <TableCell>{getDisplayValue(observation.physical.headacheSeverity)}</TableCell>
-                  <TableCell>{getDisplayValue(observation.physical.lostTasteSeverity)}</TableCell>
-                  <TableCell>{getDisplayValue(observation.physical.lostSmellSeverity)}</TableCell>
-                  <TableCell>{getDisplayValue(observation.nonPhysical.openComment)}</TableCell>
+                  {questions.map(question => (
+                    <TableCell key={question}>{question}</TableCell>
+                  ))}
                 </TableRow>
-              </TableBody>
-            ))}
-          </Table>
-        </TableContainer> : null}
-        
+              </TableHead>
+              {(detailData.length ? detailData : observations).map(observation => (
+                <TableBody key={observation.date}>
+                  <TableRow>
+                    <TableCell>{new Date(observation.date).toLocaleDateString()}</TableCell>
+                    <TableCell>{getDisplayValue(observation.physical.dailyfeeling, '/5')}</TableCell>
+                    <TableCell>{getDisplayValue(observation.physical.coughSeverity)}</TableCell>
+                    <TableCell>
+                      {getDisplayValue(observation.physical.feverSeverity, ` ${String.fromCharCode(176)}F`)}
+                    </TableCell>
+                    <TableCell>{getDisplayValue(observation.physical.chillsSeverity)}</TableCell>
+                    <TableCell>{getDisplayValue(observation.physical.shortnessOfBreathSeverity)}</TableCell>
+                    <TableCell>{getDisplayValue(observation.physical.soreThroatSeverity)}</TableCell>
+                    <TableCell>{getDisplayValue(observation.physical.fatigueSeverity)}</TableCell>
+                    <TableCell>{getDisplayValue(observation.physical.bluishnessSeverity)}</TableCell>
+                    <TableCell>{getDisplayValue(observation.physical.giIssueSeverity)}</TableCell>
+                    <TableCell>{getDisplayValue(observation.physical.headacheSeverity)}</TableCell>
+                    <TableCell>{getDisplayValue(observation.physical.lostTasteSeverity)}</TableCell>
+                    <TableCell>{getDisplayValue(observation.physical.lostSmellSeverity)}</TableCell>
+                    <TableCell>{getDisplayValue(observation.nonPhysical.openComment)}</TableCell>
+                  </TableRow>
+                </TableBody>
+              ))}
+            </Table>
+          </TableContainer>
+        ) : null}
       </div>
     </>
   );

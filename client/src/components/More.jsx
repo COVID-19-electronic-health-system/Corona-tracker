@@ -1,5 +1,6 @@
 /* eslint-disable no-console */
 /* eslint-disable no-alert */
+/* eslint-disable no-useless-escape */
 
 import React, { useState } from 'react';
 import Button from '@material-ui/core/Button';
@@ -12,7 +13,7 @@ import { makeStyles } from '@material-ui/core/styles';
 import MoreHorizIcon from '@material-ui/icons/MoreHoriz';
 import { useBlockstack } from 'react-blockstack';
 import { useTranslation } from 'react-i18next';
-import { DialogContent, DialogContentText, TextField, Grid, Typography, Snackbar } from '@material-ui/core';
+import { DialogContent, DialogContentText, TextField, Grid, Typography, Snackbar, Link } from '@material-ui/core';
 import MuiAlert from '@material-ui/lab/Alert';
 import PropTypes from 'prop-types';
 import buttonsCss from '../css/buttons';
@@ -45,13 +46,15 @@ const useStyle = makeStyles(theme => ({
     backgroundImage: 'linear-gradient(40deg, #7a9cf9 0%, #97b9f7 100%)',
   },
   descriptionText: {
+    textDecoration: 'none',
     color: 'white',
-    textAlign: 'left',
+    textAlign: 'center',
   },
   subscribeContainer: {
     align: 'center',
   },
   subtitleText: {
+    marginTop: '1em',
     color: 'white',
     margin: '0 auto',
   },
@@ -119,37 +122,49 @@ const More = () => {
   let errorMessage = '';
 
   const subscribe = () => {
-    axios
-      .post(
-        'https://kplh25sfce.execute-api.us-east-1.amazonaws.com/default/coronalert-subscribe',
-        {
-          phoneNumber,
-        },
-        {
-          headers: {
-            'Content-Type': 'application/json',
-          },
-        }
-      )
-      .then(res => {
-        console.log(res);
-        handleClose();
-        alert(
-          `Subscribed successfully! You will be automatically unsubscribed in one day, and will receive three texts in that timespan. If you enter again, you will receive double the notifications - so please do not! This is very early alpha :)`
-        );
-      })
-      .catch(err => {
-        if (err.response && err.response.status === 409) {
-          errorMessage = 'This phone number was already subscribed';
-        } else {
-          errorMessage = 'Something went wrong. Please try again';
-        }
-        setSnackbar({
-          severity: 'error',
-          message: errorMessage,
-        });
-        setOpenSnackbar(true);
+    if (!/^\+[1-9]\d{1,14}$/.test(phoneNumber)) {
+      errorMessage = 'Invalid phone number. Please try again';
+      setSnackbar({
+        severity: 'error',
+        message: errorMessage,
       });
+      setOpenSnackbar(true);
+    } else {
+      axios
+        .post(
+          'https://kplh25sfce.execute-api.us-east-1.amazonaws.com/default/coronalert-subscribe',
+          {
+            phoneNumber,
+          },
+          {
+            headers: {
+              'Content-Type': 'application/json',
+            },
+          }
+        )
+        .then(res => {
+          console.log(res);
+          handleClose();
+          errorMessage = `Subscribed successfully! You will be automatically unsubscribed in one day, and will receive three texts in that timespan. If you enter again, you will receive double the notifications - so please do not! This is very early alpha :)`;
+          setSnackbar({
+            severity: 'success',
+            message: errorMessage,
+          });
+          setOpenSnackbar(true);
+        })
+        .catch(err => {
+          if (err.response && err.response.status === 409) {
+            errorMessage = 'This phone number was already subscribed';
+          } else {
+            errorMessage = 'Something went wrong. Please try again';
+          }
+          setSnackbar({
+            severity: 'error',
+            message: errorMessage,
+          });
+          setOpenSnackbar(true);
+        });
+    }
   };
 
   const unsubscribe = async () => {
@@ -205,6 +220,12 @@ const More = () => {
             <DialogContentText className={classes.descriptionText}>
               Enter your phone number to subscribe/unsubscribe to the occasional question/survey to answer over text.
             </DialogContentText>
+            <Link
+              className={classes.descriptionText}
+              href="https://support.twilio.com/hc/en-us/articles/223183008-Formatting-International-Phone-Numbers"
+            >
+              Please add your +country code before entering
+            </Link>
             <TextField
               className={classes.subtitleText}
               onChange={e => setPhoneNumber(e.target.value)}
