@@ -22,7 +22,7 @@ const useStyles = makeStyles(theme => ({
     backgroundColor: 'white',
     width: '310px',
     height: '350px',
-    //eslint-disable-next-line
+    // eslint-disable-next-line
     ['@media (max-width:375px)']: {
       width: '300',
       height: '270px',
