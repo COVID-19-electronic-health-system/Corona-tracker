@@ -31,8 +31,8 @@ const AvgTemperature = props => {
 
   return (
     <Paper className={classes.root}>
-      <Typography>Average Temperature:</Typography>
-      <Typography>{averageTemperature}&#8457;</Typography>
+      <Typography variant='overline'>Average Temperature:</Typography>
+      <Typography variant='body2'>{averageTemperature}&#8457;</Typography>
     </Paper>
   );
 };

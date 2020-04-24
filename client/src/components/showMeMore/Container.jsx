@@ -21,23 +21,22 @@ const useStyles = makeStyles(theme => ({
     '& > *': {
       ...buttonsCss.buttons,
       margin: theme.spacing(1),
+      maxWidth: '100px',
     },
   },
   behaveDiv: {
-    paddingBottom: '15vh',
+    paddingBottom: '30vh',
     width: '100vw',
     height: '60vh',
-    [theme.breakpoints.up('md')]: { width: '60vw' },
+    [theme.breakpoints.up('md')]: { width: '60vw', height:'70vh' },
   },
   feverDiv: {
-    paddingBottom: '15%',
+    marginBottom: '5%',
     width: '100vw',
+    height: '50vh',
     [theme.breakpoints.up('md')]: { width: '60vw' },
   },
-  export: {
-    ...buttonsCss.buttons,
-    marginTop: '5px',
-  },
+  export: { ...buttonsCss.buttons, margin: theme.spacing(1) },
 }));
 
 const ShowMeMore = () => {
@@ -45,6 +44,9 @@ const ShowMeMore = () => {
   const [value, setValue] = useState('observations');
   return (
     <div className={classes.root}>
+      <Grid>
+        <Button className={classes.export}>Export to Excel</Button>
+      </Grid>
       <Grid>
         <ButtonGroup className={classes.buttons} aria-label="contained primary button group">
           <Button onClick={() => setValue('observations')}>Observations</Button>
@@ -66,8 +68,6 @@ const ShowMeMore = () => {
           </Grid>
         ) : null}
       </Grid>
-
-      <Button className={classes.export}>Export to Excel</Button>
     </div>
   );
 };
