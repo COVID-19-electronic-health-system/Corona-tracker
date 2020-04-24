@@ -9,18 +9,7 @@ import {
 } from './observations';
 import { selectDate } from './calendar';
 import { setToggleValue, setDetailData, deleteDetailData } from './healthToggle';
-import {
-  setSurveyPage,
-  setSurveyPage1,
-  setSurveyPage2,
-  setSurveyPage3,
-  setSurveyPage4,
-  toSurveyPage1,
-  toSurveyPage2,
-  toSurveyPage3,
-  toSurveyPage4,
-  clearSurvey,
-} from './survey';
+import { setSurveyPage, setSurveyPage1, setSurveyPage2, setSurveyPage3, setSurveyPage4, clearSurvey } from './survey';
 import {
   setDemographicsComorbiditiesThunk,
   resetDemographicsComorbidities,
@@ -44,10 +33,6 @@ const actions = {
   setSurveyPage2,
   setSurveyPage3,
   setSurveyPage4,
-  toSurveyPage1,
-  toSurveyPage2,
-  toSurveyPage3,
-  toSurveyPage4,
   clearSurvey,
   setDemographicsComorbiditiesThunk,
   fetchDemographicsComorbidities,

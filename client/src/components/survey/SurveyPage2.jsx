@@ -115,7 +115,6 @@ const SurveyPage2 = props => {
   const {
     setSurveyPage,
     setSurveyPage2,
-    toSurveyPage1,
     feverSeverity,
     shortnessOfBreathSeverity,
     chillsSeverity,
@@ -216,21 +215,8 @@ const SurveyPage2 = props => {
     setOpen(false);
   };
 
-  const sendBackToPage1 = () => {
-    const currentSurveyState = {
-      fever,
-      shortnessOfBreath,
-      chills,
-      dryCough,
-      fatigue,
-      soreThroat,
-      bluish,
-      giIssues,
-      headache,
-      lostTaste,
-      lostSmell,
-    };
-    toSurveyPage1(currentSurveyState);
+  const goBack = () => {
+    setSurveyPage(surveyPage - 1);
   };
 
   const submitSurveyPage2 = async () => {
@@ -709,7 +695,7 @@ const SurveyPage2 = props => {
       </Grid>
       {/* <div className={classes.continueButtonGroup}> */}
       <ButtonGroup className={classes.continueButtonGroup}>
-        <Button onClick={sendBackToPage1} variant="outlined" color="secondary" className={classes.continueButton}>
+        <Button onClick={goBack} variant="outlined" color="secondary" className={classes.continueButton}>
           BACK
         </Button>
         <Button onClick={submitSurveyPage2} variant="outlined" color="secondary" className={classes.continueButton}>
@@ -754,7 +740,6 @@ const SurveyPage2 = props => {
 
 SurveyPage2.propTypes = {
   setSurveyPage2: PropTypes.func.isRequired,
-  toSurveyPage1: PropTypes.func.isRequired,
   feverSeverity: PropTypes.number,
   shortnessOfBreathSeverity: PropTypes.string,
   chillsSeverity: PropTypes.string,
@@ -804,7 +789,6 @@ const mapStateToProps = state => {
 const mapDispatchToProps = dispatch => {
   return {
     setSurveyPage2: survey => dispatch(actions.setSurveyPage2(survey)),
-    toSurveyPage1: survey => dispatch(actions.toSurveyPage1(survey)),
     setSurveyPage: page => dispatch(actions.setSurveyPage(page)),
   };
 };

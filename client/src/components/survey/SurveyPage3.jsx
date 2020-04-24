@@ -28,7 +28,7 @@ const useStyles = makeStyles(theme => ({
 }));
 
 const SurveyPage3 = props => {
-  const { setSurveyPage, surveyPage, setSurveyPage3, survey, toSurveyPage2 } = props;
+  const { setSurveyPage, surveyPage, setSurveyPage3, survey } = props;
   const { nonPhysical } = survey;
   const classes = useStyles();
   const [openComment, setOpenComment] = useState(nonPhysical.openComment || '');
@@ -38,8 +38,8 @@ const SurveyPage3 = props => {
     setSurveyPage3({ openComment: value });
   };
 
-  const sendBackToPage2 = () => {
-    toSurveyPage2({ openComment });
+  const goBack = () => {
+    setSurveyPage(surveyPage - 1);
   };
 
   const submitButton = () => {
@@ -64,7 +64,7 @@ const SurveyPage3 = props => {
             />
           </Grid>
           <Grid item xs={12}>
-            <Button onClick={sendBackToPage2} variant="outlined" color="secondary" className={classes.continueButton}>
+            <Button onClick={goBack} variant="outlined" color="secondary" className={classes.continueButton}>
               BACK
             </Button>
             <Button onClick={submitButton} color="secondary" className={classes.continueButton}>
@@ -79,7 +79,6 @@ const SurveyPage3 = props => {
 SurveyPage3.propTypes = {
   setSurveyPage3: PropTypes.func.isRequired,
   survey: PropTypes.objectOf(Object).isRequired,
-  toSurveyPage2: PropTypes.func.isRequired,
   setSurveyPage: PropTypes.func.isRequired,
   surveyPage: PropTypes.number.isRequired,
 };
@@ -87,14 +86,13 @@ SurveyPage3.propTypes = {
 const mapStateToProps = state => {
   return {
     survey: state.surveyReducer.survey,
-    surveyPage: state.surveyReducer,
+    surveyPage: state.surveyReducer.surveyPage,
   };
 };
 
 const mapDispatchToProps = dispatch => {
   return {
     setSurveyPage3: survey => dispatch(actions.setSurveyPage3(survey)),
-    toSurveyPage2: survey => dispatch(actions.toSurveyPage2(survey)),
     setSurveyPage: page => dispatch(actions.setSurveyPage(page)),
   };
 };

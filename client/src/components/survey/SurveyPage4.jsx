@@ -109,7 +109,7 @@ const marks = [
 ];
 
 const SurveyPage4 = props => {
-  const { setSurveyPage, setSurveyPage4, toSurveyPage3, survey, addObservation, clearSurvey } = props;
+  const { setSurveyPage, setSurveyPage4, survey, addObservation, clearSurvey, surveyPage } = props;
   const classes = useStyles();
   const { interest, sadness, sleep, energy, appetite } = props;
   const history = useHistory();
@@ -153,15 +153,8 @@ const SurveyPage4 = props => {
     setSurveyPage4({ ...surveyPage4, appetiteAnswer: value });
   };
 
-  const sendBackToPage3 = () => {
-    const currentSurveyState = {
-      interestAnswer,
-      sadAnswer,
-      sleepAnswer,
-      energyAnswer,
-      appetiteAnswer,
-    };
-    toSurveyPage3(currentSurveyState);
+  const goBack = () => {
+    setSurveyPage(surveyPage - 1);
   };
 
   const submitSurveyPage4 = async () => {
@@ -280,7 +273,7 @@ const SurveyPage4 = props => {
           </Grid>
           <br />
           <Grid item xs={12}>
-            <Button onClick={sendBackToPage3} variant="outlined" color="secondary" className={classes.continueButton}>
+            <Button onClick={goBack} variant="outlined" color="secondary" className={classes.continueButton}>
               BACK
             </Button>
             <Button onClick={submitSurveyPage4} variant="outlined" color="secondary" className={classes.continueButton}>
@@ -297,7 +290,6 @@ const SurveyPage4 = props => {
 SurveyPage4.propTypes = {
   survey: PropTypes.objectOf(Object).isRequired,
   setSurveyPage4: PropTypes.func.isRequired,
-  toSurveyPage3: PropTypes.func.isRequired,
   interest: PropTypes.number,
   sadness: PropTypes.number,
   sleep: PropTypes.number,
@@ -306,6 +298,7 @@ SurveyPage4.propTypes = {
   addObservation: PropTypes.func.isRequired,
   clearSurvey: PropTypes.func.isRequired,
   setSurveyPage: PropTypes.func.isRequired,
+  surveyPage: PropTypes.number.isRequired,
 };
 
 SurveyPage4.defaultProps = {
@@ -324,6 +317,7 @@ const mapStateToProps = state => {
     sleep: state.surveyReducer.survey.nonPhysical.sleep,
     energy: state.surveyReducer.survey.nonPhysical.energy,
     appetite: state.surveyReducer.survey.nonPhysical.appetite,
+    surveyPage: state.surveyReducer.surveyPage,
   };
 };
 
@@ -331,7 +325,6 @@ const mapDispatchToProps = dispatch => {
   return {
     setSurveyPage: page => dispatch(actions.setSurveyPage(page)),
     setSurveyPage4: survey => dispatch(actions.setSurveyPage4(survey)),
-    toSurveyPage3: survey => dispatch(actions.toSurveyPage3(survey)),
     addObservation: (userSession, survey) => dispatch(actions.addObservation(userSession, survey)),
     clearSurvey: () => dispatch(actions.clearSurvey()),
   };
