@@ -7,6 +7,7 @@ import { Typography, Grid, Button } from '@material-ui/core';
 import DeleteAllDataDialog from './DeleteAllDataDialog';
 import DeletionDialog from './DeletionDialog';
 import buttonsCss from '../css/buttons';
+import TranslationsMenu from './Translations';
 
 const useStyles = makeStyles(() => ({
   root: {
@@ -48,136 +49,139 @@ const Settings = props => {
   const classes = useStyles();
   const [showDeletionDialog, setShowDeletionDialog] = useState(false);
   return (
-    <Grid container justify="center" className={classes.root}>
-      <Grid container alignItems="center" direction="column">
-        <Grid item>
-          <Typography variant="h2" color="textPrimary">
-            <b>My Information:</b>
-          </Typography>
-        </Grid>
-        <Grid>
-          <Grid container spacing={1} justify="space-between">
-            <Grid item>
-              <Typography variant="subtitle1" color="textPrimary">
-                Age (Years):
-              </Typography>
-            </Grid>
-            <Grid item>
-              <Typography variant="subtitle1" color="textPrimary">
-                {age}
-              </Typography>
-            </Grid>
+    <div>
+      <Grid container justify="center" className={classes.root}>
+        <Grid container alignItems="center" direction="column">
+          <Grid item>
+            <Typography variant="h2" color="textPrimary">
+              <b>My Information:</b>
+            </Typography>
           </Grid>
-          <Grid container spacing={1} justify="space-between">
-            <Grid item>
-              <Typography variant="subtitle1" color="textPrimary">
-                Gender:
-              </Typography>
+          <Grid>
+            <Grid container spacing={1} justify="space-between">
+              <Grid item>
+                <Typography variant="subtitle1" color="textPrimary">
+                  Age (Years):
+                </Typography>
+              </Grid>
+              <Grid item>
+                <Typography variant="subtitle1" color="textPrimary">
+                  {age}
+                </Typography>
+              </Grid>
             </Grid>
-            <Grid item>
-              <Typography variant="subtitle1" color="textPrimary">
-                {gender}
-              </Typography>
+            <Grid container spacing={1} justify="space-between">
+              <Grid item>
+                <Typography variant="subtitle1" color="textPrimary">
+                  Gender:
+                </Typography>
+              </Grid>
+              <Grid item>
+                <Typography variant="subtitle1" color="textPrimary">
+                  {gender}
+                </Typography>
+              </Grid>
             </Grid>
+            <Grid container spacing={1} justify="space-between">
+              <Grid item>
+                <Typography variant="subtitle1" color="textPrimary">
+                  City:
+                </Typography>
+              </Grid>
+              <Grid item>
+                <Typography variant="subtitle1" color="textPrimary">
+                  {city}
+                </Typography>
+              </Grid>
+            </Grid>
+            <Grid container spacing={1} justify="space-between">
+              <Grid item>
+                <Typography variant="subtitle1" color="textPrimary">
+                  State:
+                </Typography>
+              </Grid>
+              <Grid item>
+                <Typography variant="subtitle1" color="textPrimary">
+                  {state}
+                </Typography>
+              </Grid>
+            </Grid>
+            <Grid container spacing={1} justify="space-between">
+              <Grid item>
+                <Typography variant="subtitle1" color="textPrimary">
+                  Zip:
+                </Typography>
+              </Grid>
+              <Grid item>
+                <Typography variant="subtitle1" color="textPrimary">
+                  {zip}
+                </Typography>
+              </Grid>
+            </Grid>
+            <Grid container spacing={1} justify="space-between">
+              <Grid item>
+                <Typography variant="subtitle1" color="textPrimary">
+                  Smoker:
+                </Typography>
+              </Grid>
+              <Grid item>
+                <Typography variant="subtitle1" color="textPrimary">
+                  {isSmoker}
+                </Typography>
+              </Grid>
+            </Grid>
+            <Grid container spacing={1} justify="space-between">
+              <Grid item>
+                <Typography variant="subtitle1" color="textPrimary">
+                  Obese:
+                </Typography>
+              </Grid>
+              <Grid item>
+                <Typography variant="subtitle1" color="textPrimary">
+                  {isObese}
+                </Typography>
+              </Grid>
+            </Grid>
+            <Grid container spacing={1} justify="space-between">
+              <Grid item>
+                <Typography variant="subtitle1" color="textPrimary">
+                  Asthmatic:
+                </Typography>
+              </Grid>
+              <Grid item>
+                <Typography variant="subtitle1" color="textPrimary">
+                  {isAsthmatic}
+                </Typography>
+              </Grid>
+            </Grid>
+            <Button className={classes.updateButton} component={Link} to="/onboard">
+              Update Information
+            </Button>
           </Grid>
-          <Grid container spacing={1} justify="space-between">
-            <Grid item>
-              <Typography variant="subtitle1" color="textPrimary">
-                City:
-              </Typography>
-            </Grid>
-            <Grid item>
-              <Typography variant="subtitle1" color="textPrimary">
-                {city}
-              </Typography>
-            </Grid>
-          </Grid>
-          <Grid container spacing={1} justify="space-between">
-            <Grid item>
-              <Typography variant="subtitle1" color="textPrimary">
-                State:
-              </Typography>
-            </Grid>
-            <Grid item>
-              <Typography variant="subtitle1" color="textPrimary">
-                {state}
-              </Typography>
-            </Grid>
-          </Grid>
-          <Grid container spacing={1} justify="space-between">
-            <Grid item>
-              <Typography variant="subtitle1" color="textPrimary">
-                Zip:
-              </Typography>
-            </Grid>
-            <Grid item>
-              <Typography variant="subtitle1" color="textPrimary">
-                {zip}
-              </Typography>
-            </Grid>
-          </Grid>
-          <Grid container spacing={1} justify="space-between">
-            <Grid item>
-              <Typography variant="subtitle1" color="textPrimary">
-                Smoker:
-              </Typography>
-            </Grid>
-            <Grid item>
-              <Typography variant="subtitle1" color="textPrimary">
-                {isSmoker}
-              </Typography>
-            </Grid>
-          </Grid>
-          <Grid container spacing={1} justify="space-between">
-            <Grid item>
-              <Typography variant="subtitle1" color="textPrimary">
-                Obese:
-              </Typography>
-            </Grid>
-            <Grid item>
-              <Typography variant="subtitle1" color="textPrimary">
-                {isObese}
-              </Typography>
-            </Grid>
-          </Grid>
-          <Grid container spacing={1} justify="space-between">
-            <Grid item>
-              <Typography variant="subtitle1" color="textPrimary">
-                Asthmatic:
-              </Typography>
-            </Grid>
-            <Grid item>
-              <Typography variant="subtitle1" color="textPrimary">
-                {isAsthmatic}
-              </Typography>
-            </Grid>
-          </Grid>
-          <Button className={classes.updateButton} component={Link} to="/onboard">
-            Update Information
+
+          <Button
+            onClick={() => {
+              setShowDeletionDialog(true);
+            }}
+            className={classes.deleteButton}
+          >
+            DELETE ALL OBSERVATION DATA
           </Button>
+          {showDeletionDialog && <DeletionDialog setShowDeletionDialog={setShowDeletionDialog} />}
+
+          <Button
+            className={classes.deleteButton}
+            onClick={() => {
+              setShowDeletionDialog(true);
+            }}
+          >
+            DELETE ALL DATA
+          </Button>
+          {showDeletionDialog && <DeleteAllDataDialog setShowDeletionDialog={setShowDeletionDialog} />}
         </Grid>
-
-        <Button
-          onClick={() => {
-            setShowDeletionDialog(true);
-          }}
-          className={classes.deleteButton}
-        >
-          DELETE ALL OBSERVATION DATA
-        </Button>
-        {showDeletionDialog && <DeletionDialog setShowDeletionDialog={setShowDeletionDialog} />}
-
-        <Button
-          className={classes.deleteButton}
-          onClick={() => {
-            setShowDeletionDialog(true);
-          }}
-        >
-          DELETE ALL DATA
-        </Button>
-        {showDeletionDialog && <DeleteAllDataDialog setShowDeletionDialog={setShowDeletionDialog} />}
+        <TranslationsMenu />
       </Grid>
-    </Grid>
+    </div>
   );
 };
 

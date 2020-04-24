@@ -100,6 +100,9 @@ const useStyles = makeStyles(theme => ({
       width: buttonWidth,
       height: buttonHeight,
     },
+    [theme.breakpoints.down('xs')]: {
+      fontSize: '0.7rem',
+    },
   },
   continueButtonGroup: {
     [theme.breakpoints.down('xs')]: {
@@ -260,13 +263,21 @@ const SurveyPage2 = props => {
       </Typography>
 
       <Grid container justify="center" spacing={1} className={classes.grid}>
-        <Grid item xs={3} sm={6} className={classes.gridItem}>
+        <Grid item xs={2} sm={6} className={classes.gridItem}>
           <Typography variant="body1" className={classes.symptomText}>
             Shortness of breath
           </Typography>
         </Grid>
-        <Grid item xs={9} sm={6} className={classes.gridItem}>
+        <Grid item xs={10} sm={6} className={classes.gridItem}>
           <ButtonGroup color="secondary" aria-label="outlined primary button group" className={classes.buttonGroup}>
+            <Button
+              variant="contained"
+              value="none"
+              className={shortnessOfBreath === 'none' ? classes.selectedButton : classes.button}
+              onClick={e => handleshortnessOfBreath(e.target.textContent)}
+            >
+              None
+            </Button>
             <Button
               variant="contained"
               value="minimal"
@@ -296,13 +307,21 @@ const SurveyPage2 = props => {
       </Grid>
 
       <Grid container justify="center" spacing={1} className={classes.grid}>
-        <Grid item xs={3} sm={6} className={classes.gridItem}>
+        <Grid item xs={2} sm={6} className={classes.gridItem}>
           <Typography variant="body1" className={classes.symptomText}>
             Chills
           </Typography>
         </Grid>
-        <Grid item xs={9} sm={6} className={classes.gridItem}>
+        <Grid item xs={10} sm={6} className={classes.gridItem}>
           <ButtonGroup color="secondary" aria-label="outlined primary button group" className={classes.buttonGroup}>
+            <Button
+              variant="contained"
+              value="none"
+              className={chills === 'none' ? classes.selectedButton : classes.button}
+              onClick={e => handlechills(e.target.textContent)}
+            >
+              None
+            </Button>
             <Button
               variant="contained"
               value="minimal"
@@ -331,13 +350,21 @@ const SurveyPage2 = props => {
         </Grid>
       </Grid>
       <Grid container justify="center" spacing={1} className={classes.grid}>
-        <Grid item xs={3} sm={6} className={classes.gridItem}>
+        <Grid item xs={2} sm={6} className={classes.gridItem}>
           <Typography variant="body1" className={classes.symptomText}>
             Dry cough
           </Typography>
         </Grid>
-        <Grid item xs={9} sm={6} className={classes.gridItem}>
+        <Grid item xs={10} sm={6} className={classes.gridItem}>
           <ButtonGroup color="secondary" aria-label="outlined primary button group" className={classes.buttonGroup}>
+            <Button
+              variant="contained"
+              value="none"
+              className={dryCough === 'none' ? classes.selectedButton : classes.button}
+              onClick={e => handledryCough(e.target.textContent)}
+            >
+              None
+            </Button>
             <Button
               variant="contained"
               value="minimal"
@@ -366,13 +393,21 @@ const SurveyPage2 = props => {
         </Grid>
       </Grid>
       <Grid container justify="center" spacing={1} className={classes.grid}>
-        <Grid item xs={3} sm={6} className={classes.gridItem}>
+        <Grid item xs={2} sm={6} className={classes.gridItem}>
           <Typography variant="body1" className={classes.symptomText}>
             Fatigue
           </Typography>
         </Grid>
-        <Grid item xs={9} sm={6} className={classes.gridItem}>
+        <Grid item xs={10} sm={6} className={classes.gridItem}>
           <ButtonGroup color="secondary" aria-label="outlined primary button group" className={classes.buttonGroup}>
+            <Button
+              variant="contained"
+              value="none"
+              className={fatigue === 'none' ? classes.selectedButton : classes.button}
+              onClick={e => handlefatigue(e.target.textContent)}
+            >
+              None
+            </Button>
             <Button
               variant="contained"
               value="minimal"
@@ -401,13 +436,21 @@ const SurveyPage2 = props => {
         </Grid>
       </Grid>
       <Grid container justify="center" spacing={1} className={classes.grid}>
-        <Grid item xs={3} sm={6} className={classes.gridItem}>
+        <Grid item xs={2} sm={6} className={classes.gridItem}>
           <Typography variant="body1" className={classes.symptomText}>
             Sore throat
           </Typography>
         </Grid>
-        <Grid item xs={9} sm={6} className={classes.gridItem}>
+        <Grid item xs={10} sm={6} className={classes.gridItem}>
           <ButtonGroup color="secondary" aria-label="outlined primary button group" className={classes.buttonGroup}>
+            <Button
+              variant="contained"
+              value="none"
+              className={soreThroat === 'none' ? classes.selectedButton : classes.button}
+              onClick={e => handlesoreThroat(e.target.textContent)}
+            >
+              None
+            </Button>
             <Button
               variant="contained"
               value="minimal"
@@ -436,13 +479,21 @@ const SurveyPage2 = props => {
         </Grid>
       </Grid>
       <Grid container justify="center" spacing={1} className={classes.grid}>
-        <Grid item xs={3} sm={6} className={classes.gridItem}>
+        <Grid item xs={2} sm={6} className={classes.gridItem}>
           <Typography variant="body1" className={classes.symptomText}>
             Bluish lips or face
           </Typography>
         </Grid>
-        <Grid item xs={9} sm={6} className={classes.gridItem}>
+        <Grid item xs={10} sm={6} className={classes.gridItem}>
           <ButtonGroup color="secondary" aria-label="outlined primary button group" className={classes.buttonGroup}>
+            <Button
+              variant="contained"
+              value="none"
+              className={bluish === 'none' ? classes.selectedButton : classes.button}
+              onClick={e => handlebluish(e.target.textContent)}
+            >
+              None
+            </Button>
             <Button
               variant="contained"
               value="minimal"
@@ -471,13 +522,21 @@ const SurveyPage2 = props => {
         </Grid>
       </Grid>
       <Grid container justify="center" spacing={1} className={classes.grid}>
-        <Grid item xs={3} sm={6} className={classes.gridItem}>
+        <Grid item xs={2} sm={6} className={classes.gridItem}>
           <Typography variant="body1" className={classes.symptomText}>
             Headache
           </Typography>
         </Grid>
-        <Grid item xs={9} sm={6} className={classes.gridItem}>
+        <Grid item xs={10} sm={6} className={classes.gridItem}>
           <ButtonGroup color="secondary" aria-label="outlined primary button group" className={classes.buttonGroup}>
+            <Button
+              variant="contained"
+              value="none"
+              className={headache === 'none' ? classes.selectedButton : classes.button}
+              onClick={e => handleHeadache(e.target.textContent)}
+            >
+              None
+            </Button>
             <Button
               variant="contained"
               value="minimal"
@@ -506,13 +565,21 @@ const SurveyPage2 = props => {
         </Grid>
       </Grid>
       <Grid container justify="center" spacing={1} className={classes.grid}>
-        <Grid item xs={3} sm={6} className={`${classes.gridItem} ${classes.lostTaste}`}>
+        <Grid item xs={2} sm={6} className={`${classes.gridItem} ${classes.lostTaste}`}>
           <Typography variant="body1" className={classes.symptomText}>
             Loss of Taste
           </Typography>
         </Grid>
-        <Grid item xs={9} sm={6} className={classes.gridItem}>
+        <Grid item xs={10} sm={6} className={classes.gridItem}>
           <ButtonGroup color="secondary" aria-label="outlined primary button group" className={classes.buttonGroup}>
+            <Button
+              variant="contained"
+              value="none"
+              className={lostTaste === 'none' ? classes.selectedButton : classes.button}
+              onClick={e => handleLostTaste(e.target.textContent)}
+            >
+              None
+            </Button>
             <Button
               variant="contained"
               value="minimal"
@@ -542,13 +609,21 @@ const SurveyPage2 = props => {
       </Grid>
 
       <Grid container justify="center" spacing={1} className={classes.grid}>
-        <Grid item xs={3} sm={6} className={`${classes.gridItem} ${classes.lostSmell}`}>
+        <Grid item xs={2} sm={6} className={`${classes.gridItem} ${classes.lostSmell}`}>
           <Typography variant="body1" className={classes.symptomText}>
             Loss of Smell
           </Typography>
         </Grid>
-        <Grid item xs={9} sm={6} className={classes.gridItem}>
+        <Grid item xs={10} sm={6} className={classes.gridItem}>
           <ButtonGroup color="secondary" aria-label="outlined primary button group" className={classes.buttonGroup}>
+            <Button
+              variant="contained"
+              value="none"
+              className={lostSmell === 'none' ? classes.selectedButton : classes.button}
+              onClick={e => handleLostSmell(e.target.textContent)}
+            >
+              None
+            </Button>
             <Button
               variant="contained"
               value="minimal"
@@ -577,13 +652,21 @@ const SurveyPage2 = props => {
         </Grid>
       </Grid>
       <Grid container justify="center" spacing={1} className={classes.grid}>
-        <Grid item xs={3} sm={6} className={`${classes.gridItem} ${classes.giIssues}`}>
+        <Grid item xs={2} sm={6} className={`${classes.gridItem} ${classes.giIssues}`}>
           <Typography variant="body1" className={classes.symptomText}>
             Gastrointestinnal issues (i.e. nausea, diarrhea, vomiting, abdominal pain)
           </Typography>
         </Grid>
-        <Grid item xs={9} sm={6} className={classes.gridItem}>
+        <Grid item xs={10} sm={6} className={classes.gridItem}>
           <ButtonGroup color="secondary" aria-label="outlined primary button group" className={classes.buttonGroup}>
+            <Button
+              variant="contained"
+              value="none"
+              className={giIssues === 'none' ? classes.selectedButton : classes.button}
+              onClick={e => handleGiIssues(e.target.textContent)}
+            >
+              None
+            </Button>
             <Button
               variant="contained"
               value="minimal"
