@@ -158,12 +158,17 @@ const SurveyPage4 = props => {
   };
 
   const submitSurveyPage4 = async () => {
+    survey.nonPhysical.interest = interestAnswer;
+    survey.nonPhysical.sadness = sadAnswer;
+    survey.nonPhysical.sleep = sleepAnswer;
+    survey.nonPhysical.energy = energyAnswer;
+    survey.nonPhysical.appetite = appetiteAnswer;
+
     history.push('/');
-    setSurveyPage4(surveyPage4);
+    setSurveyPage4(setSurveyPage4);
     setSurveyPage(0);
     addObservation(userSession, survey);
     clearSurvey();
-
     window.localStorage.setItem('surveyCompleted', 'true');
   };
 
