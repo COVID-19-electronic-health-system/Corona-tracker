@@ -84,7 +84,7 @@ const BehavioralChart = props => {
 
   return (
     <>
-      <Typography variant="h4">
+      <Typography variant="subtitle1">
         <b>Behavioral Health History</b>
       </Typography>
 

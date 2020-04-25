@@ -6,9 +6,9 @@ import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import { makeStyles } from '@material-ui/core';
 import MyHealthLog from './MyHealthLog';
-import Table from './Table';
 import actions from '../redux/actions/actions';
 import buttonsCss from '../css/buttons';
+import ShowMeMore from './showMeMore/ShowMeContainer';
 
 const useStyles = makeStyles({
   buttons: {
@@ -40,7 +40,7 @@ const HealthLogToggle = props => {
         </ButtonGroup>
       </div>
       {toggleValue === 'myHealthLog' && <MyHealthLog />}
-      {toggleValue === 'showMeMore' && <Table />}
+      {toggleValue === 'showMeMore' && <ShowMeMore />}
     </div>
   );
 };

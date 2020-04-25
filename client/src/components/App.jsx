@@ -1,5 +1,4 @@
 import React, { useCallback, useEffect } from 'react';
-import 'bootstrap/dist/css/bootstrap.min.css';
 import { Connect } from '@blockstack/connect';
 import { BrowserRouter, Switch, Route } from 'react-router-dom';
 import { connect } from 'react-redux';
