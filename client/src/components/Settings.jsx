@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
+import TCLink from '@material-ui/core/Link';
 import PropTypes from 'prop-types';
 import { Typography, Grid, Button } from '@material-ui/core';
 import DeleteAllDataDialog from './DeleteAllDataDialog';
@@ -180,6 +181,14 @@ const Settings = props => {
           {showDeletionDialog && <DeleteAllDataDialog setShowDeletionDialog={setShowDeletionDialog} />}
         </Grid>
         <TranslationsMenu />
+        <Grid container alignItems="center" direction="column">
+          <TCLink href="https://coronatracker.me/privacy-policy" color="textPrimary">
+            Privacy Policy
+          </TCLink>
+          <TCLink href="https://coronatracker.me/terms-of-use" color="textPrimary">
+            Terms of Use
+          </TCLink>
+        </Grid>
       </Grid>
     </div>
   );
