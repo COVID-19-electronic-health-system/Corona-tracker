@@ -102,20 +102,20 @@ const Survey = props => {
   const { surveyPage, setSurveyPage, requiredStep } = props;
   const classes = useStyles();
   const [activeStep, setActiveStep] = useState(surveyPage - 1);
-  const [open, setOpen] = useState(false);
+  const [showDialog, setShowDialog] = useState(false);
   const contentEl = document.getElementById('content');
 
   const handleStep = step => {
     const page = step + 1;
     if (page > 2 && !requiredStep) {
-      setOpen(true);
+      setShowDialog(true);
     } else {
       setActiveStep(step);
       setSurveyPage(page);
     }
   };
   const handleClose = () => {
-    setOpen(false);
+    setShowDialog(false);
   };
 
   useEffect(() => {
@@ -151,7 +151,7 @@ const Survey = props => {
       {surveyPage === 3 && <SurveyPage3 />}
       {surveyPage === 4 && <SurveyPage4 />}
       <Dialog
-        open={open}
+        open={showDialog}
         onClose={handleClose}
         aria-labelledby="alert-dialog-title"
         aria-describedby="alert-dialog-description"
