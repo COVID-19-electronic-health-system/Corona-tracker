@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import { Typography, Slider, Button, Grid, withStyles } from '@material-ui/core';
 import { connect } from 'react-redux';
@@ -82,6 +82,7 @@ const SurveyPage1 = props => {
     dailySymptomsFeeling,
     dailyComparedToYesterday,
     surveyPage,
+    setCompleted,
   } = props;
   const classes = useStyles();
   const [todayFeeling, setTodayFeeling] = useState(dailyfeeling);
@@ -93,6 +94,11 @@ const SurveyPage1 = props => {
     todaySymptoms,
     comparedFeeling,
   };
+
+  useEffect(() => {
+    setSurveyPage1(surveyPage1);
+  }, [surveyPage1, setSurveyPage1]);
+
   const handlerTodayFeeling = e => {
     setTodayFeeling(e);
     setSurveyPage1({ ...surveyPage1, todayFeeling: e });
@@ -110,6 +116,7 @@ const SurveyPage1 = props => {
 
   const submitSurveyPage1 = async () => {
     setSurveyPage1(surveyPage1);
+    setCompleted(surveyPage);
     setSurveyPage(surveyPage + 1);
   };
 
@@ -195,6 +202,7 @@ SurveyPage1.propTypes = {
   dailyComparedToYesterday: PropTypes.number,
   setSurveyPage: PropTypes.func.isRequired,
   surveyPage: PropTypes.number.isRequired,
+  setCompleted: PropTypes.func.isRequired,
 };
 
 SurveyPage1.defaultProps = {
@@ -216,6 +224,7 @@ const mapDispatchToProps = dispatch => {
   return {
     setSurveyPage1: survey => dispatch(actions.setSurveyPage1(survey)),
     setSurveyPage: page => dispatch(actions.setSurveyPage(page)),
+    setCompleted: page => dispatch(actions.setCompleted(page)),
   };
 };
 

@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import { Typography, Button, TextField, Grid } from '@material-ui/core';
 import { connect } from 'react-redux';
@@ -32,6 +32,10 @@ const SurveyPage3 = props => {
   const { nonPhysical } = survey;
   const classes = useStyles();
   const [openComment, setOpenComment] = useState(nonPhysical.openComment || '');
+
+  useEffect(() => {
+    setSurveyPage3({ openComment });
+  }, [openComment, setSurveyPage3]);
 
   const handleopenComment = value => {
     setOpenComment(value);

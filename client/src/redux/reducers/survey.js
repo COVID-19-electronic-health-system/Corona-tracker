@@ -4,6 +4,7 @@ import {
   SET_SURVEY_PAGE_2,
   SET_SURVEY_PAGE_3,
   SET_SURVEY_PAGE_4,
+  SET_COMPLETED,
   CLEAR_SURVEY,
 } from '../actions/survey';
 
@@ -13,7 +14,7 @@ const initialState = {
     physical: {},
     nonPhysical: {},
   },
-  completedSteps: [],
+  completedSteps: {},
   surveyPage: 0,
 };
 
@@ -21,6 +22,8 @@ const surveyReducer = (oldState = initialState, action) => {
   switch (action.type) {
     case SET_SURVEY_PAGE:
       return { ...oldState, surveyPage: action.page };
+    case SET_COMPLETED:
+      return { ...oldState, completedSteps: { ...oldState.completedSteps, [action.page]: true } };
     case SET_SURVEY_PAGE_1:
       return {
         ...oldState,

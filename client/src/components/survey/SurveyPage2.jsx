@@ -127,6 +127,7 @@ const SurveyPage2 = props => {
     lostTasteSeverity,
     lostSmellSeverity,
     surveyPage,
+    setCompleted,
   } = props;
   const classes = useStyles();
   const [open, setOpen] = useState(false);
@@ -235,6 +236,7 @@ const SurveyPage2 = props => {
     ) {
       setOpen(true);
     } else {
+      setCompleted(surveyPage);
       setSurveyPage(surveyPage + 1);
     }
   };
@@ -753,6 +755,7 @@ SurveyPage2.propTypes = {
   lostSmellSeverity: PropTypes.string,
   setSurveyPage: PropTypes.func.isRequired,
   surveyPage: PropTypes.number.isRequired,
+  setCompleted: PropTypes.func.isRequired,
 };
 
 SurveyPage2.defaultProps = {
@@ -790,6 +793,7 @@ const mapDispatchToProps = dispatch => {
   return {
     setSurveyPage2: survey => dispatch(actions.setSurveyPage2(survey)),
     setSurveyPage: page => dispatch(actions.setSurveyPage(page)),
+    setCompleted: page => dispatch(actions.setCompleted(page)),
   };
 };
 

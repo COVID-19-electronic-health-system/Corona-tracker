@@ -9,7 +9,15 @@ import {
 } from './observations';
 import { selectDate } from './calendar';
 import { setToggleValue, setDetailData, deleteDetailData } from './healthToggle';
-import { setSurveyPage, setSurveyPage1, setSurveyPage2, setSurveyPage3, setSurveyPage4, clearSurvey } from './survey';
+import {
+  setCompleted,
+  setSurveyPage,
+  setSurveyPage1,
+  setSurveyPage2,
+  setSurveyPage3,
+  setSurveyPage4,
+  clearSurvey,
+} from './survey';
 import {
   setDemographicsComorbiditiesThunk,
   resetDemographicsComorbidities,
@@ -28,6 +36,7 @@ const actions = {
   setToggleValue,
   setDetailData,
   deleteDetailData,
+  setCompleted,
   setSurveyPage,
   setSurveyPage1,
   setSurveyPage2,

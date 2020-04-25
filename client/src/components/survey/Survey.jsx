@@ -3,6 +3,7 @@ import { connect } from 'react-redux';
 import Stepper from '@material-ui/core/Stepper';
 import Step from '@material-ui/core/Step';
 import StepLabel from '@material-ui/core/StepLabel';
+import { Dialog, DialogActions, DialogContent, DialogContentText, Button } from '@material-ui/core';
 import { makeStyles, withStyles } from '@material-ui/core/styles';
 import StepConnector from '@material-ui/core/StepConnector';
 import StepButton from '@material-ui/core/StepButton';
@@ -98,19 +99,23 @@ const useStyles = makeStyles(() => ({
 }));
 
 const Survey = props => {
-  const { surveyPage, setSurveyPage } = props;
+  const { surveyPage, setSurveyPage, requiredStep } = props;
   const classes = useStyles();
   const [activeStep, setActiveStep] = useState(surveyPage);
+  const [open, setOpen] = useState(false);
   const contentEl = document.getElementById('content');
 
   const handleStep = index => {
     const pageToStepTo = index;
-    // if (pageToStepTo > 1) {
-    //   console.log('finished step 2');
-    // } else {
-    setActiveStep(pageToStepTo);
-    setSurveyPage(pageToStepTo);
-    // }
+    if (pageToStepTo > 1 && !requiredStep) {
+      setOpen(true);
+    } else {
+      setActiveStep(pageToStepTo);
+      setSurveyPage(pageToStepTo);
+    }
+  };
+  const handleClose = () => {
+    setOpen(false);
   };
 
   useEffect(() => {
@@ -145,6 +150,21 @@ const Survey = props => {
       {activeStep === 1 && <SurveyPage2 />}
       {activeStep === 2 && <SurveyPage3 />}
       {activeStep === 3 && <SurveyPage4 />}
+      <Dialog
+        open={open}
+        onClose={handleClose}
+        aria-labelledby="alert-dialog-title"
+        aria-describedby="alert-dialog-description"
+      >
+        <DialogContent>
+          <DialogContentText id="alert-dialog-description">Complete Step 2 before moving on</DialogContentText>
+        </DialogContent>
+        <DialogActions>
+          <Button onClick={handleClose} color="default" autoFocus>
+            Close
+          </Button>
+        </DialogActions>
+      </Dialog>
     </div>
   );
 };
@@ -152,11 +172,13 @@ const Survey = props => {
 Survey.propTypes = {
   surveyPage: PropTypes.number.isRequired,
   setSurveyPage: PropTypes.func.isRequired,
+  requiredStep: PropTypes.bool.isRequired,
 };
 
 const mapStateToProps = state => {
   return {
     surveyPage: state.surveyReducer.surveyPage,
+    requiredStep: state.surveyReducer.completedSteps[1],
   };
 };
 
