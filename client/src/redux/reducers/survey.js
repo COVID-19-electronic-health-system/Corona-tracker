@@ -111,6 +111,7 @@ const surveyReducer = (oldState = initialState, action) => {
           nonPhysical: {},
         },
         surveyPage: 0,
+        completed: {},
       };
     default:
       return oldState;
