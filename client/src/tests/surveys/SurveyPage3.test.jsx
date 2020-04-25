@@ -15,7 +15,7 @@ const mockSurveyReducerState = {
     nonPhysical: {},
   },
   scompletedSteps: {},
-  surveyPage: 2,
+  surveyPage: 3,
 };
 
 const mockObservationReducerState = {
