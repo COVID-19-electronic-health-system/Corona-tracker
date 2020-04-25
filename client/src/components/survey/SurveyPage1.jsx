@@ -96,8 +96,9 @@ const SurveyPage1 = props => {
   };
 
   useEffect(() => {
+    setCompleted(surveyPage);
     setSurveyPage1(surveyPage1);
-  }, [surveyPage1, setSurveyPage1]);
+  }, [surveyPage1, setSurveyPage1, setCompleted, surveyPage]);
 
   const handlerTodayFeeling = e => {
     setTodayFeeling(e);
