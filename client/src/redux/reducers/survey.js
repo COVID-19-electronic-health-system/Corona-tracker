@@ -15,7 +15,7 @@ const initialState = {
     nonPhysical: {},
   },
   completedSteps: {},
-  surveyPage: 0,
+  surveyPage: 1,
 };
 
 const surveyReducer = (oldState = initialState, action) => {
@@ -32,9 +32,7 @@ const surveyReducer = (oldState = initialState, action) => {
           date: Date.now(),
           physical: {
             ...oldState.survey.physical,
-            dailyfeeling: action.survey.todayFeeling,
-            dailySymptomsFeeling: action.survey.todaySymptoms,
-            dailyComparedToYesterday: action.survey.comparedFeeling,
+            ...action.survey,
           },
           nonPhysical: {
             ...oldState.survey.nonPhysical,
@@ -49,18 +47,7 @@ const surveyReducer = (oldState = initialState, action) => {
           date: Date.now(),
           physical: {
             ...oldState.survey.physical,
-            feverSeverity: action.survey.fever,
-            shortnessOfBreathSeverity: action.survey.shortnessOfBreath,
-            chillsSeverity: action.survey.chills,
-            coughSeverity: action.survey.dryCough,
-            chestPainSeverity: action.survey.chestPain,
-            fatigueSeverity: action.survey.fatigue,
-            soreThroatSeverity: action.survey.soreThroat,
-            bluishnessSeverity: action.survey.bluish,
-            giIssueSeverity: action.survey.giIssues,
-            headacheSeverity: action.survey.headache,
-            lostTasteSeverity: action.survey.lostTaste,
-            lostSmellSeverity: action.survey.lostSmell,
+            ...action.survey,
           },
           nonPhysical: {
             ...oldState.survey.nonPhysical,
@@ -93,11 +80,7 @@ const surveyReducer = (oldState = initialState, action) => {
           },
           nonPhysical: {
             ...oldState.survey.nonPhysical,
-            interest: action.survey.interestAnswer,
-            sadness: action.survey.sadAnswer,
-            sleep: action.survey.sleepAnswer,
-            energy: action.survey.energyAnswer,
-            appetite: action.survey.appetiteAnswer,
+            ...action.survey,
           },
         },
       };

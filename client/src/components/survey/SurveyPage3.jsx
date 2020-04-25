@@ -35,7 +35,8 @@ const SurveyPage3 = props => {
 
   useEffect(() => {
     setSurveyPage3({ openComment });
-  }, [openComment, setSurveyPage3]);
+    setCompleted(surveyPage);
+  }, [openComment, setSurveyPage3, setCompleted, surveyPage]);
 
   const handleopenComment = value => {
     setOpenComment(value);
@@ -47,8 +48,6 @@ const SurveyPage3 = props => {
   };
 
   const submitButton = () => {
-    setCompleted(surveyPage);
-    setSurveyPage3({ openComment });
     setSurveyPage(surveyPage + 1);
   };
 

@@ -12,7 +12,8 @@ describe('survey reducer', () => {
         nonPhysical: {},
         physical: {},
       },
-      surveyPage: 1,
+      completedSteps: {},
+      surveyPage: 0,
     });
   });
 
@@ -29,12 +30,12 @@ describe('survey reducer', () => {
               dailyfeeling: 0,
             },
           },
-          surveyPage: 2,
+          surveyPage: 0,
         },
         setSurveyPage1
       )
     ).toEqual({
-      surveyPage: 2,
+      surveyPage: 0,
       survey: {
         date,
         physical: {
@@ -68,12 +69,12 @@ describe('survey reducer', () => {
               lostSmellSeverity: 'none',
             },
           },
-          surveyPage: 3,
+          surveyPage: 1,
         },
         setSurveyPage2
       )
     ).toEqual({
-      surveyPage: 3,
+      surveyPage: 1,
       survey: {
         date,
         physical: {
@@ -105,12 +106,12 @@ describe('survey reducer', () => {
             },
             physical: {},
           },
-          surveyPage: 1,
+          surveyPage: 2,
         },
         setSurveyPage3
       )
     ).toEqual({
-      surveyPage: 1,
+      surveyPage: 2,
       survey: {
         date,
         physical: {},

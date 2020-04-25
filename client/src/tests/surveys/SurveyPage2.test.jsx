@@ -13,7 +13,8 @@ const mockSurveyReducerState = {
     physical: {},
     nonPhysical: {},
   },
-  surveyPage: 2,
+  completedSteps: {},
+  surveyPage: 1,
 };
 
 describe('SurveyPage2', () => {

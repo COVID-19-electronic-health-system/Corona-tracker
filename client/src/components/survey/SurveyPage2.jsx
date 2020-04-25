@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import {
   Typography,
@@ -129,87 +129,34 @@ const SurveyPage2 = props => {
     surveyPage,
     setCompleted,
   } = props;
-  const classes = useStyles();
-  const [open, setOpen] = useState(false);
-  const [fever, setFever] = useState(feverSeverity);
-  const [shortnessOfBreath, setShortnessOfBreath] = useState(shortnessOfBreathSeverity);
-  const [chills, setChills] = useState(chillsSeverity);
-  const [dryCough, setDryCough] = useState(coughSeverity);
-  const [fatigue, setFatigue] = useState(fatigueSeverity);
-  const [soreThroat, setSoreThroat] = useState(soreThroatSeverity);
-  const [bluish, setBluish] = useState(bluishnessSeverity);
-  const [giIssues, setGiIssues] = useState(giIssueSeverity);
-  const [headache, setHeadache] = useState(headacheSeverity);
-  const [lostTaste, setLostTaste] = useState(lostTasteSeverity);
-  const [lostSmell, setLostSmell] = useState(lostSmellSeverity);
 
   const surveyPage2 = {
-    fever,
-    shortnessOfBreath,
-    chills,
-    dryCough,
-    fatigue,
-    soreThroat,
-    bluish,
-    giIssues,
-    headache,
-    lostTaste,
-    lostSmell,
+    feverSeverity,
+    shortnessOfBreathSeverity,
+    chillsSeverity,
+    coughSeverity,
+    fatigueSeverity,
+    soreThroatSeverity,
+    bluishnessSeverity,
+    giIssueSeverity,
+    headacheSeverity,
+    lostTasteSeverity,
+    lostSmellSeverity,
   };
+
+  const classes = useStyles();
+  const [open, setOpen] = useState(false);
+  const [survey2, setSurvey2] = useState(surveyPage2);
+
+  useEffect(() => {
+    setSurveyPage2(survey2);
+  }, [survey2, setSurveyPage2]);
 
   const handleFever = value => {
-    setFever(value);
-    setSurveyPage2({ ...surveyPage2, fever: value });
+    setSurvey2({ ...survey2, feverSeverity: value });
   };
-
-  const handleshortnessOfBreath = value => {
-    setShortnessOfBreath(value.toLowerCase());
-    setSurveyPage2({ ...surveyPage2, shortnessOfBreath: value.toLowerCase() });
-  };
-
-  const handlechills = value => {
-    setChills(value.toLowerCase());
-    setSurveyPage2({ ...surveyPage2, chills: value.toLowerCase() });
-  };
-
-  const handledryCough = value => {
-    setDryCough(value.toLowerCase());
-    setSurveyPage2({ ...surveyPage2, dryCough: value.toLowerCase() });
-  };
-
-  const handlefatigue = value => {
-    setFatigue(value.toLowerCase());
-    setSurveyPage2({ ...surveyPage2, fatigue: value.toLowerCase() });
-  };
-
-  const handlesoreThroat = value => {
-    setSoreThroat(value.toLowerCase());
-    setSurveyPage2({ ...surveyPage2, soreThroat: value.toLowerCase() });
-  };
-
-  const handlebluish = value => {
-    setBluish(value.toLowerCase());
-    setSurveyPage2({ ...surveyPage2, bluish: value.toLowerCase() });
-  };
-
-  const handleGiIssues = value => {
-    setGiIssues(value.toLowerCase());
-    setSurveyPage2({ ...surveyPage2, giIssues: value.toLowerCase() });
-  };
-
-  const handleHeadache = value => {
-    setHeadache(value.toLowerCase());
-    setSurveyPage2({ ...surveyPage2, headache: value.toLowerCase() });
-  };
-
-  const handleLostTaste = value => {
-    setLostTaste(value.toLowerCase());
-    setSurveyPage2({ ...surveyPage2, lostTaste: value.toLowerCase() });
-  };
-
-  const handleLostSmell = value => {
-    setLostSmell(value.toLowerCase());
-    setSurveyPage2({ ...surveyPage2, lostSmell: value.toLowerCase() });
+  const handleAnswer = (value, name) => {
+    setSurvey2({ ...survey2, [name]: value.toLowerCase() });
   };
 
   const handleClose = () => {
@@ -222,17 +169,17 @@ const SurveyPage2 = props => {
 
   const submitSurveyPage2 = async () => {
     if (
-      !fever ||
-      shortnessOfBreath === '' ||
-      chills === '' ||
-      dryCough === '' ||
-      fatigue === '' ||
-      soreThroat === '' ||
-      bluish === '' ||
-      giIssues === '' ||
-      headache === '' ||
-      lostTaste === '' ||
-      lostSmell === ''
+      !feverSeverity ||
+      shortnessOfBreathSeverity === '' ||
+      chillsSeverity === '' ||
+      coughSeverity === '' ||
+      fatigueSeverity === '' ||
+      soreThroatSeverity === '' ||
+      bluishnessSeverity === '' ||
+      giIssueSeverity === '' ||
+      headacheSeverity === '' ||
+      lostTasteSeverity === '' ||
+      lostSmellSeverity === ''
     ) {
       setOpen(true);
     } else {
@@ -252,7 +199,7 @@ const SurveyPage2 = props => {
             type="number"
             onChange={e => handleFever(e.target.valueAsNumber)}
             className={classes.temperatureField}
-            defaultValue={fever}
+            defaultValue={feverSeverity}
           />
         </Grid>
         <Grid item>
@@ -274,32 +221,32 @@ const SurveyPage2 = props => {
             <Button
               variant="contained"
               value="none"
-              className={shortnessOfBreath === 'none' ? classes.selectedButton : classes.button}
-              onClick={e => handleshortnessOfBreath(e.target.textContent)}
+              className={shortnessOfBreathSeverity === 'none' ? classes.selectedButton : classes.button}
+              onClick={e => handleAnswer(e.target.textContent, 'shortnessOfBreathSeverity')}
             >
               None
             </Button>
             <Button
               variant="contained"
               value="minimal"
-              className={shortnessOfBreath === 'minimal' ? classes.selectedButton : classes.button}
-              onClick={e => handleshortnessOfBreath(e.target.textContent)}
+              className={shortnessOfBreathSeverity === 'minimal' ? classes.selectedButton : classes.button}
+              onClick={e => handleAnswer(e.target.textContent, 'shortnessOfBreathSeverity')}
             >
               Minimal
             </Button>
             <Button
               variant="contained"
               value="moderate"
-              className={shortnessOfBreath === 'moderate' ? classes.selectedButton : classes.button}
-              onClick={e => handleshortnessOfBreath(e.target.textContent)}
+              className={shortnessOfBreathSeverity === 'moderate' ? classes.selectedButton : classes.button}
+              onClick={e => handleAnswer(e.target.textContent, 'shortnessOfBreathSeverity')}
             >
               Moderate
             </Button>
             <Button
               variant="contained"
               value="severe"
-              className={shortnessOfBreath === 'severe' ? classes.selectedButton : classes.button}
-              onClick={e => handleshortnessOfBreath(e.target.textContent)}
+              className={shortnessOfBreathSeverity === 'severe' ? classes.selectedButton : classes.button}
+              onClick={e => handleAnswer(e.target.textContent, 'shortnessOfBreathSeverity')}
             >
               Severe
             </Button>
@@ -318,32 +265,32 @@ const SurveyPage2 = props => {
             <Button
               variant="contained"
               value="none"
-              className={chills === 'none' ? classes.selectedButton : classes.button}
-              onClick={e => handlechills(e.target.textContent)}
+              className={chillsSeverity === 'none' ? classes.selectedButton : classes.button}
+              onClick={e => handleAnswer(e.target.textContent, 'chillsSeverity')}
             >
               None
             </Button>
             <Button
               variant="contained"
               value="minimal"
-              className={chills === 'minimal' ? classes.selectedButton : classes.button}
-              onClick={e => handlechills(e.target.textContent)}
+              className={chillsSeverity === 'minimal' ? classes.selectedButton : classes.button}
+              onClick={e => handleAnswer(e.target.textContent, 'chillsSeverity')}
             >
               Minimal
             </Button>
             <Button
               variant="contained"
               value="moderate"
-              className={chills === 'moderate' ? classes.selectedButton : classes.button}
-              onClick={e => handlechills(e.target.textContent)}
+              className={chillsSeverity === 'moderate' ? classes.selectedButton : classes.button}
+              onClick={e => handleAnswer(e.target.textContent, 'chillsSeverity')}
             >
               Moderate
             </Button>
             <Button
               variant="contained"
               value="severe"
-              className={chills === 'severe' ? classes.selectedButton : classes.button}
-              onClick={e => handlechills(e.target.textContent)}
+              className={chillsSeverity === 'severe' ? classes.selectedButton : classes.button}
+              onClick={e => handleAnswer(e.target.textContent, 'chillsSeverity')}
             >
               Severe
             </Button>
@@ -361,32 +308,32 @@ const SurveyPage2 = props => {
             <Button
               variant="contained"
               value="none"
-              className={dryCough === 'none' ? classes.selectedButton : classes.button}
-              onClick={e => handledryCough(e.target.textContent)}
+              className={coughSeverity === 'none' ? classes.selectedButton : classes.button}
+              onClick={e => handleAnswer(e.target.textContent, 'coughSeverity')}
             >
               None
             </Button>
             <Button
               variant="contained"
               value="minimal"
-              className={dryCough === 'minimal' ? classes.selectedButton : classes.button}
-              onClick={e => handledryCough(e.target.textContent)}
+              className={coughSeverity === 'minimal' ? classes.selectedButton : classes.button}
+              onClick={e => handleAnswer(e.target.textContent, 'coughSeverity')}
             >
               Minimal
             </Button>
             <Button
               variant="contained"
               value="moderate"
-              className={dryCough === 'moderate' ? classes.selectedButton : classes.button}
-              onClick={e => handledryCough(e.target.textContent)}
+              className={coughSeverity === 'moderate' ? classes.selectedButton : classes.button}
+              onClick={e => handleAnswer(e.target.textContent, 'coughSeverity')}
             >
               Moderate
             </Button>
             <Button
               variant="contained"
               value="severe"
-              className={dryCough === 'severe' ? classes.selectedButton : classes.button}
-              onClick={e => handledryCough(e.target.textContent)}
+              className={coughSeverity === 'severe' ? classes.selectedButton : classes.button}
+              onClick={e => handleAnswer(e.target.textContent, 'coughSeverity')}
             >
               Severe
             </Button>
@@ -404,32 +351,32 @@ const SurveyPage2 = props => {
             <Button
               variant="contained"
               value="none"
-              className={fatigue === 'none' ? classes.selectedButton : classes.button}
-              onClick={e => handlefatigue(e.target.textContent)}
+              className={fatigueSeverity === 'none' ? classes.selectedButton : classes.button}
+              onClick={e => handleAnswer(e.target.textContent, 'fatigueSeverity')}
             >
               None
             </Button>
             <Button
               variant="contained"
               value="minimal"
-              className={fatigue === 'minimal' ? classes.selectedButton : classes.button}
-              onClick={e => handlefatigue(e.target.textContent)}
+              className={fatigueSeverity === 'minimal' ? classes.selectedButton : classes.button}
+              onClick={e => handleAnswer(e.target.textContent, 'fatigueSeverity')}
             >
               Minimal
             </Button>
             <Button
               variant="contained"
               value="moderate"
-              className={fatigue === 'moderate' ? classes.selectedButton : classes.button}
-              onClick={e => handlefatigue(e.target.textContent)}
+              className={fatigueSeverity === 'moderate' ? classes.selectedButton : classes.button}
+              onClick={e => handleAnswer(e.target.textContent, 'fatigueSeverity')}
             >
               Moderate
             </Button>
             <Button
               variant="contained"
               value="severe"
-              className={fatigue === 'severe' ? classes.selectedButton : classes.button}
-              onClick={e => handlefatigue(e.target.textContent)}
+              className={fatigueSeverity === 'severe' ? classes.selectedButton : classes.button}
+              onClick={e => handleAnswer(e.target.textContent, 'fatigueSeverity')}
             >
               Severe
             </Button>
@@ -447,32 +394,32 @@ const SurveyPage2 = props => {
             <Button
               variant="contained"
               value="none"
-              className={soreThroat === 'none' ? classes.selectedButton : classes.button}
-              onClick={e => handlesoreThroat(e.target.textContent)}
+              className={soreThroatSeverity === 'none' ? classes.selectedButton : classes.button}
+              onClick={e => handleAnswer(e.target.textContent, 'soreThroatSeverity')}
             >
               None
             </Button>
             <Button
               variant="contained"
               value="minimal"
-              className={soreThroat === 'minimal' ? classes.selectedButton : classes.button}
-              onClick={e => handlesoreThroat(e.target.textContent)}
+              className={soreThroatSeverity === 'minimal' ? classes.selectedButton : classes.button}
+              onClick={e => handleAnswer(e.target.textContent, 'soreThroatSeverity')}
             >
               Minimal
             </Button>
             <Button
               variant="contained"
               value="moderate"
-              className={soreThroat === 'moderate' ? classes.selectedButton : classes.button}
-              onClick={e => handlesoreThroat(e.target.textContent)}
+              className={soreThroatSeverity === 'moderate' ? classes.selectedButton : classes.button}
+              onClick={e => handleAnswer(e.target.textContent, 'soreThroatSeverity')}
             >
               Moderate
             </Button>
             <Button
               variant="contained"
               value="severe"
-              className={soreThroat === 'severe' ? classes.selectedButton : classes.button}
-              onClick={e => handlesoreThroat(e.target.textContent)}
+              className={soreThroatSeverity === 'severe' ? classes.selectedButton : classes.button}
+              onClick={e => handleAnswer(e.target.textContent, 'soreThroatSeverity')}
             >
               Severe
             </Button>
@@ -490,32 +437,32 @@ const SurveyPage2 = props => {
             <Button
               variant="contained"
               value="none"
-              className={bluish === 'none' ? classes.selectedButton : classes.button}
-              onClick={e => handlebluish(e.target.textContent)}
+              className={bluishnessSeverity === 'none' ? classes.selectedButton : classes.button}
+              onClick={e => handleAnswer(e.target.textContent, 'bluishnessSeverity')}
             >
               None
             </Button>
             <Button
               variant="contained"
               value="minimal"
-              className={bluish === 'minimal' ? classes.selectedButton : classes.button}
-              onClick={e => handlebluish(e.target.textContent)}
+              className={bluishnessSeverity === 'minimal' ? classes.selectedButton : classes.button}
+              onClick={e => handleAnswer(e.target.textContent, 'bluishnessSeverity')}
             >
               Minimal
             </Button>
             <Button
               variant="contained"
               value="moderate"
-              className={bluish === 'moderate' ? classes.selectedButton : classes.button}
-              onClick={e => handlebluish(e.target.textContent)}
+              className={bluishnessSeverity === 'moderate' ? classes.selectedButton : classes.button}
+              onClick={e => handleAnswer(e.target.textContent, 'bluishnessSeverity')}
             >
               Moderate
             </Button>
             <Button
               variant="contained"
               value="severe"
-              className={bluish === 'severe' ? classes.selectedButton : classes.button}
-              onClick={e => handlebluish(e.target.textContent)}
+              className={bluishnessSeverity === 'severe' ? classes.selectedButton : classes.button}
+              onClick={e => handleAnswer(e.target.textContent, 'bluishnessSeverity')}
             >
               Severe
             </Button>
@@ -533,32 +480,32 @@ const SurveyPage2 = props => {
             <Button
               variant="contained"
               value="none"
-              className={headache === 'none' ? classes.selectedButton : classes.button}
-              onClick={e => handleHeadache(e.target.textContent)}
+              className={headacheSeverity === 'none' ? classes.selectedButton : classes.button}
+              onClick={e => handleAnswer(e.target.textContent, 'headacheSeverity')}
             >
               None
             </Button>
             <Button
               variant="contained"
               value="minimal"
-              className={headache === 'minimal' ? classes.selectedButton : classes.button}
-              onClick={e => handleHeadache(e.target.textContent)}
+              className={headacheSeverity === 'minimal' ? classes.selectedButton : classes.button}
+              onClick={e => handleAnswer(e.target.textContent, 'headacheSeverity')}
             >
               Minimal
             </Button>
             <Button
               variant="contained"
               value="moderate"
-              className={headache === 'moderate' ? classes.selectedButton : classes.button}
-              onClick={e => handleHeadache(e.target.textContent)}
+              className={headacheSeverity === 'moderate' ? classes.selectedButton : classes.button}
+              onClick={e => handleAnswer(e.target.textContent, 'headacheSeverity')}
             >
               Moderate
             </Button>
             <Button
               variant="contained"
               value="severe"
-              className={headache === 'severe' ? classes.selectedButton : classes.button}
-              onClick={e => handleHeadache(e.target.textContent)}
+              className={headacheSeverity === 'severe' ? classes.selectedButton : classes.button}
+              onClick={e => handleAnswer(e.target.textContent, 'headacheSeverity')}
             >
               Severe
             </Button>
@@ -576,32 +523,32 @@ const SurveyPage2 = props => {
             <Button
               variant="contained"
               value="none"
-              className={lostTaste === 'none' ? classes.selectedButton : classes.button}
-              onClick={e => handleLostTaste(e.target.textContent)}
+              className={lostTasteSeverity === 'none' ? classes.selectedButton : classes.button}
+              onClick={e => handleAnswer(e.target.textContent, 'lostTasteSeverity')}
             >
               None
             </Button>
             <Button
               variant="contained"
               value="minimal"
-              className={lostTaste === 'minimal' ? classes.selectedButton : classes.button}
-              onClick={e => handleLostTaste(e.target.textContent)}
+              className={lostTasteSeverity === 'minimal' ? classes.selectedButton : classes.button}
+              onClick={e => handleAnswer(e.target.textContent, 'lostTasteSeverity')}
             >
               Minimal
             </Button>
             <Button
               variant="contained"
               value="moderate"
-              className={lostTaste === 'moderate' ? classes.selectedButton : classes.button}
-              onClick={e => handleLostTaste(e.target.textContent)}
+              className={lostTasteSeverity === 'moderate' ? classes.selectedButton : classes.button}
+              onClick={e => handleAnswer(e.target.textContent, 'lostTasteSeverity')}
             >
               Moderate
             </Button>
             <Button
               variant="contained"
               value="severe"
-              className={lostTaste === 'severe' ? classes.selectedButton : classes.button}
-              onClick={e => handleLostTaste(e.target.textContent)}
+              className={lostTasteSeverity === 'severe' ? classes.selectedButton : classes.button}
+              onClick={e => handleAnswer(e.target.textContent, 'lostTasteSeverity')}
             >
               Severe
             </Button>
@@ -620,32 +567,32 @@ const SurveyPage2 = props => {
             <Button
               variant="contained"
               value="none"
-              className={lostSmell === 'none' ? classes.selectedButton : classes.button}
-              onClick={e => handleLostSmell(e.target.textContent)}
+              className={lostSmellSeverity === 'none' ? classes.selectedButton : classes.button}
+              onClick={e => handleAnswer(e.target.textContent, 'lostSmellSeverity')}
             >
               None
             </Button>
             <Button
               variant="contained"
               value="minimal"
-              className={lostSmell === 'minimal' ? classes.selectedButton : classes.button}
-              onClick={e => handleLostSmell(e.target.textContent)}
+              className={lostSmellSeverity === 'minimal' ? classes.selectedButton : classes.button}
+              onClick={e => handleAnswer(e.target.textContent, 'lostSmellSeverity')}
             >
               Minimal
             </Button>
             <Button
               variant="contained"
               value="moderate"
-              className={lostSmell === 'moderate' ? classes.selectedButton : classes.button}
-              onClick={e => handleLostSmell(e.target.textContent)}
+              className={lostSmellSeverity === 'moderate' ? classes.selectedButton : classes.button}
+              onClick={e => handleAnswer(e.target.textContent, 'lostSmellSeverity')}
             >
               Moderate
             </Button>
             <Button
               variant="contained"
               value="severe"
-              className={lostSmell === 'severe' ? classes.selectedButton : classes.button}
-              onClick={e => handleLostSmell(e.target.textContent)}
+              className={lostSmellSeverity === 'severe' ? classes.selectedButton : classes.button}
+              onClick={e => handleAnswer(e.target.textContent, 'lostSmellSeverity')}
             >
               Severe
             </Button>
@@ -663,32 +610,32 @@ const SurveyPage2 = props => {
             <Button
               variant="contained"
               value="none"
-              className={giIssues === 'none' ? classes.selectedButton : classes.button}
-              onClick={e => handleGiIssues(e.target.textContent)}
+              className={giIssueSeverity === 'none' ? classes.selectedButton : classes.button}
+              onClick={e => handleAnswer(e.target.textContent, 'giIssueSeverity')}
             >
               None
             </Button>
             <Button
               variant="contained"
               value="minimal"
-              className={giIssues === 'minimal' ? classes.selectedButton : classes.button}
-              onClick={e => handleGiIssues(e.target.textContent)}
+              className={giIssueSeverity === 'minimal' ? classes.selectedButton : classes.button}
+              onClick={e => handleAnswer(e.target.textContent, 'giIssueSeverity')}
             >
               Minimal
             </Button>
             <Button
               variant="contained"
               value="moderate"
-              className={giIssues === 'moderate' ? classes.selectedButton : classes.button}
-              onClick={e => handleGiIssues(e.target.textContent)}
+              className={giIssueSeverity === 'moderate' ? classes.selectedButton : classes.button}
+              onClick={e => handleAnswer(e.target.textContent, 'giIssueSeverity')}
             >
               Moderate
             </Button>
             <Button
               variant="contained"
               value="severe"
-              className={giIssues === 'severe' ? classes.selectedButton : classes.button}
-              onClick={e => handleGiIssues(e.target.textContent)}
+              className={giIssueSeverity === 'severe' ? classes.selectedButton : classes.button}
+              onClick={e => handleAnswer(e.target.textContent, 'giIssueSeverity')}
             >
               Severe
             </Button>
@@ -708,25 +655,35 @@ const SurveyPage2 = props => {
       <Dialog open={open} onClose={handleClose}>
         <DialogContent className={classes.dialog}>
           <DialogContentText className={classes.dialogText}>Please complete:</DialogContentText>
-          {!fever ? <DialogContentText className={classes.dialogText}>Temperature reading</DialogContentText> : null}
-          {shortnessOfBreath === '' ? (
+          {!feverSeverity ? (
+            <DialogContentText className={classes.dialogText}>Temperature reading</DialogContentText>
+          ) : null}
+          {shortnessOfBreathSeverity === '' ? (
             <DialogContentText className={classes.dialogText}>Shortness of breath</DialogContentText>
           ) : null}
-          {chills === '' ? <DialogContentText className={classes.dialogText}>Chills</DialogContentText> : null}
-          {dryCough === '' ? <DialogContentText className={classes.dialogText}>Dry cough</DialogContentText> : null}
-          {fatigue === '' ? <DialogContentText className={classes.dialogText}>Fatigue</DialogContentText> : null}
-          {soreThroat === '' ? <DialogContentText className={classes.dialogText}>Sore throat</DialogContentText> : null}
-          {bluish === '' ? (
+          {chillsSeverity === '' ? <DialogContentText className={classes.dialogText}>Chills</DialogContentText> : null}
+          {coughSeverity === '' ? (
+            <DialogContentText className={classes.dialogText}>Dry cough</DialogContentText>
+          ) : null}
+          {fatigueSeverity === '' ? (
+            <DialogContentText className={classes.dialogText}>Fatigue</DialogContentText>
+          ) : null}
+          {soreThroatSeverity === '' ? (
+            <DialogContentText className={classes.dialogText}>Sore throat</DialogContentText>
+          ) : null}
+          {bluishnessSeverity === '' ? (
             <DialogContentText className={classes.dialogText}>Bluish lips or face</DialogContentText>
           ) : null}
-          {giIssues === '' ? (
+          {giIssueSeverity === '' ? (
             <DialogContentText className={classes.dialogText}>Gastrointestinnal issues</DialogContentText>
           ) : null}
-          {headache === '' ? <DialogContentText className={classes.dialogText}>Headache</DialogContentText> : null}
-          {lostTaste === '' ? (
+          {headacheSeverity === '' ? (
+            <DialogContentText className={classes.dialogText}>Headache</DialogContentText>
+          ) : null}
+          {lostTasteSeverity === '' ? (
             <DialogContentText className={classes.dialogText}>Loss of Taste</DialogContentText>
           ) : null}
-          {lostSmell === '' ? (
+          {lostSmellSeverity === '' ? (
             <DialogContentText className={classes.dialogText}>Loss of Smell</DialogContentText>
           ) : null}
         </DialogContent>

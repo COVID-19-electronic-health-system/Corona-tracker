@@ -84,46 +84,31 @@ const SurveyPage1 = props => {
     surveyPage,
     setCompleted,
   } = props;
-  const classes = useStyles();
-  const [todayFeeling, setTodayFeeling] = useState(dailyfeeling);
-  const [todaySymptoms, setTodaySymptoms] = useState(dailySymptomsFeeling);
-  const [comparedFeeling, setcomparedFeeling] = useState(dailyComparedToYesterday);
 
   const surveyPage1 = {
-    todayFeeling,
-    todaySymptoms,
-    comparedFeeling,
+    dailyfeeling,
+    dailySymptomsFeeling,
+    dailyComparedToYesterday,
   };
+  const classes = useStyles();
+  const [survey1, setSurvey1] = useState(surveyPage1);
 
   useEffect(() => {
+    setSurveyPage1(survey1);
     setCompleted(surveyPage);
-    setSurveyPage1(surveyPage1);
-  }, [surveyPage1, setSurveyPage1, setCompleted, surveyPage]);
+  }, [survey1, setSurveyPage1, setCompleted, surveyPage]);
 
-  const handlerTodayFeeling = e => {
-    setTodayFeeling(e);
-    setSurveyPage1({ ...surveyPage1, todayFeeling: e });
-  };
-
-  const handlerTodaySymptoms = e => {
-    setTodaySymptoms(e);
-    setSurveyPage1({ ...surveyPage1, todaySymptoms: e });
-  };
-
-  const handlerComparedFeeling = e => {
-    setcomparedFeeling(e);
-    setSurveyPage1({ ...surveyPage1, comparedFeeling: e });
+  const handleAnswer = (val, name) => {
+    setSurvey1({ ...survey1, [name]: val });
   };
 
   const submitSurveyPage1 = async () => {
-    setSurveyPage1(surveyPage1);
-    setCompleted(surveyPage);
     setSurveyPage(surveyPage + 1);
   };
 
   return (
     <div className={classes.root}>
-      <Grid container justify="center" alignItems="center" spacing={3}>
+      <Grid container justify="center" alignItems="center" spacing={4}>
         <Grid item xs={12}>
           <Typography variant="h5">
             <b>Let&apos;s answer a few questions!</b>
@@ -134,57 +119,65 @@ const SurveyPage1 = props => {
             Be sure to answer truthfully and honestly so that your health record will be accurate and helpful
           </Typography>
         </Grid>
-        <Grid item xs={12}>
-          <Typography variant="subtitle1" id="today-feeling-slider" gutterBottom>
-            <b>Q1: How do you feel today?</b>
-          </Typography>
+        <Grid container spacing={3} direction="column" justify="space-between">
+          <Grid item xs={12}>
+            <Typography variant="subtitle1" id="today-feeling-slider" gutterBottom>
+              <b>Q1: How do you feel today?</b>
+            </Typography>
+          </Grid>
+          <Grid item xs={12}>
+            <WellnessSlider
+              onChange={(e, val) => handleAnswer(val, 'dailyfeeling')}
+              color="secondary"
+              value={dailyfeeling}
+              aria-labelledby="today-feeling-slider"
+              valueLabelDisplay="on"
+              step={0.5}
+              min={1}
+              max={5}
+              marks={marks}
+            />
+          </Grid>
         </Grid>
-        <Grid item xs={12}>
-          <WellnessSlider
-            onChange={(e, val) => handlerTodayFeeling(val)}
-            color="secondary"
-            value={todayFeeling}
-            aria-labelledby="today-feeling-slider"
-            valueLabelDisplay="on"
-            step={0.5}
-            min={1}
-            max={5}
-            marks={marks}
-          />
-
-          <Typography variant="subtitle1" id="today-symptoms-slider" gutterBottom>
-            <b>Q2: How are your symptoms?</b>
-          </Typography>
+        <Grid container spacing={3} direction="column" justify="space-between">
+          <Grid item xs={12}>
+            <Typography variant="subtitle1" id="today-symptoms-slider" gutterBottom>
+              <b>Q2: How are your symptoms?</b>
+            </Typography>
+          </Grid>
+          <Grid item xs={12}>
+            <WellnessSlider
+              onChange={(e, val) => handleAnswer(val, 'dailySymptomsFeeling')}
+              color="secondary"
+              value={dailySymptomsFeeling}
+              aria-labelledby="today-symptoms-slider"
+              valueLabelDisplay="on"
+              step={0.5}
+              min={1}
+              max={5}
+              marks={marks}
+            />
+          </Grid>
         </Grid>
-        <Grid item xs={12}>
-          <WellnessSlider
-            onChange={(e, val) => handlerTodaySymptoms(val)}
-            color="secondary"
-            value={todaySymptoms}
-            aria-labelledby="today-symptoms-slider"
-            valueLabelDisplay="on"
-            step={0.5}
-            min={1}
-            max={5}
-            marks={marks}
-          />
-
-          <Typography variant="subtitle1" id="compared-feeling-slider" gutterBottom>
-            <b>Q3: How are your feeling compared to yesterday?</b>
-          </Typography>
-        </Grid>
-        <Grid item xs={12}>
-          <WellnessSlider
-            onChange={(e, val) => handlerComparedFeeling(val)}
-            color="secondary"
-            value={comparedFeeling}
-            aria-labelledby="compared-feeling-slider"
-            valueLabelDisplay="on"
-            step={0.5}
-            min={1}
-            max={5}
-            marks={marks}
-          />
+        <Grid container spacing={3} direction="column" justify="space-between">
+          <Grid item xs={12}>
+            <Typography variant="subtitle1" id="compared-feeling-slider" gutterBottom>
+              <b>Q3: How are your feeling compared to yesterday?</b>
+            </Typography>
+          </Grid>
+          <Grid item xs={12}>
+            <WellnessSlider
+              onChange={(e, val) => handleAnswer(val, 'dailyComparedToYesterday')}
+              color="secondary"
+              value={dailyComparedToYesterday}
+              aria-labelledby="compared-feeling-slider"
+              valueLabelDisplay="on"
+              step={0.5}
+              min={1}
+              max={5}
+              marks={marks}
+            />
+          </Grid>
         </Grid>
         <Grid item xs={12}>
           <Button onClick={submitSurveyPage1} variant="outlined" color="secondary" className={classes.continueButton}>

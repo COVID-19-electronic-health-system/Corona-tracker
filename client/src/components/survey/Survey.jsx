@@ -101,17 +101,17 @@ const useStyles = makeStyles(() => ({
 const Survey = props => {
   const { surveyPage, setSurveyPage, requiredStep } = props;
   const classes = useStyles();
-  const [activeStep, setActiveStep] = useState(surveyPage);
+  const [activeStep, setActiveStep] = useState(surveyPage - 1);
   const [open, setOpen] = useState(false);
   const contentEl = document.getElementById('content');
 
-  const handleStep = index => {
-    const pageToStepTo = index;
-    if (pageToStepTo > 1 && !requiredStep) {
+  const handleStep = step => {
+    const page = step + 1;
+    if (page > 2 && !requiredStep) {
       setOpen(true);
     } else {
-      setActiveStep(pageToStepTo);
-      setSurveyPage(pageToStepTo);
+      setActiveStep(step);
+      setSurveyPage(page);
     }
   };
   const handleClose = () => {
@@ -120,7 +120,7 @@ const Survey = props => {
 
   useEffect(() => {
     if (contentEl) contentEl.scrollTop = 0;
-    setActiveStep(surveyPage);
+    setActiveStep(surveyPage - 1);
   }, [surveyPage, contentEl]);
 
   return (
@@ -146,10 +146,10 @@ const Survey = props => {
           );
         })}
       </Stepper>
-      {activeStep === 0 && <SurveyPage1 />}
-      {activeStep === 1 && <SurveyPage2 />}
-      {activeStep === 2 && <SurveyPage3 />}
-      {activeStep === 3 && <SurveyPage4 />}
+      {surveyPage === 1 && <SurveyPage1 />}
+      {surveyPage === 2 && <SurveyPage2 />}
+      {surveyPage === 3 && <SurveyPage3 />}
+      {surveyPage === 4 && <SurveyPage4 />}
       <Dialog
         open={open}
         onClose={handleClose}
@@ -178,7 +178,7 @@ Survey.propTypes = {
 const mapStateToProps = state => {
   return {
     surveyPage: state.surveyReducer.surveyPage,
-    requiredStep: state.surveyReducer.completedSteps[1],
+    requiredStep: !!state.surveyReducer.completedSteps[2],
   };
 };
 
