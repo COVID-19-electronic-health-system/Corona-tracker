@@ -18,6 +18,7 @@ const initialState = {
     isAsthmatic: '',
   },
   disclaimerAnswer: false,
+  showOnboard: false,
 };
 
 const onboardingReducer = (state = initialState, action) => {
@@ -26,11 +27,18 @@ const onboardingReducer = (state = initialState, action) => {
       return {
         ...state,
         demographicsComorbidities: action.formData,
+        showOnboard: !action.formData.age,
       };
     case FETCH_DEMOGRAPHICS_COMORBIDITIES:
+      if (!action.payload)
+        return {
+          ...state,
+          showOnboard: true,
+        };
       return {
         ...state,
         demographicsComorbidities: action.payload,
+        showOnboard: !action.payload.age,
       };
     case RESET_DEMOGRAPHICS_COMORBIDITIES:
       return {
