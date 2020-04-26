@@ -108,7 +108,7 @@ const SurveyPage1 = props => {
 
   return (
     <div className={classes.root}>
-      <Grid container justify="center" alignItems="center" spacing={4}>
+      <Grid container justify="center" alignItems="center">
         <Grid item xs={12}>
           <Typography variant="h5">
             <b>Let&apos;s answer a few questions!</b>
