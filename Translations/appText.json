@@ -1,282 +1,82 @@
+/*=====================================================
+|                                                     |
+|                       APP START                     |
+|                                                     |
+=====================================================*/
+
 {
   "loginSection": {
-    "title": "Your health app to monitor flu-like symptoms, connect to telehealth doctors in your area and discover resources close to you.",
-    "button": "Get started",
-    "selectLang": "Select Language"
-      "dropDown": {
-        "English",
-        "Spanish",
-        "Italian",
-        "French",
-        "Russian"
-        }
-  }
-},
+    "text": "Your health app to monitor flu-like symptoms, connect to telehealth doctors in your area and discover resources close to you.",
+    "buttonText": "Get started",
+    "selectLan": "Select Language"
+  },
 
-{
-  "BlockstackAuthPopUp": {
-    "title": "Corona Tracker guarantees your privacy by encrypting everything"
-    "lock": "You'll get a Secret Key that automatically encrypts everything you do"
-    "access": "Corona Tracker won't be able to see, access, or track your activity"
-    "button": "Get started"
-    "secretKey": "I already have a Secret Key"
-    "More": "How it works"
-  } 
-},
-
-{
-  "BlockstackAuthChooseAccount": {
-    "title": "Choose an account"
-    "subtitle": "to use with CoronaTracker"
-    "account1": ""
-    "addAccount": "Add a new account"
-    "BlockstackSignature": "Powered by"
-  } 
-},
-
-{
-  "bottomNavMenu": {
-    "Log": "Log"
-    "Education": "Education"
-    "Map": "Map"
-    "More": "More"
-  }
-}
-
-{
-  "LOG": {
+  "healthLogSection": {
     "hello": "Hello,",
-    "todayis": "Today is DATE*********************how will the date update itself?",
-    "showLog": "MY HEALTH LOG",
-    "showMore": "SHOW ME MORE",
-    "takeSurvey": "TAKE A SURVEY",
-    "calendarMonth": " ************how will the calendar month update itself?",
-    "slideBarTakeSurvey": {
-      "today": "TODAY",
-      "prompt": "It's time to enter your Daily Health Log!",
-      "promptCTA": "SWIPE TO COMPLETE > > >",
-      }
-  }
-},
+    "todayText": "Today is",
+    "signoutButtonText": "Sign Out",
+    "surveyButtonText": "Take a survey",
+    "health": {
+      "logButton": "My health log",
+      "showMoreButton": "Show me more"
+    }
+  },
 
-{
   "disclaimerSection": {
     "text0": "The CoronaTracker is designed to help you navigate through the pandemic with accurate information, charting your wellbeing, and tracking your health. The CoronaTracker is not intended to be used or viewed as diagnosis or treatment of disease or other symptoms, including but not limited to COVID-19.",
     "text1": "This application was made by the community for the community. This application is made for you! You are in control of how you woulrd like to contribute your data for public health and research.",
     "agree": "I agree",
     "disagree": "I don't agree"
   },
-}
 
-
-{
-  "accountProfile": {
+  "onboardSection": {
     "title": "Welcome to CoronaTracker!",
-    "subtitle": "Let's get your profile set up with a few quick questions and start logging your health:",
-     "age": "Age (Years):" {
-      "click-here": ""
-      }
-    "gender": "Gender:" {
-      "clickHere": {
-        "male": "Male",
-        "female": "Female",
-        "nonbinary": "Non-Binary",
-      },
-    "gender": "Gender:" {
+    "subtitle1": "Let's get your profile set up with a few quick questions and start logging your health:",
+    "firstName": "first name",
+    "age": "age",
+    "gender": {
       "male": "Male",
-      "female": "Female",
-      "nonBinary": "Non-Binary",
-      },
-    "city": "City",
-    "state": "State",
-    "zip": "Zip",
-    "smoke": {
-      "y": "Yes",
-      "n": "No",
-      },
-    "obese": "Are you Obese (BMI)?" {
-      "y": "Yes",
-      "n": "No",
-      },
-    "asthma": "Do you have asthma?" {
-      "y": "Yes",
-      "n": "No",
-      },
-    "saveButton": "SAVE MY RESPONSES",
-    "deleteODButton": "DELETE ALL OBSERVATION DATA",
-    "deleteButton": "DELETE ALL DATA",
-  },
-},
-
-{
-  "symptomTracker-1of4": {
-    "progress": {
-      "selected": "1",
-      "awaiting": "2", "3", "4",
+      "female": "Female"
+    },
+    "formState": {
+      "city": "City",
+      "state": "State",
+      "zip": "Zip",
+      "saveButton": "Save My Responses"
     }
-    "title": "Let's answer a few questions!"
-    "subtitle": "Be sure to answer truthfully and honestly so that your health record will be accurate and helpful"
+  },
+
+  "symptomTrackerSection": {
+    "body1": "Be sure to answer truthfully and honestly so that your health record will be accurate and helpful for you & medical professionals.",
     "Q1": "Q1: How do you feel today?",
     "Q2": "Q2: How are your symptoms?",
-    "Q3": "Q3: How are your feeling compared to yesterday?",
-    "button": "CONTINUE"
-}
-  
-{  
-  "symptomTracker-2of4": {
-    "progress": {
-      "past": "1",
-      "selected": "2",
-      "awaiting": "3", "4",
-    }
-    "Q4": "Q4: What is your temperature reading today?" {
-      "tempSymbol": "",
+    "Q3": {
+      "text": "Q3: How are your feeling compared to yesterday?",
+      "answers": ["Worse", "The Same", "Better"]
     },
-    "Q5": "Which symptoms are you feeling or experiencing?" {
-      "breath": "Shortness of breath" {
-        "low": "MINIMAL",
-        "medium": "MODERATE",
-        "high:" "SEVERE",
-        },
-      "chills": "Chills" {
-        "low": "MINIMAL",
-        "medium": "MODERATE",
-        "high:" "SEVERE",
-        },
-      "cough": "Dry cough" {
-        "low": "MINIMAL",
-        "medium": "MODERATE",
-        "high:" "SEVERE",
-        },
-      "fatigue": "Fatigue" {
-        "low": "MINIMAL",
-        "medium": "MODERATE",
-        "high:" "SEVERE",
-        },
-      "throat": "Sore throat" {
-        "low": "MINIMAL",
-        "medium": "MODERATE",
-        "high:" "SEVERE",
-        },
-      "bluish": "Bluish lips or face" {
-        "low": "MINIMAL",
-        "medium": "MODERATE",
-        "high:" "SEVERE",
-        },
-      "headache": "Headache" {
-        "low": "MINIMAL",
-        "medium": "MODERATE",
-        "high:" "SEVERE",
-        },
-      "gastrointestinnal": "Gastrointestinnal issues (i.e. nausea, diarrhea, vomiting, abdominal pain)" {
-        "low": "MINIMAL",
-        "medium": "MODERATE",
-        "high:" "SEVERE",
-        },
-      } 
-    "backwards": "BACK",
-    "forwards": "CONTINUE",
+    "Q4": {
+      "temperatureText": "What is your temperature?",
+      "answers": "",
+      "text": "If you have a thermometer, enter the result below, if not, skip this question.",
+      "temperatureField": "Enter your temperature here:"
     },
-}
-
-
-{
-"symptomTracker-3o4": {
-  "progress": {
-    "past": "1", "2",
-    "selected": "3",
-    "awaiting": "4",
-    }
-  "Q6": "Q6: Anything other symptoms or comments you want to add?" {
-    "textBox": "e.g. loss of smell or taste",
+    "Q5": {
+      "symptomText": "Which of the following are you feeling or exhibiting?",
+      "shortnessOfBreath": "Shortness of Breath?",
+      "chills": "Chills?",
+      "dryCough": "Dry Cough?",
+      "chestPain": "Chest pain or Pressure?",
+      "fatigue": "Fatigue?",
+      "soreThroat": "Sore Throat?",
+      "bluish": "Bluish Lips or Face?",
+      "additionalDetails": "Anything else you want to add?",
+      "answers": ["None", "Moderate", "Severe"]
     },
-  }
-}
-
-
-{
-  "symptomTracker-4o4": {
-    "progress": {
-      "past": "1", "2", "3", 
-      "selected": "4",
-      }
-    "behavioralHealthQuestions": {
-      "Q1": "1: Have you lost interest or pleasure in doing things?" {
-        "n": "No",
-        "y": "Yes",
-        },
-      "Q2": "2: Have you been feeling down, depressed, or hopeless?" {
-        "n": "No",
-        "y": "Yes",
-        },
-      "Q3": "3: Trouble falling or staying asleep, or sleeping too much?" {
-        "n": "No",
-        "y": "Yes",
-        },
-      "Q4": "4: Feeling tired or having little energy?" {
-        "n": "No",
-        "y": "Yes",
-        },
-      "Q5": "5: Poor appetite or overeating?" {
-        "n": "No",
-        "y": "Yes",
-        },
+    "submitButton": ["Submit", "Back"]
   },
-},
 
-{
-  "EDUCATION-factsMode": {
-    "button1": "FACTS",
-    "button2": "QUIZ",
-    "subtitle": "Swipe to the right or left to learn more about COVID-19"
-  },
-},
-
-{
-  "EDUCATION-quizMode": {
-    "button1": "FACTS",
-    "button2": "QUIZ",
-    "subtitle": "QUIZ TIME! Swipe right if true and left if false",
-    "score": "SCORE ""/"" "
+  "educationSection": {
+    "facts": "Swipe to the right or left to learn more about COVID-19",
+    "quiz": "QUIZ TIME! Swipe right if true and left if false"
   }
-},
-
-{
-  "MAP": {
-    "title": "Check out the Map!",
-    "subtitle": "...COMING SOON..."
-  }
-},
-
-
-
-{
-  "MORE": {
-    "title": "More",
-    "subtitle": "Enter your phone number to subscribe/unsubscribe to the occasional question/survey to answer over text.",
-    "addNumber": "Enter Phone Number",
-    "button1": "SUBSCRIBE",
-    "button2": "UNSUBSCRIBE",
-    "bottomNav": {
-      "settings": "SETTINGS",
-      "about": "ABOUT",
-      "signOut": "SIGN OUT"
-    }
-  }
-},
-
-{
-  "ABOUT": {
-    "title": "For the community, by the community",
-    "subtitle": "CoronaTracker is an easy-to-use, private-by-design, open-source application for monitoring your health and staying informed during the COVID-19 crisis. Here's what we've accomplished so far",
-    "box1": "Top 20 in CodeVsCOVID-19",
-      "box1Text": "CoronaTracker has recently placed in the top 20 out of over 300 teams in HackZurich's CodeVSCOVID-19",
-    "box2": "Advisory board",
-      "box2Text": "Our advisory board consists of a health-tech CFO, epidemiologist, pulmonary critical care specialist, systems architect, neuropsychologist and emergency room doctor",    
-    "bottomTitle": "Support Us!",
-    "buttomSubtitle": "Star our GitHub, fill out our user survey, anything counts! CoronaTracker is made with ❤️ in NYC and across the globe",
-    "buttomLink": "Take our Beta Survey!",
-    }
-  }
-},
-
+}
