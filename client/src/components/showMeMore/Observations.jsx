@@ -45,7 +45,7 @@ const WhiteFont = styled(Typography)({
 const Observations = props => {
   const classes = useStyles();
 
-  const {detailData, observations } = props;
+  const { detailData, observations } = props;
 
   const [page, setPage] = React.useState(0);
   const [rowsPerPage, setRowsPerPage] = React.useState(4);
@@ -168,14 +168,13 @@ const Observations = props => {
 };
 
 Observations.propTypes = {
-  detailData: PropTypes.arrayOf(Object).isRequired,	
+  detailData: PropTypes.arrayOf(Object).isRequired,
   observations: PropTypes.arrayOf(Object).isRequired,
 };
 
 const mapStateToProps = state => {
   return {
-    	
-    detailData: state.healthToggleReducer.detailData,	
+    detailData: state.healthToggleReducer.detailData,
     observations: state.observationsReducer.observations,
   };
 };

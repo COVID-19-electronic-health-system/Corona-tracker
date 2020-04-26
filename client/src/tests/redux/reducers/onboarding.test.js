@@ -14,6 +14,7 @@ describe('onboarding reducer', () => {
       isObese: '',
       isAsthmatic: '',
     },
+    showOnboard: false,
   };
 
   it('should return the initial state', () => {
@@ -35,6 +36,9 @@ describe('onboarding reducer', () => {
       type: SET_DEMOGRAPHICS_COMORBIDITIES,
       formData,
     };
-    expect(reducer(initialState, setDemographicsComorbidities)).toEqual({ demographicsComorbidities: formData });
+    expect(reducer(initialState, setDemographicsComorbidities)).toEqual({
+      demographicsComorbidities: formData,
+      showOnboard: false
+    });
   });
 });
