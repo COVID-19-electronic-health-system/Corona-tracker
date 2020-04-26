@@ -9,6 +9,7 @@ import Chart from '../Chart';
 import chartType from '../../utils/chartType';
 import BehavioralChart from '../behavior/chart/BehavioralChart';
 import buttonsCss from '../../css/buttons';
+import Download from './Download';
 
 const useStyles = makeStyles(theme => ({
   root: {
@@ -41,11 +42,12 @@ const useStyles = makeStyles(theme => ({
 
 const ShowMeMore = () => {
   const classes = useStyles();
+
   const [content, setContent] = useState('observations');
   return (
     <div className={classes.root}>
       <Grid>
-        <Button className={classes.export}>Export to Excel</Button>
+        <Download className={classes.export} />
       </Grid>
       <Grid>
         <ButtonGroup className={classes.buttons} aria-label="contained primary button group">
