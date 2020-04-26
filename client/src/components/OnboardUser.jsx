@@ -129,9 +129,9 @@ const OnboardUser = props => {
                 style={
                   formState.age !== null
                     ? {
-                      outline: 'none',
-                      color: 'black',
-                    }
+                        outline: 'none',
+                        color: 'black',
+                      }
                     : {}
                 }
               />
@@ -179,9 +179,9 @@ const OnboardUser = props => {
                 style={
                   formState.city !== null
                     ? {
-                      outline: 'none',
-                      color: 'black',
-                    }
+                        outline: 'none',
+                        color: 'black',
+                      }
                     : {}
                 }
               />
@@ -203,9 +203,9 @@ const OnboardUser = props => {
                 style={
                   formState.state !== null
                     ? {
-                      outline: 'none',
-                      color: 'black',
-                    }
+                        outline: 'none',
+                        color: 'black',
+                      }
                     : {}
                 }
               />
@@ -227,9 +227,9 @@ const OnboardUser = props => {
                 style={
                   formState.zip !== null
                     ? {
-                      outline: 'none',
-                      color: 'black',
-                    }
+                        outline: 'none',
+                        color: 'black',
+                      }
                     : {}
                 }
               />
@@ -256,10 +256,10 @@ const OnboardUser = props => {
                   style={
                     formState.isSmoker === 'yes'
                       ? {
-                        ...buttonsCss.buttons,
-                        outline: 'none',
-                        color: 'wheat',
-                      }
+                          ...buttonsCss.buttons,
+                          outline: 'none',
+                          color: 'wheat',
+                        }
                       : {}
                   }
                 >
@@ -278,10 +278,10 @@ const OnboardUser = props => {
                   style={
                     formState.isSmoker === 'no'
                       ? {
-                        ...buttonsCss.buttons,
-                        outline: 'none',
-                        color: 'wheat',
-                      }
+                          ...buttonsCss.buttons,
+                          outline: 'none',
+                          color: 'wheat',
+                        }
                       : {}
                   }
                 >
@@ -311,10 +311,10 @@ const OnboardUser = props => {
                   style={
                     formState.isObese === 'yes'
                       ? {
-                        ...buttonsCss.buttons,
-                        outline: 'none',
-                        color: 'wheat',
-                      }
+                          ...buttonsCss.buttons,
+                          outline: 'none',
+                          color: 'wheat',
+                        }
                       : {}
                   }
                 >
@@ -333,10 +333,10 @@ const OnboardUser = props => {
                   style={
                     formState.isObese === 'no'
                       ? {
-                        ...buttonsCss.buttons,
-                        outline: 'none',
-                        color: 'wheat',
-                      }
+                          ...buttonsCss.buttons,
+                          outline: 'none',
+                          color: 'wheat',
+                        }
                       : {}
                   }
                 >
@@ -366,10 +366,10 @@ const OnboardUser = props => {
                   style={
                     formState.isAsthmatic === 'yes'
                       ? {
-                        ...buttonsCss.buttons,
-                        outline: 'none',
-                        color: 'wheat',
-                      }
+                          ...buttonsCss.buttons,
+                          outline: 'none',
+                          color: 'wheat',
+                        }
                       : {}
                   }
                 >
@@ -388,10 +388,10 @@ const OnboardUser = props => {
                   style={
                     formState.isAsthmatic === 'no'
                       ? {
-                        ...buttonsCss.buttons,
-                        outline: 'none',
-                        color: 'wheat',
-                      }
+                          ...buttonsCss.buttons,
+                          outline: 'none',
+                          color: 'wheat',
+                        }
                       : {}
                   }
                 >
