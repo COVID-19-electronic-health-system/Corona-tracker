@@ -1,7 +1,8 @@
 import React, { useState } from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import { connect } from 'react-redux';
-import { Link } from 'react-router-dom';
+import { useHistory } from 'react-router-dom';
+import Link from '@material-ui/core/Link';
 import PropTypes from 'prop-types';
 import { Typography, Grid, Button } from '@material-ui/core';
 import DeleteAllDataDialog from './DeleteAllDataDialog';
@@ -48,6 +49,7 @@ const Settings = props => {
   const { age, gender, city, state, zip, isSmoker, isObese, isAsthmatic } = demographicsComorbidities;
   const classes = useStyles();
   const [showDeletionDialog, setShowDeletionDialog] = useState(false);
+  const history = useHistory();
   return (
     <div>
       <Grid container justify="center" className={classes.root}>
@@ -154,7 +156,7 @@ const Settings = props => {
                 </Typography>
               </Grid>
             </Grid>
-            <Button className={classes.updateButton} component={Link} to="/onboard">
+            <Button className={classes.updateButton} onClick={() => history.push('/onboard')}>
               Update Information
             </Button>
           </Grid>
@@ -180,6 +182,14 @@ const Settings = props => {
           {showDeletionDialog && <DeleteAllDataDialog setShowDeletionDialog={setShowDeletionDialog} />}
         </Grid>
         <TranslationsMenu />
+        <Grid container alignItems="center" direction="column">
+          <Link href="https://coronatracker.me/privacy-policy" color="textPrimary">
+            Privacy Policy
+          </Link>
+          <Link href="https://coronatracker.me/terms-of-use" color="textPrimary">
+            Terms of Use
+          </Link>
+        </Grid>
       </Grid>
     </div>
   );
