@@ -8,7 +8,7 @@ import actions from '../../redux/actions/actions';
 
 const useStyles = makeStyles(theme => ({
   root: {
-    paddingBottom: '10em',
+    padding: '16px 16px 10em 16px',
     alignItems: 'center',
     justifyContent: 'center',
     marginLeft: 'auto',
@@ -108,7 +108,7 @@ const SurveyPage1 = props => {
 
   return (
     <div className={classes.root}>
-      <Grid container justify="center" alignItems="center">
+      <Grid container justify="center" alignItems="center" spacing={4}>
         <Grid item xs={12}>
           <Typography variant="h5">
             <b>Let&apos;s answer a few questions!</b>
