@@ -56,7 +56,7 @@ const WeeklyTracker = props => {
       if (swiped) {
         // After swipe animation finishes, show survey details
         setDetailData([children.props.dayData]);
-        setToggleValue('myHealthLog');
+        setToggleValue('showMeMore');
       }
     },
   }));

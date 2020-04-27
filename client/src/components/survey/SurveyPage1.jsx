@@ -8,7 +8,7 @@ import actions from '../../redux/actions/actions';
 
 const useStyles = makeStyles(theme => ({
   root: {
-    paddingBottom: '10em',
+    padding: '16px 16px 10em 16px',
     alignItems: 'center',
     justifyContent: 'center',
     marginLeft: 'auto',
