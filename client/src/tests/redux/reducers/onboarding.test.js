@@ -38,7 +38,7 @@ describe('onboarding reducer', () => {
     };
     expect(reducer(initialState, setDemographicsComorbidities)).toEqual({
       demographicsComorbidities: formData,
-      showOnboard: false
+      showOnboard: false,
     });
   });
 });
