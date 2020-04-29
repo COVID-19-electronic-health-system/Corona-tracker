@@ -115,7 +115,6 @@ const More = ({ setSubscribedNumber, unsubscribeNumber, subscribedNumber, clearR
   };
 
   const handleCloseSnackbar = (event, reason) => {
-    console.log(event, reason);
     if (reason === 'clickaway') {
       return;
     }
@@ -140,7 +139,8 @@ const More = ({ setSubscribedNumber, unsubscribeNumber, subscribedNumber, clearR
   };
 
   useEffect(() => {
-    let message, severity;
+    let message;
+    let severity;
     if (error.response) {
       severity = 'error';
       if (error.response.status === 409) {
@@ -295,7 +295,12 @@ const More = ({ setSubscribedNumber, unsubscribeNumber, subscribedNumber, clearR
 More.propTypes = {
   setSubscribedNumber: PropTypes.func.isRequired,
   unsubscribeNumber: PropTypes.func.isRequired,
-  subscribeError: PropTypes.objectOf(Object).isRequired,
+  error: PropTypes.shape({
+    response: PropTypes.shape({
+      status: PropTypes.number,
+    }),
+  }).isRequired,
+  success: PropTypes.string.isRequired,
   clearResponse: PropTypes.func.isRequired,
   subscribedNumber: PropTypes.string.isRequired,
 };
@@ -316,7 +321,4 @@ const mapDispatch = dispatch => {
   };
 };
 
-export default connect(
-  mapState,
-  mapDispatch
-)(More);
+export default connect(mapState, mapDispatch)(More);
