@@ -1,16 +1,11 @@
 import React from 'react';
-import { Button, Typography, Grid } from '@material-ui/core';
+import { Button, Typography } from '@material-ui/core';
 import { useConnect } from '@blockstack/connect';
-import { connect } from 'react-redux';
 import { useTranslation } from 'react-i18next';
 import { makeStyles } from '@material-ui/core/styles';
-import PropTypes from 'prop-types';
 import TranslationsMenu from './Translations';
-import { ReactComponent as Logo } from '../img/Logo_CORONATRACKER_Logo.svg';
-import { ReactComponent as TextLogo } from '../img/Logo_CORONATRACKER_Text_Logo.svg';
-import setLoginLoading from '../redux/actions/actions';
-import Loding from './Loding';
 import buttonsCss from '../css/buttons';
+import { FullLogo } from '../utils/imgUrl';
 
 const useStyles = makeStyles(theme => ({
   Login: {
@@ -20,7 +15,16 @@ const useStyles = makeStyles(theme => ({
   },
   Button: {
     ...buttonsCss.buttons,
-    marginTop: '5vh',
+    fontSize: '28px',
+    height: '50px',
+    lineHeight: '10px',
+    marginTop: '8%',
+    animation: `$glowing 1075ms infinite`,
+  },
+  '@keyframes glowing': {
+    '0% ': { backgroundColor: '#2ba805', boxShadow: '0px 1px 10px 0px #4760ff' },
+    '50%': { backgroundColor: '#49e819', boxShadow: '0px 1px 13px 3px #4760ff' },
+    '100%': { backgroundColor: '#2ba805', boxShadow: '0px 1px 10px 0px #4760ff' },
   },
   logo: {
     width: '40vw',
@@ -29,7 +33,7 @@ const useStyles = makeStyles(theme => ({
       height: '20vh',
     },
   },
-  textLogo: {
+  fullLogo: {
     width: '70vw',
     height: '30vh',
 
@@ -38,52 +42,27 @@ const useStyles = makeStyles(theme => ({
     },
   },
 }));
-const Login = props => {
-  const { loginLoading, setLoading } = props;
+const Login = () => {
   const classes = useStyles();
   const { doOpenAuth } = useConnect();
   const { t } = useTranslation();
   const onClick = () => {
-    setLoading(true);
     doOpenAuth();
   };
 
   return (
     <div className={classes.Login}>
-      {loginLoading.isLoading ? (
-        <Loding />
-      ) : (
-        <div>
-          <Grid item xs={12}>
-            <Logo className={classes.logo} />{' '}
-          </Grid>
-          <TextLogo className={classes.textLogo} />
-          <Typography variant="h6">{t('login.text')} </Typography>
-          <Button variant="login" className={classes.Button} onClick={onClick}>
-            {t('login.buttonText')}
-          </Button>
-          <TranslationsMenu />
-        </div>
-      )}
+      <div>
+        <object title="fullLogo" className={classes.fullLogo} data={FullLogo} type="image/svg+xml" />
+        <Typography variant="h6">{t('login.text')} </Typography>
+        <Button variant="login" className={classes.Button} onClick={onClick}>
+          {t('login.buttonText')}
+        </Button>
+        <TranslationsMenu />
+        <Typography>If on mobile, please disable popups for best use!</Typography>
+      </div>
     </div>
   );
 };
 
-Login.propTypes = {
-  loginLoading: PropTypes.bool.isRequired,
-  setLoading: PropTypes.func.isRequired,
-};
-
-const mapStateToProps = ({ loginLoading }) => ({
-  loginLoading,
-});
-
-const mapDispatchToProps = dispatch => ({
-  setLoading(isLoading) {
-    // return () => {
-    dispatch(setLoginLoading.setLoginLoading(isLoading));
-    // }
-  },
-});
-
-export default connect(mapStateToProps, mapDispatchToProps)(Login);
+export default Login;

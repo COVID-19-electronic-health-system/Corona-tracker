@@ -1,26 +1,30 @@
-import React, { useCallback } from 'react';
-import 'bootstrap/dist/css/bootstrap.min.css';
+import React, { useCallback, useEffect } from 'react';
 import { Connect } from '@blockstack/connect';
-import { BrowserRouter, Switch } from 'react-router-dom';
+import { BrowserRouter, Switch, Route, Redirect } from 'react-router-dom';
 import { connect } from 'react-redux';
 import ReactBlockstack, { useBlockstack, didConnect, useFile } from 'react-blockstack';
 import Container from '@material-ui/core/Container';
+import PropTypes from 'prop-types';
 import Layout from './Layout';
 import Map from './Map';
 import DiagnosticContainer from './DiagnosticContainer';
 import { appConfig } from '../utils/constants';
-import setLoginLoading from '../redux/actions/actions';
 import FactQuizContainer from './FactQuizContainer';
 import PrivateRoute from './PrivateRoute';
 import Survey from './survey/Survey';
 import OnboardUser from './OnboardUser';
 import About from './About';
 import Disclaimer from './Disclaimer';
+import NotFoundPage from './NotFoundPage';
+import actions from '../redux/actions/actions';
+import ScrollToTop from './ScrollToTop';
+import Settings from './Settings';
 
 ReactBlockstack({ appConfig });
 
-function App() {
-  const { userSession } = useBlockstack();
+const App = props => {
+  const { fetchObservations, fetchDemographicsComorbidities, showOnboard } = props;
+  const { userSession, authenticated } = useBlockstack();
   const finished = useCallback(() => {
     didConnect({ userSession });
   }, [userSession]);
@@ -33,6 +37,14 @@ function App() {
     },
     userSession,
   };
+
+  useEffect(() => {
+    document.body.style.zoom = '100%';
+    if (authenticated) {
+      fetchObservations(userSession);
+      fetchDemographicsComorbidities(userSession);
+    }
+  }, [fetchObservations, fetchDemographicsComorbidities, authenticated, userSession]);
 
   const [disclaimerString] = useFile('disclaimer.json');
 
@@ -48,6 +60,7 @@ function App() {
 
   return (
     <BrowserRouter>
+      <ScrollToTop />
       <Connect authOptions={authOptions}>
         <Layout>
           {showDisclaimer && (
@@ -56,6 +69,8 @@ function App() {
             </Container>
           )}
           <Switch>
+            <PrivateRoute path="/onboard" component={() => <OnboardUser />} />
+            {showOnboard && <Redirect to="/onboard" />}
             <PrivateRoute exact path="/" component={() => <DiagnosticContainer />} />
 
             {/* ADD/EDIT ROUTES WITH THEIR COMPONENTS HERE: */}
@@ -65,26 +80,30 @@ function App() {
             <PrivateRoute path="/healthlog" />
             <PrivateRoute path="/education" component={() => <FactQuizContainer />} />
             <PrivateRoute path="/map" component={() => <Map />} />
-            <PrivateRoute path="/settings" />
-            <PrivateRoute path="/onboard" component={() => <OnboardUser />} />
-            <PrivateRoute paht="/about" component={() => <About />} />
+            <PrivateRoute path="/settings" component={() => <Settings />} />
+            <PrivateRoute path="/about" component={() => <About />} />
+            <Route path="/404" component={NotFoundPage} />
+            <Route path="*" component={NotFoundPage} />
           </Switch>
         </Layout>
       </Connect>
     </BrowserRouter>
   );
-}
+};
 
-const mapStateToProps = ({ loginLoading }) => ({
-  loginLoading,
+App.propTypes = {
+  fetchObservations: PropTypes.func.isRequired,
+  fetchDemographicsComorbidities: PropTypes.func.isRequired,
+  showOnboard: PropTypes.bool.isRequired,
+};
+
+const mapStateToProps = state => ({
+  showOnboard: state.onboardingReducer.showOnboard,
 });
 
 const mapDispatchToProps = dispatch => ({
-  setLoading(isLoading) {
-    return () => {
-      dispatch(setLoginLoading(isLoading));
-    };
-  },
+  fetchObservations: userSession => dispatch(actions.fetchObservations(userSession)),
+  fetchDemographicsComorbidities: userSession => dispatch(actions.fetchDemographicsComorbidities(userSession)),
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(App);

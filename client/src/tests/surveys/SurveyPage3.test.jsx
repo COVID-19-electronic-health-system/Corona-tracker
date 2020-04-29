@@ -9,7 +9,13 @@ import SurveyPage3 from '../../components/survey/SurveyPage3';
 const mockStore = configureMockStore([thunk]);
 
 const mockSurveyReducerState = {
-  survey: {},
+  survey: {
+    date: 0,
+    physical: {},
+    nonPhysical: {},
+  },
+  scompletedSteps: {},
+  surveyPage: 3,
 };
 
 const mockObservationReducerState = {

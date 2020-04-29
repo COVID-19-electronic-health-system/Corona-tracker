@@ -12,6 +12,7 @@ describe('survey reducer', () => {
         nonPhysical: {},
         physical: {},
       },
+      completedSteps: {},
       surveyPage: 1,
     });
   });
@@ -29,12 +30,12 @@ describe('survey reducer', () => {
               dailyfeeling: 0,
             },
           },
-          surveyPage: 2,
+          surveyPage: 1,
         },
         setSurveyPage1
       )
     ).toEqual({
-      surveyPage: 2,
+      surveyPage: 1,
       survey: {
         date,
         physical: {
@@ -59,18 +60,21 @@ describe('survey reducer', () => {
               shortnessOfBreathSeverity: 'none',
               chillsSeverity: 'none',
               coughSeverity: 'none',
-              chestPainSeverity: 'none',
               fatigueSeverity: 'none',
               soreThroatSeverity: 'none',
               bluishnessSeverity: 'none',
+              giIssueSeverity: 'none',
+              headacheSeverity: 'none',
+              lostTasteSeverity: 'none',
+              lostSmellSeverity: 'none',
             },
           },
-          surveyPage: 3,
+          surveyPage: 2,
         },
         setSurveyPage2
       )
     ).toEqual({
-      surveyPage: 3,
+      surveyPage: 2,
       survey: {
         date,
         physical: {
@@ -78,10 +82,13 @@ describe('survey reducer', () => {
           shortnessOfBreathSeverity: 'none',
           chillsSeverity: 'none',
           coughSeverity: 'none',
-          chestPainSeverity: 'none',
           fatigueSeverity: 'none',
           soreThroatSeverity: 'none',
           bluishnessSeverity: 'none',
+          giIssueSeverity: 'none',
+          headacheSeverity: 'none',
+          lostTasteSeverity: 'none',
+          lostSmellSeverity: 'none',
         },
         nonPhysical: {},
       },
@@ -99,12 +106,12 @@ describe('survey reducer', () => {
             },
             physical: {},
           },
-          surveyPage: 1,
+          surveyPage: 3,
         },
         setSurveyPage3
       )
     ).toEqual({
-      surveyPage: 1,
+      surveyPage: 3,
       survey: {
         date,
         physical: {},

@@ -1,0 +1,82 @@
+/*=====================================================
+|                                                     |
+|                       APP START                     |
+|                                                     |
+=====================================================*/
+
+{
+  "loginSection": {
+    "text": "Your health app to monitor flu-like symptoms, connect to telehealth doctors in your area and discover resources close to you.",
+    "buttonText": "Get started",
+    "selectLan": "Select Language"
+  },
+
+  "healthLogSection": {
+    "hello": "Hello,",
+    "todayText": "Today is",
+    "signoutButtonText": "Sign Out",
+    "surveyButtonText": "Take a survey",
+    "health": {
+      "logButton": "My health log",
+      "showMoreButton": "Show me more"
+    }
+  },
+
+  "disclaimerSection": {
+    "text0": "The CoronaTracker is designed to help you navigate through the pandemic with accurate information, charting your wellbeing, and tracking your health. The CoronaTracker is not intended to be used or viewed as diagnosis or treatment of disease or other symptoms, including but not limited to COVID-19.",
+    "text1": "This application was made by the community for the community. This application is made for you! You are in control of how you woulrd like to contribute your data for public health and research.",
+    "agree": "I agree",
+    "disagree": "I don't agree"
+  },
+
+  "onboardSection": {
+    "title": "Welcome to CoronaTracker!",
+    "subtitle1": "Let's get your profile set up with a few quick questions and start logging your health:",
+    "firstName": "first name",
+    "age": "age",
+    "gender": {
+      "male": "Male",
+      "female": "Female"
+    },
+    "formState": {
+      "city": "City",
+      "state": "State",
+      "zip": "Zip",
+      "saveButton": "Save My Responses"
+    }
+  },
+
+  "symptomTrackerSection": {
+    "body1": "Be sure to answer truthfully and honestly so that your health record will be accurate and helpful for you & medical professionals.",
+    "Q1": "Q1: How do you feel today?",
+    "Q2": "Q2: How are your symptoms?",
+    "Q3": {
+      "text": "Q3: How are your feeling compared to yesterday?",
+      "answers": ["Worse", "The Same", "Better"]
+    },
+    "Q4": {
+      "temperatureText": "What is your temperature?",
+      "answers": "",
+      "text": "If you have a thermometer, enter the result below, if not, skip this question.",
+      "temperatureField": "Enter your temperature here:"
+    },
+    "Q5": {
+      "symptomText": "Which of the following are you feeling or exhibiting?",
+      "shortnessOfBreath": "Shortness of Breath?",
+      "chills": "Chills?",
+      "dryCough": "Dry Cough?",
+      "chestPain": "Chest pain or Pressure?",
+      "fatigue": "Fatigue?",
+      "soreThroat": "Sore Throat?",
+      "bluish": "Bluish Lips or Face?",
+      "additionalDetails": "Anything else you want to add?",
+      "answers": ["None", "Moderate", "Severe"]
+    },
+    "submitButton": ["Submit", "Back"]
+  },
+
+  "educationSection": {
+    "facts": "Swipe to the right or left to learn more about COVID-19",
+    "quiz": "QUIZ TIME! Swipe right if true and left if false"
+  }
+}

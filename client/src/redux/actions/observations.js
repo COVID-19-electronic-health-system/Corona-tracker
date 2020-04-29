@@ -1,20 +1,68 @@
-export const SAVING = 'SAVING';
-export const IDLE = 'IDLE';
-export const LOADING = 'LOADING';
-export const OBSERVATIONS_LOADED = 'OBSERVATIONS_LOADED';
-export const NUM_OBSERVATIONS = 'NUM_OBSERVATIONS';
-export const SET_OBSERVATIONS = 'SET_OBSERVATIONS';
+/* eslint-disable no-console */
 
-export function setNumObservations(numObservations) {
+import {
+  getObservations,
+  postObservationsList,
+  postSingleObservation,
+  deleteObservationsList,
+  deleteObservationFiles,
+} from '../../utils/blockstackHelpers';
+
+export const ADD_OBSERVATION = 'ADD_OBSERVATION';
+export const DELETE_OBSERVATIONS = 'DELETE_OBSERVATIONS';
+export const FETCH_OBSERVATIONS = 'FETCH_OBSERVATIONS';
+
+export function resetObservations() {
   return {
-    type: NUM_OBSERVATIONS,
-    numObservations,
+    type: DELETE_OBSERVATIONS,
   };
 }
 
-export function setObservations(observations) {
+export function addObservationToStore(observation) {
   return {
-    type: SET_OBSERVATIONS,
-    observations,
+    type: ADD_OBSERVATION,
+    payload: observation,
   };
 }
+
+export const addObservation = (userSession, observation) => async dispatch => {
+  const obs = await getObservations(userSession);
+  let obsArray;
+  let fileNumber = 1;
+  if (obs) {
+    const currentArray = JSON.parse(obs);
+    fileNumber = currentArray.length + 1;
+    obsArray = [...currentArray, observation];
+  } else {
+    obsArray = [observation];
+  }
+  postObservationsList(userSession, obsArray, fileNumber).then(didPost => {
+    if (didPost) {
+      postSingleObservation(userSession, observation, fileNumber);
+      dispatch(addObservationToStore(observation));
+    }
+  });
+};
+
+export const deleteObservations = userSession => async dispatch => {
+  const obs = await getObservations(userSession);
+  if (obs) {
+    const obsArray = JSON.parse(obs);
+    const numOfObservations = obsArray.length;
+    deleteObservationsList(userSession)
+      .then(() => {
+        deleteObservationFiles(userSession, numOfObservations);
+        dispatch(resetObservations());
+        return 200;
+      })
+      .catch(err => console.error(err));
+  }
+};
+
+export const fetchObservations = userSession => async dispatch => {
+  const observations = await getObservations(userSession);
+  const JSONobservations = JSON.parse(observations);
+  if (JSONobservations) {
+    dispatch({ type: FETCH_OBSERVATIONS, observations: JSONobservations });
+  }
+};

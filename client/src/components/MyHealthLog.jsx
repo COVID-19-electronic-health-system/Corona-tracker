@@ -9,13 +9,14 @@ import buttonsCss from '../css/buttons';
 
 const useStyles = makeStyles({
   root: {
+    textDecoration: 'none',
     '&:hover': {
       textDecoration: 'none',
     },
   },
   button: {
     ...buttonsCss.buttons,
-    width: '320px',
+    width: '300px',
     margin: '10px',
   },
 });

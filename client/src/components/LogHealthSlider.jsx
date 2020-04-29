@@ -1,20 +1,25 @@
 /* eslint-disable react/jsx-props-no-spreading */
 
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import Grid from '@material-ui/core/Grid';
 import Typography from '@material-ui/core/Typography';
 import { useSpring, animated } from 'react-spring';
 import { useDrag } from 'react-use-gesture';
 import { useHistory } from 'react-router-dom';
-import CalendarThreeLines from '../img/Calendar_Three-Lines.svg';
-import alarmSvg from '../img/Calendar_Menu_Alarm.svg';
-import checkSvg from '../img/Calendar_Menu_Checkmark.svg';
-import xSvg from '../img/Calendar_Menu_X.svg';
 import noSelectCss from '../css/noSelect';
+import { CalendarThreeLines, alarmSvg, checkSvg, xSvg } from '../utils/imgUrl';
 
-const useStyles = makeStyles({
+const useStyles = makeStyles(theme => ({
   ...noSelectCss,
+
+  width: '100vw',
+  [theme.breakpoints.up('md')]: {
+    width: '60vw',
+  },
+  root: {
+    paddingBottom: '15em',
+  },
   item: {
     backgroundColor: '#ffffff',
     position: 'relative',
@@ -25,6 +30,10 @@ const useStyles = makeStyles({
     display: 'grid',
     alignItems: 'center',
     textAlign: 'center',
+    width: '100vw',
+    [theme.breakpoints.up('md')]: {
+      width: '60vw',
+    },
   },
   itemGridDiv: {
     borderRight: '1px solid #aaaaaa',
@@ -69,12 +78,24 @@ const useStyles = makeStyles({
     textAlign: 'left',
     whiteSpace: 'pre-wrap',
   },
-});
+}));
 
 const LogHealthSlider = () => {
   const classes = useStyles();
   const history = useHistory();
-  const oneThird = window.innerWidth / 3; // Note: doesn't support window resizing
+  const [oneThird, setOneThird] = useState(0);
+
+  useEffect(() => {
+    // grab slider element and use its width to calculate the oneThird Value
+    const slider = document.querySelector('#health-slider');
+    function getSliderBound() {
+      const newOneThird = slider.clientWidth / 3;
+      setOneThird(newOneThird);
+    }
+    getSliderBound();
+    window.onresize = getSliderBound;
+  }, []);
+
   let showOptions = false;
   let swiped = false;
 
@@ -123,46 +144,50 @@ const LogHealthSlider = () => {
   );
 
   return (
-    <div className={classes.noSelect}>
-      <animated.div className={classes.item}>
-        <div className={classes.itemGridDiv}>
-          <Grid container justify="space-around" alignItems="center">
-            <Grid item className={classes.imageContainer}>
-              <img alt="Yes" src={checkSvg} className={classes.image} />
-            </Grid>
-            <Grid item className={classes.imageContainer}>
-              <img alt="Remind Me" src={alarmSvg} className={classes.image} />
-            </Grid>
-            <Grid item className={classes.imageContainer}>
-              <img alt="No" src={xSvg} className={classes.image} />
-            </Grid>
-          </Grid>
-        </div>
-        <animated.div {...bind()} className={classes.fg} style={{ x }}>
-          <div className={classes.fgGridDiv}>
-            <Grid container alignItems="center">
-              <Grid item xs={1} className={classes.imageContainer}>
-                <img alt="threeLinesSvg" src={CalendarThreeLines} className={classes.image} />
-              </Grid>
-              <Grid item xs={11} container alignItems="center" spacing={1}>
-                <Grid item xs={2}>
-                  <Typography variant="body1" className={classes.bold}>
-                    Today
-                  </Typography>
+    <div className={classes.root}>
+      <Grid container justify="center">
+        <Grid className={classes.noSelect}>
+          <animated.div id="health-slider" className={classes.item}>
+            <div className={classes.itemGridDiv}>
+              <Grid container justify="space-around" alignItems="center">
+                <Grid item className={classes.imageContainer}>
+                  <img alt="Yes" src={checkSvg} className={classes.image} />
                 </Grid>
-                <Grid item xs={4} className={classes.itsTime}>
-                  <Typography variant="body1">{`It's time to enter your\nDaily Health Log!`}</Typography>
+                <Grid item className={classes.imageContainer}>
+                  <img alt="Remind Me" src={alarmSvg} className={classes.image} />
                 </Grid>
-                <Grid item xs={7} sm={6}>
-                  <Typography variant="body1" className={classes.bold}>
-                    Swipe to Complete &gt; &gt; &gt;
-                  </Typography>
+                <Grid item className={classes.imageContainer}>
+                  <img alt="No" src={xSvg} className={classes.image} />
                 </Grid>
               </Grid>
-            </Grid>
-          </div>
-        </animated.div>
-      </animated.div>
+            </div>
+            <animated.div {...bind()} className={classes.fg} style={{ x }}>
+              <div className={classes.fgGridDiv}>
+                <Grid container alignItems="center">
+                  <Grid item xs={1} className={classes.imageContainer}>
+                    <img alt="threeLinesSvg" src={CalendarThreeLines} className={classes.image} />
+                  </Grid>
+                  <Grid item xs={11} container alignItems="center" spacing={1}>
+                    <Grid item xs={2}>
+                      <Typography variant="body2" className={classes.bold}>
+                        Today
+                      </Typography>
+                    </Grid>
+                    <Grid item xs={4} className={classes.itsTime}>
+                      <Typography variant="body2">{`It's time to enter your\nDaily Health Log!`}</Typography>
+                    </Grid>
+                    <Grid item xs={7} sm={6}>
+                      <Typography variant="body2" className={classes.bold}>
+                        Swipe to Complete &gt; &gt; &gt;
+                      </Typography>
+                    </Grid>
+                  </Grid>
+                </Grid>
+              </div>
+            </animated.div>
+          </animated.div>
+        </Grid>
+      </Grid>
     </div>
   );
 };
