@@ -45,7 +45,7 @@ const App = props => {
       fetchDemographicsComorbidities(userSession);
       fetchSubscribedNumber(userSession);
     }
-  }, [fetchObservations, fetchDemographicsComorbidities, authenticated, userSession]);
+  }, [fetchObservations, fetchDemographicsComorbidities, fetchSubscribedNumber, authenticated, userSession]);
 
   const [disclaimerString] = useFile('disclaimer.json');
 
@@ -103,7 +103,4 @@ const mapDispatchToProps = dispatch => ({
   fetchSubscribedNumber: userSession => dispatch(actions.fetchSubscribedNumber(userSession)),
 });
 
-export default connect(
-  null,
-  mapDispatchToProps
-)(App);
+export default connect(null, mapDispatchToProps)(App);

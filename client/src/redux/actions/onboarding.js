@@ -1,4 +1,6 @@
 /* eslint-disable no-console */
+import axios from 'axios';
+
 export const FETCH_DEMOGRAPHICS_COMORBIDITIES = 'FETCH_DEMOGRAPHICS_COMORBIDITIES';
 
 export const SET_DEMOGRAPHICS_COMORBIDITIES = 'SET_DEMOGRAPHICS_COMORBIDITIES';
@@ -9,9 +11,15 @@ export const DISCLAIMER_ANSWER = 'DISCLAIMER_ANSWER';
 
 export const RESET_ANSWER = 'RESET_ANSWER';
 
-export const SUBSCRIBED_NUMBER = 'SUBSCRIBED_NUMBER';
+export const FETCH_SUBSCRIBED_NUMBER = 'FETCH_SUBSCRIBED_NUMBER';
+
+export const SET_SUBSCRIBED_NUMBER = 'SET_SUBSCRIBED_NUMBER';
+
+export const SUBSCRIBE_ERROR = 'SUBSCRIBE_ERROR';
 
 export const UNSUBSCRIBE = 'UNSUBSCRIBE';
+
+export const CLEAR_RESPONSE = 'CLEAR_RESPONSE';
 
 // action creators
 export function setDisclaimerAnswer(answer) {
@@ -24,6 +32,12 @@ export function setDisclaimerAnswer(answer) {
 export function resetDisclaimerAnswer() {
   return {
     type: RESET_ANSWER,
+  };
+}
+
+export function clearResponse() {
+  return {
+    type: CLEAR_RESPONSE,
   };
 }
 
@@ -69,19 +83,38 @@ export const setDemographicsComorbiditiesThunk = (formData, userSession) => asyn
 };
 
 export const setSubscribedNumber = (userSession, phoneNumber) => async dispatch => {
-  userSession.putFile('subscribedNumber', phoneNumber).then(() => {
-    dispatch({ type: SUBSCRIBED_NUMBER, phoneNumber });
-  });
+  axios
+    .post(
+      'https://kplh25sfce.execute-api.us-east-1.amazonaws.com/default/coronalert-subscribe',
+      { phoneNumber },
+      { headers: { 'Content-Type': 'application/json' } }
+    )
+    .then(res => {
+      if (res.data.phoneNumber) {
+        userSession.putFile('subscribedNumber', phoneNumber).then(() => {
+          dispatch({ type: SET_SUBSCRIBED_NUMBER, phoneNumber });
+        });
+      }
+    })
+    .catch(error => dispatch({ type: SUBSCRIBE_ERROR, error }));
 };
 
-export const unsubscribeNumber = userSession => async dispatch => {
-  console.log('calls unsubscribe');
-  userSession.deleteFile('subscribedNumber').then(() => {
-    dispatch({ type: UNSUBSCRIBE });
-  });
+export const unsubscribeNumber = (userSession, phoneNumber) => {
+  return async dispatch => {
+    const response = await axios
+      .post('https://kplh25sfce.execute-api.us-east-1.amazonaws.com/default/coronalert-unsubscribe', { phoneNumber })
+      .then(() =>
+        userSession.deleteFile('subscribedNumber').then(() => {
+          dispatch({ type: UNSUBSCRIBE });
+        })
+      )
+      .catch(error => dispatch({ type: SUBSCRIBE_ERROR, error }));
+    return response;
+  };
 };
 
 export const fetchSubscribedNumber = userSession => async dispatch => {
   const phoneNumber = await userSession.getFile('subscribedNumber');
-  dispatch({ type: SUBSCRIBED_NUMBER, phoneNumber });
+  dispatch({ type: FETCH_SUBSCRIBED_NUMBER, phoneNumber });
+  return phoneNumber;
 };

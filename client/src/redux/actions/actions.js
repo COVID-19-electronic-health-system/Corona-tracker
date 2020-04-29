@@ -29,6 +29,7 @@ import {
   setSubscribedNumber,
   fetchSubscribedNumber,
   unsubscribeNumber,
+  clearResponse,
 } from './onboarding';
 import { deleteUserDataThunk } from './deleteUserData';
 
@@ -40,6 +41,7 @@ const actions = {
   setSubscribedNumber,
   fetchSubscribedNumber,
   unsubscribeNumber,
+  clearResponse,
   selectDate,
   setToggleValue,
   setDetailData,

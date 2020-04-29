@@ -4,8 +4,11 @@ import {
   FETCH_DEMOGRAPHICS_COMORBIDITIES,
   DISCLAIMER_ANSWER,
   RESET_ANSWER,
-  SUBSCRIBED_NUMBER,
+  FETCH_SUBSCRIBED_NUMBER,
+  SET_SUBSCRIBED_NUMBER,
   UNSUBSCRIBE,
+  SUBSCRIBE_ERROR,
+  CLEAR_RESPONSE,
 } from '../actions/onboarding';
 
 const initialState = {
@@ -20,7 +23,7 @@ const initialState = {
     isAsthmatic: '',
   },
   disclaimerAnswer: false,
-  subscribedNumber: null,
+  phoneNumber: { subscribedNumber: null, error: {}, success: '' },
 };
 
 const onboardingReducer = (state = initialState, action) => {
@@ -50,15 +53,50 @@ const onboardingReducer = (state = initialState, action) => {
         ...state,
         disclaimerAnswer: false,
       };
-    case SUBSCRIBED_NUMBER:
+    case FETCH_SUBSCRIBED_NUMBER:
       return {
         ...state,
-        subscribedNumber: action.phoneNumber,
+        phoneNumber: {
+          ...state.phoneNumber,
+          subscribedNumber: action.phoneNumber,
+        },
+      };
+    case SET_SUBSCRIBED_NUMBER:
+      return {
+        ...state,
+        phoneNumber: {
+          ...state.phoneNumber,
+          subscribedNumber: action.phoneNumber,
+          success: 'subscribed',
+          error: {},
+        },
       };
     case UNSUBSCRIBE:
       return {
         ...state,
-        subscribedNumber: null,
+        phoneNumber: {
+          ...state.phoneNumber,
+          subscribedNumber: null,
+          success: 'unsubscribed',
+          error: {},
+        },
+      };
+    case SUBSCRIBE_ERROR:
+      return {
+        ...state,
+        phoneNumber: {
+          ...state.phoneNumber,
+          error: action.error,
+        },
+      };
+    case CLEAR_RESPONSE:
+      return {
+        ...state,
+        phoneNumber: {
+          ...state.phoneNumber,
+          error: {},
+          success: '',
+        },
       };
     default:
       return state;

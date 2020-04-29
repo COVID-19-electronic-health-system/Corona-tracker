@@ -2,13 +2,12 @@
 /* eslint-disable no-alert */
 /* eslint-disable no-useless-escape */
 
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import Button from '@material-ui/core/Button';
 import Dialog from '@material-ui/core/Dialog';
 import DialogActions from '@material-ui/core/DialogActions';
 import DialogTitle from '@material-ui/core/DialogTitle';
 import { useHistory } from 'react-router-dom';
-import axios from 'axios';
 import { makeStyles } from '@material-ui/core/styles';
 import MoreHorizIcon from '@material-ui/icons/MoreHoriz';
 import { useBlockstack } from 'react-blockstack';
@@ -16,8 +15,8 @@ import { useTranslation } from 'react-i18next';
 import { DialogContent, DialogContentText, TextField, Grid, Typography, Snackbar, Link } from '@material-ui/core';
 import MuiAlert from '@material-ui/lab/Alert';
 import PropTypes from 'prop-types';
-import buttonsCss from '../css/buttons';
 import { connect } from 'react-redux';
+import buttonsCss from '../css/buttons';
 import actions from '../redux/actions/actions';
 
 const useStyle = makeStyles(theme => ({
@@ -51,6 +50,7 @@ const useStyle = makeStyles(theme => ({
     textDecoration: 'none',
     color: 'white',
     textAlign: 'center',
+    marginTop: '10px',
   },
   subscribeContainer: {
     align: 'center',
@@ -98,11 +98,11 @@ Alert.propTypes = {
   onClose: PropTypes.func.isRequired,
 };
 
-const More = ({ setSubscribedNumber, unsubscribeNumber, subscribedNumber }) => {
+const More = ({ setSubscribedNumber, unsubscribeNumber, subscribedNumber, clearResponse, error, success }) => {
   const [open, setOpen] = useState(false);
   const [openSnackbar, setOpenSnackbar] = useState(false);
   const [snackbar, setSnackbar] = useState({});
-  const [phoneNumber, setPhoneNumber] = useState(subscribedNumber || '');
+  const [phoneNumber, setPhoneNumber] = useState('');
   const classes = useStyle();
   const { signOut, userSession } = useBlockstack();
   const { t } = useTranslation();
@@ -115,89 +115,56 @@ const More = ({ setSubscribedNumber, unsubscribeNumber, subscribedNumber }) => {
   };
 
   const handleCloseSnackbar = (event, reason) => {
+    console.log(event, reason);
     if (reason === 'clickaway') {
       return;
+    }
+    if (success || error.response) {
+      handleClose();
+      clearResponse();
     }
     setOpenSnackbar(false);
   };
 
-  let errorMessage = '';
-
-  const subscribe = () => {
+  const handleSubmitSubscribe = () => {
     if (!/^\+[1-9]\d{1,14}$/.test(phoneNumber)) {
-      errorMessage = 'Invalid phone number. Please try again';
       setSnackbar({
         severity: 'error',
-        message: errorMessage,
+        message: 'Invalid phone number. Please try again',
       });
       setOpenSnackbar(true);
     } else {
-      axios
-        .post(
-          'https://kplh25sfce.execute-api.us-east-1.amazonaws.com/default/coronalert-subscribe',
-          {
-            phoneNumber,
-          },
-          {
-            headers: {
-              'Content-Type': 'application/json',
-            },
-          }
-        )
-        .then(res => {
-          console.log(res);
-          setSubscribedNumber(userSession, res.data.phoneNumber);
-          handleClose();
-          errorMessage = `Subscribed successfully! You will be automatically unsubscribed in one day, and will receive three texts in that timespan. If you enter again, you will receive double the notifications - so please do not! This is very early alpha :)`;
-          setSnackbar({
-            severity: 'success',
-            message: errorMessage,
-          });
-          setOpenSnackbar(true);
-        })
-        .catch(err => {
-          if (err.response && err.response.status === 409) {
-            errorMessage = 'This phone number was already subscribed';
-          } else {
-            errorMessage = 'Something went wrong. Please try again';
-          }
-          setSnackbar({
-            severity: 'error',
-            message: errorMessage,
-          });
-          setOpenSnackbar(true);
-        });
+      setSubscribedNumber(userSession, phoneNumber);
     }
+    setPhoneNumber('');
   };
 
-  const unsubscribe = async () => {
-    const url = 'https://kplh25sfce.execute-api.us-east-1.amazonaws.com/default/coronalert-unsubscribe';
-    const data = { phoneNumber };
-    try {
-      await axios.post(url, data);
-      unsubscribeNumber(userSession);
-      console.log('should call unsubscribe');
-      alert('Unsubscribed successfully!');
-      handleClose();
-    } catch (err) {
-      console.log(err);
-      if (err.response && err.response.status === 404) {
-        errorMessage = 'This phone number was not subscribed';
+  useEffect(() => {
+    let message, severity;
+    if (error.response) {
+      severity = 'error';
+      if (error.response.status === 409) {
+        message = 'This phone number was already subscribed';
       } else {
-        errorMessage = 'Something went wrong. Please try again';
+        message = 'Something went wrong.  Please try again.';
       }
-      setSnackbar({
-        severity: 'error',
-        message: errorMessage,
-      });
-      setOpenSnackbar(true);
     }
-  };
+    if (success) {
+      severity = 'success';
+      message =
+        success === 'subscribed'
+          ? `Subscribed successfully! You will be automatically unsubscribed in one day, and will receive three texts in that timespan. If you enter again, you will receive double the notifications - so please do not! This is very early alpha :)`
+          : 'Unsubscribed successfully';
+    }
+    setSnackbar({
+      message,
+      severity,
+    });
+  }, [error, success]);
 
   const navigateTo = href => {
     history.push(href);
   };
-
   return (
     <div>
       <Grid container alignContent="center" className={classes.root} onClick={handleClickOpen}>
@@ -253,7 +220,7 @@ const More = ({ setSubscribedNumber, unsubscribeNumber, subscribedNumber }) => {
             {!subscribedNumber && (
               <Button
                 onClick={() => {
-                  subscribe();
+                  handleSubmitSubscribe();
                 }}
                 color="primary"
                 className={classes.subtitleText}
@@ -264,7 +231,7 @@ const More = ({ setSubscribedNumber, unsubscribeNumber, subscribedNumber }) => {
             {subscribedNumber && (
               <Button
                 onClick={() => {
-                  unsubscribe();
+                  unsubscribeNumber(userSession, subscribedNumber);
                 }}
                 color="secondary"
                 className={classes.subtitleText}
@@ -311,7 +278,7 @@ const More = ({ setSubscribedNumber, unsubscribeNumber, subscribedNumber }) => {
           </DialogActions>
         </DialogContent>
         <Snackbar
-          open={openSnackbar}
+          open={openSnackbar || success || error.response}
           autoHideDuration={6000}
           anchorOrigin={{ vertical: 'top', horizontal: 'center' }}
           onClose={handleCloseSnackbar}
@@ -325,16 +292,27 @@ const More = ({ setSubscribedNumber, unsubscribeNumber, subscribedNumber }) => {
   );
 };
 
+More.propTypes = {
+  setSubscribedNumber: PropTypes.func.isRequired,
+  unsubscribeNumber: PropTypes.func.isRequired,
+  subscribeError: PropTypes.objectOf(Object).isRequired,
+  clearResponse: PropTypes.func.isRequired,
+  subscribedNumber: PropTypes.string.isRequired,
+};
+
 const mapState = state => {
   return {
-    subscribedNumber: state.onboardingReducer.subscribedNumber,
+    subscribedNumber: state.onboardingReducer.phoneNumber.subscribedNumber,
+    error: state.onboardingReducer.phoneNumber.error,
+    success: state.onboardingReducer.phoneNumber.success,
   };
 };
 
 const mapDispatch = dispatch => {
   return {
     setSubscribedNumber: (userSession, number) => dispatch(actions.setSubscribedNumber(userSession, number)),
-    unsubscribeNumber: userSession => dispatch(actions.unsubscribeNumber(userSession)),
+    unsubscribeNumber: (userSession, number) => dispatch(actions.unsubscribeNumber(userSession, number)),
+    clearResponse: () => dispatch(actions.clearResponse()),
   };
 };
 
