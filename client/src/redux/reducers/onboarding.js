@@ -6,7 +6,7 @@ import {
   RESET_ANSWER,
 } from '../actions/onboarding';
 
-const initialState = {
+export const initialState = {
   demographicsComorbidities: {
     age: '',
     gender: '',
@@ -21,7 +21,7 @@ const initialState = {
   showOnboard: false,
 };
 
-const onboardingReducer = (state = initialState, action) => {
+export const onboardingReducer = (state = initialState, action) => {
   switch (action.type) {
     case SET_DEMOGRAPHICS_COMORBIDITIES:
       return {
@@ -59,5 +59,3 @@ const onboardingReducer = (state = initialState, action) => {
       return state;
   }
 };
-
-export default onboardingReducer;
