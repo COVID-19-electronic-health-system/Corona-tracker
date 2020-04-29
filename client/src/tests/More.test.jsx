@@ -1,6 +1,5 @@
 import React from 'react';
 import { mount } from 'enzyme';
-import { render } from '@testing-library/react';
 import configureMockStore from 'redux-mock-store';
 import { Provider } from 'react-redux';
 import { BrowserRouter } from 'react-router-dom';
