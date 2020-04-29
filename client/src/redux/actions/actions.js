@@ -10,14 +10,12 @@ import {
 import { selectDate } from './calendar';
 import { setToggleValue, setDetailData, deleteDetailData } from './healthToggle';
 import {
+  setCompleted,
+  setSurveyPage,
   setSurveyPage1,
   setSurveyPage2,
   setSurveyPage3,
   setSurveyPage4,
-  toSurveyPage1,
-  toSurveyPage2,
-  toSurveyPage3,
-  toSurveyPage4,
   clearSurvey,
 } from './survey';
 import {
@@ -46,14 +44,12 @@ const actions = {
   setToggleValue,
   setDetailData,
   deleteDetailData,
+  setCompleted,
+  setSurveyPage,
   setSurveyPage1,
   setSurveyPage2,
   setSurveyPage3,
   setSurveyPage4,
-  toSurveyPage1,
-  toSurveyPage2,
-  toSurveyPage3,
-  toSurveyPage4,
   clearSurvey,
   setDemographicsComorbiditiesThunk,
   fetchDemographicsComorbidities,

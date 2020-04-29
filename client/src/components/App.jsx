@@ -1,6 +1,6 @@
 import React, { useCallback, useEffect } from 'react';
 import { Connect } from '@blockstack/connect';
-import { BrowserRouter, Switch, Route } from 'react-router-dom';
+import { BrowserRouter, Switch, Route, Redirect } from 'react-router-dom';
 import { connect } from 'react-redux';
 import ReactBlockstack, { useBlockstack, didConnect, useFile } from 'react-blockstack';
 import Container from '@material-ui/core/Container';
@@ -23,7 +23,7 @@ import Settings from './Settings';
 ReactBlockstack({ appConfig });
 
 const App = props => {
-  const { fetchObservations, fetchDemographicsComorbidities, fetchSubscribedNumber } = props;
+  const { fetchObservations, fetchDemographicsComorbidities, fetchSubscribedNumber, showOnboard } = props;
   const { userSession, authenticated } = useBlockstack();
   const finished = useCallback(() => {
     didConnect({ userSession });
@@ -70,6 +70,8 @@ const App = props => {
             </Container>
           )}
           <Switch>
+            <PrivateRoute path="/onboard" component={() => <OnboardUser />} />
+            {showOnboard && <Redirect to="/onboard" />}
             <PrivateRoute exact path="/" component={() => <DiagnosticContainer />} />
 
             {/* ADD/EDIT ROUTES WITH THEIR COMPONENTS HERE: */}
@@ -80,7 +82,6 @@ const App = props => {
             <PrivateRoute path="/education" component={() => <FactQuizContainer />} />
             <PrivateRoute path="/map" component={() => <Map />} />
             <PrivateRoute path="/settings" component={() => <Settings />} />
-            <PrivateRoute path="/onboard" component={() => <OnboardUser />} />
             <PrivateRoute path="/about" component={() => <About />} />
             <Route path="/404" component={NotFoundPage} />
             <Route path="*" component={NotFoundPage} />
@@ -95,7 +96,12 @@ App.propTypes = {
   fetchObservations: PropTypes.func.isRequired,
   fetchDemographicsComorbidities: PropTypes.func.isRequired,
   fetchSubscribedNumber: PropTypes.func.isRequired,
+  showOnboard: PropTypes.bool.isRequired,
 };
+
+const mapStateToProps = state => ({
+  showOnboard: state.onboardingReducer.showOnboard,
+});
 
 const mapDispatchToProps = dispatch => ({
   fetchObservations: userSession => dispatch(actions.fetchObservations(userSession)),
@@ -103,4 +109,7 @@ const mapDispatchToProps = dispatch => ({
   fetchSubscribedNumber: userSession => dispatch(actions.fetchSubscribedNumber(userSession)),
 });
 
-export default connect(null, mapDispatchToProps)(App);
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(App);

@@ -71,6 +71,10 @@ export const fetchDemographicsComorbidities = userSession => async dispatch => {
       type: FETCH_DEMOGRAPHICS_COMORBIDITIES,
       payload: JSON.parse(data),
     });
+  else
+    dispatch({
+      type: FETCH_DEMOGRAPHICS_COMORBIDITIES,
+    });
 };
 
 export const setDemographicsComorbiditiesThunk = (formData, userSession) => async dispatch => {

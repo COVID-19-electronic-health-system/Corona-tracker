@@ -11,7 +11,7 @@ import {
   CLEAR_RESPONSE,
 } from '../actions/onboarding';
 
-const initialState = {
+export const initialState = {
   demographicsComorbidities: {
     age: '',
     gender: '',
@@ -24,19 +24,27 @@ const initialState = {
   },
   disclaimerAnswer: false,
   phoneNumber: { subscribedNumber: null, error: {}, success: '' },
+  showOnboard: false,
 };
 
-const onboardingReducer = (state = initialState, action) => {
+export const onboardingReducer = (state = initialState, action) => {
   switch (action.type) {
     case SET_DEMOGRAPHICS_COMORBIDITIES:
       return {
         ...state,
         demographicsComorbidities: action.formData,
+        showOnboard: !action.formData.age,
       };
     case FETCH_DEMOGRAPHICS_COMORBIDITIES:
+      if (!action.payload)
+        return {
+          ...state,
+          showOnboard: true,
+        };
       return {
         ...state,
         demographicsComorbidities: action.payload,
+        showOnboard: !action.payload.age,
       };
     case RESET_DEMOGRAPHICS_COMORBIDITIES:
       return {
@@ -102,5 +110,3 @@ const onboardingReducer = (state = initialState, action) => {
       return state;
   }
 };
-
-export default onboardingReducer;

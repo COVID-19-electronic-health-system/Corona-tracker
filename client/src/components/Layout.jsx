@@ -9,6 +9,13 @@ import { FullLogo } from '../utils/imgUrl';
 
 const theme = createMuiTheme({
   overrides: {
+    MuiFormLabel: {
+      root: {
+        '&.Mui-focused': {
+          color: 'black',
+        },
+      },
+    },
     MuiSelect: {
       select: {
         '&&': {
@@ -24,6 +31,13 @@ const theme = createMuiTheme({
     MuiList: {
       root: {
         backgroundColor: '#bbcef9',
+      },
+    },
+    MuiTextField: {
+      root: {
+        '& label.Mui-focused': {
+          color: 'black',
+        },
       },
     },
   },
