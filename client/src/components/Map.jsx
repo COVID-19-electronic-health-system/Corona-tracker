@@ -1,8 +1,7 @@
 import React, { useEffect, useRef, useState } from 'react';
 import mapboxgl from 'mapbox-gl';
 import { makeStyles } from '@material-ui/core/styles';
-
-const mapboxToken = process.env.REACT_APP_MAPBOX_TOKEN;
+import { mapboxToken } from '../utils/constants';
 
 const useStyles = makeStyles({
   root: {

@@ -1,6 +1,7 @@
 import { AppConfig } from 'blockstack';
 
 export const appConfig = new AppConfig(['store_write', 'publish_data']);
+export const mapboxToken = process.env.REACT_APP_MAPBOX_TOKEN;
 
 /**
  * Available languages. The first language will be the default language. Keep

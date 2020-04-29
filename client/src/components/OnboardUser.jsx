@@ -16,9 +16,11 @@ import {
   Container,
   InputLabel,
 } from '@material-ui/core';
+import Autocomplete from '@material-ui/lab/Autocomplete';
 import actions from '../redux/actions/actions';
 import buttonsCss from '../css/buttons';
 import { states } from '../utils/constants';
+import geocodingService from '../utils/geocodingService';
 import { initialState as onboardingInitialState } from '../redux/reducers/onboarding';
 
 const useStyles = makeStyles(() => ({
@@ -60,10 +62,18 @@ const OnboardUser = props => {
   const classes = useStyles();
   const history = useHistory();
   const [formState, setFormState] = useState(onboardingInitialState.demographicsComorbidities);
+  const [places, setPlaces] = useState([]);
 
   useEffect(() => {
     setFormState(demographicsComorbidities);
   }, [demographicsComorbidities, setFormState]);
+
+  // Update city suggestions on city change
+  useEffect(() => {
+    (async () => {
+      setPlaces(await geocodingService.searchPlaces(formState.city));
+    })();
+  }, [formState.city, setPlaces]);
 
   const handleInputChange = e => {
     e.preventDefault();
@@ -71,6 +81,27 @@ const OnboardUser = props => {
       ...formState,
       [e.target.name]: e.target.value,
     });
+  };
+
+  const handleAutocompleteChange = (e, place, reason) => {
+    // Populate city and state if possible
+    switch (reason) {
+      case 'select-option':
+        setFormState({
+          ...formState,
+          city: place.city,
+          state: place.state.abbreviation,
+        });
+        break;
+      case 'clear':
+        setFormState({
+          ...formState,
+          city: '',
+        });
+        break;
+      default:
+        break;
+    }
   };
 
   const handleSave = async () => {
@@ -120,14 +151,30 @@ const OnboardUser = props => {
           />
         </Grid>
         <Grid item xs={12}>
-          <TextField
-            type="text"
-            name="city"
-            label="City"
+          <Autocomplete
+            getOptionLabel={option => (typeof option === 'string' ? option : option.name)}
+            filterOptions={options => options}
+            options={places}
+            autoComplete
+            includeInputInList
+            freeSolo
+            renderInput={params => (
+              <TextField
+                // eslint-disable-next-line react/jsx-props-no-spreading
+                {...params}
+                type="text"
+                name="city"
+                label="City"
+                value={formState.city}
+                variant="outlined"
+                fullWidth
+                onChange={handleInputChange}
+              />
+            )}
+            renderOption={place => place.name}
+            onChange={handleAutocompleteChange}
+            inputValue={formState.city}
             value={formState.city}
-            variant="outlined"
-            fullWidth
-            onChange={handleInputChange}
           />
         </Grid>
         <Grid item sm={3} xs={6}>
