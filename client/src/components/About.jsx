@@ -115,11 +115,7 @@ const About = () => {
               </Typography>
             </Container>
           </div>
-          <Link
-            className={classes.color}
-            href="https://docs.google.com/forms/d/1sMp_qZYIrVxY6dxVCfIF6XQCU2lUeM_3qITC8hOph1w/edit"
-            color="inherit"
-          >
+          <Link className={classes.color} href="https://forms.gle/PrD1QY2z3a7htB5W9" color="inherit">
             Take our Beta Survey!
           </Link>
           <Container className={classes.cardGrid} maxWidth="md">
