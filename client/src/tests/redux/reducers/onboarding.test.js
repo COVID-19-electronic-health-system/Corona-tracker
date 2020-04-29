@@ -1,5 +1,5 @@
 import expect from 'expect';
-import reducer from '../../../redux/reducers/onboarding';
+import { onboardingReducer } from '../../../redux/reducers/onboarding';
 import { SET_DEMOGRAPHICS_COMORBIDITIES } from '../../../redux/actions/onboarding';
 
 describe('onboarding reducer', () => {
@@ -18,7 +18,7 @@ describe('onboarding reducer', () => {
   };
 
   it('should return the initial state', () => {
-    expect(reducer(initialState, {})).toEqual(initialState);
+    expect(onboardingReducer(initialState, {})).toEqual(initialState);
   });
 
   it('should handle SET_DEMOGRAPHICS_COMORBIDITIES', () => {
@@ -36,7 +36,7 @@ describe('onboarding reducer', () => {
       type: SET_DEMOGRAPHICS_COMORBIDITIES,
       formData,
     };
-    expect(reducer(initialState, setDemographicsComorbidities)).toEqual({
+    expect(onboardingReducer(initialState, setDemographicsComorbidities)).toEqual({
       demographicsComorbidities: formData,
       showOnboard: false,
     });
