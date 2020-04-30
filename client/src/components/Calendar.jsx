@@ -6,6 +6,7 @@ import { useDispatch, connect } from 'react-redux';
 import Calendar from 'react-calendar';
 import { makeStyles } from '@material-ui/core/styles';
 import PropTypes from 'prop-types';
+import { useTranslation } from 'react-i18next';
 import actions from '../redux/actions/actions';
 import WeeklyTracker from './WeeklyTracker';
 import WeeklyTrackerDay from './WeeklyTrackerDay';
@@ -62,6 +63,7 @@ const AppCalendar = props => {
   const dispatch = useDispatch();
   const [today] = useState(new Date().toLocaleDateString());
   const [currentObservations, setCurrentObservations] = useState([]);
+  const { i18n } = useTranslation();
 
   // select date function
   const handleDateClick = date => {
@@ -85,6 +87,7 @@ const AppCalendar = props => {
       <div className={classes.appCalendar}>
         <Calendar
           className={classes.reactCalendar}
+          locale={i18n.language}
           onChange={handleDateClick}
           tileClassName={({ date, view }) => {
             const dateString = date.toLocaleDateString();

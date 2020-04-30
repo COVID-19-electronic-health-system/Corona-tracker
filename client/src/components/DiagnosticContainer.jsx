@@ -39,7 +39,7 @@ function DiagnosticContainer() {
   const classes = useStyles();
   const { userSession } = useBlockstack();
   const today = new Date();
-  const { t } = useTranslation();
+  const { t, i18n } = useTranslation();
 
   return hasSubmitted() ? (
     <div>
@@ -47,7 +47,7 @@ function DiagnosticContainer() {
         {t('hello')} <b>{userSession.loadUserData().profile.name}</b>
       </Typography>
       <Typography variant="h6">
-        {t('todayText')} <b>{today.toLocaleDateString(undefined, dateOptions)}</b>{' '}
+        {t('todayText')} <b>{today.toLocaleDateString(i18n.languages, dateOptions)}</b>{' '}
       </Typography>
       <hr className={classes.hr} />
       <HealthLogToggle />
