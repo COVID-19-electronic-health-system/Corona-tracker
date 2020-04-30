@@ -93,9 +93,14 @@ function Alert(props) {
 }
 
 Alert.propTypes = {
-  severity: PropTypes.string.isRequired,
-  children: PropTypes.node.isRequired,
+  severity: PropTypes.string,
+  children: PropTypes.node,
   onClose: PropTypes.func.isRequired,
+};
+
+Alert.defaultProps = {
+  severity: 'error',
+  children: 'Something went wrong.  Please try again.',
 };
 
 const More = ({ setSubscribedNumber, unsubscribeNumber, subscribedNumber, clearResponse, error, success }) => {
@@ -301,7 +306,11 @@ More.propTypes = {
   }).isRequired,
   success: PropTypes.string.isRequired,
   clearResponse: PropTypes.func.isRequired,
-  subscribedNumber: PropTypes.string.isRequired,
+  subscribedNumber: PropTypes.string,
+};
+
+More.defaultProps = {
+  subscribedNumber: null,
 };
 
 const mapState = state => {
@@ -320,4 +329,7 @@ const mapDispatch = dispatch => {
   };
 };
 
-export default connect(mapState, mapDispatch)(More);
+export default connect(
+  mapState,
+  mapDispatch
+)(More);
