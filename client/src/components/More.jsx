@@ -104,243 +104,241 @@ Alert.defaultProps = {
 };
 
 const More = props => {
-  const More = props => {
-    const {
-      setReminderStatus,
-      setSubscribedNumber,
-      unsubscribeNumber,
-      subscribedNumber,
-      clearResponse,
-      error,
-      success,
-    } = props;
-    const [open, setOpen] = useState(false);
-    const [openSnackbar, setOpenSnackbar] = useState(false);
-    const [snackbar, setSnackbar] = useState({});
-    const [phoneNumber, setPhoneNumber] = useState('');
-    const classes = useStyle();
-    const { signOut, userSession } = useBlockstack();
-    const { t } = useTranslation();
-    const history = useHistory();
-    const handleClickOpen = () => {
-      setOpen(true);
-    };
-    const handleClose = () => {
-      setOpen(false);
-    };
+  const {
+    setReminderStatus,
+    setSubscribedNumber,
+    unsubscribeNumber,
+    subscribedNumber,
+    clearResponse,
+    error,
+    success,
+  } = props;
+  const [open, setOpen] = useState(false);
+  const [openSnackbar, setOpenSnackbar] = useState(false);
+  const [snackbar, setSnackbar] = useState({});
+  const [phoneNumber, setPhoneNumber] = useState('');
+  const classes = useStyle();
+  const { signOut, userSession } = useBlockstack();
+  const { t } = useTranslation();
+  const history = useHistory();
+  const handleClickOpen = () => {
+    setOpen(true);
+  };
+  const handleClose = () => {
+    setOpen(false);
+  };
 
-    const handleCloseSnackbar = (event, reason) => {
-      if (reason === 'clickaway') {
-        return;
-      }
-      if (success || error.response) {
-        clearResponse();
-      }
-      setOpenSnackbar(false);
-    };
+  const handleCloseSnackbar = (event, reason) => {
+    if (reason === 'clickaway') {
+      return;
+    }
+    if (success || error.response) {
+      clearResponse();
+    }
+    setOpenSnackbar(false);
+  };
 
-    const handleSubmitSubscribe = () => {
-      if (!/^\+[1-9]\d{1,14}$/.test(phoneNumber)) {
-        setSnackbar({
-          severity: 'error',
-          message: 'Invalid phone number. Please try again',
-        });
-        setOpenSnackbar(true);
-      } else {
-        setSubscribedNumber(userSession, phoneNumber);
-      }
-      setPhoneNumber('');
-    };
-
-    useEffect(() => {
-      let message;
-      let severity;
-      if (error.response) {
-        severity = 'error';
-        if (error.response.status === 409) {
-          message = 'This phone number was already subscribed';
-        } else {
-          message = 'Something went wrong.  Please try again.';
-        }
-      }
-      if (success) {
-        severity = 'success';
-        message =
-          success === 'subscribed'
-            ? `Subscribed successfully! You will be automatically unsubscribed in one day, and will receive three texts in that timespan. If you enter again, you will receive double the notifications - so please do not! This is very early alpha :)`
-            : 'Unsubscribed successfully';
-      }
+  const handleSubmitSubscribe = () => {
+    if (!/^\+[1-9]\d{1,14}$/.test(phoneNumber)) {
       setSnackbar({
-        message,
-        severity,
+        severity: 'error',
+        message: 'Invalid phone number. Please try again',
       });
-    }, [error, success]);
+      setOpenSnackbar(true);
+    } else {
+      setSubscribedNumber(userSession, phoneNumber);
+    }
+    setPhoneNumber('');
+  };
 
-    const navigateTo = href => {
-      history.push(href);
-    };
-    return (
-      <div>
-        <Grid container alignContent="center" className={classes.root} onClick={handleClickOpen}>
-          <Grid container className={classes.grow} alignContent="center" justify="center">
-            <Grid container style={{ width: '100%' }} alignContent="center" justify="center">
-              <MoreHorizIcon className={classes.icon} />
-            </Grid>
+  useEffect(() => {
+    let message;
+    let severity;
+    if (error.response) {
+      severity = 'error';
+      if (error.response.status === 409) {
+        message = 'This phone number was already subscribed';
+      } else {
+        message = 'Something went wrong.  Please try again.';
+      }
+    }
+    if (success) {
+      severity = 'success';
+      message =
+        success === 'subscribed'
+          ? `Subscribed successfully! You will be automatically unsubscribed in one day, and will receive three texts in that timespan. If you enter again, you will receive double the notifications - so please do not! This is very early alpha :)`
+          : 'Unsubscribed successfully';
+    }
+    setSnackbar({
+      message,
+      severity,
+    });
+  }, [error, success]);
 
-            <Grid container alignContent="center" justify="center">
-              <Typography variant="caption">more</Typography>
-            </Grid>
+  const navigateTo = href => {
+    history.push(href);
+  };
+  return (
+    <div>
+      <Grid container alignContent="center" className={classes.root} onClick={handleClickOpen}>
+        <Grid container className={classes.grow} alignContent="center" justify="center">
+          <Grid container style={{ width: '100%' }} alignContent="center" justify="center">
+            <MoreHorizIcon className={classes.icon} />
+          </Grid>
+
+          <Grid container alignContent="center" justify="center">
+            <Typography variant="caption">more</Typography>
           </Grid>
         </Grid>
-        <Dialog
-          className={classes.dialog}
-          open={open}
-          onClose={handleClose}
-          aria-labelledby="alert-dialog-title"
-          aria-describedby="alert-dialog-description"
-        >
-          <DialogTitle id="alert-dialog-title" className={classes.text}>
-            More
-          </DialogTitle>
-          <DialogContent className={classes.dialogContent}>
-            <DialogContent>
+      </Grid>
+      <Dialog
+        className={classes.dialog}
+        open={open}
+        onClose={handleClose}
+        aria-labelledby="alert-dialog-title"
+        aria-describedby="alert-dialog-description"
+      >
+        <DialogTitle id="alert-dialog-title" className={classes.text}>
+          More
+        </DialogTitle>
+        <DialogContent className={classes.dialogContent}>
+          <DialogContent>
+            <DialogContentText className={classes.descriptionText}>
+              Enter your phone number to subscribe/unsubscribe to the occasional question/survey to answer over text.
+            </DialogContentText>
+            <Link
+              className={classes.descriptionText}
+              href="https://support.twilio.com/hc/en-us/articles/223183008-Formatting-International-Phone-Numbers"
+            >
+              Please add your +country code before entering
+            </Link>
+            {subscribedNumber ? (
               <DialogContentText className={classes.descriptionText}>
-                Enter your phone number to subscribe/unsubscribe to the occasional question/survey to answer over text.
+                {`You are subscribed to text alerts at phone number: ${subscribedNumber}`}
               </DialogContentText>
-              <Link
-                className={classes.descriptionText}
-                href="https://support.twilio.com/hc/en-us/articles/223183008-Formatting-International-Phone-Numbers"
-              >
-                Please add your +country code before entering
-              </Link>
-              {subscribedNumber ? (
-                <DialogContentText className={classes.descriptionText}>
-                  {`You are subscribed to text alerts at phone number: ${subscribedNumber}`}
-                </DialogContentText>
-              ) : (
-                <TextField
-                  className={classes.subtitleText}
-                  onChange={e => setPhoneNumber(e.target.value)}
-                  autoFocus
-                  margin="dense"
-                  id="filled-phone"
-                  label={t('phoneNumber')}
-                  type="email"
-                  fullWidth
-                />
-              )}
-            </DialogContent>
-            <DialogActions className={classes.subscribeContainer}>
-              {!subscribedNumber && (
-                <Button
-                  onClick={() => {
-                    handleSubmitSubscribe();
-                  }}
-                  color="primary"
-                  className={classes.subtitleText}
-                >
-                  Subscribe
-                </Button>
-              )}
-              {subscribedNumber && (
-                <Button
-                  onClick={() => {
-                    unsubscribeNumber(userSession, subscribedNumber);
-                  }}
-                  color="secondary"
-                  className={classes.subtitleText}
-                >
-                  Unsubscribe
-                </Button>
-              )}
-            </DialogActions>
-            <DialogActions>
-              <Button
-                size="medium"
-                onClick={() => {
-                  handleClose();
-                  navigateTo('/settings');
-                }}
-                variant="contained"
-                className={classes.buttons}
-              >
-                Settings
-              </Button>
-              <Button
-                size="medium"
-                onClick={() => {
-                  navigateTo('/about');
-                  handleClose();
-                }}
-                variant="contained"
-                className={classes.buttons}
-              >
-                About
-              </Button>
-              <Button
-                size="medium"
-                color="secondary"
-                variant="contained"
-                className={classes.buttons}
-                onClick={() => {
-                  handleClose();
-                  setReminderStatus(true);
-                  signOut();
-                }}
-              >
-                {t('signoutButtonText')}
-              </Button>
-            </DialogActions>
+            ) : (
+              <TextField
+                className={classes.subtitleText}
+                onChange={e => setPhoneNumber(e.target.value)}
+                autoFocus
+                margin="dense"
+                id="filled-phone"
+                label={t('phoneNumber')}
+                type="email"
+                fullWidth
+              />
+            )}
           </DialogContent>
-          <Snackbar
-            open={openSnackbar || success || error.response}
-            autoHideDuration={6000}
-            anchorOrigin={{ vertical: 'top', horizontal: 'center' }}
-            onClose={handleCloseSnackbar}
-          >
-            <Alert onClose={handleCloseSnackbar} severity={snackbar.severity}>
-              {snackbar.message}
-            </Alert>
-          </Snackbar>
-        </Dialog>
-      </div>
-    );
-  };
-
-  More.propTypes = {
-    setSubscribedNumber: PropTypes.func.isRequired,
-    unsubscribeNumber: PropTypes.func.isRequired,
-    error: PropTypes.shape({
-      response: PropTypes.shape({
-        status: PropTypes.number,
-      }),
-    }).isRequired,
-    success: PropTypes.string.isRequired,
-    clearResponse: PropTypes.func.isRequired,
-    subscribedNumber: PropTypes.string,
-    setReminderStatus: PropTypes.func.isRequired,
-  };
-
-  More.defaultProps = {
-    subscribedNumber: null,
-  };
-
-  const mapState = state => {
-    return {
-      subscribedNumber: state.onboardingReducer.phoneNumber.subscribedNumber,
-      error: state.onboardingReducer.phoneNumber.error,
-      success: state.onboardingReducer.phoneNumber.success,
-    };
-  };
-
-  const mapDispatch = dispatch => {
-    return {
-      setSubscribedNumber: (userSession, number) => dispatch(actions.setSubscribedNumber(userSession, number)),
-      unsubscribeNumber: (userSession, number) => dispatch(actions.unsubscribeNumber(userSession, number)),
-      clearResponse: () => dispatch(actions.clearResponse()),
-      setReminderStatus: status => dispatch(actions.setReminderStatus(status)),
-    };
-  };
-
-  export default connect(mapState, mapDispatch)(More);
+          <DialogActions className={classes.subscribeContainer}>
+            {!subscribedNumber && (
+              <Button
+                onClick={() => {
+                  handleSubmitSubscribe();
+                }}
+                color="primary"
+                className={classes.subtitleText}
+              >
+                Subscribe
+              </Button>
+            )}
+            {subscribedNumber && (
+              <Button
+                onClick={() => {
+                  unsubscribeNumber(userSession, subscribedNumber);
+                }}
+                color="secondary"
+                className={classes.subtitleText}
+              >
+                Unsubscribe
+              </Button>
+            )}
+          </DialogActions>
+          <DialogActions>
+            <Button
+              size="medium"
+              onClick={() => {
+                handleClose();
+                navigateTo('/settings');
+              }}
+              variant="contained"
+              className={classes.buttons}
+            >
+              Settings
+            </Button>
+            <Button
+              size="medium"
+              onClick={() => {
+                navigateTo('/about');
+                handleClose();
+              }}
+              variant="contained"
+              className={classes.buttons}
+            >
+              About
+            </Button>
+            <Button
+              size="medium"
+              color="secondary"
+              variant="contained"
+              className={classes.buttons}
+              onClick={() => {
+                handleClose();
+                setReminderStatus(true);
+                signOut();
+              }}
+            >
+              {t('signoutButtonText')}
+            </Button>
+          </DialogActions>
+        </DialogContent>
+        <Snackbar
+          open={openSnackbar || success || error.response}
+          autoHideDuration={6000}
+          anchorOrigin={{ vertical: 'top', horizontal: 'center' }}
+          onClose={handleCloseSnackbar}
+        >
+          <Alert onClose={handleCloseSnackbar} severity={snackbar.severity}>
+            {snackbar.message}
+          </Alert>
+        </Snackbar>
+      </Dialog>
+    </div>
+  );
 };
+
+More.propTypes = {
+  setSubscribedNumber: PropTypes.func.isRequired,
+  unsubscribeNumber: PropTypes.func.isRequired,
+  error: PropTypes.shape({
+    response: PropTypes.shape({
+      status: PropTypes.number,
+    }),
+  }).isRequired,
+  success: PropTypes.string.isRequired,
+  clearResponse: PropTypes.func.isRequired,
+  subscribedNumber: PropTypes.string,
+  setReminderStatus: PropTypes.func.isRequired,
+};
+
+More.defaultProps = {
+  subscribedNumber: null,
+};
+
+const mapState = state => {
+  return {
+    subscribedNumber: state.onboardingReducer.phoneNumber.subscribedNumber,
+    error: state.onboardingReducer.phoneNumber.error,
+    success: state.onboardingReducer.phoneNumber.success,
+  };
+};
+
+const mapDispatch = dispatch => {
+  return {
+    setSubscribedNumber: (userSession, number) => dispatch(actions.setSubscribedNumber(userSession, number)),
+    unsubscribeNumber: (userSession, number) => dispatch(actions.unsubscribeNumber(userSession, number)),
+    clearResponse: () => dispatch(actions.clearResponse()),
+    setReminderStatus: status => dispatch(actions.setReminderStatus(status)),
+  };
+};
+
+export default connect(mapState, mapDispatch)(More);
