@@ -15,7 +15,7 @@ with YOUR help!
 proficiency describes you.** It is important for us to maintain accuracy
 3. If you click on the name of the language, it will link you to a translation sheet in the 
 [Master Sheets Google Drive folder](https://drive.google.com/open?id=12I3IoLc1Li3rtCqhwEoRhLs5FA_6BF7A).
-* Translations that need to be made will be marked in *yellow* and have a *0* in the `Up-to-Date?` column. 
+* Translations that need to be made will be marked in *yellow* (though this is buggy, so use your discretion and skim over everything just to make sure). 
 * Once you finish translating the text for either of your translation columns (e.g., question, answer, flashcard, etc.), the time will update and mark it as complete
 * To be updated when new text is ready for translation, on your spreadsheet click `Tools` –> `Notification Rules` and select `Any changes are made` and `Email - daily digest`
 4. All of the text on the app is on those sheets **EXCEPT** the Website info hyperlinked in the `Website Text` column on the [Efforts spreadsheet](https://docs.google.com/spreadsheets/d/1Deaaybwk8TPDlOnXJkFCQe6CIcrAqWoDA5Gbot3joyY/edit#gid=0). This info is kept on 
@@ -30,8 +30,9 @@ After discussing with Sal or others, you can then mark it in **green** and prefa
 
 # Current Timeline
 * **4/17** – Beta Launched
-* **4/22** – Revised pipeline
-* **4/24** – All first drafts complete!
+* **4/28** – Revised pipeline
+* **5/1** – Beta ends!
+* **5/2** - Fill in all missing material ASAP
 
 # FAQ (from Sal)
 ## Q: May I work on more than one language?
