@@ -119,7 +119,6 @@ const More = ({ setSubscribedNumber, unsubscribeNumber, subscribedNumber, clearR
       return;
     }
     if (success || error.response) {
-      handleClose();
       clearResponse();
     }
     setOpenSnackbar(false);
