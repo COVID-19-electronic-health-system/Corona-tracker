@@ -4,6 +4,11 @@ import {
   FETCH_DEMOGRAPHICS_COMORBIDITIES,
   DISCLAIMER_ANSWER,
   RESET_ANSWER,
+  FETCH_SUBSCRIBED_NUMBER,
+  SET_SUBSCRIBED_NUMBER,
+  UNSUBSCRIBE,
+  SUBSCRIBE_ERROR,
+  CLEAR_RESPONSE,
 } from '../actions/onboarding';
 
 export const initialState = {
@@ -18,6 +23,7 @@ export const initialState = {
     isAsthmatic: '',
   },
   disclaimerAnswer: false,
+  phoneNumber: { subscribedNumber: null, error: {}, success: '' },
   showOnboard: false,
 };
 
@@ -54,6 +60,51 @@ export const onboardingReducer = (state = initialState, action) => {
       return {
         ...state,
         disclaimerAnswer: false,
+      };
+    case FETCH_SUBSCRIBED_NUMBER:
+      return {
+        ...state,
+        phoneNumber: {
+          ...state.phoneNumber,
+          subscribedNumber: action.phoneNumber,
+        },
+      };
+    case SET_SUBSCRIBED_NUMBER:
+      return {
+        ...state,
+        phoneNumber: {
+          ...state.phoneNumber,
+          subscribedNumber: action.phoneNumber,
+          success: 'subscribed',
+          error: {},
+        },
+      };
+    case UNSUBSCRIBE:
+      return {
+        ...state,
+        phoneNumber: {
+          ...state.phoneNumber,
+          subscribedNumber: null,
+          success: 'unsubscribed',
+          error: {},
+        },
+      };
+    case SUBSCRIBE_ERROR:
+      return {
+        ...state,
+        phoneNumber: {
+          ...state.phoneNumber,
+          error: action.error,
+        },
+      };
+    case CLEAR_RESPONSE:
+      return {
+        ...state,
+        phoneNumber: {
+          ...state.phoneNumber,
+          error: {},
+          success: '',
+        },
       };
     default:
       return state;

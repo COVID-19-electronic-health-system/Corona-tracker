@@ -24,6 +24,10 @@ import {
   fetchDemographicsComorbidities,
   setDisclaimerAnswerThunk,
   resetDisclaimerAnswer,
+  setSubscribedNumber,
+  fetchSubscribedNumber,
+  unsubscribeNumber,
+  clearResponse,
 } from './onboarding';
 import { deleteUserDataThunk } from './deleteUserData';
 
@@ -32,6 +36,10 @@ const actions = {
   addObservation,
   deleteObservations,
   setDisclaimerAnswerThunk,
+  setSubscribedNumber,
+  fetchSubscribedNumber,
+  unsubscribeNumber,
+  clearResponse,
   selectDate,
   setToggleValue,
   setDetailData,
