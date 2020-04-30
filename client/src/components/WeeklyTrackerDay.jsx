@@ -98,6 +98,11 @@ const WeeklyTrackerDay = props => {
               <strong>{dayData.nonPhysical.openComment || noDataText}</strong>
             </Typography>
           </Grid>
+          <Grid item xs={12}>
+            <Typography variant="body2" className={classes.bold}>
+              Swipe to Complete &gt; &gt; &gt;
+            </Typography>
+          </Grid>
         </Grid>
       </Grid>
     </div>
