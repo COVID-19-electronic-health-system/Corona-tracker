@@ -100,7 +100,7 @@ const WeeklyTrackerDay = props => {
           </Grid>
           <Grid item xs={12}>
             <Typography variant="body2" className={classes.bold}>
-              Swipe to Complete &gt; &gt; &gt;
+              Swipe for Details &gt; &gt; &gt;
             </Typography>
           </Grid>
         </Grid>
