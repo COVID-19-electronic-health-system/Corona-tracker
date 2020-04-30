@@ -123,10 +123,10 @@ const More = ({ setSubscribedNumber, unsubscribeNumber, subscribedNumber, clearR
     if (reason === 'clickaway') {
       return;
     }
+    setOpenSnackbar(false);
     if (success || error.response) {
       clearResponse();
     }
-    setOpenSnackbar(false);
   };
 
   const handleSubmitSubscribe = () => {
@@ -329,7 +329,4 @@ const mapDispatch = dispatch => {
   };
 };
 
-export default connect(
-  mapState,
-  mapDispatch
-)(More);
+export default connect(mapState, mapDispatch)(More);
