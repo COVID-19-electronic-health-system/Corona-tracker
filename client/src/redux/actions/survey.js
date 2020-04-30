@@ -5,6 +5,12 @@ export const SET_SURVEY_PAGE_2 = 'SET_SURVEY_PAGE_2';
 export const SET_SURVEY_PAGE_3 = 'SET_SURVEY_PAGE_3';
 export const SET_SURVEY_PAGE_4 = 'SET_SURVEY_PAGE_4';
 export const CLEAR_SURVEY = 'CLEAR_SURVEY';
+export const SET_REMINDER_STATUS = 'SET_REMINDER_STATUS';
+
+export const setReminderStatus = status => ({
+  type: SET_REMINDER_STATUS,
+  status,
+});
 
 export const setCompleted = page => ({
   type: SET_COMPLETED,
