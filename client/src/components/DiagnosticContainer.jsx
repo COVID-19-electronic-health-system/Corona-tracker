@@ -18,6 +18,9 @@ const useStyles = makeStyles({
   button: {
     ...buttonsCss.buttons,
   },
+  dialog: {
+    backgroundImage: 'linear-gradient(#d7e1fa, #bbcef9)',
+  },
 });
 
 const dateOptions = {
@@ -54,24 +57,24 @@ function DiagnosticContainer(props) {
         aria-labelledby="alert-dialog-title"
         aria-describedby="alert-dialog-description"
       >
-        <DialogContent>
+        <DialogContent className={classes.dialog}>
           <DialogContentText id="alert-dialog-description">Take Your Survey Today</DialogContentText>
+          <DialogActions className={classes.buttonContainer}>
+            <Button
+              className={classes.button}
+              color="default"
+              onClick={() => {
+                handleClose();
+                history.push('/symptomsurvey');
+              }}
+            >
+              Take Daily Survey
+            </Button>
+            <Button onClick={handleClose} color="default">
+              Close
+            </Button>
+          </DialogActions>
         </DialogContent>
-        <DialogActions>
-          <Button
-            className={classes.button}
-            color="default"
-            onClick={() => {
-              handleClose();
-              history.push('/symptomsurvey');
-            }}
-          >
-            Take Daily Survey
-          </Button>
-          <Button onClick={handleClose} color="default">
-            Close
-          </Button>
-        </DialogActions>
       </Dialog>
     </div>
   );
