@@ -95,8 +95,8 @@ const surveyReducer = (oldState = initialState, action) => {
           physical: {},
           nonPhysical: {},
         },
-        surveyPage: 0,
-        completed: {},
+        surveyPage: 1,
+        completedSteps: {},
       };
     case SET_REMINDER_STATUS:
       return {
