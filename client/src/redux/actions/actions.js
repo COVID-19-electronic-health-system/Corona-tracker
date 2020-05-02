@@ -17,6 +17,7 @@ import {
   setSurveyPage3,
   setSurveyPage4,
   clearSurvey,
+  setReminderStatus,
 } from './survey';
 import {
   setDemographicsComorbiditiesThunk,
@@ -51,6 +52,7 @@ const actions = {
   setSurveyPage3,
   setSurveyPage4,
   clearSurvey,
+  setReminderStatus,
   setDemographicsComorbiditiesThunk,
   fetchDemographicsComorbidities,
   resetDisclaimerAnswer,

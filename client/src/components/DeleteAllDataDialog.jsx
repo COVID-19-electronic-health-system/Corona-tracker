@@ -27,7 +27,7 @@ const useStyles = makeStyles({
 });
 const DeleteAllDataDialog = props => {
   const { userSession } = useBlockstack();
-  const { setShowDeletionDialog, deleteUserData } = props;
+  const { setShowDeletionDialog, deleteUserData, setReminderStatus } = props;
   const history = useHistory();
 
   const deleteAllData = () => {
@@ -49,7 +49,14 @@ const DeleteAllDataDialog = props => {
             <DialogContentText>Are you sure you want to delete all of your user data?</DialogContentText>
           </DialogContent>
           <DialogActions>
-            <Button variant="outlined" onClick={() => deleteAllData()}>
+            <Button
+              variant="outlined"
+              onClick={() => {
+                deleteAllData();
+                window.localStorage.setItem('surveyCompleted', 'false');
+                setReminderStatus(true);
+              }}
+            >
               Yes
             </Button>
             <Button variant="outlined" onClick={() => setShowDeletionDialog(false)}>
@@ -65,6 +72,7 @@ const DeleteAllDataDialog = props => {
 DeleteAllDataDialog.propTypes = {
   setShowDeletionDialog: PropTypes.func.isRequired,
   deleteUserData: PropTypes.func.isRequired,
+  setReminderStatus: PropTypes.func.isRequired,
 };
 
 const mapStateToProps = (state, ownProps) => {
@@ -76,6 +84,7 @@ const mapStateToProps = (state, ownProps) => {
 const mapDispatchToProps = dispatch => {
   return {
     deleteUserData: userSession => dispatch(actions.deleteUserDataThunk(userSession)),
+    setReminderStatus: status => dispatch(actions.setReminderStatus(status)),
   };
 };
 
