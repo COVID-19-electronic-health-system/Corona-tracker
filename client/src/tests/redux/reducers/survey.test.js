@@ -14,6 +14,7 @@ describe('survey reducer', () => {
       },
       completedSteps: {},
       surveyPage: 1,
+      reminderStatus: false,
     });
   });
 

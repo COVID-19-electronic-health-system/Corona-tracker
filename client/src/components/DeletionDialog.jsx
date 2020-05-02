@@ -27,7 +27,7 @@ const useStyles = makeStyles({
 });
 const DeletionDialog = props => {
   const { userSession } = useBlockstack();
-  const { deleteObservations, deleteDetailData, setShowDeletionDialog } = props;
+  const { deleteObservations, deleteDetailData, setShowDeletionDialog, setReminderStatus } = props;
   const history = useHistory();
 
   const classes = useStyles();
@@ -48,6 +48,8 @@ const DeletionDialog = props => {
               onClick={() => {
                 deleteObservations(userSession);
                 deleteDetailData();
+                window.localStorage.setItem('surveyCompleted', 'false');
+                setReminderStatus(true);
                 history.push('/');
               }}
             >
@@ -67,6 +69,7 @@ DeletionDialog.propTypes = {
   deleteObservations: PropTypes.func.isRequired,
   deleteDetailData: PropTypes.func.isRequired,
   setShowDeletionDialog: PropTypes.func.isRequired,
+  setReminderStatus: PropTypes.func.isRequired,
 };
 
 const mapStateToProps = (state, ownProps) => {
@@ -79,6 +82,7 @@ const mapDispatchToProps = dispatch => {
   return {
     deleteObservations: userSession => dispatch(actions.deleteObservations(userSession)),
     deleteDetailData: () => dispatch(actions.deleteDetailData()),
+    setReminderStatus: status => dispatch(actions.setReminderStatus(status)),
   };
 };
 

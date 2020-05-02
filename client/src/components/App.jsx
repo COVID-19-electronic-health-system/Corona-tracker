@@ -23,7 +23,13 @@ import Settings from './Settings';
 ReactBlockstack({ appConfig });
 
 const App = props => {
-  const { fetchObservations, fetchDemographicsComorbidities, fetchSubscribedNumber, showOnboard } = props;
+  const {
+    fetchObservations,
+    fetchDemographicsComorbidities,
+    fetchSubscribedNumber,
+    showOnboard,
+    setReminderStatus,
+  } = props;
   const { userSession, authenticated } = useBlockstack();
   const finished = useCallback(() => {
     didConnect({ userSession });
@@ -37,15 +43,36 @@ const App = props => {
     },
     userSession,
   };
+  const hasSubmitted = () => {
+    const date = window.localStorage.getItem('date');
+    const todaysDate = new Date().toISOString().slice(0, 10);
+    if (date === todaysDate) {
+      if (window.localStorage.getItem('surveyCompleted') === 'false') {
+        return false;
+      }
+      return true;
+    }
+    window.localStorage.setItem('date', todaysDate);
+    window.localStorage.setItem('surveyCompleted', 'false');
+    return false;
+  };
 
   useEffect(() => {
+    setReminderStatus(!hasSubmitted());
     document.body.style.zoom = '100%';
     if (authenticated) {
       fetchObservations(userSession);
       fetchDemographicsComorbidities(userSession);
       fetchSubscribedNumber(userSession);
     }
-  }, [fetchObservations, fetchDemographicsComorbidities, fetchSubscribedNumber, authenticated, userSession]);
+  }, [
+    fetchObservations,
+    fetchDemographicsComorbidities,
+    fetchSubscribedNumber,
+    authenticated,
+    userSession,
+    setReminderStatus,
+  ]);
 
   const [disclaimerString] = useFile('disclaimer.json');
 
@@ -97,6 +124,7 @@ App.propTypes = {
   fetchDemographicsComorbidities: PropTypes.func.isRequired,
   fetchSubscribedNumber: PropTypes.func.isRequired,
   showOnboard: PropTypes.bool.isRequired,
+  setReminderStatus: PropTypes.func.isRequired,
 };
 
 const mapStateToProps = state => ({
@@ -107,6 +135,7 @@ const mapDispatchToProps = dispatch => ({
   fetchObservations: userSession => dispatch(actions.fetchObservations(userSession)),
   fetchDemographicsComorbidities: userSession => dispatch(actions.fetchDemographicsComorbidities(userSession)),
   fetchSubscribedNumber: userSession => dispatch(actions.fetchSubscribedNumber(userSession)),
+  setReminderStatus: status => dispatch(actions.setReminderStatus(status)),
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(App);
