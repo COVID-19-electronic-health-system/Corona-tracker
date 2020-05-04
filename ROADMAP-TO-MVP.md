@@ -55,7 +55,7 @@ The listed MVP features are based on the conversation with first possible user D
 
 ## 1. Finish Dutch (Flemish) translations
 
-### Why are Dutch (Flemish) translations useful
+### Why are Dutch (Flemish) translations useful?
 
 DocMusher is based in Belgium and the people he sees speak Dutch (Flemish). They are skewing to be older patients, a demographic where English is not fully spoken.
 
@@ -67,7 +67,7 @@ DocMusher is based in Belgium and the people he sees speak Dutch (Flemish). They
 
 ## 2. Feature: Daily log of temperature
 
-### Why the Daily Log of Temperature is Useful
+### Why is the Daily Log of Temperature useful?
 
 It is a **KEY** indicator that DocMusher stated was useful to doctors.
 
@@ -78,13 +78,13 @@ It is a **KEY** indicator that DocMusher stated was useful to doctors.
 
 ## 3. Feature: Algorithm to take daily rate via video camera
 
-### Why is this algorithm useful?
+### Why is the Daily Heart Rate useful?
 
 Heart rate is a **KEY** indicator that in @DocMusher's experience can help assess issues with COVID-19. The reason is that the heart needs to work harder to pump and keep circulation up based on the reduce amount of fluids. Will follow up with DocMusher on a clearer description of this.
 
 A heart monitor is not necessary. This can be achieved with a smartphone camera.
 
-### Tasks for algorithm
+### Tasks for Daily Heart Rate algorithm
 
 1. Create an algorithm to take a daily heart rate. This can be adjusted to more than once a day.
 
@@ -94,7 +94,7 @@ A heart monitor is not necessary. This can be achieved with a smartphone camera.
 
 4. Work with @Akil Hylton#7927, @NickG and the analytics team on this.
 
-### Resources
+### Resources for Daily Heart Rate algorithm
 
 @Akil Hylton#7927 found a great paper
 
@@ -104,14 +104,14 @@ See: [Improved Algorithm for Heart Rate Measurement Using Mobile Phone Camera by
 
 ## 4. Feature: Add a graph to visualize trends
 
-### Why is a graph useful
+### Why is a graph of trends useful?
 
 Being able to see the trend of temperature and heart rate change over time is SUPER useful for the doctor.
 
-### Tasks for graph
+### Tasks for the graph
 
 Add a graph or some easy visual that shows **trends** of temperature and heart rate over time.
 
-The **trend** of these two measurements is SUPER important to assess the possibility of being affected by COVID, based on @DocMusher#9988 experience.
+The **trend** of these two measurements is SUPER important to assess the possibility of being affected by COVID, based on @DocMusher's experience.
 
 The **trend** is your friend.
