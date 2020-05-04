@@ -61,7 +61,8 @@ Furthermore, the effects of social distancing and isolation and the impact of lo
 - [Contributing Guidelines - get involved!](https://github.com/COVID-19-electronic-health-system/.github/blob/master/CONTRIBUTING.md)
 - [Design, Wireframes, and Brand Guide](./design)
 - [Client, based on Create React App](./client)
-- [Translations](./Translations/README.md)
+- [Translations](./Translations)
+- [PanFLUte: Open Source Spirometer](https://github.com/COVID-19-electronic-health-system/PanFLUte)
 
 ## Frequently Asked Questions
 
