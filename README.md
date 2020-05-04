@@ -8,11 +8,14 @@ A tool to help reduce the number of unnecessary hospital visits, educate the pub
 
 - [Join our Discord Server](https://discord.gg/pPERUuv)
 - [Visit our Website CoronaTracker.me](https://coronatracker.me)
-- [View the Beta Version of the App](https://coronatrackerbeta.com)
-- View our community health files:
-    - [Contributing Guidelines:](https://github.com/COVID-19-electronic-health-system/.github/blob/master/CONTRIBUTING.md) including more about the project and how to get involved
-    - [Support Documentation:](https://github.com/COVID-19-electronic-health-system/.github/blob/master/SUPPORT.md) including team members, resources, and references
-    - [Code of Conduct:](https://github.com/COVID-19-electronic-health-system/.github/blob/master/CODE_OF_CONDUCT.md) including examples of behavior that contributes to creating a positive environment
+- [View the Beta Version of CoronaTracker](https://coronatrackerbeta.com)
+- [Help us translate CoronaTracker!](./Translations)
+
+__View our community health files:__
+
+- [Contributing Guidelines:](https://github.com/COVID-19-electronic-health-system/.github/blob/master/CONTRIBUTING.md) including more about the project and how to get involved
+- [Support Documentation:](https://github.com/COVID-19-electronic-health-system/.github/blob/master/SUPPORT.md) including team members, resources, and references
+- [Code of Conduct:](https://github.com/COVID-19-electronic-health-system/.github/blob/master/CODE_OF_CONDUCT.md) including examples of behavior that contributes to creating a positive environment
 
 ### Roadmap to MVP
 
@@ -61,7 +64,7 @@ Furthermore, the effects of social distancing and isolation and the impact of lo
 - [Contributing Guidelines - get involved!](https://github.com/COVID-19-electronic-health-system/.github/blob/master/CONTRIBUTING.md)
 - [Design, Wireframes, and Brand Guide](./design)
 - [Client, based on Create React App](./client)
-- [Translations](./Translations)
+- [Translations, workflows, and resources](./Translations)
 - [PanFLUte: Open Source Spirometer](https://github.com/COVID-19-electronic-health-system/PanFLUte)
 
 ## Frequently Asked Questions
