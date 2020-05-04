@@ -1,7 +1,7 @@
 # Brand Guide
-## Motivation
-This document is to provide an overview of styles utilized in the app. The design team has made efforts to uniformly style the UI with Material UI and CSS. All buttons, font, background, icons, should match the wireframes linked above as closely as possible. Please remember to use makeStyles instead of in-line styles.
 
+## Motivation
+This document is to provide an overview of styles utilized in the app. The design team has made efforts to uniformly style the UI with Material UI and CSS. All buttons, font, background, icons, should match the wireframes linked below as closely as possible. Please remember to use makeStyles instead of in-line styles.
 
 ### **CORE COLORS**
 
@@ -27,6 +27,10 @@ This document is to provide an overview of styles utilized in the app. The desig
 **APP BACKGROUND BLUE GRADIENT**
 - Light blue: #d7e1fa
 - Dark blue: #bbcef9
+
+### Wireframe Overview
+
+![app overview](/design/wireframes/FINAL-V1-03.20/MASTER_WIREFRAME.png)
 
 
 # Links to everything:
