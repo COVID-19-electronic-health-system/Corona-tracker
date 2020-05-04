@@ -27,15 +27,15 @@ This is a perfect time to jump in, learn together, and help out! ❤️
 <!-- TOC -->
 
 - [We are in crisis and we need to act](#we-are-in-crisis-and-we-need-to-act)
+- [Application Overview](#application-overview)
+  - [Useful Github Repo Links](#useful-github-repo-links)
+  - [Wireframe Overview](#wireframe-overview)
 - [Frequently Asked Questions](#frequently-asked-questions)
   - [Who is this app for?](#who-is-this-app-for)
   - [What is the benefit this app is providing?](#what-is-the-benefit-this-app-is-providing)
   - [How is this app different from the others?](#how-is-this-app-different-from-the-others)
   - [What insights have been considered?](#what-insights-have-been-considered)
   - [Who are the stakeholders?](#who-are-the-stakeholders)
-- [Application Overview](#application-overview)
-  - [Useful Github Repo Links](#useful-github-repo-links)
-  - [Wireframe Overview](#wireframe-overview)
 - [Questions?](#questions)
 - [Appendix](#appendix)
   - [Design considerations](#design-considerations)
@@ -50,6 +50,23 @@ The COVID-19 outbreak is a threat to the global population with formidable chall
 After discussions with doctors, start ups, technologists, and academic researchers, we narrowed down some issues of critical importance that the application will address. Specifically, we list major concerns from a call with Ameer (Systems Architect) and Dr. Kristen Kent. There are several key facets of concern, namely __medical considerations__ (i.e. people aren't realizing the severity of this; it's getting real very fast; and doctors/medical professionals are ill-equipped to test for this), as well as __global concerns__ (i.e. the economy is sinking; resources are directly needed for equipment like isolation rooms and protective gear; there is a need for more ventilators and space; schools are closing; etc.).
 
 Furthermore, the effects of social distancing and isolation and the impact of lost jobs and finances is already having a negative impact on the physical, mental, emotional, and spiritual well-being of our society. After learning all of this, we realized that there's a limited amount of time to act, and decisive action must be taken in order to do our part and help our neighbors and healthcare professionals on the ground working towards a solution, keeping people as healthy as possible, and strengthening the well being of our society.
+
+## Application Overview
+
+[View our contributing guidelines](https://github.com/COVID-19-electronic-health-system/.github/blob/master/CONTRIBUTING.md) to learn more about the project, our values, and regular town hall meetings for the group.
+
+[View our support document](https://github.com/COVID-19-electronic-health-system/.github/blob/master/SUPPORT.md) to learn more about the project leads, resources, and technology.
+
+### Useful Github Repo Links
+
+- [Contributing Guidelines - get involved!](https://github.com/COVID-19-electronic-health-system/.github/blob/master/CONTRIBUTING.md)
+- [Design, Wireframes, and Brand Guide](./design)
+- [Client, based on Create React App](./client)
+- [Translations](./Translations/README.md)
+
+### Wireframe Overview
+
+![app overview](/design/wireframes/FINAL-V1-03.20/MASTER_WIREFRAME.png)
 
 ## Frequently Asked Questions
 
@@ -87,23 +104,6 @@ The team has been in consultation with individuals and stakeholders in the acade
 - All individuals. This affects all society.
 - Public health authorities. They need to inform, educate, and support citizens.
 - Researchers. There is enormous implications for individual's wellbeing and health and so we must try to understand both how individuals are traversing their journey, and if education is significantly improving characteristics in a user's health/wellbeing chart.
-
-## Application Overview
-
-[View our contributing guidelines](https://github.com/COVID-19-electronic-health-system/.github/blob/master/CONTRIBUTING.md) to learn more about the project, our values, and regular town hall meetings for the group.
-
-[View our support document](https://github.com/COVID-19-electronic-health-system/.github/blob/master/SUPPORT.md) to learn more about the project leads, resources, and technology.
-
-### Useful Github Repo Links
-
-- [Contributing Guidelines - get involved!](https://github.com/COVID-19-electronic-health-system/.github/blob/master/CONTRIBUTING.md)
-- [Design, Wireframes, and Brand Guide](./design)
-- [Client, based on Create React App](./client)
-- [Translations](./Translations/README.md)
-
-### Wireframe Overview
-
-![app overview](/design/wireframes/FINAL-V1-03.20/MASTER_WIREFRAME.png)
 
 ## Questions?
 
