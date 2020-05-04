@@ -14,6 +14,14 @@ A tool to help reduce the number of unnecessary hospital visits, educate the pub
     - [Support Documentation:](https://github.com/COVID-19-electronic-health-system/.github/blob/master/SUPPORT.md) including team members, resources, and references
     - [Code of Conduct:](https://github.com/COVID-19-electronic-health-system/.github/blob/master/CODE_OF_CONDUCT.md) including examples of behavior that contributes to creating a positive environment
 
+### Roadmap to MVP
+
+⚠️ We are currently working to implement a MVP for one of our advisors by **May 11, 2020**.
+
+The [open issues related to this release](https://github.com/COVID-19-electronic-health-system/Corona-tracker/issues?q=is%3Aissue+is%3Aopen+label%3AMVP) can be found under the tag `MVP`, and more detail can be found [in the ROADMAP-TO-MVP document](https://github.com/COVID-19-electronic-health-system/Corona-tracker/blob/master/ROADMAP-TO-MVP.md).
+
+This is a perfect time to jump in, learn together, and help out! ❤️
+
 ## Table of Contents
 
 <!-- TOC -->
