@@ -53,6 +53,8 @@ We will NOT triage patients. We provide a tool to help patients and doctors unde
 
 The listed MVP features are based on the conversation with first possible user DocMusher (a Belgian doctor treating COVID19 patients).
 
+All [related MVP issues](https://github.com/COVID-19-electronic-health-system/Corona-tracker/issues?q=is%3Aissue+is%3Aopen+label%3AMVP) can be found via the `MVP` tag in the Corona-tracker repository.
+
 ## 1. Finish Dutch (Flemish) translations
 
 ### Why are Dutch (Flemish) translations useful?
