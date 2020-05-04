@@ -1,6 +1,8 @@
 ![Corona Tracker Logo](https://dg1fd6ea8poyj.cloudfront.net/images/Logo_CORONATRACKER_Text_Logo.png)
 
-[![Build Status](http://img.shields.io/travis/COVID-19-electronic-health-system/Corona-tracker/master.svg?style=for-the-badge)](https://travis-ci.org/COVID-19-electronic-health-system/Corona-tracker)
+[![TravisCI Build Status](http://img.shields.io/travis/COVID-19-electronic-health-system/Corona-tracker/master.svg?style=for-the-badge)](https://travis-ci.org/COVID-19-electronic-health-system/Corona-tracker)
+
+[![Open Collective backers and sponsors](https://img.shields.io/opencollective/all/coronatracker?style=for-the-badge)](https://opencollective.com/coronatracker)
 
 A tool to help reduce the number of unnecessary hospital visits, educate the public on facts vs myths, and provide a health and wellbeing chart for logging their journey during these uncertain and tumultuous times.
 
