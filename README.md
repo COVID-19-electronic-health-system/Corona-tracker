@@ -29,7 +29,6 @@ This is a perfect time to jump in, learn together, and help out! ❤️
 - [We are in crisis and we need to act](#we-are-in-crisis-and-we-need-to-act)
 - [Application Overview](#application-overview)
   - [Useful Github Repo Links](#useful-github-repo-links)
-  - [Wireframe Overview](#wireframe-overview)
 - [Frequently Asked Questions](#frequently-asked-questions)
   - [Who is this app for?](#who-is-this-app-for)
   - [What is the benefit this app is providing?](#what-is-the-benefit-this-app-is-providing)
@@ -63,10 +62,6 @@ Furthermore, the effects of social distancing and isolation and the impact of lo
 - [Design, Wireframes, and Brand Guide](./design)
 - [Client, based on Create React App](./client)
 - [Translations](./Translations/README.md)
-
-### Wireframe Overview
-
-![app overview](/design/wireframes/FINAL-V1-03.20/MASTER_WIREFRAME.png)
 
 ## Frequently Asked Questions
 
