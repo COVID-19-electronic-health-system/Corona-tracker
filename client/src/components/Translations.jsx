@@ -17,15 +17,20 @@ const useStyles = makeStyles(theme => ({
 export default function TranslationsMenu() {
   const classes = useStyles();
   const { i18n, t } = useTranslation();
-  const [lang, setLang] = useState(window.navigator.language.slice(0, 2));
+  const [loaded, setLoaded] = useState(false);
+
+  const setLanguage = () => {
+    setLoaded(true)
+    i18n.changeLanguage(window.navigator.language.slice(0, 2));
+  }
 
   const handleClick = event => {
-    setLang(event.target.value);
-    i18n.changeLanguage(lang);
+    i18n.changeLanguage(event.target.value);
   };
 
   return (
     <div>
+      {loaded ? null : setLanguage()}
       <FormControl className={classes.formControl}>
         <Select
           labelId="demo-simple-select-outlined-label"
