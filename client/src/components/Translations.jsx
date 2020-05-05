@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import MenuItem from '@material-ui/core/MenuItem';
 import { useTranslation } from 'react-i18next';
 import { makeStyles } from '@material-ui/core/styles';
@@ -17,9 +17,11 @@ const useStyles = makeStyles(theme => ({
 export default function TranslationsMenu() {
   const classes = useStyles();
   const { i18n, t } = useTranslation();
+  const [lang, setLang] = useState(window.navigator.language.slice(0, 2));
 
   const handleClick = event => {
-    i18n.changeLanguage(event.target.value);
+    setLang(event.target.value);
+    i18n.changeLanguage(lang);
   };
 
   return (
