@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect } from 'react';
 import MenuItem from '@material-ui/core/MenuItem';
 import { useTranslation } from 'react-i18next';
 import { makeStyles } from '@material-ui/core/styles';
@@ -17,20 +17,19 @@ const useStyles = makeStyles(theme => ({
 export default function TranslationsMenu() {
   const classes = useStyles();
   const { i18n, t } = useTranslation();
-  const [loaded, setLoaded] = useState(false);
-
-  const setLanguage = () => {
-    setLoaded(true)
-    i18n.changeLanguage(window.navigator.language.slice(0, 2));
-  }
 
   const handleClick = event => {
     i18n.changeLanguage(event.target.value);
   };
 
+  console.log(window.navigator)
+
+  useEffect(() => {
+    i18n.changeLanguage(window.navigator.language.slice(0, 2));
+  }, [i18n]);
+
   return (
     <div>
-      {loaded ? null : setLanguage()}
       <FormControl className={classes.formControl}>
         <Select
           labelId="demo-simple-select-outlined-label"
