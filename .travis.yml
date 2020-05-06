@@ -8,6 +8,7 @@ cache:
     - node_modules
 
 before_install:
+  sudo apt-get -y install libcairo2-dev libpango1.0-dev &&
   npm -g install yarn &&
   npm install -g jest-dom &&
   npm install -g react-scripts
