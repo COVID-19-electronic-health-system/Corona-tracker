@@ -1,9 +1,16 @@
-import json
-import gspread
+#https://docs.python.org/3/tutorial/modules.html
+from json import dump
+from gspread import authorize
 from google.oauth2.service_account import Credentials
-import pandas as pd
-import os
-import string
+from pandas import Series, DataFrame
+from os import path, mkdir
+from string import punctuation
+
+from nltk import pos_tag, download
+from nltk.tokenize import word_tokenize
+download('punkt')
+download('stopwords')
+download('averaged_perceptron_tagger')
 
 # Connect to Google Sheets API #
 # follow https://medium.com/@CROSP/manage-google-spreadsheets-with-python-and-gspread-6530cc9f15d1
@@ -31,7 +38,7 @@ LANGUAGE_LETTERS_DICT = {
 # Google sheets authorization
 
 credentials = Credentials.from_service_account_file(CREDENTIALS_PATH, scopes=scope)
-gc = gspread.authorize(credentials)
+gc = authorize(credentials)
 
 
 # Get names of spreadsheets 
@@ -65,18 +72,11 @@ json structure
 def convert_to_camelCase(value):
 	#converts value to camelCase
 	camelCase = value.split()[0].lower() + " ".join(value.split()[1:]).title().replace(" ","")
-	text_tokens = word_tokenize(text)
 	#removes punctuation
-	return camelCase.translate(str.maketrans('', '', string.punctuation))
-
-import nltk
-nltk.download('punkt')
-nltk.download('stopwords')
-from nltk.tokenize import word_tokenize
-nltk.download('averaged_perceptron_tagger')
+	return camelCase.translate(str.maketrans('', '', punctuation))
 
 def depunctuate(text):
-	chars = string.punctuation
+	chars = punctuation
 	for c in chars:
 		text = text.replace(c, "")
 	return text
@@ -84,18 +84,42 @@ def depunctuate(text):
 def education_value_cleaner(language_df):
 	lst = [word_tokenize(x) for x in language_df.value.tolist()]
 	#http://www.nltk.org/book_1ed/ch05.html
-	pos_tagged = [nltk.pos_tag(x) for x in lst]
+	pos_tagged = [pos_tag(x) for x in lst]
 	lst_new=[]
 	for pt in pos_tagged:
+		#choose nouns in sentence
 		nouns = [depunctuate(x[0]) for x in pt if "NN" in x[1]]
+		#choose verbs in setence
 		verbs = [depunctuate(x[0]) for x in pt if 'VB' in x[1]]
+		#make fieldKey and add to new list of fieldKeys
 		if len(verbs)==0 and len(nouns)==2:
 			lst_new.append(nouns[0].lower() + nouns[1].title())
 		elif len(verbs)==1 and len(nouns)==1:
 			lst_new.append(nouns[0].lower() + verbs[0].title())
 		else:
 			lst_new.append(nouns[0].lower() + nouns[1].title() + verbs[0].title())
-	return pd.Series(lst_new,index=language_df.index)
+	return Series(lst_new,index=language_df.index)
+
+def survey_value_cleaner(language_df):
+	vPA_col = [i for i,x in enumerate(language_df.columns) if x=='valuePossibleAnswers'][0]
+	tVPA_col = [i for i,x in enumerate(language_df.columns) if x=='translatedValuePossibleAnswers'][0]
+	v_col = [i for i,x in enumerate(language_df.columns) if x=='value'][0]
+	tV_col = [i for i,x in enumerate(language_df.columns) if x=='translatedValue'][0]
+	rows = language_df.values.tolist()
+	rows_added = []
+	for i,row in enumerate(rows):
+		orig_row = row.copy()
+		orig_row[v_col] = convert_to_camelCase(orig_row[v_col])
+		rows_added.append(orig_row)
+		arr = row[vPA_col].split('; ')
+		tarr = row[tVPA_col].split('; ')
+		if len(arr)==len(tarr) and len(arr)>3:
+			for j,_ in enumerate(arr):
+				row_new = row.copy()
+				row_new[v_col] = arr[j].replace('\n','').replace(' ','').lower().translate(str.maketrans('', '', punctuation))
+				row_new[tV_col] = tarr[j].replace('\n','').replace(' ','').lower().translate(str.maketrans('', '', punctuation))
+				rows_added.append(row_new)
+	return DataFrame(rows_added,columns=language_df.columns)
 
 for language in languages:
 	locale_key = [x for x in LANGUAGE_LETTERS_DICT.keys() if x in language][0]
@@ -105,16 +129,20 @@ for language in languages:
 	for wk in language_wks:
 		wk_name = '_'.join(wk.title.split(' ')).replace('/','_')
 		language_lists = wk.get_all_values()
-		language_df = pd.DataFrame(language_lists[1:],columns=language_lists[0])
+		language_df = DataFrame(language_lists[1:],columns=language_lists[0])
 		language_df = language_df[language_df['parentKey']!='']
-		# return a df with only the parentKey,fieldKey, childKey value, and translatedValue columns
-		language_df = language_df[['parentKey','fieldKey','childKey','value','translatedValue']]
+		#clean up column names
+		language_df.columns = [x.replace(' ','') for x in language_df.columns]
 		# change value column to camelCase
+		# clean fieldKeys for the Education sheets
 		if 'Education' in wk.title:
-			eduLanguage = language_df.copy()
 			language_df.value = education_value_cleaner(language_df)
+		elif 'Survey' in wk.title:
+			osLanguage_df = language_df
+			language_df = survey_value_cleaner(language_df)
 		else:
 			language_df['value'] = language_df['value'].apply(convert_to_camelCase)
+		language_df = language_df[['parentKey','fieldKey','childKey','value','translatedValue']]
 		parentKeyDict = {}
 		for parentKey, pgrp in language_df.groupby(['parentKey']):
 			childKeyDict ={}
@@ -130,7 +158,7 @@ for language in languages:
 				childKeyDict[childKey] = fieldKeyDict
 			parentKeyDict[parentKey] =  childKeyDict
 		wkDict.update(parentKeyDict)
-	if not os.path.exists(OUT_DIR+locale):
-		os.mkdir(OUT_DIR+locale)
+	if not path.exists(OUT_DIR+locale):
+		mkdir(OUT_DIR+locale)
 	with open(OUT_DIR+locale+'/translation.json', 'w') as f:
-		json.dump(wkDict, f) 
+		dump(wkDict, f) 
