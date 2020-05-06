@@ -104,9 +104,12 @@ const mapStateToProps = state => ({
 });
 
 const mapDispatchToProps = dispatch => ({
-  fetchObservations: userSession => dispatch(actions.fetchObservations(userSession)),
+  fetchObservations: (userSession, tempUnit) => dispatch(actions.fetchObservations(userSession, tempUnit)),
   fetchDemographicsComorbidities: userSession => dispatch(actions.fetchDemographicsComorbidities(userSession)),
   fetchSubscribedNumber: userSession => dispatch(actions.fetchSubscribedNumber(userSession)),
 });
 
-export default connect(mapStateToProps, mapDispatchToProps)(App);
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(App);

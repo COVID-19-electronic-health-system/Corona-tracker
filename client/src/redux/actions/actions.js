@@ -6,6 +6,7 @@ import {
   fetchObservations,
   resetObservations,
   addObservationToStore,
+  changedObservations,
 } from './observations';
 import { selectDate } from './calendar';
 import { setToggleValue, setDetailData, deleteDetailData } from './healthToggle';
@@ -28,6 +29,8 @@ import {
   fetchSubscribedNumber,
   unsubscribeNumber,
   clearResponse,
+  setTempUnit,
+  fetchTempUnit,
 } from './onboarding';
 import { deleteUserDataThunk } from './deleteUserData';
 
@@ -36,10 +39,13 @@ const actions = {
   addObservation,
   deleteObservations,
   setDisclaimerAnswerThunk,
+  changedObservations,
   setSubscribedNumber,
   fetchSubscribedNumber,
   unsubscribeNumber,
   clearResponse,
+  setTempUnit,
+  fetchTempUnit,
   selectDate,
   setToggleValue,
   setDetailData,

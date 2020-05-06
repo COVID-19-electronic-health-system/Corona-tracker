@@ -122,6 +122,7 @@ const SurveyPage4 = props => {
     sleep,
     energy,
     appetite,
+    tempUnit,
   } = props;
 
   const surveyPage4 = {
@@ -153,7 +154,7 @@ const SurveyPage4 = props => {
   const submitSurveyPage4 = async () => {
     history.push('/');
     setSurveyPage(0);
-    addObservation(userSession, survey);
+    addObservation(userSession, survey, tempUnit);
     clearSurvey();
     window.localStorage.setItem('surveyCompleted', 'true');
   };
@@ -291,6 +292,7 @@ SurveyPage4.propTypes = {
   clearSurvey: PropTypes.func.isRequired,
   setSurveyPage: PropTypes.func.isRequired,
   surveyPage: PropTypes.number.isRequired,
+  tempUnit: PropTypes.string.isRequired,
 };
 
 SurveyPage4.defaultProps = {
@@ -310,6 +312,7 @@ const mapStateToProps = state => {
     energy: state.surveyReducer.survey.nonPhysical.energy,
     appetite: state.surveyReducer.survey.nonPhysical.appetite,
     surveyPage: state.surveyReducer.surveyPage,
+    tempUnit: state.onboardingReducer.tempUnit,
   };
 };
 
@@ -317,10 +320,13 @@ const mapDispatchToProps = dispatch => {
   return {
     setSurveyPage: page => dispatch(actions.setSurveyPage(page)),
     setSurveyPage4: survey => dispatch(actions.setSurveyPage4(survey)),
-    addObservation: (userSession, survey) => dispatch(actions.addObservation(userSession, survey)),
+    addObservation: (userSession, survey, tempUnit) => dispatch(actions.addObservation(userSession, survey, tempUnit)),
     clearSurvey: () => dispatch(actions.clearSurvey()),
     setCompleted: page => dispatch(actions.setCompleted(page)),
   };
 };
 
-export default connect(mapStateToProps, mapDispatchToProps)(SurveyPage4);
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(SurveyPage4);

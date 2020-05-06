@@ -13,6 +13,7 @@ import {
 } from '@material-ui/core';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
+import { useBlockstack } from 'react-blockstack';
 import buttonsCss from '../../css/buttons';
 import actions from '../../redux/actions/actions';
 
@@ -37,6 +38,12 @@ const useStyles = makeStyles(theme => ({
     height: '5vh',
     margin: '1.2em',
   },
+  tempButton: {
+    ...buttonsCss.buttons,
+    width: '10vw',
+    height: '5vh',
+    margin: '1.2em',
+  },
   continueButton: {
     ...buttonsCss.buttons,
 
@@ -44,7 +51,7 @@ const useStyles = makeStyles(theme => ({
     width: '160px',
   },
   temperatureField: {
-    marginBottom: '1em',
+    // marginBottom: '1em',
   },
   grid: {
     marginTop: '2em',
@@ -128,6 +135,9 @@ const SurveyPage2 = props => {
     lostSmellSeverity,
     surveyPage,
     setCompleted,
+    currentTempUnit,
+    setTempUnit,
+    observations,
   } = props;
 
   const surveyPage2 = {
@@ -147,6 +157,8 @@ const SurveyPage2 = props => {
   const classes = useStyles();
   const [open, setOpen] = useState(false);
   const [survey2, setSurvey2] = useState(surveyPage2);
+  const [tempUnitSelection, setTempUnitSelection] = useState(currentTempUnit);
+  const { userSession } = useBlockstack();
 
   useEffect(() => {
     setSurveyPage2(survey2);
@@ -166,6 +178,14 @@ const SurveyPage2 = props => {
   const goBack = () => {
     setSurveyPage(surveyPage - 1);
   };
+
+  useEffect(() => {
+    if (currentTempUnit === 'celsius') {
+      handleFever(37.0);
+    } else {
+      handleFever(98.6);
+    }
+  }, [currentTempUnit, handleFever]);
 
   const submitSurveyPage2 = async () => {
     if (
@@ -188,6 +208,11 @@ const SurveyPage2 = props => {
     }
   };
 
+  const changeTempUnit = () => {
+    const nextTempUnit = tempUnitSelection === 'celsius' ? 'fahrenheit' : 'celsius';
+    setTempUnitSelection(nextTempUnit);
+    handleFever(nextTempUnit === 'fahrenheit' ? 98.6 : 37.0);
+  };
   return (
     <div className={classes.root}>
       <Typography variant="subtitle1">
@@ -197,14 +222,18 @@ const SurveyPage2 = props => {
         <Grid item xs={3}>
           <TextField
             type="number"
+            step={0.1}
             onChange={e => handleFever(e.target.valueAsNumber)}
             className={classes.temperatureField}
-            defaultValue={feverSeverity}
+            value={feverSeverity}
           />
         </Grid>
         <Grid item>
-          <Typography> &#8457;</Typography>
+          {tempUnitSelection === 'fahrenheit' ? <Typography>&#8457;</Typography> : <Typography>&#8451;</Typography>}
         </Grid>
+        <Button variant="contained" value="none" className={classes.tempButton} onClick={changeTempUnit}>
+          {`Use ${tempUnitSelection === 'celsius' ? 'fahrenheit' : 'celsius'}`}
+        </Button>
       </Grid>
       <Typography variant="subtitle2">
         <b>Q5: Which symptoms are you feeling or experiencing?</b>
@@ -647,7 +676,15 @@ const SurveyPage2 = props => {
         <Button onClick={goBack} variant="outlined" color="secondary" className={classes.continueButton}>
           BACK
         </Button>
-        <Button onClick={submitSurveyPage2} variant="outlined" color="secondary" className={classes.continueButton}>
+        <Button
+          onClick={() => {
+            submitSurveyPage2();
+            setTempUnit(userSession, observations, currentTempUnit, tempUnitSelection);
+          }}
+          variant="outlined"
+          color="secondary"
+          className={classes.continueButton}
+        >
           CONTINUE
         </Button>
       </ButtonGroup>
@@ -713,10 +750,13 @@ SurveyPage2.propTypes = {
   setSurveyPage: PropTypes.func.isRequired,
   surveyPage: PropTypes.number.isRequired,
   setCompleted: PropTypes.func.isRequired,
+  currentTempUnit: PropTypes.string.isRequired,
+  setTempUnit: PropTypes.func.isRequired,
+  observations: PropTypes.arrayOf(Object),
 };
 
 SurveyPage2.defaultProps = {
-  feverSeverity: 98.6,
+  feverSeverity: 0,
   shortnessOfBreathSeverity: '',
   chillsSeverity: '',
   coughSeverity: '',
@@ -727,6 +767,7 @@ SurveyPage2.defaultProps = {
   headacheSeverity: '',
   lostTasteSeverity: '',
   lostSmellSeverity: '',
+  observations: [],
 };
 
 const mapStateToProps = state => {
@@ -743,6 +784,9 @@ const mapStateToProps = state => {
     lostTasteSeverity: state.surveyReducer.survey.physical.lostTasteSeverity,
     lostSmellSeverity: state.surveyReducer.survey.physical.lostSmellSeverity,
     surveyPage: state.surveyReducer.surveyPage,
+    selectedTempUnit: state.onboardingReducer.tempUnit,
+    observations: state.observationsReducer.observations,
+    currentTempUnit: state.onboardingReducer.tempUnit,
   };
 };
 
@@ -751,6 +795,8 @@ const mapDispatchToProps = dispatch => {
     setSurveyPage2: survey => dispatch(actions.setSurveyPage2(survey)),
     setSurveyPage: page => dispatch(actions.setSurveyPage(page)),
     setCompleted: page => dispatch(actions.setCompleted(page)),
+    setTempUnit: (userSession, currentObservations, tempUnit, nextTempUnit) =>
+      dispatch(actions.setTempUnit(userSession, currentObservations, tempUnit, nextTempUnit)),
   };
 };
 

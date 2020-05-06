@@ -55,11 +55,18 @@ const useStyles = makeStyles(() => ({
 }));
 
 const OnboardUser = props => {
-  const { setDemographicsComorbiditiesThunk, demographicsComorbidities } = props;
+  const {
+    setDemographicsComorbiditiesThunk,
+    demographicsComorbidities,
+    tempUnit,
+    currentObservations,
+    setTempUnit,
+  } = props;
   const { userSession } = useBlockstack();
   const classes = useStyles();
   const history = useHistory();
   const [formState, setFormState] = useState(onboardingInitialState.demographicsComorbidities);
+  const [tempUnitChoice, setTempUnitChoice] = useState(tempUnit);
 
   useEffect(() => {
     setFormState(demographicsComorbidities);
@@ -74,6 +81,7 @@ const OnboardUser = props => {
   };
 
   const handleSave = async () => {
+    setTempUnit(userSession, currentObservations, tempUnit, tempUnitChoice);
     await setDemographicsComorbiditiesThunk(formState, userSession);
     history.push('/');
   };
@@ -241,6 +249,31 @@ const OnboardUser = props => {
             </button>
           </ButtonGroup>
         </Grid>
+        <Grid item xs={6}>
+          <Typography variant="subtitle2" color="textSecondary">
+            <b>What is your preferred unit of measure?</b>
+          </Typography>
+        </Grid>
+        <Grid item xs={6}>
+          <ButtonGroup>
+            <button
+              type="button"
+              value="celsius"
+              onClick={() => setTempUnitChoice('celsius')}
+              className={`${classes.buttonLeft} ${tempUnitChoice === 'celsius' && classes.selectedButton}`}
+            >
+              Celsius
+            </button>
+            <button
+              type="button"
+              value="fahrenheit"
+              onClick={() => setTempUnitChoice('fahrenheit')}
+              className={`${classes.buttonRight} ${tempUnitChoice === 'fahrenheit' && classes.selectedButton}`}
+            >
+              Fahrenheit
+            </button>
+          </ButtonGroup>
+        </Grid>
         <Grid item xs={12}>
           <Button className={classes.saveButton} onClick={handleSave}>
             Save my responses
@@ -263,11 +296,16 @@ OnboardUser.propTypes = {
     isObese: PropTypes.string,
     isAsthmatic: PropTypes.string,
   }).isRequired,
+  tempUnit: PropTypes.string.isRequired,
+  currentObservations: PropTypes.arrayOf(Object).isRequired,
+  setTempUnit: PropTypes.func.isRequired,
 };
 
 const mapStateToProps = state => {
   return {
     demographicsComorbidities: state.onboardingReducer.demographicsComorbidities,
+    tempUnit: state.onboardingReducer.tempUnit,
+    currentObservations: state.observationsReducer.observations,
   };
 };
 
@@ -278,7 +316,12 @@ const mapDispatchToProps = dispatch => {
     fetchDemographicsComorbidities: userSession => {
       dispatch(actions.fetchDemographicsComorbidities(userSession));
     },
+    setTempUnit: (userSession, currentObservations, tempUnit, nextTempUnit) =>
+      dispatch(actions.setTempUnit(userSession, currentObservations, tempUnit, nextTempUnit)),
   };
 };
 
-export default connect(mapStateToProps, mapDispatchToProps)(OnboardUser);
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(OnboardUser);
