@@ -218,6 +218,7 @@ Settings.propTypes = {
     isObese: PropTypes.string,
     isAsthmatic: PropTypes.string,
   }).isRequired,
+  tempUnit: PropTypes.string.isRequired,
 };
 
 const mapStateToProps = state => ({
@@ -225,7 +226,4 @@ const mapStateToProps = state => ({
   tempUnit: state.onboardingReducer.tempUnit,
 });
 
-export default connect(
-  mapStateToProps,
-  null
-)(Settings);
+export default connect(mapStateToProps, null)(Settings);

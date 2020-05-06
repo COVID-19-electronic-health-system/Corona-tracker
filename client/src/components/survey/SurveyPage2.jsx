@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useCallback } from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import {
   Typography,
@@ -40,7 +40,7 @@ const useStyles = makeStyles(theme => ({
   },
   tempButton: {
     ...buttonsCss.buttons,
-    width: '10vw',
+    minWidth: '15vw',
     height: '5vh',
     margin: '1.2em',
   },
@@ -164,9 +164,13 @@ const SurveyPage2 = props => {
     setSurveyPage2(survey2);
   }, [survey2, setSurveyPage2]);
 
-  const handleFever = value => {
-    setSurvey2({ ...survey2, feverSeverity: value });
-  };
+  const handleFever = useCallback(
+    value => {
+      setSurveyPage2({ ...surveyPage2, feverSeverity: value });
+    },
+    [setSurveyPage2, surveyPage2]
+  );
+
   const handleAnswer = (value, name) => {
     setSurvey2({ ...survey2, [name]: value.toLowerCase() });
   };
@@ -185,7 +189,7 @@ const SurveyPage2 = props => {
     } else {
       handleFever(98.6);
     }
-  }, [currentTempUnit, handleFever]);
+  }, [currentTempUnit]);
 
   const submitSurveyPage2 = async () => {
     if (
@@ -784,7 +788,6 @@ const mapStateToProps = state => {
     lostTasteSeverity: state.surveyReducer.survey.physical.lostTasteSeverity,
     lostSmellSeverity: state.surveyReducer.survey.physical.lostSmellSeverity,
     surveyPage: state.surveyReducer.surveyPage,
-    selectedTempUnit: state.onboardingReducer.tempUnit,
     observations: state.observationsReducer.observations,
     currentTempUnit: state.onboardingReducer.tempUnit,
   };
@@ -800,4 +803,7 @@ const mapDispatchToProps = dispatch => {
   };
 };
 
-export default connect(mapStateToProps, mapDispatchToProps)(SurveyPage2);
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(SurveyPage2);

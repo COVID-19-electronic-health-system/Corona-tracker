@@ -326,7 +326,4 @@ const mapDispatchToProps = dispatch => {
   };
 };
 
-export default connect(
-  mapStateToProps,
-  mapDispatchToProps
-)(SurveyPage4);
+export default connect(mapStateToProps, mapDispatchToProps)(SurveyPage4);
