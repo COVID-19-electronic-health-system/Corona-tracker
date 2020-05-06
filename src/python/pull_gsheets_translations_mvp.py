@@ -20,7 +20,6 @@ from google.oauth2.service_account import Credentials
 from pandas import Series, DataFrame
 from os import path, mkdir
 from string import punctuation
-
 from nltk import pos_tag, download
 from nltk.tokenize import word_tokenize
 download('punkt')
@@ -239,9 +238,8 @@ def filter_old_translation_sheets(spreadsheet_names,current_translation_regex,ol
 # follow https://medium.com/@CROSP/manage-google-spreadsheets-with-python-and-gspread-6530cc9f15d1
 # Create credentials and dump into referenced file
 # Google sheets authorization
-
-gc = connect_to_gsheets_API(CREDENTIALS_PATH,scope)
-
+credentials = Credentials.from_service_account_file(CREDENTIALS_PATH, scopes=scope)
+gc = authorize(credentials)
 # Get names of spreadsheets 
 spreadsheet_names = list_all_spreadsheets_name(gc)
 
@@ -255,18 +253,6 @@ for name in selected_translation_sheet_names:
 
 languages = [x for x in translation_sheets.keys()]
 languages.sort()
-
-
-"""
-json structure
-{
-	"parentKey":{
-		"childKey":{
-			'fieldKey':{'value':'translatedValue','array':['translatedValue']},
-		}
-	},
-}
-"""
 
 
 for language in languages:
