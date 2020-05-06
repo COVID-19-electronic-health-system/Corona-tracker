@@ -803,7 +803,4 @@ const mapDispatchToProps = dispatch => {
   };
 };
 
-export default connect(
-  mapStateToProps,
-  mapDispatchToProps
-)(SurveyPage2);
+export default connect(mapStateToProps, mapDispatchToProps)(SurveyPage2);

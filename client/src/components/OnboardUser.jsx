@@ -22,6 +22,9 @@ import { states } from '../utils/constants';
 import { initialState as onboardingInitialState } from '../redux/reducers/onboarding';
 
 const useStyles = makeStyles(() => ({
+  root: {
+    paddingBottom: '15em',
+  },
   buttonRight: {
     ...buttonsCss.buttons,
     background: 'rgba(255,255,255,0.5)',
@@ -87,7 +90,7 @@ const OnboardUser = props => {
   };
 
   return (
-    <Container maxWidth="xs">
+    <Container maxWidth="xs" className={classes.root}>
       <Grid container spacing={1} alignItems="center">
         <Grid item xs={12}>
           <Typography variant="h5">
@@ -321,4 +324,7 @@ const mapDispatchToProps = dispatch => {
   };
 };
 
-export default connect(mapStateToProps, mapDispatchToProps)(OnboardUser);
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(OnboardUser);
