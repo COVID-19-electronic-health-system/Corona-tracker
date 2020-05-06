@@ -9,7 +9,7 @@ cache:
 
 before_install:
   - sudo apt-get update
-  - sudo apt-get -y install build-essential cmake libcairo2-dev libpango1.0-dev libssl-dev
+  - sudo apt-get -y install build-essential cmake libcairo2-dev libpango1.0-dev libssl-dev libjpeg-dev libgif-dev librsvg2-dev
   - npm -g install yarn
   - npm install -g jest-dom
   - npm install -g react-scripts
