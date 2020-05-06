@@ -50,7 +50,7 @@ const useStyles = makeStyles(() => ({
     height: '3.5em',
     margin: '2em 8px 2px 8px',
     textTransform: 'uppercase',
-    width: '300px',
+    width: '275px',
   },
   fullWidth: {
     width: '100%',
@@ -160,7 +160,7 @@ const OnboardUser = props => {
             </Select>
           </FormControl>
         </Grid>
-        <Grid item sm={4} xs={6}>
+        <Grid item sm={5} xs={6}>
           <TextField
             type="text"
             name="zip"
@@ -171,8 +171,8 @@ const OnboardUser = props => {
             onChange={handleInputChange}
           />
         </Grid>
-        <Grid item xs={6}>
-          <Typography variant="subtitle2" color="textSecondary">
+        <Grid item xs={5}>
+          <Typography variant="body1" color="textSecondary">
             <b>Do you smoke?</b>
           </Typography>
         </Grid>
@@ -198,8 +198,8 @@ const OnboardUser = props => {
             </button>
           </ButtonGroup>
         </Grid>
-        <Grid item xs={6}>
-          <Typography variant="subtitle2" color="textSecondary">
+        <Grid item xs={5}>
+          <Typography variant="body1" color="textSecondary">
             <b>Are you Obese (BMI)?</b>
           </Typography>
         </Grid>
@@ -225,8 +225,8 @@ const OnboardUser = props => {
             </button>
           </ButtonGroup>
         </Grid>
-        <Grid item xs={6}>
-          <Typography variant="subtitle2" color="textSecondary">
+        <Grid item xs={5}>
+          <Typography variant="body1" color="textSecondary">
             <b>Do you have asthma?</b>
           </Typography>
         </Grid>

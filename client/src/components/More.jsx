@@ -103,7 +103,16 @@ Alert.defaultProps = {
   children: '',
 };
 
-const More = ({ setSubscribedNumber, unsubscribeNumber, subscribedNumber, clearResponse, error, success }) => {
+const More = props => {
+  const {
+    setReminderStatus,
+    setSubscribedNumber,
+    unsubscribeNumber,
+    subscribedNumber,
+    clearResponse,
+    error,
+    success,
+  } = props;
   const [open, setOpen] = useState(false);
   const [openSnackbar, setOpenSnackbar] = useState(false);
   const [snackbar, setSnackbar] = useState({});
@@ -274,6 +283,7 @@ const More = ({ setSubscribedNumber, unsubscribeNumber, subscribedNumber, clearR
               className={classes.buttons}
               onClick={() => {
                 handleClose();
+                setReminderStatus(true);
                 signOut();
               }}
             >
@@ -307,6 +317,7 @@ More.propTypes = {
   success: PropTypes.string.isRequired,
   clearResponse: PropTypes.func.isRequired,
   subscribedNumber: PropTypes.string,
+  setReminderStatus: PropTypes.func.isRequired,
 };
 
 More.defaultProps = {
@@ -326,6 +337,7 @@ const mapDispatch = dispatch => {
     setSubscribedNumber: (userSession, number) => dispatch(actions.setSubscribedNumber(userSession, number)),
     unsubscribeNumber: (userSession, number) => dispatch(actions.unsubscribeNumber(userSession, number)),
     clearResponse: () => dispatch(actions.clearResponse()),
+    setReminderStatus: status => dispatch(actions.setReminderStatus(status)),
   };
 };
 

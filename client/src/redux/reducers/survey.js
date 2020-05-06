@@ -6,6 +6,7 @@ import {
   SET_SURVEY_PAGE_4,
   SET_COMPLETED,
   CLEAR_SURVEY,
+  SET_REMINDER_STATUS,
 } from '../actions/survey';
 
 const initialState = {
@@ -16,6 +17,7 @@ const initialState = {
   },
   completedSteps: {},
   surveyPage: 1,
+  reminderStatus: false,
 };
 
 const surveyReducer = (oldState = initialState, action) => {
@@ -93,8 +95,13 @@ const surveyReducer = (oldState = initialState, action) => {
           physical: {},
           nonPhysical: {},
         },
-        surveyPage: 0,
-        completed: {},
+        surveyPage: 1,
+        completedSteps: {},
+      };
+    case SET_REMINDER_STATUS:
+      return {
+        ...oldState,
+        reminderStatus: action.status,
       };
     default:
       return oldState;
