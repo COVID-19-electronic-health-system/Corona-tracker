@@ -22,8 +22,6 @@ export default function TranslationsMenu() {
     i18n.changeLanguage(event.target.value);
   };
 
-  console.log(window.navigator)
-
   useEffect(() => {
     i18n.changeLanguage(window.navigator.language.slice(0, 2));
   }, [i18n]);
