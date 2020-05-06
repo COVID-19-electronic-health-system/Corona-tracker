@@ -1,23 +1,21 @@
 language: node_js
 
 node_js:
-  "stable"
-  
+  - "stable"
+
 cache:
   directories:
-   node_modules
+    - node_modules
 
 before_install:
-  npm -g install yarn
-  npm install -g jest-dom
+  npm -g install yarn &&
+  npm install -g jest-dom &&
   npm install -g react-scripts
-  cd client
-  yarn
-  
+
 before_script:
-  cd client
+  cd client &&
   yarn
 
 script:
-  yarn test
+  yarn test &&
   yarn run build
