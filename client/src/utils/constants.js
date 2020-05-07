@@ -252,7 +252,7 @@ export const dataSet = [
       'Fatigue Severity',
       'Sore Throat Severity',
       'Bluishness Severity',
-      'GI Issues Severity',
+      'Gastrointestinnal Issues Severity',
       'Headache Severity',
       'Loss of Smell Severity',
       'Loss of Taste Severity',
