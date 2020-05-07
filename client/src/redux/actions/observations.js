@@ -79,7 +79,7 @@ export const deleteObservations = userSession => async dispatch => {
 
 export const fetchObservations = userSession => async dispatch => {
   return userSession.getFile('tempUnit').then(async tempUnit => {
-    dispatch({ type: FETCH_TEMP_UNIT, tempUnit });
+    if (tempUnit) dispatch({ type: FETCH_TEMP_UNIT, tempUnit });
     const observations = await getObservations(userSession);
     const JSONobservations = JSON.parse(observations).map(obs => {
       if (tempUnit === 'celsius') {
