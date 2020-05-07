@@ -1,23 +1,24 @@
 language: node_js
 
 node_js:
-  "stable"
-  
+  - "stable"
+
 cache:
   directories:
-   node_modules
+    - node_modules
 
 before_install:
-  npm -g install yarn
-  npm install -g jest-dom
-  npm install -g react-scripts
-  cd client
-  yarn
-  
+  - sudo apt-get update
+  - sudo apt-get -y install build-essential cmake libcairo2-dev libpango1.0-dev libssl-dev libjpeg-dev libgif-dev librsvg2-dev
+  - npm -g install yarn
+  - npm install -g jest-dom
+  - npm install -g react-scripts
+  - npm install -g canvas
+
 before_script:
-  cd client
-  yarn
+  - cd client
+  - yarn
 
 script:
-  yarn test
-  yarn run build
+  - yarn test
+  - yarn run build
