@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useCallback } from 'react';
+import React, { useState, useEffect } from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import {
   Typography,
@@ -41,17 +41,14 @@ const useStyles = makeStyles(theme => ({
   tempButton: {
     ...buttonsCss.buttons,
     minWidth: '15vw',
+    maxWidth: '300px',
     height: '5vh',
     margin: '1.2em',
   },
   continueButton: {
     ...buttonsCss.buttons,
-
     margin: '20px 8px 10px 8px',
     width: '160px',
-  },
-  temperatureField: {
-    // marginBottom: '1em',
   },
   grid: {
     marginTop: '2em',
@@ -158,18 +155,21 @@ const SurveyPage2 = props => {
   const [open, setOpen] = useState(false);
   const [survey2, setSurvey2] = useState(surveyPage2);
   const [tempUnitSelection, setTempUnitSelection] = useState(currentTempUnit);
+  const [tempInputValue, setTempInputValue] = useState(currentTempUnit === 'celsius' ? 37.0 : 98.6);
   const { userSession } = useBlockstack();
 
   useEffect(() => {
     setSurveyPage2(survey2);
   }, [survey2, setSurveyPage2]);
 
-  const handleFever = useCallback(
-    value => {
-      setSurveyPage2({ ...surveyPage2, feverSeverity: value });
-    },
-    [setSurveyPage2, surveyPage2]
-  );
+  useEffect(() => {
+    setSurvey2(s => ({ ...s, feverSeverity: tempInputValue }));
+  }, [tempInputValue]);
+
+  const handleFever = value => {
+    setTempInputValue(value);
+    setSurvey2({ ...surveyPage2, feverSeverity: value });
+  };
 
   const handleAnswer = (value, name) => {
     setSurvey2({ ...survey2, [name]: value.toLowerCase() });
@@ -182,14 +182,6 @@ const SurveyPage2 = props => {
   const goBack = () => {
     setSurveyPage(surveyPage - 1);
   };
-
-  useEffect(() => {
-    if (currentTempUnit === 'celsius') {
-      handleFever(37.0);
-    } else {
-      handleFever(98.6);
-    }
-  }, [currentTempUnit]);
 
   const submitSurveyPage2 = async () => {
     if (
@@ -215,8 +207,9 @@ const SurveyPage2 = props => {
   const changeTempUnit = () => {
     const nextTempUnit = tempUnitSelection === 'celsius' ? 'fahrenheit' : 'celsius';
     setTempUnitSelection(nextTempUnit);
-    handleFever(nextTempUnit === 'fahrenheit' ? 98.6 : 37.0);
+    setTempInputValue(nextTempUnit === 'fahrenheit' ? 98.6 : 37.0);
   };
+
   return (
     <div className={classes.root}>
       <Typography variant="subtitle1">
@@ -228,8 +221,7 @@ const SurveyPage2 = props => {
             type="number"
             step={0.1}
             onChange={e => handleFever(e.target.valueAsNumber)}
-            className={classes.temperatureField}
-            value={feverSeverity}
+            value={tempInputValue}
           />
         </Grid>
         <Grid item>

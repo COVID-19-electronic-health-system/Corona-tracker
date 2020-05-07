@@ -178,7 +178,7 @@ const OnboardUser = props => {
         </Grid>
         <Grid item xs={6}>
           <ButtonGroup>
-            <button
+            <Button
               type="button"
               name="isSmoker"
               value="yes"
@@ -186,8 +186,8 @@ const OnboardUser = props => {
               className={`${classes.buttonLeft} ${formState.isSmoker === 'yes' && classes.selectedButton}`}
             >
               Yes
-            </button>
-            <button
+            </Button>
+            <Button
               type="button"
               name="isSmoker"
               value="no"
@@ -195,7 +195,7 @@ const OnboardUser = props => {
               className={`${classes.buttonRight} ${formState.isSmoker === 'no' && classes.selectedButton}`}
             >
               No
-            </button>
+            </Button>
           </ButtonGroup>
         </Grid>
         <Grid item xs={5}>
@@ -205,7 +205,7 @@ const OnboardUser = props => {
         </Grid>
         <Grid item xs={6}>
           <ButtonGroup>
-            <button
+            <Button
               type="button"
               name="isObese"
               value="yes"
@@ -213,8 +213,8 @@ const OnboardUser = props => {
               className={`${classes.buttonLeft} ${formState.isObese === 'yes' && classes.selectedButton}`}
             >
               Yes
-            </button>
-            <button
+            </Button>
+            <Button
               type="button"
               name="isObese"
               value="no"
@@ -222,7 +222,7 @@ const OnboardUser = props => {
               className={`${classes.buttonRight} ${formState.isObese === 'no' && classes.selectedButton}`}
             >
               No
-            </button>
+            </Button>
           </ButtonGroup>
         </Grid>
         <Grid item xs={5}>
@@ -232,7 +232,7 @@ const OnboardUser = props => {
         </Grid>
         <Grid item xs={6}>
           <ButtonGroup>
-            <button
+            <Button
               type="button"
               name="isAsthmatic"
               value="yes"
@@ -240,8 +240,8 @@ const OnboardUser = props => {
               className={`${classes.buttonLeft} ${formState.isAsthmatic === 'yes' && classes.selectedButton}`}
             >
               Yes
-            </button>
-            <button
+            </Button>
+            <Button
               type="button"
               name="isAsthmatic"
               value="no"
@@ -249,32 +249,32 @@ const OnboardUser = props => {
               className={`${classes.buttonRight} ${formState.isAsthmatic === 'no' && classes.selectedButton}`}
             >
               No
-            </button>
+            </Button>
           </ButtonGroup>
         </Grid>
-        <Grid item xs={6}>
-          <Typography variant="subtitle2" color="textSecondary">
-            <b>What is your preferred unit of measure?</b>
+        <Grid item xs={5}>
+          <Typography variant="body1" color="textSecondary">
+            <b>Preferred unit of measure?</b>
           </Typography>
         </Grid>
         <Grid item xs={6}>
           <ButtonGroup>
-            <button
+            <Button
               type="button"
               value="celsius"
               onClick={() => setTempUnitChoice('celsius')}
               className={`${classes.buttonLeft} ${tempUnitChoice === 'celsius' && classes.selectedButton}`}
             >
-              Celsius
-            </button>
-            <button
+              &#8451;
+            </Button>
+            <Button
               type="button"
               value="fahrenheit"
               onClick={() => setTempUnitChoice('fahrenheit')}
               className={`${classes.buttonRight} ${tempUnitChoice === 'fahrenheit' && classes.selectedButton}`}
             >
-              Fahrenheit
-            </button>
+              &#8457;
+            </Button>
           </ButtonGroup>
         </Grid>
         <Grid item xs={12}>
@@ -324,7 +324,4 @@ const mapDispatchToProps = dispatch => {
   };
 };
 
-export default connect(
-  mapStateToProps,
-  mapDispatchToProps
-)(OnboardUser);
+export default connect(mapStateToProps, mapDispatchToProps)(OnboardUser);

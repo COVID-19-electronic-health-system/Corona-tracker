@@ -5,7 +5,7 @@ import axios from 'axios';
 
 import { changedObservations } from './observations';
 
-const convertUnits = require('../../utils/convertTempUnit');
+import convertUnits from '../../utils/convertTempUnit';
 
 export const FETCH_DEMOGRAPHICS_COMORBIDITIES = 'FETCH_DEMOGRAPHICS_COMORBIDITIES';
 

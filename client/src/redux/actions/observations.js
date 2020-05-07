@@ -80,24 +80,25 @@ export const deleteObservations = userSession => async dispatch => {
 export const fetchObservations = userSession => async dispatch => {
   return userSession.getFile('tempUnit').then(async tempUnit => {
     dispatch({ type: FETCH_TEMP_UNIT, tempUnit });
-    const observations = await getObservations(userSession);
-    const JSONobservations = JSON.parse(observations).map(obs => {
-      if (tempUnit === 'celsius') {
-        return {
-          ...obs,
-          physical: {
-            ...obs.physical,
-            feverSeverity: convertTempUnit(tempUnit, obs.physical.feverSeverity),
-          },
-        };
+    getObservations(userSession).then(observations => {
+      if (observations) {
+        const JSONobservations = JSON.parse(observations).map(obs => {
+          if (tempUnit === 'celsius') {
+            return {
+              ...obs,
+              physical: {
+                ...obs.physical,
+                feverSeverity: convertTempUnit(tempUnit, obs.physical.feverSeverity),
+              },
+            };
+          }
+          return obs;
+        });
+        dispatch({
+          type: FETCH_OBSERVATIONS,
+          observations: JSONobservations,
+        });
       }
-      return obs;
     });
-    if (JSONobservations) {
-      dispatch({
-        type: FETCH_OBSERVATIONS,
-        observations: JSONobservations,
-      });
-    }
   });
 };
