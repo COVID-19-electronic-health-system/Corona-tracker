@@ -45,7 +45,6 @@ const Download = props => {
         observation.nonPhysical.openComment,
       ];
       dataSet[0].data.push(temp);
-      return temp;
     });
   }, [observations]);
 
