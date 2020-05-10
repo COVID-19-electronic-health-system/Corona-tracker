@@ -238,8 +238,8 @@ def filter_old_translation_sheets(spreadsheet_names,current_translation_regex,ol
 # follow https://medium.com/@CROSP/manage-google-spreadsheets-with-python-and-gspread-6530cc9f15d1
 # Create credentials and dump into referenced file
 # Google sheets authorization
-credentials = Credentials.from_service_account_file(CREDENTIALS_PATH, scopes=scope)
-gc = authorize(credentials)
+gc = connect_to_gsheets_API(CREDENTIALS_PATH,scope)
+
 # Get names of spreadsheets 
 spreadsheet_names = list_all_spreadsheets_name(gc)
 
@@ -253,7 +253,6 @@ for name in selected_translation_sheet_names:
 
 languages = [x for x in translation_sheets.keys()]
 languages.sort()
-
 
 for language in languages:
 	locale_key = [x for x in LANGUAGE_LETTERS_DICT.keys() if x in language][0]
@@ -293,5 +292,4 @@ for language in languages:
 					childKeyDict[childKey] = fieldKeyDict
 				parentKeyDict[parentKey] =  childKeyDict
 			wkDict.update(parentKeyDict)
-
 		save_to_JSON(OUT_DIR,locale,wkDict)
