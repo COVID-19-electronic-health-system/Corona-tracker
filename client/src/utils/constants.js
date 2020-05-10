@@ -238,4 +238,33 @@ export const states = [
   },
 ];
 
+export const dataSet = [
+  {
+    columns: [
+      'Date',
+      'Daily Feeling',
+      'Daily Symptoms Feeling',
+      'Daily Compared to Yesterday',
+      'Fever Severity',
+      'Shortness of Breath Severity',
+      'Chills Severity',
+      'Cough Severity',
+      'Fatigue Severity',
+      'Sore Throat Severity',
+      'Bluishness Severity',
+      'Gastrointestinnal Issues Severity',
+      'Headache Severity',
+      'Loss of Smell Severity',
+      'Loss of Taste Severity',
+      'Appetite Level',
+      'Energy Level',
+      'Level of Interest',
+      'Depression Level',
+      'Trouble Sleeping',
+      'Open Comment',
+    ],
+    data: [],
+  },
+];
+
 export default appConfig;
