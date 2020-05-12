@@ -23,10 +23,11 @@ const useStyles = makeStyles(theme => ({
     width: '310px',
     height: '350px',
     // eslint-disable-next-line
-    ['@media (max-width:320px)']: {
-      width: '280',
-      height: '300px',
+    [theme.breakpoints.down(400)]: {
+      width: '300px',
+      height: '270px',
     },
+    // eslint-disable-next-line
     [theme.breakpoints.up('md')]: {
       width: '350px',
       height: '380px',
@@ -39,9 +40,10 @@ const useStyles = makeStyles(theme => ({
   },
   fontChange: {
     // eslint-disable-next-line
-    ['@media (max-width:320px)']: {
+    [theme.breakpoints.down(400)]: {
       fontSize: '1em',
     },
+    // eslint-disable-next-line
     [theme.breakpoints.up('md')]: {
       fontSize: '1.2rem',
     },
@@ -53,7 +55,7 @@ const Facts = ({ data }) => {
   const classes = useStyles();
   return (
     <Grid>
-      <Typography variant="h4" color="secondary">
+      <Typography variant="subtitle1" color="secondary">
         {title}
       </Typography>
       <Typography paragraph variant="body1" className={classes.fontChange} color="textSecondary">

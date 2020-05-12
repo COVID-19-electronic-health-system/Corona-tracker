@@ -2,16 +2,19 @@ import React from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import { makeStyles } from '@material-ui/core/styles';
-import { Grid, Typography } from '@material-ui/core';
+import { Paper, Typography } from '@material-ui/core';
 
-const useStyles = makeStyles({
+const useStyles = makeStyles(theme => ({
   root: {
     display: 'flex',
     flexDirection: 'column',
     alignItems: 'center',
     justifyContent: 'flex-start',
+    maxWidth: '200px',
+    backgroundColor: '#bbcef9',
+    padding: theme.spacing(1),
   },
-});
+}));
 
 const AvgTemperature = props => {
   const { observations } = props;
@@ -27,10 +30,10 @@ const AvgTemperature = props => {
     : '--';
 
   return (
-    <Grid className={classes.root}>
-      <Typography>Average Temperature:</Typography>
-      <Typography>{averageTemperature}&#8457;</Typography>
-    </Grid>
+    <Paper className={classes.root}>
+      <Typography variant="overline">Average Temperature:</Typography>
+      <Typography variant="body2">{averageTemperature}&#8457;</Typography>
+    </Paper>
   );
 };
 

@@ -1,21 +1,23 @@
 /* eslint-disable no-console */
 /* eslint-disable no-alert */
+/* eslint-disable no-useless-escape */
 
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import Button from '@material-ui/core/Button';
 import Dialog from '@material-ui/core/Dialog';
 import DialogActions from '@material-ui/core/DialogActions';
 import DialogTitle from '@material-ui/core/DialogTitle';
 import { useHistory } from 'react-router-dom';
-import axios from 'axios';
 import { makeStyles } from '@material-ui/core/styles';
 import MoreHorizIcon from '@material-ui/icons/MoreHoriz';
 import { useBlockstack } from 'react-blockstack';
 import { useTranslation } from 'react-i18next';
-import { DialogContent, DialogContentText, TextField, Grid, Typography, Snackbar } from '@material-ui/core';
+import { DialogContent, DialogContentText, TextField, Grid, Typography, Snackbar, Link } from '@material-ui/core';
 import MuiAlert from '@material-ui/lab/Alert';
 import PropTypes from 'prop-types';
+import { connect } from 'react-redux';
 import buttonsCss from '../css/buttons';
+import actions from '../redux/actions/actions';
 
 const useStyle = makeStyles(theme => ({
   root: {
@@ -45,13 +47,16 @@ const useStyle = makeStyles(theme => ({
     backgroundImage: 'linear-gradient(40deg, #7a9cf9 0%, #97b9f7 100%)',
   },
   descriptionText: {
+    textDecoration: 'none',
     color: 'white',
-    textAlign: 'left',
+    textAlign: 'center',
+    marginTop: '10px',
   },
   subscribeContainer: {
     align: 'center',
   },
   subtitleText: {
+    marginTop: '1em',
     color: 'white',
     margin: '0 auto',
   },
@@ -88,18 +93,32 @@ function Alert(props) {
 }
 
 Alert.propTypes = {
-  severity: PropTypes.string.isRequired,
-  children: PropTypes.node.isRequired,
+  severity: PropTypes.string,
+  children: PropTypes.node,
   onClose: PropTypes.func.isRequired,
 };
 
-const More = () => {
+Alert.defaultProps = {
+  severity: '',
+  children: '',
+};
+
+const More = props => {
+  const {
+    setReminderStatus,
+    setSubscribedNumber,
+    unsubscribeNumber,
+    subscribedNumber,
+    clearResponse,
+    error,
+    success,
+  } = props;
   const [open, setOpen] = useState(false);
   const [openSnackbar, setOpenSnackbar] = useState(false);
   const [snackbar, setSnackbar] = useState({});
   const [phoneNumber, setPhoneNumber] = useState('');
   const classes = useStyle();
-  const { signOut } = useBlockstack();
+  const { signOut, userSession } = useBlockstack();
   const { t } = useTranslation();
   const history = useHistory();
   const handleClickOpen = () => {
@@ -113,70 +132,52 @@ const More = () => {
     if (reason === 'clickaway') {
       return;
     }
+    if (success || error.response) {
+      clearResponse();
+    }
     setOpenSnackbar(false);
   };
 
-  let errorMessage = '';
-
-  const subscribe = () => {
-    axios
-      .post(
-        'https://kplh25sfce.execute-api.us-east-1.amazonaws.com/default/coronalert-subscribe',
-        {
-          phoneNumber,
-        },
-        {
-          headers: {
-            'Content-Type': 'application/json',
-          },
-        }
-      )
-      .then(res => {
-        console.log(res);
-        handleClose();
-        alert(
-          `Subscribed successfully! You will be automatically unsubscribed in one day, and will receive three texts in that timespan. If you enter again, you will receive double the notifications - so please do not! This is very early alpha :)`
-        );
-      })
-      .catch(err => {
-        if (err.response && err.response.status === 409) {
-          errorMessage = 'This phone number was already subscribed';
-        } else {
-          errorMessage = 'Something went wrong. Please try again';
-        }
-        setSnackbar({
-          severity: 'error',
-          message: errorMessage,
-        });
-        setOpenSnackbar(true);
-      });
-  };
-
-  const unsubscribe = async () => {
-    const url = 'https://kplh25sfce.execute-api.us-east-1.amazonaws.com/default/coronalert-unsubscribe';
-    const data = { phoneNumber };
-    try {
-      await axios.post(url, data);
-      alert('Unsubscribed successfully!');
-      handleClose();
-    } catch (err) {
-      if (err.response && err.response.status === 404) {
-        errorMessage = 'This phone number was not subscribed';
-      } else {
-        errorMessage = 'Something went wrong. Please try again';
-      }
+  const handleSubmitSubscribe = () => {
+    if (!/^\+[1-9]\d{1,14}$/.test(phoneNumber)) {
       setSnackbar({
         severity: 'error',
-        message: errorMessage,
+        message: 'Invalid phone number. Please try again',
       });
       setOpenSnackbar(true);
+    } else {
+      setSubscribedNumber(userSession, phoneNumber);
     }
+    setPhoneNumber('');
   };
+
+  useEffect(() => {
+    let message;
+    let severity;
+    if (error.response) {
+      severity = 'error';
+      if (error.response.status === 409) {
+        message = 'This phone number was already subscribed';
+      } else {
+        message = 'Something went wrong.  Please try again.';
+      }
+    }
+    if (success) {
+      severity = 'success';
+      message =
+        success === 'subscribed'
+          ? `Subscribed successfully! You will be automatically unsubscribed in one day, and will receive three texts in that timespan. If you enter again, you will receive double the notifications - so please do not! This is very early alpha :)`
+          : 'Unsubscribed successfully';
+    }
+    setSnackbar({
+      message,
+      severity,
+    });
+  }, [error, success]);
 
   const navigateTo = href => {
     history.push(href);
   };
-
   return (
     <div>
       <Grid container alignContent="center" className={classes.root} onClick={handleClickOpen}>
@@ -205,36 +206,52 @@ const More = () => {
             <DialogContentText className={classes.descriptionText}>
               Enter your phone number to subscribe/unsubscribe to the occasional question/survey to answer over text.
             </DialogContentText>
-            <TextField
-              className={classes.subtitleText}
-              onChange={e => setPhoneNumber(e.target.value)}
-              autoFocus
-              margin="dense"
-              id="filled-phone"
-              label={t('phoneNumber')}
-              type="email"
-              fullWidth
-            />
+            <Link
+              className={classes.descriptionText}
+              href="https://support.twilio.com/hc/en-us/articles/223183008-Formatting-International-Phone-Numbers"
+            >
+              Please add your +country code before entering
+            </Link>
+            {subscribedNumber ? (
+              <DialogContentText className={classes.descriptionText}>
+                {`You are subscribed to text alerts at phone number: ${subscribedNumber}`}
+              </DialogContentText>
+            ) : (
+              <TextField
+                className={classes.subtitleText}
+                onChange={e => setPhoneNumber(e.target.value)}
+                autoFocus
+                margin="dense"
+                id="filled-phone"
+                label={t('phoneNumber')}
+                type="email"
+                fullWidth
+              />
+            )}
           </DialogContent>
           <DialogActions className={classes.subscribeContainer}>
-            <Button
-              onClick={() => {
-                subscribe();
-              }}
-              color="primary"
-              className={classes.subtitleText}
-            >
-              Subscribe
-            </Button>
-            <Button
-              onClick={() => {
-                unsubscribe();
-              }}
-              color="secondary"
-              className={classes.subtitleText}
-            >
-              Unsubscribe
-            </Button>
+            {!subscribedNumber && (
+              <Button
+                onClick={() => {
+                  handleSubmitSubscribe();
+                }}
+                color="primary"
+                className={classes.subtitleText}
+              >
+                Subscribe
+              </Button>
+            )}
+            {subscribedNumber && (
+              <Button
+                onClick={() => {
+                  unsubscribeNumber(userSession, subscribedNumber);
+                }}
+                color="secondary"
+                className={classes.subtitleText}
+              >
+                Unsubscribe
+              </Button>
+            )}
           </DialogActions>
           <DialogActions>
             <Button
@@ -266,6 +283,7 @@ const More = () => {
               className={classes.buttons}
               onClick={() => {
                 handleClose();
+                setReminderStatus(true);
                 signOut();
               }}
             >
@@ -274,7 +292,7 @@ const More = () => {
           </DialogActions>
         </DialogContent>
         <Snackbar
-          open={openSnackbar}
+          open={openSnackbar || success || error.response}
           autoHideDuration={6000}
           anchorOrigin={{ vertical: 'top', horizontal: 'center' }}
           onClose={handleCloseSnackbar}
@@ -288,4 +306,39 @@ const More = () => {
   );
 };
 
-export default More;
+More.propTypes = {
+  setSubscribedNumber: PropTypes.func.isRequired,
+  unsubscribeNumber: PropTypes.func.isRequired,
+  error: PropTypes.shape({
+    response: PropTypes.shape({
+      status: PropTypes.number,
+    }),
+  }).isRequired,
+  success: PropTypes.string.isRequired,
+  clearResponse: PropTypes.func.isRequired,
+  subscribedNumber: PropTypes.string,
+  setReminderStatus: PropTypes.func.isRequired,
+};
+
+More.defaultProps = {
+  subscribedNumber: null,
+};
+
+const mapState = state => {
+  return {
+    subscribedNumber: state.onboardingReducer.phoneNumber.subscribedNumber,
+    error: state.onboardingReducer.phoneNumber.error,
+    success: state.onboardingReducer.phoneNumber.success,
+  };
+};
+
+const mapDispatch = dispatch => {
+  return {
+    setSubscribedNumber: (userSession, number) => dispatch(actions.setSubscribedNumber(userSession, number)),
+    unsubscribeNumber: (userSession, number) => dispatch(actions.unsubscribeNumber(userSession, number)),
+    clearResponse: () => dispatch(actions.clearResponse()),
+    setReminderStatus: status => dispatch(actions.setReminderStatus(status)),
+  };
+};
+
+export default connect(mapState, mapDispatch)(More);

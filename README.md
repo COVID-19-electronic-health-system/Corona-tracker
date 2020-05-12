@@ -1,6 +1,6 @@
 ![Corona Tracker Logo](https://dg1fd6ea8poyj.cloudfront.net/images/Logo_CORONATRACKER_Text_Logo.png)
 
-[![Build Status](http://img.shields.io/travis/COVID-19-electronic-health-system/Corona-tracker/master.svg?style=for-the-badge)](https://travis-ci.org/COVID-19-electronic-health-system/Corona-tracker)
+[![TravisCI Build Status](http://img.shields.io/travis/COVID-19-electronic-health-system/Corona-tracker/master.svg?color=4760ff&style=for-the-badge)](https://travis-ci.org/COVID-19-electronic-health-system/Corona-tracker) [![Open Collective backers and sponsors](https://img.shields.io/opencollective/all/coronatracker?color=4760ff&style=for-the-badge)](https://opencollective.com/coronatracker) [![Discord](https://img.shields.io/discord/687791378075484161?color=4760ff&label=Discord&style=for-the-badge)](https://discord.gg/pPERUuv) [![Twitter Follow](https://img.shields.io/twitter/follow/CoronaTrackApp?color=4760ff&label=Follow%20%40CoronaTrackApp&style=for-the-badge)](https://twitter.com/intent/follow?screen_name=CoronaTrackApp)
 
 A tool to help reduce the number of unnecessary hospital visits, educate the public on facts vs myths, and provide a health and wellbeing chart for logging their journey during these uncertain and tumultuous times.
 
@@ -8,26 +8,36 @@ A tool to help reduce the number of unnecessary hospital visits, educate the pub
 
 - [Join our Discord Server](https://discord.gg/pPERUuv)
 - [Visit our Website CoronaTracker.me](https://coronatracker.me)
-- [View the Beta Version of the App](https://coronatrackerbeta.com)
-- View our community health files:
-    - [Contributing Guidelines:](https://github.com/COVID-19-electronic-health-system/.github/blob/master/CONTRIBUTING.md) including more about the project and how to get involved
-    - [Support Documentation:](https://github.com/COVID-19-electronic-health-system/.github/blob/master/SUPPORT.md) including team members, resources, and references
-    - [Code of Conduct:](https://github.com/COVID-19-electronic-health-system/.github/blob/master/CODE_OF_CONDUCT.md) including examples of behavior that contributes to creating a positive environment
+- [View the Beta Version of CoronaTracker](https://coronatrackerbeta.com)
+- [Help us translate CoronaTracker!](./Translations)
+
+__View our community health files:__
+
+- [Contributing Guidelines:](https://github.com/COVID-19-electronic-health-system/.github/blob/master/CONTRIBUTING.md) including more about the project and how to get involved
+- [Support Documentation:](https://github.com/COVID-19-electronic-health-system/.github/blob/master/SUPPORT.md) including team members, resources, and references
+- [Code of Conduct:](https://github.com/COVID-19-electronic-health-system/.github/blob/master/CODE_OF_CONDUCT.md) including examples of behavior that contributes to creating a positive environment
+
+### Roadmap to MVP
+
+⚠️ We are currently working to implement a MVP for one of our advisors by **May 11, 2020**.
+
+The [open issues related to this release](https://github.com/COVID-19-electronic-health-system/Corona-tracker/issues?q=is%3Aissue+is%3Aopen+label%3AMVP) can be found under the tag `MVP`, and more detail can be found [in the ROADMAP-TO-MVP document](https://github.com/COVID-19-electronic-health-system/Corona-tracker/blob/master/ROADMAP-TO-MVP.md).
+
+This is a perfect time to jump in, learn together, and help out! ❤️
 
 ## Table of Contents
 
 <!-- TOC -->
 
 - [We are in crisis and we need to act](#we-are-in-crisis-and-we-need-to-act)
+- [Application Overview](#application-overview)
+  - [Useful Github Repo Links](#useful-github-repo-links)
 - [Frequently Asked Questions](#frequently-asked-questions)
   - [Who is this app for?](#who-is-this-app-for)
   - [What is the benefit this app is providing?](#what-is-the-benefit-this-app-is-providing)
   - [How is this app different from the others?](#how-is-this-app-different-from-the-others)
   - [What insights have been considered?](#what-insights-have-been-considered)
   - [Who are the stakeholders?](#who-are-the-stakeholders)
-- [Application Overview](#application-overview)
-  - [Useful Github Repo Links](#useful-github-repo-links)
-  - [Wireframe Overview](#wireframe-overview)
 - [Questions?](#questions)
 - [Appendix](#appendix)
   - [Design considerations](#design-considerations)
@@ -42,6 +52,20 @@ The COVID-19 outbreak is a threat to the global population with formidable chall
 After discussions with doctors, start ups, technologists, and academic researchers, we narrowed down some issues of critical importance that the application will address. Specifically, we list major concerns from a call with Ameer (Systems Architect) and Dr. Kristen Kent. There are several key facets of concern, namely __medical considerations__ (i.e. people aren't realizing the severity of this; it's getting real very fast; and doctors/medical professionals are ill-equipped to test for this), as well as __global concerns__ (i.e. the economy is sinking; resources are directly needed for equipment like isolation rooms and protective gear; there is a need for more ventilators and space; schools are closing; etc.).
 
 Furthermore, the effects of social distancing and isolation and the impact of lost jobs and finances is already having a negative impact on the physical, mental, emotional, and spiritual well-being of our society. After learning all of this, we realized that there's a limited amount of time to act, and decisive action must be taken in order to do our part and help our neighbors and healthcare professionals on the ground working towards a solution, keeping people as healthy as possible, and strengthening the well being of our society.
+
+## Application Overview
+
+[View our contributing guidelines](https://github.com/COVID-19-electronic-health-system/.github/blob/master/CONTRIBUTING.md) to learn more about the project, our values, and regular town hall meetings for the group.
+
+[View our support document](https://github.com/COVID-19-electronic-health-system/.github/blob/master/SUPPORT.md) to learn more about the project leads, resources, and technology.
+
+### Useful Github Repo Links
+
+- [Contributing Guidelines - get involved!](https://github.com/COVID-19-electronic-health-system/.github/blob/master/CONTRIBUTING.md)
+- [Design, Wireframes, and Brand Guide](./design)
+- [Client, based on Create React App](./client)
+- [Translations, workflows, and resources](./Translations)
+- [PanFLUte: Open Source Spirometer](https://github.com/COVID-19-electronic-health-system/PanFLUte)
 
 ## Frequently Asked Questions
 
@@ -79,23 +103,6 @@ The team has been in consultation with individuals and stakeholders in the acade
 - All individuals. This affects all society.
 - Public health authorities. They need to inform, educate, and support citizens.
 - Researchers. There is enormous implications for individual's wellbeing and health and so we must try to understand both how individuals are traversing their journey, and if education is significantly improving characteristics in a user's health/wellbeing chart.
-
-## Application Overview
-
-[View our contributing guidelines](https://github.com/COVID-19-electronic-health-system/.github/blob/master/CONTRIBUTING.md) to learn more about the project, our values, and regular town hall meetings for the group.
-
-[View our support document](https://github.com/COVID-19-electronic-health-system/.github/blob/master/SUPPORT.md) to learn more about the project leads, resources, and technology.
-
-### Useful Github Repo Links
-
-- [Contributing Guidelines - get involved!](https://github.com/COVID-19-electronic-health-system/.github/blob/master/CONTRIBUTING.md)
-- [Design, Wireframes, and Brand Guide](./design)
-- [Client, based on Create React App](./client)
-- [Translations](./Translations/README.md)
-
-### Wireframe Overview
-
-![app overview](/design/wireframes/FINAL-V1-03.20/MASTER_WIREFRAME.png)
 
 ## Questions?
 

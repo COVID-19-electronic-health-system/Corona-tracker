@@ -1,12 +1,12 @@
 import {
+  SET_SURVEY_PAGE,
   SET_SURVEY_PAGE_1,
   SET_SURVEY_PAGE_2,
   SET_SURVEY_PAGE_3,
   SET_SURVEY_PAGE_4,
-  TO_SURVEY_PAGE_1,
-  TO_SURVEY_PAGE_2,
-  TO_SURVEY_PAGE_3,
+  SET_COMPLETED,
   CLEAR_SURVEY,
+  SET_REMINDER_STATUS,
 } from '../actions/survey';
 
 const initialState = {
@@ -15,23 +15,26 @@ const initialState = {
     physical: {},
     nonPhysical: {},
   },
+  completedSteps: {},
   surveyPage: 1,
+  reminderStatus: false,
 };
 
 const surveyReducer = (oldState = initialState, action) => {
   switch (action.type) {
+    case SET_SURVEY_PAGE:
+      return { ...oldState, surveyPage: action.page };
+    case SET_COMPLETED:
+      return { ...oldState, completedSteps: { ...oldState.completedSteps, [action.page]: true } };
     case SET_SURVEY_PAGE_1:
       return {
         ...oldState,
-        surveyPage: 2,
         survey: {
           ...oldState.survey,
           date: Date.now(),
           physical: {
             ...oldState.survey.physical,
-            dailyfeeling: action.survey.todayFeeling,
-            dailySymptomsFeeling: action.survey.todaySymptoms,
-            dailyComparedToYesterday: action.survey.comparedFeeling,
+            ...action.survey,
           },
           nonPhysical: {
             ...oldState.survey.nonPhysical,
@@ -41,24 +44,12 @@ const surveyReducer = (oldState = initialState, action) => {
     case SET_SURVEY_PAGE_2:
       return {
         ...oldState,
-        surveyPage: 3,
         survey: {
           ...oldState.survey,
           date: Date.now(),
           physical: {
             ...oldState.survey.physical,
-            feverSeverity: action.survey.fever,
-            shortnessOfBreathSeverity: action.survey.shortnessOfBreath,
-            chillsSeverity: action.survey.chills,
-            coughSeverity: action.survey.dryCough,
-            chestPainSeverity: action.survey.chestPain,
-            fatigueSeverity: action.survey.fatigue,
-            soreThroatSeverity: action.survey.soreThroat,
-            bluishnessSeverity: action.survey.bluish,
-            giIssueSeverity: action.survey.giIssues,
-            headacheSeverity: action.survey.headache,
-            lostTasteSeverity: action.survey.lostTasteSeverity,
-            lostSmellSeverity: action.survey.lostSmellSeverity,
+            ...action.survey,
           },
           nonPhysical: {
             ...oldState.survey.nonPhysical,
@@ -68,7 +59,6 @@ const surveyReducer = (oldState = initialState, action) => {
     case SET_SURVEY_PAGE_3:
       return {
         ...oldState,
-        surveyPage: 4,
         survey: {
           ...oldState.survey,
           date: Date.now(),
@@ -84,7 +74,6 @@ const surveyReducer = (oldState = initialState, action) => {
     case SET_SURVEY_PAGE_4:
       return {
         ...oldState,
-        surveyPage: 1,
         survey: {
           ...oldState.survey,
           date: Date.now(),
@@ -93,77 +82,11 @@ const surveyReducer = (oldState = initialState, action) => {
           },
           nonPhysical: {
             ...oldState.survey.nonPhysical,
-            interest: action.survey.interestAnswer,
-            sadness: action.survey.sadAnswer,
-            sleep: action.survey.sleepAnswer,
-            energy: action.survey.energyAnswer,
-            appetite: action.survey.appetiteAnswer,
+            ...action.survey,
           },
         },
       };
-    case TO_SURVEY_PAGE_1:
-      return {
-        ...oldState,
-        surveyPage: 1,
-        survey: {
-          ...oldState.survey,
-          date: Date.now(),
-          physical: {
-            ...oldState.survey.physical,
-            feverSeverity: action.survey.fever,
-            shortnessOfBreathSeverity: action.survey.shortnessOfBreath,
-            chillsSeverity: action.survey.chills,
-            coughSeverity: action.survey.dryCough,
-            chestPainSeverity: action.survey.chestPain,
-            fatigueSeverity: action.survey.fatigue,
-            soreThroatSeverity: action.survey.soreThroat,
-            bluishnessSeverity: action.survey.bluish,
-            giIssueSeverity: action.survey.giIssues,
-            headacheSeverity: action.survey.headache,
-            lostTasteSeverity: action.survey.lostTasteSeverity,
-            lostSmellSeverity: action.survey.lostSmellSeverity,
-          },
-          nonPhysical: {
-            ...oldState.survey.nonPhysical,
-          },
-        },
-      };
-    case TO_SURVEY_PAGE_2:
-      return {
-        ...oldState,
-        surveyPage: 2,
-        survey: {
-          ...oldState.survey,
-          date: Date.now(),
-          physical: {
-            ...oldState.survey.physical,
-          },
-          nonPhysical: {
-            ...oldState.survey.nonPhysical,
-            openComment: action.survey.openComment,
-          },
-        },
-      };
-    case TO_SURVEY_PAGE_3:
-      return {
-        ...oldState,
-        surveyPage: 3,
-        survey: {
-          ...oldState.survey,
-          date: Date.now(),
-          physical: {
-            ...oldState.survey.physical,
-          },
-          nonPhysical: {
-            ...oldState.survey.nonPhysical,
-            interest: action.survey.interestAnswer,
-            sadness: action.survey.sadAnswer,
-            sleep: action.survey.sleepAnswer,
-            energy: action.survey.energyAnswer,
-            appetite: action.survey.appetiteAnswer,
-          },
-        },
-      };
+
     case CLEAR_SURVEY:
       return {
         ...oldState,
@@ -173,6 +96,12 @@ const surveyReducer = (oldState = initialState, action) => {
           nonPhysical: {},
         },
         surveyPage: 1,
+        completedSteps: {},
+      };
+    case SET_REMINDER_STATUS:
+      return {
+        ...oldState,
+        reminderStatus: action.status,
       };
     default:
       return oldState;

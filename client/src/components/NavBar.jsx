@@ -13,7 +13,7 @@ import More from './More';
 const styles = {
   root: {
     width: '100%',
-    backgroundColor: '#f64141',
+    background: `linear-gradient(0deg, #4760ff, #82a4f8)`,
     position: 'fixed',
     height: '75px',
     bottom: 0,

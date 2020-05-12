@@ -1,0 +1,6 @@
+numpy==1.16.2
+pandas==0.24.2
+nltk==3.4.5
+google-auth==1.4.2
+google-auth-oauthlib==0.4.1
+gspread==3.4.2

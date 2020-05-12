@@ -19,7 +19,7 @@ import pandas as pd
 scope = ['https://spreadsheets.google.com/feeds',
          'https://www.googleapis.com/auth/drive']
 
-credentials = Credentials.from_service_account_file('../../.my.goauth', scopes=scope)
+credentials = Credentials.from_service_account_file('credentials.json', scopes=scope)
 
 gc = gspread.authorize(credentials)
 
@@ -41,6 +41,7 @@ list_all_spreadsheets = gc.list_spreadsheet_files()
 list_all_spreadsheets_names = [x['name'] for x in list_all_spreadsheets]
 translation_sheet_names = [x for x in list_all_spreadsheets_names if translation_sheets_regex in x]
 translation_sheets = {}
+
 for name in translation_sheet_names:
     language = '_'.join(name.split(' ')).replace('/','_')
     translation_sheets[language] = gc.open(name).worksheets()
@@ -72,5 +73,3 @@ for language in languages:
         language_lists = wk.get_all_values()
         language_df = pd.DataFrame(language_lists[1:],columns=language_lists[0])
         language_df.to_json(out_dir+language+'_'+wk_name+'.json',orient='index')
-
-

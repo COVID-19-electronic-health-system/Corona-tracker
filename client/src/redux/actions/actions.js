@@ -10,15 +10,14 @@ import {
 import { selectDate } from './calendar';
 import { setToggleValue, setDetailData, deleteDetailData } from './healthToggle';
 import {
+  setCompleted,
+  setSurveyPage,
   setSurveyPage1,
   setSurveyPage2,
   setSurveyPage3,
   setSurveyPage4,
-  toSurveyPage1,
-  toSurveyPage2,
-  toSurveyPage3,
-  toSurveyPage4,
   clearSurvey,
+  setReminderStatus,
 } from './survey';
 import {
   setDemographicsComorbiditiesThunk,
@@ -26,6 +25,10 @@ import {
   fetchDemographicsComorbidities,
   setDisclaimerAnswerThunk,
   resetDisclaimerAnswer,
+  setSubscribedNumber,
+  fetchSubscribedNumber,
+  unsubscribeNumber,
+  clearResponse,
 } from './onboarding';
 import { deleteUserDataThunk } from './deleteUserData';
 
@@ -34,19 +37,22 @@ const actions = {
   addObservation,
   deleteObservations,
   setDisclaimerAnswerThunk,
+  setSubscribedNumber,
+  fetchSubscribedNumber,
+  unsubscribeNumber,
+  clearResponse,
   selectDate,
   setToggleValue,
   setDetailData,
   deleteDetailData,
+  setCompleted,
+  setSurveyPage,
   setSurveyPage1,
   setSurveyPage2,
   setSurveyPage3,
   setSurveyPage4,
-  toSurveyPage1,
-  toSurveyPage2,
-  toSurveyPage3,
-  toSurveyPage4,
   clearSurvey,
+  setReminderStatus,
   setDemographicsComorbiditiesThunk,
   fetchDemographicsComorbidities,
   resetDisclaimerAnswer,
