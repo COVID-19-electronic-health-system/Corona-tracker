@@ -13,7 +13,6 @@ before_install:
   - npm -g install yarn
   - npm install -g jest-dom
   - npm install -g react-scripts
-  - npm install -g canvas
 
 before_script:
   - cd client
