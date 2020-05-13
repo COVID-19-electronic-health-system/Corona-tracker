@@ -1,7 +1,7 @@
 import expect from 'expect';
-import reducer from '../../../redux/reducers/observations';
+import reducer from 'redux/reducers/observations';
 import { FETCH_OBSERVATIONS, ADD_OBSERVATION, DELETE_OBSERVATIONS } from '../../../redux/actions/observations';
-import Observation from '../../../models/observation';
+import Observation from 'models/observation';
 
 describe('obervations reducer', () => {
   it('should return the initial state', () => {

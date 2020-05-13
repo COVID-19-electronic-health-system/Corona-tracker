@@ -1,6 +1,6 @@
 import expect from 'expect';
-import reducer from '../../../redux/reducers/survey';
-import { setSurveyPage1, setSurveyPage2, setSurveyPage3 } from '../../../redux/actions/survey';
+import reducer from 'redux/reducers/survey';
+import { setSurveyPage1, setSurveyPage2, setSurveyPage3 } from 'redux/actions/survey';
 
 const date = Date.now();
 

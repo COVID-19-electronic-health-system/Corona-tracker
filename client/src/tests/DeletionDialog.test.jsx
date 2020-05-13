@@ -3,7 +3,7 @@ import { mount } from 'enzyme';
 import { Provider } from 'react-redux';
 import { BrowserRouter } from 'react-router-dom';
 import configureMockStore from 'redux-mock-store';
-import DeletionDialog from '../components/DeletionDialog';
+import DeletionDialog from 'components/more/DeletionDialog';
 
 const mockStore = configureMockStore();
 

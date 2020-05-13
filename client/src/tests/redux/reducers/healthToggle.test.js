@@ -1,5 +1,5 @@
 import expect from 'expect';
-import reducer from '../../../redux/reducers/healthToggle';
+import reducer from 'redux/reducers/healthToggle';
 import { SET_DETAIL_DATA, DELETE_DETAIL_DATA } from '../../../redux/actions/healthToggle';
 
 describe('health toggle reducer', () => {

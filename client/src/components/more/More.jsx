@@ -16,8 +16,8 @@ import { DialogContent, DialogContentText, TextField, Grid, Typography, Snackbar
 import MuiAlert from '@material-ui/lab/Alert';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
-import buttonsCss from '../css/buttons';
-import actions from '../redux/actions/actions';
+import buttonsCss from 'styles/buttons';
+import actions from 'redux/actions/actions';
 
 const useStyle = makeStyles(theme => ({
   root: {

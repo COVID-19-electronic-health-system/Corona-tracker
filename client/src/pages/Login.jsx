@@ -3,9 +3,9 @@ import { Button, Typography } from '@material-ui/core';
 import { useConnect } from '@blockstack/connect';
 import { useTranslation } from 'react-i18next';
 import { makeStyles } from '@material-ui/core/styles';
-import TranslationsMenu from './Translations';
-import buttonsCss from '../css/buttons';
-import { FullLogo } from '../utils/imgUrl';
+import TranslationsMenu from 'components/common/Translations';
+import buttonsCss from 'styles/buttons';
+import { FullLogo } from 'utils/imgUrl';
 
 const useStyles = makeStyles(theme => ({
   Login: {

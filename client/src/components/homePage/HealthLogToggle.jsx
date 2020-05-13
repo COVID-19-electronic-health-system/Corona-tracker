@@ -6,9 +6,9 @@ import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import { makeStyles } from '@material-ui/core';
 import MyHealthLog from './MyHealthLog';
-import actions from '../redux/actions/actions';
-import buttonsCss from '../css/buttons';
-import ShowMeMore from './showMeMore/ShowMeContainer';
+import actions from 'redux/actions/actions';
+import buttonsCss from 'styles/buttons';
+import ShowMeMore from 'pages/ShowMeMore';
 
 const useStyles = makeStyles({
   buttons: {

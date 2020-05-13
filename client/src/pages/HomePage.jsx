@@ -6,9 +6,9 @@ import { Dialog, DialogActions, DialogContent, DialogContentText, Button, Typogr
 import { connect } from 'react-redux';
 import { useHistory } from 'react-router-dom';
 import PropTypes from 'prop-types';
-import HealthLogToggle from './HealthLogToggle';
+import HealthLogToggle from 'components/homePage/HealthLogToggle';
 import actions from '../redux/actions/actions';
-import buttonsCss from '../css/buttons';
+import buttonsCss from '../styles/buttons';
 
 const useStyles = makeStyles({
   hr: {

@@ -5,10 +5,10 @@ import { Provider } from 'react-redux';
 import thunk from 'redux-thunk';
 import logger from 'redux-logger';
 import rootReducer from './redux/reducers/rootReducer';
-import * as serviceWorker from './serviceWorker';
-import App from './components/App';
-import Loading from './components/Loding';
-import './i18n';
+import * as serviceWorker from 'helpers/serviceWorker';
+import App from './App';
+import Loading from './layout/Loding';
+import 'helpers/i18n';
 // creating the store, connecting to the reducer and applying middleware with thunk
 const store = createStore(rootReducer, applyMiddleware(thunk, logger));
 
