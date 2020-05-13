@@ -8,6 +8,6 @@
       "src": ["./src"]
     }
   },
-  "include": ["src", "src/components/homePage"],
+  "include": ["src"],
   "exclude": ["node_modules"]
 }
