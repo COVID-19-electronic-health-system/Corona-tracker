@@ -48,6 +48,20 @@ LANGUAGE_LETTERS_DICT = {
 	'Russian':'ru'
 }
 
+def depunctuate(text):
+	""" Removes punctuation from text.
+
+	Arguments:
+		text {[string]} -- [any string]
+
+	Returns:
+		[string] -- [string with punctuation removed]
+	"""
+	chars = punctuation
+	for c in chars:
+		text = text.replace(c, "")
+	return text
+
 def convert_to_camelCase(value):
 	""" Converts a string to camelCase and removes punctuation.
 
@@ -65,20 +79,6 @@ def convert_to_camelCase(value):
 		return camelCase.translate(str.maketrans('', '', punctuation))
 	else:
 		return value.lower().translate(str.maketrans('', '', punctuation))
-
-def depunctuate(text):
-	""" Removes punctuation from text.
-
-	Arguments:
-		text {[string]} -- [any string]
-
-	Returns:
-		[string] -- [string with punctuation removed]
-	"""
-	chars = punctuation
-	for c in chars:
-		text = text.replace(c, "")
-	return text
 
 def education_value_cleaner(language_df):
 	""" Converts the long text in the Education 'value' column to shorter text to be used as JSON keys.
@@ -256,6 +256,19 @@ for name in selected_translation_sheet_names:
 languages = [x for x in translation_sheets.keys()]
 languages.sort()
 
+
+"""
+json structure
+{
+	"parentKey":{
+		"childKey":{
+			'fieldKey':{'value':'translatedValue','array':['translatedValue']},
+		}
+	},
+}
+"""
+
+
 for language in languages:
 	locale_key = [x for x in LANGUAGE_LETTERS_DICT.keys() if x in language][0]
 	locale = LANGUAGE_LETTERS_DICT[locale_key]
@@ -288,12 +301,11 @@ for language in languages:
 						fgrp_sub = fgrp.filter(regex='[Vv]alue')
 						valueDict = {"array":[]}
 						for value, translatedValue in fgrp_sub.values:
-							valueDict[value]=translatedValue
-							valueDict["array"].append(translatedValue.replace(' ','',1))
+							valueDict[value]=translatedValue.lstrip().rstrip()
+							valueDict["array"].append(valueDict[value])
 						fieldKeyDict[fieldKey] = valueDict
 					childKeyDict[childKey] = fieldKeyDict
 				parentKeyDict[parentKey] =  childKeyDict
 			wkDict.update(parentKeyDict)
 
 		save_to_JSON(OUT_DIR,locale,wkDict)
-	
