@@ -271,7 +271,7 @@ for language in languages:
 
 			#clean up column names
 			language_df.columns = [x.replace(' ','') for x in language_df.columns]
-			
+
 			cleaned_language_df = clean_dataframe_column_values_to_short_JSON_keys(wk,language_df)
 
 			####################################
