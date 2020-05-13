@@ -9,6 +9,7 @@ import { makeStyles } from '@material-ui/core/styles';
 import PropTypes from 'prop-types';
 import { Typography } from '@material-ui/core';
 import Card from './Card';
+import QuizScoreDialog from './QuizScoreDialog';
 
 const useStyles = makeStyles({
   FlashCards: {
@@ -31,6 +32,7 @@ const from = () => ({ x: 0, rot: 0, scale: 1.5, y: -1500 });
 const trans = (r, s) => `perspective(1500px) rotateX(15deg) rotateY(${r / 5}deg) rotateZ(${r}deg) scale(${s})`;
 
 const FlashCards = props => {
+  const [showQuizScoreDialog, setShowQuizScoreDialog] = useState(false);
   const { cardData, mode } = props;
   const classes = useStyles();
   const [score, setScore] = useState(0);
@@ -41,7 +43,6 @@ const FlashCards = props => {
     const dir = xDir < 0 ? -1 : 1;
 
     if (!down && trigger) gone.add(index);
-
     set(i => {
       if (index !== i) return; // We're only interested in changing spring-data for the current spring
       const isGone = gone.has(index);
@@ -54,15 +55,24 @@ const FlashCards = props => {
       }
       return { x, rot, scale, delay: undefined, config: { friction: 50, tension: down ? 800 : isGone ? 200 : 500 } };
     });
-    if (!down && gone.size === cardData.length)
+    if (!down && gone.size === cardData.length) {
+      setShowQuizScoreDialog(true);
       setTimeout(() => {
-        setScore(0);
         return gone.clear() || set(i => to(i));
       }, 600);
+    }
   });
   // Now we're just mapping the animated values to our view, that's it. Btw, this component only renders once. :-)
   return (
     <div>
+      {showQuizScoreDialog ? (
+        <QuizScoreDialog
+          score={score}
+          quizSize={cardData.length}
+          setScore={setScore}
+          setShowQuizScoreDialog={setShowQuizScoreDialog}
+        />
+      ) : null}
       <Typography color="secondary" variant="button">
         {mode === 'quiz' && `Score ${score}/${cardData.length}`}
       </Typography>
