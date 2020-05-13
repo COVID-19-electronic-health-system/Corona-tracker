@@ -5,7 +5,7 @@ import { useTranslation } from 'react-i18next';
 import { Grid, makeStyles } from '@material-ui/core';
 import AppCalendar from './Calendar';
 import LogHealthSlider from './LogHealthSlider';
-import buttonsCss from '../css/buttons';
+import buttonsCss from 'styles/buttons';
 
 const useStyles = makeStyles({
   root: {

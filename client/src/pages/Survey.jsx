@@ -9,11 +9,11 @@ import StepConnector from '@material-ui/core/StepConnector';
 import StepButton from '@material-ui/core/StepButton';
 import clsx from 'clsx';
 import PropTypes from 'prop-types';
-import SurveyPage1 from './SurveyPage1';
-import SurveyPage2 from './SurveyPage2';
-import SurveyPage3 from './SurveyPage3';
-import SurveyPage4 from './SurveyPage4';
-import actions from '../../redux/actions/actions';
+import SurveyPage1 from 'components/survey/SurveyPage1';
+import SurveyPage2 from 'components/survey/SurveyPage2';
+import SurveyPage3 from 'components/survey/SurveyPage3';
+import SurveyPage4 from 'components/survey/SurveyPage4';
+import actions from 'redux/actions/actions';
 
 const SurveyConnector = withStyles({
   lineHorizontal: {

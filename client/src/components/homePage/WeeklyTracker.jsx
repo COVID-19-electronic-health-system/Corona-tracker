@@ -6,8 +6,8 @@ import { useSpring, animated } from 'react-spring';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { useDrag } from 'react-use-gesture';
-import actions from '../redux/actions/actions';
-import noSelectCss from '../css/noSelect';
+import actions from 'redux/actions/actions';
+import noSelectCss from 'styles/noSelect';
 
 const useStyles = makeStyles({
   ...noSelectCss,

@@ -5,20 +5,19 @@ import { connect } from 'react-redux';
 import ReactBlockstack, { useBlockstack, didConnect, useFile } from 'react-blockstack';
 import Container from '@material-ui/core/Container';
 import PropTypes from 'prop-types';
-import Layout from './Layout';
-import Map from './Map';
-import DiagnosticContainer from './DiagnosticContainer';
-import { appConfig } from '../utils/constants';
-import FactQuizContainer from './FactQuizContainer';
-import PrivateRoute from './PrivateRoute';
-import Survey from './survey/Survey';
-import OnboardUser from './OnboardUser';
-import About from './About';
-import Disclaimer from './Disclaimer';
-import NotFoundPage from './NotFoundPage';
-import actions from '../redux/actions/actions';
-import ScrollToTop from './ScrollToTop';
-import Settings from './Settings';
+import Layout from 'layout/Layout';
+import Map from 'pages/Map';
+import DiagnosticContainer from 'pages/HomePage';
+import { appConfig } from 'utils/constants';
+import FactQuizContainer from 'pages/Education';
+import Survey from './pages/Survey';
+import OnboardUser from 'pages/OnboardUser';
+import About from 'pages/About';
+import Disclaimer from './layout/Disclaimer';
+import NotFoundPage from 'pages/NotFoundPage';
+import actions from 'redux/actions/actions';
+import ScrollToTop from './layout/ScrollToTop';
+import Settings from 'pages/Settings';
 
 ReactBlockstack({ appConfig });
 
@@ -97,19 +96,19 @@ const App = props => {
             </Container>
           )}
           <Switch>
-            <PrivateRoute path="/onboard" component={() => <OnboardUser />} />
+            <Route path="/onboard" component={OnboardUser} />
             {showOnboard && <Redirect to="/onboard" />}
-            <PrivateRoute exact path="/" component={() => <DiagnosticContainer />} />
+            <Route exact path="/" component={DiagnosticContainer} />
 
             {/* ADD/EDIT ROUTES WITH THEIR COMPONENTS HERE: */}
-            <PrivateRoute path="/signup" />
-            <PrivateRoute path="/symptomsurvey" component={() => <Survey />} />
-            <PrivateRoute path="/log" />
-            <PrivateRoute path="/healthlog" />
-            <PrivateRoute path="/education" component={() => <FactQuizContainer />} />
-            <PrivateRoute path="/map" component={() => <Map />} />
-            <PrivateRoute path="/settings" component={() => <Settings />} />
-            <PrivateRoute path="/about" component={() => <About />} />
+            <Route path="/signup" />
+            <Route path="/symptomsurvey" component={Survey} />
+            <Route path="/log" />
+            <Route path="/healthlog" />
+            <Route path="/education" component={FactQuizContainer} />
+            <Route path="/map" component={Map} />
+            <Route path="/settings" component={Settings} />
+            <Route path="/about" component={About} />
             <Route path="/404" component={NotFoundPage} />
             <Route path="*" component={NotFoundPage} />
           </Switch>

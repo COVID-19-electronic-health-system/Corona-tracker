@@ -1,6 +1,6 @@
 import expect from 'expect';
-import { onboardingReducer } from '../../../redux/reducers/onboarding';
-import { SET_DEMOGRAPHICS_COMORBIDITIES } from '../../../redux/actions/onboarding';
+import { onboardingReducer } from 'redux/reducers/onboarding';
+import { SET_DEMOGRAPHICS_COMORBIDITIES } from 'redux/actions/onboarding';
 
 describe('onboarding reducer', () => {
   const initialState = {

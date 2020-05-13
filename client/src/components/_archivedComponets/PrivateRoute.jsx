@@ -2,7 +2,7 @@ import React from 'react';
 import { Route } from 'react-router-dom';
 import { useBlockstack } from 'react-blockstack';
 import PropTypes from 'prop-types';
-import Login from './Login';
+import Login from '../../pages/Login';
 
 const PrivateRoute = props => {
   const { path, component } = props;

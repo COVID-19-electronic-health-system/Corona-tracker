@@ -3,7 +3,7 @@ import { shallow } from 'enzyme';
 import { Provider } from 'react-redux';
 import configureMockStore from 'redux-mock-store';
 import thunk from 'redux-thunk';
-import AvgTemperature from '../components/AvgTemperature';
+import AvgTemperature from 'components/showMeMore/AvgTemperature';
 
 const mockStore = configureMockStore([thunk]);
 const mockObservationsReducerState = {

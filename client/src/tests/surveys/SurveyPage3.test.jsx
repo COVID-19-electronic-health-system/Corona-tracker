@@ -4,7 +4,7 @@ import { Provider } from 'react-redux';
 import configureMockStore from 'redux-mock-store';
 import thunk from 'redux-thunk';
 import { BrowserRouter } from 'react-router-dom';
-import SurveyPage3 from '../../components/survey/SurveyPage3';
+import SurveyPage3 from 'components/survey/SurveyPage3';
 
 const mockStore = configureMockStore([thunk]);
 
