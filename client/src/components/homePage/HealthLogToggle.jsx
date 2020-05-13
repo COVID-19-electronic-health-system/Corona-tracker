@@ -5,10 +5,10 @@ import { Trans } from 'react-i18next';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import { makeStyles } from '@material-ui/core';
-import MyHealthLog from './MyHealthLog';
 import actions from 'redux/actions/actions';
 import buttonsCss from 'styles/buttons';
 import ShowMeMore from 'pages/ShowMeMore';
+import MyHealthLog from './MyHealthLog';
 
 const useStyles = makeStyles({
   buttons: {

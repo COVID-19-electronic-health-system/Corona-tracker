@@ -10,14 +10,14 @@ import Map from 'pages/Map';
 import DiagnosticContainer from 'pages/HomePage';
 import { appConfig } from 'utils/constants';
 import FactQuizContainer from 'pages/Education';
-import Survey from './pages/Survey';
 import OnboardUser from 'pages/OnboardUser';
 import About from 'pages/About';
-import Disclaimer from './layout/Disclaimer';
 import NotFoundPage from 'pages/NotFoundPage';
 import actions from 'redux/actions/actions';
-import ScrollToTop from './layout/ScrollToTop';
 import Settings from 'pages/Settings';
+import ScrollToTop from './layout/ScrollToTop';
+import Disclaimer from './layout/Disclaimer';
+import Survey from './pages/Survey';
 
 ReactBlockstack({ appConfig });
 
