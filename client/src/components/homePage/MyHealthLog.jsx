@@ -3,9 +3,9 @@ import Button from '@material-ui/core/Button';
 import { Link } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 import { Grid, makeStyles } from '@material-ui/core';
+import buttonsCss from 'styles/buttons';
 import AppCalendar from './Calendar';
 import LogHealthSlider from './LogHealthSlider';
-import buttonsCss from 'styles/buttons';
 
 const useStyles = makeStyles({
   root: {
