@@ -20,7 +20,6 @@ from google.oauth2.service_account import Credentials
 from pandas import Series, DataFrame
 from os import path, mkdir
 from string import punctuation
-
 from nltk import pos_tag, download
 from nltk.tokenize import word_tokenize
 download('punkt')
@@ -48,6 +47,20 @@ LANGUAGE_LETTERS_DICT = {
 	'Russian':'ru'
 }
 
+def depunctuate(text):
+	""" Removes punctuation from text.
+
+	Arguments:
+		text {[string]} -- [any string]
+
+	Returns:
+		[string] -- [string with punctuation removed]
+	"""
+	chars = punctuation
+	for c in chars:
+		text = text.replace(c, "")
+	return text
+
 def convert_to_camelCase(value):
 	""" Converts a string to camelCase and removes punctuation.
 
@@ -65,20 +78,6 @@ def convert_to_camelCase(value):
 		return camelCase.translate(str.maketrans('', '', punctuation))
 	else:
 		return value.lower().translate(str.maketrans('', '', punctuation))
-
-def depunctuate(text):
-	""" Removes punctuation from text.
-
-	Arguments:
-		text {[string]} -- [any string]
-
-	Returns:
-		[string] -- [string with punctuation removed]
-	"""
-	chars = punctuation
-	for c in chars:
-		text = text.replace(c, "")
-	return text
 
 def education_value_cleaner(language_df):
 	""" Converts the long text in the Education 'value' column to shorter text to be used as JSON keys.
@@ -239,7 +238,6 @@ def filter_old_translation_sheets(spreadsheet_names,current_translation_regex,ol
 # follow https://medium.com/@CROSP/manage-google-spreadsheets-with-python-and-gspread-6530cc9f15d1
 # Create credentials and dump into referenced file
 # Google sheets authorization
-
 gc = connect_to_gsheets_API(CREDENTIALS_PATH,scope)
 
 # Get names of spreadsheets 
@@ -273,7 +271,7 @@ for language in languages:
 
 			#clean up column names
 			language_df.columns = [x.replace(' ','') for x in language_df.columns]
-			
+
 			cleaned_language_df = clean_dataframe_column_values_to_short_JSON_keys(wk,language_df)
 
 			####################################
@@ -288,12 +286,10 @@ for language in languages:
 						fgrp_sub = fgrp.filter(regex='[Vv]alue')
 						valueDict = {"array":[]}
 						for value, translatedValue in fgrp_sub.values:
-							valueDict[value]=translatedValue
-							valueDict["array"].append(translatedValue.replace(' ','',1))
+							valueDict[value]=translatedValue.lstrip().rstrip()
+							valueDict["array"].append(valueDict[value])
 						fieldKeyDict[fieldKey] = valueDict
 					childKeyDict[childKey] = fieldKeyDict
 				parentKeyDict[parentKey] =  childKeyDict
 			wkDict.update(parentKeyDict)
-
 		save_to_JSON(OUT_DIR,locale,wkDict)
-	
