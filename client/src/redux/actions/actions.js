@@ -31,7 +31,7 @@ import {
   clearResponse,
 } from './onboarding';
 import { deleteUserDataThunk } from './deleteUserData';
-import { resetQuizScore, setQuizScore } from './education'
+import { resetQuizScore, setQuizScore } from './education';
 
 const actions = {
   fetchObservations,

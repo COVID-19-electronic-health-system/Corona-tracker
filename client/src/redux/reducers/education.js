@@ -6,23 +6,22 @@ const initialState = {
 };
 
 const educationReducer = (state = initialState, action) => {
-  console.log(action)
-    switch (action.type) {
-      case SET_QUIZ_SCORE:
-        return {
-          ...state,
-          score: action.quizScore.score,
-          quizSize: action.quizScore.quizSize,
-        };
-      case RESET_QUIZ_SCORE:
-        return {
-          ...state,
-          score: action.quizScore.score,
-          quizSize: action.quizScore.quizSize,
-        };
-      default:
-        return state;
-    }
-  };
-  
-  export default educationReducer;
+  switch (action.type) {
+    case SET_QUIZ_SCORE:
+      return {
+        ...state,
+        score: action.quizScore.score,
+        quizSize: action.quizScore.quizSize,
+      };
+    case RESET_QUIZ_SCORE:
+      return {
+        ...state,
+        score: action.quizScore.score,
+        quizSize: action.quizScore.quizSize,
+      };
+    default:
+      return state;
+  }
+};
+
+export default educationReducer;

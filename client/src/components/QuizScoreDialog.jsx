@@ -8,10 +8,10 @@ import Button from '@material-ui/core/Button';
 import DialogContent from '@material-ui/core/DialogContent';
 import DialogContentText from '@material-ui/core/DialogContentText';
 import PropTypes from 'prop-types';
+import { useSelector, useDispatch } from 'react-redux';
 import { TextLogo, Logo } from '../utils/imgUrl';
 import buttonsCss from '../css/buttons';
-import { useSelector, useDispatch } from 'react-redux'
-import actions from '../redux/actions/actions'
+import actions from '../redux/actions/actions';
 
 const useStyles = makeStyles({
   logo: {
@@ -44,12 +44,12 @@ const useStyles = makeStyles({
 
 const QuizScoreDialog = ({ setShowQuizScoreDialog }) => {
   const classes = useStyles();
-  const quizScore = useSelector(state => state.educationReducer)
+  const quizScore = useSelector(state => state.educationReducer);
   const dispatch = useDispatch();
-  
+
   const resetDialog = () => {
-    setShowQuizScoreDialog(false)
-    dispatch(actions.resetQuizScore({score: 0, quizSize: 0}))
+    setShowQuizScoreDialog(false);
+    dispatch(actions.resetQuizScore({ score: 0, quizSize: 0 }));
   };
 
   return (
@@ -59,15 +59,13 @@ const QuizScoreDialog = ({ setShowQuizScoreDialog }) => {
         <object title="logoText" className={classes.textLogo} data={TextLogo} type="image/svg+xml" />
       </DialogTitle>
       <DialogContent className={classes.dialogContent}>
-        <DialogContentText className={classes.descriptionText}>
-          Here&apos;s how you did:
-        </DialogContentText>
+        <DialogContentText className={classes.descriptionText}>Here&apos;s how you did:</DialogContentText>
         <DialogContentText className={classes.descriptionText}>
           {quizScore.score} out of {quizScore.quizSize}
         </DialogContentText>
       </DialogContent>
-      <Button 
-        className={classes.buttons} 
+      <Button
+        className={classes.buttons}
         size="medium"
         color="secondary"
         variant="contained"
