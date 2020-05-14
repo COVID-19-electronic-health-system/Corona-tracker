@@ -137,7 +137,7 @@
 .react-calendar__tile--now:enabled:hover,
 .react-calendar__tile--now:enabled:focus {
   background-color: #ffffa9;
-  color: white;
+  color: black;
 }
 
 .react-calendar__tile--hasActive {
