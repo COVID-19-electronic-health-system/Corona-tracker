@@ -100,7 +100,7 @@ FlashCards.propTypes = {
   updateQuizScore: PropTypes.func.isRequired,
 };
 
-const mapStateToProps = (state) => {
+const mapStateToProps = state => {
   return {
     score: state.educationReducer.score,
     showQuizScoreDialog: state.educationReducer.showQuizScoreDialog,

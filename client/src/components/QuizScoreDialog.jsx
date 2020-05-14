@@ -77,7 +77,7 @@ QuizScoreDialog.propTypes = {
   resetQuizScore: PropTypes.func.isRequired,
 };
 
-const mapStateToProps = (state) => {
+const mapStateToProps = state => {
   return {
     score: state.educationReducer.score,
     quizSize: state.educationReducer.quizSize,
