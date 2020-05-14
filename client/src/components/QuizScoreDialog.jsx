@@ -8,7 +8,7 @@ import Button from '@material-ui/core/Button';
 import DialogContent from '@material-ui/core/DialogContent';
 import DialogContentText from '@material-ui/core/DialogContentText';
 import PropTypes from 'prop-types';
-import { useSelector, useDispatch } from 'react-redux';
+import { connect } from 'react-redux';
 import { TextLogo, Logo } from '../utils/imgUrl';
 import buttonsCss from '../css/buttons';
 import actions from '../redux/actions/actions';
@@ -42,15 +42,9 @@ const useStyles = makeStyles({
   },
 });
 
-const QuizScoreDialog = ({ setShowQuizScoreDialog }) => {
+const QuizScoreDialog = props => {
   const classes = useStyles();
-  const quizScore = useSelector(state => state.educationReducer);
-  const dispatch = useDispatch();
-
-  const resetDialog = () => {
-    setShowQuizScoreDialog(false);
-    dispatch(actions.resetQuizScore({ score: 0, quizSize: 0 }));
-  };
+  const { score, quizSize, resetQuizScore } = props;
 
   return (
     <Dialog open aria-describedby="disclaimer">
@@ -61,7 +55,7 @@ const QuizScoreDialog = ({ setShowQuizScoreDialog }) => {
       <DialogContent className={classes.dialogContent}>
         <DialogContentText className={classes.descriptionText}>Here&apos;s how you did:</DialogContentText>
         <DialogContentText className={classes.descriptionText}>
-          {quizScore.score} out of {quizScore.quizSize}
+          {score} out of {quizSize}
         </DialogContentText>
       </DialogContent>
       <Button
@@ -69,7 +63,7 @@ const QuizScoreDialog = ({ setShowQuizScoreDialog }) => {
         size="medium"
         color="secondary"
         variant="contained"
-        onClick={() => resetDialog()}
+        onClick={() => resetQuizScore()}
       >
         Close
       </Button>
@@ -78,7 +72,22 @@ const QuizScoreDialog = ({ setShowQuizScoreDialog }) => {
 };
 
 QuizScoreDialog.propTypes = {
-  setShowQuizScoreDialog: PropTypes.func.isRequired,
+  score: PropTypes.number.isRequired,
+  quizSize: PropTypes.number.isRequired,
+  resetQuizScore: PropTypes.func.isRequired,
 };
 
-export default QuizScoreDialog;
+const mapStateToProps = (state) => {
+  return {
+    score: state.educationReducer.score,
+    quizSize: state.educationReducer.quizSize,
+  };
+};
+
+const mapDispatchToProps = dispatch => {
+  return {
+    resetQuizScore: () => dispatch(actions.resetQuizScore()),
+  };
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(QuizScoreDialog);
