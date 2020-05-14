@@ -9,6 +9,9 @@ import DialogContent from '@material-ui/core/DialogContent';
 import DialogContentText from '@material-ui/core/DialogContentText';
 import PropTypes from 'prop-types';
 import { TextLogo, Logo } from '../utils/imgUrl';
+import buttonsCss from '../css/buttons';
+import { useSelector, useDispatch } from 'react-redux'
+import actions from '../redux/actions/actions'
 
 const useStyles = makeStyles({
   logo: {
@@ -19,29 +22,57 @@ const useStyles = makeStyles({
     width: '250px',
     height: '50px',
   },
+  text: {
+    backgroundImage: 'linear-gradient(40deg, #4760ff 0%, #82a4f8 100%)',
+    color: 'white',
+  },
+  dialogContent: {
+    backgroundImage: 'linear-gradient(40deg, #7a9cf9 0%, #97b9f7 100%)',
+  },
+  descriptionText: {
+    textDecoration: 'none',
+    color: 'white',
+    textAlign: 'center',
+    marginTop: '10px',
+  },
+  buttons: {
+    ...buttonsCss.buttons,
+    height: '8vh',
+    minHeight: '50px',
+  },
 });
 
-const QuizScoreDialog = ({ score, quizSize, setShowQuizScoreDialog, setScore }) => {
+const QuizScoreDialog = ({ setShowQuizScoreDialog }) => {
   const classes = useStyles();
-
+  const quizScore = useSelector(state => state.educationReducer)
+  const dispatch = useDispatch();
+  
   const resetDialog = () => {
-    setScore(0);
-    setShowQuizScoreDialog(false);
+    setShowQuizScoreDialog(false)
+    dispatch(actions.resetQuizScore({score: 0, quizSize: 0}))
   };
 
   return (
     <Dialog open aria-describedby="disclaimer">
-      <DialogTitle align="center" id="alert-dialog-title">
+      <DialogTitle align="center" id="alert-dialog-title" className={classes.text}>
         <object title="logo" className={classes.logo} data={Logo} type="image/svg+xml" />
         <object title="logoText" className={classes.textLogo} data={TextLogo} type="image/svg+xml" />
       </DialogTitle>
-      <DialogContent>
-        <DialogContentText>Her&apos;s how you did:</DialogContentText>
-        <DialogContentText>
-          {score} out of {quizSize}
+      <DialogContent className={classes.dialogContent}>
+        <DialogContentText className={classes.descriptionText}>
+          Here&apos;s how you did:
+        </DialogContentText>
+        <DialogContentText className={classes.descriptionText}>
+          {quizScore.score} out of {quizScore.quizSize}
         </DialogContentText>
       </DialogContent>
-      <Button variant="outlined" onClick={() => resetDialog()}>
+      <Button 
+        className={classes.buttons} 
+        size="medium"
+        color="secondary"
+        variant="contained"
+        onClick={() => resetDialog()}
+      >
         Close
       </Button>
     </Dialog>
@@ -49,10 +80,7 @@ const QuizScoreDialog = ({ score, quizSize, setShowQuizScoreDialog, setScore }) 
 };
 
 QuizScoreDialog.propTypes = {
-  score: PropTypes.number.isRequired,
-  quizSize: PropTypes.number.isRequired,
   setShowQuizScoreDialog: PropTypes.func.isRequired,
-  setScore: PropTypes.func.isRequired,
 };
 
 export default QuizScoreDialog;

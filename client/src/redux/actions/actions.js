@@ -31,6 +31,7 @@ import {
   clearResponse,
 } from './onboarding';
 import { deleteUserDataThunk } from './deleteUserData';
+import { resetQuizScore, setQuizScore } from './education'
 
 const actions = {
   fetchObservations,
@@ -60,6 +61,8 @@ const actions = {
   deleteUserDataThunk,
   resetObservations,
   addObservationToStore,
+  resetQuizScore,
+  setQuizScore,
 };
 
 export default actions;

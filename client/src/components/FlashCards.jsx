@@ -10,6 +10,8 @@ import PropTypes from 'prop-types';
 import { Typography } from '@material-ui/core';
 import Card from './Card';
 import QuizScoreDialog from './QuizScoreDialog';
+import { useSelector, useDispatch } from 'react-redux'
+import actions from '../redux/actions/actions'
 
 const useStyles = makeStyles({
   FlashCards: {
@@ -32,10 +34,11 @@ const from = () => ({ x: 0, rot: 0, scale: 1.5, y: -1500 });
 const trans = (r, s) => `perspective(1500px) rotateX(15deg) rotateY(${r / 5}deg) rotateZ(${r}deg) scale(${s})`;
 
 const FlashCards = props => {
-  const [showQuizScoreDialog, setShowQuizScoreDialog] = useState(false);
+  const [showQuizScoreDialog, setShowQuizScoreDialog] = useState(false)
+  const [score, setScore] = useState(useSelector(state => state.educationReducer.score))
+  const dispatch = useDispatch();
   const { cardData, mode } = props;
   const classes = useStyles();
-  const [score, setScore] = useState(0);
   const [gone] = useState(() => new Set());
   const [cardProp, set] = useSprings(cardData.length, i => ({ ...to(i), from: from(i) }));
   const bind = useDrag(({ args: [index], down, movement: [mx], direction: [xDir], velocity }) => {
@@ -56,23 +59,22 @@ const FlashCards = props => {
       return { x, rot, scale, delay: undefined, config: { friction: 50, tension: down ? 800 : isGone ? 200 : 500 } };
     });
     if (!down && gone.size === cardData.length) {
-      setShowQuizScoreDialog(true);
+      if (mode === 'quiz') {
+        dispatch(actions.setQuizScore({score: score, quizSize: cardData.length}))
+        setShowQuizScoreDialog(true)
+      }
       setTimeout(() => {
         return gone.clear() || set(i => to(i));
       }, 600);
     }
   });
+  console.log(showQuizScoreDialog)
   // Now we're just mapping the animated values to our view, that's it. Btw, this component only renders once. :-)
   return (
     <div>
-      {showQuizScoreDialog ? (
-        <QuizScoreDialog
-          score={score}
-          quizSize={cardData.length}
-          setScore={setScore}
-          setShowQuizScoreDialog={setShowQuizScoreDialog}
-        />
-      ) : null}
+      {showQuizScoreDialog && (
+        <QuizScoreDialog setShowQuizScoreDialog={setShowQuizScoreDialog}/>
+      )}
       <Typography color="secondary" variant="button">
         {mode === 'quiz' && `Score ${score}/${cardData.length}`}
       </Typography>
