@@ -4,7 +4,7 @@ import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 
 const Chart = props => {
-  const { observations } = props;
+  const { observations, tempUnit } = props;
 
   const temps = observations.map(observation => {
     const datetime = new Date(observation.date).toISOString().slice(0, 10);
@@ -37,7 +37,7 @@ const Chart = props => {
       >
         <CartesianGrid strokeDasharray="3 3" />
         <XAxis dataKey="date" />
-        <YAxis type="number" domain={[94, 105]} />
+        <YAxis type="number" domain={tempUnit === 'fahrenheit' ? [94, 105] : [32, 42]} />
         <Tooltip />
         <Legend />
         <Line type="monotone" dataKey="temperature" stroke="#8884d8" activeDot={{ r: 8 }} />
@@ -49,11 +49,13 @@ const Chart = props => {
 
 Chart.propTypes = {
   observations: PropTypes.arrayOf(PropTypes.instanceOf(Object)).isRequired,
+  tempUnit: PropTypes.string.isRequired,
 };
 
 const mapStateToProps = state => {
   return {
     observations: state.observationsReducer.observations,
+    tempUnit: state.onboardingReducer.tempUnit,
   };
 };
 

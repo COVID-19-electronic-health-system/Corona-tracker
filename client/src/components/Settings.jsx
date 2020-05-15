@@ -45,7 +45,7 @@ const useStyles = makeStyles(() => ({
 }));
 
 const Settings = props => {
-  const { demographicsComorbidities } = props;
+  const { demographicsComorbidities, tempUnit } = props;
   const { age, gender, city, state, zip, isSmoker, isObese, isAsthmatic } = demographicsComorbidities;
   const classes = useStyles();
   const [showDeletionDialog, setShowDeletionDialog] = useState(false);
@@ -156,6 +156,18 @@ const Settings = props => {
                 </Typography>
               </Grid>
             </Grid>
+            <Grid container spacing={1} justify="space-between">
+              <Grid item>
+                <Typography variant="subtitle1" color="textPrimary">
+                  Preferred Temperature Units:
+                </Typography>
+              </Grid>
+              <Grid item>
+                <Typography variant="subtitle1" color="textPrimary">
+                  {tempUnit}
+                </Typography>
+              </Grid>
+            </Grid>
             <Button className={classes.updateButton} onClick={() => history.push('/onboard')}>
               Update Information
             </Button>
@@ -206,10 +218,12 @@ Settings.propTypes = {
     isObese: PropTypes.string,
     isAsthmatic: PropTypes.string,
   }).isRequired,
+  tempUnit: PropTypes.string.isRequired,
 };
 
 const mapStateToProps = state => ({
   demographicsComorbidities: state.onboardingReducer.demographicsComorbidities,
+  tempUnit: state.onboardingReducer.tempUnit,
 });
 
 export default connect(mapStateToProps, null)(Settings);
