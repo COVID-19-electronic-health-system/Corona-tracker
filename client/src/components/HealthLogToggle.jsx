@@ -1,4 +1,4 @@
-import React, { useCallback } from 'react';
+import React from 'react';
 import ButtonGroup from '@material-ui/core/ButtonGroup';
 import Button from '@material-ui/core/Button';
 import { Trans } from 'react-i18next';
@@ -19,13 +19,13 @@ const useStyles = makeStyles({
 });
 
 const HealthLogToggle = props => {
-  const { toggleValue, setToggleValue, setDetailData, observations } = props;
+  const { toggleValue, setToggleValue, setDetailData } = props;
   const classes = useStyles();
 
-  const onShowMeMoreClick = useCallback(() => {
-    setDetailData(observations);
+  const onShowMeMoreClick = () => {
+    setDetailData([]);
     setToggleValue('showMeMore');
-  }, [observations, setDetailData, setToggleValue]);
+  };
 
   return (
     <div>
@@ -49,7 +49,6 @@ HealthLogToggle.propTypes = {
   toggleValue: PropTypes.string.isRequired,
   setToggleValue: PropTypes.func.isRequired,
   setDetailData: PropTypes.func.isRequired,
-  observations: PropTypes.arrayOf(Object).isRequired,
 };
 
 const mapStateToProps = state => {
@@ -62,7 +61,7 @@ const mapStateToProps = state => {
 const mapDispatchToProps = dispatch => {
   return {
     setToggleValue: toggleValue => dispatch(actions.setToggleValue(toggleValue)),
-    setDetailData: detailData => dispatch(actions.setDetailData(detailData)),
+    setDetailData: data => dispatch(actions.setDetailData(data)),
   };
 };
 

@@ -45,7 +45,7 @@ const WhiteFont = styled(Typography)({
 const Observations = props => {
   const classes = useStyles();
 
-  const { detailData, observations } = props;
+  const { detailData, observations, tempUnit } = props;
 
   const [page, setPage] = React.useState(0);
   const [rowsPerPage, setRowsPerPage] = React.useState(4);
@@ -58,12 +58,17 @@ const Observations = props => {
     setRowsPerPage(+event.target.value);
     setPage(0);
   };
+
   return (
     <div className={classes.root}>
       {(detailData.length ? detailData : observations)
         .slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage)
         .map(observation => (
-          <ExpansionPanel className={classes.expansionPanel} defaultExpanded={detailData.length === 1}>
+          <ExpansionPanel
+            className={classes.expansionPanel}
+            defaultExpanded={detailData.length === 1}
+            key={observation.date}
+          >
             <ExpansionPanelSummary
               expandIcon={<ExpandMoreIcon />}
               aria-controls="observation"
@@ -83,7 +88,15 @@ const Observations = props => {
                 </Grid>
                 <Grid item>
                   <RedFont>
-                    <span>Temperature:</span> {observation.physical.feverSeverity} &#8457;
+                    {tempUnit === 'fahrenheit' ? (
+                      <>
+                        <span>Temperature:</span> {observation.physical.feverSeverity} &#8457;
+                      </>
+                    ) : (
+                      <>
+                        <span>Temperature:</span> {observation.physical.feverSeverity} &#8451;
+                      </>
+                    )}
                   </RedFont>
                 </Grid>
               </Grid>
@@ -170,12 +183,14 @@ const Observations = props => {
 Observations.propTypes = {
   detailData: PropTypes.arrayOf(Object).isRequired,
   observations: PropTypes.arrayOf(Object).isRequired,
+  tempUnit: PropTypes.string.isRequired,
 };
 
 const mapStateToProps = state => {
   return {
     detailData: state.healthToggleReducer.detailData,
     observations: state.observationsReducer.observations,
+    tempUnit: state.onboardingReducer.tempUnit,
   };
 };
 

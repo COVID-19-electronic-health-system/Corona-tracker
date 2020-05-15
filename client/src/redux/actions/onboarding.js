@@ -1,5 +1,11 @@
 /* eslint-disable no-console */
+/* eslint import/no-cycle: "off" */
+
 import axios from 'axios';
+
+import { changedObservations } from './observations';
+
+import convertUnits from '../../utils/convertTempUnit';
 
 export const FETCH_DEMOGRAPHICS_COMORBIDITIES = 'FETCH_DEMOGRAPHICS_COMORBIDITIES';
 
@@ -20,6 +26,10 @@ export const SUBSCRIBE_ERROR = 'SUBSCRIBE_ERROR';
 export const UNSUBSCRIBE = 'UNSUBSCRIBE';
 
 export const CLEAR_RESPONSE = 'CLEAR_RESPONSE';
+
+export const SET_TEMP_UNIT = 'SET_TEMP_UNIT';
+
+export const FETCH_TEMP_UNIT = 'FETCH_TEMP_UNIT';
 
 // action creators
 export function setDisclaimerAnswer(answer) {
@@ -121,4 +131,28 @@ export const fetchSubscribedNumber = userSession => async dispatch => {
   const phoneNumber = await userSession.getFile('subscribedNumber');
   dispatch({ type: FETCH_SUBSCRIBED_NUMBER, phoneNumber });
   return phoneNumber;
+};
+
+export const setTempUnit = (userSession, currentObservations, currentUnit, nextUnit) => async dispatch => {
+  if (nextUnit === currentUnit) return;
+  const nextObservations = currentObservations.map(obs => {
+    return {
+      ...obs,
+      physical: {
+        ...obs.physical,
+        feverSeverity: convertUnits(nextUnit, obs.physical.feverSeverity),
+      },
+    };
+  });
+  dispatch(changedObservations(nextObservations));
+  dispatch({ type: SET_TEMP_UNIT, nextUnit });
+  userSession.putFile('tempUnit', nextUnit);
+};
+
+export const fetchTempUnit = userSession => async dispatch => {
+  const tempUnit = await userSession.getFile('tempUnit');
+  if (tempUnit) {
+    dispatch({ type: FETCH_TEMP_UNIT, tempUnit });
+  }
+  return true;
 };
