@@ -4,6 +4,7 @@ import calendarReducer from './calendar';
 import healthToggleReducer from './healthToggle';
 import surveyReducer from './survey';
 import { onboardingReducer } from './onboarding';
+import educationReducer from './education';
 
 export default combineReducers({
   observationsReducer,
@@ -11,4 +12,5 @@ export default combineReducers({
   healthToggleReducer,
   surveyReducer,
   onboardingReducer,
+  educationReducer,
 });
