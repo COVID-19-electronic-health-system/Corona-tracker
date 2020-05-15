@@ -64,7 +64,11 @@ const Observations = props => {
       {(detailData.length ? detailData : observations)
         .slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage)
         .map(observation => (
-          <ExpansionPanel className={classes.expansionPanel} defaultExpanded={detailData.length === 1}>
+          <ExpansionPanel
+            className={classes.expansionPanel}
+            defaultExpanded={detailData.length === 1}
+            key={observation.date}
+          >
             <ExpansionPanelSummary
               expandIcon={<ExpandMoreIcon />}
               aria-controls="observation"
