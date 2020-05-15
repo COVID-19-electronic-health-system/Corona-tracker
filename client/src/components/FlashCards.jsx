@@ -8,7 +8,10 @@ import { useDrag } from 'react-use-gesture';
 import { makeStyles } from '@material-ui/core/styles';
 import PropTypes from 'prop-types';
 import { Typography } from '@material-ui/core';
+import { connect } from 'react-redux';
 import Card from './Card';
+import QuizScoreDialog from './QuizScoreDialog';
+import actions from '../redux/actions/actions';
 
 const useStyles = makeStyles({
   FlashCards: {
@@ -31,9 +34,8 @@ const from = () => ({ x: 0, rot: 0, scale: 1.5, y: -1500 });
 const trans = (r, s) => `perspective(1500px) rotateX(15deg) rotateY(${r / 5}deg) rotateZ(${r}deg) scale(${s})`;
 
 const FlashCards = props => {
-  const { cardData, mode } = props;
+  const { cardData, mode, score, showQuizScoreDialog, setQuizScore, updateQuizScore } = props;
   const classes = useStyles();
-  const [score, setScore] = useState(0);
   const [gone] = useState(() => new Set());
   const [cardProp, set] = useSprings(cardData.length, i => ({ ...to(i), from: from(i) }));
   const bind = useDrag(({ args: [index], down, movement: [mx], direction: [xDir], velocity }) => {
@@ -41,7 +43,6 @@ const FlashCards = props => {
     const dir = xDir < 0 ? -1 : 1;
 
     if (!down && trigger) gone.add(index);
-
     set(i => {
       if (index !== i) return; // We're only interested in changing spring-data for the current spring
       const isGone = gone.has(index);
@@ -50,19 +51,23 @@ const FlashCards = props => {
       const scale = down ? 1.1 : 1; // Active cards lift up a bit
       if (mode === 'quiz' && isGone) {
         const userAns = x > 0;
-        if (userAns === cardData[i].answer) setScore(score + 1);
+        if (userAns === cardData[i].answer) updateQuizScore({ score: score + 1 });
       }
       return { x, rot, scale, delay: undefined, config: { friction: 50, tension: down ? 800 : isGone ? 200 : 500 } };
     });
-    if (!down && gone.size === cardData.length)
+    if (!down && gone.size === cardData.length) {
+      if (mode === 'quiz') {
+        setQuizScore({ score, quizSize: cardData.length });
+      }
       setTimeout(() => {
-        setScore(0);
         return gone.clear() || set(i => to(i));
       }, 600);
+    }
   });
-  // Now we're just mapping the animated values to our view, that's it. Btw, this component only renders once. :-)
+
   return (
     <div>
+      {showQuizScoreDialog && <QuizScoreDialog />}
       <Typography color="secondary" variant="button">
         {mode === 'quiz' && `Score ${score}/${cardData.length}`}
       </Typography>
@@ -89,6 +94,24 @@ const FlashCards = props => {
 FlashCards.propTypes = {
   cardData: PropTypes.arrayOf(Object).isRequired,
   mode: PropTypes.string.isRequired,
+  score: PropTypes.number.isRequired,
+  showQuizScoreDialog: PropTypes.bool.isRequired,
+  setQuizScore: PropTypes.func.isRequired,
+  updateQuizScore: PropTypes.func.isRequired,
 };
 
-export default FlashCards;
+const mapStateToProps = state => {
+  return {
+    score: state.educationReducer.score,
+    showQuizScoreDialog: state.educationReducer.showQuizScoreDialog,
+  };
+};
+
+const mapDispatchToProps = dispatch => {
+  return {
+    setQuizScore: quizScore => dispatch(actions.setQuizScore(quizScore)),
+    updateQuizScore: quizScore => dispatch(actions.updateQuizScore(quizScore)),
+  };
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(FlashCards);
