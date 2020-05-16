@@ -15,9 +15,9 @@ import About from 'pages/About';
 import NotFoundPage from 'pages/NotFoundPage';
 import actions from 'redux/actions/actions';
 import Settings from 'pages/Settings';
-import ScrollToTop from './layout/ScrollToTop';
-import Disclaimer from './layout/Disclaimer';
-import Survey from './pages/Survey';
+import ScrollToTop from '../layout/ScrollToTop';
+import Disclaimer from '../layout/Disclaimer';
+import Survey from '../pages/Survey';
 
 ReactBlockstack({ appConfig });
 

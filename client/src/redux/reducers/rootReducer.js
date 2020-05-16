@@ -1,4 +1,5 @@
 import { combineReducers } from 'redux';
+import navToggle from 'redux/reducers/navToggle';
 import observationsReducer from './observations';
 import calendarReducer from './calendar';
 import healthToggleReducer from './healthToggle';
@@ -13,4 +14,5 @@ export default combineReducers({
   surveyReducer,
   onboardingReducer,
   educationReducer,
+  navToggle,
 });

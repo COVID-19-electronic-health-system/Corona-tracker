@@ -3,16 +3,16 @@
 /* eslint-disable no-useless-escape */
 
 import React, { useState, useEffect } from 'react';
+import { Link } from 'react-router-dom';
 import Button from '@material-ui/core/Button';
 import Dialog from '@material-ui/core/Dialog';
 import DialogActions from '@material-ui/core/DialogActions';
 import DialogTitle from '@material-ui/core/DialogTitle';
-import { useHistory } from 'react-router-dom';
+
 import { makeStyles } from '@material-ui/core/styles';
-import MoreHorizIcon from '@material-ui/icons/MoreHoriz';
 import { useBlockstack } from 'react-blockstack';
 import { useTranslation } from 'react-i18next';
-import { DialogContent, DialogContentText, TextField, Grid, Typography, Snackbar, Link } from '@material-ui/core';
+import { DialogContent, DialogContentText, TextField, Snackbar } from '@material-ui/core';
 import MuiAlert from '@material-ui/lab/Alert';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
@@ -112,21 +112,15 @@ const More = props => {
     clearResponse,
     error,
     success,
+    setMoreToogle,
+    moreToggel,
   } = props;
-  const [open, setOpen] = useState(false);
   const [openSnackbar, setOpenSnackbar] = useState(false);
   const [snackbar, setSnackbar] = useState({});
   const [phoneNumber, setPhoneNumber] = useState('');
   const classes = useStyle();
   const { signOut, userSession } = useBlockstack();
   const { t } = useTranslation();
-  const history = useHistory();
-  const handleClickOpen = () => {
-    setOpen(true);
-  };
-  const handleClose = () => {
-    setOpen(false);
-  };
 
   const handleCloseSnackbar = (event, reason) => {
     if (reason === 'clickaway') {
@@ -175,26 +169,12 @@ const More = props => {
     });
   }, [error, success]);
 
-  const navigateTo = href => {
-    history.push(href);
-  };
   return (
     <div>
-      <Grid container alignContent="center" className={classes.root} onClick={handleClickOpen}>
-        <Grid container className={classes.grow} alignContent="center" justify="center">
-          <Grid container style={{ width: '100%' }} alignContent="center" justify="center">
-            <MoreHorizIcon className={classes.icon} />
-          </Grid>
-
-          <Grid container alignContent="center" justify="center">
-            <Typography variant="caption">more</Typography>
-          </Grid>
-        </Grid>
-      </Grid>
       <Dialog
         className={classes.dialog}
-        open={open}
-        onClose={handleClose}
+        open={moreToggel}
+        onClose={() => setMoreToogle(!moreToggel)}
         aria-labelledby="alert-dialog-title"
         aria-describedby="alert-dialog-description"
       >
@@ -206,12 +186,12 @@ const More = props => {
             <DialogContentText className={classes.descriptionText}>
               Enter your phone number to subscribe/unsubscribe to the occasional question/survey to answer over text.
             </DialogContentText>
-            <Link
+            <a
               className={classes.descriptionText}
               href="https://support.twilio.com/hc/en-us/articles/223183008-Formatting-International-Phone-Numbers"
             >
               Please add your +country code before entering
-            </Link>
+            </a>
             {subscribedNumber ? (
               <DialogContentText className={classes.descriptionText}>
                 {`You are subscribed to text alerts at phone number: ${subscribedNumber}`}
@@ -255,10 +235,11 @@ const More = props => {
           </DialogActions>
           <DialogActions>
             <Button
+              component={Link}
+              to="/settings"
               size="medium"
               onClick={() => {
-                handleClose();
-                navigateTo('/settings');
+                setMoreToogle(!moreToggel);
               }}
               variant="contained"
               className={classes.buttons}
@@ -266,10 +247,11 @@ const More = props => {
               Settings
             </Button>
             <Button
+              component={Link}
+              to="/about"
               size="medium"
               onClick={() => {
-                navigateTo('/about');
-                handleClose();
+                setMoreToogle(!moreToggel);
               }}
               variant="contained"
               className={classes.buttons}
@@ -282,7 +264,7 @@ const More = props => {
               variant="contained"
               className={classes.buttons}
               onClick={() => {
-                handleClose();
+                setMoreToogle(!moreToggel);
                 setReminderStatus(true);
                 signOut();
               }}
@@ -318,6 +300,8 @@ More.propTypes = {
   clearResponse: PropTypes.func.isRequired,
   subscribedNumber: PropTypes.string,
   setReminderStatus: PropTypes.func.isRequired,
+  setMoreToogle: PropTypes.func.isRequired,
+  moreToggel: PropTypes.bool.isRequired,
 };
 
 More.defaultProps = {
@@ -329,6 +313,7 @@ const mapState = state => {
     subscribedNumber: state.onboardingReducer.phoneNumber.subscribedNumber,
     error: state.onboardingReducer.phoneNumber.error,
     success: state.onboardingReducer.phoneNumber.success,
+    moreToggel: state.navToggle.moreToggel,
   };
 };
 
@@ -338,6 +323,7 @@ const mapDispatch = dispatch => {
     unsubscribeNumber: (userSession, number) => dispatch(actions.unsubscribeNumber(userSession, number)),
     clearResponse: () => dispatch(actions.clearResponse()),
     setReminderStatus: status => dispatch(actions.setReminderStatus(status)),
+    setMoreToogle: moreToggel => dispatch(actions.setMoreToogle(moreToggel)),
   };
 };
 
