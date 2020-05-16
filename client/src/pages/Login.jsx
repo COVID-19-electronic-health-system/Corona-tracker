@@ -54,9 +54,13 @@ const Login = () => {
     <div className={classes.Login}>
       <div>
         <object title="fullLogo" className={classes.fullLogo} data={FullLogo} type="image/svg+xml" />
-        <Typography variant="h6">{t('login.text')} </Typography>
+        <Typography variant="h6">
+          {t(
+            'loginSection.text.title.yourHealthAppToMonitorFluLikeSymptomsConnectToTelehealthDoctorsInYourAreaAndDiscoverResourcesCloseToYou'
+          )}{' '}
+        </Typography>
         <Button variant="login" className={classes.Button} onClick={onClick}>
-          {t('login.buttonText')}
+          {t('loginSection.text.button.getStarted')}
         </Button>
         <TranslationsMenu />
         <Typography>If on mobile, please disable popups for best use!</Typography>

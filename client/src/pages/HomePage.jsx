@@ -44,10 +44,10 @@ function DiagnosticContainer(props) {
   return (
     <div>
       <Typography variant="h5">
-        {t('hello')} <b>{userSession.loadUserData().profile.name}</b>
+        {t('logSection.text.hello.hello ')} <b>{userSession.loadUserData().profile.name}</b>
       </Typography>
       <Typography variant="h6">
-        {t('todayText')} <b>{today.toLocaleDateString(i18n.languages, dateOptions)}</b>{' '}
+        {t('logSection.text.todayIs.todayIs')} <b>{today.toLocaleDateString(i18n.languages, dateOptions)}</b>{' '}
       </Typography>
       <hr className={classes.hr} />
       <HealthLogToggle />
