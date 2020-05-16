@@ -8,7 +8,6 @@ export function setToggleValue(toggleValue) {
     toggleValue,
   };
 }
-
 export function setDetailData(detailData) {
   return {
     type: SET_DETAIL_DATA,

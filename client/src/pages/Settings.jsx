@@ -5,8 +5,8 @@ import { useHistory } from 'react-router-dom';
 import Link from '@material-ui/core/Link';
 import PropTypes from 'prop-types';
 import { Typography, Grid, Button } from '@material-ui/core';
-import DeleteAllDataDialog from '../components/more/DeleteAllDataDialog';
-import DeletionDialog from '../components/more/DeletionDialog';
+import DeleteAllDataDialog from '../components/deleteComponents/DeleteAllDataDialog';
+import DeletionDialog from '../components/deleteComponents/DeletionDialog';
 import buttonsCss from '../styles/buttons';
 import TranslationsMenu from '../components/common/Translations';
 
