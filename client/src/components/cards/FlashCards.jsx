@@ -11,7 +11,7 @@ import { Typography } from '@material-ui/core';
 import { connect } from 'react-redux';
 import Card from './Card';
 import QuizScoreDialog from './QuizScoreDialog';
-import actions from '../redux/actions/actions';
+import actions from 'redux/actions/actions';
 
 const useStyles = makeStyles({
   FlashCards: {
