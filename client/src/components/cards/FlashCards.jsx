@@ -9,9 +9,9 @@ import { makeStyles } from '@material-ui/core/styles';
 import PropTypes from 'prop-types';
 import { Typography } from '@material-ui/core';
 import { connect } from 'react-redux';
+import actions from 'redux/actions/actions';
 import Card from './Card';
 import QuizScoreDialog from './QuizScoreDialog';
-import actions from 'redux/actions/actions';
 
 const useStyles = makeStyles({
   FlashCards: {

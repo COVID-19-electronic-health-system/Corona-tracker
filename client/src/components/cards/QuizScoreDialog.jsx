@@ -9,8 +9,8 @@ import DialogContent from '@material-ui/core/DialogContent';
 import DialogContentText from '@material-ui/core/DialogContentText';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
-import { TextLogo, Logo } from '../../utils/imgUrl';
 import buttonsCss from 'styles/buttons';
+import { TextLogo, Logo } from '../../utils/imgUrl';
 import actions from '../../redux/actions/actions';
 
 const useStyles = makeStyles({
