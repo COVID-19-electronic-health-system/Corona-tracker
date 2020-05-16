@@ -32,10 +32,10 @@ const HealthLogToggle = props => {
       <div>
         <ButtonGroup size="medium" aria-label="outlined button group">
           <Button onClick={() => setToggleValue('myHealthLog')} className={classes.buttons}>
-            <Trans i18nKey="health.logButton" />
+            <Trans i18nKey="logSection.text.showLog.myHealthLog" />
           </Button>
           <Button onClick={onShowMeMoreClick} className={classes.buttons}>
-            <Trans i18nKey="health.showMoreButton" />
+            <Trans i18nKey="logSection.text.showMore.showMeMore" />
           </Button>
         </ButtonGroup>
       </div>

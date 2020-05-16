@@ -269,7 +269,7 @@ const More = props => {
                 signOut();
               }}
             >
-              {t('signoutButtonText')}
+              {t('moreSection.text.buttonSignOut.signOut')}
             </Button>
           </DialogActions>
         </DialogContent>

@@ -28,7 +28,7 @@ function HealthLogButton() {
     <div>
       <Link className={classes.root} to="/symptomsurvey">
         <Button className={classes.button} variant="contained">
-          {t('surveyButtonText')}
+          {t('logSection.text.takeSurvey.takeASurvey')}
         </Button>
       </Link>
       <Grid container direction="column" alignContent="center">
