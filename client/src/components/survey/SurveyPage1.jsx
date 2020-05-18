@@ -5,7 +5,7 @@ import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import buttonsCss from '../../css/buttons';
 import actions from '../../redux/actions/actions';
-
+import PopUpContactAlert from './PopUpContactAlert';
 const useStyles = makeStyles(theme => ({
   root: {
     padding: '16px 16px 10em 16px',
@@ -99,11 +99,22 @@ const SurveyPage1 = props => {
   }, [survey1, setSurveyPage1, setCompleted, surveyPage]);
 
   const handleAnswer = (val, name) => {
+    console.log(val, name);
     setSurvey1({ ...survey1, [name]: val });
   };
 
   const submitSurveyPage1 = async () => {
     setSurveyPage(surveyPage + 1);
+  };
+  ////////////////////////////////////////////////////////
+  const [open, setOpen] = React.useState(false);
+
+  const handleClickOpen = () => {
+    setOpen(true);
+  };
+
+  const handleClose = () => {
+    setOpen(false);
   };
 
   return (
@@ -180,9 +191,19 @@ const SurveyPage1 = props => {
           </Grid>
         </Grid>
         <Grid item xs={12}>
-          <Button onClick={submitSurveyPage1} variant="outlined" color="secondary" className={classes.continueButton}>
+          {/* <Button onClick={submitSurveyPage1} variant="outlined" color="secondary" className={classes.continueButton}>
             CONTINUE
+          </Button> */}
+          <Button variant="outlined" color="secondary" className={classes.continueButton} onClick={handleClickOpen}>
+            Continue
           </Button>
+          <PopUpContactAlert
+            handleClickOpen={handleClickOpen}
+            handleClose={handleClose}
+            submitSurveyPage1={submitSurveyPage1}
+            open={open}
+            styleButton={classes.continueButton}
+          />
         </Grid>
       </Grid>
     </div>
