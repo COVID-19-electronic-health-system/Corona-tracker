@@ -107,7 +107,7 @@ const SurveyPage1 = props => {
     setSurveyPage(surveyPage + 1);
   };
 
-  //HOOKS AND METHODS for PopUpContactAlert
+  // HOOKS AND METHODS for PopUpContactAlert
   const [open, setOpen] = React.useState(false);
 
   const handleClickOpen = () => {
