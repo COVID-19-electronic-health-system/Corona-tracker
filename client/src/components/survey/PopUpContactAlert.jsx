@@ -13,7 +13,7 @@ const PopUpContactAlert = props => {
   return (
     <div>
       <Button variant="outlined" color="secondary" className={styleButton} onClick={handleClickOpen}>
-        Continue
+        CONTINUE
       </Button>
       <Dialog
         open={open}
