@@ -1,4 +1,9 @@
-import { FETCH_OBSERVATIONS, ADD_OBSERVATION, DELETE_OBSERVATIONS } from '../actions/observations';
+import {
+  FETCH_OBSERVATIONS,
+  ADD_OBSERVATION,
+  DELETE_OBSERVATIONS,
+  CHANGED_OBSERVATIONS,
+} from '../actions/observations';
 
 const initialState = {
   selectedObservation: null,
@@ -21,6 +26,12 @@ const observationsReducer = (state = initialState, action) => {
       };
     }
     case FETCH_OBSERVATIONS: {
+      return {
+        ...state,
+        observations: action.observations,
+      };
+    }
+    case CHANGED_OBSERVATIONS: {
       return {
         ...state,
         observations: action.observations,

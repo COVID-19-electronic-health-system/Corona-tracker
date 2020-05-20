@@ -9,6 +9,8 @@ import {
   UNSUBSCRIBE,
   SUBSCRIBE_ERROR,
   CLEAR_RESPONSE,
+  SET_TEMP_UNIT,
+  FETCH_TEMP_UNIT,
 } from '../actions/onboarding';
 
 export const initialState = {
@@ -25,6 +27,7 @@ export const initialState = {
   disclaimerAnswer: false,
   phoneNumber: { subscribedNumber: null, error: {}, success: '' },
   showOnboard: false,
+  tempUnit: 'fahrenheit',
 };
 
 export const onboardingReducer = (state = initialState, action) => {
@@ -105,6 +108,16 @@ export const onboardingReducer = (state = initialState, action) => {
           error: {},
           success: '',
         },
+      };
+    case SET_TEMP_UNIT:
+      return {
+        ...state,
+        tempUnit: action.nextUnit,
+      };
+    case FETCH_TEMP_UNIT:
+      return {
+        ...state,
+        tempUnit: action.tempUnit,
       };
     default:
       return state;

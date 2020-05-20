@@ -17,7 +17,7 @@ const useStyles = makeStyles(theme => ({
 }));
 
 const AvgTemperature = props => {
-  const { observations } = props;
+  const { observations, tempUnit } = props;
 
   const classes = useStyles();
 
@@ -32,18 +32,24 @@ const AvgTemperature = props => {
   return (
     <Paper className={classes.root}>
       <Typography variant="overline">Average Temperature:</Typography>
-      <Typography variant="body2">{averageTemperature}&#8457;</Typography>
+      {tempUnit === 'fahrenheit' ? (
+        <Typography variant="body2">{averageTemperature}&#8457;</Typography>
+      ) : (
+        <Typography variant="body2">{averageTemperature}&#8451;</Typography>
+      )}
     </Paper>
   );
 };
 
 AvgTemperature.propTypes = {
   observations: PropTypes.arrayOf(Object).isRequired,
+  tempUnit: PropTypes.string.isRequired,
 };
 
 const mapStateToProps = state => {
   return {
     observations: state.observationsReducer.observations,
+    tempUnit: state.onboardingReducer.tempUnit,
   };
 };
 

@@ -1,6 +1,7 @@
 import React from 'react';
 import Grid from '@material-ui/core/Grid';
 import Typography from '@material-ui/core/Typography';
+import { connect } from 'react-redux';
 import { makeStyles } from '@material-ui/core/styles';
 import PropTypes from 'prop-types';
 
@@ -39,7 +40,7 @@ const useStyles = makeStyles(() => ({
 }));
 
 const WeeklyTrackerDay = props => {
-  const { dayData } = props;
+  const { dayData, tempUnit } = props;
   const classes = useStyles();
   const date = new Date(dayData.date);
 
@@ -79,7 +80,9 @@ const WeeklyTrackerDay = props => {
               Temperature:&nbsp;
               <strong>
                 {dayData.physical.feverSeverity
-                  ? `${dayData.physical.feverSeverity} ${String.fromCharCode(176)}F`
+                  ? `${dayData.physical.feverSeverity} ${String.fromCharCode(176)}${
+                      tempUnit === 'fahrenheit' ? 'F' : 'C'
+                    }`
                   : noDataText}
               </strong>
             </Typography>
@@ -111,6 +114,13 @@ const WeeklyTrackerDay = props => {
 
 WeeklyTrackerDay.propTypes = {
   dayData: PropTypes.objectOf(Object).isRequired,
+  tempUnit: PropTypes.string.isRequired,
 };
 
-export default WeeklyTrackerDay;
+const mapState = state => {
+  return {
+    tempUnit: state.onboardingReducer.tempUnit,
+  };
+};
+
+export default connect(mapState)(WeeklyTrackerDay);

@@ -31,9 +31,9 @@ We want to make sure that everyone, regardless of their experience with English,
 
 - [x] **4/17** – Beta Launched
 - [x] **4/28** – Revised pipeline
-- [ ] **5/11** – Fill in all missing information ASAP
-- [ ] **5/12** - Working toward [ROADMAP-TO-MVP goals](../ROADMAP-TO-MVP.md)
-- [ ] **5/18** - Beta ends!
+- [x] **5/18** - Beta ends!
+- [ ] **6/1** – Fill in all missing information ASAP
+- [ ] **6/1** - Working toward [ROADMAP-TO-MVP goals](../ROADMAP-TO-MVP.md)
 
 # FAQ (from Sal)
 

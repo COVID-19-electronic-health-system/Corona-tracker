@@ -23,7 +23,7 @@ import { initialState as onboardingInitialState } from '../redux/reducers/onboar
 
 const useStyles = makeStyles(() => ({
   root: {
-    paddingBottom: '100px',
+    paddingBottom: '15em',
   },
   buttonRight: {
     ...buttonsCss.buttons,
@@ -58,11 +58,18 @@ const useStyles = makeStyles(() => ({
 }));
 
 const OnboardUser = props => {
-  const { setDemographicsComorbiditiesThunk, demographicsComorbidities } = props;
+  const {
+    setDemographicsComorbiditiesThunk,
+    demographicsComorbidities,
+    tempUnit,
+    currentObservations,
+    setTempUnit,
+  } = props;
   const { userSession } = useBlockstack();
   const classes = useStyles();
   const history = useHistory();
   const [formState, setFormState] = useState(onboardingInitialState.demographicsComorbidities);
+  const [tempUnitChoice, setTempUnitChoice] = useState(tempUnit);
 
   useEffect(() => {
     setFormState(demographicsComorbidities);
@@ -77,6 +84,7 @@ const OnboardUser = props => {
   };
 
   const handleSave = async () => {
+    setTempUnit(userSession, currentObservations, tempUnit, tempUnitChoice);
     await setDemographicsComorbiditiesThunk(formState, userSession);
     history.push('/');
   };
@@ -170,7 +178,7 @@ const OnboardUser = props => {
         </Grid>
         <Grid item xs={6}>
           <ButtonGroup>
-            <button
+            <Button
               type="button"
               name="isSmoker"
               value="yes"
@@ -178,8 +186,8 @@ const OnboardUser = props => {
               className={`${classes.buttonLeft} ${formState.isSmoker === 'yes' && classes.selectedButton}`}
             >
               Yes
-            </button>
-            <button
+            </Button>
+            <Button
               type="button"
               name="isSmoker"
               value="no"
@@ -187,7 +195,7 @@ const OnboardUser = props => {
               className={`${classes.buttonRight} ${formState.isSmoker === 'no' && classes.selectedButton}`}
             >
               No
-            </button>
+            </Button>
           </ButtonGroup>
         </Grid>
         <Grid item xs={5}>
@@ -197,7 +205,7 @@ const OnboardUser = props => {
         </Grid>
         <Grid item xs={6}>
           <ButtonGroup>
-            <button
+            <Button
               type="button"
               name="isObese"
               value="yes"
@@ -205,8 +213,8 @@ const OnboardUser = props => {
               className={`${classes.buttonLeft} ${formState.isObese === 'yes' && classes.selectedButton}`}
             >
               Yes
-            </button>
-            <button
+            </Button>
+            <Button
               type="button"
               name="isObese"
               value="no"
@@ -214,7 +222,7 @@ const OnboardUser = props => {
               className={`${classes.buttonRight} ${formState.isObese === 'no' && classes.selectedButton}`}
             >
               No
-            </button>
+            </Button>
           </ButtonGroup>
         </Grid>
         <Grid item xs={5}>
@@ -224,7 +232,7 @@ const OnboardUser = props => {
         </Grid>
         <Grid item xs={6}>
           <ButtonGroup>
-            <button
+            <Button
               type="button"
               name="isAsthmatic"
               value="yes"
@@ -232,8 +240,8 @@ const OnboardUser = props => {
               className={`${classes.buttonLeft} ${formState.isAsthmatic === 'yes' && classes.selectedButton}`}
             >
               Yes
-            </button>
-            <button
+            </Button>
+            <Button
               type="button"
               name="isAsthmatic"
               value="no"
@@ -241,7 +249,32 @@ const OnboardUser = props => {
               className={`${classes.buttonRight} ${formState.isAsthmatic === 'no' && classes.selectedButton}`}
             >
               No
-            </button>
+            </Button>
+          </ButtonGroup>
+        </Grid>
+        <Grid item xs={5}>
+          <Typography variant="body1" color="textSecondary">
+            <b>Preferred unit of measure?</b>
+          </Typography>
+        </Grid>
+        <Grid item xs={6}>
+          <ButtonGroup>
+            <Button
+              type="button"
+              value="celsius"
+              onClick={() => setTempUnitChoice('celsius')}
+              className={`${classes.buttonLeft} ${tempUnitChoice === 'celsius' && classes.selectedButton}`}
+            >
+              &#8451;
+            </Button>
+            <Button
+              type="button"
+              value="fahrenheit"
+              onClick={() => setTempUnitChoice('fahrenheit')}
+              className={`${classes.buttonRight} ${tempUnitChoice === 'fahrenheit' && classes.selectedButton}`}
+            >
+              &#8457;
+            </Button>
           </ButtonGroup>
         </Grid>
         <Grid item xs={12}>
@@ -266,11 +299,16 @@ OnboardUser.propTypes = {
     isObese: PropTypes.string,
     isAsthmatic: PropTypes.string,
   }).isRequired,
+  tempUnit: PropTypes.string.isRequired,
+  currentObservations: PropTypes.arrayOf(Object).isRequired,
+  setTempUnit: PropTypes.func.isRequired,
 };
 
 const mapStateToProps = state => {
   return {
     demographicsComorbidities: state.onboardingReducer.demographicsComorbidities,
+    tempUnit: state.onboardingReducer.tempUnit,
+    currentObservations: state.observationsReducer.observations,
   };
 };
 
@@ -281,6 +319,8 @@ const mapDispatchToProps = dispatch => {
     fetchDemographicsComorbidities: userSession => {
       dispatch(actions.fetchDemographicsComorbidities(userSession));
     },
+    setTempUnit: (userSession, currentObservations, tempUnit, nextTempUnit) =>
+      dispatch(actions.setTempUnit(userSession, currentObservations, tempUnit, nextTempUnit)),
   };
 };
 
