@@ -6,18 +6,26 @@ import DialogActions from '@material-ui/core/DialogActions';
 import DialogContent from '@material-ui/core/DialogContent';
 import DialogContentText from '@material-ui/core/DialogContentText';
 import DialogTitle from '@material-ui/core/DialogTitle';
+import { makeStyles } from '@material-ui/core/styles';
+import buttonsCss from '../../css/buttons';
+
+const useStyles = makeStyles(theme => ({
+  continueButton: {
+    ...buttonsCss.buttons,
+    marginTop: '1vh',
+    width: '50vw',
+    maxWidth: '180px',
+  },
+}));
 
 const PopUpContactAlert = props => {
-  const { open, handleClose, styleButton, submitSurveyPage1, handleClickOpen } = props;
-
+  const classes = useStyles();
+  const [open, setOpen] = React.useState(true);
   return (
     <div>
-      <Button variant="outlined" color="secondary" className={styleButton} onClick={handleClickOpen}>
-        CONTINUE
-      </Button>
       <Dialog
         open={open}
-        onClose={handleClose}
+        onClose={() => setOpen(false)}
         aria-labelledby="alert-dialog-title"
         aria-describedby="alert-dialog-description"
       >
@@ -31,11 +39,13 @@ const PopUpContactAlert = props => {
           </DialogContentText>
         </DialogContent>
         <DialogActions>
-          <Button onClick={handleClose} variant="outlined" color="secondary" className={styleButton}>
+          <Button
+            onClick={() => setOpen(false)}
+            variant="outlined"
+            color="secondary"
+            className={classes.continueButton}
+          >
             Close
-          </Button>
-          <Button onClick={submitSurveyPage1} variant="outlined" color="secondary" className={styleButton} autoFocus>
-            Continue
           </Button>
         </DialogActions>
       </Dialog>
@@ -44,11 +54,7 @@ const PopUpContactAlert = props => {
 };
 
 PopUpContactAlert.propTypes = {
-  handleClickOpen: PropTypes.func.isRequired,
-  open: PropTypes.func.isRequired,
-  handleClose: PropTypes.func.isRequired,
-  submitSurveyPage1: PropTypes.func.isRequired,
-  styleButton: PropTypes.objectOf(Object).isRequired,
+  open: PropTypes.bool.isRequired,
 };
 
 export default PopUpContactAlert;

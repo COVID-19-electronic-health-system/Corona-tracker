@@ -107,17 +107,6 @@ const SurveyPage1 = props => {
     setSurveyPage(surveyPage + 1);
   };
 
-  // HOOKS AND METHODS for PopUpContactAlert
-  const [open, setOpen] = React.useState(false);
-
-  const handleClickOpen = () => {
-    setOpen(true);
-  };
-
-  const handleClose = () => {
-    setOpen(false);
-  };
-
   return (
     <div className={classes.root}>
       <Grid container justify="center" alignItems="center" spacing={4}>
@@ -192,21 +181,15 @@ const SurveyPage1 = props => {
           </Grid>
         </Grid>
         <Grid item xs={12}>
-          {dailyfeeling <= 2.0 && dailySymptomsFeeling <= 2.0 && dailyComparedToYesterday <= 2.0 ? (
-            <PopUpContactAlert
-              handleClickOpen={handleClickOpen}
-              handleClose={handleClose}
-              submitSurveyPage1={submitSurveyPage1}
-              open={open}
-              styleButton={classes.continueButton}
-            />
-          ) : (
-            <Button onClick={submitSurveyPage1} variant="outlined" color="secondary" className={classes.continueButton}>
-              CONTINUE
-            </Button>
-          )}
+          <Button onClick={submitSurveyPage1} variant="outlined" color="secondary" className={classes.continueButton}>
+            CONTINUE
+          </Button>
         </Grid>
       </Grid>
+
+      {dailyfeeling <= 2.0 && dailySymptomsFeeling <= 2.0 && dailyComparedToYesterday <= 2.0 ? (
+        <PopUpContactAlert />
+      ) : null}
     </div>
   );
 };
