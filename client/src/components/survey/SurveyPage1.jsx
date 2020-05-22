@@ -3,8 +3,9 @@ import { makeStyles } from '@material-ui/core/styles';
 import { Typography, Slider, Button, Grid, withStyles } from '@material-ui/core';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
-import buttonsCss from 'styles/buttons';
-import actions from 'redux/actions/actions';
+import buttonsCss from '../../css/buttons';
+import actions from '../../redux/actions/actions';
+import PopUpContactAlert from './PopUpContactAlert';
 
 const useStyles = makeStyles(theme => ({
   root: {
@@ -185,6 +186,10 @@ const SurveyPage1 = props => {
           </Button>
         </Grid>
       </Grid>
+
+      {dailyfeeling <= 2.0 && dailySymptomsFeeling <= 2.0 && dailyComparedToYesterday <= 2.0 ? (
+        <PopUpContactAlert />
+      ) : null}
     </div>
   );
 };
