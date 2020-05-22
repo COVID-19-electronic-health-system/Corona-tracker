@@ -2,7 +2,7 @@ import React from 'react';
 import { mount } from 'enzyme';
 import { Provider } from 'react-redux';
 import configureMockStore from 'redux-mock-store';
-import WeeklyTracker from '../components/WeeklyTracker';
+import WeeklyTracker from '../components/homePage/WeeklyTracker';
 
 const mockStore = configureMockStore();
 

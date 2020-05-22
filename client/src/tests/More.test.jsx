@@ -3,7 +3,7 @@ import { mount } from 'enzyme';
 import configureMockStore from 'redux-mock-store';
 import { Provider } from 'react-redux';
 import { BrowserRouter } from 'react-router-dom';
-import More from '../components/More';
+import More from '../layout/More';
 
 const mockStore = configureMockStore();
 
@@ -15,8 +15,12 @@ test('renders More component', () => {
       success: '',
     },
   };
+  const navToggleState = {
+    moreToggle: false,
+  };
   const store = mockStore({
     onboardingReducer: onboardReducerState,
+    navToggle: navToggleState,
   });
   window.HTMLCanvasElement.prototype.getContext = () => {};
   const wrapper = mount(

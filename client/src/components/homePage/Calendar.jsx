@@ -7,11 +7,11 @@ import Calendar from 'react-calendar';
 import { makeStyles } from '@material-ui/core/styles';
 import PropTypes from 'prop-types';
 import { useTranslation } from 'react-i18next';
-import actions from '../redux/actions/actions';
+import { calendarDotSvg } from 'utils/imgUrl';
+import actions from 'redux/actions/actions';
 import WeeklyTracker from './WeeklyTracker';
 import WeeklyTrackerDay from './WeeklyTrackerDay';
-import '../css/Calendar.css';
-import { calendarDotSvg } from '../utils/imgUrl';
+import 'styles/Calendar.css';
 
 const useStyles = makeStyles(theme => ({
   appCalendar: {

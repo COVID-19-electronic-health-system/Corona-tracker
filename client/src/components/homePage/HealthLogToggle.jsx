@@ -5,10 +5,10 @@ import { Trans } from 'react-i18next';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import { makeStyles } from '@material-ui/core';
+import actions from 'redux/actions/actions';
+import buttonsCss from 'styles/buttons';
+import ShowMeMore from 'pages/ShowMeMore';
 import MyHealthLog from './MyHealthLog';
-import actions from '../redux/actions/actions';
-import buttonsCss from '../css/buttons';
-import ShowMeMore from './showMeMore/ShowMeContainer';
 
 const useStyles = makeStyles({
   buttons: {
@@ -32,10 +32,10 @@ const HealthLogToggle = props => {
       <div>
         <ButtonGroup size="medium" aria-label="outlined button group">
           <Button onClick={() => setToggleValue('myHealthLog')} className={classes.buttons}>
-            <Trans i18nKey="health.logButton" />
+            <Trans i18nKey="logSection.text.showLog.myHealthLog" />
           </Button>
           <Button onClick={onShowMeMoreClick} className={classes.buttons}>
-            <Trans i18nKey="health.showMoreButton" />
+            <Trans i18nKey="logSection.text.showMore.showMeMore" />
           </Button>
         </ButtonGroup>
       </div>

@@ -10,6 +10,7 @@ import {
 } from './observations';
 import { selectDate } from './calendar';
 import { setToggleValue, setDetailData, deleteDetailData } from './healthToggle';
+import { setMoreToogle } from './navToggle';
 import {
   setCompleted,
   setSurveyPage,
@@ -70,6 +71,7 @@ const actions = {
   resetQuizScore,
   setQuizScore,
   updateQuizScore,
+  setMoreToogle,
 };
 
 export default actions;
