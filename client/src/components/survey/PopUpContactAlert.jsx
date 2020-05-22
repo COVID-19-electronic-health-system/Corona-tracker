@@ -6,7 +6,7 @@ import DialogContent from '@material-ui/core/DialogContent';
 import DialogContentText from '@material-ui/core/DialogContentText';
 import DialogTitle from '@material-ui/core/DialogTitle';
 import { makeStyles } from '@material-ui/core/styles';
-import buttonsCss from '../../css/buttons';
+import buttonsCss from 'styles/buttons';
 
 const useStyles = makeStyles({
   continueButton: {
