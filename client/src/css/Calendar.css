@@ -117,7 +117,7 @@
   text-align: center;
   padding: 0.75em 0.5em;
   background: none;
-  color: white;
+  color: black;
 }
 
 .react-calendar__tile:disabled {
@@ -126,17 +126,17 @@
 
 .react-calendar__tile:enabled:hover,
 .react-calendar__tile:enabled:focus {
-  background-color: #e6e6e6;
+  background-color: #2869ca;
 }
 
 .react-calendar__tile--now {
-  background-color: #ffff76;
+  background-color: #2869ca;
   color: white;
 }
 
 .react-calendar__tile--now:enabled:hover,
 .react-calendar__tile--now:enabled:focus {
-  background-color: #ffffa9;
+  background-color: #2869ca;
   color: white;
 }
 
