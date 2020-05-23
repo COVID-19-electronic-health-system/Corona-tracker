@@ -22,10 +22,7 @@ function Copyright() {
 
 const useStyles = makeStyles(theme => ({
   root: {
-    [theme.breakpoints.down('sm')]: {
-      paddingBottom: '15em',
-    },
-    paddingBottom: '10em',
+    paddingBottom: theme.spacing(8),
   },
   icon: {
     marginRight: theme.spacing(2),

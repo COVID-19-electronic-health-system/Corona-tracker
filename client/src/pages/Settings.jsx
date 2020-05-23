@@ -5,10 +5,10 @@ import { useHistory } from 'react-router-dom';
 import Link from '@material-ui/core/Link';
 import PropTypes from 'prop-types';
 import { Typography, Grid, Button } from '@material-ui/core';
-import DeleteAllDataDialog from './DeleteAllDataDialog';
-import DeletionDialog from './DeletionDialog';
-import buttonsCss from '../css/buttons';
-import TranslationsMenu from './Translations';
+import DeleteAllDataDialog from '../components/deleteComponents/DeleteAllDataDialog';
+import DeletionDialog from '../components/deleteComponents/DeletionDialog';
+import buttonsCss from '../styles/buttons';
+import TranslationsMenu from '../components/common/Translations';
 
 const useStyles = makeStyles(() => ({
   root: {

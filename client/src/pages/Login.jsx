@@ -3,9 +3,9 @@ import { Button, Typography } from '@material-ui/core';
 import { useConnect } from '@blockstack/connect';
 import { useTranslation } from 'react-i18next';
 import { makeStyles } from '@material-ui/core/styles';
-import TranslationsMenu from './Translations';
-import buttonsCss from '../css/buttons';
-import { FullLogo } from '../utils/imgUrl';
+import TranslationsMenu from 'components/common/Translations';
+import buttonsCss from 'styles/buttons';
+import { FullLogo } from 'utils/imgUrl';
 
 const useStyles = makeStyles(theme => ({
   Login: {
@@ -54,9 +54,13 @@ const Login = () => {
     <div className={classes.Login}>
       <div>
         <object title="fullLogo" className={classes.fullLogo} data={FullLogo} type="image/svg+xml" />
-        <Typography variant="h6">{t('login.text')} </Typography>
+        <Typography variant="h6">
+          {t(
+            'loginSection.text.title.yourHealthAppToMonitorFluLikeSymptomsConnectToTelehealthDoctorsInYourAreaAndDiscoverResourcesCloseToYou'
+          )}{' '}
+        </Typography>
         <Button variant="login" className={classes.Button} onClick={onClick}>
-          {t('login.buttonText')}
+          {t('loginSection.text.button.getStarted')}
         </Button>
         <TranslationsMenu />
         <Typography>If on mobile, please disable popups for best use!</Typography>

@@ -3,7 +3,7 @@ import { mount } from 'enzyme';
 import { Provider } from 'react-redux';
 import configureMockStore from 'redux-mock-store';
 import thunk from 'redux-thunk';
-import SurveyPage1 from '../../components/survey/SurveyPage1';
+import SurveyPage1 from 'components/survey/SurveyPage1';
 
 const mockStore = configureMockStore([thunk]);
 
