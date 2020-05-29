@@ -14,8 +14,8 @@ import {
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import { useBlockstack } from 'react-blockstack';
-import buttonsCss from '../../css/buttons';
-import actions from '../../redux/actions/actions';
+import buttonsCss from 'styles/buttons';
+import actions from 'redux/actions/actions';
 
 const buttonWidth = '75px';
 const buttonHeight = '35px';

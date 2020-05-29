@@ -6,9 +6,9 @@ import { Dialog, DialogActions, DialogContent, DialogContentText, Button, Typogr
 import { connect } from 'react-redux';
 import { useHistory } from 'react-router-dom';
 import PropTypes from 'prop-types';
-import HealthLogToggle from './HealthLogToggle';
+import HealthLogToggle from 'components/homePage/HealthLogToggle';
 import actions from '../redux/actions/actions';
-import buttonsCss from '../css/buttons';
+import buttonsCss from '../styles/buttons';
 
 const useStyles = makeStyles({
   hr: {
@@ -44,10 +44,10 @@ function DiagnosticContainer(props) {
   return (
     <div>
       <Typography variant="h5">
-        {t('hello')} <b>{userSession.loadUserData().profile.name}</b>
+        {t('logSection.text.hello.hello ')} <b>{userSession.loadUserData().profile.name}</b>
       </Typography>
       <Typography variant="h6">
-        {t('todayText')} <b>{today.toLocaleDateString(i18n.languages, dateOptions)}</b>{' '}
+        {t('logSection.text.todayIs.todayIs')} <b>{today.toLocaleDateString(i18n.languages, dateOptions)}</b>{' '}
       </Typography>
       <hr className={classes.hr} />
       <HealthLogToggle />

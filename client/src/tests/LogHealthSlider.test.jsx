@@ -1,6 +1,6 @@
 import React from 'react';
 import renderer from 'react-test-renderer';
-import LogHealthSlider from '../components/LogHealthSlider';
+import LogHealthSlider from 'components/homePage/LogHealthSlider';
 
 jest.mock('react-router-dom', () => ({
   useHistory: () => ({

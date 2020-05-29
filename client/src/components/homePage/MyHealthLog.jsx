@@ -3,9 +3,9 @@ import Button from '@material-ui/core/Button';
 import { Link } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 import { Grid, makeStyles } from '@material-ui/core';
+import buttonsCss from 'styles/buttons';
 import AppCalendar from './Calendar';
 import LogHealthSlider from './LogHealthSlider';
-import buttonsCss from '../css/buttons';
 
 const useStyles = makeStyles({
   root: {
@@ -28,7 +28,7 @@ function HealthLogButton() {
     <div>
       <Link className={classes.root} to="/symptomsurvey">
         <Button className={classes.button} variant="contained">
-          {t('surveyButtonText')}
+          {t('logSection.text.takeSurvey.takeASurvey')}
         </Button>
       </Link>
       <Grid container direction="column" alignContent="center">

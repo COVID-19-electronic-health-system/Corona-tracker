@@ -12,8 +12,8 @@ import { makeStyles } from '@material-ui/core/styles';
 import { useBlockstack } from 'react-blockstack';
 import PropTypes from 'prop-types';
 import { useHistory } from 'react-router-dom';
-import actions from '../redux/actions/actions';
-import { TextLogo, Logo } from '../utils/imgUrl';
+import actions from 'redux/actions/actions';
+import { TextLogo, Logo } from 'utils/imgUrl';
 
 const useStyles = makeStyles({
   logo: {
@@ -25,10 +25,16 @@ const useStyles = makeStyles({
     height: '50px',
   },
 });
-const DeletionDialog = props => {
+const DeleteAllDataDialog = props => {
   const { userSession } = useBlockstack();
-  const { deleteObservations, deleteDetailData, setShowDeletionDialog, setReminderStatus } = props;
+  const { setShowDeletionDialog, deleteUserData, setReminderStatus } = props;
   const history = useHistory();
+
+  const deleteAllData = () => {
+    // deletes all data including observation data
+    deleteUserData(userSession);
+    history.push('/');
+  };
 
   const classes = useStyles();
   return (
@@ -40,17 +46,15 @@ const DeletionDialog = props => {
         </DialogTitle>
         <DialogContent>
           <DialogContent align="left" id="disclaimer-text">
-            <DialogContentText>Are you sure you want to delete all of your observation data?</DialogContentText>
+            <DialogContentText>Are you sure you want to delete all of your user data?</DialogContentText>
           </DialogContent>
           <DialogActions>
             <Button
               variant="outlined"
               onClick={() => {
-                deleteObservations(userSession);
-                deleteDetailData();
+                deleteAllData();
                 window.localStorage.setItem('surveyCompleted', 'false');
                 setReminderStatus(true);
-                history.push('/');
               }}
             >
               Yes
@@ -65,10 +69,9 @@ const DeletionDialog = props => {
   );
 };
 
-DeletionDialog.propTypes = {
-  deleteObservations: PropTypes.func.isRequired,
-  deleteDetailData: PropTypes.func.isRequired,
+DeleteAllDataDialog.propTypes = {
   setShowDeletionDialog: PropTypes.func.isRequired,
+  deleteUserData: PropTypes.func.isRequired,
   setReminderStatus: PropTypes.func.isRequired,
 };
 
@@ -80,10 +83,9 @@ const mapStateToProps = (state, ownProps) => {
 
 const mapDispatchToProps = dispatch => {
   return {
-    deleteObservations: userSession => dispatch(actions.deleteObservations(userSession)),
-    deleteDetailData: () => dispatch(actions.deleteDetailData()),
+    deleteUserData: userSession => dispatch(actions.deleteUserDataThunk(userSession)),
     setReminderStatus: status => dispatch(actions.setReminderStatus(status)),
   };
 };
 
-export default connect(mapStateToProps, mapDispatchToProps)(DeletionDialog);
+export default connect(mapStateToProps, mapDispatchToProps)(DeleteAllDataDialog);

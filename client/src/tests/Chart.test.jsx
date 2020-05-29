@@ -3,7 +3,7 @@ import { mount } from 'enzyme';
 import { Provider } from 'react-redux';
 import configureMockStore from 'redux-mock-store';
 import thunk from 'redux-thunk';
-import Chart from '../components/Chart';
+import Chart from 'components/showMeMore/Chart';
 
 const mockStore = configureMockStore([thunk]);
 

@@ -3,13 +3,13 @@ import Button from '@material-ui/core/Button';
 import ButtonGroup from '@material-ui/core/ButtonGroup';
 import { makeStyles } from '@material-ui/core/styles';
 import { Grid } from '@material-ui/core';
-import Observations from './Observations';
-import AvgTemperature from '../AvgTemperature';
-import Chart from '../Chart';
-import chartType from '../../utils/chartType';
-import BehavioralChart from '../behavior/chart/BehavioralChart';
-import buttonsCss from '../../css/buttons';
-import Download from './Download';
+import AvgTemperature from 'components/showMeMore/AvgTemperature';
+import chartType from 'utils/chartType';
+import buttonsCss from 'styles/buttons';
+import Observations from '../components/showMeMore/Observations';
+import Chart from '../components/showMeMore/Chart';
+import BehavioralChart from '../components/showMeMore/BehavioralChart';
+import Download from '../components/showMeMore/Download';
 
 const useStyles = makeStyles(theme => ({
   root: {
