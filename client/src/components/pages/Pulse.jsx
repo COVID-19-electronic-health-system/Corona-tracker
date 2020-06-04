@@ -8,10 +8,10 @@ const useStyles = makeStyles(theme => ({
     margin: theme.spacing(1, 0, 12, 0),
     padding: theme.spacing(1),
   },
-  pulse:{
-    fontSize: "7em",
-    color: "white"
-  }
+  pulse: {
+    fontSize: '7em',
+    color: 'white',
+  },
 }));
 
 const Pulse = () => {
@@ -19,7 +19,9 @@ const Pulse = () => {
   return (
     <div>
       <Grid container direction="column" className={classes.root}>
-        <Grid item xs={12}><FavoriteBorderIcon className={classes.pulse}/></Grid>
+        <Grid item xs={12}>
+          <FavoriteBorderIcon className={classes.pulse} />
+        </Grid>
         <Typography variant="h4">Let&#39;s check your pulse!</Typography>
         <Typography variant="subtitle1" color="textSecondary">
           {' '}

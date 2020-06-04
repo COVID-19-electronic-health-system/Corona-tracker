@@ -24,8 +24,8 @@ const useStyles = makeStyles(theme => ({
     color: 'white',
     marginTop: '10px',
   },
-  pulse:{
-    fontSize: '40px'
+  pulse: {
+    fontSize: '40px',
   },
   spirometer: {
     fontSize: '40px',

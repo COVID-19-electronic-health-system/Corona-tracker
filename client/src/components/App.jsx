@@ -18,7 +18,7 @@ import Settings from 'components/pages/Settings';
 import ScrollToTop from './layout/ScrollToTop';
 import Disclaimer from './layout/Disclaimer';
 import Survey from './pages/Survey';
-import Pulse from "./pages/Pulse"
+import Pulse from './pages/Pulse';
 
 ReactBlockstack({ appConfig });
 

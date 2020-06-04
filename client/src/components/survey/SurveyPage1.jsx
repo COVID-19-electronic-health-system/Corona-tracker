@@ -9,7 +9,7 @@ import PopUpContactAlert from './PopUpContactAlert';
 
 const useStyles = makeStyles(theme => ({
   root: {
-    padding: theme.spacing(2,2,12,2),
+    padding: theme.spacing(2, 2, 12, 2),
     alignItems: 'center',
     justifyContent: 'center',
     marginLeft: 'auto',

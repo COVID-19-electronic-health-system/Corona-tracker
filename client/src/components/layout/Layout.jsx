@@ -2,9 +2,9 @@ import React from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import { useBlockstack } from 'react-blockstack';
 import PropTypes from 'prop-types';
-import NavBar from './NavBar';
 import Login from 'components/pages/Login';
 import { FullLogo } from 'utils/imgUrl';
+import NavBar from './NavBar';
 
 const useStyles = makeStyles(theme => ({
   '@global': {
