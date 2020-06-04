@@ -11,7 +11,7 @@ import SettingsIcon from '@material-ui/icons/Settings';
 import PropTypes from 'prop-types';
 import actions from 'redux/actions/actions';
 import AddCircleOutlineIcon from '@material-ui/icons/AddCircleOutline';
-import Settings from './Settings';
+import SettingsButton from './SettingsButton';
 import More from './More';
 
 const useStyles = makeStyles(theme => ({
@@ -86,7 +86,7 @@ const NavBar = props => {
             </Grid>
           </Button>
         </Toolbar>
-        <Settings />
+        <SettingsButton />
         <More />
       </AppBar>
     </div>

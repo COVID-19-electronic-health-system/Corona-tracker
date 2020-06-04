@@ -103,7 +103,7 @@ Alert.defaultProps = {
   children: '',
 };
 
-const Settings = props => {
+const SettingsButton = props => {
   const {
     setReminderStatus,
     setSubscribedNumber,
@@ -288,7 +288,7 @@ const Settings = props => {
   );
 };
 
-Settings.propTypes = {
+SettingsButton.propTypes = {
   setSubscribedNumber: PropTypes.func.isRequired,
   unsubscribeNumber: PropTypes.func.isRequired,
   error: PropTypes.shape({
@@ -304,7 +304,7 @@ Settings.propTypes = {
   settingsToggle: PropTypes.bool.isRequired,
 };
 
-Settings.defaultProps = {
+SettingsButton.defaultProps = {
   subscribedNumber: null,
 };
 
@@ -327,4 +327,4 @@ const mapDispatch = dispatch => {
   };
 };
 
-export default connect(mapState, mapDispatch)(Settings);
+export default connect(mapState, mapDispatch)(SettingsButton);
