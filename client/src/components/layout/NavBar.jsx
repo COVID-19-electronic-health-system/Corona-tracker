@@ -7,10 +7,12 @@ import { connect } from 'react-redux';
 import FeaturedPlayListOutlinedIcon from '@material-ui/icons/FeaturedPlayListOutlined';
 import StarBorderIcon from '@material-ui/icons/StarBorder';
 import LocationOnOutlinedIcon from '@material-ui/icons/LocationOnOutlined';
-import MoreHorizIcon from '@material-ui/icons/MoreHoriz';
-import More from 'layout/More';
+import SettingsIcon from '@material-ui/icons/Settings';
+import Settings from './Settings';
 import PropTypes from 'prop-types';
 import actions from 'redux/actions/actions';
+import AddCircleOutlineIcon from '@material-ui/icons/AddCircleOutline';
+import More from './More';
 
 const useStyles = makeStyles(theme => ({
   // making the style of NavBar
@@ -30,9 +32,11 @@ const useStyles = makeStyles(theme => ({
       transform: 'scale(1.1)',
       backgroundColor: 'transparent',
     },
-    margin: theme.spacing(0, 1, 0, 1),
     [theme.breakpoints.up('sm')]: {
       margin: theme.spacing(0, 5, 0, 5),
+    },
+    [theme.breakpoints.down('321px')]: {
+      margin: theme.spacing(0),
     },
   },
   icons: {
@@ -41,7 +45,7 @@ const useStyles = makeStyles(theme => ({
 }));
 
 const NavBar = props => {
-  const { setMoreToogle, setToggleValue } = props;
+  const { setMoreToogle, setToggleValue, setSettingsToggle, moreToggel, settingsToggle } = props;
   const classes = useStyles();
   return (
     // added to buttons when:
@@ -62,19 +66,27 @@ const NavBar = props => {
               <Typography variant="caption">education</Typography>
             </Grid>
           </Button>
+          <Button onClick={() => setMoreToogle(!moreToggel)} className={classes.buttons}>
+            <Grid container direction="column" alignItems="center">
+              <AddCircleOutlineIcon className={classes.icons} />
+              <Typography variant="caption">more &#43;</Typography>
+            </Grid>
+          </Button>
           <Button component={Link} to="/map" className={classes.buttons}>
             <Grid container direction="column" alignItems="center">
               <LocationOnOutlinedIcon className={classes.icons} />
               <Typography variant="caption">map</Typography>
             </Grid>
           </Button>
-          <Button onClick={() => setMoreToogle(true)} className={classes.buttons}>
+
+          <Button onClick={() => setSettingsToggle(!settingsToggle)} className={classes.buttons}>
             <Grid container direction="column" alignItems="center">
-              <MoreHorizIcon className={classes.icons} />
-              <Typography variant="caption">more</Typography>
+              <SettingsIcon className={classes.icons} />
+              <Typography variant="caption">settings</Typography>
             </Grid>
           </Button>
         </Toolbar>
+        <Settings />
         <More />
       </AppBar>
     </div>
@@ -83,12 +95,22 @@ const NavBar = props => {
 NavBar.propTypes = {
   setMoreToogle: PropTypes.func.isRequired,
   setToggleValue: PropTypes.func.isRequired,
+  setSettingsToggle: PropTypes.func.isRequired,
+  moreToggel: PropTypes.bool.isRequired,
+  settingsToggle: PropTypes.bool.isRequired,
+};
+const mapStateToProps = state => {
+  return {
+    moreToggel: state.navToggle.moreToggel,
+    settingsToggle: state.navToggle.settingsToggle,
+  };
 };
 const mapDispatchToProps = dispatch => {
   return {
     setMoreToogle: moreToggel => dispatch(actions.setMoreToogle(moreToggel)),
     setToggleValue: toggleValue => dispatch(actions.setToggleValue(toggleValue)),
+    setSettingsToggle: settingsToggle => dispatch(actions.setSettingsToggle(settingsToggle)),
   };
 };
 
-export default connect(null, mapDispatchToProps)(NavBar);
+export default connect(mapStateToProps, mapDispatchToProps)(NavBar);

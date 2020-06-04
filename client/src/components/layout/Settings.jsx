@@ -103,7 +103,7 @@ Alert.defaultProps = {
   children: '',
 };
 
-const More = props => {
+const Settings = props => {
   const {
     setReminderStatus,
     setSubscribedNumber,
@@ -112,8 +112,8 @@ const More = props => {
     clearResponse,
     error,
     success,
-    setMoreToogle,
-    moreToggel,
+    setSettingsToggle,
+    settingsToggle,
   } = props;
   const [openSnackbar, setOpenSnackbar] = useState(false);
   const [snackbar, setSnackbar] = useState({});
@@ -173,13 +173,13 @@ const More = props => {
     <div>
       <Dialog
         className={classes.dialog}
-        open={moreToggel}
-        onClose={() => setMoreToogle(!moreToggel)}
+        open={settingsToggle}
+        onClose={() => setSettingsToggle(!settingsToggle)}
         aria-labelledby="alert-dialog-title"
         aria-describedby="alert-dialog-description"
       >
         <DialogTitle id="alert-dialog-title" className={classes.text}>
-          More
+          Settings
         </DialogTitle>
         <DialogContent className={classes.dialogContent}>
           <DialogContent>
@@ -239,7 +239,7 @@ const More = props => {
               to="/settings"
               size="medium"
               onClick={() => {
-                setMoreToogle(!moreToggel);
+                setSettingsToggle(!settingsToggle);
               }}
               variant="contained"
               className={classes.buttons}
@@ -251,7 +251,7 @@ const More = props => {
               to="/about"
               size="medium"
               onClick={() => {
-                setMoreToogle(!moreToggel);
+                setSettingsToggle(!settingsToggle);
               }}
               variant="contained"
               className={classes.buttons}
@@ -264,7 +264,7 @@ const More = props => {
               variant="contained"
               className={classes.buttons}
               onClick={() => {
-                setMoreToogle(!moreToggel);
+                setSettingsToggle(!settingsToggle);
                 setReminderStatus(true);
                 signOut();
               }}
@@ -288,7 +288,7 @@ const More = props => {
   );
 };
 
-More.propTypes = {
+Settings.propTypes = {
   setSubscribedNumber: PropTypes.func.isRequired,
   unsubscribeNumber: PropTypes.func.isRequired,
   error: PropTypes.shape({
@@ -300,11 +300,11 @@ More.propTypes = {
   clearResponse: PropTypes.func.isRequired,
   subscribedNumber: PropTypes.string,
   setReminderStatus: PropTypes.func.isRequired,
-  setMoreToogle: PropTypes.func.isRequired,
-  moreToggel: PropTypes.bool.isRequired,
+  setSettingsToggle: PropTypes.func.isRequired,
+  settingsToggle: PropTypes.bool.isRequired,
 };
 
-More.defaultProps = {
+Settings.defaultProps = {
   subscribedNumber: null,
 };
 
@@ -313,7 +313,7 @@ const mapState = state => {
     subscribedNumber: state.onboardingReducer.phoneNumber.subscribedNumber,
     error: state.onboardingReducer.phoneNumber.error,
     success: state.onboardingReducer.phoneNumber.success,
-    moreToggel: state.navToggle.moreToggel,
+    settingsToggle: state.navToggle.settingsToggle,
   };
 };
 
@@ -323,8 +323,8 @@ const mapDispatch = dispatch => {
     unsubscribeNumber: (userSession, number) => dispatch(actions.unsubscribeNumber(userSession, number)),
     clearResponse: () => dispatch(actions.clearResponse()),
     setReminderStatus: status => dispatch(actions.setReminderStatus(status)),
-    setMoreToogle: moreToggel => dispatch(actions.setMoreToogle(moreToggel)),
+    setSettingsToggle: settingsToggle => dispatch(actions.setSettingsToggle(settingsToggle)),
   };
 };
 
-export default connect(mapState, mapDispatch)(More);
+export default connect(mapState, mapDispatch)(Settings);

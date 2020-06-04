@@ -5,19 +5,20 @@ import { connect } from 'react-redux';
 import ReactBlockstack, { useBlockstack, didConnect, useFile } from 'react-blockstack';
 import Container from '@material-ui/core/Container';
 import PropTypes from 'prop-types';
-import Layout from 'layout/Layout';
-import Map from 'pages/Map';
-import DiagnosticContainer from 'pages/HomePage';
+import Layout from 'components/layout/Layout';
+import Map from 'components/pages/Map';
+import DiagnosticContainer from 'components/pages/HomePage';
 import { appConfig } from 'utils/constants';
-import FactQuizContainer from 'pages/Education';
-import OnboardUser from 'pages/OnboardUser';
-import About from 'pages/About';
-import NotFoundPage from 'pages/NotFoundPage';
+import FactQuizContainer from 'components/pages/Education';
+import OnboardUser from 'components/pages/OnboardUser';
+import About from 'components/pages/About';
+import NotFoundPage from 'components/pages/NotFoundPage';
 import actions from 'redux/actions/actions';
-import Settings from 'pages/Settings';
-import ScrollToTop from '../layout/ScrollToTop';
-import Disclaimer from '../layout/Disclaimer';
-import Survey from '../pages/Survey';
+import Settings from 'components/pages/Settings';
+import ScrollToTop from './layout/ScrollToTop';
+import Disclaimer from './layout/Disclaimer';
+import Survey from './pages/Survey';
+import Pulse from "./pages/Pulse"
 
 ReactBlockstack({ appConfig });
 
@@ -107,6 +108,7 @@ const App = props => {
             <Route path="/healthlog" />
             <Route path="/education" component={FactQuizContainer} />
             <Route path="/map" component={Map} />
+            <Route path="/pulse" component={Pulse} />
             <Route path="/settings" component={Settings} />
             <Route path="/about" component={About} />
             <Route path="/404" component={NotFoundPage} />

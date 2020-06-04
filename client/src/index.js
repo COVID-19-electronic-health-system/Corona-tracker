@@ -9,7 +9,7 @@ import logger from 'redux-logger';
 import * as serviceWorker from 'helpers/serviceWorker';
 import rootReducer from 'redux/reducers/rootReducer';
 import App from 'components/App';
-import Loading from 'layout/Loding';
+import Loading from 'components/layout/Loding';
 import 'helpers/i18n';
 // creating the store, connecting to the reducer and applying middleware with thunk
 const store = createStore(rootReducer, applyMiddleware(thunk, logger));

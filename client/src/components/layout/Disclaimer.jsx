@@ -15,8 +15,8 @@ import { useTranslation } from 'react-i18next';
 import PropTypes from 'prop-types';
 import { useHistory } from 'react-router-dom';
 import Link from '@material-ui/core/Link';
-import actions from '../redux/actions/actions';
-import { TextLogo, Logo } from '../utils/imgUrl';
+import actions from '../../redux/actions/actions';
+import { TextLogo, Logo } from '../../utils/imgUrl';
 
 const useStyles = makeStyles({
   logo: {
