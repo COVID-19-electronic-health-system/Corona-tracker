@@ -10,13 +10,13 @@ import HealthLogToggle from 'components/homePage/HealthLogToggle';
 import actions from '../redux/actions/actions';
 import buttonsCss from '../styles/buttons';
 
-const useStyles = makeStyles(theme=>({
+const useStyles = makeStyles(theme => ({
   hr: {
     width: '100px',
     border: '1px black solid',
   },
   button: {
-    width:theme.spacing(20),
+    width: theme.spacing(20),
     ...buttonsCss.buttons,
   },
   dialog: {
@@ -45,10 +45,12 @@ function DiagnosticContainer(props) {
   return (
     <div>
       <Typography variant="h5">
-      <Trans i18nKey="logSection.text.hello.hello "/><b>{userSession.loadUserData().profile.name}</b>
+        <Trans i18nKey="logSection.text.hello.hello " />
+        <b>{userSession.loadUserData().profile.name}</b>
       </Typography>
       <Typography variant="h6">
-      <Trans i18nKey="logSection.text.todayIs.todayIs"/>: <b>{today.toLocaleDateString(i18n.languages, dateOptions)}</b>{' '}
+        <Trans i18nKey="logSection.text.todayIs.todayIs" />:{' '}
+        <b>{today.toLocaleDateString(i18n.languages, dateOptions)}</b>{' '}
       </Typography>
       <hr className={classes.hr} />
       <HealthLogToggle />
@@ -59,7 +61,9 @@ function DiagnosticContainer(props) {
         aria-describedby="alert-dialog-description"
       >
         <DialogContent className={classes.dialog}>
-          <DialogContentText id="alert-dialog-description"><Trans i18nKey="logSection.text.takeSurvey.takeASurvey"/> </DialogContentText>
+          <DialogContentText id="alert-dialog-description">
+            <Trans i18nKey="logSection.text.takeSurvey.takeASurvey" />{' '}
+          </DialogContentText>
           <DialogActions className={classes.buttonContainer}>
             <Button
               className={classes.button}
@@ -69,10 +73,10 @@ function DiagnosticContainer(props) {
                 history.push('/symptomsurvey');
               }}
             >
-              <Trans i18nKey="logSection.text.takeSurvey.takeASurvey"/>
+              <Trans i18nKey="logSection.text.takeSurvey.takeASurvey" />
             </Button>
             <Button onClick={handleClose} color="default">
-              <Trans i18nKey="surveySection.text.close.close"/>
+              <Trans i18nKey="surveySection.text.close.close" />
             </Button>
           </DialogActions>
         </DialogContent>

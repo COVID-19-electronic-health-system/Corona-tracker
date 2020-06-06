@@ -50,7 +50,7 @@ const WeeklyTrackerDay = props => {
       <Grid container spacing={1} alignItems="center">
         <Grid item xs={1}>
           <Typography variant="body1" className={`${classes.bold} ${classes.rotated}`}>
-            <Trans i18nKey="logSection.text.surveyDataSliderSelected.selected"/>
+            <Trans i18nKey="logSection.text.surveyDataSliderSelected.selected" />
           </Typography>
         </Grid>
         <Grid item xs={2} container>
@@ -67,7 +67,9 @@ const WeeklyTrackerDay = props => {
         </Grid>
         <Grid item xs={3} sm={4} container>
           <Grid item xs={12}>
-            <Typography variant="body2"><Trans i18nKey="logSection.text.surveyDataSliderYouFelt.youSaidYouFelt"/></Typography>
+            <Typography variant="body2">
+              <Trans i18nKey="logSection.text.surveyDataSliderYouFelt.youSaidYouFelt" />
+            </Typography>
           </Grid>
           <Grid item xs={12}>
             <Typography variant="body1" className={`${classes.bold} ${classes.feeling}`}>
@@ -78,7 +80,8 @@ const WeeklyTrackerDay = props => {
         <Grid item xs={6} sm={5} container className={classes.textAlignLeft}>
           <Grid item xs={12}>
             <Typography variant="body2">
-            <Trans i18nKey="logSection.text.surveyDataSliderTemperature.temperature"/>:&nbsp;
+              <Trans i18nKey="logSection.text.surveyDataSliderTemperature.temperature" />
+              :&nbsp;
               <strong>
                 {dayData.physical.feverSeverity
                   ? `${dayData.physical.feverSeverity} ${String.fromCharCode(176)}${
@@ -90,7 +93,8 @@ const WeeklyTrackerDay = props => {
           </Grid>
           <Grid item xs={12}>
             <Typography variant="body2">
-            <Trans i18nKey="logSection.text.surveyDataSliderSymptoms.symptoms"/>&nbsp;
+              <Trans i18nKey="logSection.text.surveyDataSliderSymptoms.symptoms" />
+              &nbsp;
               <strong>
                 {dayData.physical.dailySymptomsFeeling ? `${dayData.physical.dailySymptomsFeeling}/5` : noDataText}
               </strong>
@@ -98,7 +102,8 @@ const WeeklyTrackerDay = props => {
           </Grid>
           <Grid item xs={12}>
             <Typography variant="body2" className={classes.ellipsis}>
-            <Trans i18nKey="logSection.text.surveyDataSliderComments.comments"/>&nbsp;
+              <Trans i18nKey="logSection.text.surveyDataSliderComments.comments" />
+              &nbsp;
               <strong>{dayData.nonPhysical.openComment || noDataText}</strong>
             </Typography>
           </Grid>
