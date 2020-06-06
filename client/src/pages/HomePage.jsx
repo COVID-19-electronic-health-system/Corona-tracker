@@ -1,6 +1,6 @@
 import React from 'react';
 import { useBlockstack } from 'react-blockstack';
-import { useTranslation } from 'react-i18next';
+import { useTranslation, Trans } from 'react-i18next';
 import { makeStyles } from '@material-ui/core/styles';
 import { Dialog, DialogActions, DialogContent, DialogContentText, Button, Typography } from '@material-ui/core';
 import { connect } from 'react-redux';
@@ -10,18 +10,19 @@ import HealthLogToggle from 'components/homePage/HealthLogToggle';
 import actions from '../redux/actions/actions';
 import buttonsCss from '../styles/buttons';
 
-const useStyles = makeStyles({
+const useStyles = makeStyles(theme=>({
   hr: {
     width: '100px',
     border: '1px black solid',
   },
   button: {
+    width:theme.spacing(20),
     ...buttonsCss.buttons,
   },
   dialog: {
     backgroundImage: 'linear-gradient(#d7e1fa, #bbcef9)',
   },
-});
+}));
 
 const dateOptions = {
   weekday: 'long',
@@ -38,16 +39,16 @@ function DiagnosticContainer(props) {
   const classes = useStyles();
   const { userSession } = useBlockstack();
   const today = new Date();
-  const { t, i18n } = useTranslation();
+  const { i18n } = useTranslation();
   const history = useHistory();
 
   return (
     <div>
       <Typography variant="h5">
-        {t('logSection.text.hello.hello ')} <b>{userSession.loadUserData().profile.name}</b>
+      <Trans i18nKey="logSection.text.hello.hello "/><b>{userSession.loadUserData().profile.name}</b>
       </Typography>
       <Typography variant="h6">
-        {t('logSection.text.todayIs.todayIs')} <b>{today.toLocaleDateString(i18n.languages, dateOptions)}</b>{' '}
+      <Trans i18nKey="logSection.text.todayIs.todayIs"/>: <b>{today.toLocaleDateString(i18n.languages, dateOptions)}</b>{' '}
       </Typography>
       <hr className={classes.hr} />
       <HealthLogToggle />
@@ -58,7 +59,7 @@ function DiagnosticContainer(props) {
         aria-describedby="alert-dialog-description"
       >
         <DialogContent className={classes.dialog}>
-          <DialogContentText id="alert-dialog-description">Take Your Survey Today</DialogContentText>
+          <DialogContentText id="alert-dialog-description"><Trans i18nKey="logSection.text.takeSurvey.takeASurvey"/> </DialogContentText>
           <DialogActions className={classes.buttonContainer}>
             <Button
               className={classes.button}
@@ -68,10 +69,10 @@ function DiagnosticContainer(props) {
                 history.push('/symptomsurvey');
               }}
             >
-              Take Daily Survey
+              <Trans i18nKey="logSection.text.takeSurvey.takeASurvey"/>
             </Button>
             <Button onClick={handleClose} color="default">
-              Close
+              <Trans i18nKey="surveySection.text.close.close"/>
             </Button>
           </DialogActions>
         </DialogContent>

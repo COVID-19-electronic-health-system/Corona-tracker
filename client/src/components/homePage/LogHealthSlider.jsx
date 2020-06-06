@@ -9,6 +9,7 @@ import { useDrag } from 'react-use-gesture';
 import { useHistory } from 'react-router-dom';
 import noSelectCss from 'styles/noSelect';
 import { CalendarThreeLines, alarmSvg, checkSvg, xSvg } from '../../utils/imgUrl';
+import { Trans } from 'react-i18next';
 
 const useStyles = makeStyles(theme => ({
   ...noSelectCss,
@@ -170,15 +171,15 @@ const LogHealthSlider = () => {
                   <Grid item xs={11} container alignItems="center" spacing={1}>
                     <Grid item xs={2}>
                       <Typography variant="body2" className={classes.bold}>
-                        Today
+                        <Trans i18nKey="logSection.text.surveyDataSliderToday.today"/>
                       </Typography>
                     </Grid>
                     <Grid item xs={4} className={classes.itsTime}>
-                      <Typography variant="body2">{`It's time to enter your\nDaily Health Log!`}</Typography>
+                      <Typography variant="body2"><Trans i18nKey="logSection.text.surveyDataSliderItsTime.itsTimeToEnterYourDailyHealthLog"/></Typography>
                     </Grid>
                     <Grid item xs={7} sm={6}>
                       <Typography variant="body2" className={classes.bold}>
-                        Swipe to Complete &gt; &gt; &gt;
+                      <Trans i18nKey="logSection.text.surveyDataSliderSwipeToComplete.swipeToComplete"/> &gt; &gt; &gt;
                       </Typography>
                     </Grid>
                   </Grid>
