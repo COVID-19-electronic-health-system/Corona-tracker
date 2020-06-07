@@ -8,7 +8,7 @@ import { useSpring, animated } from 'react-spring';
 import { useDrag } from 'react-use-gesture';
 import { useHistory } from 'react-router-dom';
 import noSelectCss from 'styles/noSelect';
-import { Trans } from 'react-i18next';
+import { useTranslation } from 'react-i18next';
 import { CalendarThreeLines, alarmSvg, checkSvg, xSvg } from '../../utils/imgUrl';
 
 const useStyles = makeStyles(theme => ({
@@ -85,6 +85,7 @@ const LogHealthSlider = () => {
   const classes = useStyles();
   const history = useHistory();
   const [oneThird, setOneThird] = useState(0);
+  const { t } = useTranslation();
 
   useEffect(() => {
     // grab slider element and use its width to calculate the oneThird Value
@@ -171,18 +172,17 @@ const LogHealthSlider = () => {
                   <Grid item xs={11} container alignItems="center" spacing={1}>
                     <Grid item xs={2}>
                       <Typography variant="body2" className={classes.bold}>
-                        <Trans i18nKey="logSection.text.surveyDataSliderToday.today" />
+                        {t('logSection.text.surveyDataSliderToday.today')}
                       </Typography>
                     </Grid>
                     <Grid item xs={4} className={classes.itsTime}>
                       <Typography variant="body2">
-                        <Trans i18nKey="logSection.text.surveyDataSliderItsTime.itsTimeToEnterYourDailyHealthLog" />
+                        {t('logSection.text.surveyDataSliderItsTime.itsTimeToEnterYourDailyHealthLog')}
                       </Typography>
                     </Grid>
                     <Grid item xs={7} sm={6}>
                       <Typography variant="body2" className={classes.bold}>
-                        <Trans i18nKey="logSection.text.surveyDataSliderSwipeToComplete.swipeToComplete" /> &gt; &gt;
-                        &gt;
+                        {t('logSection.text.surveyDataSliderSwipeToComplete.swipeToComplete')}&gt; &gt; &gt;
                       </Typography>
                     </Grid>
                   </Grid>
