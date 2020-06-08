@@ -83,7 +83,7 @@ exports[`LogHealthSlider should render correctly 1`] = `
                   <p
                     className="MuiTypography-root makeStyles-bold-8 MuiTypography-body2"
                   >
-                    Today
+                    logSection.text.surveyDataSliderToday.today
                   </p>
                 </div>
                 <div
@@ -92,8 +92,7 @@ exports[`LogHealthSlider should render correctly 1`] = `
                   <p
                     className="MuiTypography-root MuiTypography-body2"
                   >
-                    It's time to enter your
-Daily Health Log!
+                    logSection.text.surveyDataSliderItsTime.itsTimeToEnterYourDailyHealthLog
                   </p>
                 </div>
                 <div
@@ -102,7 +101,8 @@ Daily Health Log!
                   <p
                     className="MuiTypography-root makeStyles-bold-8 MuiTypography-body2"
                   >
-                    Swipe to Complete &gt; &gt; &gt;
+                    logSection.text.surveyDataSliderSwipeToComplete.swipeToComplete
+                    &gt; &gt; &gt;
                   </p>
                 </div>
               </div>
