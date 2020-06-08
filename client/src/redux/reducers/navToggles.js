@@ -1,7 +1,7 @@
 import { SET_MORE_TOGGLE, SET_SETTINGS_TOOGLE } from 'redux/actions/navToggles';
 
 const initialState = {
-  moreToggel: false,
+  moreToggle: false,
   settingsToggle: false,
 };
 
@@ -10,7 +10,7 @@ const navToggle = (oldState = initialState, action) => {
     case SET_MORE_TOGGLE:
       return {
         ...oldState,
-        moreToggel: action.moreToggel,
+        moreToggle: action.moreToggle,
       };
     case SET_SETTINGS_TOOGLE:
       return {

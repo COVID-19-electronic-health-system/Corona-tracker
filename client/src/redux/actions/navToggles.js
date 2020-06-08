@@ -1,10 +1,10 @@
 export const SET_MORE_TOGGLE = 'SET_MORE_TOGGLE';
 export const SET_SETTINGS_TOOGLE = 'SET_SETTINGS_TOOGLE';
 
-export function setMoreToogle(moreToggel) {
+export function setMoreToggle(moreToggle) {
   return {
     type: SET_MORE_TOGGLE,
-    moreToggel,
+    moreToggle,
   };
 }
 

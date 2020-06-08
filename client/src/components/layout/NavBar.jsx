@@ -45,7 +45,7 @@ const useStyles = makeStyles(theme => ({
 }));
 
 const NavBar = props => {
-  const { setMoreToogle, setToggleValue, setSettingsToggle, moreToggel, settingsToggle } = props;
+  const { setMoreToggle, setToggleValue, setSettingsToggle, moreToggle, settingsToggle } = props;
   const classes = useStyles();
   return (
     // added to buttons when:
@@ -66,7 +66,7 @@ const NavBar = props => {
               <Typography variant="caption">education</Typography>
             </Grid>
           </Button>
-          <Button onClick={() => setMoreToogle(!moreToggel)} className={classes.buttons}>
+          <Button onClick={() => setMoreToggle(!moreToggle)} className={classes.buttons}>
             <Grid container direction="column" alignItems="center">
               <AddCircleOutlineIcon className={classes.icons} />
               <Typography variant="caption">more &#43;</Typography>
@@ -93,21 +93,21 @@ const NavBar = props => {
   );
 };
 NavBar.propTypes = {
-  setMoreToogle: PropTypes.func.isRequired,
+  setMoreToggle: PropTypes.func.isRequired,
   setToggleValue: PropTypes.func.isRequired,
   setSettingsToggle: PropTypes.func.isRequired,
-  moreToggel: PropTypes.bool.isRequired,
+  moreToggle: PropTypes.bool.isRequired,
   settingsToggle: PropTypes.bool.isRequired,
 };
 const mapStateToProps = state => {
   return {
-    moreToggel: state.navToggle.moreToggel,
+    moreToggle: state.navToggle.moreToggle,
     settingsToggle: state.navToggle.settingsToggle,
   };
 };
 const mapDispatchToProps = dispatch => {
   return {
-    setMoreToogle: moreToggel => dispatch(actions.setMoreToogle(moreToggel)),
+    setMoreToggle: moreToggle => dispatch(actions.setMoreToggle(moreToggle)),
     setToggleValue: toggleValue => dispatch(actions.setToggleValue(toggleValue)),
     setSettingsToggle: settingsToggle => dispatch(actions.setSettingsToggle(settingsToggle)),
   };

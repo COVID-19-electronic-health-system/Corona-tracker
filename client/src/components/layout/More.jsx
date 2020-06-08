@@ -42,15 +42,15 @@ const useStyles = makeStyles(theme => ({
 }));
 
 const More = props => {
-  const { moreToggel, setMoreToogle } = props;
+  const { moreToggle, setMoreToggle } = props;
   const classes = useStyles();
   const handleClose = () => {
-    setMoreToogle(!moreToggel);
+    setMoreToggle(!moreToggle);
   };
   return (
     <div>
       <Drawer
-        open={moreToggel}
+        open={moreToggle}
         anchor="bottom"
         onClose={handleClose}
         transitionDuration={500}
@@ -85,19 +85,19 @@ const More = props => {
   );
 };
 More.propTypes = {
-  setMoreToogle: PropTypes.func.isRequired,
-  moreToggel: PropTypes.bool.isRequired,
+  setMoreToggle: PropTypes.func.isRequired,
+  moreToggle: PropTypes.bool.isRequired,
 };
 
 const mapStateToProps = state => {
   return {
-    moreToggel: state.navToggle.moreToggel,
+    moreToggle: state.navToggle.moreToggle,
     settingsToggle: state.navToggle.settingsToggle,
   };
 };
 const mapDispatchToProps = dispatch => {
   return {
-    setMoreToogle: moreToggel => dispatch(actions.setMoreToogle(moreToggel)),
+    setMoreToggle: moreToggle => dispatch(actions.setMoreToggle(moreToggle)),
     setSettingsToggle: settingsToggle => dispatch(actions.setSettingsToggle(settingsToggle)),
   };
 };
