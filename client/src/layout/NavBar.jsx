@@ -11,6 +11,7 @@ import MoreHorizIcon from '@material-ui/icons/MoreHoriz';
 import More from 'layout/More';
 import PropTypes from 'prop-types';
 import actions from 'redux/actions/actions';
+import { useTranslation } from 'react-i18next';
 
 const useStyles = makeStyles(theme => ({
   // making the style of NavBar
@@ -43,6 +44,7 @@ const useStyles = makeStyles(theme => ({
 const NavBar = props => {
   const { setMoreToogle, setToggleValue } = props;
   const classes = useStyles();
+  const { t } = useTranslation();
   return (
     // added to buttons when:
     // use route to a page: component={Link} to="/foo"
@@ -53,25 +55,25 @@ const NavBar = props => {
           <Button component={Link} to="/" className={classes.buttons} onClick={() => setToggleValue('myHealthLog')}>
             <Grid container direction="column" alignItems="center">
               <FeaturedPlayListOutlinedIcon className={classes.icons} />
-              <Typography variant="caption">Log</Typography>
+              <Typography variant="caption">{t('bottomNavMenu.text.log.log')}</Typography>
             </Grid>
           </Button>
           <Button component={Link} to="/education" className={classes.buttons}>
             <Grid container direction="column" alignItems="center">
               <StarBorderIcon className={classes.icons} />
-              <Typography variant="caption">education</Typography>
+              <Typography variant="caption">{t('bottomNavMenu.text.education.education')}</Typography>
             </Grid>
           </Button>
           <Button component={Link} to="/map" className={classes.buttons}>
             <Grid container direction="column" alignItems="center">
               <LocationOnOutlinedIcon className={classes.icons} />
-              <Typography variant="caption">map</Typography>
+              <Typography variant="caption">{t('bottomNavMenu.text.map.map')}</Typography>
             </Grid>
           </Button>
           <Button onClick={() => setMoreToogle(true)} className={classes.buttons}>
             <Grid container direction="column" alignItems="center">
               <MoreHorizIcon className={classes.icons} />
-              <Typography variant="caption">more</Typography>
+              <Typography variant="caption">{t('bottomNavMenu.text.more.more')}</Typography>
             </Grid>
           </Button>
         </Toolbar>
