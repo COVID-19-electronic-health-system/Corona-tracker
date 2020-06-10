@@ -11,7 +11,7 @@ import DialogTitle from '@material-ui/core/DialogTitle';
 
 import { makeStyles } from '@material-ui/core/styles';
 import { useBlockstack } from 'react-blockstack';
-import { useTranslation } from 'react-i18next';
+import { useTranslation, Trans } from 'react-i18next';
 import { DialogContent, DialogContentText, TextField, Snackbar } from '@material-ui/core';
 import MuiAlert from '@material-ui/lab/Alert';
 import PropTypes from 'prop-types';
@@ -136,7 +136,7 @@ const SettingsButton = props => {
     if (!/^\+[1-9]\d{1,14}$/.test(phoneNumber)) {
       setSnackbar({
         severity: 'error',
-        message: 'Invalid phone number. Please try again',
+        message: <Trans i18nKey="moreSection.text.invalidPhone.invalidPhoneNumberPleaseTryAgain" />,
       });
       setOpenSnackbar(true);
     } else {
@@ -151,17 +151,19 @@ const SettingsButton = props => {
     if (error.response) {
       severity = 'error';
       if (error.response.status === 409) {
-        message = 'This phone number was already subscribed';
+        message = <Trans i18nKey="moreSection.text.subscribeDuplicate.thisPhoneNumberWasAlreadySubscribed" />;
       } else {
-        message = 'Something went wrong.  Please try again.';
+        message = <Trans i18nKey="moreSection.text.subscribeError.somethingWentWrongPleaseTryAgain" />;
       }
     }
     if (success) {
       severity = 'success';
       message =
-        success === 'subscribed'
-          ? `Subscribed successfully! You will be automatically unsubscribed in one day, and will receive three texts in that timespan. If you enter again, you will receive double the notifications - so please do not! This is very early alpha :)`
-          : 'Unsubscribed successfully';
+        success === 'subscribed' ? (
+          <Trans i18nKey="moreSection.text.subscribeSuccess.subscribedSuccessfullyYouWillBeAutomaticallyUnsubscribedInOneDayAndWillReceiveThreeTextsInThatTimespanIfYouEnterAgainYouWillReceiveDoubleTheNotificationsSoPleaseDoNotThisIsVeryEarlyAlpha" />
+        ) : (
+          <Trans i18nKey="moreSection.text.unsubscribeSuccess.unsubscribedSuccessfully" />
+        );
     }
     setSnackbar({
       message,
@@ -179,18 +181,20 @@ const SettingsButton = props => {
         aria-describedby="alert-dialog-description"
       >
         <DialogTitle id="alert-dialog-title" className={classes.text}>
-          Settings
+          {t('moreSection.text.buttonSettings.settings')}
         </DialogTitle>
         <DialogContent className={classes.dialogContent}>
           <DialogContent>
             <DialogContentText className={classes.descriptionText}>
-              Enter your phone number to subscribe/unsubscribe to the occasional question/survey to answer over text.
+              {t(
+                'moreSection.text.enterYourPhone.enterYourPhoneNumberToSubscribeUnsubscribeToTheOccasionalQuestionSurveyToAnswerOverText'
+              )}
             </DialogContentText>
             <a
               className={classes.descriptionText}
               href="https://support.twilio.com/hc/en-us/articles/223183008-Formatting-International-Phone-Numbers"
             >
-              Please add your +country code before entering
+              <Trans i18nKey="moreSection.text.countryCode.pleaseAddYourCountryCodeBeforeEntering" />
             </a>
             {subscribedNumber ? (
               <DialogContentText className={classes.descriptionText}>
@@ -203,7 +207,7 @@ const SettingsButton = props => {
                 autoFocus
                 margin="dense"
                 id="filled-phone"
-                label={t('phoneNumber')}
+                label={t('moreSection.text.inputLabel.enterPhoneNumber')}
                 type="email"
                 fullWidth
               />
@@ -218,7 +222,7 @@ const SettingsButton = props => {
                 color="primary"
                 className={classes.subtitleText}
               >
-                Subscribe
+                {t('moreSection.text.buttonSubscribe.subscribe')}
               </Button>
             )}
             {subscribedNumber && (
@@ -229,7 +233,7 @@ const SettingsButton = props => {
                 color="secondary"
                 className={classes.subtitleText}
               >
-                Unsubscribe
+                {t('moreSection.text.buttonUnsubscribe.unsubscribe')}
               </Button>
             )}
           </DialogActions>
@@ -244,7 +248,7 @@ const SettingsButton = props => {
               variant="contained"
               className={classes.buttons}
             >
-              Settings
+              {t('moreSection.text.buttonSettings.settings')}
             </Button>
             <Button
               component={Link}
@@ -256,7 +260,7 @@ const SettingsButton = props => {
               variant="contained"
               className={classes.buttons}
             >
-              About
+              {t('moreSection.text.buttonAbout.about')}
             </Button>
             <Button
               size="medium"
