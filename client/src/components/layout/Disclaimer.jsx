@@ -74,7 +74,7 @@ const Disclaimer = props => {
                 <Trans i18nKey="disclaimerSection.text.disclaimerValue.youUnderstandAndAgreeThatTheseTermsAreALegallyBindingAgreementAndTheEquivalentOfASignedWrittenContract" />
               </Typography>
               <Typography>
-                <Trans i18nKey="disclaimerSection.text.disclaimerValue.youWillUseTheServicesInAMannerConsistentWithApplicableLawsAndRegulationsAndTheseTermsOfUseAsTheyMayBeAmendedByCoronatrackerFromTimeToTimes" />
+                <Trans i18nKey="disclaimerSection.text.disclaimerValue.youWillUseTheServicesInAMannerConsistentWithApplicableLawsAndRegulationsAndTheseTermsOfUseAsTheyMayBeAmendedByCoronatrackerFromTimeToTime" />
               </Typography>
               <Typography>
                 <Trans i18nKey="disclaimerSection.text.disclaimerValue.youAreAResidentOfTheUnitedStatesAndAreNotAnEuDataCitizenForPurposesOfTheEuGeneralDataProtectionRegulationAndYouUnderstandAcceptAndHaveReceivedTheseTermsAndThePrivacyPolicyAndAcknowledgeThatYouCanAccessTheTermsAtAnyTimeHereAndThePrivacyPolicyAtAnyTimeHere" />
