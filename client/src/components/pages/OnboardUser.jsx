@@ -16,10 +16,10 @@ import {
   Container,
   InputLabel,
 } from '@material-ui/core';
-import actions from '../redux/actions/actions';
-import buttonsCss from '../styles/buttons';
-import { states } from '../utils/constants';
-import { initialState as onboardingInitialState } from '../redux/reducers/onboarding';
+import actions from '../../redux/actions/actions';
+import buttonsCss from '../../styles/buttons';
+import { states } from '../../utils/constants';
+import { initialState as onboardingInitialState } from '../../redux/reducers/onboarding';
 
 const useStyles = makeStyles(() => ({
   root: {

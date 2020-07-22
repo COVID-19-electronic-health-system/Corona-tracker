@@ -1,5 +1,5 @@
 import { combineReducers } from 'redux';
-import navToggle from 'redux/reducers/navToggle';
+import navToggle from 'redux/reducers/navToggles';
 import observationsReducer from './observations';
 import calendarReducer from './calendar';
 import healthToggleReducer from './healthToggle';

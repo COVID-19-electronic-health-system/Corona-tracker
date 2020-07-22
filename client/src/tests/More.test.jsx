@@ -3,7 +3,7 @@ import { mount } from 'enzyme';
 import configureMockStore from 'redux-mock-store';
 import { Provider } from 'react-redux';
 import { BrowserRouter } from 'react-router-dom';
-import More from '../layout/More';
+import More from '../components/layout/More';
 
 const mockStore = configureMockStore();
 

@@ -2,7 +2,7 @@ import React from 'react';
 import { mount } from 'enzyme';
 import { Provider } from 'react-redux';
 import configureMockStore from 'redux-mock-store';
-import Survey from 'pages/Survey';
+import Survey from 'components/pages/Survey';
 
 const mockStore = configureMockStore();
 

@@ -6,10 +6,10 @@ import { Grid } from '@material-ui/core';
 import AvgTemperature from 'components/showMeMore/AvgTemperature';
 import chartType from 'utils/chartType';
 import buttonsCss from 'styles/buttons';
-import Observations from '../components/showMeMore/Observations';
-import Chart from '../components/showMeMore/Chart';
-import BehavioralChart from '../components/showMeMore/BehavioralChart';
-import Download from '../components/showMeMore/Download';
+import Observations from '../showMeMore/Observations';
+import Chart from '../showMeMore/Chart';
+import BehavioralChart from '../showMeMore/BehavioralChart';
+import Download from '../showMeMore/Download';
 
 const useStyles = makeStyles(theme => ({
   root: {

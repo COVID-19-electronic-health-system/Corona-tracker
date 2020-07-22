@@ -1,6 +1,6 @@
 import React from 'react';
 import { render } from '@testing-library/react';
-import About from '../pages/About';
+import About from '../components/pages/About';
 
 test('renders About component', () => {
   render(<About />);
