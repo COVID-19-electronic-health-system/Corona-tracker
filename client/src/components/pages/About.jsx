@@ -4,7 +4,7 @@
 import React from 'react';
 import { Card, CardContent, CardMedia, Grid, Typography, Container, Link } from '@material-ui/core';
 import { makeStyles } from '@material-ui/core/styles';
-import { CodivId, AdvisoryBoard, GlobalHack, Decrypt, HackQuarantine } from '../utils/imgUrl';
+import { CodivId, AdvisoryBoard, GlobalHack, Decrypt, HackQuarantine } from '../../utils/imgUrl';
 
 // TODO add once we get it :)
 function Copyright() {
@@ -22,7 +22,7 @@ function Copyright() {
 
 const useStyles = makeStyles(theme => ({
   root: {
-    paddingBottom: theme.spacing(8),
+    paddingBottom: theme.spacing(12),
   },
   icon: {
     marginRight: theme.spacing(2),

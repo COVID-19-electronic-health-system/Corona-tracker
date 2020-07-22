@@ -19,7 +19,7 @@ const useStyles = makeStyles(theme => ({
     width: '60vw',
   },
   root: {
-    paddingBottom: '15em',
+    paddingBottom: theme.spacing(12),
   },
   item: {
     backgroundColor: '#ffffff',
