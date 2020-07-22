@@ -7,10 +7,13 @@ import { connect } from 'react-redux';
 import FeaturedPlayListOutlinedIcon from '@material-ui/icons/FeaturedPlayListOutlined';
 import StarBorderIcon from '@material-ui/icons/StarBorder';
 import LocationOnOutlinedIcon from '@material-ui/icons/LocationOnOutlined';
-import SettingsIcon from '@material-ui/icons/Settings';
+import AddCircleOutlineIcon from '@material-ui/icons/AddCircleOutline';
+import MoreHorizIcon from '@material-ui/icons/MoreHoriz';
 import PropTypes from 'prop-types';
 import actions from 'redux/actions/actions';
 import { useTranslation } from 'react-i18next';
+import More from './More';
+import SettingsButton from './SettingsButton';
 
 const useStyles = makeStyles(theme => ({
   // making the style of NavBar
