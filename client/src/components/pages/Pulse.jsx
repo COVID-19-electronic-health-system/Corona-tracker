@@ -24,7 +24,6 @@ const Pulse = () => {
         </Grid>
         <Typography variant="h4">Let&#39;s check your pulse!</Typography>
         <Typography variant="subtitle1" color="textSecondary">
-          {' '}
           Place your finger over your camera for 15-20 seconds
         </Typography>
       </Grid>

@@ -74,10 +74,10 @@ export const cards = [
   {
     id: 1,
     title: (
-      <Trans i18nkey="aboutSection.text.titleCodeVsCovidCard.winnerCodevscovid19" />
+      <Trans i18nKey="aboutSection.text.titleCodeVsCovidCard.winnerCodevscovid19" />
     ),
     about: (
-      <Trans i18nkey="aboutSection.text.descriptionCodeVsCovidCard.coronatrackerPlacedInTheTop20OutOfOver300TeamsInHackzurichSCodevscovid19" />
+      <Trans i18nKey="aboutSection.text.descriptionCodeVsCovidCard.coronatrackerPlacedInTheTop20OutOfOver300TeamsInHackzurichSCodevscovid19" />
     ),
     img: CodivId,
     link: "https://codevscovid19.devpost.com/",
@@ -85,10 +85,10 @@ export const cards = [
   {
     id: 2,
     title: (
-      <Trans i18nkey="aboutSection.text.titleAdvisoryBoardCard.advisoryBoard" />
+      <Trans i18nKey="aboutSection.text.titleAdvisoryBoardCard.advisoryBoard" />
     ),
     about: (
-      <Trans i18nkey="aboutSection.text.descriptionAdvisoryBoardCard.ourAdvisoryBoardConsistsOfAHealthTechCfoEpidemiologistPulmonaryCriticalCareSpecialistSystemsArchitectNeuropsychologistAndEmergencyRoomDoctor" />
+      <Trans i18nKey="aboutSection.text.descriptionAdvisoryBoardCard.ourAdvisoryBoardConsistsOfAHealthTechCfoEpidemiologistPulmonaryCriticalCareSpecialistSystemsArchitectNeuropsychologistAndEmergencyRoomDoctor" />
     ),
     img: AdvisoryBoard,
     link: "https://coronatracker.me/leadership",
@@ -96,19 +96,19 @@ export const cards = [
   {
     id: 3,
     title: (
-      <Trans i18nkey="aboutSection.text.titleGlobalHackCard.winnerGlobalHack" />
+      <Trans i18nKey="aboutSection.text.titleGlobalHackCard.winnerGlobalHack" />
     ),
     about: (
-      <Trans i18nkey="aboutSection.text.descriptionGlobalHackCard.coronatrackerPlacedInTheTop89WinnersOutOfOver1500TeamsInFacebookSGlobalHack10" />
+      <Trans i18nKey="aboutSection.text.descriptionGlobalHackCard.coronatrackerPlacedInTheTop89WinnersOutOfOver1500TeamsInFacebookSGlobalHack10" />
     ),
     img: GlobalHack,
     link: "https://covid-global-hackathon.devpost.com/",
   },
   {
     id: 4,
-    title: <Trans i18nkey="aboutSection.text.titleDecryptCard.decrypt" />,
+    title: <Trans i18nKey="aboutSection.text.titleDecryptCard.decrypt" />,
     about: (
-      <Trans i18nkey="aboutSection.text.descriptionDecryptCard.coronatrackerWasFeaturedInAnExclusiveArticleOnDecryptALeadingBlockchainNewsPublication" />
+      <Trans i18nKey="aboutSection.text.descriptionDecryptCard.coronatrackerWasFeaturedInAnExclusiveArticleOnDecryptALeadingBlockchainNewsPublication" />
     ),
     img: Decrypt,
     link:
@@ -117,10 +117,10 @@ export const cards = [
   {
     id: 5,
     title: (
-      <Trans i18nkey="aboutSection.text.titleHackQuarantineCard.winnerHackQuarantine" />
+      <Trans i18nKey="aboutSection.text.titleHackQuarantineCard.winnerHackQuarantine" />
     ),
     about: (
-      <Trans i18nkey="aboutSection.text.descriptionHackQuarantineCard.coronatrackerWonBestUseOfBlockstackInHackQuarantine" />
+      <Trans i18nKey="aboutSection.text.descriptionHackQuarantineCard.coronatrackerWonBestUseOfBlockstackInHackQuarantine" />
     ),
     img: HackQuarantine,
     link: "https://hackquarantine.devpost.com/",
@@ -143,7 +143,7 @@ const About = () => {
                 color="textPrimary"
                 gutterBottom
               >
-                <Trans i18nkey="aboutSection.text.title.forTheCommunityByTheCommunity" />
+                <Trans i18nKey="aboutSection.text.title.forTheCommunityByTheCommunity" />
               </Typography>
               <Typography
                 variant="body1"
@@ -151,7 +151,7 @@ const About = () => {
                 color="textSecondary"
                 paragraph
               >
-                <Trans i18nkey="aboutSection.text.description.coronatrackerIsAnEasyToUsePrivateByDesignOpenSourceApplicationForMonitoringYourHealthAndStayingInformedDuringTheCovid19CrisisHereSWhatWeVeAccomplishedSoFar" />
+                <Trans i18nKey="aboutSection.text.description.coronatrackerIsAnEasyToUsePrivateByDesignOpenSourceApplicationForMonitoringYourHealthAndStayingInformedDuringTheCovid19CrisisHereSWhatWeVeAccomplishedSoFar" />
               </Typography>
             </Container>
           </div>
@@ -160,7 +160,7 @@ const About = () => {
             href="https://forms.gle/PrD1QY2z3a7htB5W9"
             color="inherit"
           >
-            <Trans i18nkey="aboutSection.text.betaSurvey.takeOurBetaSurvey" />
+            <Trans i18nKey="aboutSection.text.betaSurvey.takeOurBetaSurvey" />
           </Link>
           <Container className={classes.cardGrid} maxWidth="md">
             {/* End hero unit */}
@@ -193,7 +193,7 @@ const About = () => {
         </main>
         <footer className={classes.footer}>
           <Typography variant="h6" align="center" gutterBottom>
-            <Trans i18nkey="aboutSection.text.footerSupportUs.supportUs" />
+            <Trans i18nKey="aboutSection.text.footerSupportUs.supportUs" />
           </Typography>
           <Typography
             variant="body1"
@@ -201,7 +201,7 @@ const About = () => {
             color="textSecondary"
             component="p"
           >
-            <Trans i18nkey="aboutSection.text.footerMadeWith.starOurGithubFillOutOurUserSurveyAnythingCountsCoronatrackerIsMadeWith\u2764\ufe0fInNycAndAcrossTheGlobe" />
+            <Trans i18nKey="aboutSection.text.footerMadeWith.starOurGithubFillOutOurUserSurveyAnythingCountsCoronatrackerIsMadeWith\u2764\ufe0fInNycAndAcrossTheGlobe" />
           </Typography>
           {/* <Copyright /> */}
         </footer>
