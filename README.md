@@ -7,8 +7,6 @@ A tool to help reduce the number of unnecessary hospital visits, educate the pub
 ## Get involved and help out!
 
 - [Join our Discord Server](https://discord.gg/pPERUuv)
-- [Visit our Website CoronaTracker.me](https://coronatracker.me)
-- [View the Beta Version of CoronaTracker](https://coronatrackerbeta.com)
 - [Help us translate CoronaTracker!](./Translations)
 
 __View our community health files:__
