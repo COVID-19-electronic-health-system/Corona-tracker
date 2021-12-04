@@ -1,9 +1,9 @@
-import React, { useState, useEffect } from 'react';
-import { makeStyles } from '@material-ui/core/styles';
-import PropTypes from 'prop-types';
-import { connect } from 'react-redux';
-import { useHistory } from 'react-router-dom';
-import { useBlockstack } from 'react-blockstack';
+import React, { useState, useEffect } from "react";
+import { makeStyles } from "@material-ui/core/styles";
+import PropTypes from "prop-types";
+import { connect } from "react-redux";
+import { useHistory } from "react-router-dom";
+import { useBlockstack } from "react-blockstack";
 import {
   Typography,
   Select,
@@ -15,49 +15,50 @@ import {
   TextField,
   Container,
   InputLabel,
-} from '@material-ui/core';
-import actions from '../../redux/actions/actions';
-import buttonsCss from '../../styles/buttons';
-import { states } from '../../utils/constants';
-import { initialState as onboardingInitialState } from '../../redux/reducers/onboarding';
+} from "@material-ui/core";
+import actions from "../../redux/actions/actions";
+import buttonsCss from "../../styles/buttons";
+import { states } from "../../utils/constants";
+import { initialState as onboardingInitialState } from "../../redux/reducers/onboarding";
+import { Trans } from "react-i18next";
 
 const useStyles = makeStyles(() => ({
   root: {
-    paddingBottom: '15em',
+    paddingBottom: "15em",
   },
   buttonRight: {
     ...buttonsCss.buttons,
-    background: 'rgba(255,255,255,0.5)',
-    color: 'black',
-    margin: '5px 0px 0px 9px',
-    width: '75px',
+    background: "rgba(255,255,255,0.5)",
+    color: "black",
+    margin: "5px 0px 0px 9px",
+    width: "75px",
   },
   buttonLeft: {
     ...buttonsCss.buttons,
-    background: 'rgba(255,255,255,0.5)',
-    color: 'black',
-    height: '40px',
-    margin: '5px 10px 0px 0px',
-    width: '75px',
+    background: "rgba(255,255,255,0.5)",
+    color: "black",
+    height: "40px",
+    margin: "5px 10px 0px 0px",
+    width: "75px",
   },
   selectedButton: {
     ...buttonsCss.buttons,
-    color: 'wheat',
+    color: "wheat",
   },
   saveButton: {
     ...buttonsCss.buttons,
-    cursor: 'pointer',
-    height: '3.5em',
-    margin: '2em 8px 2px 8px',
-    textTransform: 'uppercase',
-    width: '275px',
+    cursor: "pointer",
+    height: "3.5em",
+    margin: "2em 8px 2px 8px",
+    textTransform: "uppercase",
+    width: "275px",
   },
   fullWidth: {
-    width: '100%',
+    width: "100%",
   },
 }));
 
-const OnboardUser = props => {
+const OnboardUser = (props) => {
   const {
     setDemographicsComorbiditiesThunk,
     demographicsComorbidities,
@@ -68,14 +69,16 @@ const OnboardUser = props => {
   const { userSession } = useBlockstack();
   const classes = useStyles();
   const history = useHistory();
-  const [formState, setFormState] = useState(onboardingInitialState.demographicsComorbidities);
+  const [formState, setFormState] = useState(
+    onboardingInitialState.demographicsComorbidities
+  );
   const [tempUnitChoice, setTempUnitChoice] = useState(tempUnit);
 
   useEffect(() => {
     setFormState(demographicsComorbidities);
   }, [demographicsComorbidities, setFormState]);
 
-  const handleInputChange = e => {
+  const handleInputChange = (e) => {
     e.preventDefault();
     setFormState({
       ...formState,
@@ -86,7 +89,7 @@ const OnboardUser = props => {
   const handleSave = async () => {
     setTempUnit(userSession, currentObservations, tempUnit, tempUnitChoice);
     await setDemographicsComorbiditiesThunk(formState, userSession);
-    history.push('/');
+    history.push("/");
   };
 
   return (
@@ -94,17 +97,21 @@ const OnboardUser = props => {
       <Grid container spacing={1} alignItems="center">
         <Grid item xs={12}>
           <Typography variant="h5">
-            <b>Welcome to CoronaTracker!</b>
+            <b>
+              <Trans i18nKey="settingsSection.text.welcome.welcomeToCoronatracker" />{" "}
+            </b>
           </Typography>
         </Grid>
         <Grid item xs={12}>
           <Typography variant="subtitle1" paragraph color="textSecondary">
-            Let&apos;s get your profile set up with a few quick questions and start logging your health:
+            <Trans i18nKey="settingsSection.text.letsGet.letsGetYourProfileSetUpWithAFewQuickQuestionsAndStartLoggingYourHealth" />
           </Typography>
         </Grid>
         <Grid item sm={4} xs={6}>
           <FormControl variant="outlined" className={classes.fullWidth}>
-            <InputLabel id="gender-select-label">Gender</InputLabel>
+            <InputLabel id="gender-select-label">
+              <Trans i18nKey="settingsSection.text.genderLabel.gender" />{" "}
+            </InputLabel>
             <Select
               labelId="gender-select-label"
               id="gender-select"
@@ -113,9 +120,15 @@ const OnboardUser = props => {
               value={formState.gender}
               onChange={handleInputChange}
             >
-              <MenuItem value="male">Male</MenuItem>
-              <MenuItem value="female">Female</MenuItem>
-              <MenuItem value="nonbinary">Non-Binary</MenuItem>
+              <MenuItem value="male">
+                <Trans i18nKey="settingsSection.text.genderValue.male" />{" "}
+              </MenuItem>
+              <MenuItem value="female">
+                <Trans i18nKey="settingsSection.text.genderValue.female" />
+              </MenuItem>
+              <MenuItem value="nonbinary">
+                <Trans i18nKey="settingsSection.text.genderValue.nonbinary" />
+              </MenuItem>
             </Select>
           </FormControl>
         </Grid>
@@ -152,7 +165,7 @@ const OnboardUser = props => {
               value={formState.state}
               onChange={handleInputChange}
             >
-              {states.map(state => (
+              {states.map((state) => (
                 <MenuItem key={state.abbreviation} value={state.abbreviation}>
                   {state.abbreviation}
                 </MenuItem>
@@ -173,7 +186,9 @@ const OnboardUser = props => {
         </Grid>
         <Grid item xs={5}>
           <Typography variant="body1" color="textSecondary">
-            <b>Do you smoke?</b>
+            <b>
+              <Trans i18nKey="settingsSection.text.smokerLabel.doYouSmoke" />{" "}
+            </b>
           </Typography>
         </Grid>
         <Grid item xs={6}>
@@ -183,24 +198,31 @@ const OnboardUser = props => {
               name="isSmoker"
               value="yes"
               onClick={handleInputChange}
-              className={`${classes.buttonLeft} ${formState.isSmoker === 'yes' && classes.selectedButton}`}
+              className={`${classes.buttonLeft} ${
+                formState.isSmoker === "yes" && classes.selectedButton
+              }`}
             >
-              Yes
+              <Trans i18nKey="settingsSection.text.yes.yes" />
             </Button>
             <Button
               type="button"
               name="isSmoker"
               value="no"
               onClick={handleInputChange}
-              className={`${classes.buttonRight} ${formState.isSmoker === 'no' && classes.selectedButton}`}
+              className={`${classes.buttonRight} ${
+                formState.isSmoker === "no" && classes.selectedButton
+              }`}
             >
-              No
+              <Trans i18nKey="settingsSection.text.no.no" />
             </Button>
           </ButtonGroup>
         </Grid>
         <Grid item xs={5}>
           <Typography variant="body1" color="textSecondary">
-            <b>Are you Obese (BMI)?</b>
+            <b>
+              {" "}
+              <Trans i18nKey="settingsSection.text.obeseLabel.areYouObeseBmi" />
+            </b>
           </Typography>
         </Grid>
         <Grid item xs={6}>
@@ -210,24 +232,30 @@ const OnboardUser = props => {
               name="isObese"
               value="yes"
               onClick={handleInputChange}
-              className={`${classes.buttonLeft} ${formState.isObese === 'yes' && classes.selectedButton}`}
+              className={`${classes.buttonLeft} ${
+                formState.isObese === "yes" && classes.selectedButton
+              }`}
             >
-              Yes
+              <Trans i18nKey="settingsSection.text.yes.yes" />
             </Button>
             <Button
               type="button"
               name="isObese"
               value="no"
               onClick={handleInputChange}
-              className={`${classes.buttonRight} ${formState.isObese === 'no' && classes.selectedButton}`}
+              className={`${classes.buttonRight} ${
+                formState.isObese === "no" && classes.selectedButton
+              }`}
             >
-              No
+              <Trans i18nKey="settingsSection.text.no.no" />
             </Button>
           </ButtonGroup>
         </Grid>
         <Grid item xs={5}>
           <Typography variant="body1" color="textSecondary">
-            <b>Do you have asthma?</b>
+            <b>
+              <Trans i18nKey="settingsSection.text.asthmaticLabel.doYouHaveAsthma" />{" "}
+            </b>
           </Typography>
         </Grid>
         <Grid item xs={6}>
@@ -237,18 +265,22 @@ const OnboardUser = props => {
               name="isAsthmatic"
               value="yes"
               onClick={handleInputChange}
-              className={`${classes.buttonLeft} ${formState.isAsthmatic === 'yes' && classes.selectedButton}`}
+              className={`${classes.buttonLeft} ${
+                formState.isAsthmatic === "yes" && classes.selectedButton
+              }`}
             >
-              Yes
+              <Trans i18nKey="settingsSection.text.yes.yes" />
             </Button>
             <Button
               type="button"
               name="isAsthmatic"
               value="no"
               onClick={handleInputChange}
-              className={`${classes.buttonRight} ${formState.isAsthmatic === 'no' && classes.selectedButton}`}
+              className={`${classes.buttonRight} ${
+                formState.isAsthmatic === "no" && classes.selectedButton
+              }`}
             >
-              No
+              <Trans i18nKey="settingsSection.text.no.no" />
             </Button>
           </ButtonGroup>
         </Grid>
@@ -262,16 +294,20 @@ const OnboardUser = props => {
             <Button
               type="button"
               value="celsius"
-              onClick={() => setTempUnitChoice('celsius')}
-              className={`${classes.buttonLeft} ${tempUnitChoice === 'celsius' && classes.selectedButton}`}
+              onClick={() => setTempUnitChoice("celsius")}
+              className={`${classes.buttonLeft} ${
+                tempUnitChoice === "celsius" && classes.selectedButton
+              }`}
             >
               &#8451;
             </Button>
             <Button
               type="button"
               value="fahrenheit"
-              onClick={() => setTempUnitChoice('fahrenheit')}
-              className={`${classes.buttonRight} ${tempUnitChoice === 'fahrenheit' && classes.selectedButton}`}
+              onClick={() => setTempUnitChoice("fahrenheit")}
+              className={`${classes.buttonRight} ${
+                tempUnitChoice === "fahrenheit" && classes.selectedButton
+              }`}
             >
               &#8457;
             </Button>
@@ -279,7 +315,7 @@ const OnboardUser = props => {
         </Grid>
         <Grid item xs={12}>
           <Button className={classes.saveButton} onClick={handleSave}>
-            Save my responses
+            <Trans i18nKey="settingsSection.text.saveMyResponse.saveMyResponses" />
           </Button>
         </Grid>
       </Grid>
@@ -304,23 +340,33 @@ OnboardUser.propTypes = {
   setTempUnit: PropTypes.func.isRequired,
 };
 
-const mapStateToProps = state => {
+const mapStateToProps = (state) => {
   return {
-    demographicsComorbidities: state.onboardingReducer.demographicsComorbidities,
+    demographicsComorbidities:
+      state.onboardingReducer.demographicsComorbidities,
     tempUnit: state.onboardingReducer.tempUnit,
     currentObservations: state.observationsReducer.observations,
   };
 };
 
-const mapDispatchToProps = dispatch => {
+const mapDispatchToProps = (dispatch) => {
   return {
     setDemographicsComorbiditiesThunk: (formData, userSession) =>
-      dispatch(actions.setDemographicsComorbiditiesThunk(formData, userSession)),
-    fetchDemographicsComorbidities: userSession => {
+      dispatch(
+        actions.setDemographicsComorbiditiesThunk(formData, userSession)
+      ),
+    fetchDemographicsComorbidities: (userSession) => {
       dispatch(actions.fetchDemographicsComorbidities(userSession));
     },
     setTempUnit: (userSession, currentObservations, tempUnit, nextTempUnit) =>
-      dispatch(actions.setTempUnit(userSession, currentObservations, tempUnit, nextTempUnit)),
+      dispatch(
+        actions.setTempUnit(
+          userSession,
+          currentObservations,
+          tempUnit,
+          nextTempUnit
+        )
+      ),
   };
 };
 

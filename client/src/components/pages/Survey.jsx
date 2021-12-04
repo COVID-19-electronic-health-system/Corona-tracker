@@ -1,66 +1,73 @@
-import React, { useEffect, useState } from 'react';
-import { connect } from 'react-redux';
-import Stepper from '@material-ui/core/Stepper';
-import Step from '@material-ui/core/Step';
-import StepLabel from '@material-ui/core/StepLabel';
-import { Dialog, DialogActions, DialogContent, DialogContentText, Button } from '@material-ui/core';
-import { makeStyles, withStyles } from '@material-ui/core/styles';
-import StepConnector from '@material-ui/core/StepConnector';
-import StepButton from '@material-ui/core/StepButton';
-import clsx from 'clsx';
-import PropTypes from 'prop-types';
-import SurveyPage1 from 'components/survey/SurveyPage1';
-import SurveyPage2 from 'components/survey/SurveyPage2';
-import SurveyPage3 from 'components/survey/SurveyPage3';
-import SurveyPage4 from 'components/survey/SurveyPage4';
-import actions from 'redux/actions/actions';
+import React, { useEffect, useState } from "react";
+import { connect } from "react-redux";
+import Stepper from "@material-ui/core/Stepper";
+import Step from "@material-ui/core/Step";
+import StepLabel from "@material-ui/core/StepLabel";
+import {
+  Dialog,
+  DialogActions,
+  DialogContent,
+  DialogContentText,
+  Button,
+} from "@material-ui/core";
+import { makeStyles, withStyles } from "@material-ui/core/styles";
+import StepConnector from "@material-ui/core/StepConnector";
+import StepButton from "@material-ui/core/StepButton";
+import clsx from "clsx";
+import PropTypes from "prop-types";
+import SurveyPage1 from "components/survey/SurveyPage1";
+import SurveyPage2 from "components/survey/SurveyPage2";
+import SurveyPage3 from "components/survey/SurveyPage3";
+import SurveyPage4 from "components/survey/SurveyPage4";
+import actions from "redux/actions/actions";
+import { Trans } from "react-i18next";
 
 const SurveyConnector = withStyles({
   lineHorizontal: {
-    alignContent: 'center',
+    alignContent: "center",
   },
   alternativeLabel: {
     top: 19,
   },
   active: {
-    '& $line': {
-      backgroundImage: 'linear-gradient(45deg, #667aff, #4760ff)',
+    "& $line": {
+      backgroundImage: "linear-gradient(45deg, #667aff, #4760ff)",
     },
   },
   completed: {
-    '& $line': {
-      backgroundColor: '#667aff',
+    "& $line": {
+      backgroundColor: "#667aff",
     },
   },
   line: {
     height: 3,
     border: 0,
-    backgroundColor: '#8EAEFB',
+    backgroundColor: "#8EAEFB",
     borderRadius: 1,
   },
 })(StepConnector);
 
 const useSurveyStepIconStyles = makeStyles({
   root: {
-    backgroundColor: '#8EAEFB',
+    backgroundColor: "#8EAEFB",
     zIndex: 1,
-    color: '#505050',
+    color: "#505050",
     width: 40,
     height: 40,
-    display: 'flex',
-    borderRadius: '50%',
-    justifyContent: 'center',
-    alignItems: 'center',
+    display: "flex",
+    borderRadius: "50%",
+    justifyContent: "center",
+    alignItems: "center",
     fontSize: 20,
-    fontWeight: 'bold',
+    fontWeight: "bold",
   },
   active: {
-    backgroundImage: 'linear-gradient(45deg, #4760ff, #82a4f8)',
-    boxShadow: '0px 1px 5px 0px #4760ff',
-    color: '#fff',
+    backgroundImage: "linear-gradient(45deg, #4760ff, #82a4f8)",
+    boxShadow: "0px 1px 5px 0px #4760ff",
+    color: "#fff",
   },
   completed: {
-    backgroundColor: '#667aff',
+    backgroundColor: "#667aff",
   },
 });
 
@@ -88,24 +95,24 @@ SurveyStepIcon.propTypes = {
 
 const useStyles = makeStyles(() => ({
   stepper: {
-    backgroundColor: 'transparent',
+    backgroundColor: "transparent",
     padding: 0,
-    width: '80%',
-    alignItems: 'center',
-    justifyContent: 'center',
-    marginLeft: 'auto',
-    marginRight: 'auto',
+    width: "80%",
+    alignItems: "center",
+    justifyContent: "center",
+    marginLeft: "auto",
+    marginRight: "auto",
   },
 }));
 
-const Survey = props => {
+const Survey = (props) => {
   const { surveyPage, setSurveyPage, requiredStep } = props;
   const classes = useStyles();
   const [activeStep, setActiveStep] = useState(surveyPage - 1);
   const [showDialog, setShowDialog] = useState(false);
-  const contentEl = document.getElementById('content');
+  const contentEl = document.getElementById("content");
 
-  const handleStep = step => {
+  const handleStep = (step) => {
     const page = step + 1;
     if (page > 2 && !requiredStep) {
       setShowDialog(true);
@@ -132,7 +139,7 @@ const Survey = props => {
         connector={<SurveyConnector />}
         className={classes.stepper}
       >
-        {[0, 1, 2, 3].map(step => {
+        {[0, 1, 2, 3].map((step) => {
           return (
             <Step key={step}>
               <StepButton
@@ -157,11 +164,13 @@ const Survey = props => {
         aria-describedby="alert-dialog-description"
       >
         <DialogContent>
-          <DialogContentText id="alert-dialog-description">Complete Step 2 before moving on</DialogContentText>
+          <DialogContentText id="alert-dialog-description">
+            <Trans i18nKey="surveySection.text.completeStep2.completeStep2BeforeMovingOn" />
+          </DialogContentText>
         </DialogContent>
         <DialogActions>
           <Button onClick={handleClose} color="default" autoFocus>
-            Close
+            <Trans i18nKey="surveySection.text.close.close" />
           </Button>
         </DialogActions>
       </Dialog>
@@ -175,16 +184,16 @@ Survey.propTypes = {
   requiredStep: PropTypes.bool.isRequired,
 };
 
-const mapStateToProps = state => {
+const mapStateToProps = (state) => {
   return {
     surveyPage: state.surveyReducer.surveyPage,
     requiredStep: !!state.surveyReducer.completedSteps[2],
   };
 };
 
-const mapDispatchToProps = dispatch => {
+const mapDispatchToProps = (dispatch) => {
   return {
-    setSurveyPage: page => dispatch(actions.setSurveyPage(page)),
+    setSurveyPage: (page) => dispatch(actions.setSurveyPage(page)),
   };
 };
 

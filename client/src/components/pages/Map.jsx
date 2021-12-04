@@ -1,20 +1,21 @@
-import React, { useEffect, useRef, useState } from 'react';
-import mapboxgl from 'mapbox-gl';
-import { makeStyles } from '@material-ui/core/styles';
+import React, { useEffect, useRef, useState } from "react";
+import mapboxgl from "mapbox-gl";
+import { makeStyles } from "@material-ui/core/styles";
+import { Trans } from "react-i18next";
 
 const mapboxToken = process.env.REACT_APP_MAPBOX_TOKEN;
 
 const useStyles = makeStyles({
   root: {
-    width: '100vw',
-    height: 'calc(100vh - 80px)',
-    position: 'absolute',
-    scroll: 'hidden',
+    width: "100vw",
+    height: "calc(100vh - 80px)",
+    position: "absolute",
+    scroll: "hidden",
   },
   mapContainer: {
-    paddingTop: '3vh',
-    textAlign: 'center',
-    height: '100vh',
+    paddingTop: "3vh",
+    textAlign: "center",
+    height: "100vh",
   },
 });
 
@@ -30,12 +31,12 @@ function Map() {
     const initializeMap = () => {
       const initMap = new mapboxgl.Map({
         container: mapContainer.current,
-        style: 'mapbox://styles/mapbox/dark-v9', // stylesheet location
+        style: "mapbox://styles/mapbox/dark-v9", // stylesheet location
         center: [-73.935242, 43.2994],
         zoom: 2,
       });
 
-      initMap.on('load', () => {
+      initMap.on("load", () => {
         setMap(initMap);
         initMap.resize();
       });
@@ -46,10 +47,14 @@ function Map() {
 
   return (
     <div className={classes.mapContainer}>
-      <h4>Check out the Map!</h4>
-      <h4>...COMING SOON...</h4>
+      <h4>
+        <Trans i18nKey="mapSection.text.checkOut.checkOutTheMap" />{" "}
+      </h4>
+      <h4>
+        <Trans i18nKey="mapSection.text.comingSoon.comingSoon" />{" "}
+      </h4>
       <div
-        ref={el => {
+        ref={(el) => {
           mapContainer.current = el;
         }}
         className={classes.root}

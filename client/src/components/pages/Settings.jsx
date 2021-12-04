@@ -1,52 +1,62 @@
-import React, { useState } from 'react';
-import { makeStyles } from '@material-ui/core/styles';
-import { connect } from 'react-redux';
-import { useHistory } from 'react-router-dom';
-import Link from '@material-ui/core/Link';
-import PropTypes from 'prop-types';
-import { Typography, Grid, Button } from '@material-ui/core';
-import DeleteAllDataDialog from '../deleteComponents/DeleteAllDataDialog';
-import DeletionDialog from '../deleteComponents/DeletionDialog';
-import buttonsCss from '../../styles/buttons';
-import TranslationsMenu from '../common/Translations';
+import React, { useState } from "react";
+import { makeStyles } from "@material-ui/core/styles";
+import { connect } from "react-redux";
+import { useHistory } from "react-router-dom";
+import Link from "@material-ui/core/Link";
+import PropTypes from "prop-types";
+import { Typography, Grid, Button } from "@material-ui/core";
+import DeleteAllDataDialog from "../deleteComponents/DeleteAllDataDialog";
+import DeletionDialog from "../deleteComponents/DeletionDialog";
+import buttonsCss from "../../styles/buttons";
+import TranslationsMenu from "../common/Translations";
+import { Trans } from "react-i18next";
 
-const useStyles = makeStyles(theme => ({
+const useStyles = makeStyles((theme) => ({
   root: {
     paddingBottom: theme.spacing(12),
-    padding: '10px',
+    padding: "10px",
   },
   deleteButton: {
     ...buttonsCss.buttons,
-    margin: '0px 8px 2px 8px',
-    width: '300px',
-    cursor: 'pointer',
-    height: '3.5em',
-    marginTop: '2em',
+    margin: "0px 8px 2px 8px",
+    width: "300px",
+    cursor: "pointer",
+    height: "3.5em",
+    marginTop: "2em",
     background: `#f64141`,
-    '&:hover': {
-      boxShadow: '0px 1px 10px 0px #f64141',
+    "&:hover": {
+      boxShadow: "0px 1px 10px 0px #f64141",
       background: `#f64141`,
     },
   },
   updateButton: {
     ...buttonsCss.buttons,
-    background: '#4760ff',
-    margin: '0px 8px 2px 8px',
-    width: '300px',
-    cursor: 'pointer',
-    height: '3.5em',
-    marginTop: '2em',
-    '&:hover': {
-      boxShadow: '0px 1px 10px 0px #4760ff',
-      background: '#4760ff',
-      color: 'white',
+    background: "#4760ff",
+    margin: "0px 8px 2px 8px",
+    width: "300px",
+    cursor: "pointer",
+    height: "3.5em",
+    marginTop: "2em",
+    "&:hover": {
+      boxShadow: "0px 1px 10px 0px #4760ff",
+      background: "#4760ff",
+      color: "white",
     },
   },
 }));
 
-const Settings = props => {
+const Settings = (props) => {
   const { demographicsComorbidities, tempUnit } = props;
-  const { age, gender, city, state, zip, isSmoker, isObese, isAsthmatic } = demographicsComorbidities;
+  const {
+    age,
+    gender,
+    city,
+    state,
+    zip,
+    isSmoker,
+    isObese,
+    isAsthmatic,
+  } = demographicsComorbidities;
   const classes = useStyles();
   const [showDeletionDialog, setShowDeletionDialog] = useState(false);
   const history = useHistory();
@@ -56,14 +66,16 @@ const Settings = props => {
         <Grid container alignItems="center" direction="column">
           <Grid item>
             <Typography variant="h2" color="textPrimary">
-              <b>My Information:</b>
+              <b>
+                <Trans i18nKey="settingsSection.text.myInfo.myInformation" />{" "}
+              </b>
             </Typography>
           </Grid>
           <Grid>
             <Grid container spacing={1} justify="space-between">
               <Grid item>
                 <Typography variant="subtitle1" color="textPrimary">
-                  Age (Years):
+                  <Trans i18nKey="settingsSection.text.ageLabel.ageYears" />
                 </Typography>
               </Grid>
               <Grid item>
@@ -75,7 +87,7 @@ const Settings = props => {
             <Grid container spacing={1} justify="space-between">
               <Grid item>
                 <Typography variant="subtitle1" color="textPrimary">
-                  Gender:
+                  <Trans i18nKey="settingsSection.text.genderLabel.gender" />
                 </Typography>
               </Grid>
               <Grid item>
@@ -87,7 +99,7 @@ const Settings = props => {
             <Grid container spacing={1} justify="space-between">
               <Grid item>
                 <Typography variant="subtitle1" color="textPrimary">
-                  City:
+                  <Trans i18nKey="settingsSection.text.cityLabel.city" />
                 </Typography>
               </Grid>
               <Grid item>
@@ -99,7 +111,7 @@ const Settings = props => {
             <Grid container spacing={1} justify="space-between">
               <Grid item>
                 <Typography variant="subtitle1" color="textPrimary">
-                  State:
+                  <Trans i18nKey="settingsSection.text.stateLabel.state" />
                 </Typography>
               </Grid>
               <Grid item>
@@ -111,7 +123,7 @@ const Settings = props => {
             <Grid container spacing={1} justify="space-between">
               <Grid item>
                 <Typography variant="subtitle1" color="textPrimary">
-                  Zip:
+                  <Trans i18nKey="settingsSection.text.zipLabel.zip" />
                 </Typography>
               </Grid>
               <Grid item>
@@ -123,7 +135,7 @@ const Settings = props => {
             <Grid container spacing={1} justify="space-between">
               <Grid item>
                 <Typography variant="subtitle1" color="textPrimary">
-                  Smoker:
+                  <Trans i18nKey="settingsSection.text.smokerLabel.smoker" />
                 </Typography>
               </Grid>
               <Grid item>
@@ -135,7 +147,7 @@ const Settings = props => {
             <Grid container spacing={1} justify="space-between">
               <Grid item>
                 <Typography variant="subtitle1" color="textPrimary">
-                  Obese:
+                  <Trans i18nKey="settingsSection.text.obeseLabel.obese" />:
                 </Typography>
               </Grid>
               <Grid item>
@@ -147,7 +159,7 @@ const Settings = props => {
             <Grid container spacing={1} justify="space-between">
               <Grid item>
                 <Typography variant="subtitle1" color="textPrimary">
-                  Asthmatic:
+                  <Trans i18nKey="settingsSection.text.asthmaticLabel.asthmatic" />
                 </Typography>
               </Grid>
               <Grid item>
@@ -168,8 +180,11 @@ const Settings = props => {
                 </Typography>
               </Grid>
             </Grid>
-            <Button className={classes.updateButton} onClick={() => history.push('/onboard')}>
-              Update Information
+            <Button
+              className={classes.updateButton}
+              onClick={() => history.push("/onboard")}
+            >
+              <Trans i18nKey="settingsSection.text.updateSaveResponse.updateInformation" />
             </Button>
           </Grid>
 
@@ -179,9 +194,11 @@ const Settings = props => {
             }}
             className={classes.deleteButton}
           >
-            DELETE ALL OBSERVATION DATA
+            <Trans i18nKey="settingsSection.text.deleteObservations.deleteAllObservationData" />
           </Button>
-          {showDeletionDialog && <DeletionDialog setShowDeletionDialog={setShowDeletionDialog} />}
+          {showDeletionDialog && (
+            <DeletionDialog setShowDeletionDialog={setShowDeletionDialog} />
+          )}
 
           <Button
             className={classes.deleteButton}
@@ -189,17 +206,27 @@ const Settings = props => {
               setShowDeletionDialog(true);
             }}
           >
-            DELETE ALL DATA
+            <Trans i18nKey="settingsSection.text.deleteAll.deleteAllData" />
           </Button>
-          {showDeletionDialog && <DeleteAllDataDialog setShowDeletionDialog={setShowDeletionDialog} />}
+          {showDeletionDialog && (
+            <DeleteAllDataDialog
+              setShowDeletionDialog={setShowDeletionDialog}
+            />
+          )}
         </Grid>
         <TranslationsMenu />
         <Grid container alignItems="center" direction="column">
-          <Link href="https://coronatracker.me/privacy-policy" color="textPrimary">
-            Privacy Policy
+          <Link
+            href="https://coronatracker.me/privacy-policy"
+            color="textPrimary"
+          >
+            <Trans i18nKey="settingsSection.text.privacyPolicy.privacyPolicy" />
           </Link>
-          <Link href="https://coronatracker.me/terms-of-use" color="textPrimary">
-            Terms of Use
+          <Link
+            href="https://coronatracker.me/terms-of-use"
+            color="textPrimary"
+          >
+            <Trans i18nKey="settingsSection.text.termsOfUse.termsOfUse" />
           </Link>
         </Grid>
       </Grid>
@@ -221,7 +248,7 @@ Settings.propTypes = {
   tempUnit: PropTypes.string.isRequired,
 };
 
-const mapStateToProps = state => ({
+const mapStateToProps = (state) => ({
   demographicsComorbidities: state.onboardingReducer.demographicsComorbidities,
   tempUnit: state.onboardingReducer.tempUnit,
 });
