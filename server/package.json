@@ -10,7 +10,7 @@
   "license": "MIT",
   "dependencies": {
     "cors": "^2.8.5",
-    "express": "^4.17.1",
+    "express": "^4.17.3",
     "express-ws": "^4.0.0",
     "radiks-server": "^0.3.0-beta.1"
   }
