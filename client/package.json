@@ -19,7 +19,7 @@
     "@testing-library/jest-dom": "^5.1.1",
     "@testing-library/react": "^10.0.1",
     "@testing-library/user-event": "^10.0.0",
-    "axios": "^0.19.2",
+    "axios": "^0.21.1",
     "blockstack": "^19.3.0",
     "chart.js": "^2.9.3",
     "clsx": "^1.1.0",
